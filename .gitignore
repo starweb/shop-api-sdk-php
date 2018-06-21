@@ -1,4 +1,7 @@
-/vendor/
-
-# dev
+# development
+.DS_STORE
 .idea
+
+# composer
+/vendor/
+composer.lock
