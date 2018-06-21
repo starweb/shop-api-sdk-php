@@ -80,10 +80,6 @@ class GuzzleClient implements HttpClientInterface
             ],
         ]);
 
-        if (200 === $response->getStatusCode()) {
-            throw new InvalidCredentialsException('invalid credentials');
-        }
-
         $content = json_decode($response->getBody(), true);
 
         $token = new AccessToken($content['access_token']);
