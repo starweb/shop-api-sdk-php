@@ -13,11 +13,11 @@ class ShopResource extends Resource
     public function get(): string
     {
         $operation = new Operation(
-            'shop',
+            '/shop',
             'GET'
         );
 
-        $res = $this->client->executeEndpointOperation($operation);
+        $res = $this->executeEndpointOperation($operation);
         return $res->getBody();
     }
 }

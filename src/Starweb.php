@@ -2,30 +2,56 @@
 
 namespace Starweb;
 
+use Http\Client\Common\Plugin\AddPathPlugin;
+use Http\Client\Common\Plugin\AuthenticationPlugin;
+use Http\Client\Common\Plugin\BaseUriPlugin;
+use Http\Client\Common\Plugin\ErrorPlugin;
+use Http\Client\Common\PluginClient;
+use Http\Client\HttpClient;
+use Http\Discovery\HttpClientDiscovery;
+use Http\Discovery\UriFactoryDiscovery;
+use Starweb\Authentication\ApiAuthentication;
 use Starweb\Authentication\ClientCredentials;
-use Starweb\HttpClient\HttpClientInterface;
+use Starweb\Authentication\TokenCacheInterface;
+use Starweb\Authentication\TokenFilesystemCache;
 use Starweb\Resource\ResourceInterface;
 
 class Starweb
 {
     /**
-     * @var ClientCredentials
+     * @var HttpClient
      */
-    private $credentials;
+    private $client;
 
     /**
-     * @var HttpClientInterface
+     * @var TokenCacheInterface
      */
-    private $httpClient;
+    private $tokenCache;
 
-    /**
-     * Starweb constructor.
-     *
-     * @param HttpClientInterface $httpClient
-     */
-    public function __construct(HttpClientInterface $httpClient)
-    {
-        $this->httpClient = $httpClient;
+    public function __construct(
+        ClientCredentials $credentials,
+        string $baseUri,
+        array $plugins = [],
+        HttpClient $client = null,
+        TokenCacheInterface $tokenCache = null
+    ) {
+        if (!$client) {
+            $client = HttpClientDiscovery::find();
+        }
+
+        if (!$tokenCache) {
+            $this->tokenCache = $tokenCache = new TokenFilesystemCache();
+        }
+
+        $plugins[] = new ErrorPlugin();
+        $plugins[] = new AuthenticationPlugin(
+            new ApiAuthentication($client, $credentials, $baseUri, $tokenCache)
+        );
+        $plugins[] = new BaseUriPlugin(
+            UriFactoryDiscovery::find()->createUri($baseUri), ['replace' => false]
+        );
+
+        $this->client = new PluginClient($client, $plugins);
     }
 
     public function get(string $resourceKey): ResourceInterface
@@ -37,6 +63,6 @@ class Starweb
         }
 
         $fqcn = sprintf('Starweb\\Resource\%sResource', $resourceKey);
-        return new $fqcn($this->httpClient);
+        return new $fqcn($this->client, $this->tokenCache);
     }
 }

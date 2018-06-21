@@ -17,6 +17,15 @@ class TokenFilesystemCache extends FilesystemCache implements TokenCacheInterfac
     }
 
     /**
+     * @return bool
+     * @throws \Psr\SimpleCache\InvalidArgumentException
+     */
+    public function hasToken(): bool
+    {
+        return $this->get(self::TOKEN_CACHE_KEY) ? true : false;
+    }
+
+    /**
      * @param string $token
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */

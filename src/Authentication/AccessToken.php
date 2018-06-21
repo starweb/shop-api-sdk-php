@@ -4,20 +4,28 @@ namespace Starweb\Authentication;
 
 final class AccessToken implements TokenInterface
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     private $token;
+
+    /**
+     * @var \DateTime
+     */
+    private $expiresIn;
 
     /**
      * AccessToken constructor.
      * @param string $token
      */
-    public function __construct(string $token)
+    public function __construct(string $token, int $expiresIn = 3600)
     {
         $this->token = $token;
+        $this->expiresIn = new \DateTime(sprintf('+%dseconds', $expiresIn));
     }
 
-    public function getToken(): string
+    public function __toString(): string
     {
-        return $this->token;
+        return $this->token ?: '';
     }
 }

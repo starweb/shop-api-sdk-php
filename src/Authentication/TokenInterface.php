@@ -5,5 +5,5 @@ namespace Starweb\Authentication;
 
 interface TokenInterface
 {
-    public function getToken(): string;
+    public function __toString(): string;
 }
