@@ -1,6 +1,6 @@
 <?php
 
-namespace Starweb\Endpoint;
+namespace Starweb\Api\Endpoint;
 
 interface EndpointInterface
 {

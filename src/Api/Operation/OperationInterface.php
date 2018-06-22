@@ -1,9 +1,11 @@
 <?php
 
-namespace Starweb\Operation;
+namespace Starweb\Api\Operation;
 
 interface OperationInterface
 {
+    public function getId(): string;
+
     public function getUri(): string;
 
     public function getMethod(): string;

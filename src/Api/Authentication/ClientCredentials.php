@@ -1,6 +1,6 @@
 <?php
 
-namespace Starweb\Authentication;
+namespace Starweb\Api\Authentication;
 
 final class ClientCredentials
 {

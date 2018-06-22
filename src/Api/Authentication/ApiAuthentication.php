@@ -1,12 +1,13 @@
 <?php
 
-namespace Starweb\Authentication;
+namespace Starweb\Api\Authentication;
 
 use GuzzleHttp\Psr7\Request;
 use Http\Client\HttpClient;
 use Http\Message\Authentication;
 use Psr\Http\Message\RequestInterface;
 use Starweb\Exception\InvalidCredentialsException;
+use Starweb\Exception\StarwebApiException;
 
 class ApiAuthentication implements Authentication
 {
@@ -58,7 +59,7 @@ class ApiAuthentication implements Authentication
      * @return TokenInterface
      * @throws \Exception
      */
-    private function getAccessToken(): TokenInterface
+    public function getAccessToken(): TokenInterface
     {
         if ($this->tokenCache->hasToken()) {
             return $this->tokenCache->getToken();
@@ -72,21 +73,33 @@ class ApiAuthentication implements Authentication
 
     private function requestAccessToken(): TokenInterface
     {
-        $request = new Request('POST', $this->baseUri . 'token', [], [
-            'headers' => ['Content-Type' => 'application/x-www-form-urlencoded'],
-            'form_params' => [
-                'grant_type' => 'client_credentials',
-                'client_id' => $this->credentials->getId(),
-                'client_secret' => $this->credentials->getSecret(),
-            ],
-        ]);
+        $data = [
+            'grant_type=client_credentials',
+            'client_id=' . $this->credentials->getId(),
+            'client_secret=' . $this->credentials->getSecret()
+        ];
+        $body = (implode('&', $data));
+        $request = new Request(
+            'POST',
+            $this->baseUri . '/token',
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
+            $body
+        );
 
         try {
             $response = $this->client->sendRequest($request);
 
-            if (405 === $response->getStatusCode()) {
+            switch($response->getStatusCode()) {
+                case 400:
+                    throw new InvalidCredentialsException('Invalid credentials', 404);
+                    break;
+                case 404:
+                    throw new StarwebApiException('Not found', 404);
+                    break;
+                case 200:
+                default:
+                    break;
             }
-
 
         } catch (\Http\Client\Exception $exception) {
             throw new InvalidCredentialsException('invalid credentials');

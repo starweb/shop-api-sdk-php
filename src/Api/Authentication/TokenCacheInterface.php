@@ -1,6 +1,6 @@
 <?php
 
-namespace Starweb\Authentication;
+namespace Starweb\Api\Authentication;
 
 use Psr\SimpleCache\CacheInterface;
 
@@ -11,4 +11,5 @@ interface TokenCacheInterface extends CacheInterface
     public function hasToken(): bool;
     public function getToken(): ?TokenInterface;
     public function setToken(TokenInterface $token): void;
+    public function isExpired(): bool;
 }

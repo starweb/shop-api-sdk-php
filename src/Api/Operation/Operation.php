@@ -1,11 +1,14 @@
 <?php
 
-namespace Starweb\Operation;
-
-use Starweb\Model\ModelInterface;
+namespace Starweb\Api\Operation;
 
 class Operation implements OperationInterface
 {
+    /**
+     * @var string
+     */
+    private $id;
+
     /**
      * @var string
      */
@@ -29,17 +32,27 @@ class Operation implements OperationInterface
     /**
      * Operation constructor.
      *
+     * @param string $id
      * @param string $uri
      * @param string $method
      * @param string $body
      * @param array $headers
      */
-    public function __construct(string $uri, string $method, string $body = '', array $headers = [])
+    public function __construct(string $id, string $uri, string $method, string $body = '', array $headers = [])
     {
-        $this->uri = $uri;
-        $this->method = $method;
-        $this->body = $body;
-        $this->headers = $headers;
+        $this->id       = $id;
+        $this->uri      = $uri;
+        $this->method   = $method;
+        $this->body     = $body;
+        $this->headers  = $headers;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
     }
 
     /**
@@ -72,5 +85,10 @@ class Operation implements OperationInterface
     public function getHeaders(): array
     {
         return $this->headers;
+    }
+
+    public function __toString()
+    {
+        return $this->id;
     }
 }

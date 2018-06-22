@@ -1,6 +1,6 @@
 <?php
 
-namespace Starweb\Model;
+namespace Starweb\Api\Model;
 
 
 interface ModelInterface
