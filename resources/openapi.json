@@ -12,7 +12,7 @@
   },
   "servers": [
     {
-      "url": "https://{shopId}.starwebserver.se/api/v2",
+      "url": "https://{shopId}.sws.local/api/v2",
       "description": "Shop API",
       "variables": {
         "shopId": {
@@ -22,11 +22,155 @@
       }
     }
   ],
+  "tags": [
+    {
+      "name": "Authentication",
+      "description": ""
+    },
+    {
+      "name": "Currency",
+      "description": ""
+    },
+    {
+      "name": "Customer Addresses",
+      "description": ""
+    },
+    {
+      "name": "Customer External Services",
+      "description": ""
+    },
+    {
+      "name": "Customer Tags",
+      "description": ""
+    },
+    {
+      "name": "Customers",
+      "description": ""
+    },
+    {
+      "name": "Media Files",
+      "description": ""
+    },
+    {
+      "name": "Order Addresses",
+      "description": ""
+    },
+    {
+      "name": "Order Comments",
+      "description": ""
+    },
+    {
+      "name": "Order External Services",
+      "description": ""
+    },
+    {
+      "name": "Order Items",
+      "description": ""
+    },
+    {
+      "name": "Order Statuses",
+      "description": ""
+    },
+    {
+      "name": "Orders",
+      "description": ""
+    },
+    {
+      "name": "Payment Methods",
+      "description": ""
+    },
+    {
+      "name": "Pricelists",
+      "description": ""
+    },
+    {
+      "name": "Product Attributes",
+      "description": ""
+    },
+    {
+      "name": "Product Categories",
+      "description": ""
+    },
+    {
+      "name": "Product Category Links",
+      "description": ""
+    },
+    {
+      "name": "Product Languages",
+      "description": ""
+    },
+    {
+      "name": "Product Manufacturers",
+      "description": ""
+    },
+    {
+      "name": "Product Media File Links",
+      "description": ""
+    },
+    {
+      "name": "Product Meta Data",
+      "description": ""
+    },
+    {
+      "name": "Product Meta Data Types",
+      "description": ""
+    },
+    {
+      "name": "Product Stock Statuses",
+      "description": ""
+    },
+    {
+      "name": "Product Units",
+      "description": ""
+    },
+    {
+      "name": "Product Variant Attribute Values",
+      "description": ""
+    },
+    {
+      "name": "Product Variant Attributes",
+      "description": ""
+    },
+    {
+      "name": "Product Variant Pricelist Prices",
+      "description": ""
+    },
+    {
+      "name": "Product Variants",
+      "description": ""
+    },
+    {
+      "name": "Product Vat Rates",
+      "description": ""
+    },
+    {
+      "name": "Products",
+      "description": ""
+    },
+    {
+      "name": "Shipping Methods",
+      "description": ""
+    },
+    {
+      "name": "Shipping Tracking Types",
+      "description": ""
+    },
+    {
+      "name": "Shop",
+      "description": ""
+    },
+    {
+      "name": "Tags",
+      "description": ""
+    }
+  ],
   "paths": {
     "/token": {
       "summary": "Generate and fetch new access token",
       "post": {
         "operationId": "generateFetchAccessToken",
+        "summary": "Create a token",
+        "description": "Create a token. Retrieves the create `Token` object.",
         "responses": {
           "200": {
             "description": "Access Token and related details",
@@ -52,13 +196,18 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Authentication"
+        ]
       }
     },
     "/currencies": {
       "summary": "Get Currencies",
       "get": {
         "operationId": "getCurrencies",
+        "summary": "List all currencies",
+        "description": "Returns a list of currencies supported by the shop",
         "responses": {
           "200": {
             "description": "An collection of currencies",
@@ -70,13 +219,18 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Currency"
+        ]
       }
     },
     "/currencies/{currencyCode}": {
       "summary": "Get a currency",
       "get": {
         "operationId": "getCurrency",
+        "summary": "Retrieve a currency",
+        "description": "Retrieves the details of a currency",
         "responses": {
           "200": {
             "description": "A currency",
@@ -91,7 +245,10 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Currency"
+        ]
       },
       "parameters": [
         {
@@ -109,7 +266,9 @@
     "/customer-tags": {
       "summary": "Get customer tags",
       "get": {
-        "operationId": "getCustomerTags",
+        "operationId": "getCustomersTags",
+        "summary": "List all tags",
+        "description": "Returns a list of tags",
         "responses": {
           "200": {
             "description": "An collection of customer tags",
@@ -121,16 +280,21 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Tags"
+        ]
       }
     },
     "/customer-tags/{tagId}": {
       "summary": "Get a customer tag",
       "get": {
-        "operationId": "getCustomerTag",
+        "operationId": "getCustomersTag",
+        "summary": "Retrieve a tag",
+        "description": "Retrieves a `Tag` object",
         "responses": {
           "200": {
-            "description": "An customer tag",
+            "description": "A customer tag",
             "content": {
               "application/json": {
                 "schema": {
@@ -142,7 +306,10 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Tags"
+        ]
       },
       "parameters": [
         {
@@ -162,6 +329,8 @@
       "summary": "Get shop orders or create a new one",
       "get": {
         "operationId": "listCustomers",
+        "summary": "List all customers",
+        "description": "Returns a list of customers",
         "parameters": [
           {
             "name": "page",
@@ -202,7 +371,7 @@
             "name": "createdSince",
             "in": "query",
             "description": "Use this to only fetch customers that has been created since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2018-06-17T13:46:54+02:00",
+            "example": "2018-06-27T20:37:15+02:00",
             "schema": {
               "type": "string"
             }
@@ -211,7 +380,7 @@
             "name": "updatedSince",
             "in": "query",
             "description": "Use this to only fetch customers that has been modified since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2018-06-17T13:46:54+02:00",
+            "example": "2018-06-27T20:37:15+02:00",
             "schema": {
               "type": "string"
             }
@@ -228,14 +397,9 @@
           {
             "name": "include",
             "in": "query",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "description": "If you want to include child data in the result. Example: ?include=tags (to include customer tags); ?include=tags,addresses (to include both customer tags and addresses). Available includes: tags, externalServices, addresses",
-            "examples": [
-              "?include=tags",
-              "?include=addresses",
-              "?include=externalServices",
-              "?include=tags,externalServices"
-            ],
             "schema": {
               "type": "string"
             }
@@ -255,10 +419,15 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Customers"
+        ]
       },
       "post": {
         "operationId": "createCustomer",
+        "summary": "Create a customer",
+        "description": "Creates a `Customer` object",
         "responses": {
           "201": {
             "description": "The created customer is returned",
@@ -284,13 +453,18 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Customers"
+        ]
       }
     },
     "/customers/{customerId}": {
       "summary": "Get or manipulate a certain customer",
       "get": {
         "operationId": "getCustomer",
+        "summary": "Retrieve a customer",
+        "description": "Retrieves a `Customer` object",
         "responses": {
           "200": {
             "description": "A customer is returned",
@@ -310,22 +484,22 @@
           {
             "name": "include",
             "in": "query",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "description": "If you want to include child data in the result. Example: ?include=tags (to include customer tags); ?include=tags,addresses (to include both customer tags and addresses). Available includes: tags, externalServices, addresses",
-            "examples": [
-              "?include=tags",
-              "?include=addresses",
-              "?include=externalServices",
-              "?include=tags,externalServices"
-            ],
             "schema": {
               "type": "string"
             }
           }
+        ],
+        "tags": [
+          "Customers"
         ]
       },
       "delete": {
         "operationId": "deleteCustomer",
+        "summary": "Delete a customer",
+        "description": "Delete a customer permanently!",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -333,10 +507,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Customers"
+        ]
       },
       "put": {
         "operationId": "putCustomer",
+        "summary": "Update a customer",
+        "description": "Updates a customer. Retrieves the updated `Customer` object",
         "responses": {
           "200": {
             "description": "The updated customer is returned",
@@ -365,10 +544,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Customers"
+        ]
       },
       "patch": {
         "operationId": "patchCustomer",
+        "summary": "Update a customer",
+        "description": "Updates a customer. Retrieves the updated `Customer` object",
         "responses": {
           "200": {
             "description": "The updated customer is returned",
@@ -397,7 +581,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Customers"
+        ]
       },
       "parameters": [
         {
@@ -418,6 +605,8 @@
       "summary": "Get customer external services. At this time you cannot create or update a customer external service.",
       "get": {
         "operationId": "getCustomerExternalServices",
+        "summary": "List all customer external services‚",
+        "description": "Returns a list of external services for a customer",
         "responses": {
           "200": {
             "description": "An array of external services",
@@ -429,14 +618,17 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Customer External Services"
+        ]
       },
       "parameters": [
         {
-          "name": "orderId",
+          "name": "customerId",
           "in": "path",
           "required": true,
-          "description": "The orders id",
+          "description": "The customers id",
           "schema": {
             "type": "integer",
             "minimum": 1,
@@ -447,9 +639,11 @@
       ]
     },
     "/customers/{customerId}/external-services/{serviceName}": {
-      "summary": "Get or manipulate a certain customer external service",
+      "summary": "Get a certain customer external service",
       "get": {
         "operationId": "getCustomerExternalService",
+        "summary": "Retrieve a customer external service",
+        "description": "Retrieves a `CustomerExternalService` object",
         "responses": {
           "200": {
             "description": "An external service is returned",
@@ -464,14 +658,17 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Customer External Services"
+        ]
       },
       "parameters": [
         {
-          "name": "orderId",
+          "name": "customerId",
           "in": "path",
           "required": true,
-          "description": "The orders id",
+          "description": "The customers id",
           "schema": {
             "type": "integer",
             "minimum": 1,
@@ -495,6 +692,8 @@
       "summary": "Get customer tags or add an existing tag to a customer",
       "get": {
         "operationId": "getCustomerTags",
+        "summary": "List all tags for a customer",
+        "description": "Returns a list of customer tags",
         "responses": {
           "200": {
             "description": "An array of customer tags",
@@ -506,10 +705,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Customer Tags"
+        ]
       },
       "post": {
         "operationId": "addTagToCustomer",
+        "summary": "Add a customer tag",
+        "description": "Add a tag to a customer. Retrieves the created `CustomerTag` object",
         "responses": {
           "201": {
             "description": "The created customer tag is returned",
@@ -535,7 +739,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Customer Tags"
+        ]
       },
       "parameters": [
         {
@@ -556,6 +763,8 @@
       "summary": "Get or replace a customers tag",
       "get": {
         "operationId": "getCustomerTag",
+        "summary": "Retrieve a customer tag‚",
+        "description": "Retrieves a `CustomerTag` object",
         "responses": {
           "200": {
             "description": "An customer tag is returned",
@@ -570,10 +779,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Customer Tags"
+        ]
       },
       "delete": {
         "operationId": "removeTagFromCustomer",
+        "summary": "Delete a customer tag‚",
+        "description": "Deletes a customer tag permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -581,10 +795,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Customer Tags"
+        ]
       },
       "put": {
         "operationId": "putTagOnCustomer",
+        "summary": "Update a customer tag‚",
+        "description": "Updates a customer tag. Retrieves the updated `CustomerTag` object",
         "responses": {
           "200": {
             "description": "The updated customer tag is returned",
@@ -613,10 +832,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Customer Tags"
+        ]
       },
       "patch": {
         "operationId": "patchTagOnCustomerBy",
+        "summary": "Update a customer tag‚",
+        "description": "Updates a customer tag. Retrieves the updated `CustomerTag` object",
         "responses": {
           "200": {
             "description": "The updated customer tag is returned",
@@ -645,7 +869,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Customer Tags"
+        ]
       },
       "parameters": [
         {
@@ -678,6 +905,8 @@
       "summary": "Get customer addresses",
       "get": {
         "operationId": "getCustomerGroups",
+        "summary": "List all addresses",
+        "description": "Returns a list of addresses for a customer",
         "responses": {
           "200": {
             "description": "An object of customer addresses",
@@ -689,7 +918,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Customer Addresses"
+        ]
       },
       "parameters": [
         {
@@ -710,6 +942,8 @@
       "summary": "Get, delete or update a customers address",
       "get": {
         "operationId": "getCustomerAddress",
+        "summary": "Rerieve a customer address",
+        "description": "Retrieves a `CustomerAddress` object",
         "responses": {
           "200": {
             "description": "An customer address is returned",
@@ -724,10 +958,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Customer Addresses"
+        ]
       },
       "delete": {
         "operationId": "removeAddressFromCustomer",
+        "summary": "Delete a customer address",
+        "description": "Delete a customer address permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -735,10 +974,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Customer Addresses"
+        ]
       },
       "put": {
         "operationId": "putCustomerAddress",
+        "summary": "Update a customer address",
+        "description": "Updates a customer address. Retrieves the updated `CustomerAddress` object",
         "responses": {
           "200": {
             "description": "The updated customer address is returned",
@@ -767,10 +1011,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Customer Addresses"
+        ]
       },
       "patch": {
         "operationId": "patchCustomerAddress",
+        "summary": "Update a customer address",
+        "description": "Updates a customer address. Retrieves the updated `CustomerAddress` object",
         "responses": {
           "200": {
             "description": "The updated customer address is returned",
@@ -799,7 +1048,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Customer Addresses"
+        ]
       },
       "parameters": [
         {
@@ -834,6 +1086,8 @@
       "summary": "Create and fetch media files",
       "get": {
         "operationId": "getMediaFiles",
+        "summary": "List all media files",
+        "description": "Returns a list of media file‚",
         "parameters": [
           {
             "name": "page",
@@ -857,10 +1111,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Media Files"
+        ]
       },
       "post": {
         "operationId": "createMediaFile",
+        "summary": "Create a media file",
+        "description": "Creates a new `Media File` object",
         "responses": {
           "201": {
             "description": "The created media file is returned",
@@ -886,13 +1145,18 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Media Files"
+        ]
       }
     },
     "/media-files/{mediaFileId}": {
       "summary": "Get or manipulate a certain media file",
       "get": {
         "operationId": "getMediaFile",
+        "summary": "Retrieve a media file",
+        "description": "Retrieve a `MediaFile` object",
         "responses": {
           "200": {
             "description": "A media file is returned",
@@ -907,10 +1171,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Media Files"
+        ]
       },
       "delete": {
         "operationId": "deleteMediaFile",
+        "summary": "Delete a media file",
+        "description": "Delete a media file permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -918,10 +1187,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Media Files"
+        ]
       },
       "put": {
         "operationId": "putMediaFile",
+        "summary": "Update a media file",
+        "description": "Updates a media file. Retrieves the updated `MediaFile` object",
         "responses": {
           "200": {
             "description": "The updated media file is returned",
@@ -950,10 +1224,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Media Files"
+        ]
       },
       "patch": {
         "operationId": "patchMediaFile",
+        "summary": "Update a media file",
+        "description": "Updates a media file. Retrieves the updated `MediaFile` object",
         "responses": {
           "200": {
             "description": "The updated media file is returned",
@@ -982,7 +1261,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Media Files"
+        ]
       },
       "parameters": [
         {
@@ -1002,6 +1284,8 @@
       "summary": "Get shop orders or create a new one",
       "get": {
         "operationId": "listOrders",
+        "summary": "List all orders",
+        "description": "Returns a list of orders.",
         "parameters": [
           {
             "name": "page",
@@ -1016,7 +1300,6 @@
           {
             "name": "includeNonCompletePayments",
             "in": "query",
-            "default": false,
             "description": "Set to true if you want to fetch orders that has not been completed yet. An order is ”completed” when the payment step has been completed successfully.",
             "schema": {
               "type": "boolean"
@@ -1109,12 +1392,9 @@
           {
             "name": "include",
             "in": "query",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "description": "If you want to include child data in the result. Example: ?include=items (to include order items) or ?include=items,externalServices (to include order items as well as external ids). Available includes: items, externalServices, status, customer, addresses",
-            "examples": [
-              "?include=items",
-              "?include=items,externalServices"
-            ],
             "schema": {
               "type": "string"
             }
@@ -1134,10 +1414,15 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Orders"
+        ]
       },
       "post": {
         "operationId": "createOrder",
+        "summary": "Create an order",
+        "description": "Create an order. Retrieves the create `Order` object",
         "responses": {
           "201": {
             "description": "The created order is returned",
@@ -1163,23 +1448,25 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Orders"
+        ]
       }
     },
     "/orders/{orderId}": {
       "summary": "Get or manipulate a certain shop order",
       "get": {
         "operationId": "getOrder",
+        "summary": "Retrieve an order",
+        "description": "Retrieve an `Order` object",
         "parameters": [
           {
             "name": "include",
             "in": "query",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "description": "If you want to include child data in the result. Example: ?include=items (to include order items) or ?include=items,externalServices (to include order items as well as external ids). Available includes: items, externalServices, status, customer, addresses",
-            "examples": [
-              "?include=items",
-              "?include=items,externalServices"
-            ],
             "schema": {
               "type": "string"
             }
@@ -1199,10 +1486,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Orders"
+        ]
       },
       "delete": {
         "operationId": "deleteOrder",
+        "summary": "Delete an order",
+        "description": "Delete an order permanently",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -1210,10 +1502,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Orders"
+        ]
       },
       "put": {
         "operationId": "putOrder",
+        "summary": "Update an oder",
+        "description": "Updates an oder. Retrieves the updated `Order` object",
         "responses": {
           "200": {
             "description": "The updated order is returned",
@@ -1242,10 +1539,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Orders"
+        ]
       },
       "patch": {
         "operationId": "patchOrder",
+        "summary": "Update an oder",
+        "description": "Updates an oder. Retrieves the updated `Order` object",
         "responses": {
           "200": {
             "description": "The updated order is returned",
@@ -1274,7 +1576,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Orders"
+        ]
       },
       "parameters": [
         {
@@ -1294,6 +1599,8 @@
       "summary": "Get an orders addresses",
       "get": {
         "operationId": "listOrderAddresses",
+        "summary": "List all order addresses",
+        "description": "Returns a list o order addresses",
         "responses": {
           "200": {
             "description": "An array of order addresses",
@@ -1305,7 +1612,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order Addresses"
+        ]
       },
       "parameters": [
         {
@@ -1326,6 +1636,8 @@
       "summary": "Get or manipulate a certain order address",
       "get": {
         "operationId": "getOrderAddress",
+        "summary": "Retrieve an oder address",
+        "description": "Retrieves the `OrderAddress` object",
         "responses": {
           "200": {
             "description": "An address is returned",
@@ -1340,10 +1652,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Order Addresses"
+        ]
       },
       "delete": {
         "operationId": "deleteOrderAddress",
+        "summary": "Delete an oder address",
+        "description": "Delete an oder address permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -1351,10 +1668,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Order Addresses"
+        ]
       },
       "put": {
         "operationId": "putOrderAddress",
+        "summary": "Update an oder",
+        "description": "Updates an oder adress. Retrieves the updated `OrderAddress` object",
         "responses": {
           "200": {
             "description": "The updated address is returned",
@@ -1383,10 +1705,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order Addresses"
+        ]
       },
       "patch": {
         "operationId": "patchOrderAddress",
+        "summary": "Update an oder",
+        "description": "Updates an oder adress. Retrieves the updated `OrderAddress` object",
         "responses": {
           "200": {
             "description": "The updated address is returned",
@@ -1415,7 +1742,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order Addresses"
+        ]
       },
       "parameters": [
         {
@@ -1454,6 +1784,8 @@
       "summary": "Get order comments",
       "get": {
         "operationId": "getOrderComments",
+        "summary": "List all order comments",
+        "description": "Returns a list of order comments.",
         "responses": {
           "200": {
             "description": "A collection of order comments",
@@ -1465,7 +1797,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order Comments"
+        ]
       },
       "parameters": [
         {
@@ -1486,6 +1821,8 @@
       "summary": "Get a certain order comment",
       "get": {
         "operationId": "getOrderComment",
+        "summary": "Retrieve an order comment",
+        "description": "Retrieves the `OrderComment` object",
         "responses": {
           "200": {
             "description": "An order comment is returned",
@@ -1500,7 +1837,10 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Order Comments"
+        ]
       },
       "parameters": [
         {
@@ -1533,6 +1873,8 @@
       "summary": "Get or create order external services",
       "get": {
         "operationId": "getOrderExternalServices",
+        "summary": "List all order external services",
+        "description": "Returns a list of order external services.",
         "responses": {
           "200": {
             "description": "An array of external services",
@@ -1544,10 +1886,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order External Services"
+        ]
       },
       "post": {
         "operationId": "createOrderExternalService",
+        "summary": "Creates an order external service",
+        "description": "Create an order external servicea. Retrieves the created `OrderExternalService`\n                                    object",
         "responses": {
           "201": {
             "description": "The created external service is returned",
@@ -1573,7 +1920,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order External Services"
+        ]
       },
       "parameters": [
         {
@@ -1594,6 +1944,8 @@
       "summary": "Get or manipulate a certain order external service",
       "get": {
         "operationId": "getOrderExternalService",
+        "summary": "Retrieve an oder external service",
+        "description": "Retrieves the `OrderExternalService` object",
         "responses": {
           "200": {
             "description": "An external service is returned",
@@ -1608,10 +1960,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Order External Services"
+        ]
       },
       "delete": {
         "operationId": "deleteOrderExternalService",
+        "summary": "Delete an order external service",
+        "description": "Deletes an order external service permanently",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -1619,10 +1976,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Order External Services"
+        ]
       },
       "put": {
         "operationId": "putOrderExternalService",
+        "summary": "Update an oder external service",
+        "description": "Updates an oder external service. Retrieves the updated `OrderExternalService` object",
         "responses": {
           "200": {
             "description": "The updated external service is returned",
@@ -1651,10 +2013,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order External Services"
+        ]
       },
       "patch": {
         "operationId": "patchOrderExternalService",
+        "summary": "Update an oder external service",
+        "description": "Updates an oder external service. Retrieves the updated `OrderExternalService` object",
         "responses": {
           "200": {
             "description": "The updated external service is returned",
@@ -1683,7 +2050,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order External Services"
+        ]
       },
       "parameters": [
         {
@@ -1714,6 +2084,8 @@
       "summary": "Get or create order items",
       "get": {
         "operationId": "getOrderItems",
+        "summary": "List all order items",
+        "description": "Returns a list of order items",
         "responses": {
           "200": {
             "description": "An array of order items",
@@ -1725,10 +2097,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order Items"
+        ]
       },
       "post": {
         "operationId": "createOrderItem",
+        "summary": "Create an order item",
+        "description": "Create an order item. Retrieves the create `OrderItem` object",
         "responses": {
           "201": {
             "description": "The created order item is returned",
@@ -1754,7 +2131,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order Items"
+        ]
       },
       "parameters": [
         {
@@ -1775,6 +2155,8 @@
       "summary": "Get or manipulate a certain order item",
       "get": {
         "operationId": "getOrderItem",
+        "summary": "Retrieve an order item",
+        "description": "Retrieves the `OrderItem` object",
         "responses": {
           "200": {
             "description": "An order item is returned",
@@ -1789,10 +2171,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Order Items"
+        ]
       },
       "delete": {
         "operationId": "deleteOrderItem",
+        "summary": "Delete an order item",
+        "description": "Delete the order item permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -1800,10 +2187,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Order Items"
+        ]
       },
       "put": {
         "operationId": "putOrderItem",
+        "summary": "Update an oder item",
+        "description": "Updates an oder item. Retrieves the updated `OrderItem` object",
         "responses": {
           "200": {
             "description": "The updated order item is returned",
@@ -1832,10 +2224,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order Items"
+        ]
       },
       "patch": {
         "operationId": "patchOrderItem",
+        "summary": "Update an oder item",
+        "description": "Updates an oder item. Retrieves the updated `OrderItem` object",
         "responses": {
           "200": {
             "description": "The updated order item is returned",
@@ -1864,7 +2261,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order Items"
+        ]
       },
       "parameters": [
         {
@@ -1897,6 +2297,8 @@
       "summary": "Get or create order statuses",
       "get": {
         "operationId": "getOrderStatuses",
+        "summary": "List all order statuses",
+        "description": "Returns a list of order statuses",
         "responses": {
           "200": {
             "description": "An array of order statuses",
@@ -1908,10 +2310,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order Statuses"
+        ]
       },
       "post": {
         "operationId": "createOrderStatus",
+        "summary": "Create an order status",
+        "description": "Create an order status. Retrieves the created `OrderStatus` object",
         "responses": {
           "201": {
             "description": "The created order status is returned",
@@ -1937,13 +2344,18 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order Statuses"
+        ]
       }
     },
     "/order-statuses/{orderStatusId}": {
       "summary": "Get or manipulate a certain order status.",
       "get": {
         "operationId": "getOrderStatus",
+        "summary": "Retrieve an order status",
+        "description": "Retrieves the `OrderStatus` object",
         "responses": {
           "200": {
             "description": "An order status is returned",
@@ -1958,11 +2370,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Order Statuses"
+        ]
       },
       "delete": {
         "operationId": "deleteOrderStatus",
-        "description": "NB! You are not allowed to delete order statuses that is in use by an order, or standard order statuses (all statuses with an idCode set)",
+        "summary": "Delete an oder status",
+        "description": "Deletes an oder status. Retrieves the updated `OrderItem` object. NB! You are not allowed to delete order statuses that is in use by an order, or standard order statuses (all statuses with an idCode set)",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -1973,11 +2389,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Order Statuses"
+        ]
       },
       "put": {
         "operationId": "putOrderStatus",
-        "description": "NB! You are not allowed to update standard order statuses (all statuses with an idCode set)",
+        "summary": "Update an oder status",
+        "description": "Updates an oder status. Retrieves the updated `Orderstatus` object. NB! You are not allowed to update standard order statuses (all statuses with an idCode set)",
         "responses": {
           "200": {
             "description": "The updated order status is returned",
@@ -2009,11 +2429,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order Statuses"
+        ]
       },
       "patch": {
         "operationId": "patchOrderStatus",
-        "description": "NB! You are not allowed to update standard order statuses (all statuses with an idCode set)",
+        "summary": "Update an oder status",
+        "description": "Updates an oder status. Retrieves the updated `Orderstatus` object. NB! You are not allowed to update standard order statuses (all statuses with an idCode set)",
         "responses": {
           "200": {
             "description": "The updated order status is returned",
@@ -2045,7 +2469,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Order Statuses"
+        ]
       },
       "parameters": [
         {
@@ -2065,6 +2492,8 @@
       "summary": "Get payment methods",
       "get": {
         "operationId": "getPaymentMethods",
+        "summary": "List payment methods",
+        "description": "Returns a list of payment methods",
         "responses": {
           "200": {
             "description": "An collection of payment methods",
@@ -2076,13 +2505,18 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Payment Methods"
+        ]
       }
     },
     "/payment-methods/{paymentMethodId}": {
       "summary": "Get a payment method",
       "get": {
         "operationId": "getPaymentMethod",
+        "summary": "Retrieve a payment method",
+        "description": "Retrieves a `PaymentMethod` object",
         "responses": {
           "200": {
             "description": "A payment method",
@@ -2097,7 +2531,10 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Payment Methods"
+        ]
       },
       "parameters": [
         {
@@ -2117,6 +2554,8 @@
       "summary": "Get pricelists collection",
       "get": {
         "operationId": "getPricelists",
+        "summary": "List all pricelists",
+        "description": "Returns a list of pricelists",
         "responses": {
           "200": {
             "description": "An collection of pricelists",
@@ -2128,13 +2567,18 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Pricelists"
+        ]
       }
     },
     "/pricelists/{pricelistId}": {
       "summary": "Get a pricelist",
       "get": {
         "operationId": "getPricelist",
+        "summary": "Retrieve a pricelist",
+        "description": "Retrieves a `Pricelist` object",
         "responses": {
           "200": {
             "description": "A pricelist",
@@ -2149,7 +2593,10 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Pricelists"
+        ]
       },
       "parameters": [
         {
@@ -2168,7 +2615,9 @@
     "/product-attributes": {
       "summary": "Get a collection of a variants attributes",
       "get": {
-        "operationId": "listProductsVariantsAttributeValues",
+        "operationId": "listProductsVariantsAttributes",
+        "summary": "List all product variant attributes",
+        "description": "Returns a list of product variant attributes",
         "responses": {
           "200": {
             "description": "An array of attribute",
@@ -2183,10 +2632,15 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Variant Attributes"
+        ]
       },
       "post": {
         "operationId": "createAttribute",
+        "summary": "Create a product variant attribute",
+        "description": "Creates a product variant attribute. \n                    Retrieves the created `ProductVariantAttribute` object.",
         "responses": {
           "201": {
             "description": "The created attribute is returned",
@@ -2212,13 +2666,18 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Variant Attributes"
+        ]
       }
     },
     "/product-attributes/{attributeId}": {
       "summary": "Get a certain attribute",
       "get": {
-        "operationId": "getProductsVariantsAttributeValue",
+        "operationId": "getProductsVariantsAttribute",
+        "summary": "Retrieve a product variant attribute",
+        "description": "Retrieves the `ProductVariantAttribute` object.",
         "responses": {
           "200": {
             "description": "An attribute value is returned",
@@ -2233,10 +2692,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Variant Attributes"
+        ]
       },
       "put": {
         "operationId": "putAttribute",
+        "summary": "Update a product variant attribute",
+        "description": "Updates a product variant attribute.\n                    Retrieves the updated `ProductVariantAttribute` object.",
         "responses": {
           "201": {
             "description": "The updated attribute is returned",
@@ -2262,10 +2726,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Variant Attributes"
+        ]
       },
       "patch": {
         "operationId": "patchAttribute",
+        "summary": "Update a product variant attribute",
+        "description": "Updates a product variant attribute.\n                    Retrieves the updated `ProductVariantAttribute` object.",
         "responses": {
           "201": {
             "description": "The updated attribute is returned",
@@ -2291,10 +2760,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Variant Attributes"
+        ]
       },
       "delete": {
         "operationId": "deleteAttribute",
+        "summary": "Delete a product variant attribute",
+        "description": "Deletes the product variant attribute permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -2302,7 +2776,10 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Variant Attributes"
+        ]
       },
       "parameters": [
         {
@@ -2323,6 +2800,8 @@
       "summary": "Get a collection of a variants attribute values",
       "get": {
         "operationId": "listProductsVariantsAttributeValues",
+        "summary": "List all product variant attribute values",
+        "description": "Returns a list of product variant attribute values.",
         "responses": {
           "200": {
             "description": "An array of attribute values",
@@ -2342,19 +2821,22 @@
           {
             "name": "include",
             "in": "query",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "description": "If you want to include child data in the result. Example: ?include=attribute (to include the attribute the values belongs to). Available includes: attribute",
-            "examples": [
-              "?include=attribute"
-            ],
             "schema": {
               "type": "string"
             }
           }
+        ],
+        "tags": [
+          "Product Variant Attribute Values"
         ]
       },
       "post": {
         "operationId": "createProductsVariantsAttributeValues",
+        "summary": "Create a product variant attribute value",
+        "description": "Creates a product variant attribute value.\n                    Retrieves the created `ProductVariantAttributeValue` object.",
         "responses": {
           "200": {
             "description": "The created attribute value",
@@ -2380,7 +2862,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Variant Attribute Values"
+        ]
       },
       "parameters": [
         {
@@ -2401,6 +2886,8 @@
       "summary": "Get a certain attribute value",
       "get": {
         "operationId": "getProductsVariantsAttributeValue",
+        "summary": "Retrieve a product variant attribute value",
+        "description": "Retrieves the `ProductVariantAttributeValue` object.",
         "responses": {
           "200": {
             "description": "An attribute value is returned",
@@ -2420,19 +2907,22 @@
           {
             "name": "include",
             "in": "query",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "description": "If you want to include child data in the result. Example: ?include=attribute (to include the attribute the values belongs to). Available includes: attribute",
-            "examples": [
-              "?include=attribute"
-            ],
             "schema": {
               "type": "string"
             }
           }
+        ],
+        "tags": [
+          "Product Variant Attribute Values"
         ]
       },
       "put": {
         "operationId": "putProductsVariantsAttributeValues",
+        "summary": "Update a product variant attribute value",
+        "description": "Updates a product variant attribute value.\n                    Retrieves the updated`ProductVariantAttributeValue` object.",
         "responses": {
           "200": {
             "description": "The updated attribute value",
@@ -2458,10 +2948,14 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Variant Attribute Values"
+        ]
       },
       "patch": {
         "operationId": "patchProductsVariantsAttributeValues",
+        "description": "Updates a product variant attribute value.\n                    Retrieves the updated`ProductVariantAttributeValue` object.",
         "responses": {
           "200": {
             "description": "The updated attribute value",
@@ -2487,10 +2981,14 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Variant Attribute Values"
+        ]
       },
       "delete": {
         "operationId": "deleteAttributeValue",
+        "description": "Delete a product variant attribute value permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -2498,7 +2996,10 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Variant Attribute Values"
+        ]
       },
       "parameters": [
         {
@@ -2531,6 +3032,8 @@
       "summary": "Get product categories or create a new one",
       "get": {
         "operationId": "listProductCategories",
+        "summary": "List all product categories",
+        "description": "Returns a list of product categories",
         "parameters": [
           {
             "name": "page",
@@ -2546,37 +3049,35 @@
             "name": "externalId",
             "in": "query",
             "description": "Use to fetch categories with a specific external id",
-            "example": "123",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "123"
             }
           },
           {
             "name": "parent",
             "in": "query",
             "description": "Use to fetch only categories with this parentId",
-            "example": 5,
             "schema": {
-              "type": "int"
+              "type": "integer",
+              "example": 5
             }
           },
           {
             "name": "filterVisible",
             "in": "query",
             "description": "Only fetch categories visible to visitors",
-            "example": true,
             "schema": {
-              "type": "boolean"
+              "type": "boolean",
+              "example": true
             }
           },
           {
             "name": "include",
             "in": "query",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "description": "If you want to include child data in the result. Example: ?include=languages (to include language based data such as category names, description, etc). Available includes: languages",
-            "examples": [
-              "?include=languages"
-            ],
             "schema": {
               "type": "string"
             }
@@ -2584,7 +3085,7 @@
         ],
         "responses": {
           "200": {
-            "description": "An array of categories",
+            "description": "An array of product categories",
             "content": {
               "application/json": {
                 "schema": {
@@ -2596,10 +3097,15 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Categories"
+        ]
       },
       "post": {
         "operationId": "createProductCategory",
+        "summary": "Create a product category",
+        "description": "Create a product category. Retrieves the created `ProductCategory` object",
         "responses": {
           "201": {
             "description": "The created product category is returned",
@@ -2625,13 +3131,18 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Categories"
+        ]
       }
     },
     "/product-categories/{categoryId}": {
       "summary": "Get or manipulate a certain product category",
       "get": {
         "operationId": "getProductCategory",
+        "summary": "Retrieve a product category",
+        "description": "Retrieves a `ProductCategory` object",
         "responses": {
           "200": {
             "description": "A product category is returned",
@@ -2651,19 +3162,22 @@
           {
             "name": "include",
             "in": "query",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "description": "If you want to include child data in the result. Example: ?include=languages (to include language based data such as category names, description, etc). Available includes: languages",
-            "examples": [
-              "?include=languages"
-            ],
             "schema": {
               "type": "string"
             }
           }
+        ],
+        "tags": [
+          "Product Categories"
         ]
       },
       "delete": {
         "operationId": "deleteProductCategory",
+        "summary": "Delete a product category",
+        "description": "Delete a product category permanently",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -2671,10 +3185,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Categories"
+        ]
       },
       "put": {
         "operationId": "putProductCategory",
+        "summary": "Update a product category",
+        "description": "Update a product category. Retrieves the updated `ProductCategory` object",
         "responses": {
           "200": {
             "description": "The updated product category is returned",
@@ -2703,10 +3222,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Categories"
+        ]
       },
       "patch": {
         "operationId": "patchProductCategory",
+        "summary": "Update a product category",
+        "description": "Update a product category. Retrieves the updated `ProductCategory` object",
         "responses": {
           "200": {
             "description": "The updated product category is returned",
@@ -2735,7 +3259,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Categories"
+        ]
       },
       "parameters": [
         {
@@ -2753,9 +3280,11 @@
       ]
     },
     "/product-manufacturers": {
-      "summary": "Get a product manufacturer",
+      "summary": "List product manufacturers",
       "get": {
         "operationId": "listProductManufacturers",
+        "summary": "List all product manufacturers",
+        "description": "Returns a list of product manufacturers.",
         "responses": {
           "200": {
             "description": "An array of product manufacturer",
@@ -2770,13 +3299,18 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Manufacturers"
+        ]
       }
     },
     "/product-manufacturers/{manufacturerId}": {
       "summary": "Get a certain product manufacturer",
       "get": {
         "operationId": "getProductManufacturer",
+        "summary": "Retrieve a product manufacturer",
+        "description": "Retrieves the `ProductManufacturer` object.",
         "responses": {
           "200": {
             "description": "A product manufacturer is returned",
@@ -2791,7 +3325,10 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Manufacturers"
+        ]
       },
       "parameters": [
         {
@@ -2812,6 +3349,8 @@
       "summary": "Get a product unit",
       "get": {
         "operationId": "listProductUnits",
+        "summary": "List all product units",
+        "description": "Returns a list of product units.",
         "responses": {
           "200": {
             "description": "An array of product units",
@@ -2826,13 +3365,18 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Units"
+        ]
       }
     },
     "/product-units/{unitId}": {
       "summary": "Get a certain product unit",
       "get": {
         "operationId": "getProductUnit",
+        "summary": "Retrieve a product unit",
+        "description": "Retrieves the `ProductUnit` object.",
         "responses": {
           "200": {
             "description": "A product unit is returned",
@@ -2847,7 +3391,10 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Units"
+        ]
       },
       "parameters": [
         {
@@ -2868,6 +3415,8 @@
       "summary": "Get a product meta data type",
       "get": {
         "operationId": "listProductMetaDataTypes",
+        "summary": "List all product meta data types",
+        "description": "Returns a list of product meta data types",
         "responses": {
           "200": {
             "description": "An array of product meta data types",
@@ -2882,13 +3431,18 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Meta Data Types"
+        ]
       }
     },
     "/product-meta-data-types/{metaDataTypeId}": {
       "summary": "Get a certain product meta data type",
       "get": {
         "operationId": "getProductMetaDataType",
+        "summary": "Retrieve a product meta data type",
+        "description": "Retrieves the `ProductMetaDataType` object.",
         "responses": {
           "200": {
             "description": "A product meta data type is returned",
@@ -2903,7 +3457,10 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Meta Data Types"
+        ]
       },
       "parameters": [
         {
@@ -2924,6 +3481,8 @@
       "summary": "Get product stock status or create a new one",
       "get": {
         "operationId": "listProductStockStatses",
+        "summary": "List all product stock statuses",
+        "description": "Returns a list of product stock statuses.",
         "responses": {
           "200": {
             "description": "An array of stock statuses",
@@ -2938,10 +3497,15 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Stock Statuses"
+        ]
       },
       "post": {
         "operationId": "createProductStockStatus",
+        "summary": "Create a product stock status",
+        "description": "Create a product stock status. Retrieves the created `ProductStockStatus` object.",
         "responses": {
           "201": {
             "description": "The created product stock status is returned",
@@ -2967,13 +3531,18 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Stock Statuses"
+        ]
       }
     },
     "/product-stock-statuses/{stockStatusId}": {
       "summary": "Get or manipulate a certain product stock status",
       "get": {
         "operationId": "getProductStockStatus",
+        "summary": "Retrieve a product stock status",
+        "description": "Retrieves the `ProductStockStatus` object.",
         "responses": {
           "200": {
             "description": "A product stock status is returned",
@@ -2988,10 +3557,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Stock Statuses"
+        ]
       },
       "delete": {
         "operationId": "deleteProductStockStatus",
+        "summary": "Delete a product stock status",
+        "description": "Deletes a product stock status permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -2999,10 +3573,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Stock Statuses"
+        ]
       },
       "put": {
         "operationId": "putProductStockStatus",
+        "summary": "Update a product stock status",
+        "description": "Updates a product stock status. Retrieves the update `ProductStockStatus` object.",
         "responses": {
           "200": {
             "description": "The updated product stock status is returned",
@@ -3031,10 +3610,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Stock Statuses"
+        ]
       },
       "patch": {
         "operationId": "patchProductStockStatus",
+        "summary": "Update a product stock status",
+        "description": "Updates a product stock status. Retrieves the update `ProductStockStatus` object.",
         "responses": {
           "200": {
             "description": "The updated product stock status is returned",
@@ -3063,7 +3647,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Stock Statuses"
+        ]
       },
       "parameters": [
         {
@@ -3084,6 +3671,8 @@
       "summary": "Get products or create a new one",
       "get": {
         "operationId": "listProducts",
+        "summary": "List all products",
+        "description": "Returns a list of products.",
         "parameters": [
           {
             "name": "page",
@@ -3099,7 +3688,7 @@
             "name": "createdSince",
             "in": "query",
             "description": "Use this to only fetch products that has been created since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2018-06-17T13:46:54+02:00",
+            "example": "2018-06-27T20:37:15+02:00",
             "schema": {
               "type": "string"
             }
@@ -3108,23 +3697,26 @@
             "name": "updatedSince",
             "in": "query",
             "description": "Use this to only fetch products that has been modified since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2018-06-17T13:46:54+02:00",
+            "example": "2018-06-27T20:37:15+02:00",
             "schema": {
               "type": "string"
             }
           },
           {
+            "name": "filterVisible",
+            "in": "query",
+            "description": "Only fetch products visible to visitors",
+            "example": true,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
             "name": "include",
             "in": "query",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "description": "If you want to include child data in the result. Example: ?include=primaryVariant (to include primary product variant);?include=primaryVariant,languages (to include both primary product variant and languages). Available includes: primaryVariant, primaryVariant.prices, primaryVariant.attributes, attributes, mediaFiles, languages, vatRates, categories, unit, metaData. NOTE! Only one variant is included in result for performance reason. To fetch all variants, instead use /products/x/variants(unnecessary if hasSeveralVariants is false)",
-            "examples": [
-              "?include=primaryVariant",
-              "?include=languages",
-              "?include=primaryVariant.prices",
-              "?include=primaryVariant.prices,mediaFiles",
-              "?include=attributes"
-            ],
             "schema": {
               "type": "string"
             }
@@ -3144,10 +3736,15 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Products"
+        ]
       },
       "post": {
         "operationId": "createProduct",
+        "summary": "Create a product",
+        "description": "Creates a product. Retrieves the created `Product` object.",
         "responses": {
           "201": {
             "description": "The created product is returned",
@@ -3173,13 +3770,18 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Products"
+        ]
       }
     },
     "/products/{productId}": {
       "summary": "Get or manipulate a certain product",
       "get": {
         "operationId": "getProduct",
+        "summary": "Retrieve a product",
+        "description": "Retrieves the `Product` object.",
         "responses": {
           "200": {
             "description": "A product is returned",
@@ -3199,22 +3801,22 @@
           {
             "name": "include",
             "in": "query",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "description": "If you want to include child data in the result. Example: ?include=variants (to include product variants); ?include=variants,languages (to include both product variants and languages). Available includes: primaryVariant, primaryVariant.prices, mediaFiles, languages, vatRates, categories, unit, metaData. NOTE! Only one variant is included in result for performance reason. To fetch all variants, instead use /products/x/variants (unnecessary if hasSeveralVariants is false)",
-            "examples": [
-              "?include=primaryVariant",
-              "?include=languages",
-              "?include=primaryVariant.prices",
-              "?include=primaryVariant.prices,mediaFiles"
-            ],
             "schema": {
               "type": "string"
             }
           }
+        ],
+        "tags": [
+          "Products"
         ]
       },
       "delete": {
         "operationId": "deleteProduct",
+        "summary": "Delete a product",
+        "description": "Deletes a product permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -3222,10 +3824,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Products"
+        ]
       },
       "put": {
         "operationId": "putProduct",
+        "summary": "Update a product",
+        "description": "Updates a product. Retrieves the update `Product` object.",
         "responses": {
           "200": {
             "description": "The updated product is returned",
@@ -3254,10 +3861,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Products"
+        ]
       },
       "patch": {
         "operationId": "patchProduct",
+        "summary": "Update a product",
+        "description": "Updates a product. Retrieves the update `Product` object.",
         "responses": {
           "200": {
             "description": "The updated product is returned",
@@ -3286,7 +3898,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Products"
+        ]
       },
       "parameters": [
         {
@@ -3307,6 +3922,8 @@
       "summary": "Get a products variants or create a new variant",
       "get": {
         "operationId": "listProductsVariants",
+        "summary": "List all product variants.",
+        "description": "Return a list of product variants.",
         "parameters": [
           {
             "name": "page",
@@ -3321,13 +3938,9 @@
           {
             "name": "include",
             "in": "query",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "description": "If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices, attributes, attributes.attribute",
-            "examples": [
-              "?include=prices",
-              "?include=attributeValues",
-              "?include=attributeValues.attribute"
-            ],
             "schema": {
               "type": "string"
             }
@@ -3347,10 +3960,15 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Variants"
+        ]
       },
       "post": {
         "operationId": "createProductVariant",
+        "summary": "Create a product variant.",
+        "description": "Creates a product variant. Retrieves the created `ProductVariant` object",
         "responses": {
           "201": {
             "description": "The created products variant is returned",
@@ -3376,7 +3994,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Variants"
+        ]
       },
       "parameters": [
         {
@@ -3397,6 +4018,8 @@
       "summary": "Get or manipulate a certain product variant",
       "get": {
         "operationId": "getProductsVariant",
+        "summary": "Retrieve a product variant.",
+        "description": "Retrieves the `ProductVariant` object",
         "responses": {
           "200": {
             "description": "A products variant is returned",
@@ -3416,21 +4039,22 @@
           {
             "name": "include",
             "in": "query",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "description": "If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices,  attributes, attributes.attribute",
-            "examples": [
-              "?include=prices",
-              "?include=attributeValues",
-              "?include=attributeValues.attribute"
-            ],
             "schema": {
               "type": "string"
             }
           }
+        ],
+        "tags": [
+          "Product Variants"
         ]
       },
       "delete": {
         "operationId": "deleteProductsVariant",
+        "summary": "Delete a product variant.",
+        "description": "Deletes a product variant permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -3438,10 +4062,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Variants"
+        ]
       },
       "put": {
         "operationId": "putProductsVariant",
+        "summary": "Update a product variant.",
+        "description": "Updates a product variant. Retrieves the updated `ProductVariant` object",
         "responses": {
           "200": {
             "description": "The updated products variant is returned",
@@ -3470,10 +4099,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Variants"
+        ]
       },
       "patch": {
         "operationId": "patchProductsVariant",
+        "summary": "Update a product variant.",
+        "description": "Updates a product variant. Retrieves the updated `ProductVariant` object",
         "responses": {
           "200": {
             "description": "The updated products variant is returned",
@@ -3502,7 +4136,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Variants"
+        ]
       },
       "parameters": [
         {
@@ -3535,6 +4172,8 @@
       "summary": "Get a products country specific vat rates or create a new one",
       "get": {
         "operationId": "listProductsVatRates",
+        "summary": "List all product vat rates",
+        "description": "Returns a list of product vat rates.",
         "responses": {
           "200": {
             "description": "An array of product vat rates",
@@ -3549,10 +4188,15 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Vat Rates"
+        ]
       },
       "post": {
         "operationId": "createProductVatRate",
+        "summary": "Create a product vat rate",
+        "description": "Creates a product vat rate. Retrieves the create `ProductVatRate` object.",
         "responses": {
           "201": {
             "description": "The created products vat rate is returned",
@@ -3578,7 +4222,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Vat Rates"
+        ]
       },
       "parameters": [
         {
@@ -3599,6 +4246,8 @@
       "summary": "Get or manipulate a certain country specific product vat rate",
       "get": {
         "operationId": "getProductsVatRate",
+        "summary": "Retrieve a product vat rate",
+        "description": "Retrieves the `ProductVatRate` object.",
         "responses": {
           "200": {
             "description": "A products vat rate is returned",
@@ -3613,10 +4262,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Vat Rates"
+        ]
       },
       "delete": {
         "operationId": "deleteProductsVatRate",
+        "summary": "Delete a product vat rate",
+        "description": "Deletes the product vat rate permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -3624,10 +4278,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Vat Rates"
+        ]
       },
       "put": {
         "operationId": "putProductsVatRate",
+        "summary": "Update a product vat rate",
+        "description": "Updates a product vat rate. Retrieves the update `ProductVatRate` object.",
         "responses": {
           "200": {
             "description": "The updated products vat rate is returned",
@@ -3656,10 +4315,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Vat Rates"
+        ]
       },
       "patch": {
         "operationId": "patchProductsVatRate",
+        "summary": "Update a product vat rate",
+        "description": "Updates a product vat rate. Retrieves the update `ProductVatRate` object.",
         "responses": {
           "200": {
             "description": "The updated products vat rate is returned",
@@ -3688,7 +4352,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Vat Rates"
+        ]
       },
       "parameters": [
         {
@@ -3717,8 +4384,11 @@
     },
     "/products/{productId}/media-files": {
       "summary": "Get a products media file links or create a new media file link",
+      "description": "Updates a product vat rate. Retrieves the update `ProductVatRate` object.",
       "get": {
         "operationId": "listProductsMediaFileLinks",
+        "summary": "List all product media file links",
+        "description": "Returns a list of product media file links.",
         "responses": {
           "200": {
             "description": "An array of product media file links",
@@ -3733,10 +4403,15 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Media File Links"
+        ]
       },
       "post": {
         "operationId": "createProductsMediaFileLink",
+        "summary": "Create a product media file link",
+        "description": "Creates a product media file link. Retrieves the create `ProductMediaFileLink` object.",
         "responses": {
           "201": {
             "description": "The created products media file link is returned",
@@ -3762,7 +4437,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Media File Links"
+        ]
       },
       "parameters": [
         {
@@ -3783,6 +4461,8 @@
       "summary": "Get or manipulate a certain products media file link",
       "get": {
         "operationId": "getProductsMediaFileLink",
+        "summary": "Retrieve a product media file link",
+        "description": "Retrieves the `ProductMediaFileLink` object.",
         "responses": {
           "200": {
             "description": "A products media file link is returned",
@@ -3797,10 +4477,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Media File Links"
+        ]
       },
       "delete": {
         "operationId": "deleteProductsMediaFileLink",
+        "summary": "Delete a product media file link",
+        "description": "Deletes the product media file link permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -3808,10 +4493,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Media File Links"
+        ]
       },
       "put": {
         "operationId": "putProductsMediaFileLink",
+        "summary": "Update a product media file link",
+        "description": "Updates a product media file link. Retrieves the update `ProductMediaFileLink` object.",
         "responses": {
           "200": {
             "description": "The updated products media file link is returned",
@@ -3840,10 +4530,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Media File Links"
+        ]
       },
       "patch": {
         "operationId": "patchProductsMediaFileLink",
+        "summary": "Update a product media file link",
+        "description": "Updates a product media file link. Retrieves the update `ProductMediaFileLink` object.",
         "responses": {
           "200": {
             "description": "The updated products media file link is returned",
@@ -3872,7 +4567,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Media File Links"
+        ]
       },
       "parameters": [
         {
@@ -3905,6 +4603,8 @@
       "summary": "Get a products languages or create a new language",
       "get": {
         "operationId": "listProductsLanguages",
+        "summary": "List all product languages",
+        "description": "Returns a list of product languages.",
         "responses": {
           "200": {
             "description": "An array of product languages",
@@ -3919,10 +4619,15 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Languages"
+        ]
       },
       "post": {
         "operationId": "createProductsLanguage",
+        "summary": "Create a product language",
+        "description": "Create a product language. Retrieves the created `ProductLanguage` object.",
         "responses": {
           "201": {
             "description": "The created products language is returned",
@@ -3948,7 +4653,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Languages"
+        ]
       },
       "parameters": [
         {
@@ -3969,6 +4677,8 @@
       "summary": "Get or manipulate a certain products language",
       "get": {
         "operationId": "getProductsLanguage",
+        "summary": "Retrieve a product language",
+        "description": "Retrieves the `ProductLanguage` object.",
         "responses": {
           "200": {
             "description": "A products language is returned",
@@ -3983,10 +4693,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Languages"
+        ]
       },
       "delete": {
         "operationId": "deleteProductsLanguage",
+        "summary": "Delete a product language",
+        "description": "Delete a product language permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -3994,10 +4709,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Languages"
+        ]
       },
       "put": {
         "operationId": "putProductsLanguage",
+        "summary": "Update a product language",
+        "description": "Update a product language. Retrieves the update `ProductLanguage` object.",
         "responses": {
           "200": {
             "description": "The updated products language is returned",
@@ -4026,10 +4746,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Languages"
+        ]
       },
       "patch": {
         "operationId": "patchProductsLanguage",
+        "summary": "Update a product language",
+        "description": "Update a product language. Retrieves the update `ProductLanguage` object.",
         "responses": {
           "200": {
             "description": "The updated products language is returned",
@@ -4058,7 +4783,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Languages"
+        ]
       },
       "parameters": [
         {
@@ -4089,6 +4817,8 @@
       "summary": "Get a products category link or create a new link",
       "get": {
         "operationId": "listProductsCategoryLinks",
+        "summary": "Retrieve all product category links",
+        "description": "Returns a list of product category links.",
         "responses": {
           "200": {
             "description": "An array of product category links",
@@ -4103,10 +4833,15 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Category Links"
+        ]
       },
       "post": {
         "operationId": "createProductsCategoryLink",
+        "summary": "Create a product category link",
+        "description": "Retrieves the created `ProductCategoryLink` object",
         "responses": {
           "201": {
             "description": "The created products category link is returned",
@@ -4132,7 +4867,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Category Links"
+        ]
       },
       "parameters": [
         {
@@ -4153,6 +4891,8 @@
       "summary": "Get or manipulate a certain products category link",
       "get": {
         "operationId": "getProductsCategoryLink",
+        "summary": "Retrieve a product category link",
+        "description": "Retrieves the `ProductCategoryLink` object",
         "responses": {
           "200": {
             "description": "A products category link is returned",
@@ -4167,10 +4907,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Category Links"
+        ]
       },
       "delete": {
         "operationId": "deleteProductsCategoryLink",
+        "summary": "Delete a product category link",
+        "description": "Delete a product category link permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -4178,10 +4923,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Category Links"
+        ]
       },
       "put": {
         "operationId": "putProductsCategoryLink",
+        "summary": "Update a product category link",
+        "description": "Update a product category link. Retrieves the update `ProductCategoryLink` object.",
         "responses": {
           "200": {
             "description": "The updated products category link is returned",
@@ -4210,10 +4960,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Category Links"
+        ]
       },
       "patch": {
         "operationId": "patchProductsCategoryLink",
+        "summary": "Update a product category link",
+        "description": "Update a product category link. Retrieves the update `ProductCategoryLink` object.",
         "responses": {
           "200": {
             "description": "The updated products category link is returned",
@@ -4242,7 +4997,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Category Links"
+        ]
       },
       "parameters": [
         {
@@ -4275,6 +5033,8 @@
       "summary": "Get a products meta data or create a new one",
       "get": {
         "operationId": "listProductsMetaData",
+        "summary": "List all product meta data",
+        "description": "Returns a list of product meta data.",
         "responses": {
           "200": {
             "description": "An array of product meta data",
@@ -4289,10 +5049,15 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Meta Data"
+        ]
       },
       "post": {
         "operationId": "createProductsMetaData",
+        "summary": "Create a product meta data",
+        "description": "Creates a product meta data. Retrieves the created `ProductMetaData` object.",
         "responses": {
           "201": {
             "description": "The created products meta data is returned",
@@ -4318,7 +5083,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Meta Data"
+        ]
       },
       "parameters": [
         {
@@ -4339,6 +5107,8 @@
       "summary": "Get or manipulate a certain products meta data",
       "get": {
         "operationId": "getProductsMetaData",
+        "summary": "Retrieve a product meta data",
+        "description": "Retrieves the `ProductMetaData` object.",
         "responses": {
           "200": {
             "description": "A products meta data is returned",
@@ -4353,10 +5123,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Meta Data"
+        ]
       },
       "delete": {
         "operationId": "deleteProductsMetaData",
+        "summary": "Delete a product meta data",
+        "description": "Deletes a product meta data permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -4364,10 +5139,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Meta Data"
+        ]
       },
       "put": {
         "operationId": "putProductsMetaData",
+        "summary": "Update a product meta data",
+        "description": "Updates a product meta data. Retrieves the update `ProductMetaData` object.",
         "responses": {
           "200": {
             "description": "The updated products meta data is returned",
@@ -4396,10 +5176,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Meta Data"
+        ]
       },
       "patch": {
         "operationId": "patchProductsMetaData",
+        "summary": "Update a product meta data",
+        "description": "Updates a product meta data. Retrieves the update `ProductMetaData` object.",
         "responses": {
           "200": {
             "description": "The updated products meta data is returned",
@@ -4428,7 +5213,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Meta Data"
+        ]
       },
       "parameters": [
         {
@@ -4461,6 +5249,8 @@
       "summary": "Get a products attributes",
       "get": {
         "operationId": "listProductsAttributes",
+        "summary": "List all product attributes",
+        "description": "Returns a list of product attributes.",
         "responses": {
           "200": {
             "description": "An array of the products attributes",
@@ -4475,7 +5265,44 @@
           "404": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Attributes"
+        ]
+      },
+      "post": {
+        "operationId": "addProductsAttributes",
+        "summary": "Create a product attribute",
+        "description": "Creates a product attribute. Retrieves the created `ProductAttribute` object.",
+        "responses": {
+          "200": {
+            "description": "The added attribute",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductVariantAttributeModelItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/BadRequest"
+          }
+        },
+        "requestBody": {
+          "description": "Attribute id",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductsAttributesModelItem"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Product Attributes"
+        ]
       },
       "parameters": [
         {
@@ -4496,6 +5323,8 @@
       "summary": "Get a certain attribute from a product",
       "get": {
         "operationId": "getProductsAttribute",
+        "summary": "Retrieve a product attribute",
+        "description": "Retrieves the `ProductAttribute` object.",
         "responses": {
           "200": {
             "description": "A products attribute is returned",
@@ -4510,7 +5339,26 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Attributes"
+        ]
+      },
+      "delete": {
+        "operationId": "deleteProductsAttribute",
+        "summary": "Delete a product attribute",
+        "description": "Deletes a product attribute permanently.",
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/ItemDeleted"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Product Attributes"
+        ]
       },
       "parameters": [
         {
@@ -4531,8 +5379,8 @@
           "required": true,
           "description": "The attribute id you want to fetch.",
           "schema": {
-            "type": "int",
-            "example": "1"
+            "type": "integer",
+            "example": 1
           }
         }
       ]
@@ -4541,6 +5389,8 @@
       "summary": "Get a pricelist price or create a new",
       "get": {
         "operationId": "listProductsVariantsPricelistPrices",
+        "summary": "List all product variant pricelist prices.",
+        "description": "Returns a list of product variant pricelist prices",
         "responses": {
           "200": {
             "description": "An array of pricelist prices",
@@ -4555,10 +5405,15 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
-        }
+        },
+        "tags": [
+          "Product Variant Pricelist Prices"
+        ]
       },
       "post": {
         "operationId": "createProductVariantPricelistPrice",
+        "summary": "Create a product variant pricelist prices.",
+        "description": "Creates a product variant pricelist price. \n                    Retrieves the created `ProductVariantPricelistPrice` object",
         "responses": {
           "201": {
             "description": "The created pricelist price is returned",
@@ -4584,7 +5439,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Variant Pricelist Prices"
+        ]
       },
       "parameters": [
         {
@@ -4617,6 +5475,8 @@
       "summary": "Get or manipulate a certain pricelist price",
       "get": {
         "operationId": "getProductsVariantsPricelistPrice",
+        "summary": "Retrieves a product variant pricelist price.",
+        "description": "Retrieves the `ProductVariantPricelistPrice` object",
         "responses": {
           "200": {
             "description": "A pricelist price is returned",
@@ -4631,10 +5491,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Variant Pricelist Prices"
+        ]
       },
       "delete": {
         "operationId": "deleteProductsVariantsPricelistPrice",
+        "summary": "Delete a product variant pricelist prices.",
+        "description": "Deletes a product variant pricelist price permanently.",
         "responses": {
           "204": {
             "$ref": "#/components/responses/ItemDeleted"
@@ -4642,10 +5507,15 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Product Variant Pricelist Prices"
+        ]
       },
       "put": {
         "operationId": "putProductsVariantsPricelistPrice",
+        "summary": "Update a product variant pricelist prices.",
+        "description": "Updates a product variant pricelist price. \n                    Retrieves the updated `ProductVariantPricelistPrice` object",
         "responses": {
           "200": {
             "description": "The updated pricelist price is returned",
@@ -4674,10 +5544,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Variant Pricelist Prices"
+        ]
       },
       "patch": {
         "operationId": "patchProductsVariantsPricelistPrice",
+        "summary": "Update a product variant pricelist prices.",
+        "description": "Updates a product variant pricelist price. \n                    Retrieves the updated `ProductVariantPricelistPrice` object",
         "responses": {
           "200": {
             "description": "The updated pricelist price is returned",
@@ -4706,7 +5581,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Product Variant Pricelist Prices"
+        ]
       },
       "parameters": [
         {
@@ -4751,6 +5629,8 @@
       "summary": "Get shipping methods collection",
       "get": {
         "operationId": "getShippingMethods",
+        "summary": "List all shipping methods",
+        "description": "Returns a list of shipping methods.",
         "responses": {
           "200": {
             "description": "An collection of shipping methods",
@@ -4762,13 +5642,18 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Shipping Methods"
+        ]
       }
     },
     "/shipping-methods/{shippingMethodId}": {
       "summary": "Get a shipping method",
       "get": {
         "operationId": "getShippingMethod",
+        "summary": "Retrieve a shipping method",
+        "description": "Retrieves a `ShippingMethid` object",
         "responses": {
           "200": {
             "description": "A shipping method",
@@ -4783,7 +5668,10 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Shipping Methods"
+        ]
       },
       "parameters": [
         {
@@ -4803,6 +5691,8 @@
       "summary": "Get shipping tracking types",
       "get": {
         "operationId": "getShippingTrackingTypes",
+        "summary": "List all shipping tracking types",
+        "description": "Returns a list of shippoing tracking types.",
         "responses": {
           "200": {
             "description": "An array of shipping tracking types",
@@ -4814,13 +5704,18 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Shipping Tracking Types"
+        ]
       }
     },
     "/shop": {
       "summary": "Get shop details",
       "get": {
         "operationId": "getShop",
+        "summary": "Retrieve the shop",
+        "description": "Retrieves the `Shop` object.",
         "responses": {
           "200": {
             "description": "A shop",
@@ -4835,7 +5730,10 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
-        }
+        },
+        "tags": [
+          "Shop"
+        ]
       }
     }
   },
@@ -4904,7 +5802,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00",
+            "example": "2018-06-27T20:37:15+02:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -4958,7 +5856,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00"
+            "example": "2018-06-27T20:37:15+02:00"
           },
           "customerId": {
             "type": "integer",
@@ -4972,7 +5870,7 @@
           },
           "onOrderStatusChangeSendEmail": {
             "type": "boolean",
-            "description": "Set this to false to prevent sending email to customer on changes to statusId and new orders",
+            "description": "Set this to false to prevent sending email to customer on changes to statusId and new orders for a single call",
             "example": true,
             "writeOnly": true,
             "default": true
@@ -4981,6 +5879,12 @@
             "type": "boolean",
             "description": "Set this to false to prevent processing payment on changes to statusId. Only applies to payment methods that support processing payments. For example charging a reserved amount or cancel a created invoice",
             "writeOnly": true,
+            "example": true,
+            "default": true
+          },
+          "sendEmailsOnStatusChange": {
+            "type": "boolean",
+            "description": "Set this to false to prevent sending email to customer on changes to statusId and new orders for this and all future calls",
             "example": true,
             "default": true
           },
@@ -5084,7 +5988,6 @@
           "currencyCode": {
             "type": "string",
             "description": "The currency code of the currency that was used for this order. Has to be a valid ISO 4217 currency code",
-            "required": true,
             "minLength": 3,
             "maxLength": 3,
             "example": "SEK"
@@ -5144,7 +6047,6 @@
           "originalCustomerEmail": {
             "type": "string",
             "description": "The email address of the customer at the point of order creation",
-            "required": true,
             "example": "john.doe@example.net"
           },
           "originalCustomerNationalIdNo": {
@@ -5192,7 +6094,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00",
+            "example": "2018-06-27T20:37:15+02:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -5246,7 +6148,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00"
+            "example": "2018-06-27T20:37:15+02:00"
           },
           "customerId": {
             "type": "integer",
@@ -5372,7 +6274,6 @@
           "currencyCode": {
             "type": "string",
             "description": "The currency code of the currency that was used for this order. Has to be a valid ISO 4217 currency code",
-            "required": true,
             "minLength": 3,
             "maxLength": 3,
             "example": "SEK"
@@ -5432,7 +6333,6 @@
           "originalCustomerEmail": {
             "type": "string",
             "description": "The email address of the customer at the point of order creation",
-            "required": true,
             "example": "john.doe@example.net"
           },
           "originalCustomerNationalIdNo": {
@@ -5666,7 +6566,6 @@
         "properties": {
           "langCode": {
             "type": "string",
-            "required": true,
             "description": "Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop has setup. ",
             "minLength": 2,
             "maxLength": 2,
@@ -5715,15 +6614,14 @@
           },
           "description": {
             "type": "string",
-            "required": true,
             "maxLength": 255,
             "description": "The description of the order item",
             "example": "An item"
           },
           "quantity": {
             "type": "integer",
-            "min": 1,
-            "max": 1000000,
+            "minimum": 1,
+            "maximum": 1000000,
             "description": "The quantity of the order item",
             "example": 1
           },
@@ -5740,14 +6638,14 @@
           },
           "vatRate": {
             "type": "number",
-            "min": 0,
-            "max": 100,
+            "minimum": 0,
+            "maximum": 100,
             "description": "The items VAT rate in percent. 25.0 = 25% VAT",
             "example": 25
           },
           "discount": {
             "type": "number",
-            "min": 0,
+            "minimum": 0,
             "description": "The discount for the entire order row. Either as a percentage or an amount. If this is an amount and set to 20.0, the sum 20.0 will be subtracted from the order total no matter what the quantity is set to.",
             "example": 8
           },
@@ -5762,7 +6660,7 @@
           },
           "sortIndex": {
             "type": "integer",
-            "min": 0,
+            "minimum": 0,
             "description": "The sort order of the order items"
           }
         }
@@ -5877,11 +6775,10 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00"
+            "example": "2018-06-27T20:37:15+02:00"
           },
           "type": {
             "type": "string",
-            "required": true,
             "description": "The type of customer this is. Either: ”person” or ”company”",
             "example": "person"
           },
@@ -5889,7 +6786,6 @@
             "type": "string",
             "format": "email",
             "maxLength": 255,
-            "required": true,
             "description": "Email address of the customer"
           },
           "nationalIdNo": {
@@ -5937,11 +6833,10 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00"
+            "example": "2018-06-27T20:37:15+02:00"
           },
           "type": {
             "type": "string",
-            "required": true,
             "description": "The type of customer this is. Either: ”person” or ”company”",
             "example": "person"
           },
@@ -5949,7 +6844,6 @@
             "type": "string",
             "format": "email",
             "maxLength": 255,
-            "required": true,
             "description": "Email address of the customer"
           },
           "nationalIdNo": {
@@ -5975,7 +6869,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was modified. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00",
+            "example": "2018-06-27T20:37:15+02:00",
             "readOnly": true
           },
           "approved": {
@@ -5987,7 +6881,7 @@
           "approvedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was was approved/disapproved. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00",
+            "example": "2018-06-27T20:37:15+02:00",
             "readOnly": true
           },
           "pricelistId": {
@@ -6038,8 +6932,7 @@
         "properties": {
           "tagId": {
             "type": "integer",
-            "required": true,
-            "min": 1,
+            "minimum": 1,
             "description": "The id of the tag",
             "example": 1
           },
@@ -6098,14 +6991,12 @@
             "type": "string",
             "description": "The service name of the external service",
             "example": "Fortnox",
-            "required": true,
             "maxLength": 20
           },
           "externalIdValue": {
             "type": "string",
             "description": "The external service ID",
             "example": "ABC123",
-            "required": true,
             "maxLength": 40
           }
         }
@@ -6265,7 +7156,7 @@
             "type": "number",
             "format": "float",
             "readOnly": true,
-            "min": 0,
+            "minimum": 0,
             "description": "Fee associated with this method"
           },
           "validForCountries": {
@@ -6298,7 +7189,7 @@
             "type": "number",
             "format": "float",
             "readOnly": true,
-            "min": 0,
+            "minimum": 0,
             "nullable": true,
             "example": null,
             "description": "The min order sub total that this method is valid for"
@@ -6307,7 +7198,7 @@
             "type": "number",
             "format": "float",
             "readOnly": true,
-            "min": 0,
+            "minimum": 0,
             "nullable": true,
             "example": null,
             "description": "The max order sub total that this method is valid for"
@@ -6316,7 +7207,7 @@
             "type": "number",
             "format": "float",
             "readOnly": true,
-            "min": 0,
+            "minimum": 0,
             "nullable": true,
             "example": null,
             "description": "The min order weight that this method is valid for"
@@ -6325,7 +7216,7 @@
             "type": "number",
             "format": "float",
             "readOnly": true,
-            "min": 0,
+            "minimum": 0,
             "nullable": true,
             "example": null,
             "description": "The max order weight that this method is valid for."
@@ -6450,7 +7341,7 @@
             "type": "number",
             "format": "float",
             "readOnly": true,
-            "min": 0,
+            "minimum": 0,
             "nullable": true,
             "example": null,
             "description": "The min order sub total that this method is valid for"
@@ -6459,7 +7350,7 @@
             "type": "number",
             "format": "float",
             "readOnly": true,
-            "min": 0,
+            "minimum": 0,
             "nullable": true,
             "example": null,
             "description": "The max order sub total that this method is valid for"
@@ -6468,7 +7359,7 @@
             "type": "number",
             "format": "float",
             "readOnly": true,
-            "min": 0,
+            "minimum": 0,
             "nullable": true,
             "example": null,
             "description": "The min order weight that this method is valid for"
@@ -6477,7 +7368,7 @@
             "type": "number",
             "format": "float",
             "readOnly": true,
-            "min": 0,
+            "minimum": 0,
             "nullable": true,
             "example": null,
             "description": "The max order weight that this method is valid for."
@@ -6493,7 +7384,7 @@
             "type": "number",
             "format": "float",
             "readOnly": true,
-            "min": 0,
+            "minimum": 0,
             "nullable": true,
             "example": null,
             "description": "Offer free shipping with this method if the minimum order sub total amount is at least this value"
@@ -6502,7 +7393,7 @@
             "type": "number",
             "format": "float",
             "readOnly": true,
-            "min": 0,
+            "minimum": 0,
             "nullable": true,
             "example": null,
             "description": "Offer free shipping with this method if the minimum order total weight is at least this value"
@@ -6567,14 +7458,14 @@
           },
           "currencyCode": {
             "type": "string",
-            "length": 3,
+            "minLength": 3,
+            "maxLength": 3,
             "readOnly": true,
             "example": "SEK",
             "description": "The currencyCode this pricelist is valid for"
           },
           "parentPricelistId": {
             "type": "integer",
-            "default": null,
             "example": null,
             "description": "Does this pricelist has a parent price list. "
           },
@@ -6618,7 +7509,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the comment was created. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00",
+            "example": "2018-06-27T20:37:15+02:00",
             "readOnly": true
           },
           "text": {
@@ -6681,13 +7572,13 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the media file was created. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00",
+            "example": "2018-06-27T20:37:15+02:00",
             "readOnly": true
           },
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the media file was modifies. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00",
+            "example": "2018-06-27T20:37:15+02:00",
             "readOnly": true
           },
           "size": {
@@ -6813,7 +7704,6 @@
         "properties": {
           "langCode": {
             "type": "string",
-            "required": true,
             "description": "Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. ",
             "minLength": 2,
             "maxLength": 2,
@@ -6894,11 +7784,10 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00"
+            "example": "2018-06-27T20:37:15+02:00"
           },
           "defaultVatRate": {
             "type": "string",
-            "default": null,
             "nullable": true,
             "description": "The default vat rate for this product. Will fall back to shop default if null. To fetch country specific vat rates, please use include=vatRates or use the /products/x/vat-rates endpoint."
           },
@@ -6914,19 +7803,19 @@
           },
           "manufacturerId": {
             "type": "integer",
-            "default": null,
+            "nullable": true,
             "description": "The id of the manufacturer to use for this product. Fetch and handle available manufacturers using the /product-manufacturers endpoint"
           },
           "unitId": {
             "type": "integer",
-            "default": null,
+            "nullable": true,
             "description": "The id of the unit to use for this product if not standard. Fetch and handle available units using the /product-units endpoint"
           },
           "sortIndex": {
             "type": "integer",
-            "default": null,
-            "min": 1,
-            "max": 10000,
+            "nullable": true,
+            "minimum": 1,
+            "maximum": 10000,
             "description": "Sort index for this product in a list"
           },
           "isBackInStockWatchable": {
@@ -6943,7 +7832,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00",
+            "example": "2018-06-27T20:37:15+02:00",
             "readOnly": true
           },
           "variants": {
@@ -6980,11 +7869,10 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00"
+            "example": "2018-06-27T20:37:15+02:00"
           },
           "defaultVatRate": {
             "type": "string",
-            "default": null,
             "nullable": true,
             "description": "The default vat rate for this product. Will fall back to shop default if null. To fetch country specific vat rates, please use include=vatRates or use the /products/x/vat-rates endpoint."
           },
@@ -7000,19 +7888,19 @@
           },
           "manufacturerId": {
             "type": "integer",
-            "default": null,
+            "nullable": true,
             "description": "The id of the manufacturer to use for this product. Fetch and handle available manufacturers using the /product-manufacturers endpoint"
           },
           "unitId": {
             "type": "integer",
-            "default": null,
+            "nullable": true,
             "description": "The id of the unit to use for this product if not standard. Fetch and handle available units using the /product-units endpoint"
           },
           "sortIndex": {
             "type": "integer",
-            "default": null,
-            "min": 1,
-            "max": 10000,
+            "nullable": true,
+            "minimum": 1,
+            "maximum": 10000,
             "description": "Sort index for this product in a list"
           },
           "isBackInStockWatchable": {
@@ -7029,7 +7917,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2018-06-17T13:46:55+02:00",
+            "example": "2018-06-27T20:37:15+02:00",
             "readOnly": true
           },
           "variants": {
@@ -7126,7 +8014,6 @@
           "sku": {
             "type": "string",
             "maxLength": 40,
-            "required": true,
             "description": "The product variants SKU (stock keeping unit)"
           },
           "isActive": {
@@ -7136,28 +8023,28 @@
           },
           "stockStatusId": {
             "type": "integer",
-            "default": null,
+            "nullable": true,
             "description": "The ID of the variants stock status. Available stock statuses can be fetched using the /product-stock-statuses endpoint"
           },
           "stockQuantity": {
             "type": "integer",
-            "default": null,
-            "max": 100000000,
-            "min": -100000000,
+            "nullable": true,
+            "maximum": 100000000,
+            "minimum": -100000000,
             "description": "The current stock quantity for this variant"
           },
           "weightInKg": {
             "type": "number",
             "format": "float",
-            "default": null,
-            "min": 0,
+            "nullable": true,
+            "minimum": 0,
             "description": "The variants weight in KG",
             "example": 0.15
           },
           "costPrice": {
             "type": "string",
-            "min": 0,
-            "default": null,
+            "minimum": 0,
+            "nullable": true,
             "description": "The cost for this variant. Used for statistic and never displayed to customers"
           },
           "ean": {
@@ -7172,14 +8059,15 @@
           },
           "imageFileId": {
             "type": "integer",
-            "default": null
+            "nullable": true,
+            "description": "The ID of this variant main image. Available media files can be fetched using the /media-files endpoint"
           },
           "attributeValueLinks": {
             "type": "array",
             "description": "An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true",
             "items": {
               "type": "integer",
-              "min": 1,
+              "minimum": 1,
               "description": "The ID of the attribute value"
             }
           },
@@ -7227,7 +8115,7 @@
           },
           "mediaFileId": {
             "type": "integer",
-            "nonEmpty": true,
+            "nullable": false,
             "description": "The media file this link points to. You can fetch available media files from the /media-files endpoint"
           },
           "sortIndex": {
@@ -7265,13 +8153,11 @@
         "properties": {
           "langCode": {
             "type": "string",
-            "required": true,
             "description": "The langCode for this language. Supported language codes are: sv, en, no, da, fi, de, fr, es"
           },
           "name": {
             "type": "string",
             "maxLength": 150,
-            "required": true,
             "description": "The products name"
           },
           "shortDescription": {
@@ -7324,16 +8210,16 @@
         "properties": {
           "countryCode": {
             "type": "string",
-            "required": true,
-            "length": 2,
+            "minLength": 2,
+            "maxLength": 2,
             "description": "The country code this vat rate should be valid for. The country code should be set using ISO 3166-1 alpha-2"
           },
           "vatRate": {
             "type": "number",
             "format": "float",
-            "default": "0",
-            "min": 0,
-            "max": 100,
+            "default": 0,
+            "minimum": 0,
+            "maximum": 100,
             "example": 25,
             "description": "The vat rate to use for this country and product"
           }
@@ -7362,7 +8248,7 @@
         "properties": {
           "categoryId": {
             "type": "integer",
-            "nonEmpty": true,
+            "nullable": false,
             "description": "The category id this product should be listed in"
           },
           "sortIndex": {
@@ -7394,7 +8280,6 @@
         "properties": {
           "metaDataTypeId": {
             "type": "integer",
-            "required": true,
             "description": "The ID of the meta data type. Available meta data types can be fetched using the /product-meta-data-types endpoint"
           },
           "sortIndex": {
@@ -7415,7 +8300,6 @@
         "properties": {
           "metaDataTypeId": {
             "type": "integer",
-            "required": true,
             "description": "The ID of the meta data type. Available meta data types can be fetched using the /product-meta-data-types endpoint"
           },
           "sortIndex": {
@@ -7450,12 +8334,10 @@
         "properties": {
           "langCode": {
             "type": "string",
-            "required": true,
             "description": "The langCode for this language"
           },
           "value": {
             "type": "string",
-            "required": true,
             "maxLength": 255,
             "description": "The value for this meta data"
           }
@@ -7511,22 +8393,19 @@
         "properties": {
           "langCode": {
             "type": "string",
-            "required": true,
             "description": "The language code for this language",
             "example": "sv"
           },
           "name": {
             "type": "string",
-            "required": true,
             "maxLength": 30,
-            "langCode": "The name of this unit type",
+            "description": "The name of this unit type",
             "example": "Pieces"
           },
           "symbol": {
             "type": "string",
-            "required": true,
             "maxLength": 5,
-            "langCode": "The symbol to use when counting this unit. For example ”pcs.”",
+            "description": "The symbol to use when counting this unit. For example ”pcs.”",
             "example": "pcs."
           }
         }
@@ -7554,22 +8433,21 @@
         "properties": {
           "pricelistId": {
             "type": "integer",
-            "required": true,
             "description": "The pricelist this price is for"
           },
           "priceExVat": {
             "type": "number",
             "format": "float",
-            "min": 0,
-            "default": "0",
+            "minimum": 0,
+            "default": 0,
             "description": "The price excluding vat",
             "example": 15.2
           },
           "specialPriceExVat": {
             "type": "number",
             "format": "float",
-            "min": 0,
-            "default": null,
+            "minimum": 0,
+            "nullable": true,
             "example": 13.6,
             "description": "The special price excluding vat (a discounted price)"
           }
@@ -7605,7 +8483,6 @@
           "name": {
             "type": "string",
             "maxLength": 30,
-            "required": true,
             "description": "The name of this manufacturer",
             "example": "Example Ltd."
           },
@@ -7667,15 +8544,13 @@
         "properties": {
           "langCode": {
             "type": "string",
-            "required": true,
             "description": "The language code for this language",
             "example": "sv"
           },
           "name": {
             "type": "string",
-            "required": true,
             "maxLength": 40,
-            "langCode": "The name of this meta data type",
+            "description": "The name of this meta data type",
             "example": "ISBN"
           }
         }
@@ -7702,7 +8577,7 @@
           },
           "stockoutNewStatusId": {
             "type": "integer",
-            "default": null,
+            "nullable": true,
             "example": null,
             "description": "This has to be set to another, existing stock status id, or null. If a product has its quantity changed to negative, the product will then change stock status to the one with this id"
           },
@@ -7731,7 +8606,6 @@
         "properties": {
           "langCode": {
             "type": "string",
-            "required": true,
             "description": "Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. ",
             "minLength": 2,
             "maxLength": 2,
@@ -7819,7 +8693,7 @@
             "type": "number",
             "format": "float",
             "readOnly": true,
-            "min": 0,
+            "minimum": 0,
             "example": 25,
             "description": "The default vat rate for new products"
           },
@@ -7915,13 +8789,11 @@
         "properties": {
           "langCode": {
             "type": "string",
-            "required": true,
             "description": "The langCode for this language. Supported language codes are: sv, en, no, da, fi, de, fr, es"
           },
           "name": {
             "type": "string",
             "maxLength": 50,
-            "required": true,
             "description": "The name of this attribute value"
           }
         }
@@ -7940,7 +8812,7 @@
           },
           "sortIndex": {
             "type": "integer",
-            "min": 0,
+            "minimum": 0,
             "default": 0,
             "example": 9,
             "description": "The sort order for this attribute value"
@@ -7997,13 +8869,11 @@
         "properties": {
           "langCode": {
             "type": "string",
-            "required": true,
             "description": "The langCode for this language. Supported language codes are: sv, en, no, da, fi, de, fr, es"
           },
           "name": {
             "type": "string",
             "maxLength": 50,
-            "required": true,
             "description": "The name of this attribute"
           }
         }
@@ -8028,6 +8898,15 @@
             }
           }
         }
+      },
+      "ProductsAttributesModelItem": {
+        "type": "object",
+        "properties": {
+          "attributeId": {
+            "type": "integer",
+            "description": "The id for this attribute"
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -8036,7 +8915,7 @@
         "description": "OAuth 2.0 using Client Credentials",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": "https://leksaker.starweb.se/api/v2/token",
+            "tokenUrl": "http://dev-shop.sws.local/api/v2/token",
             "scopes": {}
           }
         }
