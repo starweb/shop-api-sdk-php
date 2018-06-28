@@ -33,5 +33,8 @@
     },
     "autoload": {
         "psr-4": {"Starweb\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": {"Starweb\\Tests\\": "tests/unit"}
     }
 }
