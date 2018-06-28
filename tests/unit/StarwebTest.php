@@ -58,31 +58,10 @@ class StarwebTest extends TestCase
         );
     }
 
-    public function testShopResource()
+    public function testHandleRequest()
     {
         $starweb = $this->getStarweb();
         $shopResource = $starweb->resource('Shop');
-
-        $this->assertInstanceOf(ResourceInterface::class, $shopResource);
-        $this->assertInstanceOf(Resource::class, $shopResource);
-    }
-
-    public function testProductCategoryResource()
-    {
-        $starweb = $this->getStarweb();
-        $shopResource = $starweb->resource('ProductCategory');
-
-        $this->assertInstanceOf(ResourceInterface::class, $shopResource);
-        $this->assertInstanceOf(Resource::class, $shopResource);
-    }
-
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testInvalidResource()
-    {
-        $starweb = $this->getStarweb();
-        $shopResource = $starweb->resource('InvalidResource');
 
         $this->assertInstanceOf(ResourceInterface::class, $shopResource);
         $this->assertInstanceOf(Resource::class, $shopResource);

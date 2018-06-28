@@ -22,17 +22,17 @@ class History implements Journal
     /**
      * @return ResponseInterface|null
      */
-    public function getLastResponse()
+    public function getLastResponse(): ?ResponseInterface
     {
         return $this->lastResponse;
     }
 
-    public function addSuccess(RequestInterface $request, ResponseInterface $response)
+    public function addSuccess(RequestInterface $request, ResponseInterface $response): void
     {
         $this->lastResponse = $response;
     }
 
-    public function addFailure(RequestInterface $request, Exception $exception)
+    public function addFailure(RequestInterface $request, Exception $exception): void
     {
     }
 }
