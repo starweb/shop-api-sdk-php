@@ -13,8 +13,7 @@ class TokenFilesystemCache extends FilesystemCache implements TokenCacheInterfac
      */
     public function getToken(): ?TokenInterface
     {
-        $token = $this->get(self::TOKEN_CACHE_KEY);
-        return $token ? new AccessToken($token) : null;
+        return $this->has(self::TOKEN_CACHE_KEY) ? unserialize($this->get(self::TOKEN_CACHE_KEY)) : null;
     }
 
     /**
@@ -24,7 +23,7 @@ class TokenFilesystemCache extends FilesystemCache implements TokenCacheInterfac
      */
     public function hasToken(): bool
     {
-        return $this->get(self::TOKEN_CACHE_KEY) ? true : false;
+        return $this->has(self::TOKEN_CACHE_KEY);
     }
 
     /**
@@ -34,13 +33,13 @@ class TokenFilesystemCache extends FilesystemCache implements TokenCacheInterfac
      */
     public function setToken(TokenInterface $token): void
     {
-        $this->set(self::TOKEN_CACHE_KEY, $token->__toString(), $token->getTtl());
+        $this->set(self::TOKEN_CACHE_KEY, serialize($token), $token->getTtl());
     }
 
     /**
      * clear the token
      */
-    public function clear(): void
+    public function clearToken(): void
     {
         $this->delete(self::TOKEN_CACHE_KEY);
     }
@@ -52,7 +51,6 @@ class TokenFilesystemCache extends FilesystemCache implements TokenCacheInterfac
      */
     public function isExpired(): bool
     {
-        $token = $this->getToken();
-        return $token && ($token->getExpiresIn() > new \DateTime());
+        return !$this->hasToken() || ($this->getToken()->getExpiresIn() < new \DateTime());
     }
 }
