@@ -23,6 +23,18 @@ class Starweb
      */
     private $client;
 
+    /**
+     * Starweb constructor.
+     *
+     * @param ClientCredentials $credentials
+     * @param string $baseUri
+     * @param array $plugins
+     * @param HttpClient|null $client
+     * @param TokenCacheInterface|null $tokenCache
+     *
+     * @throws Exception\InvalidCredentialsException
+     * @throws \Http\Client\Exception
+     */
     public function __construct(
         ClientCredentials $credentials,
         string $baseUri,
