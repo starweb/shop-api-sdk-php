@@ -14,8 +14,8 @@ class ShopResource extends Resource
         ];
     }
 
-    public function show(): Shop
+    public function retrieve(): Shop
     {
-        return $this->get('/shop', [], [], Shop::class);
+        return $this->getClient()->get('/shop');
     }
 }

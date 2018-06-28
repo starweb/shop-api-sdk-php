@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Model;
 
-class Shop implements ModelInterface
+class Shop extends Model
 {
     
     private $name;
@@ -23,6 +23,11 @@ class Shop implements ModelInterface
     private $shopPhoneNo;
     private $shopVatNo;
     private $shopCountryCode;
+
+    public function getId(): int
+    {
+        return 0;
+    }
 
     /**
      * @return mixed

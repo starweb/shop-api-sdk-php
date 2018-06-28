@@ -11,5 +11,6 @@ interface TokenCacheInterface extends CacheInterface
     public function hasToken(): bool;
     public function getToken(): ?TokenInterface;
     public function setToken(TokenInterface $token): void;
+    public function clear(): void;
     public function isExpired(): bool;
 }
