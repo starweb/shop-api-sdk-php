@@ -282,30 +282,6 @@ class Client
     }
 
     /**
-     * @param ResponseInterface $response
-     *
-     * @return array|null
-     */
-    protected function getPagination(ResponseInterface $response)
-    {
-        if (!$response->hasHeader('Link')) {
-            return;
-        }
-
-        $header = self::getHeader($response, 'Link');
-        $pagination = [];
-        foreach (explode(',', $header) as $link) {
-            preg_match('/<(.*)>; rel="(.*)"/i', trim($link, ','), $match);
-
-            if (3 === count($match)) {
-                $pagination[$match[2]] = $match[1];
-            }
-        }
-
-        return $pagination;
-    }
-
-    /**
      * Get the value for a single header.
      *
      * @param ResponseInterface $response
