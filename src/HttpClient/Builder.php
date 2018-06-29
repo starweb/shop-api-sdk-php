@@ -15,12 +15,6 @@ use Http\Message\RequestFactory;
 use Http\Message\StreamFactory;
 use Psr\Cache\CacheItemPoolInterface;
 
-/**
- * A builder that builds the API client.
- * This will allow you to fluently add and remove plugins.
- *
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
- */
 class Builder
 {
     /**
@@ -60,13 +54,6 @@ class Builder
     private $plugins = [];
 
     /**
-     * This plugin is special treated because it has to be the very last plugin.
-     *
-     * @var Plugin\CachePlugin
-     */
-    private $cachePlugin;
-
-    /**
      * Http headers.
      *
      * @var array
@@ -97,9 +84,6 @@ class Builder
             $this->httpClientModified = false;
 
             $plugins = $this->plugins;
-            if ($this->cachePlugin) {
-                $plugins[] = $this->cachePlugin;
-            }
 
             $this->pluginClient = new HttpMethodsClient(
                 (new PluginClientFactory())->createClient($this->httpClient, $plugins),
@@ -172,29 +156,5 @@ class Builder
 
         $this->removePlugin(Plugin\HeaderAppendPlugin::class);
         $this->addPlugin(new Plugin\HeaderAppendPlugin($this->headers));
-    }
-
-    /**
-     * Add a cache plugin to cache responses locally.
-     *
-     * @param CacheItemPoolInterface $cachePool
-     * @param array                  $config
-     */
-    public function addCache(CacheItemPoolInterface $cachePool, array $config = [])
-    {
-        if (!isset($config['cache_key_generator'])) {
-            $config['cache_key_generator'] = new HeaderCacheKeyGenerator(['Authorization', 'Cookie', 'Accept', 'Content-type']);
-        }
-        $this->cachePlugin = Plugin\CachePlugin::clientCache($cachePool, $this->streamFactory, $config);
-        $this->httpClientModified = true;
-    }
-
-    /**
-     * Remove the cache plugin.
-     */
-    public function removeCache()
-    {
-        $this->cachePlugin = null;
-        $this->httpClientModified = true;
     }
 }
