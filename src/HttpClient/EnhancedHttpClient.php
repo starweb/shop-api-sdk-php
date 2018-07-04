@@ -120,7 +120,7 @@ class  EnhancedHttpClient implements HttpClient
         return $this->postRaw($path, http_build_query($parameters), $requestHeaders);
     }
 
-    public function postUploadFile($path, MediaFileUpload $file): EnhancedResponse
+    public function uploadFile(string $method, string $path, MediaFileUpload $file): EnhancedResponse
     {
         $boundary = '----boundary';
         $builder = $this->getMultipartStreamBuilderForFile($file, $boundary);
@@ -128,7 +128,9 @@ class  EnhancedHttpClient implements HttpClient
 
         $body = $builder->build()->__toString();
 
-        return $this->postRaw($path, $body, $requestHeaders);
+        $response = $this->send($method, $path, $requestHeaders, $body);
+
+        return new EnhancedResponse($response);
     }
 
     private function getMultipartStreamBuilderForFile(UploadFileInterface $file, string $boundary)
@@ -252,7 +254,7 @@ class  EnhancedHttpClient implements HttpClient
      *
      * @return null|string
      */
-    protected function createJsonBody(array $parameters): string
+    protected function createJsonBody(array $parameters): ?string
     {
         return (count($parameters) === 0) ? null : json_encode($parameters, empty($parameters) ? JSON_FORCE_OBJECT : 0);
     }

@@ -42,3 +42,10 @@ try {
 } catch (\Http\Client\Common\Exception\ClientErrorException $exception) {
     var_dump($exception);
 }
+
+// delete the media file
+$deleted = $mediaFileResource->delete($mediaFile->getId());
+
+// update a media file
+$updateUploadFile = new MediaFileUpload(__DIR__ . '/test.jpg');
+$updatedMediaFile = $mediaFileResource->update(current($files)->getId(), $updateUploadFile);
