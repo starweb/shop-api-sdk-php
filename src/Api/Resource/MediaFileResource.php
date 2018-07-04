@@ -4,7 +4,8 @@ namespace Starweb\Api\Resource;
 
 use Starweb\Api\Model\MediaFile\MediaFile;
 use Starweb\Api\Model\MediaFile\MediaFileCollection;
-use Starweb\Api\Model\MediaFile\MediaFileUploadInterface;
+use Starweb\Api\Model\MediaFile\MediaFileItem;
+use Starweb\Api\Model\MediaFile\MediaFileUpload;
 
 class MediaFileResource extends Resource
 {
@@ -17,23 +18,19 @@ class MediaFileResource extends Resource
         return $response->getContentAsModel(MediaFileCollection::class);
     }
 
-    public function create(MediaFileUploadInterface $file): MediaFile
+    public function create(MediaFileUpload $file): MediaFile
     {
         $response = $this->getClient()->postUploadFile(self::ENDPOINT, $file);
+        $item = $response->getContentAsModel(MediaFileItem::class);
 
-        return $response->getContentAsModel(MediaFile::class);
+        return $item->getData();
     }
 
     public function retrieve(int $id): MediaFile
     {
         $response = $this->getClient()->get(sprintf(self::ENDPOINT . '/%s', $id));
+        $item = $response->getContentAsModel(MediaFileItem::class);
 
-        return $response->getContentAsModel(MediaFile::class);
-    }
-
-
-    public function update(MediaFile $mediaFile): MediaFile
-    {
-        return $this->updateResource(sprintf('/product-categories/%s', $category->getId()), $category);
+        return $item->getData();
     }
 }

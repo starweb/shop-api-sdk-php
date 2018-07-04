@@ -6,17 +6,16 @@ require_once __DIR__.'/../../../vendor/autoload.php';
 use Starweb\Starweb;
 use Starweb\Api\Authentication\ClientCredentials;
 use Starweb\Api\Resource\MediaFileResource;
-use Starweb\Api\Model\MediaFile\MediaFileUploadInterface;
+use Starweb\Api\Model\MediaFile\MediaFileUpload;
 use Starweb\Api\Model\MediaFile\MediaFile;
 
 // create the credentials object
-//$credentials = new ClientCredentials(CLIENT_ID, CLIENT_SECRET);
-$credentials = new ClientCredentials('default.test', 'lq3oy9qnd3rv25b53nkj6ibmf69j0zbo7efctqj5gvfhpue4');
+$credentials = new ClientCredentials('CLIENT_ID', 'CLIENT_SECRET');
 
 // create the sdk object
 $starweb = new Starweb($credentials, 'http://dev-shop.sws.local/api/v2');
 
-// get a resource by its name in this case
+// get a resource by its name in this case "MediaFile"
 /** @var MediaFileResource $mediaFileResource */
 $mediaFileResource = $starweb->resource('MediaFile');
 
@@ -34,18 +33,12 @@ $currentPage = $mediaFileCollection->getMeta()->getPagination()->getCurrentPage(
 $firstFile = $mediaFileResource->retrieve(current($files)->getId());
 
 
-$uploadFile = new MediaFileUploadInterface(file_get_contents('http://lorempixel.com/400/200/cats'));
-$mediFile = $mediaFileResource->create($uploadFile);
+// uploading a file
+$uploadFile = new MediaFileUpload(__DIR__ . '/test.jpg');
 
-/** @var \Starweb\Api\Model\ProductCategory $productCategory */
-$productCategory = $productCategoryResource->retrieve(first($categories)->getId());
-
-/** @var \Starweb\Api\Model\ProductCategory $newProductCategory */
-$newCategory = new \Starweb\Api\Model\ProductCategory();
-$newCategory->setVisibility(true);
-$newCategory->
-$newProductCategory = $productCategoryResource->create();
-
-
-
-echo $shop->getName();
+try {
+    $mediaFile = $mediaFileResource->create($uploadFile);
+    var_dump($mediaFile);
+} catch (\Http\Client\Common\Exception\ClientErrorException $exception) {
+    var_dump($exception);
+}

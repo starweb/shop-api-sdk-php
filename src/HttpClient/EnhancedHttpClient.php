@@ -10,7 +10,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
-use Starweb\Api\Model\MediaFile\MediaFileUploadInterface;
+use Starweb\Api\Model\MediaFile\MediaFileUpload;
 use Starweb\Api\Model\ModelInterface;
 use Starweb\Api\Model\UploadFileInterface;
 use Starweb\HttpClient\Message\EnhancedResponse;
@@ -120,19 +120,29 @@ class  EnhancedHttpClient implements HttpClient
         return $this->postRaw($path, http_build_query($parameters), $requestHeaders);
     }
 
-    public function postUploadFile($path, MediaFileUploadInterface $file): EnhancedResponse
+    public function postUploadFile($path, MediaFileUpload $file): EnhancedResponse
     {
-        $builder = $this->getMultipartStreamBuilderForFile($file);
-        $requestHeaders['Content-Type'] = 'multipart/form-data; boundary="' . $builder->getBoundary() . '"';
+        $boundary = '----boundary';
+        $builder = $this->getMultipartStreamBuilderForFile($file, $boundary);
+        $requestHeaders = ['Content-Type' => 'multipart/form-data; boundary="' . $boundary . '"'];
 
-        return $this->postRaw($path, $builder->build(), $requestHeaders);
+        $body = $builder->build()->__toString();
+
+        return $this->postRaw($path, $body, $requestHeaders);
     }
 
-    private function getMultipartStreamBuilderForFile(UploadFileInterface $file)
+    private function getMultipartStreamBuilderForFile(UploadFileInterface $file, string $boundary)
     {
         $streamFactory = StreamFactoryDiscovery::find();
         $builder = new MultipartStreamBuilder($streamFactory);
-        $builder->addResource('file', $file->getContent());
+        $builder->setBoundary($boundary);
+        $builder->addResource(
+            'file',
+            $file->getContent(),
+            [
+                'headers' => ['Content-Type' => $file->getMimeType()],
+                'filename' => $file->getFilename()
+            ]);
 
         return $builder;
     }

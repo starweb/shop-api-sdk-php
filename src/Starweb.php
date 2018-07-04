@@ -3,7 +3,6 @@
 namespace Starweb;
 
 use Http\Client\Common\Plugin\BaseUriPlugin;
-use Http\Client\Common\Plugin\ErrorPlugin;
 use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;
@@ -21,6 +20,7 @@ use Starweb\Api\Resource\ProductCategoryResource;
 use Starweb\Api\Resource\ResourceInterface;
 use Starweb\Api\Resource\ShopResource;
 use Starweb\HttpClient\EnhancedHttpClient;
+use Starweb\HttpClient\Plugin\ErrorPlugin;
 use Starweb\HttpClient\Plugin\RetryAuthenticationPlugin;
 
 class Starweb

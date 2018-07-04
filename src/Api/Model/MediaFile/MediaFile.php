@@ -12,10 +12,11 @@ class MediaFile implements ModelInterface
      * @var string
      */
     protected $createdAt;
+
     /**
      * The media files height in pixels
      *
-     * @var int
+     * @var int|null
      */
     protected $height;
 
@@ -25,42 +26,49 @@ class MediaFile implements ModelInterface
      * @var int
      */
     protected $mediaFileId;
+
     /**
      * The media files mime type
      *
      * @var string
      */
     protected $mime;
+
     /**
      * A timestamp of when the media file was modifies. The time should be formatted using ISO-8601
      *
      * @var string
      */
     protected $modifiedAt;
+
     /**
      * The name of the media file
      *
      * @var string
      */
     protected $name;
+
     /**
      * The media files size in bytes
      *
      * @var int
      */
     protected $size;
+
     /**
      * The media files URL
      *
      * @var string
      */
     protected $url;
+
     /**
      * The media files width in pixels
      *
-     * @var int
+     * @var int|null
      */
     protected $width;
+
     /**
      * A timestamp of when the media file was created. The time should be formatted using ISO-8601
      *

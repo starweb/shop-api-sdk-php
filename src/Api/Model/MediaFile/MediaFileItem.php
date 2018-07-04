@@ -5,7 +5,7 @@ namespace Starweb\Api\Model\MediaFile;
 use Starweb\Api\Model\ItemInterface;
 use Starweb\Api\Model\ModelInterface;
 
-class MediaFileItemInterface implements ItemInterface
+class MediaFileItem implements ItemInterface
 {
     /**
      * @var MediaFile

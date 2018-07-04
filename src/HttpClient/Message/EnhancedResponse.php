@@ -7,6 +7,7 @@ use Psr\Http\Message\StreamInterface;
 use Starweb\Api\Model\CollectionInterface;
 use Starweb\Api\Model\ItemInterface;
 use Starweb\Exception\InvalidResponseContentException;
+use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
@@ -160,7 +161,7 @@ class EnhancedResponse implements ResponseInterface
         if (!$this->serializer) {
             $this->serializer = new Serializer(
                 [
-                    new ObjectNormalizer(null, null, null, new ReflectionExtractor()),
+                    new ObjectNormalizer(null, null, null, new PhpDocExtractor()),
                     new ArrayDenormalizer()
                 ],
                 [new JsonEncoder()]);
