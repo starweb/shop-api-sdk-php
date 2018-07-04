@@ -4,16 +4,13 @@ namespace Starweb\HttpClient;
 
 use Http\Client\Common\HttpMethodsClient;
 use Http\Client\Common\Plugin;
-use Http\Client\Common\Plugin\Cache\Generator\HeaderCacheKeyGenerator;
+use Http\Client\Common\Plugin\AuthenticationPlugin;
+use Http\Client\Common\Plugin\HeaderAppendPlugin;
 use Http\Client\Common\PluginClientFactory;
 use Http\Client\HttpClient;
-use Http\Discovery\HttpClientDiscovery;
-use Http\Discovery\MessageFactoryDiscovery;
-use Http\Discovery\StreamFactoryDiscovery;
+use Http\Message\Authentication\Bearer;
 use Http\Message\MessageFactory;
-use Http\Message\RequestFactory;
-use Http\Message\StreamFactory;
-use Psr\Cache\CacheItemPoolInterface;
+use Starweb\Api\Authentication\TokenInterface;
 
 class Builder
 {
@@ -25,28 +22,9 @@ class Builder
     private $httpClient;
 
     /**
-     * A HTTP client with all our plugins.
-     *
-     * @var HttpMethodsClient
-     */
-    private $pluginClient;
-
-    /**
      * @var MessageFactory
      */
-    private $requestFactory;
-
-    /**
-     * @var StreamFactory
-     */
-    private $streamFactory;
-
-    /**
-     * True if we should create a new Plugin client at next request.
-     *
-     * @var bool
-     */
-    private $httpClientModified = true;
+    private $messageFactory;
 
     /**
      * @var Plugin[]
@@ -61,56 +39,105 @@ class Builder
     private $headers = [];
 
     /**
-     * @param HttpClient     $httpClient
-     * @param RequestFactory $requestFactory
-     * @param StreamFactory  $streamFactory
+     * @var bool
      */
-    public function __construct(
-        HttpClient $httpClient = null,
-        RequestFactory $requestFactory = null,
-        StreamFactory $streamFactory = null
-    ) {
-        $this->httpClient = $httpClient ?: HttpClientDiscovery::find();
-        $this->requestFactory = $requestFactory ?: MessageFactoryDiscovery::find();
-        $this->streamFactory = $streamFactory ?: StreamFactoryDiscovery::find();
+    private $useEnhancedHttpClient = false;
+
+    /**
+     * @param HttpClient $httpClient
+     *
+     * @return Builder
+     */
+    public function setHttpClient(HttpClient $httpClient): Builder
+    {
+        $this->httpClient = $httpClient;
+
+        return $this;
     }
 
     /**
-     * @return HttpMethodsClient
+     * @param HttpMethodsClient $pluginClient
+     *
+     * @return Builder
      */
-    public function getHttpClient()
+    public function setPluginClient(HttpMethodsClient $pluginClient): Builder
     {
-        if ($this->httpClientModified) {
-            $this->httpClientModified = false;
+        $this->pluginClient = $pluginClient;
 
-            $plugins = $this->plugins;
+        return $this;
+    }
 
-            $this->pluginClient = new HttpMethodsClient(
-                (new PluginClientFactory())->createClient($this->httpClient, $plugins),
-                $this->requestFactory
-            );
-        }
+    /**
+     * @param MessageFactory $messageFactory
+     *
+     * @return Builder
+     */
+    public function setMessageFactory(MessageFactory $messageFactory): Builder
+    {
+        $this->messageFactory = $messageFactory;
 
-        return $this->pluginClient;
+        return $this;
+    }
+
+    /**
+     * @param Plugin[] $plugins
+     *
+     * @return Builder
+     */
+    public function setPlugins(array $plugins): Builder
+    {
+        $this->plugins = $plugins;
+
+        return $this;
+    }
+
+    /**
+     * @param bool $useEnhancedHttpClient
+     *
+     * @return Builder
+     */
+    public function useEnhancedHttpClient(): Builder
+    {
+        $this->useEnhancedHttpClient = true;
+
+        return $this;
+    }
+
+    /**
+     * @return EnhancedHttpClient
+     */
+    public function build(): EnhancedHttpClient
+    {
+        $factory = new PluginClientFactory();
+        $pluginClient = $factory->createClient($this->httpClient, $this->plugins);
+        $client = new EnhancedHttpClient($pluginClient, $this->messageFactory);
+
+        return $client;
     }
 
     /**
      * Add a new plugin to the end of the plugin chain.
      *
      * @param Plugin $plugin
+     *
+     * @return Builder
      */
-    public function addPlugin(Plugin $plugin)
+    public function addPlugin(Plugin $plugin): Builder
     {
         $this->plugins[] = $plugin;
         $this->httpClientModified = true;
+
+        return $this;
     }
 
     /**
      * Remove a plugin by its fully qualified class name (FQCN).
      *
      * @param string $fqcn
+     *
+     * @return Builder
      */
-    public function removePlugin($fqcn)
+    public function removePlugin($fqcn): Builder
     {
         foreach ($this->plugins as $idx => $plugin) {
             if ($plugin instanceof $fqcn) {
@@ -118,35 +145,47 @@ class Builder
                 $this->httpClientModified = true;
             }
         }
+
+        return $this;
     }
 
     /**
      * Clears used headers.
+     *
+     * @return Builder
      */
-    public function clearHeaders()
+    public function clearHeaders(): Builder
     {
         $this->headers = [];
 
-        $this->removePlugin(Plugin\HeaderAppendPlugin::class);
-        $this->addPlugin(new Plugin\HeaderAppendPlugin($this->headers));
+        $this->removePlugin(HeaderAppendPlugin::class);
+        $this->addPlugin(new HeaderAppendPlugin($this->headers));
+
+        return $this;
     }
 
     /**
      * @param array $headers
+     *
+     * @return Builder
      */
-    public function addHeaders(array $headers)
+    public function addHeaders(array $headers): Builder
     {
         $this->headers = array_merge($this->headers, $headers);
 
-        $this->removePlugin(Plugin\HeaderAppendPlugin::class);
-        $this->addPlugin(new Plugin\HeaderAppendPlugin($this->headers));
+        $this->removePlugin(HeaderAppendPlugin::class);
+        $this->addPlugin(new HeaderAppendPlugin($this->headers));
+
+        return $this;
     }
 
     /**
      * @param string $header
      * @param string $headerValue
+     *
+     * @return Builder
      */
-    public function addHeaderValue($header, $headerValue)
+    public function addHeaderValue($header, $headerValue): Builder
     {
         if (!isset($this->headers[$header])) {
             $this->headers[$header] = $headerValue;
@@ -154,7 +193,17 @@ class Builder
             $this->headers[$header] = array_merge((array) $this->headers[$header], [$headerValue]);
         }
 
-        $this->removePlugin(Plugin\HeaderAppendPlugin::class);
-        $this->addPlugin(new Plugin\HeaderAppendPlugin($this->headers));
+        $this->removePlugin(HeaderAppendPlugin::class);
+        $this->addPlugin(new HeaderAppendPlugin($this->headers));
+
+        return $this;
+    }
+
+    public function addAuthentication(TokenInterface $token): Builder
+    {
+        $authentication = new Bearer($token->__toString());
+        $this->addPlugin(new AuthenticationPlugin($authentication));
+
+        return $this;
     }
 }

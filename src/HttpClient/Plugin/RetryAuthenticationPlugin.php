@@ -4,6 +4,7 @@ namespace Starweb\HttpClient\Plugin;
 
 use Http\Client\Common\Plugin;
 use Http\Client\HttpClient;
+use Http\Promise\Promise;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Starweb\Api\Authentication\TokenManager;
@@ -22,11 +23,6 @@ class RetryAuthenticationPlugin implements Plugin
     private $retryCount = 0;
 
     /**
-     * @var HttpClient
-     */
-    private $client;
-
-    /**
      * @var TokenManager
      */
     private $tokenManager;
@@ -34,12 +30,10 @@ class RetryAuthenticationPlugin implements Plugin
     /**
      * RetryAuthenticationPlugin constructor.
      *
-     * @param HttpClient $client
      * @param TokenManager $tokenManager
      */
-    public function __construct(HttpClient $client, TokenManager $tokenManager)
+    public function __construct(TokenManager $tokenManager)
     {
-        $this->client = $client;
         $this->tokenManager = $tokenManager;
     }
 
@@ -48,9 +42,9 @@ class RetryAuthenticationPlugin implements Plugin
      * @param callable $next
      * @param callable $first
      *
-     * @return \Http\Promise\Promise
+     * @return Promise
      */
-    public function handleRequest(RequestInterface $request, callable $next, callable $first)
+    public function handleRequest(RequestInterface $request, callable $next, callable $first): Promise
     {
         $promise = $next($request);
 

@@ -31,9 +31,14 @@ class StarwebTest extends TestCase
      */
     public function testConstructorWithInvalidCredentials()
     {
+        $client = new Client();
+        $response = $this->createMock(Response::class);
+        $client->addResponse($response);
+
         $starweb = new Starweb(
             new ClientCredentials('id', 'secret'),
-            'https://demo.starweb.se/api/v2'
+            'https://demo.starweb.se/api/v2',
+            $client
         );
     }
 
@@ -42,7 +47,7 @@ class StarwebTest extends TestCase
         $client = new Client();
         $response = $this->createMock(Response::class);
         $client->addResponse($response);
-        $response->method('getBody')->willReturn('{"access_token": "my-token", "expires_in": 3600}');
+        $response->method('getContent')->willReturn(["access_token" => "my-token", "expires_in" => 3600]);
 
         $cache = $this->createMock(TokenFilesystemCache::class);
         $cache->method('hasToken')->willReturn(true);
@@ -52,7 +57,6 @@ class StarwebTest extends TestCase
         return new Starweb(
             new ClientCredentials('id', 'secret'),
             'https://demo.starweb.se/api/v2',
-            [new ErrorPlugin()],
             $client,
             $cache
         );

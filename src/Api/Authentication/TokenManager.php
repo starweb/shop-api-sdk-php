@@ -2,11 +2,10 @@
 
 namespace Starweb\Api\Authentication;
 
-use Http\Client\Common\Plugin\BaseUriPlugin;
 use Http\Client\HttpClient;
-use Http\Discovery\UriFactoryDiscovery;
+use Http\Message\MessageFactory;
+use Http\Message\RequestFactory;
 use Starweb\Exception\InvalidCredentialsException;
-use Starweb\HttpClient\Builder;
 
 class TokenManager
 {
@@ -14,6 +13,11 @@ class TokenManager
      * @var HttpClient
      */
     private $client;
+
+    /**
+     * @var MessageFactory
+     */
+    private $messageFactory;
 
     /**
      * @var ClientCredentials
@@ -32,23 +36,26 @@ class TokenManager
 
     /**
      * TokenManager constructor.
-     *
      * @param HttpClient $client
+     * @param MessageFactory $messageFactory
      * @param ClientCredentials $credentials
      * @param TokenCacheInterface $storage
      * @param string $baseUri
      */
     public function __construct(
         HttpClient $client,
+        RequestFactory $messageFactory,
         ClientCredentials $credentials,
         TokenCacheInterface $storage,
         string $baseUri
     ) {
         $this->client = $client;
+        $this->messageFactory = $messageFactory;
         $this->credentials = $credentials;
         $this->storage = $storage;
         $this->baseUri = $baseUri;
     }
+
 
     /**
      * @param HttpClient $client
@@ -60,20 +67,20 @@ class TokenManager
      */
     public function requestToken(): TokenInterface
     {
-        // we use a separate client created form the builder to fetch the token
-        $builder = new Builder($this->client);
-        $builder->addPlugin(new BaseUriPlugin(UriFactoryDiscovery::find()->createUri($this->baseUri)));
-        $client = $builder->getHttpClient();
-        $credentials = $this->credentials;
-
-        $requestData = [
-            'grant_type=client_credentials',
-            'client_id='.$credentials->getId(),
-            'client_secret='.$credentials->getSecret(),
+        $parameters = [
+            'grant_type' => 'client_credentials',
+            'client_id' => $this->credentials->getId(),
+            'client_secret' => $this->credentials->getSecret(),
         ];
-        $body = (implode('&', $requestData));
-        $response = $client->post('/token', ['Content-Type' => 'application/x-www-form-urlencoded'], $body);
-        $responseData = json_decode($response->getBody(), true);
+
+        $response = $this->client->sendRequest($this->messageFactory->createRequest(
+            'POST',
+            $this->baseUri.'/token',
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
+            http_build_query($parameters)
+        ));
+
+        $responseData = json_decode($response->getBody()->__toString(), true);
 
         if (400 === $response->getStatusCode() && 'invalid_client' === $responseData['error']) {
             throw new InvalidCredentialsException($responseData['error_description']);

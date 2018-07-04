@@ -1,8 +1,10 @@
 <?php
 
-namespace Starweb\Api\Model;
+namespace Starweb\Api\Model\Shop;
 
-class Shop extends Model
+use Starweb\Api\Model\ModelInterface;
+
+class Shop implements ModelInterface
 {
     
     private $name;

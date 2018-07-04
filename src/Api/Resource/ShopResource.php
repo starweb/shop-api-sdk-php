@@ -2,20 +2,25 @@
 
 namespace Starweb\Api\Resource;
 
-use Starweb\Api\Model\Shop;
-use Starweb\Api\Operation\Operation;
+use Starweb\Api\Model\ModelInterface;
+use Starweb\Api\Model\Shop\Shop;
+use Starweb\Api\Model\Shop\ShopItem;
 
 class ShopResource extends Resource
 {
-    public function loadOperations()
-    {
-        return [
-            new Operation('get', '/shop', 'GET')
-        ];
-    }
-
+    /**
+     * retrieves the shop
+     *
+     * @return Shop|ModelInterface
+     *
+     * @throws \Http\Client\Exception
+     * @throws \Starweb\Exception\InvalidResponseContentException
+     */
     public function retrieve(): Shop
     {
-        return $this->getClient()->get('/shop');
+        $response = $this->getClient()->get('/shop');
+        $item = $response->getContentAsModel(ShopItem::class);
+
+        return $item->getData();
     }
 }
