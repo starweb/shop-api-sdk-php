@@ -44,7 +44,6 @@ final class ErrorPlugin implements Plugin
     protected function transformResponseToException(RequestInterface $request, ResponseInterface $response)
     {
         if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-
             $response = new EnhancedResponse($response);
             $content = $response->getContent();
 
@@ -52,7 +51,6 @@ final class ErrorPlugin implements Plugin
         }
 
         if ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
-
             $response = new EnhancedResponse($response);
 
             throw new ServerErrorException($response->getReasonPhrase(), $request, $response);

@@ -64,5 +64,4 @@ abstract class Resource implements ResourceInterface
 
         return $this->serializer;
     }
-
 }

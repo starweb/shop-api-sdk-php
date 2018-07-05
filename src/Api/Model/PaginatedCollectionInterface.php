@@ -10,5 +10,4 @@ interface PaginatedCollectionInterface extends CollectionInterface
      * @return Meta
      */
     public function getMeta(): Meta;
-
 }

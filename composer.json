@@ -33,12 +33,18 @@
         "phpunit/phpunit": "^7.2",
         "php-http/guzzle6-adapter": "^1.0",
         "guzzlehttp/psr7": "^1.4",
-        "php-http/mock-client": "^1.1"
+        "php-http/mock-client": "^1.1",
+        "squizlabs/php_codesniffer": "^3.3"
     },
     "autoload": {
         "psr-4": {"Starweb\\": "src/"}
     },
     "autoload-dev": {
         "psr-4": {"Starweb\\Tests\\": "tests/unit"}
+    },
+    "scripts": {
+        "phpunit": "vendor/bin/phpunit --stop-on-error --stop-on-failure",
+        "phpunit-coverage": "vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-html ${baseDir}resources/test-coverage",
+        "phpcs": "vendor/bin/phpcs src --standard=resources/code-sniffer-standards/php-standard.xml"
     }
 }

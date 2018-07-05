@@ -238,7 +238,8 @@ class EnhancedResponse implements ResponseInterface
                     new ObjectNormalizer(null, null, null, new PhpDocExtractor()),
                     new ArrayDenormalizer()
                 ],
-                [new JsonEncoder()]);
+                [new JsonEncoder()]
+            );
         }
 
         return $this->serializer;

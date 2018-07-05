@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
-class  EnhancedHttpClient implements HttpClient
+class EnhancedHttpClient implements HttpClient
 {
     /**
      * @var HttpClient
@@ -144,7 +144,8 @@ class  EnhancedHttpClient implements HttpClient
             [
                 'headers' => ['Content-Type' => $file->getMimeType()],
                 'filename' => $file->getFilename()
-            ]);
+            ]
+        );
 
         return $builder;
     }

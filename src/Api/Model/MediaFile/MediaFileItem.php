@@ -12,7 +12,7 @@ class MediaFileItem implements ItemInterface
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return MediaFile
      */
