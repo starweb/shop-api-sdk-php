@@ -3,9 +3,13 @@
 namespace Starweb\Tests\HttpClient;
 
 use Http\Client\Common\Plugin\ErrorPlugin;
+use Http\Client\HttpClient;
+use Http\Discovery\MessageFactoryDiscovery;
+use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
 use Starweb\Api\Authentication\AccessToken;
 use Starweb\HttpClient\Builder;
+use Starweb\HttpClient\EnhancedHttpClient;
 
 class BuilderTest extends TestCase
 {
@@ -15,6 +19,26 @@ class BuilderTest extends TestCase
         $builder = new Builder();
 
         $this->assertInstanceOf(Builder::class, $builder);
+    }
+
+    public function testSetHttpClient()
+    {
+        $builder = new Builder();
+        $builder->setHttpClient(new Client());
+        $client = $builder->build();
+
+        $this->assertInstanceOf(Builder::class, $builder);
+        $this->assertInstanceOf(EnhancedHttpClient::class, $client);
+    }
+
+    public function testSetMessageFactory()
+    {
+        $builder = new Builder();
+        $builder->setMessageFactory(MessageFactoryDiscovery::find());
+        $client = $builder->build();
+
+        $this->assertInstanceOf(Builder::class, $builder);
+        $this->assertInstanceOf(EnhancedHttpClient::class, $client);
     }
 
     public function testAddPlugin()

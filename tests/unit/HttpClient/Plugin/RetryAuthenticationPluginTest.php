@@ -2,11 +2,13 @@
 
 namespace Starweb\Tests\HttpClient\Plugin;
 
-use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Request;
+use Http\Client\Promise\HttpFulfilledPromise;
+use Http\Client\Promise\HttpRejectedPromise;
+use Http\Discovery\MessageFactoryDiscovery;
+use Http\Promise\Promise;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use Starweb\Api\Authentication\TokenManager;
 use Starweb\HttpClient\Plugin\RetryAuthenticationPlugin;
 
@@ -20,21 +22,84 @@ class RetryAuthenticationPluginTest extends TestCase
         $this->assertInstanceOf(RetryAuthenticationPlugin::class, $plugin);
     }
 
-    public function testHandleRequest()
+    public function testHandleRequestWithValidTokenResponse()
     {
         $manager = $this->createMock(TokenManager::class);
         $plugin = new RetryAuthenticationPlugin($manager);
 
-        $promise = $this->createMock(Promise::class);
-        $request = $this->createMock(Request::class);
-        $request->method('then')->willReturn($promise);
+        $messageFactory = MessageFactoryDiscovery::find();
+        $response = $messageFactory->createResponse(200);
 
-        $handledRequest = $plugin->handleRequest($request, function (RequestInterface $request) {
-            return $request;
-        }, function (RequestInterface $request) {
-            return $request;
-        });
+        $response = $plugin->handleRequest(
+            $this->createMock(Request::class),
+            function(RequestInterface $request) use ($response)
+            {
+                return new HttpFulfilledPromise($response);
+            },
+            function(RequestInterface $request) use ($response)
+            {
+                return new HttpFulfilledPromise($response);
+            }
+        );
 
-        $this->assertInstanceOf(RequestInterface::class, $handledRequest);
+        $this->assertInstanceOf(Promise::class, $response);
+    }
+
+    public function testHandleRequestWithInvalidTokenResponse()
+    {
+        $manager = $this->createMock(TokenManager::class);
+        $plugin = new RetryAuthenticationPlugin($manager);
+
+        $messageFactory = MessageFactoryDiscovery::find();
+        $response = $messageFactory->createResponse(
+            401,
+            null,
+            ['Content-Type' => 'application/json'],
+            '{"error": "invalid_token"}'
+        );
+
+        $response = $plugin->handleRequest(
+            $this->createMock(Request::class),
+            function(RequestInterface $request) use ($response)
+            {
+                return new HttpFulfilledPromise($response);
+            },
+            function(RequestInterface $request) use ($response)
+            {
+                return new $response;
+            }
+        );
+
+        $this->assertInstanceOf(HttpFulfilledPromise::class, $response);
+    }
+
+    public function testHandleRequestWithInvalidTokenResponseHittinRetryMaximum()
+    {
+        $manager = $this->createMock(TokenManager::class);
+        $plugin = new RetryAuthenticationPlugin($manager);
+
+        $messageFactory = MessageFactoryDiscovery::find();
+        $response = $messageFactory->createResponse(
+            401,
+            null,
+            ['Content-Type' => 'application/json'],
+            '{"error": "invalid_token"}'
+        );
+
+        for ($i = 0; $i <= RetryAuthenticationPlugin::MAXIMUM_ATTEMPTS; $i++) {
+            $resolvedResponse = $plugin->handleRequest(
+                $this->createMock(Request::class),
+                function(RequestInterface $request) use ($response, $i)
+                {
+                    return new HttpFulfilledPromise($response);
+                },
+                function(RequestInterface $request) use ($response)
+                {
+                    return $response;
+                }
+            );
+        }
+
+        $this->assertInstanceOf(HttpRejectedPromise::class, $resolvedResponse);
     }
 }

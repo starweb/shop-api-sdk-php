@@ -14,7 +14,7 @@ class RetryAuthenticationPlugin implements Plugin
     /**
      * the maximum number of
      */
-    private const MAXIMUM_ATTEMPTS = 2;
+    public const MAXIMUM_ATTEMPTS = 2;
 
     /**
      * @var int

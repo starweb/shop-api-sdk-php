@@ -7,6 +7,8 @@ use Http\Client\Common\Plugin\AuthenticationPlugin;
 use Http\Client\Common\Plugin\HeaderAppendPlugin;
 use Http\Client\Common\PluginClientFactory;
 use Http\Client\HttpClient;
+use Http\Discovery\HttpClientDiscovery;
+use Http\Discovery\MessageFactoryDiscovery;
 use Http\Message\Authentication\Bearer;
 use Http\Message\MessageFactory;
 use Starweb\Api\Authentication\TokenInterface;
@@ -50,6 +52,18 @@ class Builder
     }
 
     /**
+     * @return HttpClient
+     */
+    private function getHttpClient(): HttpClient
+    {
+        if (!$this->httpClient) {
+            $this->httpClient = HttpClientDiscovery::find();
+        }
+
+        return $this->httpClient;
+    }
+
+    /**
      * @param MessageFactory $messageFactory
      *
      * @return Builder
@@ -62,13 +76,25 @@ class Builder
     }
 
     /**
+     * @return MessageFactory
+     */
+    private function getMessageFactory(): MessageFactory
+    {
+        if (!$this->messageFactory) {
+            $this->messageFactory = MessageFactoryDiscovery::find();
+        }
+
+        return $this->messageFactory;
+    }
+
+    /**
      * @return EnhancedHttpClient
      */
     public function build(): EnhancedHttpClient
     {
         $factory = new PluginClientFactory();
-        $pluginClient = $factory->createClient($this->httpClient, $this->plugins);
-        $client = new EnhancedHttpClient($pluginClient, $this->messageFactory);
+        $pluginClient = $factory->createClient($this->getHttpClient(), $this->plugins);
+        $client = new EnhancedHttpClient($pluginClient, $this->getMessageFactory());
 
         return $client;
     }
