@@ -1,5 +1,6 @@
 {
     "name": "starweb/starweb-sdk",
+    "version": "0.1.0",
     "description": "Starweb SDK for PHP",
     "keywords": ["ecommerce", "shop", "starweb", "api"],
     "homepage": "https://www.starweb.com/",
@@ -20,12 +21,12 @@
         "php-http/client-common": "^1.7",
         "php-http/cache-plugin": "^1.5",
         "php-http/client-implementation": "^1.0",
+        "php-http/multipart-stream-builder": "^1.0",
         "psr/http-message-implementation": "^1.0",
         "symfony/psr-http-message-bridge": "^1.0",
         "symfony/cache": "^4.1",
         "symfony/serializer": "^4.1",
         "symfony/property-access": "^4.1",
-        "php-http/multipart-stream-builder": "^1.0",
         "symfony/property-info": "^4.1"
     },
     "require-dev": {
