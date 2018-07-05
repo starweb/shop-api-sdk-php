@@ -2,7 +2,6 @@
 
 namespace Starweb\HttpClient;
 
-use Http\Client\Common\HttpMethodsClient;
 use Http\Client\Common\Plugin;
 use Http\Client\Common\Plugin\AuthenticationPlugin;
 use Http\Client\Common\Plugin\HeaderAppendPlugin;
@@ -39,11 +38,6 @@ class Builder
     private $headers = [];
 
     /**
-     * @var bool
-     */
-    private $useEnhancedHttpClient = false;
-
-    /**
      * @param HttpClient $httpClient
      *
      * @return Builder
@@ -56,18 +50,6 @@ class Builder
     }
 
     /**
-     * @param HttpMethodsClient $pluginClient
-     *
-     * @return Builder
-     */
-    public function setPluginClient(HttpMethodsClient $pluginClient): Builder
-    {
-        $this->pluginClient = $pluginClient;
-
-        return $this;
-    }
-
-    /**
      * @param MessageFactory $messageFactory
      *
      * @return Builder
@@ -75,30 +57,6 @@ class Builder
     public function setMessageFactory(MessageFactory $messageFactory): Builder
     {
         $this->messageFactory = $messageFactory;
-
-        return $this;
-    }
-
-    /**
-     * @param Plugin[] $plugins
-     *
-     * @return Builder
-     */
-    public function setPlugins(array $plugins): Builder
-    {
-        $this->plugins = $plugins;
-
-        return $this;
-    }
-
-    /**
-     * @param bool $useEnhancedHttpClient
-     *
-     * @return Builder
-     */
-    public function useEnhancedHttpClient(): Builder
-    {
-        $this->useEnhancedHttpClient = true;
 
         return $this;
     }

@@ -47,51 +47,55 @@ class EnhancedResponse implements ResponseInterface
     /**
      * @return string
      */
-    public function getProtocolVersion()
+    public function getProtocolVersion(): string
     {
         return $this->response->getProtocolVersion();
     }
 
     /**
      * @param string $version
-     * @return static
+     *
+     * @return ResponseInterface
      */
-    public function withProtocolVersion($version)
+    public function withProtocolVersion($version): ResponseInterface
     {
         return $this->response->withProtocolVersion($version);
     }
 
     /**
-     * @return \string[][]
+     * @return string[][]
      */
-    public function getHeaders()
+    public function getHeaders(): array
     {
         return $this->response->getHeaders();
     }
 
     /**
      * @param string $name
+     *
      * @return bool
      */
-    public function hasHeader($name)
+    public function hasHeader($name): bool
     {
         return $this->response->hasHeader($name);
     }
 
     /**
      * @param string $name
+     *
      * @return string[]
      */
-    public function getHeader($name)
+    public function getHeader($name): array
     {
         return $this->response->getHeader($name);
     }
 
     /**
      * @param string $name
+     *
      * @return string
      */
-    public function getHeaderLine($name)
+    public function getHeaderLine($name): string
     {
         return $this->response->getHeaderLine($name);
     }
@@ -99,9 +103,10 @@ class EnhancedResponse implements ResponseInterface
     /**
      * @param string $name
      * @param string|string[] $value
-     * @return static
+     *
+     * @return ResponseInterface
      */
-    public function withHeader($name, $value)
+    public function withHeader($name, $value): ResponseInterface
     {
         return $this->response->withHeader($name, $value);
     }
@@ -109,18 +114,20 @@ class EnhancedResponse implements ResponseInterface
     /**
      * @param string $name
      * @param string|string[] $value
-     * @return static
+     *
+     * @return ResponseInterface
      */
-    public function withAddedHeader($name, $value)
+    public function withAddedHeader($name, $value): ResponseInterface
     {
         return $this->response->withAddedHeader($name, $value);
     }
 
     /**
      * @param string $name
-     * @return static
+     *
+     * @return ResponseInterface
      */
-    public function withoutHeader($name)
+    public function withoutHeader($name): ResponseInterface
     {
         return $this->response->withoutHeader($name);
     }
@@ -128,44 +135,46 @@ class EnhancedResponse implements ResponseInterface
     /**
      * @return StreamInterface
      */
-    public function getBody()
+    public function getBody(): StreamInterface
     {
         return $this->response->getBody();
     }
 
     /**
      * @param StreamInterface $body
-     * @return void|static
+     *
+     * @return ResponseInterface
      */
-    public function withBody(StreamInterface $body)
+    public function withBody(StreamInterface $body): ResponseInterface
     {
-        $this->response->withBody($body);
+        return $this->response->withBody($body);
     }
 
     /**
-     * @return int|void
+     * @return int
      */
-    public function getStatusCode()
+    public function getStatusCode(): int
     {
-        $this->response->getStatusCode();
+        return $this->response->getStatusCode();
     }
 
     /**
      * @param int $code
      * @param string $reasonPhrase
-     * @return void|static
+     *
+     * @return ResponseInterface
      */
-    public function withStatus($code, $reasonPhrase = '')
+    public function withStatus($code, $reasonPhrase = ''): ResponseInterface
     {
-        $this->response->withStatus($code, $reasonPhrase);
+        return $this->response->withStatus($code, $reasonPhrase);
     }
 
     /**
-     * @return string|void
+     * @return null|string
      */
-    public function getReasonPhrase()
+    public function getReasonPhrase(): ?string
     {
-        $this->response->getReasonPhrase();
+        return $this->response->getReasonPhrase();
     }
 
     /**
