@@ -13,7 +13,7 @@ use Starweb\Api\Model\MediaFile\MediaFile;
 $credentials = new ClientCredentials('CLIENT_ID', 'CLIENT_SECRET');
 
 // create the sdk object
-$starweb = new Starweb($credentials, 'http://dev-shop.sws.local/api/v2');
+$starweb = new Starweb($credentials, 'YOUR_API_URI');
 
 // get a resource by its name in this case "MediaFile"
 /** @var MediaFileResource $mediaFileResource */
