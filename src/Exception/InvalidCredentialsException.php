@@ -2,7 +2,8 @@
 
 namespace Starweb\Exception;
 
-class InvalidCredentialsException extends \Exception
-{
+use Http\Client\Common\Exception\ClientErrorException;
 
+class InvalidCredentialsException extends ClientErrorException
+{
 }

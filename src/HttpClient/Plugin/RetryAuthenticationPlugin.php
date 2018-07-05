@@ -3,7 +3,6 @@
 namespace Starweb\HttpClient\Plugin;
 
 use Http\Client\Common\Plugin;
-use Http\Client\HttpClient;
 use Http\Promise\Promise;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -58,7 +57,9 @@ class RetryAuthenticationPlugin implements Plugin
                         sprintf(
                             'the maxium number of %s authentication attempts has been reached.',
                             self::MAXIMUM_ATTEMPTS
-                        )
+                        ),
+                        $request,
+                        $response
                     );
                 }
                 $this->tokenManager->refreshToken();

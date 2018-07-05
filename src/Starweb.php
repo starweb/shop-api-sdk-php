@@ -74,7 +74,6 @@ class Starweb
             $tokenCache = new TokenFilesystemCache();
         }
 
-
         $this->baseUri      = $baseUri;
         $this->tokenManager = new TokenManager($httpClient, $messageFactory, $credentials, $tokenCache, $baseUri);
         $this->client       = $this->buildHttpClient($httpClient, $messageFactory);
@@ -105,6 +104,18 @@ class Starweb
         return $builder->build();
     }
 
+    /**
+     * retrieves a resource by name. Each resource gets injected the EnhancedHttpClient enabling
+     * them to query the api in a convenient way.
+     *
+     * If the resource is not supported a LogicException is thrown.
+     *
+     * @param string $resourceKey
+     *
+     * @return ResourceInterface
+     *
+     * @throws \LogicException
+     */
     public function resource(string $resourceKey): ResourceInterface
     {
         switch ($resourceKey) {
@@ -118,7 +129,7 @@ class Starweb
                 $resource = new MediaFileResource($this->client);
                 break;
             default:
-                throw new \InvalidArgumentException(sprintf('Undefined resource instance called: "%s"', $resourceKey));
+                throw new \LogicException(sprintf('Undefined resource instance called: "%s"', $resourceKey));
         }
         return $resource;
     }

@@ -2,7 +2,7 @@
 
 namespace Starweb\Exception;
 
-class InvalidResponseContentException extends \Exception
+class InvalidResponseContentException extends \RuntimeException
 {
 
 }

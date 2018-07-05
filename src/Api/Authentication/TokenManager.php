@@ -73,17 +73,19 @@ class TokenManager
             'client_secret' => $this->credentials->getSecret(),
         ];
 
-        $response = $this->client->sendRequest($this->messageFactory->createRequest(
+        $request = $this->messageFactory->createRequest(
             'POST',
             $this->baseUri.'/token',
             ['Content-Type' => 'application/x-www-form-urlencoded'],
             http_build_query($parameters)
-        ));
+        );
+
+        $response = $this->client->sendRequest($request);
 
         $responseData = json_decode($response->getBody()->__toString(), true);
 
         if (400 === $response->getStatusCode() && 'invalid_client' === $responseData['error']) {
-            throw new InvalidCredentialsException($responseData['error_description']);
+            throw new InvalidCredentialsException($responseData['error_description'], $request, $response);
         }
 
         return new AccessToken($responseData['access_token'], $responseData['expires_in']);
