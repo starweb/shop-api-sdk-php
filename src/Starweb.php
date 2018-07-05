@@ -50,9 +50,9 @@ class Starweb
      * @param ClientCredentials $credentials
      * @param string $baseUri
      * @param HttpClient|null $httpClient
+     * @param MessageFactory|null $messageFactory
      * @param TokenCacheInterface|null $tokenCache
      *
-     * @throws Exception\InvalidCredentialsException
      * @throws \Http\Client\Exception
      */
     public function __construct(
