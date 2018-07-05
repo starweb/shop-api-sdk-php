@@ -4,6 +4,7 @@ namespace Starweb\Tests\Api\Resource;
 
 use PHPUnit\Framework\TestCase;
 use Starweb\Api\Model\Shop\Shop;
+use Starweb\Api\Model\Shop\ShopItem;
 use Starweb\Api\Resource\Resource;
 use Starweb\Api\Resource\ResourceInterface;
 use Starweb\Api\Resource\ShopResource;
@@ -25,10 +26,14 @@ class ShopResourceTest extends TestCase
     {
         $shop = new Shop();
         $shop->setName('my shop');
+
+        $shopItem = new ShopItem();
+        $shopItem->setData($shop);
+
         $response = $this->createMock(EnhancedResponse::class);
         $client = $this->createMock(EnhancedHttpClient::class);
         $resource = new ShopResource($client);
-        $response->method('getContentAsModel')->willReturn($shop);
+        $response->method('getContentAsModel')->willReturn($shopItem);
         $client->method('get')->willReturn($response);
 
         $this->assertInstanceOf(Shop::class, $resource->retrieve());
