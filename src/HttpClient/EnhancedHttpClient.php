@@ -101,6 +101,8 @@ class EnhancedHttpClient implements HttpClient
      */
     public function post($path, array $parameters = [], array $requestHeaders = []): EnhancedResponse
     {
+        $requestHeaders['Content-Type'] = 'application/json';
+
         return $this->postRaw($path, $this->createJsonBody($parameters), $requestHeaders);
     }
 
@@ -177,6 +179,7 @@ class EnhancedHttpClient implements HttpClient
      */
     public function patch($path, array $parameters = [], array $requestHeaders = []): EnhancedResponse
     {
+        $requestHeaders['Content-Type'] = 'application/json';
         $response = $this->send('PATCH', $path, $requestHeaders, $this->createJsonBody($parameters));
 
         return new EnhancedResponse($response);
@@ -193,6 +196,7 @@ class EnhancedHttpClient implements HttpClient
      */
     public function put($path, array $parameters = [], array $requestHeaders = []): EnhancedResponse
     {
+        $requestHeaders['Content-Type'] = 'application/json';
         $response = $this->send('PUT', $path, $requestHeaders, $this->createJsonBody($parameters));
 
         return new EnhancedResponse($response);
