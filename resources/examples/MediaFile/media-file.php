@@ -32,7 +32,6 @@ $currentPage = $mediaFileCollection->getMeta()->getPagination()->getCurrentPage(
 /** @var MediaFile $firstFile */
 $firstFile = $mediaFileResource->retrieve(current($files)->getId());
 
-
 // uploading a file
 $uploadFile = new MediaFileUpload(__DIR__ . '/test.jpg');
 

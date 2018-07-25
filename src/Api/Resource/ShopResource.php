@@ -5,6 +5,7 @@ namespace Starweb\Api\Resource;
 use Starweb\Api\Model\ModelInterface;
 use Starweb\Api\Model\Shop\Shop;
 use Starweb\Api\Model\Shop\ShopItem;
+use Starweb\Api\Operation\Shop\RetrieveShop;
 
 class ShopResource extends Resource
 {
@@ -18,7 +19,7 @@ class ShopResource extends Resource
      */
     public function retrieve(): Shop
     {
-        $response = $this->getClient()->get('/shop');
+        $response = $this->performOperation(new RetrieveShop());
         $item = $response->getContentAsModel(ShopItem::class);
 
         return $item->getData();

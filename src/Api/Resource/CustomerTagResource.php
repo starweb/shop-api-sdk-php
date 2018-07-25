@@ -6,37 +6,19 @@ namespace Starweb\Api\Resource;
 use Starweb\Api\Model\CustomerTag\CustomerTag;
 use Starweb\Api\Model\CustomerTag\CustomerTagCollection;
 use Starweb\Api\Model\CustomerTag\CustomerTagItem;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Starweb\Api\Operation\CustomerTag\ListCustomerTags;
 
 class CustomerTagResource extends Resource
 {
-    /**
-     * the base endpoint of this resource
-     */
-    private const ENDPOINT = '/customers/{customerId}/tags';
-
-    protected function getEndpoint(): string
-    {
-        return self::ENDPOINT;
-    }
-
-    protected function getPathParameterResolver(): OptionsResolver
-    {
-        $resolver = new OptionsResolver();
-        $resolver->setRequired('customerId');
-
-        return $resolver;
-    }
-
     /**
      * @return CustomerTagCollection
      *
      * @throws \Http\Client\Exception
      * @throws \Starweb\Exception\InvalidResponseContentException
      */
-    public function list(): CustomerTagCollection
+    public function list(int $customerId): CustomerTagCollection
     {
-        $response = $this->getClient()->get($this->getResolvedEndpoint());
+        $response = $this->performOperation(new ListCustomerTags());
 
         return $response->getContentAsModel(CustomerTagCollection::class);
     }

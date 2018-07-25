@@ -9,7 +9,7 @@ class MediaFile implements ModelInterface
     /**
      * A timestamp of when the media file was created. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var string|null
      */
     protected $createdAt;
 
@@ -37,7 +37,7 @@ class MediaFile implements ModelInterface
     /**
      * A timestamp of when the media file was modifies. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var string|null
      */
     protected $modifiedAt;
 

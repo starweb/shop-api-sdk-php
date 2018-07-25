@@ -3,8 +3,11 @@
 namespace Starweb\Api\Resource;
 
 use Starweb\Api\Model\ModelInterface;
+use Starweb\Api\Operation\Operation;
+use Starweb\Api\Operation\OperationInterface;
+use Starweb\Api\Operation\UploadFileOperation;
 use Starweb\HttpClient\EnhancedHttpClient;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Starweb\HttpClient\Message\EnhancedResponse;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
@@ -72,27 +75,24 @@ abstract class Resource implements ResourceInterface
         return $this->serializer;
     }
 
-    public function getResolvedEndpoint(): string
+    public function performOperation(OperationInterface $operation): EnhancedResponse
     {
-        return $this->resolveEndpoint();
-    }
-
-    private function resolveEndpoint()
-    {
-        $endpoint = $this->getEndpoint();
-        foreach ($this->resolvePathParameters() as $parameter => $value) {
-            $endpoint = preg_replace(sprintf('/\{%s\}/', $parameter), $value, $endpoint);
+        if ($operation instanceof UploadFileOperation) {
+            return $this->performUploadFileOperation($operation);
         }
 
-        return $endpoint;
+        return call_user_func_array([$this->client, strtolower($operation->getMethod())], [
+            $operation->getQueryParameters(),
+            $operation->getHeaders()
+        ]);
     }
 
-    private function resolvePathParameters(): array
+    private function performUploadFileOperation(UploadFileOperation $operation)
     {
-        $resolver = $this->getPathParameterResolver();
-        return $resolver->resolve($this->pathParameters);
+        return call_user_func_array([$this->client, 'uploadFile'], [
+            $operation->getMethod(),
+            $operation->getResolvedPath(),
+            $operation->getUploadFile()
+        ]);
     }
-
-    abstract protected function getEndpoint(): string;
-    abstract protected function getPathParameterResolver(): OptionsResolver;
 }

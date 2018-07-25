@@ -122,7 +122,7 @@ class EnhancedHttpClient implements HttpClient
         return $this->postRaw($path, http_build_query($parameters), $requestHeaders);
     }
 
-    public function uploadFile(string $method, string $path, MediaFileUpload $file): EnhancedResponse
+    public function uploadFile(string $method, string $path, UploadFileInterface $file): EnhancedResponse
     {
         $boundary = '----boundary';
         $builder = $this->getMultipartStreamBuilderForFile($file, $boundary);

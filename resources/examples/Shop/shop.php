@@ -20,5 +20,3 @@ $shopResource = $starweb->resource('Shop');
 
 /** @var Shop $shop */
 $shop = $shopResource->retrieve();
-
-var_dump($shop);

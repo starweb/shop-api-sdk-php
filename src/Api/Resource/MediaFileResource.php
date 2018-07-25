@@ -6,14 +6,15 @@ use Starweb\Api\Model\MediaFile\MediaFile;
 use Starweb\Api\Model\MediaFile\MediaFileCollection;
 use Starweb\Api\Model\MediaFile\MediaFileItem;
 use Starweb\Api\Model\MediaFile\MediaFileUpload;
+use Starweb\Api\Model\UploadFileInterface;
+use Starweb\Api\Operation\MediaFiles\CreateMediaFile;
+use Starweb\Api\Operation\MediaFiles\DeleteMediaFile;
+use Starweb\Api\Operation\MediaFiles\ListMediaFiles;
+use Starweb\Api\Operation\MediaFiles\RetrieveMediaFile;
+use Starweb\Api\Operation\MediaFiles\UpdateMediaFile;
 
 class MediaFileResource extends Resource
 {
-    /**
-     * the base endpoint of this resource
-     */
-    private const ENDPOINT = '/media-files';
-
     /**
      * @return MediaFileCollection
      *
@@ -21,9 +22,9 @@ class MediaFileResource extends Resource
      *
      * @throws \Starweb\Exception\InvalidResponseContentException
      */
-    public function list(): MediaFileCollection
+    public function list(int $page = null): MediaFileCollection
     {
-        $response = $this->getClient()->get(self::ENDPOINT);
+        $response = $this->performOperation(new ListMediaFiles(['page' => $page]));
 
         return $response->getContentAsModel(MediaFileCollection::class);
     }
@@ -35,40 +36,40 @@ class MediaFileResource extends Resource
      *
      * @throws \Starweb\Exception\InvalidResponseContentException
      */
-    public function create(MediaFileUpload $file): MediaFile
+    public function create(UploadFileInterface $file): MediaFile
     {
-        $response = $this->getClient()->uploadFile('POST', self::ENDPOINT, $file);
+        $response = $this->performOperation(new CreateMediaFile($file));
         $item = $response->getContentAsModel(MediaFileItem::class);
 
         return $item->getData();
     }
 
     /**
-     * @param int $id
+     * @param int $mediaFileId
      *
      * @return MediaFile
      *
      * @throws \Http\Client\Exception
      * @throws \Starweb\Exception\InvalidResponseContentException
      */
-    public function retrieve(int $id): MediaFile
+    public function retrieve(int $mediaFileId): MediaFile
     {
-        $response = $this->getClient()->get(sprintf(self::ENDPOINT . '/%s', $id));
+        $response = $this->performOperation(new RetrieveMediaFile([], ['mediaFileId' => $mediaFileId]));
         $item = $response->getContentAsModel(MediaFileItem::class);
 
         return $item->getData();
     }
 
     /**
-     * @param int $id
+     * @param int $mediaFileId
      *
      * @return bool
      *
      * @throws \Http\Client\Exception
      */
-    public function delete(int $id): bool
+    public function delete(int $mediaFileId): bool
     {
-        $response = $this->getClient()->delete(sprintf(self::ENDPOINT . '/%s', $id));
+        $response = $this->performOperation(new DeleteMediaFile([], ['mediaFileId' => $mediaFileId]));
 
         return 204 === $response->getStatusCode();
     }
@@ -80,9 +81,9 @@ class MediaFileResource extends Resource
      *
      * @throws \Starweb\Exception\InvalidResponseContentException
      */
-    public function update(int $id, MediaFileUpload $file): MediaFile
+    public function update(int $mediaFileId, MediaFileUpload $file): MediaFile
     {
-        $response = $this->getClient()->uploadFile('PATCH', sprintf(self::ENDPOINT . '/%s', $id), $file);
+        $response = $this->performOperation(new UpdateMediaFile($file, [], ['mediaFileId' => $mediaFileId]));
         $item = $response->getContentAsModel(MediaFileItem::class);
 
         return $item->getData();
