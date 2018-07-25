@@ -2,9 +2,11 @@
 
 namespace Starweb\Api\Authentication;
 
+use Http\Client\Common\Exception\ServerErrorException;
 use Http\Client\HttpClient;
 use Http\Message\MessageFactory;
 use Http\Message\RequestFactory;
+use Starweb\Exception\InvalidBaseUriException;
 use Starweb\Exception\InvalidCredentialsException;
 
 class TokenManager
@@ -62,6 +64,7 @@ class TokenManager
      *
      * @return TokenInterface
      *
+     * @throws InvalidBaseUriException
      * @throws InvalidCredentialsException
      * @throws \Http\Client\Exception
      */
@@ -83,6 +86,14 @@ class TokenManager
         $response = $this->client->sendRequest($request);
 
         $responseData = json_decode($response->getBody()->__toString(), true);
+
+        if (404 === $response->getStatusCode()) {
+            throw new InvalidBaseUriException(sprintf('invalid base uri "%s"', $this->baseUri), $request, $response);
+        }
+
+        if (500=== $response->getStatusCode()) {
+            throw new ServerErrorException('server error', $request, $response);
+        }
 
         if (400 === $response->getStatusCode() && 'invalid_client' === $responseData['error']) {
             throw new InvalidCredentialsException($responseData['error_description'], $request, $response);
