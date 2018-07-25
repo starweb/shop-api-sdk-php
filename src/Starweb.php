@@ -10,6 +10,8 @@ use Http\Discovery\UriFactoryDiscovery;
 use Http\Message\MessageFactory;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenManager;
+use Starweb\Api\Model\CustomerTag\CustomerTagItem;
+use Starweb\Api\Resource\CustomerTagResource;
 use Starweb\Api\Resource\MediaFileResource;
 use Starweb\Exception\InvalidCredentialsException;
 use Starweb\HttpClient\Builder;
@@ -110,13 +112,17 @@ class Starweb
      *
      * If the resource is not supported a LogicException is thrown.
      *
+     * The $pathParameters argument is needed for nested resources, e.g. if you want to use a resource CustomerTag
+     * you need to pass in the parameter as ['customerId' => 123].
+     *
      * @param string $resourceKey
+     * @param array $pathParameters
      *
      * @return ResourceInterface
      *
      * @throws \LogicException
      */
-    public function resource(string $resourceKey): ResourceInterface
+    public function resource(string $resourceKey, array $pathParameters = []): ResourceInterface
     {
         switch ($resourceKey) {
             case 'Shop':
@@ -127,6 +133,9 @@ class Starweb
                 break;
             case 'MediaFile':
                 $resource = new MediaFileResource($this->client);
+                break;
+            case 'CustomerTag':
+                $resource = new CustomerTagResource($this->client, $pathParameters);
                 break;
             default:
                 throw new \LogicException(sprintf('Undefined resource instance called: "%s"', $resourceKey));
