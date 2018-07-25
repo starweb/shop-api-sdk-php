@@ -4,6 +4,7 @@ namespace Starweb\Api\Resource;
 
 use Starweb\Api\Model\ModelInterface;
 use Starweb\HttpClient\EnhancedHttpClient;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
@@ -21,14 +22,20 @@ abstract class Resource implements ResourceInterface
     private $serializer;
 
     /**
+     * @var array
+     */
+    private $pathParameters;
+
+    /**
      * Resource constructor.
      *
      * @param EnhancedHttpClient $client
      * @param Serializer $serializer
      */
-    public function __construct(EnhancedHttpClient $client)
+    public function __construct(EnhancedHttpClient $client, array $pathParameters = [])
     {
         $this->client = $client;
+        $this->pathParameters = $pathParameters;
     }
 
     /**
@@ -56,7 +63,7 @@ abstract class Resource implements ResourceInterface
     /**
      * @return Serializer
      */
-    private function getSerializer(): Serializer
+    protected function getSerializer(): Serializer
     {
         if (!$this->serializer) {
             $this->serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
@@ -64,4 +71,28 @@ abstract class Resource implements ResourceInterface
 
         return $this->serializer;
     }
+
+    public function getResolvedEndpoint(): string
+    {
+        return $this->resolveEndpoint();
+    }
+
+    private function resolveEndpoint()
+    {
+        $endpoint = $this->getEndpoint();
+        foreach ($this->resolvePathParameters() as $parameter => $value) {
+            $endpoint = preg_replace(sprintf('/\{%s\}/', $parameter), $value, $endpoint);
+        }
+
+        return $endpoint;
+    }
+
+    private function resolvePathParameters(): array
+    {
+        $resolver = $this->getPathParameterResolver();
+        return $resolver->resolve($this->pathParameters);
+    }
+
+    abstract protected function getEndpoint(): string;
+    abstract protected function getPathParameterResolver(): OptionsResolver;
 }
