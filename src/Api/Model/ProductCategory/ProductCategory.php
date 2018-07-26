@@ -40,7 +40,7 @@ class ProductCategory
     /**
      * 
      *
-     * @var ProductCategoryLanguageCollection
+     * @var ProductCategoryLanguageCollection|ProductCategoryLanguage[]
      */
     protected $languages;
 
@@ -176,20 +176,20 @@ class ProductCategory
     /**
      * 
      *
-     * @return ProductCategoryLanguageCollection
+     * @return ProductCategoryLanguageCollection|ProductCategoryLanguage[]
      */
-    public function getLanguages() : ?ProductCategoryLanguageCollection
+    public function getLanguages()
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductCategoryLanguageCollection $languages
+     * @param ProductCategoryLanguageCollection|ProductCategoryLanguage[] $languages
      *
      * @return self
      */
-    public function setLanguages(?ProductCategoryLanguageCollection $languages) : self
+    public function setLanguages($languages) : self
     {
         $this->languages = $languages;
         return $this;

@@ -2,33 +2,120 @@
 
 namespace Starweb\Api\Resource;
 
-use Starweb\Api\Model\CollectionInterface;
-use Starweb\Api\Model\ProductCategory;
-use Starweb\HttpClient\Message\EnhancedResponse;
+use Starweb\Api\Model\ProductCategory\ProductCategory;
+use Starweb\Api\Model\ProductCategory\ProductCategoryItem;
+use Starweb\Api\Operation\ProductCategory\CreateProductCategory;
+use Starweb\Api\Operation\ProductCategory\DeleteProductCategory;
+use Starweb\Api\Operation\ProductCategory\ListProductCategories;
+use Starweb\Api\Model\ProductCategory\ProductCategoryCollection;
+use Starweb\Api\Operation\ProductCategory\ReplaceProductCategory;
+use Starweb\Api\Operation\ProductCategory\RetrieveProductCategory;
+use Starweb\Api\Operation\ProductCategory\UpdateProductCategory;
 
 class ProductCategoryResource extends Resource
 {
-    public function list(): CollectionInterface
+    public function list(array $parameters = []): ProductCategoryCollection
     {
-        $response = $this->getClient()->get('/product-categories');
+        $response = $this->performOperation(new ListProductCategories($this, $parameters));
 
-        return $response->getContentAsModel(CollectionInterface::class);
+        return $response->getContentAsModel(ProductCategoryCollection::class);
     }
 
-    public function retrieve(int $id): ProductCategory
+    /**
+     * @param ProductCategory $productCategory
+     *
+     * @return ProductCategory
+     *
+     * @throws \Http\Client\Exception
+     */
+    public function create(ProductCategory $productCategory): ProductCategory
     {
-        $response = $this->getClient()->get(sprintf('/product-categories/%s', $id));
+        $response = $this->performOperation(
+            new CreateProductCategory(
+                $this,
+                $this->getSerializer()->normalize($productCategory),
+                $this->getPathParameters())
+        );
+        $item = $response->getContentAsModel(ProductCategoryItem::class);
 
-        return $response->getContentAsModel(ProductCategory::class);
+        return $item->getData();
     }
 
-    public function create(ProductCategory $category): EnhancedResponse
+    /**
+     * @param int $productCategoryId
+     *
+     * @return ProductCategory
+     *
+     * @throws \Http\Client\Exception
+     * @throws \Starweb\Exception\InvalidResponseContentException
+     */
+    public function retrieve(int $productCategoryId): ProductCategory
     {
-        return $this->createResource(sprintf('/product-categories/%s', $category->getId()), $category);
+        $response = $this->performOperation(
+            new RetrieveProductCategory($this, [], ['productCategoryId' => $productCategoryId])
+        );
+        $item = $response->getContentAsModel(ProductCategoryItem::class);
+
+        return $item->getData();
     }
 
-    public function update(ProductCategory $category): EnhancedResponse
+    /**
+     * @param int $productCategoryId
+     *
+     * @return bool
+     *
+     * @throws \Http\Client\Exception
+     */
+    public function delete(int $productCategoryId): bool
     {
-        return $this->updateResource(sprintf('/product-categories/%s', $category->getId()), $category);
+        $response = $this->performOperation(
+            new DeleteProductCategory($this, [], ['productCategoryId' => $productCategoryId])
+        );
+
+        return 204 === $response->getStatusCode();
+    }
+
+    /**
+     * @param int $productCategoryId
+     * @param ProductCategory $productCategory
+     *
+     * @return ProductCategory
+     *
+     * @throws \Http\Client\Exception
+     */
+    public function replace(int $productCategoryId, ProductCategory $productCategory): ProductCategory
+    {
+        $response = $this->performOperation(
+            new ReplaceProductCategory(
+                $this,
+                $this->getSerializer()->normalize($productCategory),
+                ['productCategoryId' => $productCategoryId]
+            )
+        );
+        $item = $response->getContentAsModel(ProductCategoryItem::class);
+
+        return $item->getData();
+    }
+
+    /**
+     * @param int $productCategoryId
+     * @param ProductCategory $productCategory
+     *
+     * @return ProductCategory
+     *
+     * @throws \Http\Client\Exception
+     */
+    public function update(int $productCategoryId, ProductCategory $productCategory): ProductCategory
+    {
+        $response = $this->performOperation(
+            new UpdateProductCategory(
+                $this,
+                $this->getSerializer()->normalize($productCategory),
+                ['productCategoryId' => $productCategoryId]
+            )
+        );
+        $item = $response->getContentAsModel(ProductCategoryItem::class);
+
+        return $item->getData();
     }
 }

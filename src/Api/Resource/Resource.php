@@ -78,9 +78,15 @@ abstract class Resource implements ResourceInterface
             return $this->performUploadFileOperation($operation);
         }
 
+        if ('GET' === $operation->getMethod() || 'HEAD' === $operation->getMethod()) {
+            $parameters = $operation->getResolvedParameters();
+        } else {
+            $parameters = $operation->getParameters();
+        }
+
         return call_user_func_array([$this->client, strtolower($operation->getMethod())], [
             $operation->getResolvedPath(),
-            $operation->getResolvedParameters(),
+            $parameters,
             $operation->getHeaders()
         ]);
     }
