@@ -1,8 +1,8 @@
 <?php
 
-namespace Starweb\Sdk\Model\ProductCategory;
+namespace Starweb\Api\Model\ProductLanguage;
 
-class ProductCategoryLanguages
+class ProductCategoryLanguage
 {
     /**
      * The extra/bottom description of this product category

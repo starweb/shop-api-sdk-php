@@ -1,8 +1,8 @@
 <?php
 
-namespace Starweb\Sdk\Model\ProductCategory;
+namespace Starweb\Api\Model\ProductCategory;
 
-use Starweb\Sdk\Model\ProductCategory\ProductCategoryLanguages;
+use Starweb\Api\Model\ProductLanguage\ProductCategoryLanguage;
 
 class ProductCategory
 {
@@ -37,14 +37,14 @@ class ProductCategory
      */
     protected $imageFileId;
     /**
+     * 
      *
-     *
-     * @var ProductCategoryLanguages[]
+     * @var ProductCategoryLanguage[]
      */
     protected $languages;
+
     /**
-     * Whether or not links to the category should open a category page listing
-     * its products and sub categories on click.
+     * Whether or not links to the category should open a category page listing its products and sub categories on click.
      *
      * @var bool
      */
@@ -62,8 +62,7 @@ class ProductCategory
      */
     protected $sortIndex;
     /**
-     * The category`s visibility settings. Possible values are: visible, hidden and pricelists.
-     * Pricelists means that the category is only visible for customers with access to specific pricelists
+     * The category`s visibility settings. Possible values are: visible, hidden and pricelists. Pricelists means that the category is only visible for customers with access to specific pricelists
      *
      * @var string
      */
@@ -174,7 +173,7 @@ class ProductCategory
         return $this;
     }
     /**
-     *
+     * 
      *
      * @return ProductCategoryLanguages[]
      */
@@ -183,7 +182,7 @@ class ProductCategory
         return $this->languages;
     }
     /**
-     *
+     * 
      *
      * @param ProductCategoryLanguages[] $languages
      *
@@ -195,8 +194,7 @@ class ProductCategory
         return $this;
     }
     /**
-     * Whether or not links to the category should open a category page
-     * listing its products and sub categories on click.
+     * Whether or not links to the category should open a category page listing its products and sub categories on click.
      *
      * @return bool
      */
@@ -205,8 +203,7 @@ class ProductCategory
         return $this->openPage;
     }
     /**
-     * Whether or not links to the category should open a category page
-     * listing its products and sub categories on click.
+     * Whether or not links to the category should open a category page listing its products and sub categories on click.
      *
      * @param bool $openPage
      *
@@ -260,8 +257,7 @@ class ProductCategory
         return $this;
     }
     /**
-     * The category`s visibility settings. Possible values are: visible, hidden and pricelists.
-     * Pricelists means that the category is only visible for customers with access to specific pricelists
+     * The category`s visibility settings. Possible values are: visible, hidden and pricelists. Pricelists means that the category is only visible for customers with access to specific pricelists
      *
      * @return string
      */
@@ -270,8 +266,7 @@ class ProductCategory
         return $this->visibility;
     }
     /**
-     * The category`s visibility settings. Possible values are: visible, hidden and pricelists.
-     * Pricelists means that the category is only visible for customers with access to specific pricelists
+     * The category`s visibility settings. Possible values are: visible, hidden and pricelists. Pricelists means that the category is only visible for customers with access to specific pricelists
      *
      * @param string $visibility
      *
