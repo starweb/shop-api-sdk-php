@@ -8,7 +8,7 @@ interface OperationInterface
 
     public function getMethod(): string;
 
-    public function getParameters(): array;
+    public function getResolvedParameters(): array;
 
     public function getHeaders(): array;
 

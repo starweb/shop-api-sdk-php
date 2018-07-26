@@ -80,7 +80,7 @@ abstract class Resource implements ResourceInterface
 
         return call_user_func_array([$this->client, strtolower($operation->getMethod())], [
             $operation->getResolvedPath(),
-            $operation->getParameters(),
+            $operation->getResolvedParameters(),
             $operation->getHeaders()
         ]);
     }
