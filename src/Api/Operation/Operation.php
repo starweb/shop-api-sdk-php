@@ -23,8 +23,8 @@ abstract class Operation implements OperationInterface
      */
     public function __construct(array $queryParameters = [], array $pathParameters = [], array $headers = [])
     {
-        $this->queryParameters = $queryParameters;
-        $this->pathParameters = $pathParameters;
+        $this->queryParameters = $this->getQueryParametersResolver()->resolve($queryParameters);
+        $this->pathParameters = $this->getPathParametersResolver()->resolve($pathParameters);
         $this->headers = $headers;
     }
 
@@ -57,33 +57,18 @@ abstract class Operation implements OperationInterface
         return new OptionsResolver();
     }
 
-    public function getResolvedPath(array $pathParameters = []): string
+    public function getResolvedPath(): string
     {
-        return $this->resolvePath($pathParameters);
+        return $this->resolvePath();
     }
 
-    protected function resolvePath(array $pathParameters)
+    protected function resolvePath()
     {
         $path = $this->getPath();
-        foreach ($this->resolvePathParameters($pathParameters) as $parameter => $value) {
+        foreach ($this->pathParameters as $parameter => $value) {
             $path = preg_replace(sprintf('/\{%s\}/', $parameter), $value, $path);
         }
 
         return $path;
-    }
-
-    protected function resolvePathParameters($pathParameters): array
-    {
-        $parameters = array_merge($this->pathParameters, $pathParameters);
-        $resolver = $this->getPathParametersResolver();
-
-        return $resolver->resolve($this->pathParameters);
-    }
-
-    protected function resolveQueryParameters(): array
-    {
-        $resolver = $this->getPathParametersResolver();
-
-        return $resolver->resolve($this->pathParameters);
     }
 }
