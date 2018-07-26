@@ -3,6 +3,7 @@
 namespace Starweb\Api\Model\ProductCategory;
 
 use Starweb\Api\Model\ProductLanguage\ProductCategoryLanguage;
+use Starweb\Api\Model\ProductLanguage\ProductCategoryLanguageCollection;
 
 class ProductCategory
 {
@@ -33,13 +34,13 @@ class ProductCategory
     /**
      * The Id to the category`s image file. Has to be an existing mediaFile
      *
-     * @var int
+     * @var int|null
      */
     protected $imageFileId;
     /**
      * 
      *
-     * @var ProductCategoryLanguage[]
+     * @var ProductCategoryLanguageCollection
      */
     protected $languages;
 
@@ -52,7 +53,7 @@ class ProductCategory
     /**
      * The category`s parent`s Id
      *
-     * @var int
+     * @var int|null
      */
     protected $parentId;
     /**
@@ -175,20 +176,20 @@ class ProductCategory
     /**
      * 
      *
-     * @return ProductCategoryLanguages[]
+     * @return ProductCategoryLanguageCollection
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : ?ProductCategoryLanguageCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductCategoryLanguages[] $languages
+     * @param ProductCategoryLanguageCollection $languages
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(?ProductCategoryLanguageCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

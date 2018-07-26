@@ -15,7 +15,7 @@ class ProductCategoryItem
      *
      * @return ProductCategory
      */
-    public function getData() : ?ProductCategory
+    public function getData() : ProductCategory
     {
         return $this->data;
     }
