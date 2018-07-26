@@ -45,6 +45,11 @@ abstract class Operation implements OperationInterface
         return $this->headers;
     }
 
+    public function getParameters(): array
+    {
+        return $this->parameters;
+    }
+
     public function getResolvedParameters(): array
     {
         return $this->getParametersResolver()->resolve($this->parameters);

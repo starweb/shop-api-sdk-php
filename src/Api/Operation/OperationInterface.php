@@ -10,6 +10,8 @@ interface OperationInterface
 
     public function getResolvedParameters(): array;
 
+    public function getParameters(): array;
+
     public function getHeaders(): array;
 
     public function getResolvedPath(): string;
