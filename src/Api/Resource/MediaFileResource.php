@@ -24,7 +24,7 @@ class MediaFileResource extends Resource
      */
     public function list(int $page = null): MediaFileCollection
     {
-        $response = $this->performOperation(new ListMediaFiles(['page' => $page]));
+        $response = $this->performOperation(new ListMediaFiles($this, ['page' => $page]));
 
         return $response->getContentAsModel(MediaFileCollection::class);
     }
@@ -38,7 +38,7 @@ class MediaFileResource extends Resource
      */
     public function create(UploadFileInterface $file): MediaFile
     {
-        $response = $this->performOperation(new CreateMediaFile($file));
+        $response = $this->performOperation(new CreateMediaFile($this, $file));
         $item = $response->getContentAsModel(MediaFileItem::class);
 
         return $item->getData();
@@ -54,7 +54,7 @@ class MediaFileResource extends Resource
      */
     public function retrieve(int $mediaFileId): MediaFile
     {
-        $response = $this->performOperation(new RetrieveMediaFile([], ['mediaFileId' => $mediaFileId]));
+        $response = $this->performOperation(new RetrieveMediaFile($this, [], ['mediaFileId' => $mediaFileId]));
         $item = $response->getContentAsModel(MediaFileItem::class);
 
         return $item->getData();
@@ -69,7 +69,7 @@ class MediaFileResource extends Resource
      */
     public function delete(int $mediaFileId): bool
     {
-        $response = $this->performOperation(new DeleteMediaFile([], ['mediaFileId' => $mediaFileId]));
+        $response = $this->performOperation(new DeleteMediaFile($this, [], ['mediaFileId' => $mediaFileId]));
 
         return 204 === $response->getStatusCode();
     }
@@ -83,7 +83,7 @@ class MediaFileResource extends Resource
      */
     public function update(int $mediaFileId, MediaFileUpload $file): MediaFile
     {
-        $response = $this->performOperation(new UpdateMediaFile($file, [], ['mediaFileId' => $mediaFileId]));
+        $response = $this->performOperation(new UpdateMediaFile($this, $file, [], ['mediaFileId' => $mediaFileId]));
         $item = $response->getContentAsModel(MediaFileItem::class);
 
         return $item->getData();

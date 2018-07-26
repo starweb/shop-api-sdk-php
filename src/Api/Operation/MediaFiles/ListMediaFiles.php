@@ -17,10 +17,10 @@ class ListMediaFiles extends Operation
         return '/media-files';
     }
 
-    protected function getQueryParametersResolver(): OptionsResolver
+    protected function getParametersResolver(): OptionsResolver
     {
         $resolver = new OptionsResolver();
-        $resolver->isDefined(['page']);
+        $resolver->setDefined(['page']);
 
         return $resolver;
     }

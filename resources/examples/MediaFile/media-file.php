@@ -48,3 +48,5 @@ $deleted = $mediaFileResource->delete($mediaFile->getId());
 // update a media file
 $updateUploadFile = new MediaFileUpload(__DIR__ . '/test.jpg');
 $updatedMediaFile = $mediaFileResource->update(current($files)->getId(), $updateUploadFile);
+
+var_dump($updatedMediaFile);

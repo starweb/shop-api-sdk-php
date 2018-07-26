@@ -8,9 +8,11 @@ interface OperationInterface
 
     public function getMethod(): string;
 
-    public function getQueryParameters(): array;
+    public function getParameters(): array;
 
     public function getHeaders(): array;
 
     public function getResolvedPath(): string;
+
+    public function resolvePathParameters(): array;
 }

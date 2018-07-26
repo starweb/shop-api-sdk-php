@@ -6,25 +6,41 @@ namespace Starweb\Api\Resource;
 use Starweb\Api\Model\CustomerTag\CustomerTag;
 use Starweb\Api\Model\CustomerTag\CustomerTagCollection;
 use Starweb\Api\Model\CustomerTag\CustomerTagItem;
+use Starweb\Api\Operation\CustomerTag\CreateCustomerTag;
+use Starweb\Api\Operation\CustomerTag\DeleteCustomerTag;
 use Starweb\Api\Operation\CustomerTag\ListCustomerTags;
+use Starweb\Api\Operation\CustomerTag\ReplaceCustomerTag;
+use Starweb\Api\Operation\CustomerTag\RetrieveCustomerTag;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CustomerTagResource extends Resource
 {
+    public function getPathParametersResolver(): OptionsResolver
+    {
+        $resolver = new OptionsResolver();
+        $resolver->setRequired('customerId');
+        $resolver->setAllowedTypes('customerId', 'int');
+
+        return $resolver;
+    }
+
     /**
      * @return CustomerTagCollection
      *
      * @throws \Http\Client\Exception
      * @throws \Starweb\Exception\InvalidResponseContentException
      */
-    public function list(int $customerId): CustomerTagCollection
+    public function list(): CustomerTagCollection
     {
-        $response = $this->performOperation(new ListCustomerTags());
+        $response = $this->performOperation(
+            new ListCustomerTags($this, [], $this->getPathParameters())
+        );
 
         return $response->getContentAsModel(CustomerTagCollection::class);
     }
 
     /**
-     * @param CustomerTag $tag
+     * @param int $tagId
      *
      * @return CustomerTag
      *
@@ -32,55 +48,11 @@ class CustomerTagResource extends Resource
      */
     public function create(CustomerTag $tag): CustomerTag
     {
-        $response = $this->getClient()->post($this->getResolvedEndpoint(), $this->getSerializer()->normalize($tag));
-        $item = $response->getContentAsModel(CustomerTagItem::class);
-
-        return $item->getData();
-    }
-
-    /**
-     * @param int $customerId
-     * @param int $id
-     *
-     * @return CustomerTag
-     *
-     * @throws \Http\Client\Exception
-     * @throws \Starweb\Exception\InvalidResponseContentException
-     */
-    public function retrieve(int $id): CustomerTag
-    {
-        $response = $this->getClient()->get(sprintf('%s/%s', $this->getResolvedEndpoint(), $id));
-        $item = $response->getContentAsModel(CustomerTagItem::class);
-
-        return $item->getData();
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return bool
-     *
-     * @throws \Http\Client\Exception
-     */
-    public function delete(int $id): bool
-    {
-        $response = $this->getClient()->delete(sprintf('%s/%s', $this->getResolvedEndpoint(), $id));
-
-        return 204 === $response->getStatusCode();
-    }
-
-    /**
-     * @param CustomerTag $customerTag
-     *
-     * @return CustomerTag
-     *
-     * @throws \Http\Client\Exception
-     */
-    public function replace(CustomerTag $customerTag): CustomerTag
-    {
-        $response = $this->getClient()->put(
-            sprintf('%s/%s', $this->getResolvedEndpoint(), $customerTag->getTagId()),
-            $this->getSerializer()->normalize($customerTag)
+        $response = $this->performOperation(
+            new CreateCustomerTag(
+                $this,
+                $this->getSerializer()->normalize($tag),
+                $this->getPathParameters())
         );
         $item = $response->getContentAsModel(CustomerTagItem::class);
 
@@ -88,16 +60,82 @@ class CustomerTagResource extends Resource
     }
 
     /**
-     * @param int $id
-     * @param CustomerTag $customerTagData
+     * @param int $tagId
+     *
+     * @return CustomerTag
+     *
+     * @throws \Http\Client\Exception
+     * @throws \Starweb\Exception\InvalidResponseContentException
+     */
+    public function retrieve(int $tagId): CustomerTag
+    {
+        $pathParameters = array_merge($this->getPathParameters(), ['tagId' => $tagId]);
+        $response = $this->performOperation(
+            new RetrieveCustomerTag($this, [], $pathParameters)
+        );
+        $item = $response->getContentAsModel(CustomerTagItem::class);
+
+        return $item->getData();
+    }
+
+    /**
+     * @param int $tagId
+     *
+     * @return bool
+     *
+     * @throws \Http\Client\Exception
+     */
+    public function delete(int $tagId): bool
+    {
+        $pathParameters = array_merge($this->getPathParameters(), ['tagId' => $tagId]);
+        $response = $this->performOperation(
+            new DeleteCustomerTag($this, [], $pathParameters)
+        );
+
+        return 204 === $response->getStatusCode();
+    }
+
+    /**
+     * @param int $tagId
+     * @param CustomerTag $tag
      *
      * @return CustomerTag
      *
      * @throws \Http\Client\Exception
      */
-    public function update(int $id, array $customerTagData): CustomerTag
+    public function replace(int $tagId, CustomerTag $tag): CustomerTag
     {
-        $response = $this->getClient()->patch(sprintf('%s/%s', $this->getResolvedEndpoint(), $id), $customerTagData);
+        $pathParameters = array_merge($this->getPathParameters(), ['tagId' => $tagId]);
+        $response = $this->performOperation(
+            new ReplaceCustomerTag(
+                $this,
+                $this->getSerializer()->normalize($tag),
+                $pathParameters
+            )
+        );
+        $item = $response->getContentAsModel(CustomerTagItem::class);
+
+        return $item->getData();
+    }
+
+    /**
+     * @param int $tagId
+     * @param CustomerTag $tag
+     *
+     * @return CustomerTag
+     *
+     * @throws \Http\Client\Exception
+     */
+    public function update(int $tagId, CustomerTag $tag): CustomerTag
+    {
+        $pathParameters = array_merge($this->getPathParameters(), ['tagId' => $tagId]);
+        $response = $this->performOperation(
+            new ReplaceCustomerTag(
+                $this,
+                $this->getSerializer()->normalize($tag),
+                $pathParameters
+            )
+        );
         $item = $response->getContentAsModel(CustomerTagItem::class);
 
         return $item->getData();

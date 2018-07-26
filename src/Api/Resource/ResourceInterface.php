@@ -6,6 +6,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 interface ResourceInterface
 {
+    public function getPathParameters(): array;
     public function getPathParametersResolver(): OptionsResolver;
-    public function getQueryParametersResolver(): OptionsResolver;
 }

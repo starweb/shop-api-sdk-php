@@ -122,17 +122,16 @@ class Starweb
      *
      * @throws \LogicException
      */
-    public function resource(string $resourceKey, array $pathParameters = []): ResourceInterface
-    {
+    public function resource(string $resourceKey, array $pathParameters = []): ResourceInterface {
         switch ($resourceKey) {
             case 'Shop':
-                $resource = new ShopResource($this->client);
+                $resource = new ShopResource($this->client, $pathParameters);
                 break;
             case 'ProductCategory':
-                $resource = new ProductCategoryResource($this->client);
+                $resource = new ProductCategoryResource($this->client, $pathParameters);
                 break;
             case 'MediaFile':
-                $resource = new MediaFileResource($this->client);
+                $resource = new MediaFileResource($this->client, $pathParameters);
                 break;
             case 'CustomerTag':
                 $resource = new CustomerTagResource($this->client, $pathParameters);

@@ -12,7 +12,7 @@ abstract class Operation implements OperationInterface
      */
     protected $resource;
 
-    private $queryParameters;
+    private $parameters;
 
     private $pathParameters;
 
@@ -20,19 +20,19 @@ abstract class Operation implements OperationInterface
 
     /**
      * Operation constructor.
-     * @param array $queryParameters
+     * @param array $parameters
      * @param array $pathParameters
      * @param array $headers
      */
     public function __construct(
         ResourceInterface $resource,
-        array $queryParameters = [],
+        array $parameters = [],
         array $pathParameters = [],
         array $headers = []
     ) {
         $this->resource = $resource;
-        $this->queryParameters = $this->getQueryParametersResolver()->resolve($queryParameters);
-        $this->pathParameters = $this->getPathParametersResolver()->resolve($pathParameters);
+        $this->parameters = $parameters;
+        $this->pathParameters = $pathParameters;
         $this->headers = $headers;
     }
 
@@ -45,19 +45,26 @@ abstract class Operation implements OperationInterface
         return $this->headers;
     }
 
-    public function getQueryParameters(): array
+    public function getParameters(): array
     {
-        return $this->queryParameters;
+        return $this->parameters;
     }
 
-    protected function getQueryParametersResolver(): OptionsResolver
+    protected function getParametersResolver(): OptionsResolver
     {
-        return $this->resource->getQueryParametersResolver();
+        return new OptionsResolver();
     }
 
     protected function getPathParametersResolver(): OptionsResolver
     {
         return $this->resource->getPathParametersResolver();
+    }
+
+    public function resolvePathParameters(): array
+    {
+        $parameters = array_merge($this->resource->getPathParameters(), $this->pathParameters);
+
+        return $this->getPathParametersResolver()->resolve($parameters);
     }
 
     public function getResolvedPath(): string
@@ -68,7 +75,7 @@ abstract class Operation implements OperationInterface
     protected function resolvePath()
     {
         $path = $this->getPath();
-        foreach ($this->pathParameters as $parameter => $value) {
+        foreach ($this->resolvePathParameters() as $parameter => $value) {
             $path = preg_replace(sprintf('/\{%s\}/', $parameter), $value, $path);
         }
 

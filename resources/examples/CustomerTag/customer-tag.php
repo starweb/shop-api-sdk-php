@@ -26,6 +26,20 @@ $customerTagCollection = $customerTagResource->list();
 // get customer tags from collection
 $tags = $customerTagCollection->getData();
 
+try {
+    // add a new tag
+    $newTag = new CustomerTag();
+    $newTag->setTagId(2);
+    $addedTag = $customerTagResource->create($newTag);
+} catch (ClientErrorException $exception) {
+    // handle exception here
+    echo $exception->getMessage();
+}
+
+/** @var CustomerTagCollection $customerTagCollection */
+$updatedCollection = $customerTagResource->list();
+$updateTags = $updatedCollection->getData();
+
 // get a single tag
 try {
     $customerTag = $customerTagResource->retrieve(1);
@@ -33,24 +47,30 @@ try {
     echo $exception->getMessage();
 }
 
-// add a new tag
-$tagToAdd = new CustomerTag();
+// delete a tag
 try {
-    $tagToAdd->setTagId(3);
-    $addedTag = $customerTagResource->create($tagToAdd);
+    $deleted = $customerTagResource->delete(2);
 } catch (ClientErrorException $exception) {
-    // handle exception here
     echo $exception->getMessage();
 }
 
-$tag = current($tags);
+/** @var CustomerTagCollection $customerTagCollection */
+$updatedCollection = $customerTagResource->list();
+$updateTags = $updatedCollection->getData();
 
 // replace a tag (update whole object via PUT)
-$tag->setId(3);
-$replacedTag = $customerTagResource->replace($tag);
+$replaceTag = new CustomerTag();
+$replaceTag->setTagId(2);
+$replacedTag = $customerTagResource->replace(3, $replaceTag);
+
+/** @var CustomerTagCollection $customerTagCollection */
+$updatedCollection = $customerTagResource->list();
+$updateTags = $updatedCollection->getData();
 
 // update a tag (pass in partial data used via PATCH)
-$updatedTag = $customerTagResource->update($id, ['id' => 2]);
+$replaceTag->setTagId(3);
+$updatedTag = $customerTagResource->update(2, $replaceTag);
 
-// delete a tag
-$customerTagResource->delete($addedTag->getTagId());
+/** @var CustomerTagCollection $customerTagCollection */
+$updatedCollection = $customerTagResource->list();
+$updateTags = $updatedCollection->getData();

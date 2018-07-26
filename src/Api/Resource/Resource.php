@@ -10,6 +10,7 @@ use Starweb\HttpClient\Message\EnhancedResponse;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 abstract class Resource implements ResourceInterface
@@ -30,21 +31,15 @@ abstract class Resource implements ResourceInterface
     private $pathParameters;
 
     /**
-     * @var array
-     */
-    private $queryParameters;
-
-    /**
      * Resource constructor.
      *
      * @param EnhancedHttpClient $client
-     * @param Serializer $serializer
+     * @param array $pathParameters
      */
-    public function __construct(EnhancedHttpClient $client, array $pathParameters = [], array $queryParameters = [])
+    public function __construct(EnhancedHttpClient $client, array $pathParameters = [])
     {
         $this->client = $client;
         $this->pathParameters = $this->getPathParametersResolver()->resolve($pathParameters);
-        $this->queryParameters = $this->getQueryParametersResolver()->resolve($queryParameters);
     }
 
     /**
@@ -67,28 +62,12 @@ abstract class Resource implements ResourceInterface
         return $this->serializer;
     }
 
-    /**
-     * @return array
-     */
-    protected function getPathParameters(): array
+    public function getPathParameters(): array
     {
         return $this->pathParameters;
     }
 
-    /**
-     * @return array
-     */
-    protected function getQueryParameters(): array
-    {
-        return $this->queryParameters;
-    }
-
     public function getPathParametersResolver(): OptionsResolver
-    {
-        return new OptionsResolver();
-    }
-
-    public function getQueryParametersResolver(): OptionsResolver
     {
         return new OptionsResolver();
     }
@@ -101,7 +80,7 @@ abstract class Resource implements ResourceInterface
 
         return call_user_func_array([$this->client, strtolower($operation->getMethod())], [
             $operation->getResolvedPath(),
-            $operation->getQueryParameters(),
+            $operation->getParameters(),
             $operation->getHeaders()
         ]);
     }

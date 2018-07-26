@@ -19,7 +19,7 @@ class ShopResource extends Resource
      */
     public function retrieve(): Shop
     {
-        $response = $this->performOperation(new RetrieveShop());
+        $response = $this->performOperation(new RetrieveShop($this));
         $item = $response->getContentAsModel(ShopItem::class);
 
         return $item->getData();

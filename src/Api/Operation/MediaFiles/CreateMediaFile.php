@@ -5,6 +5,7 @@ namespace Starweb\Api\Operation\MediaFiles;
 use Starweb\Api\Model\UploadFileInterface;
 use Starweb\Api\Operation\Operation;
 use Starweb\Api\Operation\UploadFileOperation;
+use Starweb\Api\Resource\ResourceInterface;
 
 class CreateMediaFile extends Operation implements UploadFileOperation
 {
@@ -13,9 +14,14 @@ class CreateMediaFile extends Operation implements UploadFileOperation
      */
     private $uploadFile;
 
-    public function __construct(UploadFileInterface $uploadFile, array $queryParameters = [], array $pathParameters = [], array $headers = [])
-    {
-        parent::__construct($queryParameters, $pathParameters, $headers);
+    public function __construct(
+        ResourceInterface $resource,
+        UploadFileInterface $uploadFile,
+        array $parameters = [],
+        array $pathParameters = [],
+        array $headers = []
+    ) {
+        parent::__construct($resource, $parameters, $pathParameters, $headers);
         $this->uploadFile = $uploadFile;
     }
 
