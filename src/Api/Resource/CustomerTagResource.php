@@ -11,6 +11,7 @@ use Starweb\Api\Operation\CustomerTag\DeleteCustomerTag;
 use Starweb\Api\Operation\CustomerTag\ListCustomerTags;
 use Starweb\Api\Operation\CustomerTag\ReplaceCustomerTag;
 use Starweb\Api\Operation\CustomerTag\RetrieveCustomerTag;
+use Starweb\Api\Operation\CustomerTag\UpdateCustomerTag;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CustomerTagResource extends Resource
@@ -40,7 +41,7 @@ class CustomerTagResource extends Resource
     }
 
     /**
-     * @param int $tagId
+     * @param CustomerTag $tag
      *
      * @return CustomerTag
      *
@@ -130,7 +131,7 @@ class CustomerTagResource extends Resource
     {
         $pathParameters = array_merge($this->getPathParameters(), ['tagId' => $tagId]);
         $response = $this->performOperation(
-            new ReplaceCustomerTag(
+            new UpdateCustomerTag(
                 $this,
                 $this->getSerializer()->normalize($tag),
                 $pathParameters
