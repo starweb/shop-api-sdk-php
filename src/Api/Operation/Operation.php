@@ -2,18 +2,21 @@
 
 namespace Starweb\Api\Operation;
 
-use Http\Message\MultipartStream\MultipartStreamBuilder;
-use Http\Message\StreamFactory;
+use Starweb\Api\Resource\ResourceInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Serializer\SerializerInterface;
 
 abstract class Operation implements OperationInterface
 {
-    protected $queryParameters;
+    /**
+     * @var ResourceInterface
+     */
+    protected $resource;
 
-    protected $pathParameters;
+    private $queryParameters;
 
-    protected $headers;
+    private $pathParameters;
+
+    private $headers;
 
     /**
      * Operation constructor.
@@ -21,8 +24,13 @@ abstract class Operation implements OperationInterface
      * @param array $pathParameters
      * @param array $headers
      */
-    public function __construct(array $queryParameters = [], array $pathParameters = [], array $headers = [])
-    {
+    public function __construct(
+        ResourceInterface $resource,
+        array $queryParameters = [],
+        array $pathParameters = [],
+        array $headers = []
+    ) {
+        $this->resource = $resource;
         $this->queryParameters = $this->getQueryParametersResolver()->resolve($queryParameters);
         $this->pathParameters = $this->getPathParametersResolver()->resolve($pathParameters);
         $this->headers = $headers;
@@ -37,11 +45,6 @@ abstract class Operation implements OperationInterface
         return $this->headers;
     }
 
-    public function getPathParameters(): array
-    {
-        return $this->pathParameters;
-    }
-
     public function getQueryParameters(): array
     {
         return $this->queryParameters;
@@ -49,12 +52,12 @@ abstract class Operation implements OperationInterface
 
     protected function getQueryParametersResolver(): OptionsResolver
     {
-        return new OptionsResolver();
+        return $this->resource->getQueryParametersResolver();
     }
 
     protected function getPathParametersResolver(): OptionsResolver
     {
-        return new OptionsResolver();
+        return $this->resource->getPathParametersResolver();
     }
 
     public function getResolvedPath(): string
