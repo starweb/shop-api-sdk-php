@@ -7,7 +7,6 @@ use Starweb\Starweb;
 use Starweb\Api\Authentication\ClientCredentials;
 use Starweb\Api\Resource\ProductCategoryResource;
 use Starweb\Api\Model\ProductCategory\ProductCategoryCollection;
-use Starweb\Api\Model\ProductCategory\ProductCategoryItem;
 use Starweb\Api\Model\ProductCategory\ProductCategory;
 use Starweb\Api\Model\ProductLanguage\ProductCategoryLanguage;
 
@@ -42,32 +41,39 @@ try {
     echo $exception->getMessage();
 }
 
-$foo = 'bar';
-
 // retrieve a product category
 $category = $resource->retrieve(1);
 
-$foo = 'bar';
-
-
 // replace a product category
 try {
+    $productCategoryLanguage = new ProductCategoryLanguage();
+    $productCategoryLanguage->setName('a replaced category');
+    $productCategoryLanguage->setLangCode('sv');
+
     $newCategory = new ProductCategory();
-    $createdCategory = $resource->replace(2, $newCategory);
+    $newCategory->setLanguages([$productCategoryLanguage]);
+    $newCategory->setVisibility('visible');
+
+    $replacedCategory = $resource->replace($createdCategory->getCategoryId(), $newCategory);
 } catch (Exception $exception) {
     echo $exception->getMessage();
 }
 
-$foo = 'bar';
-
-// replace a product category
+// update a product category
 try {
-    $newCategory = new ProductCategory();
-    $createdCategory = $resource->update(2, $newCategory);
+    $updateCategory = $category;
+    $updateCategory->setLanguages([$productCategoryLanguage]);
+    $updateCategory->setVisibility('hidden');
+    $updatedCategory = $resource->update(2, $updateCategory);
 } catch (Exception $exception) {
     echo $exception->getMessage();
 }
 
-$foo = 'bar';
+// delete a product category
+try {
+    $deleted = $resource->delete($createdCategory->getCategoryId());
+} catch (Exception $exception) {
+    echo $exception->getMessage();
+}
 
-
+$test = 'foo';

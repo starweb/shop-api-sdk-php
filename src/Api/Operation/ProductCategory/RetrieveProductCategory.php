@@ -3,6 +3,7 @@
 namespace Starweb\Api\Operation\ProductCategory;
 
 use Starweb\Api\Operation\Operation;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RetrieveProductCategory extends Operation
 {
@@ -13,6 +14,15 @@ class RetrieveProductCategory extends Operation
 
     public function getPath(): string
     {
-        return 'GET';
+        return '/product-categories/{productCategoryId}';
+    }
+
+    protected function getPathParametersResolver(): OptionsResolver
+    {
+        $resolver = new OptionsResolver();
+        $resolver->setRequired('productCategoryId');
+        $resolver->setAllowedTypes('productCategoryId', 'int');
+
+        return $resolver;
     }
 }
