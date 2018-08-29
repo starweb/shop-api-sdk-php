@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Model\CustomerExternalService;
 
-class CustomerExternalServices
+class CustomerExternalService
 {
     /**
      * The external service ID

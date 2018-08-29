@@ -16,13 +16,4 @@ class ListCustomerExternalServices extends Operation
     {
         return '/customers/{customerId}/external-services';
     }
-
-    protected function getPathParametersResolver(): OptionsResolver
-    {
-        $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('customerId');
-        $resolver->setAllowedTypes('customerId', 'integer');
-
-        return $resolver;
-    }
 }

@@ -2,31 +2,31 @@
 
 namespace Starweb\Api\Model\CustomerExternalService;
 
-class CustomerExternalServicesItem
+class CustomerExternalServiceItem
 {
     /**
      * 
      *
-     * @var CustomerExternalServices
+     * @var CustomerExternalService
      */
     protected $data;
     /**
      * 
      *
-     * @return CustomerExternalServices
+     * @return CustomerExternalService
      */
-    public function getData() : ?CustomerExternalServices
+    public function getData() : ?CustomerExternalService
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param CustomerExternalServicesModel $data
+     * @param CustomerExternalService $data
      *
      * @return self
      */
-    public function setData(?CustomerExternalServicesModel $data) : self
+    public function setData(?CustomerExternalService $data) : self
     {
         $this->data = $data;
         return $this;

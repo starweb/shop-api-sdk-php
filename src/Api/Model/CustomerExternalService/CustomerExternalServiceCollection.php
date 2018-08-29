@@ -2,18 +2,18 @@
 
 namespace Starweb\Api\Model\CustomerExternalService;
 
-class CustomerExternalServicesCollection
+class CustomerExternalServiceCollection
 {
     /**
      * A list of customer external services
      *
-     * @var CustomerExternalServices[]
+     * @var CustomerExternalService[]
      */
     protected $data;
     /**
      * A list of customer external services
      *
-     * @return CustomerExternalServices[]
+     * @return CustomerExternalService[]
      */
     public function getData() : ?array
     {
@@ -22,7 +22,7 @@ class CustomerExternalServicesCollection
     /**
      * A list of customer external services
      *
-     * @param CustomerExternalServices[]
+     * @param CustomerExternalService[]
      *
      * @return self
      */
