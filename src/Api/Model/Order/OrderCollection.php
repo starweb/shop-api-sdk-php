@@ -1,0 +1,61 @@
+<?php
+
+namespace Starweb\Api\Model\Order;
+
+class OrderCollection
+{
+    /**
+     * A list of orders
+     *
+     * @var Order[]
+     */
+    protected $data;
+    /**
+     * 
+     *
+     * @var OrderCollectionMeta
+     */
+    protected $meta;
+    /**
+     * A list of orders
+     *
+     * @return Order[]
+     */
+    public function getData() : ?array
+    {
+        return $this->data;
+    }
+    /**
+     * A list of orders
+     *
+     * @param Order[]
+     *
+     * @return self
+     */
+    public function setData(?array $data) : self
+    {
+        $this->data = $data;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return OrderCollectionMeta
+     */
+    public function getMeta() : ?OrderCollectionMeta
+    {
+        return $this->meta;
+    }
+    /**
+     * 
+     *
+     * @param OrderModelCollectionMeta $meta
+     *
+     * @return self
+     */
+    public function setMeta(?OrderModelCollectionMeta $meta) : self
+    {
+        $this->meta = $meta;
+        return $this;
+    }
+}
