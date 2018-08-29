@@ -2,20 +2,20 @@
 
 namespace Starweb\Api\Model\CustomerAddress;
 
-class CustomerAddressesCollection
+class CustomerAddressCollection
 {
     /**
      * 
      *
-     * @var CustomerAddressesCollectionData
+     * @var CustomerAddressCollectionData
      */
     protected $data;
     /**
      * 
      *
-     * @return CustomerAddressesCollectionData
+     * @return CustomerAddressCollectionData
      */
-    public function getData() : ?CustomerAddressesCollectionData
+    public function getData() : ?CustomerAddressCollectionData
     {
         return $this->data;
     }

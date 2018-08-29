@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Model\CustomerAddress;
 
-class CustomerAddressesCollectionData
+class CustomerAddressCollectionData
 {
     /**
      * 

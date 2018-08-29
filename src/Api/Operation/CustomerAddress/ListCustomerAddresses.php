@@ -5,16 +5,16 @@ namespace Starweb\Api\Operation\CustomerAddress;
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RemoveAddressFromCustomer extends Operation
+class ListCustomerAddresses extends Operation
 {
     public function getMethod(): string
     {
-        return 'DELETE';
+        return 'GET';
     }
 
     public function getPath(): string
     {
-        return '/customers/{customerId}/addresses/{addressType}';
+        return '/customers/{customerId}/addresses';
     }
 
     protected function getPathParametersResolver(): OptionsResolver
@@ -22,8 +22,6 @@ class RemoveAddressFromCustomer extends Operation
         $resolver = parent::getPathParametersResolver();
         $resolver->setRequired('customerId');
         $resolver->setAllowedTypes('customerId', 'integer');
-        $resolver->setRequired('addressType');
-        $resolver->setAllowedTypes('addressType', 'string');
 
         return $resolver;
     }

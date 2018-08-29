@@ -20,8 +20,6 @@ class RetrieveCustomerAddress extends Operation
     protected function getPathParametersResolver(): OptionsResolver
     {
         $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('customerId');
-        $resolver->setAllowedTypes('customerId', 'integer');
         $resolver->setRequired('addressType');
         $resolver->setAllowedTypes('addressType', 'string');
 
