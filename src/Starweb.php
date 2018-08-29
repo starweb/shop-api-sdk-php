@@ -11,6 +11,7 @@ use Http\Message\MessageFactory;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenManager;
 use Starweb\Api\Model\CustomerTag\CustomerTagItem;
+use Starweb\Api\Resource\CurrencyResource;
 use Starweb\Api\Resource\CustomerTagResource;
 use Starweb\Api\Resource\MediaFileResource;
 use Starweb\Exception\InvalidCredentialsException;
@@ -124,6 +125,9 @@ class Starweb
      */
     public function resource(string $resourceKey, array $pathParameters = []): ResourceInterface {
         switch ($resourceKey) {
+            case 'Currency':
+                $resource = new CurrencyResource($this->client, $pathParameters);
+                break;
             case 'Shop':
                 $resource = new ShopResource($this->client, $pathParameters);
                 break;

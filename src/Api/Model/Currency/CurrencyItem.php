@@ -22,11 +22,11 @@ class CurrencyItem
     /**
      * 
      *
-     * @param CurrencyModel $data
+     * @param Currency $data
      *
      * @return self
      */
-    public function setData(?CurrencyModel $data) : self
+    public function setData(?Currency $data) : self
     {
         $this->data = $data;
         return $this;
