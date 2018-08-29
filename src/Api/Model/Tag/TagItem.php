@@ -1,32 +1,32 @@
 <?php
 
-namespace Starweb\Api\Model\;
+namespace Starweb\Api\Model\Tag;
 
-class CustomerTagItem
+class TagItem
 {
     /**
      * 
      *
-     * @var CustomerTag
+     * @var Tag
      */
     protected $data;
     /**
      * 
      *
-     * @return CustomerTag
+     * @return Tag
      */
-    public function getData() : ?CustomerTag
+    public function getData() : ?Tag
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param CustomerTagModel $data
+     * @param Tag $data
      *
      * @return self
      */
-    public function setData(?CustomerTagModel $data) : self
+    public function setData(?Tag $data) : self
     {
         $this->data = $data;
         return $this;

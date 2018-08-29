@@ -4,7 +4,7 @@ namespace Starweb\Api\Operation\Tag;
 
 use Starweb\Api\Operation\Operation;
 
-class ListCustomersTags extends Operation
+class ListTags extends Operation
 {
     public function getMethod(): string
     {

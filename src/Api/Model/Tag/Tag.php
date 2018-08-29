@@ -1,23 +1,23 @@
 <?php
 
-namespace Starweb\Api\Model\CustomerTag;
+namespace Starweb\Api\Model\Tag;
 
-class CustomerAddedTag
+class Tag
 {
     /**
-     * The name of the tag
+     * The tag name
      *
      * @var string
      */
     protected $name;
     /**
-     * The id of the tag
+     * The tag Id
      *
      * @var int
      */
     protected $tagId;
     /**
-     * The name of the tag
+     * The tag name
      *
      * @return string
      */
@@ -26,7 +26,7 @@ class CustomerAddedTag
         return $this->name;
     }
     /**
-     * The name of the tag
+     * The tag name
      *
      * @param string $name
      *
@@ -38,7 +38,7 @@ class CustomerAddedTag
         return $this;
     }
     /**
-     * The id of the tag
+     * The tag Id
      *
      * @return int
      */
@@ -47,7 +47,7 @@ class CustomerAddedTag
         return $this->tagId;
     }
     /**
-     * The id of the tag
+     * The tag Id
      *
      * @param int $tagId
      *

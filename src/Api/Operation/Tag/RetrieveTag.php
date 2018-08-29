@@ -5,7 +5,7 @@ namespace Starweb\Api\Operation\Tag;
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RetrieveCustomersTag extends Operation
+class RetrieveTag extends Operation
 {
     public function getMethod(): string
     {

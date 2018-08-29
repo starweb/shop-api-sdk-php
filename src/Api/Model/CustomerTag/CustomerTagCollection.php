@@ -2,9 +2,7 @@
 
 namespace Starweb\Api\Model\CustomerTag;
 
-use Starweb\Api\Model\CollectionInterface;
-
-class CustomerTagCollection implements CollectionInterface
+class CustomerTagCollection
 {
     /**
      * A list of customer tags
@@ -12,27 +10,25 @@ class CustomerTagCollection implements CollectionInterface
      * @var CustomerTag[]
      */
     protected $data;
-
     /**
      * A list of customer tags
      *
      * @return CustomerTag[]
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A list of customer tags
      *
-     * @param CustomerTag[] $data
+     * @param CustomerTag[]
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
-
         return $this;
     }
 }

@@ -136,6 +136,9 @@ class Starweb
             case 'CustomerExternalService':
                 $resource = new CustomerExternalServiceResource($this->client, $pathParameters);
                 break;
+            case 'CustomerTag':
+                $resource = new CustomerTagResource($this->client, $pathParameters);
+                break;
             case 'Shop':
                 $resource = new ShopResource($this->client, $pathParameters);
                 break;
@@ -145,8 +148,8 @@ class Starweb
             case 'MediaFile':
                 $resource = new MediaFileResource($this->client, $pathParameters);
                 break;
-            case 'CustomerTag':
-                $resource = new CustomerTagResource($this->client, $pathParameters);
+            case 'Tag':
+                $resource = new TagResource($this->client, $pathParameters);
                 break;
             default:
                 throw new \LogicException(sprintf('Undefined resource instance called: "%s"', $resourceKey));

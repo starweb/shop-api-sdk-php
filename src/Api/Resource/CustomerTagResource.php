@@ -2,16 +2,13 @@
 
 namespace Starweb\Api\Resource;
 
-
 use Starweb\Api\Model\CustomerTag\CustomerTag;
 use Starweb\Api\Model\CustomerTag\CustomerTagCollection;
 use Starweb\Api\Model\CustomerTag\CustomerTagItem;
 use Starweb\Api\Operation\CustomerTag\CreateCustomerTag;
 use Starweb\Api\Operation\CustomerTag\DeleteCustomerTag;
 use Starweb\Api\Operation\CustomerTag\ListCustomerTags;
-use Starweb\Api\Operation\CustomerTag\ReplaceCustomerTag;
 use Starweb\Api\Operation\CustomerTag\RetrieveCustomerTag;
-use Starweb\Api\Operation\CustomerTag\UpdateCustomerTag;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CustomerTagResource extends Resource
@@ -41,18 +38,18 @@ class CustomerTagResource extends Resource
     }
 
     /**
-     * @param CustomerTag $tag
+     * @param int $tagId
      *
      * @return CustomerTag
      *
      * @throws \Http\Client\Exception
      */
-    public function create(CustomerTag $tag): CustomerTag
+    public function create(int $tagId): CustomerTag
     {
         $response = $this->performOperation(
             new CreateCustomerTag(
                 $this,
-                $this->getSerializer()->normalize($tag),
+                $this->getSerializer()->normalize(['tagId' => $tagId]),
                 $this->getPathParameters())
         );
         $item = $response->getContentAsModel(CustomerTagItem::class);
@@ -94,51 +91,5 @@ class CustomerTagResource extends Resource
         );
 
         return 204 === $response->getStatusCode();
-    }
-
-    /**
-     * @param int $tagId
-     * @param CustomerTag $tag
-     *
-     * @return CustomerTag
-     *
-     * @throws \Http\Client\Exception
-     */
-    public function replace(int $tagId, CustomerTag $tag): CustomerTag
-    {
-        $pathParameters = array_merge($this->getPathParameters(), ['tagId' => $tagId]);
-        $response = $this->performOperation(
-            new ReplaceCustomerTag(
-                $this,
-                $this->getSerializer()->normalize($tag),
-                $pathParameters
-            )
-        );
-        $item = $response->getContentAsModel(CustomerTagItem::class);
-
-        return $item->getData();
-    }
-
-    /**
-     * @param int $tagId
-     * @param CustomerTag $tag
-     *
-     * @return CustomerTag
-     *
-     * @throws \Http\Client\Exception
-     */
-    public function update(int $tagId, CustomerTag $tag): CustomerTag
-    {
-        $pathParameters = array_merge($this->getPathParameters(), ['tagId' => $tagId]);
-        $response = $this->performOperation(
-            new UpdateCustomerTag(
-                $this,
-                $this->getSerializer()->normalize($tag),
-                $pathParameters
-            )
-        );
-        $item = $response->getContentAsModel(CustomerTagItem::class);
-
-        return $item->getData();
     }
 }

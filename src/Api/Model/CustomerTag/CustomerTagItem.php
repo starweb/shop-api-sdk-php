@@ -22,11 +22,11 @@ class CustomerTagItem
     /**
      * 
      *
-     * @param CustomerTag $data
+     * @param CustomerAddedTagModel $data
      *
      * @return self
      */
-    public function setData(?CustomerTag $data) : self
+    public function setData(?CustomerAddedTagModel $data) : self
     {
         $this->data = $data;
         return $this;

@@ -1,34 +1,38 @@
 <?php
 
-namespace Starweb\Api\Model\CustomerTag;
+namespace Starweb\Api\Model\Tag;
 
-class CustomerAddedTagCollection
+use Starweb\Api\Model\CollectionInterface;
+
+class TagCollection implements CollectionInterface
 {
     /**
      * A list of customer tags
      *
-     * @var CustomerAddedTag[]
+     * @var Tag[]
      */
     protected $data;
+
     /**
      * A list of customer tags
      *
-     * @return CustomerAddedTag[]
+     * @return Tag[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }
     /**
      * A list of customer tags
      *
-     * @param CustomerAddedTag[]
+     * @param Tag[] $data
      *
      * @return self
      */
-    public function setData(?array $data) : self
+    public function setData(array $data) : self
     {
         $this->data = $data;
+
         return $this;
     }
 }
