@@ -1,15 +1,15 @@
 <?php
 
-namespace Starweb\Api\Operation\MediaFiles;
+namespace Starweb\Api\Operation\MediaFile;
 
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RetrieveMediaFile extends Operation
+class DeleteMediaFile extends Operation
 {
     public function getMethod() : string
     {
-        return 'GET';
+        return 'DELETE';
     }
 
     public function getPath(): string

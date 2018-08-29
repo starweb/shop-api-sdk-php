@@ -1,6 +1,6 @@
 <?php
 
-namespace Starweb\Api\Operation\MediaFiles;
+namespace Starweb\Api\Operation\MediaFile;
 
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;

@@ -7,11 +7,11 @@ use Starweb\Api\Model\MediaFile\MediaFileCollection;
 use Starweb\Api\Model\MediaFile\MediaFileItem;
 use Starweb\Api\Model\MediaFile\MediaFileUpload;
 use Starweb\Api\Model\UploadFileInterface;
-use Starweb\Api\Operation\MediaFiles\CreateMediaFile;
-use Starweb\Api\Operation\MediaFiles\DeleteMediaFile;
-use Starweb\Api\Operation\MediaFiles\ListMediaFiles;
-use Starweb\Api\Operation\MediaFiles\RetrieveMediaFile;
-use Starweb\Api\Operation\MediaFiles\UpdateMediaFile;
+use Starweb\Api\Operation\MediaFile\CreateMediaFile;
+use Starweb\Api\Operation\MediaFile\DeleteMediaFile;
+use Starweb\Api\Operation\MediaFile\ListMediaFiles;
+use Starweb\Api\Operation\MediaFile\RetrieveMediaFile;
+use Starweb\Api\Operation\MediaFile\UpdateMediaFile;
 
 class MediaFileResource extends Resource
 {

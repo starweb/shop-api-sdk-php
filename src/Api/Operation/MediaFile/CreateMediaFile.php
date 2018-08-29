@@ -1,14 +1,13 @@
 <?php
 
-namespace Starweb\Api\Operation\MediaFiles;
+namespace Starweb\Api\Operation\MediaFile;
 
 use Starweb\Api\Model\UploadFileInterface;
 use Starweb\Api\Operation\Operation;
 use Starweb\Api\Operation\UploadFileOperation;
 use Starweb\Api\Resource\ResourceInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UpdateMediaFile extends Operation implements UploadFileOperation
+class CreateMediaFile extends Operation implements UploadFileOperation
 {
     /**
      * @var UploadFileInterface
@@ -33,22 +32,11 @@ class UpdateMediaFile extends Operation implements UploadFileOperation
 
     public function getMethod(): string
     {
-        return 'PATCH';
+        return 'POST';
     }
 
     public function getPath(): string
     {
-        return '/media-files/{mediaFileId}';
+        return '/media-files';
     }
-
-    public function getPathParametersResolver(): OptionsResolver
-    {
-        $resolver = new OptionsResolver();
-        $resolver->setRequired(['mediaFileId']);
-        $resolver->setAllowedTypes('mediaFileId', 'int');
-
-        return $resolver;
-    }
-
-
 }
