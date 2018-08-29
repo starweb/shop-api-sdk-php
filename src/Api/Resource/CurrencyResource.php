@@ -33,13 +33,13 @@ class CurrencyResource extends Resource
      * @throws \Http\Client\Exception
      * @throws \Starweb\Exception\InvalidResponseContentException
      */
-    public function retrieve(string $currencyCode): CurrencyItem
+    public function retrieve(string $currencyCode): Currency
     {
         $pathParameters = array_merge($this->getPathParameters(), ['currencyCode' => $currencyCode]);
         $response = $this->performOperation(
             new RetrieveCurrency($this, [], $pathParameters)
         );
-        $item = $response->getContentAsModel(CustomerTagItem::class);
+        $item = $response->getContentAsModel(CurrencyItem::class);
 
         return $item->getData();
     }
