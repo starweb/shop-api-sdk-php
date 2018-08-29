@@ -8,3 +8,6 @@ composer.lock
 
 # test coverage
 resources/test-coverage
+
+# generated
+resources/generation/generated
