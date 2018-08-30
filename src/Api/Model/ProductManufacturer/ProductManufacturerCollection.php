@@ -10,6 +10,7 @@ class ProductManufacturerCollection
      * @var ProductManufacturer[]
      */
     protected $data;
+
     /**
      * A collection of product manufacturers
      *
@@ -19,6 +20,7 @@ class ProductManufacturerCollection
     {
         return $this->data;
     }
+
     /**
      * A collection of product manufacturers
      *
