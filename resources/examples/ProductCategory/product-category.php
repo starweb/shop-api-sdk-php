@@ -2,6 +2,7 @@
 <?php
 
 require_once __DIR__.'/../../../vendor/autoload.php';
+require_once __DIR__.'/../config.php';
 
 use Starweb\Starweb;
 use Starweb\Api\Authentication\ClientCredentials;
@@ -11,10 +12,10 @@ use Starweb\Api\Model\ProductCategory\ProductCategory;
 use Starweb\Api\Model\ProductLanguage\ProductCategoryLanguage;
 
 // create the credentials object
-$credentials = new ClientCredentials('YOUR_CLIENT_ID', 'YOUR_CLIENT_SECRET');
+$credentials = new ClientCredentials($clientId, $clientSecret);
 
 // create the sdk object
-$starweb = new Starweb($credentials, 'YOUR_API_URI');
+$starweb = new Starweb($credentials, $apiBaseUri);
 
 // get a resource by its name in this case "ProductCategory"
 /** @var ProductCategoryResource $resource */

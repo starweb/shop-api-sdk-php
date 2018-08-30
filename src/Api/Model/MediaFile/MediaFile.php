@@ -86,7 +86,7 @@ class MediaFile implements ModelInterface
      *
      * @return self
      */
-    public function setCreatedAt(string $createdAt): self
+    public function setCreatedAt(string $createdAt = null): self
     {
         $this->createdAt = $createdAt;
 
@@ -110,7 +110,7 @@ class MediaFile implements ModelInterface
      *
      * @return self
      */
-    public function setHeight(int $height): self
+    public function setHeight(int $height = null): self
     {
         $this->height = $height;
 
@@ -182,7 +182,7 @@ class MediaFile implements ModelInterface
      *
      * @return self
      */
-    public function setModifiedAt(string $modifiedAt): self
+    public function setModifiedAt(string $modifiedAt = null): self
     {
         $this->modifiedAt = $modifiedAt;
 
@@ -278,7 +278,7 @@ class MediaFile implements ModelInterface
      *
      * @return self
      */
-    public function setWidth(int $width): self
+    public function setWidth(int $width = null): self
     {
         $this->width = $width;
 
