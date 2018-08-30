@@ -5,7 +5,7 @@ namespace Starweb\Api\Operation\ProductVariant;
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ReplaceProductsVariant extends Operation
+class ReplaceProductVariant extends Operation
 {
     public function getMethod(): string
     {
@@ -20,8 +20,6 @@ class ReplaceProductsVariant extends Operation
     protected function getPathParametersResolver(): OptionsResolver
     {
         $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('productId');
-        $resolver->setAllowedTypes('productId', 'integer');
         $resolver->setRequired('variantId');
         $resolver->setAllowedTypes('variantId', 'integer');
 

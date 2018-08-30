@@ -16,13 +16,4 @@ class CreateProductVariant extends Operation
     {
         return '/products/{productId}/variants';
     }
-
-    protected function getPathParametersResolver(): OptionsResolver
-    {
-        $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('productId');
-        $resolver->setAllowedTypes('productId', 'integer');
-
-        return $resolver;
-    }
 }

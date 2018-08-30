@@ -36,6 +36,7 @@ use Starweb\Api\Resource\ProductUnitResource;
 use Starweb\Api\Resource\ProductVariantAttributeResource;
 use Starweb\Api\Resource\ProductVariantAttributeValueResource;
 use Starweb\Api\Resource\ProductVariantPricelistPriceResource;
+use Starweb\Api\Resource\ProductVariantResource;
 use Starweb\Api\Resource\TagResource;
 use Starweb\Exception\InvalidCredentialsException;
 use Starweb\HttpClient\Builder;
@@ -225,6 +226,9 @@ class Starweb
                 break;
             case 'ProductVariantPricelistPrice':
                 $resource = new ProductVariantPricelistPriceResource($this->client, $pathParameters);
+                break;
+            case 'ProductVariant':
+                $resource = new ProductVariantResource($this->client, $pathParameters);
                 break;
             case 'Shop':
                 $resource = new ShopResource($this->client, $pathParameters);

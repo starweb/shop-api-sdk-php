@@ -2,6 +2,9 @@
 
 namespace Starweb\Api\Model\ProductVariant;
 
+use Starweb\Api\Model\ProductVariantAttributeValue\ProductVariantAttributeValue;
+use Starweb\Api\Model\ProductVariantPricelistPrice\ProductVariantPricelistPrice;
+
 class ProductVariant
 {
     /**
@@ -49,7 +52,7 @@ class ProductVariant
     /**
      * A collection of product variant prices
      *
-     * @var ProductVariantPrice[]
+     * @var ProductVariantPricelistPrice[]
      */
     protected $prices;
     /**
@@ -226,7 +229,7 @@ class ProductVariant
     /**
      * A collection of product variant prices
      *
-     * @return ProductVariantPrice[]
+     * @return ProductVariantPricelistPrice[]
      */
     public function getPrices() : array
     {
@@ -235,7 +238,7 @@ class ProductVariant
     /**
      * A collection of product variant prices
      *
-     * @param ProductVariantPrice[]
+     * @param ProductVariantPricelistPrice[]
      *
      * @return self
      */
