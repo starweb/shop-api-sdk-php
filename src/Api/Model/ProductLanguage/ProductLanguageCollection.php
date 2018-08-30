@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Model\ProductLanguage;
 
-class ProductLanguageCollection
+use Starweb\Api\Model\CollectionInterface;
+
+class ProductLanguageCollection implements CollectionInterface
 {
     /**
      * A collection of product languages
@@ -10,6 +12,7 @@ class ProductLanguageCollection
      * @var ProductLanguage[]
      */
     protected $data;
+
     /**
      * A collection of product languages
      *
@@ -19,6 +22,7 @@ class ProductLanguageCollection
     {
         return $this->data;
     }
+
     /**
      * A collection of product languages
      *

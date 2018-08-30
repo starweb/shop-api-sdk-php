@@ -5,11 +5,11 @@ namespace Starweb\Api\Operation\ProductLanguage;
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UpdateProductsLanguage extends Operation
+class ReplaceProductLanguage extends Operation
 {
     public function getMethod(): string
     {
-        return 'PATCH';
+        return 'PUT';
     }
 
     public function getPath(): string
@@ -20,8 +20,6 @@ class UpdateProductsLanguage extends Operation
     protected function getPathParametersResolver(): OptionsResolver
     {
         $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('productId');
-        $resolver->setAllowedTypes('productId', 'integer');
         $resolver->setRequired('langCode');
         $resolver->setAllowedTypes('langCode', 'string');
 
