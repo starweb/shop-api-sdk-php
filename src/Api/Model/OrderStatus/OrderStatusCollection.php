@@ -10,6 +10,7 @@ class OrderStatusCollection
      * @var OrderStatus[]
      */
     protected $data;
+
     /**
      * A list of order statuses
      *
@@ -19,6 +20,7 @@ class OrderStatusCollection
     {
         return $this->data;
     }
+
     /**
      * A list of order statuses
      *
