@@ -2,11 +2,17 @@
 
 namespace Starweb\Api\Model\Product;
 
+use Starweb\Api\Model\ProductCategoryLink\ProductCategoryLinkCollection;
+use Starweb\Api\Model\ProductLanguage\ProductLanguageCollection;
+use Starweb\Api\Model\ProductMediaFileLink\ProductMediaFileLinkCollection;
+use Starweb\Api\Model\ProductMetaData\ProductMetaDataCollection;
+use Starweb\Api\Model\ProductUnit\ProductUnitItem;
+use Starweb\Api\Model\ProductVariant\ProductVariantCollection;
+use Starweb\Api\Model\ProductVatRate\ProductVatRateCollection;
+
 class Product
 {
     /**
-     *
-     *
      * @var ProductCategoryLinkCollection
      */
     protected $categories;
@@ -34,96 +40,93 @@ class Product
      * @var bool
      */
     protected $isBackInStockWatchable;
+
     /**
-     *
-     *
      * @var ProductLanguageCollection
      */
     protected $languages;
+
     /**
      * The id of the manufacturer to use for this product. Fetch and handle available manufacturers using the /product-manufacturers endpoint
      *
      * @var int
      */
     protected $manufacturerId;
+
     /**
-     *
-     *
      * @var ProductMediaFileLinkCollection
      */
     protected $mediaFiles;
+
     /**
-     *
-     *
      * @var ProductMetaDataCollection
      */
     protected $metaData;
+
     /**
      * A timestamp of when the product was modified. The time should be formatted using ISO-8601
      *
      * @var string
      */
     protected $modifiedAt;
+
     /**
      * A valid URL to a web page with more information for this product
      *
      * @var string
      */
     protected $moreInfoUrl;
+
     /**
-     *
-     *
      * @var int
      */
     protected $productId;
+
     /**
      * Sort index for this product in a list
      *
      * @var int
      */
     protected $sortIndex;
+
     /**
-     *
-     *
      * @var ProductUnitItem
      */
     protected $unit;
+
     /**
      * The id of the unit to use for this product if not standard. Fetch and handle available units using the /product-units endpoint
      *
      * @var int
      */
     protected $unitId;
+
     /**
-     *
-     *
      * @var ProductVariantCollection
      */
     protected $variants;
+
     /**
-     *
-     *
      * @var ProductVatRateCollection
      */
     protected $vatRates;
+
     /**
      * The visibility of this product. Supported values are: hidden, visible, pricelists
      *
      * @var string
      */
     protected $visibility;
+
     /**
-     *
-     *
      * @return ProductCategoryLinkCollection
      */
     public function getCategories() : ?ProductCategoryLinkCollection
     {
         return $this->categories;
     }
+
     /**
-     *
-     *
      * @param ProductCategoryLinkCollection $categories
      *
      * @return self
@@ -133,6 +136,7 @@ class Product
         $this->categories = $categories;
         return $this;
     }
+    
     /**
      * A timestamp of when the product was created. The time should be formatted using ISO-8601
      *

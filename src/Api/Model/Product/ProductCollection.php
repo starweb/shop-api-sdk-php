@@ -10,12 +10,12 @@ class ProductCollection
      * @var Product[]
      */
     protected $data;
+
     /**
-     *
-     *
      * @var ProductCollectionMeta
      */
     protected $meta;
+
     /**
      * A collection of products
      *
@@ -25,6 +25,7 @@ class ProductCollection
     {
         return $this->data;
     }
+
     /**
      * A collection of products
      *
@@ -37,18 +38,16 @@ class ProductCollection
         $this->data = $data;
         return $this;
     }
+
     /**
-     *
-     *
      * @return ProductCollectionMeta
      */
     public function getMeta() : ?ProductCollectionMeta
     {
         return $this->meta;
     }
+
     /**
-     *
-     *
      * @param ProductCollectionMeta $meta
      *
      * @return self

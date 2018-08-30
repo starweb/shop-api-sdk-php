@@ -31,6 +31,7 @@ use Starweb\Api\Resource\ProductManufacturerResource;
 use Starweb\Api\Resource\ProductMediaFileLinkResource;
 use Starweb\Api\Resource\ProductMetaDataResource;
 use Starweb\Api\Resource\ProductMetaDataTypeResource;
+use Starweb\Api\Resource\ProductResource;
 use Starweb\Api\Resource\ProductStockStatusResource;
 use Starweb\Api\Resource\ProductUnitResource;
 use Starweb\Api\Resource\ProductVariantAttributeResource;
@@ -233,6 +234,9 @@ class Starweb
                 break;
             case 'ProductVatRate':
                 $resource = new ProductVatRateResource($this->client, $pathParameters);
+                break;
+            case 'Product':
+                $resource = new ProductResource($this->client, $pathParameters);
                 break;
             case 'Shop':
                 $resource = new ShopResource($this->client, $pathParameters);
