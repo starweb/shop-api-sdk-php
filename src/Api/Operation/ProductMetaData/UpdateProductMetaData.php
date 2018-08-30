@@ -1,27 +1,27 @@
 <?php
 
-namespace Starweb\Api\Operation\ProductMetaDatum;
+namespace Starweb\Api\Operation\ProductMetaData;
 
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CreateProductsMetaData extends Operation
+class UpdateProductMetaData extends Operation
 {
     public function getMethod(): string
     {
-        return 'POST';
+        return 'PATCH';
     }
 
     public function getPath(): string
     {
-        return '/products/{productId}/meta-data';
+        return '/products/{productId}/meta-data/{metaDataTypeId}';
     }
 
     protected function getPathParametersResolver(): OptionsResolver
     {
         $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('productId');
-        $resolver->setAllowedTypes('productId', 'integer');
+        $resolver->setRequired('metaDataTypeId');
+        $resolver->setAllowedTypes('metaDataTypeId', 'integer');
 
         return $resolver;
     }

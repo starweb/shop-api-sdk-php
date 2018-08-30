@@ -1,11 +1,11 @@
 <?php
 
-namespace Starweb\Api\Operation\ProductMetaDatum;
+namespace Starweb\Api\Operation\ProductMetaData;
 
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ReplaceProductsMetaData extends Operation
+class ReplaceProductMetaData extends Operation
 {
     public function getMethod(): string
     {
@@ -20,8 +20,6 @@ class ReplaceProductsMetaData extends Operation
     protected function getPathParametersResolver(): OptionsResolver
     {
         $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('productId');
-        $resolver->setAllowedTypes('productId', 'integer');
         $resolver->setRequired('metaDataTypeId');
         $resolver->setAllowedTypes('metaDataTypeId', 'integer');
 

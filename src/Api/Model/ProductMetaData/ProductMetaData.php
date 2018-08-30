@@ -5,35 +5,33 @@ namespace Starweb\Api\Model\ProductMetaData;
 class ProductMetaData
 {
     /**
-     *
-     *
      * @var ProductMetaLanguageDataCollection
      */
     protected $languages;
+
     /**
      * The ID of the meta data type. Available meta data types can be fetched using the /product-meta-data-types endpoint
      *
      * @var int
      */
     protected $metaDataTypeId;
+
     /**
      * The sort index of this meta data for this product
      *
      * @var int
      */
     protected $sortIndex;
+
     /**
-     *
-     *
      * @return ProductMetaLanguageDataCollection
      */
     public function getLanguages() : ?ProductMetaLanguageDataCollection
     {
         return $this->languages;
     }
+
     /**
-     *
-     *
      * @param ProductMetaLanguageDataCollection $languages
      *
      * @return self
@@ -43,6 +41,7 @@ class ProductMetaData
         $this->languages = $languages;
         return $this;
     }
+
     /**
      * The ID of the meta data type. Available meta data types can be fetched using the /product-meta-data-types endpoint
      *
@@ -52,6 +51,7 @@ class ProductMetaData
     {
         return $this->metaDataTypeId;
     }
+
     /**
      * The ID of the meta data type. Available meta data types can be fetched using the /product-meta-data-types endpoint
      *

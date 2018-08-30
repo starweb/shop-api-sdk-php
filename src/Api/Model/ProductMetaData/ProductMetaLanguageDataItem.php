@@ -5,23 +5,19 @@ namespace Starweb\Api\Model\ProductMetaData;
 class ProductMetaLanguageDataItem
 {
     /**
-     *
-     *
      * @var ProductMetaLanguageData
      */
     protected $data;
+
     /**
-     *
-     *
      * @return ProductMetaLanguageData
      */
     public function getData() : ?ProductMetaLanguageData
     {
         return $this->data;
     }
+
     /**
-     *
-     *
      * @param ProductMetaLanguageData $data
      *
      * @return self

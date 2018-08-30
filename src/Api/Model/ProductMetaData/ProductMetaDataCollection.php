@@ -10,6 +10,7 @@ class ProductMetaDataCollection
      * @var ProductMetaData[]
      */
     protected $data;
+
     /**
      * A collection of product meta data
      *
@@ -19,6 +20,7 @@ class ProductMetaDataCollection
     {
         return $this->data;
     }
+
     /**
      * A collection of product meta data
      *
