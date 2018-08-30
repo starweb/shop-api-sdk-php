@@ -10,6 +10,7 @@ class ProductMetaDataTypeCollection
      * @var ProductMetaDataType[]
      */
     protected $data;
+
     /**
      * A collection of product meta data types
      *
@@ -19,6 +20,7 @@ class ProductMetaDataTypeCollection
     {
         return $this->data;
     }
+
     /**
      * A collection of product meta data types
      *

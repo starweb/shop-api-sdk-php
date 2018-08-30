@@ -10,7 +10,6 @@ use Http\Discovery\UriFactoryDiscovery;
 use Http\Message\MessageFactory;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenManager;
-use Starweb\Api\Model\CustomerTag\CustomerTagItem;
 use Starweb\Api\Resource\CurrencyResource;
 use Starweb\Api\Resource\CustomerAddressResource;
 use Starweb\Api\Resource\CustomerExternalServiceResource;
@@ -31,6 +30,7 @@ use Starweb\Api\Resource\ProductLanguageResource;
 use Starweb\Api\Resource\ProductManufacturerResource;
 use Starweb\Api\Resource\ProductMediaFileLinkResource;
 use Starweb\Api\Resource\ProductMetaDataResource;
+use Starweb\Api\Resource\ProductMetaDataTypeResource;
 use Starweb\Api\Resource\TagResource;
 use Starweb\Exception\InvalidCredentialsException;
 use Starweb\HttpClient\Builder;
@@ -202,6 +202,9 @@ class Starweb
                 break;
             case 'ProductMetaData':
                 $resource = new ProductMetaDataResource($this->client, $pathParameters);
+                break;
+            case 'ProductMetaDataType':
+                $resource = new ProductMetaDataTypeResource($this->client, $pathParameters);
                 break;
             case 'Shop':
                 $resource = new ShopResource($this->client, $pathParameters);
