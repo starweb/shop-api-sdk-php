@@ -175,9 +175,10 @@ class Starweb
 
     /**
      * retrieves a resource by name. Each resource gets injected the EnhancedHttpClient enabling
-     * them to query the api in a convenient way.
+     * it to query the api in a convenient way.
      *
-     * If the resource is not supported a LogicException is thrown.
+     * If the resource is not supported a LogicException is thrown. Available resource keys are defined in
+     * @see self::RESOURCE_KEYS
      *
      * The $pathParameters argument is needed for nested resources, e.g. if you want to use a resource CustomerTag
      * you need to pass in the parameter as ['customerId' => 123].
