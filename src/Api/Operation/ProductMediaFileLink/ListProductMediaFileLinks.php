@@ -5,7 +5,7 @@ namespace Starweb\Api\Operation\ProductMediaFileLink;
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ListProductsMediaFileLinks extends Operation
+class ListProductMediaFileLinks extends Operation
 {
     public function getMethod(): string
     {
@@ -15,14 +15,5 @@ class ListProductsMediaFileLinks extends Operation
     public function getPath(): string
     {
         return '/products/{productId}/media-files';
-    }
-
-    protected function getPathParametersResolver(): OptionsResolver
-    {
-        $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('productId');
-        $resolver->setAllowedTypes('productId', 'integer');
-
-        return $resolver;
     }
 }

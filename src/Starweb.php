@@ -29,6 +29,7 @@ use Starweb\Api\Resource\ProductAttributeResource;
 use Starweb\Api\Resource\ProductCategoryLinkResource;
 use Starweb\Api\Resource\ProductLanguageResource;
 use Starweb\Api\Resource\ProductManufacturerResource;
+use Starweb\Api\Resource\ProductMediaFileLinkResource;
 use Starweb\Api\Resource\TagResource;
 use Starweb\Exception\InvalidCredentialsException;
 use Starweb\HttpClient\Builder;
@@ -194,6 +195,9 @@ class Starweb
                 break;
             case 'ProductManufacturer':
                 $resource = new ProductManufacturerResource($this->client, $pathParameters);
+                break;
+            case 'ProductMediaFileLink':
+                $resource = new ProductMediaFileLinkResource($this->client, $pathParameters);
                 break;
             case 'Shop':
                 $resource = new ShopResource($this->client, $pathParameters);

@@ -10,6 +10,7 @@ class ProductMediaFileLinkCollection
      * @var ProductMediaFileLink[]
      */
     protected $data;
+
     /**
      * A collection of product media file links
      *
@@ -19,6 +20,7 @@ class ProductMediaFileLinkCollection
     {
         return $this->data;
     }
+
     /**
      * A collection of product media file links
      *
