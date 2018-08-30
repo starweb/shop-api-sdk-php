@@ -10,6 +10,7 @@ class PaymentMethodCollection
      * @var PaymentMethod[]
      */
     protected $data;
+
     /**
      * A collection of payment methods
      *
@@ -19,6 +20,7 @@ class PaymentMethodCollection
     {
         return $this->data;
     }
+
     /**
      * A collection of payment methods
      *
