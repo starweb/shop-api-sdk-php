@@ -1,6 +1,6 @@
 <?php
 
- Starweb\Api\Model\ShippingMethod;
+namespace Starweb\Api\Model\ShippingMethod;
 
 class ShippingMethodCollection
 {
@@ -10,6 +10,7 @@ class ShippingMethodCollection
      * @var ShippingMethod[]
      */
     protected $data;
+
     /**
      * A collection of shipping methods
      *
@@ -19,6 +20,7 @@ class ShippingMethodCollection
     {
         return $this->data;
     }
+
     /**
      * A collection of shipping methods
      *

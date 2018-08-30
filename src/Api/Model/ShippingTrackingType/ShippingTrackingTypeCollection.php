@@ -1,6 +1,6 @@
 <?php
 
- Starweb\Api\Model\ShippingTrackingType;
+namespace Starweb\Api\Model\ShippingTrackingType;
 
 class ShippingTrackingTypeCollection
 {
@@ -10,6 +10,7 @@ class ShippingTrackingTypeCollection
      * @var ShippingTrackingType[]
      */
     protected $data;
+
     /**
      * A list of shipping tracking types
      *
@@ -19,6 +20,7 @@ class ShippingTrackingTypeCollection
     {
         return $this->data;
     }
+
     /**
      * A list of shipping tracking types
      *

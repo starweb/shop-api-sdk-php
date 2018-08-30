@@ -1,6 +1,6 @@
 <?php
 
- Starweb\Api\Model\ShippingMethod;
+namespace Starweb\Api\Model\ShippingMethod;
 
 class ShippingMethodLanguage
 {

@@ -1,27 +1,23 @@
 <?php
 
- Starweb\Api\Model\ShippingMethod;
+namespace Starweb\Api\Model\ShippingMethod;
 
 class ShippingMethodItem
 {
     /**
-     *
-     *
      * @var ShippingMethod
      */
     protected $data;
+
     /**
-     *
-     *
      * @return ShippingMethod
      */
     public function getData() : ?ShippingMethod
     {
         return $this->data;
     }
+
     /**
-     *
-     *
      * @param ShippingMethod $data
      *
      * @return self

@@ -39,6 +39,8 @@ use Starweb\Api\Resource\ProductVariantAttributeValueResource;
 use Starweb\Api\Resource\ProductVariantPricelistPriceResource;
 use Starweb\Api\Resource\ProductVariantResource;
 use Starweb\Api\Resource\ProductVatRateResource;
+use Starweb\Api\Resource\ShippingMethodResource;
+use Starweb\Api\Resource\ShippingTrackingTypeResource;
 use Starweb\Api\Resource\TagResource;
 use Starweb\Exception\InvalidCredentialsException;
 use Starweb\HttpClient\Builder;
@@ -237,6 +239,12 @@ class Starweb
                 break;
             case 'Product':
                 $resource = new ProductResource($this->client, $pathParameters);
+                break;
+            case 'ShippingMethod':
+                $resource = new ShippingMethodResource($this->client, $pathParameters);
+                break;
+            case 'ShippingTrackingType':
+                $resource = new ShippingTrackingTypeResource($this->client, $pathParameters);
                 break;
             case 'Shop':
                 $resource = new ShopResource($this->client, $pathParameters);

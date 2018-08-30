@@ -1,6 +1,6 @@
 <?php
 
- Starweb\Api\Model\ShippingTrackingType;
+namespace Starweb\Api\Model\ShippingTrackingType;
 
 class ShippingTrackingType
 {
