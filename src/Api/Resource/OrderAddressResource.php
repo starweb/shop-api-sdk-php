@@ -3,56 +3,57 @@
 namespace Starweb\Api\Resource;
 
 use Starweb\Api\Model\Address\Address;
-use Starweb\Api\Model\CustomerAddress\CustomerAddressCollection;
-use Starweb\Api\Model\CustomerAddress\CustomerAddressItem;
-use Starweb\Api\Operation\CustomerAddress\DeleteCustomerAddress;
-use Starweb\Api\Operation\CustomerAddress\ListCustomerAddresses;
-use Starweb\Api\Operation\CustomerAddress\ReplaceCustomerAddress;
-use Starweb\Api\Operation\CustomerAddress\RetrieveCustomerAddress;
-use Starweb\Api\Operation\CustomerAddress\UpdateCustomerAddress;
+use Starweb\Api\Model\OrderAddress\OrderAddressCollection;
+use Starweb\Api\Model\OrderAddress\OrderAddress;
+use Starweb\Api\Model\OrderAddress\OrderAddressItem;
+use Starweb\Api\Operation\OrderAddress\DeleteOrderAddress;
+use Starweb\Api\Operation\OrderAddress\ListOrderAddresses;
+use Starweb\Api\Operation\OrderAddress\ReplaceOrderAddress;
+use Starweb\Api\Operation\OrderAddress\RetrieveOrderAddress;
+use Starweb\Api\Operation\OrderAddress\UpdateOrderAddress;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CustomerAddressResource extends Resource
+class OrderAddressResource extends Resource
 {
     public function getPathParametersResolver(): OptionsResolver
     {
         $resolver = new OptionsResolver();
-        $resolver->setRequired('customerId');
-        $resolver->setAllowedTypes('customerId', 'int');
+        $resolver->setRequired('orderId');
+        $resolver->setAllowedTypes('orderId', 'int');
 
         return $resolver;
     }
 
     /**
-     * @return CustomerAddressCollection
+     * @return OrderAddressCollection
      *
      * @throws \Http\Client\Exception
      * @throws \Starweb\Exception\InvalidResponseContentException
      */
-    public function list(): CustomerAddressCollection
+    public function list(): OrderAddressCollection
     {
         $response = $this->performOperation(
-            new ListCustomerAddresses($this, [], $this->getPathParameters())
+            new ListOrderAddresses($this, [], $this->getPathParameters())
         );
 
-        return $response->getContentAsModel(CustomerAddressCollection::class);
+        return $response->getContentAsModel(OrderAddressCollection::class);
     }
 
     /**
      * @param string $addressType
      *
-     * @return CustomerAddressItem
+     * @return OrderAddress
      *
      * @throws \Http\Client\Exception
      * @throws \Starweb\Exception\InvalidResponseContentException
      */
-    public function retrieve(string $addressType): CustomerAddressItem
+    public function retrieve(string $addressType): Address
     {
         $pathParameters = array_merge($this->getPathParameters(), ['addressType' => $addressType]);
         $response = $this->performOperation(
-            new RetrieveCustomerAddress($this, [], $pathParameters)
+            new RetrieveOrderAddress($this, [], $pathParameters)
         );
-        $item = $response->getContentAsModel(CustomerAddressItem::class);
+        $item = $response->getContentAsModel(OrderAddressItem::class);
 
         return $item->getData();
     }
@@ -64,11 +65,11 @@ class CustomerAddressResource extends Resource
      *
      * @throws \Http\Client\Exception
      */
-    public function delete(string $addressType): CustomerAddressItem
+    public function delete(string $addressType): OrderAddressItem
     {
         $pathParameters = array_merge($this->getPathParameters(), ['addressType' => $addressType]);
         $response = $this->performOperation(
-            new DeleteCustomerAddress($this, [], $pathParameters)
+            new DeleteOrderAddress($this, [], $pathParameters)
         );
 
         return 204 === $response->getStatusCode();
@@ -78,21 +79,21 @@ class CustomerAddressResource extends Resource
      * @param string $addressType
      * @param Address $address
      *
-     * @return CustomerAddressItem
+     * @return OrderAddressItem
      *
      * @throws \Http\Client\Exception
      */
-    public function replace(string $addressType, Address $address): CustomerAddressItem
+    public function replace(string $addressType, Address $address): OrderAddressItem
     {
         $pathParameters = array_merge($this->getPathParameters(), ['addressType' => $addressType]);
         $response = $this->performOperation(
-            new ReplaceCustomerAddress(
+            new ReplaceOrderAddress(
                 $this,
                 $this->getSerializer()->normalize($address),
                 $pathParameters
             )
         );
-        $item = $response->getContentAsModel(CustomerAddressItem::class);
+        $item = $response->getContentAsModel(OrderAddressItem::class);
 
         return $item->getData();
     }
@@ -109,13 +110,13 @@ class CustomerAddressResource extends Resource
     {
         $pathParameters = array_merge($this->getPathParameters(), ['addressType' => $addressType]);
         $response = $this->performOperation(
-            new UpdateCustomerAddress(
+            new UpdateOrderAddress(
                 $this,
                 $this->getSerializer()->normalize($address),
                 $pathParameters
             )
         );
-        $item = $response->getContentAsModel(CustomerAddressItem::class);
+        $item = $response->getContentAsModel(OrderAddressItem::class);
 
         return $item->getData();
     }

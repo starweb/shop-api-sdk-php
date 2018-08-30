@@ -11,7 +11,7 @@ class OrderCollection
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @var OrderCollectionMeta
      */
@@ -38,7 +38,7 @@ class OrderCollection
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return OrderCollectionMeta
      */
@@ -47,7 +47,7 @@ class OrderCollection
         return $this->meta;
     }
     /**
-     * 
+     *
      *
      * @param OrderModelCollectionMeta $meta
      *

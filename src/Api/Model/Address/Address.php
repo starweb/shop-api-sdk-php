@@ -10,78 +10,91 @@ class Address
      * @var string
      */
     protected $address;
+
     /**
      * Attention
      *
      * @var string
      */
     protected $attention;
+
     /**
      * Care Of
      *
      * @var string
      */
     protected $careOf;
+
     /**
      * City
      *
      * @var string
      */
     protected $city;
+
     /**
      * Company name
      *
      * @var string
      */
     protected $companyName;
+
     /**
      * Country code in ISO 3166-1 alpha-2 format
      *
      * @var string
      */
     protected $countryCode;
+
     /**
      * First name
      *
      * @var string
      */
     protected $firstName;
+
     /**
      * Last name
      *
      * @var string
      */
     protected $lastName;
+
     /**
      * Mobile phone number in an international format
      *
      * @var string
      */
     protected $mobilePhoneNo;
+
     /**
      * Phone number in an international format
      *
      * @var string
      */
     protected $phoneNo;
+
     /**
      * Postal Code
      *
      * @var string
      */
     protected $postalCode;
+
     /**
      * Reference
      *
      * @var string
      */
     protected $reference;
+
     /**
      * State
      *
      * @var string
      */
     protected $state;
+
     /**
      * Address
      *
@@ -91,6 +104,7 @@ class Address
     {
         return $this->address;
     }
+
     /**
      * Address
      *
@@ -103,6 +117,7 @@ class Address
         $this->address = $address;
         return $this;
     }
+
     /**
      * Attention
      *
@@ -112,6 +127,7 @@ class Address
     {
         return $this->attention;
     }
+
     /**
      * Attention
      *
@@ -124,6 +140,7 @@ class Address
         $this->attention = $attention;
         return $this;
     }
+
     /**
      * Care Of
      *
@@ -133,6 +150,7 @@ class Address
     {
         return $this->careOf;
     }
+
     /**
      * Care Of
      *
@@ -145,6 +163,7 @@ class Address
         $this->careOf = $careOf;
         return $this;
     }
+
     /**
      * City
      *
@@ -154,6 +173,7 @@ class Address
     {
         return $this->city;
     }
+
     /**
      * City
      *
@@ -166,6 +186,7 @@ class Address
         $this->city = $city;
         return $this;
     }
+
     /**
      * Company name
      *
@@ -175,6 +196,7 @@ class Address
     {
         return $this->companyName;
     }
+
     /**
      * Company name
      *
@@ -187,6 +209,7 @@ class Address
         $this->companyName = $companyName;
         return $this;
     }
+
     /**
      * Country code in ISO 3166-1 alpha-2 format
      *
@@ -196,6 +219,7 @@ class Address
     {
         return $this->countryCode;
     }
+
     /**
      * Country code in ISO 3166-1 alpha-2 format
      *
@@ -208,6 +232,7 @@ class Address
         $this->countryCode = $countryCode;
         return $this;
     }
+
     /**
      * First name
      *
@@ -217,6 +242,7 @@ class Address
     {
         return $this->firstName;
     }
+
     /**
      * First name
      *
@@ -229,6 +255,7 @@ class Address
         $this->firstName = $firstName;
         return $this;
     }
+
     /**
      * Last name
      *
@@ -238,6 +265,7 @@ class Address
     {
         return $this->lastName;
     }
+
     /**
      * Last name
      *
@@ -250,6 +278,7 @@ class Address
         $this->lastName = $lastName;
         return $this;
     }
+
     /**
      * Mobile phone number in an international format
      *
@@ -259,6 +288,7 @@ class Address
     {
         return $this->mobilePhoneNo;
     }
+
     /**
      * Mobile phone number in an international format
      *
@@ -271,6 +301,7 @@ class Address
         $this->mobilePhoneNo = $mobilePhoneNo;
         return $this;
     }
+
     /**
      * Phone number in an international format
      *
@@ -280,6 +311,7 @@ class Address
     {
         return $this->phoneNo;
     }
+
     /**
      * Phone number in an international format
      *
@@ -292,6 +324,7 @@ class Address
         $this->phoneNo = $phoneNo;
         return $this;
     }
+
     /**
      * Postal Code
      *
@@ -301,6 +334,7 @@ class Address
     {
         return $this->postalCode;
     }
+
     /**
      * Postal Code
      *
@@ -313,6 +347,7 @@ class Address
         $this->postalCode = $postalCode;
         return $this;
     }
+
     /**
      * Reference
      *
@@ -322,6 +357,7 @@ class Address
     {
         return $this->reference;
     }
+
     /**
      * Reference
      *
@@ -334,6 +370,7 @@ class Address
         $this->reference = $reference;
         return $this;
     }
+
     /**
      * State
      *
@@ -343,6 +380,7 @@ class Address
     {
         return $this->state;
     }
+
     /**
      * State
      *

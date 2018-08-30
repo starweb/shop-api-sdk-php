@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\Order;
 class OrderCollectionMeta
 {
     /**
-     * 
+     *
      *
      * @var Pagination
      */
     protected $pagination;
     /**
-     * 
+     *
      *
      * @return Pagination
      */
@@ -20,7 +20,7 @@ class OrderCollectionMeta
         return $this->pagination;
     }
     /**
-     * 
+     *
      *
      * @param PaginationModel $pagination
      *

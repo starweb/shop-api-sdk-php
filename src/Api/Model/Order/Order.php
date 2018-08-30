@@ -5,7 +5,7 @@ namespace Starweb\Api\Model\Order;
 class Order
 {
     /**
-     * 
+     *
      *
      * @var OrderAddressCollection
      */
@@ -89,7 +89,7 @@ class Order
      */
     protected $customInfo4;
     /**
-     * 
+     *
      *
      * @var CustomerItem
      */
@@ -107,7 +107,7 @@ class Order
      */
     protected $discountCode;
     /**
-     * 
+     *
      *
      * @var OrderExternalServiceCollection
      */
@@ -137,13 +137,13 @@ class Order
      */
     protected $isRead;
     /**
-     * 
+     *
      *
      * @var OrderItemCollection
      */
     protected $items;
     /**
-     * Language Code (ISO 639-1) used for placing this order. Has to be a valid lang code that the shop has setup. Used for order update emails, etc. 
+     * Language Code (ISO 639-1) used for placing this order. Has to be a valid lang code that the shop has setup. Used for order update emails, etc.
      *
      * @var string
      */
@@ -287,7 +287,7 @@ class Order
      */
     protected $shopCountryCode;
     /**
-     * 
+     *
      *
      * @var OrderStatusItem
      */
@@ -329,7 +329,7 @@ class Order
      */
     protected $totalWeight;
     /**
-     * 
+     *
      *
      * @return OrderAddressCollection
      */
@@ -338,7 +338,7 @@ class Order
         return $this->addresses;
     }
     /**
-     * 
+     *
      *
      * @param OrderAddressCollection $addresses
      *
@@ -623,7 +623,7 @@ class Order
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return CustomerItem
      */
@@ -632,7 +632,7 @@ class Order
         return $this->customer;
     }
     /**
-     * 
+     *
      *
      * @param CustomerModelItem $customer
      *
@@ -686,7 +686,7 @@ class Order
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return OrderExternalServiceCollection
      */
@@ -695,7 +695,7 @@ class Order
         return $this->externalServices;
     }
     /**
-     * 
+     *
      *
      * @param OrderExternalServiceModelCollection $externalServices
      *
@@ -791,7 +791,7 @@ class Order
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return OrderItemCollection
      */
@@ -800,7 +800,7 @@ class Order
         return $this->items;
     }
     /**
-     * 
+     *
      *
      * @param OrderItemModelCollection $items
      *
@@ -812,7 +812,7 @@ class Order
         return $this;
     }
     /**
-     * Language Code (ISO 639-1) used for placing this order. Has to be a valid lang code that the shop has setup. Used for order update emails, etc. 
+     * Language Code (ISO 639-1) used for placing this order. Has to be a valid lang code that the shop has setup. Used for order update emails, etc.
      *
      * @return string
      */
@@ -821,7 +821,7 @@ class Order
         return $this->langCode;
     }
     /**
-     * Language Code (ISO 639-1) used for placing this order. Has to be a valid lang code that the shop has setup. Used for order update emails, etc. 
+     * Language Code (ISO 639-1) used for placing this order. Has to be a valid lang code that the shop has setup. Used for order update emails, etc.
      *
      * @param string $langCode
      *
@@ -1316,7 +1316,7 @@ class Order
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return OrderStatusItem
      */
@@ -1325,7 +1325,7 @@ class Order
         return $this->status;
     }
     /**
-     * 
+     *
      *
      * @param OrderStatusModelItem $status
      *
