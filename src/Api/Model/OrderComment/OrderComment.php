@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Model\OrderComment;
 
-class OrderComment
+use Starweb\Api\Model\ModelInterface;
+
+class OrderComment implements ModelInterface
 {
     /**
      * The comments id
@@ -111,5 +113,10 @@ class OrderComment
     {
         $this->text = $text;
         return $this;
+    }
+
+    public function getId(): int
+    {
+        return $this->commentId;
     }
 }

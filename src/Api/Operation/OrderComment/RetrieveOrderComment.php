@@ -20,8 +20,6 @@ class RetrieveOrderComment extends Operation
     protected function getPathParametersResolver(): OptionsResolver
     {
         $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('orderId');
-        $resolver->setAllowedTypes('orderId', 'integer');
         $resolver->setRequired('commentId');
         $resolver->setAllowedTypes('commentId', 'integer');
 
