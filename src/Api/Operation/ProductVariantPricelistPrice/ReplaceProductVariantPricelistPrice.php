@@ -5,11 +5,11 @@ namespace Starweb\Api\Operation\ProductVariantPricelistPrice;
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UpdateProductsVariantsPricelistPrice extends Operation
+class ReplaceProductVariantPricelistPrice extends Operation
 {
     public function getMethod(): string
     {
-        return 'PATCH';
+        return 'PUT';
     }
 
     public function getPath(): string

@@ -1,28 +1,30 @@
 <?php
 
-namespace Starweb\Api\Model\ProductVariantPrice;
+namespace Starweb\Api\Model\ProductVariantPricelistPrice;
 
-class ProductVariantPriceCollection
+class ProductVariantPricelistPriceCollection
 {
     /**
      * A collection of product variants
      *
-     * @var ProductVariantPrice[]
+     * @var ProductVariantPricelistPrice[]
      */
     protected $data;
+
     /**
      * A collection of product variants
      *
-     * @return ProductVariantPrice[]
+     * @return ProductVariantPricelistPrice[]
      */
     public function getData() : array
     {
         return $this->data;
     }
+
     /**
      * A collection of product variants
      *
-     * @param ProductVariantPrice[]
+     * @param ProductVariantPricelistPrice[]
      *
      * @return self
      */

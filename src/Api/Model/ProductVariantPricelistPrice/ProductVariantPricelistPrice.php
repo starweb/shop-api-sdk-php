@@ -1,8 +1,8 @@
 <?php
 
-namespace Starweb\Api\Model\ProductVariantPrice;
+namespace Starweb\Api\Model\ProductVariantPricelistPrice;
 
-class ProductVariantPrice
+class ProductVariantPricelistPrice
 {
     /**
      * The price excluding vat
