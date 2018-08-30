@@ -5,11 +5,11 @@ namespace Starweb\Api\Operation\ProductVariantAttributeValue;
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RetrieveProductsVariantsAttributeValue extends Operation
+class UpdateProductVariantAttributeValue extends Operation
 {
     public function getMethod(): string
     {
-        return 'GET';
+        return 'PATCH';
     }
 
     public function getPath(): string
@@ -20,19 +20,8 @@ class RetrieveProductsVariantsAttributeValue extends Operation
     protected function getPathParametersResolver(): OptionsResolver
     {
         $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('attributeId');
-        $resolver->setAllowedTypes('attributeId', 'integer');
         $resolver->setRequired('attributeValueId');
         $resolver->setAllowedTypes('attributeValueId', 'integer');
-
-        return $resolver;
-    }
-
-    protected function getParametersResolver(): OptionsResolver
-    {
-        $resolver = new OptionsResolver();
-        $resolver->setDefined('include');
-        $resolver->setAllowedTypes('include', 'string');
 
         return $resolver;
     }

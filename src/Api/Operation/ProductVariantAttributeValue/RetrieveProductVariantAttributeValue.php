@@ -5,11 +5,11 @@ namespace Starweb\Api\Operation\ProductVariantAttributeValue;
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DeleteAttributeValue extends Operation
+class RetrieveProductVariantAttributeValue extends Operation
 {
     public function getMethod(): string
     {
-        return 'DELETE';
+        return 'GET';
     }
 
     public function getPath(): string
@@ -20,10 +20,17 @@ class DeleteAttributeValue extends Operation
     protected function getPathParametersResolver(): OptionsResolver
     {
         $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('attributeId');
-        $resolver->setAllowedTypes('attributeId', 'integer');
         $resolver->setRequired('attributeValueId');
         $resolver->setAllowedTypes('attributeValueId', 'integer');
+
+        return $resolver;
+    }
+
+    protected function getParametersResolver(): OptionsResolver
+    {
+        $resolver = new OptionsResolver();
+        $resolver->setDefined('include');
+        $resolver->setAllowedTypes('include', 'string');
 
         return $resolver;
     }

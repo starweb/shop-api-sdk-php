@@ -33,6 +33,7 @@ use Starweb\Api\Resource\ProductMetaDataResource;
 use Starweb\Api\Resource\ProductMetaDataTypeResource;
 use Starweb\Api\Resource\ProductStockStatusResource;
 use Starweb\Api\Resource\ProductUnitResource;
+use Starweb\Api\Resource\ProductVariantAttributeValueResource;
 use Starweb\Api\Resource\TagResource;
 use Starweb\Exception\InvalidCredentialsException;
 use Starweb\HttpClient\Builder;
@@ -213,6 +214,9 @@ class Starweb
                 break;
             case 'ProductUnit':
                 $resource = new ProductUnitResource($this->client, $pathParameters);
+                break;
+            case 'ProductVariantAttributeValue':
+                $resource = new ProductVariantAttributeValueResource($this->client, $pathParameters);
                 break;
             case 'Shop':
                 $resource = new ShopResource($this->client, $pathParameters);
