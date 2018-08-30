@@ -168,6 +168,9 @@ class Starweb
             case 'Customer':
                 $resource = new CustomerResource($this->client, $pathParameters);
                 break;
+            case 'MediaFile':
+                $resource = new MediaFileResource($this->client, $pathParameters);
+                break;
             case 'OrderAddress':
                 $resource = new OrderAddressResource($this->client, $pathParameters);
                 break;
@@ -248,9 +251,6 @@ class Starweb
                 break;
             case 'Shop':
                 $resource = new ShopResource($this->client, $pathParameters);
-                break;
-            case 'MediaFile':
-                $resource = new MediaFileResource($this->client, $pathParameters);
                 break;
             case 'Tag':
                 $resource = new TagResource($this->client, $pathParameters);
