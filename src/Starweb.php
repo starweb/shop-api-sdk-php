@@ -25,6 +25,7 @@ use Starweb\Api\Resource\OrderResource;
 use Starweb\Api\Resource\OrderStatusResource;
 use Starweb\Api\Resource\PaymentMethodResource;
 use Starweb\Api\Resource\PricelistResource;
+use Starweb\Api\Resource\ProductAttributeResource;
 use Starweb\Api\Resource\TagResource;
 use Starweb\Exception\InvalidCredentialsException;
 use Starweb\HttpClient\Builder;
@@ -175,6 +176,9 @@ class Starweb
                 break;
             case 'Pricelist':
                 $resource = new PricelistResource($this->client, $pathParameters);
+                break;
+            case 'ProductAttribute':
+                $resource = new ProductAttributeResource($this->client, $pathParameters);
                 break;
             case 'Shop':
                 $resource = new ShopResource($this->client, $pathParameters);

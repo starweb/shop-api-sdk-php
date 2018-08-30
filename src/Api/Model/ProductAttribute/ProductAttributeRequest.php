@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Model\ProductAttribute;
 
-class ProductAttributesItem
+class ProductAttributeRequest
 {
     /**
      * The id for this attribute
@@ -10,6 +10,7 @@ class ProductAttributesItem
      * @var int
      */
     protected $attributeId;
+
     /**
      * The id for this attribute
      *
@@ -19,6 +20,7 @@ class ProductAttributesItem
     {
         return $this->attributeId;
     }
+
     /**
      * The id for this attribute
      *

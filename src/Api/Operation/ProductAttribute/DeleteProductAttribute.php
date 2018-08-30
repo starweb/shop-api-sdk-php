@@ -5,11 +5,11 @@ namespace Starweb\Api\Operation\ProductAttribute;
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RetrieveProductsAttribute extends Operation
+class DeleteProductAttribute extends Operation
 {
     public function getMethod(): string
     {
-        return 'GET';
+        return 'DELETE';
     }
 
     public function getPath(): string

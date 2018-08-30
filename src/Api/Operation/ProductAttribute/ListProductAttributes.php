@@ -5,11 +5,11 @@ namespace Starweb\Api\Operation\ProductAttribute;
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AddProductsAttributes extends Operation
+class ListProductAttributes extends Operation
 {
     public function getMethod(): string
     {
-        return 'POST';
+        return 'GET';
     }
 
     public function getPath(): string
