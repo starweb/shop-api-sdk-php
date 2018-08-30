@@ -22,11 +22,11 @@ class ProductItem
     /**
      *
      *
-     * @param ProductModel $data
+     * @param Product $data
      *
      * @return self
      */
-    public function setData(ProductModel $data) : self
+    public function setData(Product $data) : self
     {
         $this->data = $data;
         return $this;

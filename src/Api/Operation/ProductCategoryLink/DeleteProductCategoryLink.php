@@ -5,11 +5,11 @@ namespace Starweb\Api\Operation\ProductCategoryLink;
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RetrieveProductsCategoryLink extends Operation
+class DeleteProductCategoryLink extends Operation
 {
     public function getMethod(): string
     {
-        return 'GET';
+        return 'DELETE';
     }
 
     public function getPath(): string

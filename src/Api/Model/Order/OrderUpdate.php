@@ -322,11 +322,11 @@ class OrderUpdate
     /**
      *
      *
-     * @param OrderAddressModel $addresses
+     * @param OrderAddress $addresses
      *
      * @return self
      */
-    public function setAddresses(OrderAddressModel $addresses) : self
+    public function setAddresses(OrderAddress $addresses) : self
     {
         $this->addresses = $addresses;
         return $this;

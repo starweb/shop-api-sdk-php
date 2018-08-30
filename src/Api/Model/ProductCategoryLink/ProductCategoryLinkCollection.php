@@ -10,6 +10,7 @@ class ProductCategoryLinkCollection
      * @var ProductCategoryLink[]
      */
     protected $data;
+
     /**
      * A collection of product category links
      *
@@ -19,6 +20,7 @@ class ProductCategoryLinkCollection
     {
         return $this->data;
     }
+
     /**
      * A collection of product category links
      *
