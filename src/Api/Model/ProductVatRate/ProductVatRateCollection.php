@@ -10,6 +10,7 @@ class ProductVatRateCollection
      * @var ProductVatRate[]
      */
     protected $data;
+
     /**
      * A collection of product vat rates
      *
@@ -19,6 +20,7 @@ class ProductVatRateCollection
     {
         return $this->data;
     }
+    
     /**
      * A collection of product vat rates
      *
