@@ -4,7 +4,7 @@ namespace Starweb\Api\Operation\ProductVariantAttribute;
 
 use Starweb\Api\Operation\Operation;
 
-class ListProductsVariantsAttributes extends Operation
+class ListProductVariantAttributes extends Operation
 {
     public function getMethod(): string
     {

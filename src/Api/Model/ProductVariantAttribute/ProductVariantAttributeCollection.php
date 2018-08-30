@@ -10,6 +10,7 @@ class ProductVariantAttributeCollection
      * @var ProductVariantAttribute[]
      */
     protected $data;
+
     /**
      * A collection of attribute values
      *
@@ -19,6 +20,7 @@ class ProductVariantAttributeCollection
     {
         return $this->data;
     }
+
     /**
      * A collection of attribute values
      *

@@ -5,11 +5,11 @@ namespace Starweb\Api\Operation\ProductVariantAttribute;
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UpdateAttribute extends Operation
+class DeleteProductVariantAttribute extends Operation
 {
     public function getMethod(): string
     {
-        return 'PATCH';
+        return 'DELETE';
     }
 
     public function getPath(): string

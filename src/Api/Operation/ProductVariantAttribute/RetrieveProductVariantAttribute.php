@@ -5,7 +5,7 @@ namespace Starweb\Api\Operation\ProductVariantAttribute;
 use Starweb\Api\Operation\Operation;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RetrieveProductsVariantsAttribute extends Operation
+class RetrieveProductVariantAttribute extends Operation
 {
     public function getMethod(): string
     {
