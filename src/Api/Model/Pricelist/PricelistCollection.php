@@ -10,6 +10,7 @@ class PricelistCollection
      * @var Pricelist[]
      */
     protected $data;
+
     /**
      * A collection of shipping methods
      *
@@ -19,6 +20,7 @@ class PricelistCollection
     {
         return $this->data;
     }
+
     /**
      * A collection of shipping methods
      *
