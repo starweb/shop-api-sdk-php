@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="StarwebSdkPhpCodingStandard">
+    <description>Starweb SDK PHP coding standard</description>
+    <rule ref="PSR2"/>
+    <rule ref="resources/code-sniffer-standards/StarwebCustom/Sniffs/UnusedUseStatementSniff.php"/>
+</ruleset>
