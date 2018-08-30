@@ -10,6 +10,7 @@ class ProductUnitCollection
      * @var ProductUnit[]
      */
     protected $data;
+
     /**
      * A collection of product units
      *
@@ -19,6 +20,7 @@ class ProductUnitCollection
     {
         return $this->data;
     }
+
     /**
      * A collection of product units
      *

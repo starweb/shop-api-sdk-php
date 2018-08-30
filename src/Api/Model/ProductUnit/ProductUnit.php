@@ -5,29 +5,26 @@ namespace Starweb\Api\Model\ProductUnit;
 class ProductUnit
 {
     /**
-     *
-     *
      * @var ProductUnitLanguageCollection
      */
     protected $languages;
+
     /**
      * The units id
      *
      * @var int
      */
     protected $unitId;
+
     /**
-     *
-     *
      * @return ProductUnitLanguageCollection
      */
     public function getLanguages() : ?ProductUnitLanguageCollection
     {
         return $this->languages;
     }
+
     /**
-     *
-     *
      * @param ProductUnitLanguageCollection $languages
      *
      * @return self
@@ -37,6 +34,7 @@ class ProductUnit
         $this->languages = $languages;
         return $this;
     }
+
     /**
      * The units id
      *
@@ -46,6 +44,7 @@ class ProductUnit
     {
         return $this->unitId;
     }
+
     /**
      * The units id
      *
