@@ -85,7 +85,7 @@ class OrderItemResource extends Resource
      *
      * @throws \Http\Client\Exception
      */
-    public function delete(string $orderItemId): OrderItemItem
+    public function delete(int $orderItemId): OrderItemItem
     {
         $pathParameters = array_merge($this->getPathParameters(), ['orderItemId' => $orderItemId]);
         $response = $this->performOperation(
@@ -103,7 +103,7 @@ class OrderItemResource extends Resource
      *
      * @throws \Http\Client\Exception
      */
-    public function replace(string $orderItemId, OrderItem $item): OrderItemItem
+    public function replace(int $orderItemId, OrderItem $item): OrderItemItem
     {
         $pathParameters = array_merge($this->getPathParameters(), ['orderItemId' => $orderItemId]);
         $response = $this->performOperation(
@@ -126,7 +126,7 @@ class OrderItemResource extends Resource
      *
      * @throws \Http\Client\Exception
      */
-    public function update(string $orderItemId, OrderItem $item): OrderItem
+    public function update(int $orderItemId, OrderItem $item): OrderItem
     {
         $pathParameters = array_merge($this->getPathParameters(), ['orderItemId' => $orderItemId]);
         $response = $this->performOperation(
