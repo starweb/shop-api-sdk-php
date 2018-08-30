@@ -14,6 +14,11 @@ use Starweb\Api\Operation\ProductCategory\UpdateProductCategory;
 
 class ProductCategoryResource extends Resource
 {
+    /**
+     * @param array $parameters
+     *
+     * @return ProductCategoryCollection
+     */
     public function list(array $parameters = []): ProductCategoryCollection
     {
         $response = $this->performOperation(new ListProductCategories($this, $parameters));

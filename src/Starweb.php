@@ -180,11 +180,11 @@ class Starweb
             case 'ProductAttribute':
                 $resource = new ProductAttributeResource($this->client, $pathParameters);
                 break;
-            case 'Shop':
-                $resource = new ShopResource($this->client, $pathParameters);
-                break;
             case 'ProductCategory':
                 $resource = new ProductCategoryResource($this->client, $pathParameters);
+                break;
+            case 'Shop':
+                $resource = new ShopResource($this->client, $pathParameters);
                 break;
             case 'MediaFile':
                 $resource = new MediaFileResource($this->client, $pathParameters);
