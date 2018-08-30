@@ -17,6 +17,7 @@ use Starweb\Api\Resource\Resource;
 use Starweb\Api\Resource\ResourceInterface;
 use Starweb\Api\Resource\ShopResource;
 use Starweb\Starweb;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class StarwebTest extends TestCase
 {
@@ -97,19 +98,38 @@ class StarwebTest extends TestCase
     /**
      * @dataProvider resourceProvider
      */
-    public function testResources(string $resource): void
+    public function testResources(string $resourceKey): void
     {
         $starweb = $this->getStarweb();
-        $resource = $starweb->resource('Shop');
+        $resourceFqcn = sprintf('%s\\%sResource', Starweb::RESOURCE_NAMESPACE, $resourceKey);
+
+        $reflection = new \ReflectionClass($resourceFqcn);
+        $reflectionMethod = $reflection->getMethod('getPathParametersResolver');
+
+        /** @var OptionsResolver $resolver */
+        $resourceMock = $this->createMock($resourceFqcn);
+        $resolver = $reflectionMethod->invoke($resourceMock);
+        $parameters = [];
+        foreach ($resolver->getRequiredOptions() as $option) {
+            $parameters[$option] = 1;
+        }
+
+        $resource = $starweb->resource($resourceKey, $parameters);
+
 
         $this->assertInstanceOf(ResourceInterface::class, $resource);
         $this->assertInstanceOf(Resource::class, $resource);
-        $this->assertInstanceOf(ShopResource::class, $resource);
+        $this->assertInstanceOf($resourceFqcn, $resource);
     }
 
     public function resourceProvider(): array
     {
-        return Starweb::RESOURCE_KEYS;
+        $data = [];
+        foreach (Starweb::RESOURCE_KEYS as $key) {
+            $data[] = [$key];
+        }
+
+        return $data;
     }
 
     /**

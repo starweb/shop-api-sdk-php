@@ -7,6 +7,7 @@ use Starweb\Api\Operation\OperationInterface;
 use Starweb\Api\Operation\UploadFileOperation;
 use Starweb\HttpClient\EnhancedHttpClient;
 use Starweb\HttpClient\Message\EnhancedResponse;
+use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -34,6 +35,9 @@ abstract class Resource implements ResourceInterface
      *
      * @param EnhancedHttpClient $client
      * @param array $pathParameters
+     *
+     * @throws MissingOptionsException thrown if the resource configures some required path parameters which are
+     *                                 missing in the pathParameters attribute
      */
     public function __construct(EnhancedHttpClient $client, array $pathParameters = [])
     {

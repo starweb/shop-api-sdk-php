@@ -60,7 +60,7 @@ class Starweb
 
     public const API_VERSION_URI_SUFFIX = 'v2';
 
-    private const RESOURCE_NAMESPACE = 'Starweb\\Api\\Resource';
+    public const RESOURCE_NAMESPACE = 'Starweb\\Api\\Resource';
     public const RESOURCE_KEYS = [
         'Currency',
         'CustomerAddress',

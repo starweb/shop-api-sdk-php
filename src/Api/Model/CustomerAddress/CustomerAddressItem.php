@@ -2,18 +2,16 @@
 
 namespace Starweb\Api\Model\CustomerAddress;
 
+use Starweb\Api\Model\Address\Address;
+
 class CustomerAddressItem
 {
     /**
-     *
-     *
      * @var Address
      */
     protected $data;
 
     /**
-     *
-     *
      * @return Address
      */
     public function getData(): ?Address
@@ -22,8 +20,6 @@ class CustomerAddressItem
     }
 
     /**
-     *
-     *
      * @param Address $data
      *
      * @return self
