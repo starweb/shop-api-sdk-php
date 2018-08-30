@@ -2,284 +2,328 @@
 
 namespace Starweb\Api\Model\Order;
 
+use Starweb\Api\Model\Customer\CustomerItem;
+use Starweb\Api\Model\OrderAddress\OrderAddressCollection;
+use Starweb\Api\Model\OrderExternalService\OrderExternalServiceCollection;
+use Starweb\Api\Model\OrderItem\OrderItemCollection;
+use Starweb\Api\Model\OrderStatus\OrderStatusItem;
+
 class Order
 {
     /**
-     *
-     *
      * @var OrderAddressCollection
      */
     protected $addresses;
+
     /**
      * The amount paid via the payment method for this order
      *
      * @var float
      */
     protected $amountPaid;
+
     /**
      * Same as amountPaid, but in the shops base currency
      *
      * @var float
      */
     protected $amountPaidInBaseCurrency;
+
     /**
      * The total order amount to pay
      *
      * @var float
      */
     protected $amountToPay;
+
     /**
      * The total amount to pay, in the shops base currency
      *
      * @var float
      */
     protected $amountToPayInBaseCurrency;
+
     /**
      * The shops base currency code at the point of order creation
      *
      * @var string
      */
     protected $baseCurrencyCode;
+
     /**
      * A timestamp of when the order was created. The time should be formatted using ISO-8601
      *
      * @var string
      */
     protected $createdAt;
+
     /**
      * The currency code of the currency that was used for this order. Has to be a valid ISO 4217 currency code
      *
      * @var string
      */
     protected $currencyCode;
+
     /**
      * The exchange rate between this orders currency and the shops base currency. Ff, for example, the shop base currency is SEK and this order was placed in NOK, where 1 SEK = 0.97 NOK - this value would be 0.97
      *
      * @var float
      */
     protected $currencyExchangeRate;
+
     /**
      * The number of decimals to display
      *
      * @var int
      */
     protected $currencyPrecision;
+
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
      * @var string
      */
     protected $customInfo1;
+
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
      * @var string
      */
     protected $customInfo2;
+
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
      * @var string
      */
     protected $customInfo3;
+
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
      * @var string
      */
     protected $customInfo4;
+
     /**
-     *
-     *
      * @var CustomerItem
      */
     protected $customer;
+
     /**
      * The ID of the orders customer
      *
      * @var int
      */
     protected $customerId;
+
     /**
      * The code ID of a discount code that was used for this order
      *
      * @var string
      */
     protected $discountCode;
+
     /**
-     *
-     *
      * @var OrderExternalServiceCollection
      */
     protected $externalServices;
+
     /**
      * Whether the customer or an admin has added a comment to the order
      *
      * @var bool
      */
     protected $hasComment;
+
     /**
      * An internal comment placed by an administrator. Not available to the customer
      *
      * @var string
      */
     protected $internalComment;
+
     /**
      * Is the order completed (that is, is it completely saved and has the payment method processed and confirmed it)
      *
      * @var bool
      */
     protected $isComplete;
+
     /**
      * An order is read when an administrator has read it via the admin GUI
      *
      * @var bool
      */
     protected $isRead;
+
     /**
-     *
-     *
      * @var OrderItemCollection
      */
     protected $items;
+
     /**
      * Language Code (ISO 639-1) used for placing this order. Has to be a valid lang code that the shop has setup. Used for order update emails, etc.
      *
      * @var string
      */
     protected $langCode;
+
     /**
      * A timestamp of when the order was modified. The time should be formatted using ISO-8601
      *
      * @var string
      */
     protected $modifiedAt;
+
     /**
      * Set this to false to prevent processing payment on changes to statusId. Only applies to payment methods that support processing payments. For example charging a reserved amount or cancel a created invoice
      *
      * @var bool
      */
     protected $onOrderStatusChangeProcessPayment;
+
     /**
      * Set this to false to prevent sending email to customer on changes to statusId and new orders
      *
      * @var bool
      */
     protected $onOrderStatusChangeSendEmail;
+
     /**
      * The orders ID
      *
      * @var int
      */
     protected $orderId;
+
     /**
      * Custom customer info at the point of order creation
      *
      * @var string
      */
     protected $originalCustomerCustomInfo1;
+
     /**
      * Custom customer info at the point of order creation
      *
      * @var string
      */
     protected $originalCustomerCustomInfo2;
+
     /**
      * The email address of the customer at the point of order creation
      *
      * @var string
      */
     protected $originalCustomerEmail;
+
     /**
      * The national id number of the customer at the point of order creation
      *
      * @var string
      */
     protected $originalCustomerNationalIdNo;
+
     /**
      * The VAT number of the customer at the point of order creation
      *
      * @var string
      */
     protected $originalCustomerVatNo;
+
     /**
      * Payment fee
      *
      * @var float
      */
     protected $paymentFee;
+
     /**
      * The ID of the orders payment method
      *
      * @var int
      */
     protected $paymentMethodId;
+
     /**
      * The ID code of the payment method.
      *
      * @var string
      */
     protected $paymentMethodIdCode;
+
     /**
      * Title of the orders payment method
      *
      * @var string
      */
     protected $paymentMethodName;
+
     /**
      * Reference to the payment methods payment transaction
      *
      * @var string
      */
     protected $paymentReference;
+
     /**
      * Status of the payment methods payment transaction
      *
      * @var string
      */
     protected $paymentStatus;
+
     /**
      * The VAT rate of the paymentFee in percent
      *
      * @var float
      */
     protected $paymentVatRate;
+
     /**
      * Shipping cost
      *
      * @var float
      */
     protected $shippingCost;
+
     /**
      * The ID of the orders shipping method
      *
      * @var int
      */
     protected $shippingMethodId;
+
     /**
      * Title of the orders shipping method
      *
      * @var string
      */
     protected $shippingMethodName;
+
     /**
      * The ID of the tracking number type. Types are available via: GET /shipping-tracker-types
      *
      * @var int
      */
     protected $shippingTrackerType;
+
     /**
      * The shipping tracking number. Has to be in the format that is used for the chosen tracking type (please contact the freight forwarder regarding this).
      *
      * @var string
      */
     protected $shippingTrackingNo;
+
     /**
      * The VAT rate of the shippingCost in percent
      *
      * @var float
      */
     protected $shippingVatRate;
+
     /**
      * The shops country code at the point of order creation
      *
@@ -292,12 +336,14 @@ class Order
      * @var OrderStatusItem
      */
     protected $status;
+
     /**
      * The ID of the orders status
      *
      * @var int
      */
     protected $statusId;
+
     /**
      * The total order amount
      *
@@ -634,11 +680,11 @@ class Order
     /**
      *
      *
-     * @param CustomerModelItem $customer
+     * @param CustomerItem $customer
      *
      * @return self
      */
-    public function setCustomer(CustomerModelItem $customer) : self
+    public function setCustomer(CustomerItem $customer) : self
     {
         $this->customer = $customer;
         return $this;
@@ -697,11 +743,11 @@ class Order
     /**
      *
      *
-     * @param OrderExternalServiceModelCollection $externalServices
+     * @param OrderExternalServiceCollection $externalServices
      *
      * @return self
      */
-    public function setExternalServices(OrderExternalServiceModelCollection $externalServices) : self
+    public function setExternalServices(OrderExternalServiceCollection $externalServices) : self
     {
         $this->externalServices = $externalServices;
         return $this;
@@ -802,11 +848,11 @@ class Order
     /**
      *
      *
-     * @param OrderItemModelCollection $items
+     * @param OrderItemCollection $items
      *
      * @return self
      */
-    public function setItems(OrderItemModelCollection $items) : self
+    public function setItems(OrderItemCollection $items) : self
     {
         $this->items = $items;
         return $this;
@@ -1327,11 +1373,11 @@ class Order
     /**
      *
      *
-     * @param OrderStatusModelItem $status
+     * @param OrderStatusItem $status
      *
      * @return self
      */
-    public function setStatus(OrderStatusModelItem $status) : self
+    public function setStatus(OrderStatusItem $status) : self
     {
         $this->status = $status;
         return $this;

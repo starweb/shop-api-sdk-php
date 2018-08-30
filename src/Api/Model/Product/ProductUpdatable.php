@@ -55,7 +55,7 @@ class ProductUpdatable
     /**
      * A collection of meta data
      *
-     * @var ProductMetaDataModelUpdatable[]
+     * @var ProductMetaDataUpdatable[]
      */
     protected $metaData;
     /**
@@ -277,7 +277,7 @@ class ProductUpdatable
     /**
      * A collection of meta data
      *
-     * @return ProductMetaDataModelUpdatable[]
+     * @return ProductMetaDataUpdatable[]
      */
     public function getMetaData() : array
     {
@@ -286,7 +286,7 @@ class ProductUpdatable
     /**
      * A collection of meta data
      *
-     * @param ProductMetaDataModelUpdatable[] $metaData
+     * @param ProductMetaDataUpdatable[] $metaData
      *
      * @return self
      */

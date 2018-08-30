@@ -49,11 +49,11 @@ class OrderCollection
     /**
      *
      *
-     * @param OrderModelCollectionMeta $meta
+     * @param OrderCollectionMeta $meta
      *
      * @return self
      */
-    public function setMeta(OrderModelCollectionMeta $meta) : self
+    public function setMeta(OrderCollectionMeta $meta) : self
     {
         $this->meta = $meta;
         return $this;

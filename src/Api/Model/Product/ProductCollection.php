@@ -49,11 +49,11 @@ class ProductCollection
     /**
      *
      *
-     * @param ProductModelCollectionMeta $meta
+     * @param ProductCollectionMeta $meta
      *
      * @return self
      */
-    public function setMeta(ProductModelCollectionMeta $meta) : self
+    public function setMeta(ProductCollectionMeta $meta) : self
     {
         $this->meta = $meta;
         return $this;
