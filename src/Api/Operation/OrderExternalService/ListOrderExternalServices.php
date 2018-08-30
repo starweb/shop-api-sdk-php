@@ -16,13 +16,4 @@ class ListOrderExternalServices extends Operation
     {
         return '/orders/{orderId}/external-services';
     }
-
-    protected function getPathParametersResolver(): OptionsResolver
-    {
-        $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('orderId');
-        $resolver->setAllowedTypes('orderId', 'integer');
-
-        return $resolver;
-    }
 }

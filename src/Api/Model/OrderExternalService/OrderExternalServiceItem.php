@@ -2,26 +2,22 @@
 
 namespace Starweb\Api\Model\OrderExternalService;
 
-class OrderExternalServicesItem
+class OrderExternalServiceItem
 {
     /**
-     *
-     *
      * @var OrderExternalService
      */
     protected $data;
+
     /**
-     *
-     *
      * @return OrderExternalService
      */
     public function getData() : ?OrderExternalService
     {
         return $this->data;
     }
+
     /**
-     *
-     *
      * @param OrderExternalService $data
      *
      * @return self

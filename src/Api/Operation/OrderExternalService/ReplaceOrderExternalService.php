@@ -20,8 +20,6 @@ class ReplaceOrderExternalService extends Operation
     protected function getPathParametersResolver(): OptionsResolver
     {
         $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('orderId');
-        $resolver->setAllowedTypes('orderId', 'integer');
         $resolver->setRequired('serviceName');
         $resolver->setAllowedTypes('serviceName', 'string');
 
