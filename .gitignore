@@ -11,3 +11,6 @@ resources/test-coverage
 
 # generated
 resources/generation/generated
+
+# examples
+resources/examples/config.php

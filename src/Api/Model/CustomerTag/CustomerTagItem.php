@@ -5,15 +5,11 @@ namespace Starweb\Api\Model\CustomerTag;
 class CustomerTagItem
 {
     /**
-     *
-     *
      * @var CustomerTag
      */
     protected $data;
 
     /**
-     *
-     *
      * @return CustomerTag
      */
     public function getData(): ?CustomerTag
@@ -22,13 +18,11 @@ class CustomerTagItem
     }
 
     /**
-     *
-     *
-     * @param CustomerAddedTag $data
+     * @param CustomerTag $data
      *
      * @return self
      */
-    public function setData(CustomerAddedTag $data): self
+    public function setData(CustomerTag $data): self
     {
         $this->data = $data;
 

@@ -56,7 +56,8 @@ class StarwebTest extends TestCase
             $this->getStreamFactory()->createStream(
                 '{"error": "invalid_client", "error_description": "Invalid credentials"}'
             )
-        );
+        )
+        ;
         $client->addResponse($response);
         $response->method('getStatusCode')->willReturn(400);
 
@@ -73,7 +74,8 @@ class StarwebTest extends TestCase
         $response = $this->createMock(Response::class);
         $response->method('getBody')->willReturn(
             $this->getStreamFactory()->createStream('{"access_token": "my-token", "expires_in": "3600"}')
-        );
+        )
+        ;
         $client->addResponse($response);
 
         $messageFactory = MessageFactoryDiscovery::find();
@@ -92,7 +94,10 @@ class StarwebTest extends TestCase
         );
     }
 
-    public function testShopResource()
+    /**
+     * @dataProvider resourceProvider
+     */
+    public function testResources(string $resource): void
     {
         $starweb = $this->getStarweb();
         $resource = $starweb->resource('Shop');
@@ -102,24 +107,9 @@ class StarwebTest extends TestCase
         $this->assertInstanceOf(ShopResource::class, $resource);
     }
 
-    public function testMediaFileResource()
+    public function resourceProvider(): array
     {
-        $starweb = $this->getStarweb();
-        $resource = $starweb->resource('MediaFile');
-
-        $this->assertInstanceOf(ResourceInterface::class, $resource);
-        $this->assertInstanceOf(Resource::class, $resource);
-        $this->assertInstanceOf(MediaFileResource::class, $resource);
-    }
-
-    public function testProductCategoryResource()
-    {
-        $starweb = $this->getStarweb();
-        $resource = $starweb->resource('ProductCategory');
-
-        $this->assertInstanceOf(ResourceInterface::class, $resource);
-        $this->assertInstanceOf(Resource::class, $resource);
-        $this->assertInstanceOf(ProductCategoryResource::class, $resource);
+        return Starweb::RESOURCE_KEYS;
     }
 
     /**

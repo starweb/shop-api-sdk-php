@@ -1,0 +1,8 @@
+<?php
+
+// client credentials
+$clientId = 'YOUR_CLIENT_ID';
+$clientSecret = 'YOUR_CLIENT_SECRET';
+
+// api base uri
+$apiBaseUri = 'YOUR_API_BASE_URI';

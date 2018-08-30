@@ -60,6 +60,44 @@ class Starweb
 
     public const API_VERSION_URI_SUFFIX = 'v2';
 
+    private const RESOURCE_NAMESPACE = 'Starweb\\Api\\Resource';
+    public const RESOURCE_KEYS = [
+        'Currency',
+        'CustomerAddress',
+        'CustomerExternalService',
+        'CustomerTag',
+        'Customer',
+        'MediaFile',
+        'OrderAddress',
+        'OrderComment',
+        'OrderExternalService',
+        'OrderItem',
+        'OrderStatus',
+        'Order',
+        'PaymentMethod',
+        'Pricelist',
+        'ProductAttribute',
+        'ProductCategory',
+        'ProductCategoryLink',
+        'ProductLanguage',
+        'ProductManufacturer',
+        'ProductMediaFileLink',
+        'ProductMetaData',
+        'ProductMetaDataType',
+        'ProductStockStatus',
+        'ProductUnit',
+        'ProductVariantAttributeValue',
+        'ProductVariantAttribute',
+        'ProductVariantPricelistPrice',
+        'ProductVariant',
+        'ProductVatRate',
+        'Product',
+        'ShippingMethod',
+        'ShippingTrackingType',
+        'Shop',
+        'Tag'
+    ];
+
     /**
      * @var EnhancedHttpClient
      */
@@ -153,112 +191,13 @@ class Starweb
      */
     public function resource(string $resourceKey, array $pathParameters = []): ResourceInterface
     {
-        switch ($resourceKey) {
-            case 'Currency':
-                $resource = new CurrencyResource($this->client, $pathParameters);
-                break;
-            case 'CustomerAddress':
-                $resource = new CustomerAddressResource($this->client, $pathParameters);
-                break;
-            case 'CustomerExternalService':
-                $resource = new CustomerExternalServiceResource($this->client, $pathParameters);
-                break;
-            case 'CustomerTag':
-                $resource = new CustomerTagResource($this->client, $pathParameters);
-                break;
-            case 'Customer':
-                $resource = new CustomerResource($this->client, $pathParameters);
-                break;
-            case 'MediaFile':
-                $resource = new MediaFileResource($this->client, $pathParameters);
-                break;
-            case 'OrderAddress':
-                $resource = new OrderAddressResource($this->client, $pathParameters);
-                break;
-            case 'OrderComment':
-                $resource = new OrderCommentResource($this->client, $pathParameters);
-                break;
-            case 'OrderExternalService':
-                $resource = new OrderExternalServiceResource($this->client, $pathParameters);
-                break;
-            case 'OrderItem':
-                $resource = new OrderItemResource($this->client, $pathParameters);
-                break;
-            case 'OrderStatus':
-                $resource = new OrderStatusResource($this->client, $pathParameters);
-                break;
-            case 'Order':
-                $resource = new OrderResource($this->client, $pathParameters);
-                break;
-            case 'PaymentMethod':
-                $resource = new PaymentMethodResource($this->client, $pathParameters);
-                break;
-            case 'Pricelist':
-                $resource = new PricelistResource($this->client, $pathParameters);
-                break;
-            case 'ProductAttribute':
-                $resource = new ProductAttributeResource($this->client, $pathParameters);
-                break;
-            case 'ProductCategory':
-                $resource = new ProductCategoryResource($this->client, $pathParameters);
-                break;
-            case 'ProductCategoryLink':
-                $resource = new ProductCategoryLinkResource($this->client, $pathParameters);
-                break;
-            case 'ProductLanguage':
-                $resource = new ProductLanguageResource($this->client, $pathParameters);
-                break;
-            case 'ProductManufacturer':
-                $resource = new ProductManufacturerResource($this->client, $pathParameters);
-                break;
-            case 'ProductMediaFileLink':
-                $resource = new ProductMediaFileLinkResource($this->client, $pathParameters);
-                break;
-            case 'ProductMetaData':
-                $resource = new ProductMetaDataResource($this->client, $pathParameters);
-                break;
-            case 'ProductMetaDataType':
-                $resource = new ProductMetaDataTypeResource($this->client, $pathParameters);
-                break;
-            case 'ProductStockStatus':
-                $resource = new ProductStockStatusResource($this->client, $pathParameters);
-                break;
-            case 'ProductUnit':
-                $resource = new ProductUnitResource($this->client, $pathParameters);
-                break;
-            case 'ProductVariantAttributeValue':
-                $resource = new ProductVariantAttributeValueResource($this->client, $pathParameters);
-                break;
-            case 'ProductVariantAttribute':
-                $resource = new ProductVariantAttributeResource($this->client, $pathParameters);
-                break;
-            case 'ProductVariantPricelistPrice':
-                $resource = new ProductVariantPricelistPriceResource($this->client, $pathParameters);
-                break;
-            case 'ProductVariant':
-                $resource = new ProductVariantResource($this->client, $pathParameters);
-                break;
-            case 'ProductVatRate':
-                $resource = new ProductVatRateResource($this->client, $pathParameters);
-                break;
-            case 'Product':
-                $resource = new ProductResource($this->client, $pathParameters);
-                break;
-            case 'ShippingMethod':
-                $resource = new ShippingMethodResource($this->client, $pathParameters);
-                break;
-            case 'ShippingTrackingType':
-                $resource = new ShippingTrackingTypeResource($this->client, $pathParameters);
-                break;
-            case 'Shop':
-                $resource = new ShopResource($this->client, $pathParameters);
-                break;
-            case 'Tag':
-                $resource = new TagResource($this->client, $pathParameters);
-                break;
-            default:
-                throw new \LogicException(sprintf('Undefined resource instance called: "%s"', $resourceKey));
+        if (!in_array($resourceKey, self::RESOURCE_KEYS, true)) {
+            throw new \LogicException(sprintf('Undefined resource instance called: "%s"', $resourceKey));
         }
+
+        $resourceFqcn = sprintf('%s\\%sResource', self::RESOURCE_NAMESPACE, $resourceKey);
+        $resource = new $resourceFqcn($this->client, $pathParameters);
+
         return $resource;
     }
 }
