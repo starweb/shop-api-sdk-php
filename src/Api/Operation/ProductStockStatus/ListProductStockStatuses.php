@@ -4,7 +4,7 @@ namespace Starweb\Api\Operation\ProductStockStatus;
 
 use Starweb\Api\Operation\Operation;
 
-class ListProductStockStatses extends Operation
+class ListProductStockStatuses extends Operation
 {
     public function getMethod(): string
     {

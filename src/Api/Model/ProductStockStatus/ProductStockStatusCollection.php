@@ -10,6 +10,7 @@ class ProductStockStatusCollection
      * @var ProductStockStatus[]
      */
     protected $data;
+
     /**
      * A list of product stock statuses
      *
@@ -19,6 +20,7 @@ class ProductStockStatusCollection
     {
         return $this->data;
     }
+
     /**
      * A list of product stock statuses
      *
