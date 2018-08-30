@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Model\OrderComment;
 
-class OrderCommentCollection
+use Starweb\Api\Model\CollectionInterface;
+
+class OrderCommentCollection implements CollectionInterface
 {
     /**
      * A list of order comments
@@ -10,15 +12,17 @@ class OrderCommentCollection
      * @var OrderComment[]
      */
     protected $data;
+
     /**
      * A list of order comments
      *
      * @return OrderComment[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }
+
     /**
      * A list of order comments
      *

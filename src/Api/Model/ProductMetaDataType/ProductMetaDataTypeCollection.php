@@ -15,7 +15,7 @@ class ProductMetaDataTypeCollection
      *
      * @return ProductMetaDataType[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }

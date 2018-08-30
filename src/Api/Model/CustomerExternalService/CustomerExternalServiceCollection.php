@@ -15,7 +15,7 @@ class CustomerExternalServiceCollection
      *
      * @return CustomerExternalService[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }

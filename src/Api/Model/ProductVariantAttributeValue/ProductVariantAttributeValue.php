@@ -81,7 +81,7 @@ class ProductVariantAttributeValue
      *
      * @return ProductVariantAttributeValueLanguage[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }

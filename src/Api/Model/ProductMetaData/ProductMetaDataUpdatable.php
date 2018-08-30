@@ -27,7 +27,7 @@ class ProductMetaDataUpdatable
      *
      * @return ProductMetaLanguageData[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }

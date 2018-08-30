@@ -111,7 +111,7 @@ class ProductUpdatable
      *
      * @return ProductCategoryLink[]
      */
-    public function getCategories() : ?array
+    public function getCategories() : array
     {
         return $this->categories;
     }
@@ -216,7 +216,7 @@ class ProductUpdatable
      *
      * @return ProductLanguage[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }
@@ -258,7 +258,7 @@ class ProductUpdatable
      *
      * @return ProductMediaFileLink[]
      */
-    public function getMediaFiles() : ?array
+    public function getMediaFiles() : array
     {
         return $this->mediaFiles;
     }
@@ -279,7 +279,7 @@ class ProductUpdatable
      *
      * @return ProductMetaDataModelUpdatable[]
      */
-    public function getMetaData() : ?array
+    public function getMetaData() : array
     {
         return $this->metaData;
     }
@@ -405,7 +405,7 @@ class ProductUpdatable
      *
      * @return ProductVariant[]
      */
-    public function getVariants() : ?array
+    public function getVariants() : array
     {
         return $this->variants;
     }
@@ -426,7 +426,7 @@ class ProductUpdatable
      *
      * @return ProductVatRate[]
      */
-    public function getVatRates() : ?array
+    public function getVatRates() : array
     {
         return $this->vatRates;
     }

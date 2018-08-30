@@ -735,7 +735,7 @@ class OrderUpdate
      *
      * @return OrderItem[]
      */
-    public function getItems() : ?array
+    public function getItems() : array
     {
         return $this->items;
     }

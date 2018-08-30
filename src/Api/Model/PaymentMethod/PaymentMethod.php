@@ -192,7 +192,7 @@ class PaymentMethod
      *
      * @return string[]
      */
-    public function getValidCountriesSelected() : ?array
+    public function getValidCountriesSelected() : array
     {
         return $this->validCountriesSelected;
     }

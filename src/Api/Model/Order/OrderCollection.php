@@ -21,7 +21,7 @@ class OrderCollection
      *
      * @return Order[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }

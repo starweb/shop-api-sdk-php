@@ -15,7 +15,7 @@ class ProductStockStatusCollection
      *
      * @return ProductStockStatus[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }

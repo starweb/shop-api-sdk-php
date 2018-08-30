@@ -15,7 +15,7 @@ class ShippingTrackingTypeCollection
      *
      * @return ShippingTrackingType[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }

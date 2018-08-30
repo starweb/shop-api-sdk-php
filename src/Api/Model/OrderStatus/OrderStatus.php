@@ -54,7 +54,7 @@ class OrderStatus
      *
      * @return OrderStatusLanguage[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }

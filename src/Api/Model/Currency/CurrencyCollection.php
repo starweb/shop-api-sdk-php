@@ -15,7 +15,7 @@ class CurrencyCollection
      *
      * @return Currency[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }

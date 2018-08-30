@@ -57,7 +57,7 @@ class Pricelist
      *
      * @return string[]
      */
-    public function getCountryCodes() : ?array
+    public function getCountryCodes() : array
     {
         return $this->countryCodes;
     }

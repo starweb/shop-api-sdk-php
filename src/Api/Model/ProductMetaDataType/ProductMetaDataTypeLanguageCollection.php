@@ -15,7 +15,7 @@ class ProductMetaDataTypeLanguageCollection
      *
      * @return ProductMetaDataTypeLanguage[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }

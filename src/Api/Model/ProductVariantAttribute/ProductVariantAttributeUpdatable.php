@@ -42,7 +42,7 @@ class ProductVariantAttributeUpdatable
      *
      * @return ProductVariantAttributeLanguage[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }

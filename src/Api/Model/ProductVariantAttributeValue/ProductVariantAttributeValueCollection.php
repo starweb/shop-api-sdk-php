@@ -15,7 +15,7 @@ class ProductVariantAttributeValueCollection
      *
      * @return ProductVariantAttributeValue[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }

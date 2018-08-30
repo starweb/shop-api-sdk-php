@@ -15,7 +15,7 @@ class OrderStatusCollection
      *
      * @return OrderStatus[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }

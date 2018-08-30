@@ -15,7 +15,7 @@ class ProductLanguageCollection
      *
      * @return ProductLanguage[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }

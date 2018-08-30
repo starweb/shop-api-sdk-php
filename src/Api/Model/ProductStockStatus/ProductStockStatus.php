@@ -93,7 +93,7 @@ class ProductStockStatus
      *
      * @return ProductStockStatusLanguage[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }

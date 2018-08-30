@@ -15,7 +15,7 @@ class ProductVariantPriceCollection
      *
      * @return ProductVariantPrice[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }

@@ -15,7 +15,7 @@ class ShippingMethodLanguageCollection
      *
      * @return ShippingMethodLanguage[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }

@@ -81,7 +81,7 @@ class ProductVariant
      *
      * @return int[]
      */
-    public function getAttributeValueLinks() : ?array
+    public function getAttributeValueLinks() : array
     {
         return $this->attributeValueLinks;
     }
@@ -102,7 +102,7 @@ class ProductVariant
      *
      * @return ProductVariantAttributeValue[]
      */
-    public function getAttributes() : ?array
+    public function getAttributes() : array
     {
         return $this->attributes;
     }
@@ -228,7 +228,7 @@ class ProductVariant
      *
      * @return ProductVariantPrice[]
      */
-    public function getPrices() : ?array
+    public function getPrices() : array
     {
         return $this->prices;
     }

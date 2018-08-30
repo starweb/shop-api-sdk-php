@@ -21,7 +21,7 @@ class ProductCollection
      *
      * @return Product[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }
