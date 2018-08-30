@@ -32,7 +32,7 @@ class ProductVariantAttributeUpdatable
      *
      * @return self
      */
-    public function setAttributeId(?int $attributeId) : self
+    public function setAttributeId(int $attributeId) : self
     {
         $this->attributeId = $attributeId;
         return $this;
@@ -53,7 +53,7 @@ class ProductVariantAttributeUpdatable
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;

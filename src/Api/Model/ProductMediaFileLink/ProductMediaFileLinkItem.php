@@ -26,7 +26,7 @@ class ProductMediaFileLinkItem
      *
      * @return self
      */
-    public function setData(?ProductMediaFileLink $data) : self
+    public function setData(ProductMediaFileLink $data) : self
     {
         $this->data = $data;
         return $this;

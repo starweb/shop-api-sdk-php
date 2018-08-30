@@ -50,7 +50,7 @@ class ProductVariantAttributeValue
      *
      * @return self
      */
-    public function setAttribute(?ProductVariantAttribute $attribute) : self
+    public function setAttribute(ProductVariantAttribute $attribute) : self
     {
         $this->attribute = $attribute;
         return $this;
@@ -71,7 +71,7 @@ class ProductVariantAttributeValue
      *
      * @return self
      */
-    public function setAttributeValueId(?int $attributeValueId) : self
+    public function setAttributeValueId(int $attributeValueId) : self
     {
         $this->attributeValueId = $attributeValueId;
         return $this;
@@ -92,7 +92,7 @@ class ProductVariantAttributeValue
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;
@@ -113,7 +113,7 @@ class ProductVariantAttributeValue
      *
      * @return self
      */
-    public function setSkuSuffix(?string $skuSuffix) : self
+    public function setSkuSuffix(string $skuSuffix) : self
     {
         $this->skuSuffix = $skuSuffix;
         return $this;
@@ -134,7 +134,7 @@ class ProductVariantAttributeValue
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;

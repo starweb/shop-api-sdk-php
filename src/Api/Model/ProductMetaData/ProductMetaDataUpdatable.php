@@ -38,7 +38,7 @@ class ProductMetaDataUpdatable
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;
@@ -59,7 +59,7 @@ class ProductMetaDataUpdatable
      *
      * @return self
      */
-    public function setMetaDataTypeId(?int $metaDataTypeId) : self
+    public function setMetaDataTypeId(int $metaDataTypeId) : self
     {
         $this->metaDataTypeId = $metaDataTypeId;
         return $this;
@@ -80,7 +80,7 @@ class ProductMetaDataUpdatable
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;

@@ -38,7 +38,7 @@ class ProductUnitLanguage
      *
      * @return self
      */
-    public function setLangCode(?string $langCode) : self
+    public function setLangCode(string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -59,7 +59,7 @@ class ProductUnitLanguage
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -80,7 +80,7 @@ class ProductUnitLanguage
      *
      * @return self
      */
-    public function setSymbol(?string $symbol) : self
+    public function setSymbol(string $symbol) : self
     {
         $this->symbol = $symbol;
         return $this;

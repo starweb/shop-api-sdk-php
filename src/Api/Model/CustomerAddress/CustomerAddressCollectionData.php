@@ -32,7 +32,7 @@ class CustomerAddressCollectionData
      *
      * @return self
      */
-    public function setDelivery(?Address $delivery) : self
+    public function setDelivery(Address $delivery) : self
     {
         $this->delivery = $delivery;
         return $this;
@@ -53,7 +53,7 @@ class CustomerAddressCollectionData
      *
      * @return self
      */
-    public function setInvoice(?Address $invoice) : self
+    public function setInvoice(Address $invoice) : self
     {
         $this->invoice = $invoice;
         return $this;

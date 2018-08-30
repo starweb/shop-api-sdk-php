@@ -32,7 +32,7 @@ class OrderStatusLanguage
      *
      * @return self
      */
-    public function setLangCode(?string $langCode) : self
+    public function setLangCode(string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -53,7 +53,7 @@ class OrderStatusLanguage
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;

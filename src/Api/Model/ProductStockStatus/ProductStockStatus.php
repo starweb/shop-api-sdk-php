@@ -62,7 +62,7 @@ class ProductStockStatus
      *
      * @return self
      */
-    public function setIdCode(?string $idCode) : self
+    public function setIdCode(string $idCode) : self
     {
         $this->idCode = $idCode;
         return $this;
@@ -83,7 +83,7 @@ class ProductStockStatus
      *
      * @return self
      */
-    public function setInStock(?bool $inStock) : self
+    public function setInStock(bool $inStock) : self
     {
         $this->inStock = $inStock;
         return $this;
@@ -104,7 +104,7 @@ class ProductStockStatus
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;
@@ -125,7 +125,7 @@ class ProductStockStatus
      *
      * @return self
      */
-    public function setProductBuyable(?bool $productBuyable) : self
+    public function setProductBuyable(bool $productBuyable) : self
     {
         $this->productBuyable = $productBuyable;
         return $this;
@@ -146,7 +146,7 @@ class ProductStockStatus
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -167,7 +167,7 @@ class ProductStockStatus
      *
      * @return self
      */
-    public function setStockStatusId(?int $stockStatusId) : self
+    public function setStockStatusId(int $stockStatusId) : self
     {
         $this->stockStatusId = $stockStatusId;
         return $this;
@@ -188,7 +188,7 @@ class ProductStockStatus
      *
      * @return self
      */
-    public function setStockoutNewStatusId(?int $stockoutNewStatusId) : self
+    public function setStockoutNewStatusId(int $stockoutNewStatusId) : self
     {
         $this->stockoutNewStatusId = $stockoutNewStatusId;
         return $this;

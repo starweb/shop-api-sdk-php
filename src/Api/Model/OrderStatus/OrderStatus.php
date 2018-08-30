@@ -44,7 +44,7 @@ class OrderStatus
      *
      * @return self
      */
-    public function setIdCode(?string $idCode) : self
+    public function setIdCode(string $idCode) : self
     {
         $this->idCode = $idCode;
         return $this;
@@ -65,7 +65,7 @@ class OrderStatus
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;
@@ -86,7 +86,7 @@ class OrderStatus
      *
      * @return self
      */
-    public function setSendEmail(?bool $sendEmail) : self
+    public function setSendEmail(bool $sendEmail) : self
     {
         $this->sendEmail = $sendEmail;
         return $this;
@@ -107,7 +107,7 @@ class OrderStatus
      *
      * @return self
      */
-    public function setStatusId(?int $statusId) : self
+    public function setStatusId(int $statusId) : self
     {
         $this->statusId = $statusId;
         return $this;

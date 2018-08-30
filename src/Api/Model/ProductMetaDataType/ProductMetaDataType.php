@@ -32,7 +32,7 @@ class ProductMetaDataType
      *
      * @return self
      */
-    public function setLanguages(?ProductMetaDataTypeLanguageCollection $languages) : self
+    public function setLanguages(ProductMetaDataTypeLanguageCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;
@@ -53,7 +53,7 @@ class ProductMetaDataType
      *
      * @return self
      */
-    public function setMetaDataTypeId(?int $metaDataTypeId) : self
+    public function setMetaDataTypeId(int $metaDataTypeId) : self
     {
         $this->metaDataTypeId = $metaDataTypeId;
         return $this;

@@ -68,7 +68,7 @@ class OrderAddress
      *
      * @return self
      */
-    public function setCustomerInvoice(?Address $customerInvoice) : self
+    public function setCustomerInvoice(Address $customerInvoice) : self
     {
         $this->customerInvoice = $customerInvoice;
         return $this;
@@ -87,7 +87,7 @@ class OrderAddress
      *
      * @return self
      */
-    public function setOriginalDelivery(?Address $originalDelivery) : self
+    public function setOriginalDelivery(Address $originalDelivery) : self
     {
         $this->originalDelivery = $originalDelivery;
         return $this;
@@ -107,7 +107,7 @@ class OrderAddress
      *
      * @return self
      */
-    public function setOriginalInvoice(?Address $originalInvoice) : self
+    public function setOriginalInvoice(Address $originalInvoice) : self
     {
         $this->originalInvoice = $originalInvoice;
         return $this;
@@ -128,7 +128,7 @@ class OrderAddress
      *
      * @return self
      */
-    public function setPaymentMethodDelivery(?Address $paymentMethodDelivery) : self
+    public function setPaymentMethodDelivery(Address $paymentMethodDelivery) : self
     {
         $this->paymentMethodDelivery = $paymentMethodDelivery;
         return $this;
@@ -149,7 +149,7 @@ class OrderAddress
      *
      * @return self
      */
-    public function setPaymentMethodInvoice(?Address $paymentMethodInvoice) : self
+    public function setPaymentMethodInvoice(Address $paymentMethodInvoice) : self
     {
         $this->paymentMethodInvoice = $paymentMethodInvoice;
         return $this;

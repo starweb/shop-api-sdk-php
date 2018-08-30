@@ -26,7 +26,7 @@ class OrderExternalServicesItem
      *
      * @return self
      */
-    public function setData(?OrderExternalService $data) : self
+    public function setData(OrderExternalService $data) : self
     {
         $this->data = $data;
         return $this;

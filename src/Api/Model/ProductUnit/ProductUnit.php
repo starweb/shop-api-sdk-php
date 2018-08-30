@@ -32,7 +32,7 @@ class ProductUnit
      *
      * @return self
      */
-    public function setLanguages(?ProductUnitLanguageCollection $languages) : self
+    public function setLanguages(ProductUnitLanguageCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;
@@ -53,7 +53,7 @@ class ProductUnit
      *
      * @return self
      */
-    public function setUnitId(?int $unitId) : self
+    public function setUnitId(int $unitId) : self
     {
         $this->unitId = $unitId;
         return $this;

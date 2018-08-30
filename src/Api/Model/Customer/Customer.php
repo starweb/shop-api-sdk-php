@@ -110,7 +110,7 @@ class Customer
      *
      * @return self
      */
-    public function setTags(?CustomerTagCollection $tags) : self
+    public function setTags(CustomerTagCollection $tags) : self
     {
         $this->tags = $tags;
         return $this;
@@ -131,7 +131,7 @@ class Customer
      *
      * @return self
      */
-    public function setAddresses(?CustomerAddressesCollection $addresses) : self
+    public function setAddresses(CustomerAddressesCollection $addresses) : self
     {
         $this->addresses = $addresses;
         return $this;
@@ -152,7 +152,7 @@ class Customer
      *
      * @return self
      */
-    public function setApproved(?bool $approved) : self
+    public function setApproved(bool $approved) : self
     {
         $this->approved = $approved;
         return $this;
@@ -173,7 +173,7 @@ class Customer
      *
      * @return self
      */
-    public function setApprovedAt(?string $approvedAt) : self
+    public function setApprovedAt(string $approvedAt) : self
     {
         $this->approvedAt = $approvedAt;
         return $this;
@@ -194,7 +194,7 @@ class Customer
      *
      * @return self
      */
-    public function setCreatedAt(?string $createdAt) : self
+    public function setCreatedAt(string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -215,7 +215,7 @@ class Customer
      *
      * @return self
      */
-    public function setCustomInfo1(?string $customInfo1) : self
+    public function setCustomInfo1(string $customInfo1) : self
     {
         $this->customInfo1 = $customInfo1;
         return $this;
@@ -236,7 +236,7 @@ class Customer
      *
      * @return self
      */
-    public function setCustomInfo2(?string $customInfo2) : self
+    public function setCustomInfo2(string $customInfo2) : self
     {
         $this->customInfo2 = $customInfo2;
         return $this;
@@ -257,7 +257,7 @@ class Customer
      *
      * @return self
      */
-    public function setCustomerId(?int $customerId) : self
+    public function setCustomerId(int $customerId) : self
     {
         $this->customerId = $customerId;
         return $this;
@@ -278,7 +278,7 @@ class Customer
      *
      * @return self
      */
-    public function setEmail(?string $email) : self
+    public function setEmail(string $email) : self
     {
         $this->email = $email;
         return $this;
@@ -299,7 +299,7 @@ class Customer
      *
      * @return self
      */
-    public function setExternalServices(?CustomerExternalServicesCollection $externalServices) : self
+    public function setExternalServices(CustomerExternalServicesCollection $externalServices) : self
     {
         $this->externalServices = $externalServices;
         return $this;
@@ -320,7 +320,7 @@ class Customer
      *
      * @return self
      */
-    public function setModifiedAt(?string $modifiedAt) : self
+    public function setModifiedAt(string $modifiedAt) : self
     {
         $this->modifiedAt = $modifiedAt;
         return $this;
@@ -341,7 +341,7 @@ class Customer
      *
      * @return self
      */
-    public function setNationalIdNo(?string $nationalIdNo) : self
+    public function setNationalIdNo(string $nationalIdNo) : self
     {
         $this->nationalIdNo = $nationalIdNo;
         return $this;
@@ -362,7 +362,7 @@ class Customer
      *
      * @return self
      */
-    public function setPricelistId(?int $pricelistId) : self
+    public function setPricelistId(int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
         return $this;
@@ -383,7 +383,7 @@ class Customer
      *
      * @return self
      */
-    public function setType(?string $type) : self
+    public function setType(string $type) : self
     {
         $this->type = $type;
         return $this;
@@ -404,7 +404,7 @@ class Customer
      *
      * @return self
      */
-    public function setVatNo(?string $vatNo) : self
+    public function setVatNo(string $vatNo) : self
     {
         $this->vatNo = $vatNo;
         return $this;

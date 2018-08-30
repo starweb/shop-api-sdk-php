@@ -98,7 +98,7 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setActive(?bool $active) : self
+    public function setActive(bool $active) : self
     {
         $this->active = $active;
         return $this;
@@ -119,7 +119,7 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setFee(?float $fee) : self
+    public function setFee(float $fee) : self
     {
         $this->fee = $fee;
         return $this;
@@ -140,7 +140,7 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setIdCode(?string $idCode) : self
+    public function setIdCode(string $idCode) : self
     {
         $this->idCode = $idCode;
         return $this;
@@ -161,7 +161,7 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setLanguages(?PaymentMethodLanguageCollection $languages) : self
+    public function setLanguages(PaymentMethodLanguageCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;
@@ -182,7 +182,7 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setPaymentMethodId(?int $paymentMethodId) : self
+    public function setPaymentMethodId(int $paymentMethodId) : self
     {
         $this->paymentMethodId = $paymentMethodId;
         return $this;
@@ -203,7 +203,7 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidCountriesSelected(?array $validCountriesSelected) : self
+    public function setValidCountriesSelected(array $validCountriesSelected) : self
     {
         $this->validCountriesSelected = $validCountriesSelected;
         return $this;
@@ -224,7 +224,7 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForCountries(?string $validForCountries) : self
+    public function setValidForCountries(string $validForCountries) : self
     {
         $this->validForCountries = $validForCountries;
         return $this;
@@ -245,7 +245,7 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForCustomerType(?string $validForCustomerType) : self
+    public function setValidForCustomerType(string $validForCustomerType) : self
     {
         $this->validForCustomerType = $validForCustomerType;
         return $this;
@@ -266,7 +266,7 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForMaxItemsSubtotal(?float $validForMaxItemsSubtotal) : self
+    public function setValidForMaxItemsSubtotal(float $validForMaxItemsSubtotal) : self
     {
         $this->validForMaxItemsSubtotal = $validForMaxItemsSubtotal;
         return $this;
@@ -287,7 +287,7 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForMaxWeight(?float $validForMaxWeight) : self
+    public function setValidForMaxWeight(float $validForMaxWeight) : self
     {
         $this->validForMaxWeight = $validForMaxWeight;
         return $this;
@@ -308,7 +308,7 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForMinItemsSubtotal(?float $validForMinItemsSubtotal) : self
+    public function setValidForMinItemsSubtotal(float $validForMinItemsSubtotal) : self
     {
         $this->validForMinItemsSubtotal = $validForMinItemsSubtotal;
         return $this;
@@ -329,7 +329,7 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForMinWeight(?float $validForMinWeight) : self
+    public function setValidForMinWeight(float $validForMinWeight) : self
     {
         $this->validForMinWeight = $validForMinWeight;
         return $this;
@@ -350,7 +350,7 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForShippingMethods(?string $validForShippingMethods) : self
+    public function setValidForShippingMethods(string $validForShippingMethods) : self
     {
         $this->validForShippingMethods = $validForShippingMethods;
         return $this;

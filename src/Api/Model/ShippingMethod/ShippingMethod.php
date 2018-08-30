@@ -92,7 +92,7 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setActive(?bool $active) : self
+    public function setActive(bool $active) : self
     {
         $this->active = $active;
         return $this;
@@ -113,7 +113,7 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setFreeShippingMinItemsSubtotal(?float $freeShippingMinItemsSubtotal) : self
+    public function setFreeShippingMinItemsSubtotal(float $freeShippingMinItemsSubtotal) : self
     {
         $this->freeShippingMinItemsSubtotal = $freeShippingMinItemsSubtotal;
         return $this;
@@ -134,7 +134,7 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setFreeShippingMinWeight(?float $freeShippingMinWeight) : self
+    public function setFreeShippingMinWeight(float $freeShippingMinWeight) : self
     {
         $this->freeShippingMinWeight = $freeShippingMinWeight;
         return $this;
@@ -155,7 +155,7 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setLanguages(?ShippingMethodLanguageCollection $languages) : self
+    public function setLanguages(ShippingMethodLanguageCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;
@@ -176,7 +176,7 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setShippingMethodId(?int $shippingMethodId) : self
+    public function setShippingMethodId(int $shippingMethodId) : self
     {
         $this->shippingMethodId = $shippingMethodId;
         return $this;
@@ -197,7 +197,7 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setValidCountriesSelected(?array $validCountriesSelected) : self
+    public function setValidCountriesSelected(array $validCountriesSelected) : self
     {
         $this->validCountriesSelected = $validCountriesSelected;
         return $this;
@@ -218,7 +218,7 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setValidForCountries(?string $validForCountries) : self
+    public function setValidForCountries(string $validForCountries) : self
     {
         $this->validForCountries = $validForCountries;
         return $this;
@@ -239,7 +239,7 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setValidForCustomerType(?string $validForCustomerType) : self
+    public function setValidForCustomerType(string $validForCustomerType) : self
     {
         $this->validForCustomerType = $validForCustomerType;
         return $this;
@@ -260,7 +260,7 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setValidForMaxItemsSubtotal(?float $validForMaxItemsSubtotal) : self
+    public function setValidForMaxItemsSubtotal(float $validForMaxItemsSubtotal) : self
     {
         $this->validForMaxItemsSubtotal = $validForMaxItemsSubtotal;
         return $this;
@@ -281,7 +281,7 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setValidForMaxWeight(?float $validForMaxWeight) : self
+    public function setValidForMaxWeight(float $validForMaxWeight) : self
     {
         $this->validForMaxWeight = $validForMaxWeight;
         return $this;
@@ -302,7 +302,7 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setValidForMinItemsSubtotal(?float $validForMinItemsSubtotal) : self
+    public function setValidForMinItemsSubtotal(float $validForMinItemsSubtotal) : self
     {
         $this->validForMinItemsSubtotal = $validForMinItemsSubtotal;
         return $this;
@@ -323,7 +323,7 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setValidForMinWeight(?float $validForMinWeight) : self
+    public function setValidForMinWeight(float $validForMinWeight) : self
     {
         $this->validForMinWeight = $validForMinWeight;
         return $this;

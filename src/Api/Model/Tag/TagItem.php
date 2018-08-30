@@ -26,7 +26,7 @@ class TagItem
      *
      * @return self
      */
-    public function setData(?Tag $data) : self
+    public function setData(Tag $data) : self
     {
         $this->data = $data;
         return $this;

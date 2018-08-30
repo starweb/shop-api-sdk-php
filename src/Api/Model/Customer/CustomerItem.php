@@ -26,7 +26,7 @@ class CustomerItem
      *
      * @return self
      */
-    public function setData(?Customer $data) : self
+    public function setData(Customer $data) : self
     {
         $this->data = $data;
         return $this;

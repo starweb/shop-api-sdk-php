@@ -326,7 +326,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setAddresses(?OrderAddressModel $addresses) : self
+    public function setAddresses(OrderAddressModel $addresses) : self
     {
         $this->addresses = $addresses;
         return $this;
@@ -347,7 +347,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setAmountPaid(?float $amountPaid) : self
+    public function setAmountPaid(float $amountPaid) : self
     {
         $this->amountPaid = $amountPaid;
         return $this;
@@ -368,7 +368,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setAmountPaidInBaseCurrency(?float $amountPaidInBaseCurrency) : self
+    public function setAmountPaidInBaseCurrency(float $amountPaidInBaseCurrency) : self
     {
         $this->amountPaidInBaseCurrency = $amountPaidInBaseCurrency;
         return $this;
@@ -389,7 +389,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setAmountToPay(?float $amountToPay) : self
+    public function setAmountToPay(float $amountToPay) : self
     {
         $this->amountToPay = $amountToPay;
         return $this;
@@ -410,7 +410,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setAmountToPayInBaseCurrency(?float $amountToPayInBaseCurrency) : self
+    public function setAmountToPayInBaseCurrency(float $amountToPayInBaseCurrency) : self
     {
         $this->amountToPayInBaseCurrency = $amountToPayInBaseCurrency;
         return $this;
@@ -431,7 +431,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setBaseCurrencyCode(?string $baseCurrencyCode) : self
+    public function setBaseCurrencyCode(string $baseCurrencyCode) : self
     {
         $this->baseCurrencyCode = $baseCurrencyCode;
         return $this;
@@ -452,7 +452,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setCreatedAt(?string $createdAt) : self
+    public function setCreatedAt(string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -473,7 +473,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setCurrencyCode(?string $currencyCode) : self
+    public function setCurrencyCode(string $currencyCode) : self
     {
         $this->currencyCode = $currencyCode;
         return $this;
@@ -494,7 +494,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setCurrencyExchangeRate(?float $currencyExchangeRate) : self
+    public function setCurrencyExchangeRate(float $currencyExchangeRate) : self
     {
         $this->currencyExchangeRate = $currencyExchangeRate;
         return $this;
@@ -515,7 +515,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setCurrencyPrecision(?int $currencyPrecision) : self
+    public function setCurrencyPrecision(int $currencyPrecision) : self
     {
         $this->currencyPrecision = $currencyPrecision;
         return $this;
@@ -536,7 +536,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setCustomInfo1(?string $customInfo1) : self
+    public function setCustomInfo1(string $customInfo1) : self
     {
         $this->customInfo1 = $customInfo1;
         return $this;
@@ -557,7 +557,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setCustomInfo2(?string $customInfo2) : self
+    public function setCustomInfo2(string $customInfo2) : self
     {
         $this->customInfo2 = $customInfo2;
         return $this;
@@ -578,7 +578,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setCustomInfo3(?string $customInfo3) : self
+    public function setCustomInfo3(string $customInfo3) : self
     {
         $this->customInfo3 = $customInfo3;
         return $this;
@@ -599,7 +599,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setCustomInfo4(?string $customInfo4) : self
+    public function setCustomInfo4(string $customInfo4) : self
     {
         $this->customInfo4 = $customInfo4;
         return $this;
@@ -620,7 +620,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setCustomerId(?int $customerId) : self
+    public function setCustomerId(int $customerId) : self
     {
         $this->customerId = $customerId;
         return $this;
@@ -641,7 +641,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setDiscountCode(?string $discountCode) : self
+    public function setDiscountCode(string $discountCode) : self
     {
         $this->discountCode = $discountCode;
         return $this;
@@ -662,7 +662,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setHasComment(?bool $hasComment) : self
+    public function setHasComment(bool $hasComment) : self
     {
         $this->hasComment = $hasComment;
         return $this;
@@ -683,7 +683,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setInternalComment(?string $internalComment) : self
+    public function setInternalComment(string $internalComment) : self
     {
         $this->internalComment = $internalComment;
         return $this;
@@ -704,7 +704,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setIsComplete(?bool $isComplete) : self
+    public function setIsComplete(bool $isComplete) : self
     {
         $this->isComplete = $isComplete;
         return $this;
@@ -725,7 +725,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setIsRead(?bool $isRead) : self
+    public function setIsRead(bool $isRead) : self
     {
         $this->isRead = $isRead;
         return $this;
@@ -746,7 +746,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setItems(?array $items) : self
+    public function setItems(array $items) : self
     {
         $this->items = $items;
         return $this;
@@ -767,7 +767,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setLangCode(?string $langCode) : self
+    public function setLangCode(string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -788,7 +788,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setModifiedAt(?string $modifiedAt) : self
+    public function setModifiedAt(string $modifiedAt) : self
     {
         $this->modifiedAt = $modifiedAt;
         return $this;
@@ -809,7 +809,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setOnOrderStatusChangeProcessPayment(?bool $onOrderStatusChangeProcessPayment) : self
+    public function setOnOrderStatusChangeProcessPayment(bool $onOrderStatusChangeProcessPayment) : self
     {
         $this->onOrderStatusChangeProcessPayment = $onOrderStatusChangeProcessPayment;
         return $this;
@@ -830,7 +830,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setOnOrderStatusChangeSendEmail(?bool $onOrderStatusChangeSendEmail) : self
+    public function setOnOrderStatusChangeSendEmail(bool $onOrderStatusChangeSendEmail) : self
     {
         $this->onOrderStatusChangeSendEmail = $onOrderStatusChangeSendEmail;
         return $this;
@@ -851,7 +851,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setOrderId(?int $orderId) : self
+    public function setOrderId(int $orderId) : self
     {
         $this->orderId = $orderId;
         return $this;
@@ -872,7 +872,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setOriginalCustomerCustomInfo1(?string $originalCustomerCustomInfo1) : self
+    public function setOriginalCustomerCustomInfo1(string $originalCustomerCustomInfo1) : self
     {
         $this->originalCustomerCustomInfo1 = $originalCustomerCustomInfo1;
         return $this;
@@ -893,7 +893,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setOriginalCustomerCustomInfo2(?string $originalCustomerCustomInfo2) : self
+    public function setOriginalCustomerCustomInfo2(string $originalCustomerCustomInfo2) : self
     {
         $this->originalCustomerCustomInfo2 = $originalCustomerCustomInfo2;
         return $this;
@@ -914,7 +914,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setOriginalCustomerEmail(?string $originalCustomerEmail) : self
+    public function setOriginalCustomerEmail(string $originalCustomerEmail) : self
     {
         $this->originalCustomerEmail = $originalCustomerEmail;
         return $this;
@@ -935,7 +935,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setOriginalCustomerNationalIdNo(?string $originalCustomerNationalIdNo) : self
+    public function setOriginalCustomerNationalIdNo(string $originalCustomerNationalIdNo) : self
     {
         $this->originalCustomerNationalIdNo = $originalCustomerNationalIdNo;
         return $this;
@@ -956,7 +956,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setOriginalCustomerVatNo(?string $originalCustomerVatNo) : self
+    public function setOriginalCustomerVatNo(string $originalCustomerVatNo) : self
     {
         $this->originalCustomerVatNo = $originalCustomerVatNo;
         return $this;
@@ -977,7 +977,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setPaymentFee(?float $paymentFee) : self
+    public function setPaymentFee(float $paymentFee) : self
     {
         $this->paymentFee = $paymentFee;
         return $this;
@@ -998,7 +998,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setPaymentMethodId(?int $paymentMethodId) : self
+    public function setPaymentMethodId(int $paymentMethodId) : self
     {
         $this->paymentMethodId = $paymentMethodId;
         return $this;
@@ -1019,7 +1019,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setPaymentMethodIdCode(?string $paymentMethodIdCode) : self
+    public function setPaymentMethodIdCode(string $paymentMethodIdCode) : self
     {
         $this->paymentMethodIdCode = $paymentMethodIdCode;
         return $this;
@@ -1040,7 +1040,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setPaymentMethodName(?string $paymentMethodName) : self
+    public function setPaymentMethodName(string $paymentMethodName) : self
     {
         $this->paymentMethodName = $paymentMethodName;
         return $this;
@@ -1061,7 +1061,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setPaymentReference(?string $paymentReference) : self
+    public function setPaymentReference(string $paymentReference) : self
     {
         $this->paymentReference = $paymentReference;
         return $this;
@@ -1082,7 +1082,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setPaymentStatus(?string $paymentStatus) : self
+    public function setPaymentStatus(string $paymentStatus) : self
     {
         $this->paymentStatus = $paymentStatus;
         return $this;
@@ -1103,7 +1103,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setPaymentVatRate(?float $paymentVatRate) : self
+    public function setPaymentVatRate(float $paymentVatRate) : self
     {
         $this->paymentVatRate = $paymentVatRate;
         return $this;
@@ -1124,7 +1124,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setShippingCost(?float $shippingCost) : self
+    public function setShippingCost(float $shippingCost) : self
     {
         $this->shippingCost = $shippingCost;
         return $this;
@@ -1145,7 +1145,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setShippingMethodId(?int $shippingMethodId) : self
+    public function setShippingMethodId(int $shippingMethodId) : self
     {
         $this->shippingMethodId = $shippingMethodId;
         return $this;
@@ -1166,7 +1166,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setShippingMethodName(?string $shippingMethodName) : self
+    public function setShippingMethodName(string $shippingMethodName) : self
     {
         $this->shippingMethodName = $shippingMethodName;
         return $this;
@@ -1187,7 +1187,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setShippingTrackerType(?int $shippingTrackerType) : self
+    public function setShippingTrackerType(int $shippingTrackerType) : self
     {
         $this->shippingTrackerType = $shippingTrackerType;
         return $this;
@@ -1208,7 +1208,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setShippingTrackingNo(?string $shippingTrackingNo) : self
+    public function setShippingTrackingNo(string $shippingTrackingNo) : self
     {
         $this->shippingTrackingNo = $shippingTrackingNo;
         return $this;
@@ -1229,7 +1229,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setShippingVatRate(?float $shippingVatRate) : self
+    public function setShippingVatRate(float $shippingVatRate) : self
     {
         $this->shippingVatRate = $shippingVatRate;
         return $this;
@@ -1250,7 +1250,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setShopCountryCode(?string $shopCountryCode) : self
+    public function setShopCountryCode(string $shopCountryCode) : self
     {
         $this->shopCountryCode = $shopCountryCode;
         return $this;
@@ -1271,7 +1271,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setStatusId(?int $statusId) : self
+    public function setStatusId(int $statusId) : self
     {
         $this->statusId = $statusId;
         return $this;
@@ -1292,7 +1292,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setTotalAmount(?float $totalAmount) : self
+    public function setTotalAmount(float $totalAmount) : self
     {
         $this->totalAmount = $totalAmount;
         return $this;
@@ -1313,7 +1313,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setTotalAmountInBaseCurrency(?float $totalAmountInBaseCurrency) : self
+    public function setTotalAmountInBaseCurrency(float $totalAmountInBaseCurrency) : self
     {
         $this->totalAmountInBaseCurrency = $totalAmountInBaseCurrency;
         return $this;
@@ -1334,7 +1334,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setTotalVat(?float $totalVat) : self
+    public function setTotalVat(float $totalVat) : self
     {
         $this->totalVat = $totalVat;
         return $this;
@@ -1355,7 +1355,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setTotalVatInBaseCurrency(?float $totalVatInBaseCurrency) : self
+    public function setTotalVatInBaseCurrency(float $totalVatInBaseCurrency) : self
     {
         $this->totalVatInBaseCurrency = $totalVatInBaseCurrency;
         return $this;
@@ -1376,7 +1376,7 @@ class OrderUpdate
      *
      * @return self
      */
-    public function setTotalWeight(?float $totalWeight) : self
+    public function setTotalWeight(float $totalWeight) : self
     {
         $this->totalWeight = $totalWeight;
         return $this;

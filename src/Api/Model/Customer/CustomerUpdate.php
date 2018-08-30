@@ -74,7 +74,7 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setAddresses(?CustomerUpdateAddresses $addresses) : self
+    public function setAddresses(CustomerUpdateAddresses $addresses) : self
     {
         $this->addresses = $addresses;
         return $this;
@@ -95,7 +95,7 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setCreatedAt(?string $createdAt) : self
+    public function setCreatedAt(string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -116,7 +116,7 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setCustomInfo1(?string $customInfo1) : self
+    public function setCustomInfo1(string $customInfo1) : self
     {
         $this->customInfo1 = $customInfo1;
         return $this;
@@ -137,7 +137,7 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setCustomInfo2(?string $customInfo2) : self
+    public function setCustomInfo2(string $customInfo2) : self
     {
         $this->customInfo2 = $customInfo2;
         return $this;
@@ -158,7 +158,7 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setCustomerId(?int $customerId) : self
+    public function setCustomerId(int $customerId) : self
     {
         $this->customerId = $customerId;
         return $this;
@@ -179,7 +179,7 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setEmail(?string $email) : self
+    public function setEmail(string $email) : self
     {
         $this->email = $email;
         return $this;
@@ -200,7 +200,7 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setNationalIdNo(?string $nationalIdNo) : self
+    public function setNationalIdNo(string $nationalIdNo) : self
     {
         $this->nationalIdNo = $nationalIdNo;
         return $this;
@@ -221,7 +221,7 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setType(?string $type) : self
+    public function setType(string $type) : self
     {
         $this->type = $type;
         return $this;
@@ -242,7 +242,7 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setVatNo(?string $vatNo) : self
+    public function setVatNo(string $vatNo) : self
     {
         $this->vatNo = $vatNo;
         return $this;

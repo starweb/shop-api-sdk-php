@@ -26,7 +26,7 @@ class ProductAttributesItem
      *
      * @return self
      */
-    public function setAttributeId(?int $attributeId) : self
+    public function setAttributeId(int $attributeId) : self
     {
         $this->attributeId = $attributeId;
         return $this;

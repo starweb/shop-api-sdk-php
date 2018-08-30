@@ -26,7 +26,7 @@ class ProductCategoryLinkItem
      *
      * @return self
      */
-    public function setData(?ProductCategoryLinkModel $data) : self
+    public function setData(ProductCategoryLinkModel $data) : self
     {
         $this->data = $data;
         return $this;

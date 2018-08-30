@@ -44,7 +44,7 @@ class Pagination
      *
      * @return self
      */
-    public function setCount(?int $count) : self
+    public function setCount(int $count) : self
     {
         $this->count = $count;
         return $this;
@@ -65,7 +65,7 @@ class Pagination
      *
      * @return self
      */
-    public function setCurrentPage(?int $currentPage) : self
+    public function setCurrentPage(int $currentPage) : self
     {
         $this->currentPage = $currentPage;
         return $this;
@@ -86,7 +86,7 @@ class Pagination
      *
      * @return self
      */
-    public function setPerPage(?int $perPage) : self
+    public function setPerPage(int $perPage) : self
     {
         $this->perPage = $perPage;
         return $this;
@@ -107,7 +107,7 @@ class Pagination
      *
      * @return self
      */
-    public function setTotal(?int $total) : self
+    public function setTotal(int $total) : self
     {
         $this->total = $total;
         return $this;

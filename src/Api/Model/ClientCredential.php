@@ -38,7 +38,7 @@ class ClientCredential
      *
      * @return self
      */
-    public function setClientId(?string $clientId) : self
+    public function setClientId(string $clientId) : self
     {
         $this->clientId = $clientId;
         return $this;
@@ -59,7 +59,7 @@ class ClientCredential
      *
      * @return self
      */
-    public function setClientSecret(?string $clientSecret) : self
+    public function setClientSecret(string $clientSecret) : self
     {
         $this->clientSecret = $clientSecret;
         return $this;
@@ -80,7 +80,7 @@ class ClientCredential
      *
      * @return self
      */
-    public function setGrantType(?string $grantType) : self
+    public function setGrantType(string $grantType) : self
     {
         $this->grantType = $grantType;
         return $this;

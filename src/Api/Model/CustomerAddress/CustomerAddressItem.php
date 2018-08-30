@@ -26,7 +26,7 @@ class CustomerAddressItem
      *
      * @return self
      */
-    public function setData(?Address $data) : self
+    public function setData(Address $data) : self
     {
         $this->data = $data;
         return $this;

@@ -26,7 +26,7 @@ class ProductMetaLanguageDataItem
      *
      * @return self
      */
-    public function setData(?ProductMetaLanguageData $data) : self
+    public function setData(ProductMetaLanguageData $data) : self
     {
         $this->data = $data;
         return $this;

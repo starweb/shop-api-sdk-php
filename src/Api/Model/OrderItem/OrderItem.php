@@ -80,7 +80,7 @@ class OrderItem
      *
      * @return self
      */
-    public function setDescription(?string $description) : self
+    public function setDescription(string $description) : self
     {
         $this->description = $description;
         return $this;
@@ -101,7 +101,7 @@ class OrderItem
      *
      * @return self
      */
-    public function setDiscount(?float $discount) : self
+    public function setDiscount(float $discount) : self
     {
         $this->discount = $discount;
         return $this;
@@ -122,7 +122,7 @@ class OrderItem
      *
      * @return self
      */
-    public function setDiscountType(?string $discountType) : self
+    public function setDiscountType(string $discountType) : self
     {
         $this->discountType = $discountType;
         return $this;
@@ -143,7 +143,7 @@ class OrderItem
      *
      * @return self
      */
-    public function setItemId(?int $itemId) : self
+    public function setItemId(int $itemId) : self
     {
         $this->itemId = $itemId;
         return $this;
@@ -164,7 +164,7 @@ class OrderItem
      *
      * @return self
      */
-    public function setQuantity(?int $quantity) : self
+    public function setQuantity(int $quantity) : self
     {
         $this->quantity = $quantity;
         return $this;
@@ -185,7 +185,7 @@ class OrderItem
      *
      * @return self
      */
-    public function setSku(?string $sku) : self
+    public function setSku(string $sku) : self
     {
         $this->sku = $sku;
         return $this;
@@ -206,7 +206,7 @@ class OrderItem
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -227,7 +227,7 @@ class OrderItem
      *
      * @return self
      */
-    public function setUnitPrice(?float $unitPrice) : self
+    public function setUnitPrice(float $unitPrice) : self
     {
         $this->unitPrice = $unitPrice;
         return $this;
@@ -248,7 +248,7 @@ class OrderItem
      *
      * @return self
      */
-    public function setUnitSymbol(?string $unitSymbol) : self
+    public function setUnitSymbol(string $unitSymbol) : self
     {
         $this->unitSymbol = $unitSymbol;
         return $this;
@@ -269,7 +269,7 @@ class OrderItem
      *
      * @return self
      */
-    public function setVatRate(?float $vatRate) : self
+    public function setVatRate(float $vatRate) : self
     {
         $this->vatRate = $vatRate;
         return $this;

@@ -38,7 +38,7 @@ class ProductManufacturer
      *
      * @return self
      */
-    public function setManufacturerId(?int $manufacturerId) : self
+    public function setManufacturerId(int $manufacturerId) : self
     {
         $this->manufacturerId = $manufacturerId;
         return $this;
@@ -59,7 +59,7 @@ class ProductManufacturer
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -80,7 +80,7 @@ class ProductManufacturer
      *
      * @return self
      */
-    public function setUrl(?string $url) : self
+    public function setUrl(string $url) : self
     {
         $this->url = $url;
         return $this;

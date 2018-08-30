@@ -26,7 +26,7 @@ class OrderStatusCollection
      *
      * @return self
      */
-    public function setData(?array $data) : self
+    public function setData(array $data) : self
     {
         $this->data = $data;
         return $this;

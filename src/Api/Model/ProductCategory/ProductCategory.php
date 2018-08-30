@@ -84,7 +84,7 @@ class ProductCategory
      *
      * @return self
      */
-    public function setCategoryId(?int $categoryId) : self
+    public function setCategoryId(int $categoryId) : self
     {
         $this->categoryId = $categoryId;
         return $this;
@@ -105,7 +105,7 @@ class ProductCategory
      *
      * @return self
      */
-    public function setExternalId(?string $externalId) : self
+    public function setExternalId(string $externalId) : self
     {
         $this->externalId = $externalId;
         return $this;
@@ -126,7 +126,7 @@ class ProductCategory
      *
      * @return self
      */
-    public function setExternalType(?string $externalType) : self
+    public function setExternalType(string $externalType) : self
     {
         $this->externalType = $externalType;
         return $this;
@@ -147,7 +147,7 @@ class ProductCategory
      *
      * @return self
      */
-    public function setHasChildren(?bool $hasChildren) : self
+    public function setHasChildren(bool $hasChildren) : self
     {
         $this->hasChildren = $hasChildren;
         return $this;
@@ -168,7 +168,7 @@ class ProductCategory
      *
      * @return self
      */
-    public function setImageFileId(?int $imageFileId) : self
+    public function setImageFileId(int $imageFileId) : self
     {
         $this->imageFileId = $imageFileId;
         return $this;
@@ -210,7 +210,7 @@ class ProductCategory
      *
      * @return self
      */
-    public function setOpenPage(?bool $openPage) : self
+    public function setOpenPage(bool $openPage) : self
     {
         $this->openPage = $openPage;
         return $this;
@@ -231,7 +231,7 @@ class ProductCategory
      *
      * @return self
      */
-    public function setParentId(?int $parentId) : self
+    public function setParentId(int $parentId) : self
     {
         $this->parentId = $parentId;
         return $this;
@@ -252,7 +252,7 @@ class ProductCategory
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -273,7 +273,7 @@ class ProductCategory
      *
      * @return self
      */
-    public function setVisibility(?string $visibility) : self
+    public function setVisibility(string $visibility) : self
     {
         $this->visibility = $visibility;
         return $this;

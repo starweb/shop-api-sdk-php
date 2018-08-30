@@ -38,7 +38,7 @@ class ProductVariantPrice
      *
      * @return self
      */
-    public function setPriceExVat(?float $priceExVat) : self
+    public function setPriceExVat(float $priceExVat) : self
     {
         $this->priceExVat = $priceExVat;
         return $this;
@@ -59,7 +59,7 @@ class ProductVariantPrice
      *
      * @return self
      */
-    public function setPricelistId(?int $pricelistId) : self
+    public function setPricelistId(int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
         return $this;
@@ -80,7 +80,7 @@ class ProductVariantPrice
      *
      * @return self
      */
-    public function setSpecialPriceExVat(?float $specialPriceExVat) : self
+    public function setSpecialPriceExVat(float $specialPriceExVat) : self
     {
         $this->specialPriceExVat = $specialPriceExVat;
         return $this;

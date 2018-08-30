@@ -26,7 +26,7 @@ class ProductStockStatusItem
      *
      * @return self
      */
-    public function setData(?ProductStockStatus $data) : self
+    public function setData(ProductStockStatus $data) : self
     {
         $this->data = $data;
         return $this;

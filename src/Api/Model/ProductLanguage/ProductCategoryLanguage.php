@@ -62,7 +62,7 @@ class ProductCategoryLanguage
      *
      * @return self
      */
-    public function setBottomDescription(?string $bottomDescription) : self
+    public function setBottomDescription(string $bottomDescription) : self
     {
         $this->bottomDescription = $bottomDescription;
         return $this;
@@ -83,7 +83,7 @@ class ProductCategoryLanguage
      *
      * @return self
      */
-    public function setDescription(?string $description) : self
+    public function setDescription(string $description) : self
     {
         $this->description = $description;
         return $this;
@@ -104,7 +104,7 @@ class ProductCategoryLanguage
      *
      * @return self
      */
-    public function setLangCode(?string $langCode) : self
+    public function setLangCode(string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -125,7 +125,7 @@ class ProductCategoryLanguage
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -146,7 +146,7 @@ class ProductCategoryLanguage
      *
      * @return self
      */
-    public function setPageMetaDescription(?string $pageMetaDescription) : self
+    public function setPageMetaDescription(string $pageMetaDescription) : self
     {
         $this->pageMetaDescription = $pageMetaDescription;
         return $this;
@@ -167,7 +167,7 @@ class ProductCategoryLanguage
      *
      * @return self
      */
-    public function setPageTitle(?string $pageTitle) : self
+    public function setPageTitle(string $pageTitle) : self
     {
         $this->pageTitle = $pageTitle;
         return $this;
@@ -188,7 +188,7 @@ class ProductCategoryLanguage
      *
      * @return self
      */
-    public function setPermalink(?string $permalink) : self
+    public function setPermalink(string $permalink) : self
     {
         $this->permalink = $permalink;
         return $this;

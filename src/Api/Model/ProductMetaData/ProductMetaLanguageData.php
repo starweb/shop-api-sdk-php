@@ -32,7 +32,7 @@ class ProductMetaLanguageData
      *
      * @return self
      */
-    public function setLangCode(?string $langCode) : self
+    public function setLangCode(string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -53,7 +53,7 @@ class ProductMetaLanguageData
      *
      * @return self
      */
-    public function setValue(?string $value) : self
+    public function setValue(string $value) : self
     {
         $this->value = $value;
         return $this;

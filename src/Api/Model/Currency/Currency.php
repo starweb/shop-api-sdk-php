@@ -38,7 +38,7 @@ class Currency
      *
      * @return self
      */
-    public function setCode(?string $code) : self
+    public function setCode(string $code) : self
     {
         $this->code = $code;
         return $this;
@@ -59,7 +59,7 @@ class Currency
      *
      * @return self
      */
-    public function setExchangeRate(?float $exchangeRate) : self
+    public function setExchangeRate(float $exchangeRate) : self
     {
         $this->exchangeRate = $exchangeRate;
         return $this;
@@ -80,7 +80,7 @@ class Currency
      *
      * @return self
      */
-    public function setPrecision(?int $precision) : self
+    public function setPrecision(int $precision) : self
     {
         $this->precision = $precision;
         return $this;

@@ -32,7 +32,7 @@ class ProductCategoryLink
      *
      * @return self
      */
-    public function setCategoryId(?int $categoryId) : self
+    public function setCategoryId(int $categoryId) : self
     {
         $this->categoryId = $categoryId;
         return $this;
@@ -53,7 +53,7 @@ class ProductCategoryLink
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;

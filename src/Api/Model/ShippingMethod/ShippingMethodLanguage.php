@@ -44,7 +44,7 @@ class ShippingMethodLanguage
      *
      * @return self
      */
-    public function setLangCode(?string $langCode) : self
+    public function setLangCode(string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -65,7 +65,7 @@ class ShippingMethodLanguage
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -86,7 +86,7 @@ class ShippingMethodLanguage
      *
      * @return self
      */
-    public function setShortDescription(?string $shortDescription) : self
+    public function setShortDescription(string $shortDescription) : self
     {
         $this->shortDescription = $shortDescription;
         return $this;
@@ -107,7 +107,7 @@ class ShippingMethodLanguage
      *
      * @return self
      */
-    public function setTitle(?string $title) : self
+    public function setTitle(string $title) : self
     {
         $this->title = $title;
         return $this;

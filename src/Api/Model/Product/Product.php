@@ -128,7 +128,7 @@ class Product
      *
      * @return self
      */
-    public function setCategories(?ProductCategoryLinkCollection $categories) : self
+    public function setCategories(ProductCategoryLinkCollection $categories) : self
     {
         $this->categories = $categories;
         return $this;
@@ -149,7 +149,7 @@ class Product
      *
      * @return self
      */
-    public function setCreatedAt(?string $createdAt) : self
+    public function setCreatedAt(string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -170,7 +170,7 @@ class Product
      *
      * @return self
      */
-    public function setDefaultVatRate(?string $defaultVatRate) : self
+    public function setDefaultVatRate(string $defaultVatRate) : self
     {
         $this->defaultVatRate = $defaultVatRate;
         return $this;
@@ -191,7 +191,7 @@ class Product
      *
      * @return self
      */
-    public function setHasSeveralVariants(?bool $hasSeveralVariants) : self
+    public function setHasSeveralVariants(bool $hasSeveralVariants) : self
     {
         $this->hasSeveralVariants = $hasSeveralVariants;
         return $this;
@@ -212,7 +212,7 @@ class Product
      *
      * @return self
      */
-    public function setIsBackInStockWatchable(?bool $isBackInStockWatchable) : self
+    public function setIsBackInStockWatchable(bool $isBackInStockWatchable) : self
     {
         $this->isBackInStockWatchable = $isBackInStockWatchable;
         return $this;
@@ -233,7 +233,7 @@ class Product
      *
      * @return self
      */
-    public function setLanguages(?ProductLanguageCollection $languages) : self
+    public function setLanguages(ProductLanguageCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;
@@ -254,7 +254,7 @@ class Product
      *
      * @return self
      */
-    public function setManufacturerId(?int $manufacturerId) : self
+    public function setManufacturerId(int $manufacturerId) : self
     {
         $this->manufacturerId = $manufacturerId;
         return $this;
@@ -275,7 +275,7 @@ class Product
      *
      * @return self
      */
-    public function setMediaFiles(?ProductMediaFileLinkCollection $mediaFiles) : self
+    public function setMediaFiles(ProductMediaFileLinkCollection $mediaFiles) : self
     {
         $this->mediaFiles = $mediaFiles;
         return $this;
@@ -296,7 +296,7 @@ class Product
      *
      * @return self
      */
-    public function setMetaData(?ProductMetaDataCollection $metaData) : self
+    public function setMetaData(ProductMetaDataCollection $metaData) : self
     {
         $this->metaData = $metaData;
         return $this;
@@ -317,7 +317,7 @@ class Product
      *
      * @return self
      */
-    public function setModifiedAt(?string $modifiedAt) : self
+    public function setModifiedAt(string $modifiedAt) : self
     {
         $this->modifiedAt = $modifiedAt;
         return $this;
@@ -338,7 +338,7 @@ class Product
      *
      * @return self
      */
-    public function setMoreInfoUrl(?string $moreInfoUrl) : self
+    public function setMoreInfoUrl(string $moreInfoUrl) : self
     {
         $this->moreInfoUrl = $moreInfoUrl;
         return $this;
@@ -359,7 +359,7 @@ class Product
      *
      * @return self
      */
-    public function setProductId(?int $productId) : self
+    public function setProductId(int $productId) : self
     {
         $this->productId = $productId;
         return $this;
@@ -380,7 +380,7 @@ class Product
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -401,7 +401,7 @@ class Product
      *
      * @return self
      */
-    public function setUnit(?ProductUnitItem $unit) : self
+    public function setUnit(ProductUnitItem $unit) : self
     {
         $this->unit = $unit;
         return $this;
@@ -422,7 +422,7 @@ class Product
      *
      * @return self
      */
-    public function setUnitId(?int $unitId) : self
+    public function setUnitId(int $unitId) : self
     {
         $this->unitId = $unitId;
         return $this;
@@ -443,7 +443,7 @@ class Product
      *
      * @return self
      */
-    public function setVariants(?ProductVariantCollection $variants) : self
+    public function setVariants(ProductVariantCollection $variants) : self
     {
         $this->variants = $variants;
         return $this;
@@ -464,7 +464,7 @@ class Product
      *
      * @return self
      */
-    public function setVatRates(?ProductVatRateCollection $vatRates) : self
+    public function setVatRates(ProductVatRateCollection $vatRates) : self
     {
         $this->vatRates = $vatRates;
         return $this;
@@ -485,7 +485,7 @@ class Product
      *
      * @return self
      */
-    public function setVisibility(?string $visibility) : self
+    public function setVisibility(string $visibility) : self
     {
         $this->visibility = $visibility;
         return $this;

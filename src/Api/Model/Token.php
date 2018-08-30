@@ -38,7 +38,7 @@ class Token
      *
      * @return self
      */
-    public function setAccessToken(?string $accessToken) : self
+    public function setAccessToken(string $accessToken) : self
     {
         $this->accessToken = $accessToken;
         return $this;
@@ -59,7 +59,7 @@ class Token
      *
      * @return self
      */
-    public function setExpiresIn(?int $expiresIn) : self
+    public function setExpiresIn(int $expiresIn) : self
     {
         $this->expiresIn = $expiresIn;
         return $this;
@@ -80,7 +80,7 @@ class Token
      *
      * @return self
      */
-    public function setScope(?string $scope) : self
+    public function setScope(string $scope) : self
     {
         $this->scope = $scope;
         return $this;

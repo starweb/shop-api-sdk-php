@@ -26,7 +26,7 @@ class OrderItemItem
      *
      * @return self
      */
-    public function setData(?OrderItem $data) : self
+    public function setData(OrderItem $data) : self
     {
         $this->data = $data;
         return $this;

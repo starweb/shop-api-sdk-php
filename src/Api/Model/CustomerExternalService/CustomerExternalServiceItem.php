@@ -26,7 +26,7 @@ class CustomerExternalServiceItem
      *
      * @return self
      */
-    public function setData(?CustomerExternalService $data) : self
+    public function setData(CustomerExternalService $data) : self
     {
         $this->data = $data;
         return $this;

@@ -32,7 +32,7 @@ class Tag
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -53,7 +53,7 @@ class Tag
      *
      * @return self
      */
-    public function setTagId(?int $tagId) : self
+    public function setTagId(int $tagId) : self
     {
         $this->tagId = $tagId;
         return $this;

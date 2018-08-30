@@ -26,7 +26,7 @@ class ProductMetaDataTypeItem
      *
      * @return self
      */
-    public function setData(?ProductMetaDataType $data) : self
+    public function setData(ProductMetaDataType $data) : self
     {
         $this->data = $data;
         return $this;

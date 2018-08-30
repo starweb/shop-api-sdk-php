@@ -26,7 +26,7 @@ class ProductVariantAttributeValueItem
      *
      * @return self
      */
-    public function setData(?ProductVariantAttributeValue $data) : self
+    public function setData(ProductVariantAttributeValue $data) : self
     {
         $this->data = $data;
         return $this;

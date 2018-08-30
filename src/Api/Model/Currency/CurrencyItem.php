@@ -26,7 +26,7 @@ class CurrencyItem
      *
      * @return self
      */
-    public function setData(?Currency $data) : self
+    public function setData(Currency $data) : self
     {
         $this->data = $data;
         return $this;

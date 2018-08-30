@@ -32,7 +32,7 @@ class OrderCollection
      *
      * @return self
      */
-    public function setData(?array $data) : self
+    public function setData(array $data) : self
     {
         $this->data = $data;
         return $this;
@@ -53,7 +53,7 @@ class OrderCollection
      *
      * @return self
      */
-    public function setMeta(?OrderModelCollectionMeta $meta) : self
+    public function setMeta(OrderModelCollectionMeta $meta) : self
     {
         $this->meta = $meta;
         return $this;

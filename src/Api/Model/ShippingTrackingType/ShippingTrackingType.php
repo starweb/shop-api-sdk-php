@@ -32,7 +32,7 @@ class ShippingTrackingType
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -53,7 +53,7 @@ class ShippingTrackingType
      *
      * @return self
      */
-    public function setType(?int $type) : self
+    public function setType(int $type) : self
     {
         $this->type = $type;
         return $this;

@@ -26,7 +26,7 @@ class CustomerTagItem
      *
      * @return self
      */
-    public function setData(?CustomerAddedTagModel $data) : self
+    public function setData(CustomerAddedTagModel $data) : self
     {
         $this->data = $data;
         return $this;

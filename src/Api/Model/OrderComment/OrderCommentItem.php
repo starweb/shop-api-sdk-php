@@ -26,7 +26,7 @@ class OrderCommentItem
      *
      * @return self
      */
-    public function setData(?OrderComment $data) : self
+    public function setData(OrderComment $data) : self
     {
         $this->data = $data;
         return $this;

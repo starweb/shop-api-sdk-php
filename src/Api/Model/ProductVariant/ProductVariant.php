@@ -92,7 +92,7 @@ class ProductVariant
      *
      * @return self
      */
-    public function setAttributeValueLinks(?array $attributeValueLinks) : self
+    public function setAttributeValueLinks(array $attributeValueLinks) : self
     {
         $this->attributeValueLinks = $attributeValueLinks;
         return $this;
@@ -113,7 +113,7 @@ class ProductVariant
      *
      * @return self
      */
-    public function setAttributes(?array $attributes) : self
+    public function setAttributes(array $attributes) : self
     {
         $this->attributes = $attributes;
         return $this;
@@ -134,7 +134,7 @@ class ProductVariant
      *
      * @return self
      */
-    public function setCostPrice(?string $costPrice) : self
+    public function setCostPrice(string $costPrice) : self
     {
         $this->costPrice = $costPrice;
         return $this;
@@ -155,7 +155,7 @@ class ProductVariant
      *
      * @return self
      */
-    public function setEan(?string $ean) : self
+    public function setEan(string $ean) : self
     {
         $this->ean = $ean;
         return $this;
@@ -176,7 +176,7 @@ class ProductVariant
      *
      * @return self
      */
-    public function setImageFileId(?int $imageFileId) : self
+    public function setImageFileId(int $imageFileId) : self
     {
         $this->imageFileId = $imageFileId;
         return $this;
@@ -197,7 +197,7 @@ class ProductVariant
      *
      * @return self
      */
-    public function setIsActive(?bool $isActive) : self
+    public function setIsActive(bool $isActive) : self
     {
         $this->isActive = $isActive;
         return $this;
@@ -218,7 +218,7 @@ class ProductVariant
      *
      * @return self
      */
-    public function setMpn(?string $mpn) : self
+    public function setMpn(string $mpn) : self
     {
         $this->mpn = $mpn;
         return $this;
@@ -239,7 +239,7 @@ class ProductVariant
      *
      * @return self
      */
-    public function setPrices(?array $prices) : self
+    public function setPrices(array $prices) : self
     {
         $this->prices = $prices;
         return $this;
@@ -260,7 +260,7 @@ class ProductVariant
      *
      * @return self
      */
-    public function setSku(?string $sku) : self
+    public function setSku(string $sku) : self
     {
         $this->sku = $sku;
         return $this;
@@ -281,7 +281,7 @@ class ProductVariant
      *
      * @return self
      */
-    public function setStockQuantity(?int $stockQuantity) : self
+    public function setStockQuantity(int $stockQuantity) : self
     {
         $this->stockQuantity = $stockQuantity;
         return $this;
@@ -302,7 +302,7 @@ class ProductVariant
      *
      * @return self
      */
-    public function setStockStatusId(?int $stockStatusId) : self
+    public function setStockStatusId(int $stockStatusId) : self
     {
         $this->stockStatusId = $stockStatusId;
         return $this;
@@ -323,7 +323,7 @@ class ProductVariant
      *
      * @return self
      */
-    public function setWeightInKg(?float $weightInKg) : self
+    public function setWeightInKg(float $weightInKg) : self
     {
         $this->weightInKg = $weightInKg;
         return $this;

@@ -38,7 +38,7 @@ class OrderExternalService
      *
      * @return self
      */
-    public function setExternalIdValue(?string $externalIdValue) : self
+    public function setExternalIdValue(string $externalIdValue) : self
     {
         $this->externalIdValue = $externalIdValue;
         return $this;
@@ -59,7 +59,7 @@ class OrderExternalService
      *
      * @return self
      */
-    public function setReadOnly(?bool $readOnly) : self
+    public function setReadOnly(bool $readOnly) : self
     {
         $this->readOnly = $readOnly;
         return $this;
@@ -80,7 +80,7 @@ class OrderExternalService
      *
      * @return self
      */
-    public function setServiceName(?string $serviceName) : self
+    public function setServiceName(string $serviceName) : self
     {
         $this->serviceName = $serviceName;
         return $this;

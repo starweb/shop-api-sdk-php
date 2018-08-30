@@ -26,7 +26,7 @@ class CustomerAddressCollection
      *
      * @return self
      */
-    public function setData(?CustomerAddressesCollectionData $data) : self
+    public function setData(CustomerAddressesCollectionData $data) : self
     {
         $this->data = $data;
         return $this;

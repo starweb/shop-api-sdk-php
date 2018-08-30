@@ -32,7 +32,7 @@ class ProductVatRate
      *
      * @return self
      */
-    public function setCountryCode(?string $countryCode) : self
+    public function setCountryCode(string $countryCode) : self
     {
         $this->countryCode = $countryCode;
         return $this;
@@ -53,7 +53,7 @@ class ProductVatRate
      *
      * @return self
      */
-    public function setVatRate(?float $vatRate) : self
+    public function setVatRate(float $vatRate) : self
     {
         $this->vatRate = $vatRate;
         return $this;

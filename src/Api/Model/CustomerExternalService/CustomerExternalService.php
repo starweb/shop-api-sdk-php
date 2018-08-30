@@ -32,7 +32,7 @@ class CustomerExternalService
      *
      * @return self
      */
-    public function setExternalIdValue(?string $externalIdValue) : self
+    public function setExternalIdValue(string $externalIdValue) : self
     {
         $this->externalIdValue = $externalIdValue;
         return $this;
@@ -53,7 +53,7 @@ class CustomerExternalService
      *
      * @return self
      */
-    public function setServiceName(?string $serviceName) : self
+    public function setServiceName(string $serviceName) : self
     {
         $this->serviceName = $serviceName;
         return $this;

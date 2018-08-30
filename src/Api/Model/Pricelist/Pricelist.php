@@ -68,7 +68,7 @@ class Pricelist
      *
      * @return self
      */
-    public function setCountryCodes(?array $countryCodes) : self
+    public function setCountryCodes(array $countryCodes) : self
     {
         $this->countryCodes = $countryCodes;
         return $this;
@@ -89,7 +89,7 @@ class Pricelist
      *
      * @return self
      */
-    public function setCurrencyCode(?string $currencyCode) : self
+    public function setCurrencyCode(string $currencyCode) : self
     {
         $this->currencyCode = $currencyCode;
         return $this;
@@ -110,7 +110,7 @@ class Pricelist
      *
      * @return self
      */
-    public function setIsCountryPricelist(?bool $isCountryPricelist) : self
+    public function setIsCountryPricelist(bool $isCountryPricelist) : self
     {
         $this->isCountryPricelist = $isCountryPricelist;
         return $this;
@@ -131,7 +131,7 @@ class Pricelist
      *
      * @return self
      */
-    public function setIsCustomerPricelist(?bool $isCustomerPricelist) : self
+    public function setIsCustomerPricelist(bool $isCustomerPricelist) : self
     {
         $this->isCustomerPricelist = $isCustomerPricelist;
         return $this;
@@ -152,7 +152,7 @@ class Pricelist
      *
      * @return self
      */
-    public function setIsMaster(?bool $isMaster) : self
+    public function setIsMaster(bool $isMaster) : self
     {
         $this->isMaster = $isMaster;
         return $this;
@@ -173,7 +173,7 @@ class Pricelist
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -194,7 +194,7 @@ class Pricelist
      *
      * @return self
      */
-    public function setParentPricelistId(?int $parentPricelistId) : self
+    public function setParentPricelistId(int $parentPricelistId) : self
     {
         $this->parentPricelistId = $parentPricelistId;
         return $this;
@@ -215,7 +215,7 @@ class Pricelist
      *
      * @return self
      */
-    public function setPricelistId(?int $pricelistId) : self
+    public function setPricelistId(int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
         return $this;

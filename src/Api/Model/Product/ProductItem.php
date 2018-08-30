@@ -26,7 +26,7 @@ class ProductItem
      *
      * @return self
      */
-    public function setData(?ProductModel $data) : self
+    public function setData(ProductModel $data) : self
     {
         $this->data = $data;
         return $this;

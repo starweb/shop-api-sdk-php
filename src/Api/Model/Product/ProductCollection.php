@@ -32,7 +32,7 @@ class ProductCollection
      *
      * @return self
      */
-    public function setData(?array $data) : self
+    public function setData(array $data) : self
     {
         $this->data = $data;
         return $this;
@@ -53,7 +53,7 @@ class ProductCollection
      *
      * @return self
      */
-    public function setMeta(?ProductModelCollectionMeta $meta) : self
+    public function setMeta(ProductModelCollectionMeta $meta) : self
     {
         $this->meta = $meta;
         return $this;

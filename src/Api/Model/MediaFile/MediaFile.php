@@ -85,7 +85,7 @@ class MediaFile implements ModelInterface
      *
      * @return self
      */
-    public function setCreatedAt(?string $createdAt) : self
+    public function setCreatedAt(string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -106,7 +106,7 @@ class MediaFile implements ModelInterface
      *
      * @return self
      */
-    public function setHeight(?int $height) : self
+    public function setHeight(int $height) : self
     {
         $this->height = $height;
         return $this;
@@ -127,7 +127,7 @@ class MediaFile implements ModelInterface
      *
      * @return self
      */
-    public function setMediaFileId(?int $mediaFileId) : self
+    public function setMediaFileId(int $mediaFileId) : self
     {
         $this->mediaFileId = $mediaFileId;
         return $this;
@@ -148,7 +148,7 @@ class MediaFile implements ModelInterface
      *
      * @return self
      */
-    public function setMime(?string $mime) : self
+    public function setMime(string $mime) : self
     {
         $this->mime = $mime;
         return $this;
@@ -169,7 +169,7 @@ class MediaFile implements ModelInterface
      *
      * @return self
      */
-    public function setModifiedAt(?string $modifiedAt) : self
+    public function setModifiedAt(string $modifiedAt) : self
     {
         $this->modifiedAt = $modifiedAt;
         return $this;
@@ -190,7 +190,7 @@ class MediaFile implements ModelInterface
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -211,7 +211,7 @@ class MediaFile implements ModelInterface
      *
      * @return self
      */
-    public function setSize(?int $size) : self
+    public function setSize(int $size) : self
     {
         $this->size = $size;
         return $this;
@@ -232,7 +232,7 @@ class MediaFile implements ModelInterface
      *
      * @return self
      */
-    public function setUrl(?string $url) : self
+    public function setUrl(string $url) : self
     {
         $this->url = $url;
         return $this;
@@ -253,7 +253,7 @@ class MediaFile implements ModelInterface
      *
      * @return self
      */
-    public function setWidth(?int $width) : self
+    public function setWidth(int $width) : self
     {
         $this->width = $width;
         return $this;

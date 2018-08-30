@@ -32,7 +32,7 @@ class Error
      *
      * @return self
      */
-    public function setError(?string $error) : self
+    public function setError(string $error) : self
     {
         $this->error = $error;
         return $this;
@@ -53,7 +53,7 @@ class Error
      *
      * @return self
      */
-    public function setErrorDescription(?string $errorDescription) : self
+    public function setErrorDescription(string $errorDescription) : self
     {
         $this->errorDescription = $errorDescription;
         return $this;

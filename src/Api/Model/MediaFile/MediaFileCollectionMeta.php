@@ -26,7 +26,7 @@ class MediaFileCollectionMeta
      *
      * @return self
      */
-    public function setPagination(?Pagination $pagination) : self
+    public function setPagination(Pagination $pagination) : self
     {
         $this->pagination = $pagination;
         return $this;

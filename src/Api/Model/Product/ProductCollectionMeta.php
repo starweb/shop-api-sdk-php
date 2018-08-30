@@ -26,7 +26,7 @@ class ProductCollectionMeta
      *
      * @return self
      */
-    public function setPagination(?PaginationModel $pagination) : self
+    public function setPagination(PaginationModel $pagination) : self
     {
         $this->pagination = $pagination;
         return $this;
