@@ -14,7 +14,7 @@ class CustomerCollectionMeta
     /**
      * @return Pagination
      */
-    public function getPagination() : ?Pagination
+    public function getPagination(): ?Pagination
     {
         return $this->pagination;
     }
@@ -24,9 +24,10 @@ class CustomerCollectionMeta
      *
      * @return self
      */
-    public function setPagination(Pagination $pagination) : self
+    public function setPagination(Pagination $pagination): self
     {
         $this->pagination = $pagination;
+
         return $this;
     }
 }

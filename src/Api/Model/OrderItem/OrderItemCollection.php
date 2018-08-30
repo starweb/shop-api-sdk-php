@@ -16,7 +16,7 @@ class OrderItemCollection
      *
      * @return OrderItem[]
      */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
@@ -28,9 +28,10 @@ class OrderItemCollection
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(array $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

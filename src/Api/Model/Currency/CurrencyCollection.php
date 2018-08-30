@@ -10,15 +10,17 @@ class CurrencyCollection
      * @var Currency[]
      */
     protected $data;
+
     /**
      * A collection of currencies
      *
      * @return Currency[]
      */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
+
     /**
      * A collection of currencies
      *
@@ -26,9 +28,10 @@ class CurrencyCollection
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(array $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

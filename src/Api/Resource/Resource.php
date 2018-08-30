@@ -10,7 +10,6 @@ use Starweb\HttpClient\Message\EnhancedResponse;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 abstract class Resource implements ResourceInterface
@@ -87,7 +86,7 @@ abstract class Resource implements ResourceInterface
         return call_user_func_array([$this->client, strtolower($operation->getMethod())], [
             $operation->getResolvedPath(),
             $parameters,
-            $operation->getHeaders()
+            $operation->getHeaders(),
         ]);
     }
 
@@ -96,7 +95,7 @@ abstract class Resource implements ResourceInterface
         return call_user_func_array([$this->client, 'uploadFile'], [
             $operation->getMethod(),
             $operation->getResolvedPath(),
-            $operation->getUploadFile()
+            $operation->getUploadFile(),
         ]);
     }
 
@@ -113,5 +112,4 @@ abstract class Resource implements ResourceInterface
 
         return $this->client->put($path, $params);
     }
-
 }

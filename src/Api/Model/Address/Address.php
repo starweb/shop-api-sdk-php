@@ -100,7 +100,7 @@ class Address
      *
      * @return string
      */
-    public function getAddress() : ?string
+    public function getAddress(): ?string
     {
         return $this->address;
     }
@@ -112,9 +112,10 @@ class Address
      *
      * @return self
      */
-    public function setAddress(string $address) : self
+    public function setAddress(string $address): self
     {
         $this->address = $address;
+
         return $this;
     }
 
@@ -123,7 +124,7 @@ class Address
      *
      * @return string
      */
-    public function getAttention() : ?string
+    public function getAttention(): ?string
     {
         return $this->attention;
     }
@@ -135,9 +136,10 @@ class Address
      *
      * @return self
      */
-    public function setAttention(string $attention) : self
+    public function setAttention(string $attention): self
     {
         $this->attention = $attention;
+
         return $this;
     }
 
@@ -146,7 +148,7 @@ class Address
      *
      * @return string
      */
-    public function getCareOf() : ?string
+    public function getCareOf(): ?string
     {
         return $this->careOf;
     }
@@ -158,9 +160,10 @@ class Address
      *
      * @return self
      */
-    public function setCareOf(string $careOf) : self
+    public function setCareOf(string $careOf): self
     {
         $this->careOf = $careOf;
+
         return $this;
     }
 
@@ -169,7 +172,7 @@ class Address
      *
      * @return string
      */
-    public function getCity() : ?string
+    public function getCity(): ?string
     {
         return $this->city;
     }
@@ -181,9 +184,10 @@ class Address
      *
      * @return self
      */
-    public function setCity(string $city) : self
+    public function setCity(string $city): self
     {
         $this->city = $city;
+
         return $this;
     }
 
@@ -192,7 +196,7 @@ class Address
      *
      * @return string
      */
-    public function getCompanyName() : ?string
+    public function getCompanyName(): ?string
     {
         return $this->companyName;
     }
@@ -204,9 +208,10 @@ class Address
      *
      * @return self
      */
-    public function setCompanyName(string $companyName) : self
+    public function setCompanyName(string $companyName): self
     {
         $this->companyName = $companyName;
+
         return $this;
     }
 
@@ -215,7 +220,7 @@ class Address
      *
      * @return string
      */
-    public function getCountryCode() : ?string
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
@@ -227,9 +232,10 @@ class Address
      *
      * @return self
      */
-    public function setCountryCode(string $countryCode) : self
+    public function setCountryCode(string $countryCode): self
     {
         $this->countryCode = $countryCode;
+
         return $this;
     }
 
@@ -238,7 +244,7 @@ class Address
      *
      * @return string
      */
-    public function getFirstName() : ?string
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
@@ -250,9 +256,10 @@ class Address
      *
      * @return self
      */
-    public function setFirstName(string $firstName) : self
+    public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
+
         return $this;
     }
 
@@ -261,7 +268,7 @@ class Address
      *
      * @return string
      */
-    public function getLastName() : ?string
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
@@ -273,9 +280,10 @@ class Address
      *
      * @return self
      */
-    public function setLastName(string $lastName) : self
+    public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
+
         return $this;
     }
 
@@ -284,7 +292,7 @@ class Address
      *
      * @return string
      */
-    public function getMobilePhoneNo() : ?string
+    public function getMobilePhoneNo(): ?string
     {
         return $this->mobilePhoneNo;
     }
@@ -296,9 +304,10 @@ class Address
      *
      * @return self
      */
-    public function setMobilePhoneNo(string $mobilePhoneNo) : self
+    public function setMobilePhoneNo(string $mobilePhoneNo): self
     {
         $this->mobilePhoneNo = $mobilePhoneNo;
+
         return $this;
     }
 
@@ -307,7 +316,7 @@ class Address
      *
      * @return string
      */
-    public function getPhoneNo() : ?string
+    public function getPhoneNo(): ?string
     {
         return $this->phoneNo;
     }
@@ -319,9 +328,10 @@ class Address
      *
      * @return self
      */
-    public function setPhoneNo(string $phoneNo) : self
+    public function setPhoneNo(string $phoneNo): self
     {
         $this->phoneNo = $phoneNo;
+
         return $this;
     }
 
@@ -330,7 +340,7 @@ class Address
      *
      * @return string
      */
-    public function getPostalCode() : ?string
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
@@ -342,9 +352,10 @@ class Address
      *
      * @return self
      */
-    public function setPostalCode(string $postalCode) : self
+    public function setPostalCode(string $postalCode): self
     {
         $this->postalCode = $postalCode;
+
         return $this;
     }
 
@@ -353,7 +364,7 @@ class Address
      *
      * @return string
      */
-    public function getReference() : ?string
+    public function getReference(): ?string
     {
         return $this->reference;
     }
@@ -365,9 +376,10 @@ class Address
      *
      * @return self
      */
-    public function setReference(string $reference) : self
+    public function setReference(string $reference): self
     {
         $this->reference = $reference;
+
         return $this;
     }
 
@@ -376,7 +388,7 @@ class Address
      *
      * @return string
      */
-    public function getState() : ?string
+    public function getState(): ?string
     {
         return $this->state;
     }
@@ -388,9 +400,10 @@ class Address
      *
      * @return self
      */
-    public function setState(string $state) : self
+    public function setState(string $state): self
     {
         $this->state = $state;
+
         return $this;
     }
 }

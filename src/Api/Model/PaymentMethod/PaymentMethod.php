@@ -82,15 +82,17 @@ class PaymentMethod
      * @var string
      */
     protected $validForShippingMethods;
+
     /**
      * If the payment method is actively available on checkout or not
      *
      * @return bool
      */
-    public function getActive() : ?bool
+    public function getActive(): ?bool
     {
         return $this->active;
     }
+
     /**
      * If the payment method is actively available on checkout or not
      *
@@ -98,20 +100,23 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setActive(bool $active) : self
+    public function setActive(bool $active): self
     {
         $this->active = $active;
+
         return $this;
     }
+
     /**
      * Fee associated with this method
      *
      * @return float
      */
-    public function getFee() : ?float
+    public function getFee(): ?float
     {
         return $this->fee;
     }
+
     /**
      * Fee associated with this method
      *
@@ -119,20 +124,23 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setFee(float $fee) : self
+    public function setFee(float $fee): self
     {
         $this->fee = $fee;
+
         return $this;
     }
+
     /**
      * The payment methods idCode. This can be used to identify a payment method of a standarized type
      *
      * @return string
      */
-    public function getIdCode() : ?string
+    public function getIdCode(): ?string
     {
         return $this->idCode;
     }
+
     /**
      * The payment methods idCode. This can be used to identify a payment method of a standarized type
      *
@@ -140,20 +148,23 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setIdCode(string $idCode) : self
+    public function setIdCode(string $idCode): self
     {
         $this->idCode = $idCode;
+
         return $this;
     }
+
     /**
      *
      *
      * @return PaymentMethodLanguageCollection
      */
-    public function getLanguages() : ?PaymentMethodLanguageCollection
+    public function getLanguages(): ?PaymentMethodLanguageCollection
     {
         return $this->languages;
     }
+
     /**
      *
      *
@@ -161,20 +172,23 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setLanguages(PaymentMethodLanguageCollection $languages) : self
+    public function setLanguages(PaymentMethodLanguageCollection $languages): self
     {
         $this->languages = $languages;
+
         return $this;
     }
+
     /**
      * The payment methods Id
      *
      * @return int
      */
-    public function getPaymentMethodId() : ?int
+    public function getPaymentMethodId(): ?int
     {
         return $this->paymentMethodId;
     }
+
     /**
      * The payment methods Id
      *
@@ -182,20 +196,23 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setPaymentMethodId(int $paymentMethodId) : self
+    public function setPaymentMethodId(int $paymentMethodId): self
     {
         $this->paymentMethodId = $paymentMethodId;
+
         return $this;
     }
+
     /**
      * The countries this method is valid for (if validForCountries is set to ”selected”)
      *
      * @return string[]
      */
-    public function getValidCountriesSelected() : array
+    public function getValidCountriesSelected(): array
     {
         return $this->validCountriesSelected;
     }
+
     /**
      * The countries this method is valid for (if validForCountries is set to ”selected”)
      *
@@ -203,20 +220,23 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidCountriesSelected(array $validCountriesSelected) : self
+    public function setValidCountriesSelected(array $validCountriesSelected): self
     {
         $this->validCountriesSelected = $validCountriesSelected;
+
         return $this;
     }
+
     /**
      * The restrictions to countries this payment method is valid for. Valid values are: all, EU, non-EU, selected, none
      *
      * @return string
      */
-    public function getValidForCountries() : ?string
+    public function getValidForCountries(): ?string
     {
         return $this->validForCountries;
     }
+
     /**
      * The restrictions to countries this payment method is valid for. Valid values are: all, EU, non-EU, selected, none
      *
@@ -224,20 +244,23 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForCountries(string $validForCountries) : self
+    public function setValidForCountries(string $validForCountries): self
     {
         $this->validForCountries = $validForCountries;
+
         return $this;
     }
+
     /**
      * The customer type this method is valid for. Valid values are: null (no restriction), person, company
      *
      * @return string
      */
-    public function getValidForCustomerType() : ?string
+    public function getValidForCustomerType(): ?string
     {
         return $this->validForCustomerType;
     }
+
     /**
      * The customer type this method is valid for. Valid values are: null (no restriction), person, company
      *
@@ -245,20 +268,23 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForCustomerType(string $validForCustomerType) : self
+    public function setValidForCustomerType(string $validForCustomerType): self
     {
         $this->validForCustomerType = $validForCustomerType;
+
         return $this;
     }
+
     /**
      * The max order sub total that this method is valid for
      *
      * @return float
      */
-    public function getValidForMaxItemsSubtotal() : ?float
+    public function getValidForMaxItemsSubtotal(): ?float
     {
         return $this->validForMaxItemsSubtotal;
     }
+
     /**
      * The max order sub total that this method is valid for
      *
@@ -266,20 +292,23 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForMaxItemsSubtotal(float $validForMaxItemsSubtotal) : self
+    public function setValidForMaxItemsSubtotal(float $validForMaxItemsSubtotal): self
     {
         $this->validForMaxItemsSubtotal = $validForMaxItemsSubtotal;
+
         return $this;
     }
+
     /**
      * The max order weight that this method is valid for.
      *
      * @return float
      */
-    public function getValidForMaxWeight() : ?float
+    public function getValidForMaxWeight(): ?float
     {
         return $this->validForMaxWeight;
     }
+
     /**
      * The max order weight that this method is valid for.
      *
@@ -287,20 +316,23 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForMaxWeight(float $validForMaxWeight) : self
+    public function setValidForMaxWeight(float $validForMaxWeight): self
     {
         $this->validForMaxWeight = $validForMaxWeight;
+
         return $this;
     }
+
     /**
      * The min order sub total that this method is valid for
      *
      * @return float
      */
-    public function getValidForMinItemsSubtotal() : ?float
+    public function getValidForMinItemsSubtotal(): ?float
     {
         return $this->validForMinItemsSubtotal;
     }
+
     /**
      * The min order sub total that this method is valid for
      *
@@ -308,20 +340,23 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForMinItemsSubtotal(float $validForMinItemsSubtotal) : self
+    public function setValidForMinItemsSubtotal(float $validForMinItemsSubtotal): self
     {
         $this->validForMinItemsSubtotal = $validForMinItemsSubtotal;
+
         return $this;
     }
+
     /**
      * The min order weight that this method is valid for
      *
      * @return float
      */
-    public function getValidForMinWeight() : ?float
+    public function getValidForMinWeight(): ?float
     {
         return $this->validForMinWeight;
     }
+
     /**
      * The min order weight that this method is valid for
      *
@@ -329,20 +364,23 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForMinWeight(float $validForMinWeight) : self
+    public function setValidForMinWeight(float $validForMinWeight): self
     {
         $this->validForMinWeight = $validForMinWeight;
+
         return $this;
     }
+
     /**
      * The shipping methods this is valid for. Valid values are: all, selected
      *
      * @return string
      */
-    public function getValidForShippingMethods() : ?string
+    public function getValidForShippingMethods(): ?string
     {
         return $this->validForShippingMethods;
     }
+
     /**
      * The shipping methods this is valid for. Valid values are: all, selected
      *
@@ -350,9 +388,10 @@ class PaymentMethod
      *
      * @return self
      */
-    public function setValidForShippingMethods(string $validForShippingMethods) : self
+    public function setValidForShippingMethods(string $validForShippingMethods): self
     {
         $this->validForShippingMethods = $validForShippingMethods;
+
         return $this;
     }
 }

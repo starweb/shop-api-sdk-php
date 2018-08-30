@@ -16,15 +16,17 @@ class ProductMetaDataTypeLanguage
      * @var string
      */
     protected $name;
+
     /**
      * The language code for this language
      *
      * @return string
      */
-    public function getLangCode() : ?string
+    public function getLangCode(): ?string
     {
         return $this->langCode;
     }
+
     /**
      * The language code for this language
      *
@@ -32,20 +34,23 @@ class ProductMetaDataTypeLanguage
      *
      * @return self
      */
-    public function setLangCode(string $langCode) : self
+    public function setLangCode(string $langCode): self
     {
         $this->langCode = $langCode;
+
         return $this;
     }
+
     /**
      *
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
+
     /**
      *
      *
@@ -53,9 +58,10 @@ class ProductMetaDataTypeLanguage
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
 }

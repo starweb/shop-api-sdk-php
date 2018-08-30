@@ -14,7 +14,7 @@ class ShopItem implements ItemInterface
     /**
      * @return Shop
      */
-    public function getData() : ?Shop
+    public function getData(): ?Shop
     {
         return $this->data;
     }
@@ -24,7 +24,7 @@ class ShopItem implements ItemInterface
      *
      * @return self
      */
-    public function setData(Shop $data) : self
+    public function setData(Shop $data): self
     {
         $this->data = $data;
 

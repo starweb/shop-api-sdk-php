@@ -28,15 +28,17 @@ class PaymentMethodLanguage
      * @var string
      */
     protected $title;
+
     /**
      * Language code
      *
      * @return string
      */
-    public function getLangCode() : ?string
+    public function getLangCode(): ?string
     {
         return $this->langCode;
     }
+
     /**
      * Language code
      *
@@ -44,20 +46,23 @@ class PaymentMethodLanguage
      *
      * @return self
      */
-    public function setLangCode(string $langCode) : self
+    public function setLangCode(string $langCode): self
     {
         $this->langCode = $langCode;
+
         return $this;
     }
+
     /**
      * Name of payment method
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
+
     /**
      * Name of payment method
      *
@@ -65,20 +70,23 @@ class PaymentMethodLanguage
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * A shorter informative description
      *
      * @return string
      */
-    public function getShortDescription() : ?string
+    public function getShortDescription(): ?string
     {
         return $this->shortDescription;
     }
+
     /**
      * A shorter informative description
      *
@@ -86,20 +94,23 @@ class PaymentMethodLanguage
      *
      * @return self
      */
-    public function setShortDescription(string $shortDescription) : self
+    public function setShortDescription(string $shortDescription): self
     {
         $this->shortDescription = $shortDescription;
+
         return $this;
     }
+
     /**
      * Title of payment method
      *
      * @return string
      */
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
+
     /**
      * Title of payment method
      *
@@ -107,9 +118,10 @@ class PaymentMethodLanguage
      *
      * @return self
      */
-    public function setTitle(string $title) : self
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 }

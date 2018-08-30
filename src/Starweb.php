@@ -151,7 +151,8 @@ class Starweb
      *
      * @throws \LogicException
      */
-    public function resource(string $resourceKey, array $pathParameters = []): ResourceInterface {
+    public function resource(string $resourceKey, array $pathParameters = []): ResourceInterface
+    {
         switch ($resourceKey) {
             case 'Currency':
                 $resource = new CurrencyResource($this->client, $pathParameters);

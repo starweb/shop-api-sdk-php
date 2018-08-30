@@ -3,7 +3,6 @@
 namespace Starweb\Api\Operation\ProductCategoryLink;
 
 use Starweb\Api\Operation\Operation;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ListProductCategoryLinks extends Operation
 {

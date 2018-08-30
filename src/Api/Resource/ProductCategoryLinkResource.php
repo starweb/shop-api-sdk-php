@@ -52,7 +52,8 @@ class ProductCategoryLinkResource extends Resource
             new CreateProductCategoryLink(
                 $this,
                 $this->getSerializer()->normalize($item),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(ProductCategoryLinkItem::class);
 

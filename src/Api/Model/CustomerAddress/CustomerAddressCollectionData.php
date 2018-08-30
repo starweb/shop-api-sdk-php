@@ -16,15 +16,17 @@ class CustomerAddressCollectionData
      * @var Address
      */
     protected $invoice;
+
     /**
      *
      *
      * @return Address
      */
-    public function getDelivery() : ?Address
+    public function getDelivery(): ?Address
     {
         return $this->delivery;
     }
+
     /**
      *
      *
@@ -32,20 +34,23 @@ class CustomerAddressCollectionData
      *
      * @return self
      */
-    public function setDelivery(Address $delivery) : self
+    public function setDelivery(Address $delivery): self
     {
         $this->delivery = $delivery;
+
         return $this;
     }
+
     /**
      *
      *
      * @return Address
      */
-    public function getInvoice() : ?Address
+    public function getInvoice(): ?Address
     {
         return $this->invoice;
     }
+
     /**
      *
      *
@@ -53,9 +58,10 @@ class CustomerAddressCollectionData
      *
      * @return self
      */
-    public function setInvoice(Address $invoice) : self
+    public function setInvoice(Address $invoice): self
     {
         $this->invoice = $invoice;
+
         return $this;
     }
 }

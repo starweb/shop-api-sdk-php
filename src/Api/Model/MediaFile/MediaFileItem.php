@@ -11,12 +11,13 @@ class MediaFileItem implements ItemInterface
      * @var MediaFile
      */
     protected $data;
+
     /**
      *
      *
      * @return MediaFile
      */
-    public function getData() : MediaFile
+    public function getData(): MediaFile
     {
         return $this->data;
     }
@@ -26,7 +27,7 @@ class MediaFileItem implements ItemInterface
      *
      * @return self
      */
-    public function setData(ModelInterface $data) : self
+    public function setData(ModelInterface $data): self
     {
         $this->data = $data;
 

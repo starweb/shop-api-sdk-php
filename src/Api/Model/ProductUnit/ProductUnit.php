@@ -19,7 +19,7 @@ class ProductUnit
     /**
      * @return ProductUnitLanguageCollection
      */
-    public function getLanguages() : ?ProductUnitLanguageCollection
+    public function getLanguages(): ?ProductUnitLanguageCollection
     {
         return $this->languages;
     }
@@ -29,9 +29,10 @@ class ProductUnit
      *
      * @return self
      */
-    public function setLanguages(ProductUnitLanguageCollection $languages) : self
+    public function setLanguages(ProductUnitLanguageCollection $languages): self
     {
         $this->languages = $languages;
+
         return $this;
     }
 
@@ -40,7 +41,7 @@ class ProductUnit
      *
      * @return int
      */
-    public function getUnitId() : ?int
+    public function getUnitId(): ?int
     {
         return $this->unitId;
     }
@@ -52,9 +53,10 @@ class ProductUnit
      *
      * @return self
      */
-    public function setUnitId(int $unitId) : self
+    public function setUnitId(int $unitId): self
     {
         $this->unitId = $unitId;
+
         return $this;
     }
 }

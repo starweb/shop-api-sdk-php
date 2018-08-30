@@ -16,15 +16,17 @@ class Tag
      * @var int
      */
     protected $tagId;
+
     /**
      * The tag name
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
+
     /**
      * The tag name
      *
@@ -32,20 +34,23 @@ class Tag
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * The tag Id
      *
      * @return int
      */
-    public function getTagId() : ?int
+    public function getTagId(): ?int
     {
         return $this->tagId;
     }
+
     /**
      * The tag Id
      *
@@ -53,9 +58,10 @@ class Tag
      *
      * @return self
      */
-    public function setTagId(int $tagId) : self
+    public function setTagId(int $tagId): self
     {
         $this->tagId = $tagId;
+
         return $this;
     }
 }

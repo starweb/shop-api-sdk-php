@@ -3,7 +3,6 @@
 namespace Starweb\Api\Operation\OrderExternalService;
 
 use Starweb\Api\Operation\Operation;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ListOrderExternalServices extends Operation
 {

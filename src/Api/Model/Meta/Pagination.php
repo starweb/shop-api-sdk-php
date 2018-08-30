@@ -28,15 +28,17 @@ class Pagination
      * @var int
      */
     protected $total;
+
     /**
      * Number of items on this page
      *
      * @return int
      */
-    public function getCount() : ?int
+    public function getCount(): ?int
     {
         return $this->count;
     }
+
     /**
      * Number of items on this page
      *
@@ -44,20 +46,23 @@ class Pagination
      *
      * @return self
      */
-    public function setCount(int $count) : self
+    public function setCount(int $count): self
     {
         $this->count = $count;
+
         return $this;
     }
+
     /**
      * The current requested page
      *
      * @return int
      */
-    public function getCurrentPage() : ?int
+    public function getCurrentPage(): ?int
     {
         return $this->currentPage;
     }
+
     /**
      * The current requested page
      *
@@ -65,20 +70,23 @@ class Pagination
      *
      * @return self
      */
-    public function setCurrentPage(int $currentPage) : self
+    public function setCurrentPage(int $currentPage): self
     {
         $this->currentPage = $currentPage;
+
         return $this;
     }
+
     /**
      * Number of items per page
      *
      * @return int
      */
-    public function getPerPage() : ?int
+    public function getPerPage(): ?int
     {
         return $this->perPage;
     }
+
     /**
      * Number of items per page
      *
@@ -86,20 +94,23 @@ class Pagination
      *
      * @return self
      */
-    public function setPerPage(int $perPage) : self
+    public function setPerPage(int $perPage): self
     {
         $this->perPage = $perPage;
+
         return $this;
     }
+
     /**
      * The total number of items
      *
      * @return int
      */
-    public function getTotal() : ?int
+    public function getTotal(): ?int
     {
         return $this->total;
     }
+
     /**
      * The total number of items
      *
@@ -107,9 +118,10 @@ class Pagination
      *
      * @return self
      */
-    public function setTotal(int $total) : self
+    public function setTotal(int $total): self
     {
         $this->total = $total;
+
         return $this;
     }
 }

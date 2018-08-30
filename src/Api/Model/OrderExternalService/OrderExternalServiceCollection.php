@@ -10,15 +10,17 @@ class OrderExternalServiceCollection
      * @var OrderExternalService[]
      */
     protected $data;
+
     /**
      * A list of order external services
      *
      * @return OrderExternalService[]
      */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
+
     /**
      * A list of order external services
      *
@@ -26,9 +28,10 @@ class OrderExternalServiceCollection
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(array $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

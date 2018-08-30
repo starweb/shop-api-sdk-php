@@ -10,15 +10,17 @@ class CustomerTagCollection
      * @var CustomerTag[]
      */
     protected $data;
+
     /**
      * A list of customer tags
      *
      * @return CustomerTag[]
      */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
+
     /**
      * A list of customer tags
      *
@@ -26,9 +28,10 @@ class CustomerTagCollection
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(array $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

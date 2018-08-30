@@ -49,6 +49,4 @@ class UpdateMediaFile extends Operation implements UploadFileOperation
 
         return $resolver;
     }
-
-
 }

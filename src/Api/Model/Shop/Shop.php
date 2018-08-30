@@ -6,7 +6,7 @@ use Starweb\Api\Model\ModelInterface;
 
 class Shop implements ModelInterface
 {
-    
+
     private $name;
 
     private $categoryId;

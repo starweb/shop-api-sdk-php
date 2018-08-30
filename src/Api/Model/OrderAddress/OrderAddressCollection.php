@@ -12,7 +12,7 @@ class OrderAddressCollection
     /**
      * @return OrderAddress
      */
-    public function getData() : ?OrderAddress
+    public function getData(): ?OrderAddress
     {
         return $this->data;
     }
@@ -22,9 +22,10 @@ class OrderAddressCollection
      *
      * @return self
      */
-    public function setData(OrderAddress $data) : self
+    public function setData(OrderAddress $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

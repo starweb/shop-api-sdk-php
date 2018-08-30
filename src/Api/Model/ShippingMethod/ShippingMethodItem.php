@@ -12,7 +12,7 @@ class ShippingMethodItem
     /**
      * @return ShippingMethod
      */
-    public function getData() : ?ShippingMethod
+    public function getData(): ?ShippingMethod
     {
         return $this->data;
     }
@@ -22,9 +22,10 @@ class ShippingMethodItem
      *
      * @return self
      */
-    public function setData(ShippingMethod $data) : self
+    public function setData(ShippingMethod $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

@@ -41,7 +41,8 @@ class CustomerResource extends Resource
             new CreateCustomer(
                 $this,
                 $this->getSerializer()->normalize($customer),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(CustomerItem::class);
 

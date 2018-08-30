@@ -34,6 +34,4 @@ class ListProductCategories extends Operation
 
         return $resolver;
     }
-
-
 }

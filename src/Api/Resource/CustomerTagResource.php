@@ -50,7 +50,8 @@ class CustomerTagResource extends Resource
             new CreateCustomerTag(
                 $this,
                 $this->getSerializer()->normalize(['tagId' => $tagId]),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(CustomerTagItem::class);
 

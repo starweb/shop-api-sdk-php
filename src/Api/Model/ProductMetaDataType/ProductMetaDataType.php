@@ -16,15 +16,17 @@ class ProductMetaDataType
      * @var int
      */
     protected $metaDataTypeId;
+
     /**
      *
      *
      * @return ProductMetaDataTypeLanguageCollection
      */
-    public function getLanguages() : ?ProductMetaDataTypeLanguageCollection
+    public function getLanguages(): ?ProductMetaDataTypeLanguageCollection
     {
         return $this->languages;
     }
+
     /**
      *
      *
@@ -32,20 +34,23 @@ class ProductMetaDataType
      *
      * @return self
      */
-    public function setLanguages(ProductMetaDataTypeLanguageCollection $languages) : self
+    public function setLanguages(ProductMetaDataTypeLanguageCollection $languages): self
     {
         $this->languages = $languages;
+
         return $this;
     }
+
     /**
      * The meta data type id
      *
      * @return int
      */
-    public function getMetaDataTypeId() : ?int
+    public function getMetaDataTypeId(): ?int
     {
         return $this->metaDataTypeId;
     }
+
     /**
      * The meta data type id
      *
@@ -53,9 +58,10 @@ class ProductMetaDataType
      *
      * @return self
      */
-    public function setMetaDataTypeId(int $metaDataTypeId) : self
+    public function setMetaDataTypeId(int $metaDataTypeId): self
     {
         $this->metaDataTypeId = $metaDataTypeId;
+
         return $this;
     }
 }

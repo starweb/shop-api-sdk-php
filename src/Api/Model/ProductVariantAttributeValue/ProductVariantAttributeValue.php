@@ -34,15 +34,17 @@ class ProductVariantAttributeValue
      * @var int
      */
     protected $sortIndex;
+
     /**
      *
      *
      * @return ProductVariantAttribute
      */
-    public function getAttribute() : ?ProductVariantAttribute
+    public function getAttribute(): ?ProductVariantAttribute
     {
         return $this->attribute;
     }
+
     /**
      *
      *
@@ -50,20 +52,23 @@ class ProductVariantAttributeValue
      *
      * @return self
      */
-    public function setAttribute(ProductVariantAttribute $attribute) : self
+    public function setAttribute(ProductVariantAttribute $attribute): self
     {
         $this->attribute = $attribute;
+
         return $this;
     }
+
     /**
      * The id for this attribute value
      *
      * @return int
      */
-    public function getAttributeValueId() : ?int
+    public function getAttributeValueId(): ?int
     {
         return $this->attributeValueId;
     }
+
     /**
      * The id for this attribute value
      *
@@ -71,20 +76,23 @@ class ProductVariantAttributeValue
      *
      * @return self
      */
-    public function setAttributeValueId(int $attributeValueId) : self
+    public function setAttributeValueId(int $attributeValueId): self
     {
         $this->attributeValueId = $attributeValueId;
+
         return $this;
     }
+
     /**
      * A collection of attribute value languages
      *
      * @return ProductVariantAttributeValueLanguage[]
      */
-    public function getLanguages() : array
+    public function getLanguages(): array
     {
         return $this->languages;
     }
+
     /**
      * A collection of attribute value languages
      *
@@ -92,20 +100,23 @@ class ProductVariantAttributeValue
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(array $languages): self
     {
         $this->languages = $languages;
+
         return $this;
     }
+
     /**
      * The suggested suffix for new Variants using this attribute value
      *
      * @return string
      */
-    public function getSkuSuffix() : ?string
+    public function getSkuSuffix(): ?string
     {
         return $this->skuSuffix;
     }
+
     /**
      * The suggested suffix for new Variants using this attribute value
      *
@@ -113,20 +124,23 @@ class ProductVariantAttributeValue
      *
      * @return self
      */
-    public function setSkuSuffix(string $skuSuffix) : self
+    public function setSkuSuffix(string $skuSuffix): self
     {
         $this->skuSuffix = $skuSuffix;
+
         return $this;
     }
+
     /**
      * The sort order for this attribute value
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex(): ?int
     {
         return $this->sortIndex;
     }
+
     /**
      * The sort order for this attribute value
      *
@@ -134,9 +148,10 @@ class ProductVariantAttributeValue
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(int $sortIndex): self
     {
         $this->sortIndex = $sortIndex;
+
         return $this;
     }
 }

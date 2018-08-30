@@ -12,15 +12,17 @@ class ProductAttributeCollection implements CollectionInterface
      * @var ProductAttribute[]
      */
     protected $data;
+
     /**
      * A collection of attribute values
      *
      * @return ProductAttribute[]
      */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
+
     /**
      * A collection of attribute values
      *
@@ -28,9 +30,10 @@ class ProductAttributeCollection implements CollectionInterface
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(array $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

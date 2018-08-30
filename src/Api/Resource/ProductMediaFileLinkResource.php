@@ -52,7 +52,8 @@ class ProductMediaFileLinkResource extends Resource
             new CreateProductMediaFileLink(
                 $this,
                 $this->getSerializer()->normalize($item),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(ProductMediaFileLinkItem::class);
 

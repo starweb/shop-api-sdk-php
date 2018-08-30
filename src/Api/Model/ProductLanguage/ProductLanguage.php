@@ -46,15 +46,17 @@ class ProductLanguage
      * @var string
      */
     protected $shortDescription;
+
     /**
      * The langCode for this language. Supported language codes are: sv, en, no, da, fi, de, fr, es
      *
      * @return string
      */
-    public function getLangCode() : ?string
+    public function getLangCode(): ?string
     {
         return $this->langCode;
     }
+
     /**
      * The langCode for this language. Supported language codes are: sv, en, no, da, fi, de, fr, es
      *
@@ -62,20 +64,23 @@ class ProductLanguage
      *
      * @return self
      */
-    public function setLangCode(string $langCode) : self
+    public function setLangCode(string $langCode): self
     {
         $this->langCode = $langCode;
+
         return $this;
     }
+
     /**
      * The products long description
      *
      * @return string
      */
-    public function getLongDescription() : ?string
+    public function getLongDescription(): ?string
     {
         return $this->longDescription;
     }
+
     /**
      * The products long description
      *
@@ -83,20 +88,23 @@ class ProductLanguage
      *
      * @return self
      */
-    public function setLongDescription(string $longDescription) : self
+    public function setLongDescription(string $longDescription): self
     {
         $this->longDescription = $longDescription;
+
         return $this;
     }
+
     /**
      * The products name
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
+
     /**
      * The products name
      *
@@ -104,20 +112,23 @@ class ProductLanguage
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * The meta description for this product
      *
      * @return string
      */
-    public function getPageMetaDescription() : ?string
+    public function getPageMetaDescription(): ?string
     {
         return $this->pageMetaDescription;
     }
+
     /**
      * The meta description for this product
      *
@@ -125,20 +136,23 @@ class ProductLanguage
      *
      * @return self
      */
-    public function setPageMetaDescription(string $pageMetaDescription) : self
+    public function setPageMetaDescription(string $pageMetaDescription): self
     {
         $this->pageMetaDescription = $pageMetaDescription;
+
         return $this;
     }
+
     /**
      * The page title for this product
      *
      * @return string
      */
-    public function getPageTitle() : ?string
+    public function getPageTitle(): ?string
     {
         return $this->pageTitle;
     }
+
     /**
      * The page title for this product
      *
@@ -146,20 +160,23 @@ class ProductLanguage
      *
      * @return self
      */
-    public function setPageTitle(string $pageTitle) : self
+    public function setPageTitle(string $pageTitle): self
     {
         $this->pageTitle = $pageTitle;
+
         return $this;
     }
+
     /**
      * The permalink for this product and language
      *
      * @return string
      */
-    public function getPermalink() : ?string
+    public function getPermalink(): ?string
     {
         return $this->permalink;
     }
+
     /**
      * The permalink for this product and language
      *
@@ -167,20 +184,23 @@ class ProductLanguage
      *
      * @return self
      */
-    public function setPermalink(string $permalink) : self
+    public function setPermalink(string $permalink): self
     {
         $this->permalink = $permalink;
+
         return $this;
     }
+
     /**
      * The products short description
      *
      * @return string
      */
-    public function getShortDescription() : ?string
+    public function getShortDescription(): ?string
     {
         return $this->shortDescription;
     }
+
     /**
      * The products short description
      *
@@ -188,9 +208,10 @@ class ProductLanguage
      *
      * @return self
      */
-    public function setShortDescription(string $shortDescription) : self
+    public function setShortDescription(string $shortDescription): self
     {
         $this->shortDescription = $shortDescription;
+
         return $this;
     }
 }

@@ -12,7 +12,7 @@ class ProductVariantAttributeValueItem
     /**
      * @return ProductVariantAttributeValue
      */
-    public function getData() : ?ProductVariantAttributeValue
+    public function getData(): ?ProductVariantAttributeValue
     {
         return $this->data;
     }
@@ -22,9 +22,10 @@ class ProductVariantAttributeValueItem
      *
      * @return self
      */
-    public function setData(ProductVariantAttributeValue $data) : self
+    public function setData(ProductVariantAttributeValue $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

@@ -41,7 +41,8 @@ class ProductResource extends Resource
             new CreateProduct(
                 $this,
                 $this->getSerializer()->normalize($product),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(ProductItem::class);
 

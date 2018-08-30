@@ -10,15 +10,17 @@ class ProductCategoryItem
      * @var ProductCategory
      */
     protected $data;
+
     /**
      *
      *
      * @return ProductCategory
      */
-    public function getData() : ProductCategory
+    public function getData(): ProductCategory
     {
         return $this->data;
     }
+
     /**
      *
      *
@@ -26,9 +28,10 @@ class ProductCategoryItem
      *
      * @return self
      */
-    public function setData(ProductCategory $data) : self
+    public function setData(ProductCategory $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

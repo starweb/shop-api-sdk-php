@@ -52,7 +52,8 @@ class ProductLanguageResource extends Resource
             new CreateProductLanguage(
                 $this,
                 $this->getSerializer()->normalize($item),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(ProductLanguageItem::class);
 

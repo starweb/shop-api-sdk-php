@@ -10,14 +10,8 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
-use Starweb\Api\Model\MediaFile\MediaFileUpload;
-use Starweb\Api\Model\ModelInterface;
 use Starweb\Api\Model\UploadFileInterface;
 use Starweb\HttpClient\Message\EnhancedResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 class EnhancedHttpClient implements HttpClient
 {

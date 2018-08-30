@@ -16,15 +16,17 @@ class ProductVatRate
      * @var float
      */
     protected $vatRate;
+
     /**
      * The country code this vat rate should be valid for. The country code should be set using ISO 3166-1 alpha-2
      *
      * @return string
      */
-    public function getCountryCode() : ?string
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
+
     /**
      * The country code this vat rate should be valid for. The country code should be set using ISO 3166-1 alpha-2
      *
@@ -32,20 +34,23 @@ class ProductVatRate
      *
      * @return self
      */
-    public function setCountryCode(string $countryCode) : self
+    public function setCountryCode(string $countryCode): self
     {
         $this->countryCode = $countryCode;
+
         return $this;
     }
+
     /**
      * The vat rate to use for this country and product
      *
      * @return float
      */
-    public function getVatRate() : ?float
+    public function getVatRate(): ?float
     {
         return $this->vatRate;
     }
+
     /**
      * The vat rate to use for this country and product
      *
@@ -53,9 +58,10 @@ class ProductVatRate
      *
      * @return self
      */
-    public function setVatRate(float $vatRate) : self
+    public function setVatRate(float $vatRate): self
     {
         $this->vatRate = $vatRate;
+
         return $this;
     }
 }

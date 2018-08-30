@@ -25,10 +25,11 @@ class ProductCategoryCollection
      *
      * @return ProductCategory[]
      */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
+
     /**
      * A list of product categories
      *
@@ -36,20 +37,23 @@ class ProductCategoryCollection
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(array $data): self
     {
         $this->data = $data;
+
         return $this;
     }
+
     /**
      *
      *
      * @return Meta
      */
-    public function getMeta() : Meta
+    public function getMeta(): Meta
     {
         return $this->meta;
     }
+
     /**
      *
      *
@@ -57,9 +61,10 @@ class ProductCategoryCollection
      *
      * @return self
      */
-    public function setMeta(Meta $meta) : self
+    public function setMeta(Meta $meta): self
     {
         $this->meta = $meta;
+
         return $this;
     }
 }

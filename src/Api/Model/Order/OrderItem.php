@@ -14,7 +14,7 @@ class OrderItem
      *
      * @return Order
      */
-    public function getData() : ?Order
+    public function getData(): ?Order
     {
         return $this->data;
     }
@@ -26,9 +26,10 @@ class OrderItem
      *
      * @return self
      */
-    public function setData(Order $data) : self
+    public function setData(Order $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

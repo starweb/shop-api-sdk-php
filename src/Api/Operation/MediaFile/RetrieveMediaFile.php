@@ -7,7 +7,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RetrieveMediaFile extends Operation
 {
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }

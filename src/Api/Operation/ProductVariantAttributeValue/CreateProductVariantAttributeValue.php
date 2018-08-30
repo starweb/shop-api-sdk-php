@@ -3,7 +3,6 @@
 namespace Starweb\Api\Operation\ProductVariantAttributeValue;
 
 use Starweb\Api\Operation\Operation;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CreateProductVariantAttributeValue extends Operation
 {

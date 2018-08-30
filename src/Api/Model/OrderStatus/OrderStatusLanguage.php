@@ -16,15 +16,17 @@ class OrderStatusLanguage
      * @var string
      */
     protected $name;
+
     /**
      * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop has setup.
      *
      * @return string
      */
-    public function getLangCode() : ?string
+    public function getLangCode(): ?string
     {
         return $this->langCode;
     }
+
     /**
      * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop has setup.
      *
@@ -32,20 +34,23 @@ class OrderStatusLanguage
      *
      * @return self
      */
-    public function setLangCode(string $langCode) : self
+    public function setLangCode(string $langCode): self
     {
         $this->langCode = $langCode;
+
         return $this;
     }
+
     /**
      * The name of this order status
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
+
     /**
      * The name of this order status
      *
@@ -53,9 +58,10 @@ class OrderStatusLanguage
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
 }

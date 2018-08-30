@@ -10,15 +10,17 @@ class CustomerExternalServiceItem
      * @var CustomerExternalService
      */
     protected $data;
+
     /**
      *
      *
      * @return CustomerExternalService
      */
-    public function getData() : ?CustomerExternalService
+    public function getData(): ?CustomerExternalService
     {
         return $this->data;
     }
+
     /**
      *
      *
@@ -26,9 +28,10 @@ class CustomerExternalServiceItem
      *
      * @return self
      */
-    public function setData(CustomerExternalService $data) : self
+    public function setData(CustomerExternalService $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

@@ -12,7 +12,7 @@ class ProductCategoryLinkItem
     /**
      * @return ProductCategoryLink
      */
-    public function getData() : ?ProductCategoryLink
+    public function getData(): ?ProductCategoryLink
     {
         return $this->data;
     }
@@ -22,9 +22,10 @@ class ProductCategoryLinkItem
      *
      * @return self
      */
-    public function setData(ProductCategoryLink $data) : self
+    public function setData(ProductCategoryLink $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

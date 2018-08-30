@@ -24,7 +24,7 @@ class CurrencyResource extends Resource
 
         return $response->getContentAsModel(CurrencyCollection::class);
     }
-    
+
     /**
      * @param string $currencyCode
      *

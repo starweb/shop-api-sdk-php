@@ -16,6 +16,7 @@ final class ClientCredentials
 
     /**
      * ClientCredentials constructor.
+     *
      * @param string $id
      * @param string $secret
      */

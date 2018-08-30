@@ -12,7 +12,7 @@ class OrderItemItem
     /**
      * @return OrderItem
      */
-    public function getData() : ?OrderItem
+    public function getData(): ?OrderItem
     {
         return $this->data;
     }
@@ -22,9 +22,10 @@ class OrderItemItem
      *
      * @return self
      */
-    public function setData(OrderItem $data) : self
+    public function setData(OrderItem $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

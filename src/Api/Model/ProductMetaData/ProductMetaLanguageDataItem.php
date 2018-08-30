@@ -12,7 +12,7 @@ class ProductMetaLanguageDataItem
     /**
      * @return ProductMetaLanguageData
      */
-    public function getData() : ?ProductMetaLanguageData
+    public function getData(): ?ProductMetaLanguageData
     {
         return $this->data;
     }
@@ -22,9 +22,10 @@ class ProductMetaLanguageDataItem
      *
      * @return self
      */
-    public function setData(ProductMetaLanguageData $data) : self
+    public function setData(ProductMetaLanguageData $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

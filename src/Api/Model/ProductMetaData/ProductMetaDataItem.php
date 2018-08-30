@@ -12,7 +12,7 @@ class ProductMetaDataItem
     /**
      * @return ProductMetaData
      */
-    public function getData() : ?ProductMetaData
+    public function getData(): ?ProductMetaData
     {
         return $this->data;
     }
@@ -22,9 +22,10 @@ class ProductMetaDataItem
      *
      * @return self
      */
-    public function setData(ProductMetaData $data) : self
+    public function setData(ProductMetaData $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

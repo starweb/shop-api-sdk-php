@@ -11,7 +11,8 @@ class Currency
      */
     protected $code;
     /**
-     * The exchange rate against the shops default currency. Used in reports, etc. The default currency can be fetched from /shop
+     * The exchange rate against the shops default currency. Used in reports, etc. The default currency can be fetched
+     * from /shop
      *
      * @var float
      */
@@ -22,15 +23,17 @@ class Currency
      * @var int
      */
     protected $precision;
+
     /**
      * The currency code
      *
      * @return string
      */
-    public function getCode() : ?string
+    public function getCode(): ?string
     {
         return $this->code;
     }
+
     /**
      * The currency code
      *
@@ -38,41 +41,49 @@ class Currency
      *
      * @return self
      */
-    public function setCode(string $code) : self
+    public function setCode(string $code): self
     {
         $this->code = $code;
+
         return $this;
     }
+
     /**
-     * The exchange rate against the shops default currency. Used in reports, etc. The default currency can be fetched from /shop
+     * The exchange rate against the shops default currency. Used in reports, etc. The default currency can be fetched
+     * from /shop
      *
      * @return float
      */
-    public function getExchangeRate() : ?float
+    public function getExchangeRate(): ?float
     {
         return $this->exchangeRate;
     }
+
     /**
-     * The exchange rate against the shops default currency. Used in reports, etc. The default currency can be fetched from /shop
+     * The exchange rate against the shops default currency. Used in reports, etc. The default currency can be fetched
+     * from /shop
      *
      * @param float $exchangeRate
      *
      * @return self
      */
-    public function setExchangeRate(float $exchangeRate) : self
+    public function setExchangeRate(float $exchangeRate): self
     {
         $this->exchangeRate = $exchangeRate;
+
         return $this;
     }
+
     /**
      * The number of decimals to show and use
      *
      * @return int
      */
-    public function getPrecision() : ?int
+    public function getPrecision(): ?int
     {
         return $this->precision;
     }
+
     /**
      * The number of decimals to show and use
      *
@@ -80,9 +91,10 @@ class Currency
      *
      * @return self
      */
-    public function setPrecision(int $precision) : self
+    public function setPrecision(int $precision): self
     {
         $this->precision = $precision;
+
         return $this;
     }
 }

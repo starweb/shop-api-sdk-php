@@ -12,7 +12,7 @@ class PricelistItem
     /**
      * @return Pricelist
      */
-    public function getData() : ?Pricelist
+    public function getData(): ?Pricelist
     {
         return $this->data;
     }
@@ -22,9 +22,10 @@ class PricelistItem
      *
      * @return self
      */
-    public function setData(Pricelist $data) : self
+    public function setData(Pricelist $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

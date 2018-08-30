@@ -3,7 +3,6 @@
 namespace Starweb\Api\Operation\ProductLanguage;
 
 use Starweb\Api\Operation\Operation;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ListProductLanguages extends Operation
 {

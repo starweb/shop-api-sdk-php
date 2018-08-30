@@ -10,15 +10,17 @@ class ProductVariantAttributeValueUpdatable
      * @var ProductVariantAttributeValueLanguage[]
      */
     protected $languages;
+
     /**
      * A collection of attribute value languages
      *
      * @return ProductVariantAttributeValueLanguage[]
      */
-    public function getLanguages() : array
+    public function getLanguages(): array
     {
         return $this->languages;
     }
+
     /**
      * A collection of attribute value languages
      *
@@ -26,9 +28,10 @@ class ProductVariantAttributeValueUpdatable
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(array $languages): self
     {
         $this->languages = $languages;
+
         return $this;
     }
 }

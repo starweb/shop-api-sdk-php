@@ -10,15 +10,17 @@ class CustomerItem
      * @var Customer
      */
     protected $data;
+
     /**
      *
      *
      * @return Customer
      */
-    public function getData() : ?Customer
+    public function getData(): ?Customer
     {
         return $this->data;
     }
+
     /**
      *
      *
@@ -26,9 +28,10 @@ class CustomerItem
      *
      * @return self
      */
-    public function setData(Customer $data) : self
+    public function setData(Customer $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

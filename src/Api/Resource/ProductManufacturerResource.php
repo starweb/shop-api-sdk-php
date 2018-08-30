@@ -38,7 +38,8 @@ class ProductManufacturerResource extends Resource
             new CreateProductManufacturer(
                 $this,
                 $this->getSerializer()->normalize($productManufacturer),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(ProductManufacturerItem::class);
 

@@ -52,15 +52,17 @@ class Pricelist
      * @var int
      */
     protected $pricelistId;
+
     /**
      * The countryCodes this pricelist is valid for
      *
      * @return string[]
      */
-    public function getCountryCodes() : array
+    public function getCountryCodes(): array
     {
         return $this->countryCodes;
     }
+
     /**
      * The countryCodes this pricelist is valid for
      *
@@ -68,20 +70,23 @@ class Pricelist
      *
      * @return self
      */
-    public function setCountryCodes(array $countryCodes) : self
+    public function setCountryCodes(array $countryCodes): self
     {
         $this->countryCodes = $countryCodes;
+
         return $this;
     }
+
     /**
      * The currencyCode this pricelist is valid for
      *
      * @return string
      */
-    public function getCurrencyCode() : ?string
+    public function getCurrencyCode(): ?string
     {
         return $this->currencyCode;
     }
+
     /**
      * The currencyCode this pricelist is valid for
      *
@@ -89,20 +94,23 @@ class Pricelist
      *
      * @return self
      */
-    public function setCurrencyCode(string $currencyCode) : self
+    public function setCurrencyCode(string $currencyCode): self
     {
         $this->currencyCode = $currencyCode;
+
         return $this;
     }
+
     /**
      * Is this pricelist a ”country” pricelist (base pricelist for a certain country)
      *
      * @return bool
      */
-    public function getIsCountryPricelist() : ?bool
+    public function getIsCountryPricelist(): ?bool
     {
         return $this->isCountryPricelist;
     }
+
     /**
      * Is this pricelist a ”country” pricelist (base pricelist for a certain country)
      *
@@ -110,20 +118,23 @@ class Pricelist
      *
      * @return self
      */
-    public function setIsCountryPricelist(bool $isCountryPricelist) : self
+    public function setIsCountryPricelist(bool $isCountryPricelist): self
     {
         $this->isCountryPricelist = $isCountryPricelist;
+
         return $this;
     }
+
     /**
      * Is this pricelist a ”customer” pricelist (for selected customer groups)
      *
      * @return bool
      */
-    public function getIsCustomerPricelist() : ?bool
+    public function getIsCustomerPricelist(): ?bool
     {
         return $this->isCustomerPricelist;
     }
+
     /**
      * Is this pricelist a ”customer” pricelist (for selected customer groups)
      *
@@ -131,20 +142,23 @@ class Pricelist
      *
      * @return self
      */
-    public function setIsCustomerPricelist(bool $isCustomerPricelist) : self
+    public function setIsCustomerPricelist(bool $isCustomerPricelist): self
     {
         $this->isCustomerPricelist = $isCustomerPricelist;
+
         return $this;
     }
+
     /**
      * If this pricelist is the default ”master” pricelist or not. Only one pricelist can be the master pricelist
      *
      * @return bool
      */
-    public function getIsMaster() : ?bool
+    public function getIsMaster(): ?bool
     {
         return $this->isMaster;
     }
+
     /**
      * If this pricelist is the default ”master” pricelist or not. Only one pricelist can be the master pricelist
      *
@@ -152,20 +166,23 @@ class Pricelist
      *
      * @return self
      */
-    public function setIsMaster(bool $isMaster) : self
+    public function setIsMaster(bool $isMaster): self
     {
         $this->isMaster = $isMaster;
+
         return $this;
     }
+
     /**
      * The name of this pricelist
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
+
     /**
      * The name of this pricelist
      *
@@ -173,20 +190,23 @@ class Pricelist
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * Does this pricelist has a parent price list.
      *
      * @return int
      */
-    public function getParentPricelistId() : ?int
+    public function getParentPricelistId(): ?int
     {
         return $this->parentPricelistId;
     }
+
     /**
      * Does this pricelist has a parent price list.
      *
@@ -194,20 +214,23 @@ class Pricelist
      *
      * @return self
      */
-    public function setParentPricelistId(int $parentPricelistId) : self
+    public function setParentPricelistId(int $parentPricelistId): self
     {
         $this->parentPricelistId = $parentPricelistId;
+
         return $this;
     }
+
     /**
      * The shipping methods Id
      *
      * @return int
      */
-    public function getPricelistId() : ?int
+    public function getPricelistId(): ?int
     {
         return $this->pricelistId;
     }
+
     /**
      * The shipping methods Id
      *
@@ -215,9 +238,10 @@ class Pricelist
      *
      * @return self
      */
-    public function setPricelistId(int $pricelistId) : self
+    public function setPricelistId(int $pricelistId): self
     {
         $this->pricelistId = $pricelistId;
+
         return $this;
     }
 }

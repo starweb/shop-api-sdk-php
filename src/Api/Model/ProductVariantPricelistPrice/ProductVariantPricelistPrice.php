@@ -22,15 +22,17 @@ class ProductVariantPricelistPrice
      * @var float
      */
     protected $specialPriceExVat;
+
     /**
      * The price excluding vat
      *
      * @return float
      */
-    public function getPriceExVat() : ?float
+    public function getPriceExVat(): ?float
     {
         return $this->priceExVat;
     }
+
     /**
      * The price excluding vat
      *
@@ -38,20 +40,23 @@ class ProductVariantPricelistPrice
      *
      * @return self
      */
-    public function setPriceExVat(float $priceExVat) : self
+    public function setPriceExVat(float $priceExVat): self
     {
         $this->priceExVat = $priceExVat;
+
         return $this;
     }
+
     /**
      * The pricelist this price is for
      *
      * @return int
      */
-    public function getPricelistId() : ?int
+    public function getPricelistId(): ?int
     {
         return $this->pricelistId;
     }
+
     /**
      * The pricelist this price is for
      *
@@ -59,20 +64,23 @@ class ProductVariantPricelistPrice
      *
      * @return self
      */
-    public function setPricelistId(int $pricelistId) : self
+    public function setPricelistId(int $pricelistId): self
     {
         $this->pricelistId = $pricelistId;
+
         return $this;
     }
+
     /**
      * The special price excluding vat (a discounted price)
      *
      * @return float
      */
-    public function getSpecialPriceExVat() : ?float
+    public function getSpecialPriceExVat(): ?float
     {
         return $this->specialPriceExVat;
     }
+
     /**
      * The special price excluding vat (a discounted price)
      *
@@ -80,9 +88,10 @@ class ProductVariantPricelistPrice
      *
      * @return self
      */
-    public function setSpecialPriceExVat(float $specialPriceExVat) : self
+    public function setSpecialPriceExVat(float $specialPriceExVat): self
     {
         $this->specialPriceExVat = $specialPriceExVat;
+
         return $this;
     }
 }

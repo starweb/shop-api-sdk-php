@@ -10,15 +10,17 @@ class PaymentMethodLanguageCollection
      * @var PaymentMethodLanguage[]
      */
     protected $data;
+
     /**
      * A collection of payment method languages
      *
      * @return PaymentMethodLanguage[]
      */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
+
     /**
      * A collection of payment method languages
      *
@@ -26,9 +28,10 @@ class PaymentMethodLanguageCollection
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(array $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

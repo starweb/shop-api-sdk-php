@@ -51,7 +51,8 @@ class ProductAttributeResource extends Resource
             new CreateProductAttribute(
                 $this,
                 $this->getSerializer()->normalize($item),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(ProductAttributeItem::class);
 

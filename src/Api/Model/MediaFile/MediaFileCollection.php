@@ -24,7 +24,7 @@ class MediaFileCollection implements PaginatedCollectionInterface
      *
      * @return MediaFile[]
      */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
@@ -36,7 +36,7 @@ class MediaFileCollection implements PaginatedCollectionInterface
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(array $data): self
     {
         $this->data = $data;
 
@@ -46,7 +46,7 @@ class MediaFileCollection implements PaginatedCollectionInterface
     /**
      * @return Meta
      */
-    public function getMeta() : Meta
+    public function getMeta(): Meta
     {
         return $this->meta;
     }

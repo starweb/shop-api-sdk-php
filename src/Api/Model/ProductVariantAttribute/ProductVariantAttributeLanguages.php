@@ -10,15 +10,17 @@ class ProductVariantAttributeLanguages
      * @var ProductVariantAttributeLanguage[]
      */
     protected $data;
+
     /**
      *
      *
      * @return ProductVariantAttributeLanguage[]
      */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
+
     /**
      *
      *
@@ -26,9 +28,10 @@ class ProductVariantAttributeLanguages
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(array $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

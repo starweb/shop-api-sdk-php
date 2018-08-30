@@ -18,7 +18,7 @@ class ProductLanguageCollection implements CollectionInterface
      *
      * @return ProductLanguage[]
      */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
@@ -30,9 +30,10 @@ class ProductLanguageCollection implements CollectionInterface
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(array $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

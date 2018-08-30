@@ -52,7 +52,8 @@ class OrderExternalServiceResource extends Resource
             new CreateOrderExternalService(
                 $this,
                 $this->getSerializer()->normalize($externalService),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(OrderExternalServiceItem::class);
 

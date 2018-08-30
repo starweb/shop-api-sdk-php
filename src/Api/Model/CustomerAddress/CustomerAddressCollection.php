@@ -10,15 +10,17 @@ class CustomerAddressCollection
      * @var CustomerAddressCollectionData
      */
     protected $data;
+
     /**
      *
      *
      * @return CustomerAddressCollectionData
      */
-    public function getData() : ?CustomerAddressCollectionData
+    public function getData(): ?CustomerAddressCollectionData
     {
         return $this->data;
     }
+
     /**
      *
      *
@@ -26,9 +28,10 @@ class CustomerAddressCollection
      *
      * @return self
      */
-    public function setData(CustomerAddressesCollectionData $data) : self
+    public function setData(CustomerAddressesCollectionData $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

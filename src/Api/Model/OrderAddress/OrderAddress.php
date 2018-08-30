@@ -10,55 +10,56 @@ class OrderAddress
      * @var Address
      */
     protected $customerDelivery;
-    
+
     /**
      * @var Address
      */
     protected $customerInvoice;
-    
+
     /**
      * @var Address
      */
     protected $originalDelivery;
-    
+
     /**
      * @var Address
      */
     protected $originalInvoice;
-    
+
     /**
      * @var Address
      */
     protected $paymentMethodDelivery;
-    
+
     /**
      * @var Address
      */
     protected $paymentMethodInvoice;
-    
+
     /**
      * @return Address
      */
-    public function getCustomerDelivery() : ?Address
+    public function getCustomerDelivery(): ?Address
     {
         return $this->customerDelivery;
     }
-    
+
     /**
      * @param Address $customerDelivery
      *
      * @return self
      */
-    public function setCustomerDelivery(Address $customerDelivery) : self
+    public function setCustomerDelivery(Address $customerDelivery): self
     {
         $this->customerDelivery = $customerDelivery;
+
         return $this;
     }
 
     /**
      * @return Address
      */
-    public function getCustomerInvoice() : ?Address
+    public function getCustomerInvoice(): ?Address
     {
         return $this->customerInvoice;
     }
@@ -68,16 +69,17 @@ class OrderAddress
      *
      * @return self
      */
-    public function setCustomerInvoice(Address $customerInvoice) : self
+    public function setCustomerInvoice(Address $customerInvoice): self
     {
         $this->customerInvoice = $customerInvoice;
+
         return $this;
     }
 
     /**
      * @return Address
      */
-    public function getOriginalDelivery() : ?Address
+    public function getOriginalDelivery(): ?Address
     {
         return $this->originalDelivery;
     }
@@ -87,19 +89,21 @@ class OrderAddress
      *
      * @return self
      */
-    public function setOriginalDelivery(Address $originalDelivery) : self
+    public function setOriginalDelivery(Address $originalDelivery): self
     {
         $this->originalDelivery = $originalDelivery;
+
         return $this;
     }
 
     /**
      * @return Address
      */
-    public function getOriginalInvoice() : ?Address
+    public function getOriginalInvoice(): ?Address
     {
         return $this->originalInvoice;
     }
+
     /**
      *
      *
@@ -107,20 +111,23 @@ class OrderAddress
      *
      * @return self
      */
-    public function setOriginalInvoice(Address $originalInvoice) : self
+    public function setOriginalInvoice(Address $originalInvoice): self
     {
         $this->originalInvoice = $originalInvoice;
+
         return $this;
     }
+
     /**
      *
      *
      * @return Address
      */
-    public function getPaymentMethodDelivery() : ?Address
+    public function getPaymentMethodDelivery(): ?Address
     {
         return $this->paymentMethodDelivery;
     }
+
     /**
      *
      *
@@ -128,20 +135,23 @@ class OrderAddress
      *
      * @return self
      */
-    public function setPaymentMethodDelivery(Address $paymentMethodDelivery) : self
+    public function setPaymentMethodDelivery(Address $paymentMethodDelivery): self
     {
         $this->paymentMethodDelivery = $paymentMethodDelivery;
+
         return $this;
     }
+
     /**
      *
      *
      * @return Address
      */
-    public function getPaymentMethodInvoice() : ?Address
+    public function getPaymentMethodInvoice(): ?Address
     {
         return $this->paymentMethodInvoice;
     }
+
     /**
      *
      *
@@ -149,9 +159,10 @@ class OrderAddress
      *
      * @return self
      */
-    public function setPaymentMethodInvoice(Address $paymentMethodInvoice) : self
+    public function setPaymentMethodInvoice(Address $paymentMethodInvoice): self
     {
         $this->paymentMethodInvoice = $paymentMethodInvoice;
+
         return $this;
     }
 }

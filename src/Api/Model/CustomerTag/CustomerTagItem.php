@@ -10,15 +10,17 @@ class CustomerTagItem
      * @var CustomerTag
      */
     protected $data;
+
     /**
      *
      *
      * @return CustomerTag
      */
-    public function getData() : ?CustomerTag
+    public function getData(): ?CustomerTag
     {
         return $this->data;
     }
+
     /**
      *
      *
@@ -26,9 +28,10 @@ class CustomerTagItem
      *
      * @return self
      */
-    public function setData(CustomerAddedTag $data) : self
+    public function setData(CustomerAddedTag $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

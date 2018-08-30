@@ -41,7 +41,8 @@ class ShippingMethod
      */
     protected $validCountriesSelected;
     /**
-     * The restrictions to countries this shipping method is valid for. Valid values are: all, EU, non-EU, selected, none
+     * The restrictions to countries this shipping method is valid for. Valid values are: all, EU, non-EU, selected,
+     * none
      *
      * @var string
      */
@@ -76,15 +77,17 @@ class ShippingMethod
      * @var float
      */
     protected $validForMinWeight;
+
     /**
      * If the shipping method is actively available on checkout or not
      *
      * @return bool
      */
-    public function getActive() : ?bool
+    public function getActive(): ?bool
     {
         return $this->active;
     }
+
     /**
      * If the shipping method is actively available on checkout or not
      *
@@ -92,20 +95,23 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setActive(bool $active) : self
+    public function setActive(bool $active): self
     {
         $this->active = $active;
+
         return $this;
     }
+
     /**
      * Offer free shipping with this method if the minimum order sub total amount is at least this value
      *
      * @return float
      */
-    public function getFreeShippingMinItemsSubtotal() : ?float
+    public function getFreeShippingMinItemsSubtotal(): ?float
     {
         return $this->freeShippingMinItemsSubtotal;
     }
+
     /**
      * Offer free shipping with this method if the minimum order sub total amount is at least this value
      *
@@ -113,20 +119,23 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setFreeShippingMinItemsSubtotal(float $freeShippingMinItemsSubtotal) : self
+    public function setFreeShippingMinItemsSubtotal(float $freeShippingMinItemsSubtotal): self
     {
         $this->freeShippingMinItemsSubtotal = $freeShippingMinItemsSubtotal;
+
         return $this;
     }
+
     /**
      * Offer free shipping with this method if the minimum order total weight is at least this value
      *
      * @return float
      */
-    public function getFreeShippingMinWeight() : ?float
+    public function getFreeShippingMinWeight(): ?float
     {
         return $this->freeShippingMinWeight;
     }
+
     /**
      * Offer free shipping with this method if the minimum order total weight is at least this value
      *
@@ -134,20 +143,23 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setFreeShippingMinWeight(float $freeShippingMinWeight) : self
+    public function setFreeShippingMinWeight(float $freeShippingMinWeight): self
     {
         $this->freeShippingMinWeight = $freeShippingMinWeight;
+
         return $this;
     }
+
     /**
      *
      *
      * @return ShippingMethodLanguageCollection
      */
-    public function getLanguages() : ?ShippingMethodLanguageCollection
+    public function getLanguages(): ?ShippingMethodLanguageCollection
     {
         return $this->languages;
     }
+
     /**
      *
      *
@@ -155,20 +167,23 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setLanguages(ShippingMethodLanguageCollection $languages) : self
+    public function setLanguages(ShippingMethodLanguageCollection $languages): self
     {
         $this->languages = $languages;
+
         return $this;
     }
+
     /**
      * The shipping methods Id
      *
      * @return int
      */
-    public function getShippingMethodId() : ?int
+    public function getShippingMethodId(): ?int
     {
         return $this->shippingMethodId;
     }
+
     /**
      * The shipping methods Id
      *
@@ -176,20 +191,23 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setShippingMethodId(int $shippingMethodId) : self
+    public function setShippingMethodId(int $shippingMethodId): self
     {
         $this->shippingMethodId = $shippingMethodId;
+
         return $this;
     }
+
     /**
      * The countries this method is valid for (if validForCountries is set to ”selected”)
      *
      * @return string[]
      */
-    public function getValidCountriesSelected() : array
+    public function getValidCountriesSelected(): array
     {
         return $this->validCountriesSelected;
     }
+
     /**
      * The countries this method is valid for (if validForCountries is set to ”selected”)
      *
@@ -197,41 +215,49 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setValidCountriesSelected(array $validCountriesSelected) : self
+    public function setValidCountriesSelected(array $validCountriesSelected): self
     {
         $this->validCountriesSelected = $validCountriesSelected;
+
         return $this;
     }
+
     /**
-     * The restrictions to countries this shipping method is valid for. Valid values are: all, EU, non-EU, selected, none
+     * The restrictions to countries this shipping method is valid for. Valid values are: all, EU, non-EU, selected,
+     * none
      *
      * @return string
      */
-    public function getValidForCountries() : ?string
+    public function getValidForCountries(): ?string
     {
         return $this->validForCountries;
     }
+
     /**
-     * The restrictions to countries this shipping method is valid for. Valid values are: all, EU, non-EU, selected, none
+     * The restrictions to countries this shipping method is valid for. Valid values are: all, EU, non-EU, selected,
+     * none
      *
      * @param string $validForCountries
      *
      * @return self
      */
-    public function setValidForCountries(string $validForCountries) : self
+    public function setValidForCountries(string $validForCountries): self
     {
         $this->validForCountries = $validForCountries;
+
         return $this;
     }
+
     /**
      * The customer type this method is valid for. Valid values are: null (no restriction), person, company
      *
      * @return string
      */
-    public function getValidForCustomerType() : ?string
+    public function getValidForCustomerType(): ?string
     {
         return $this->validForCustomerType;
     }
+
     /**
      * The customer type this method is valid for. Valid values are: null (no restriction), person, company
      *
@@ -239,20 +265,23 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setValidForCustomerType(string $validForCustomerType) : self
+    public function setValidForCustomerType(string $validForCustomerType): self
     {
         $this->validForCustomerType = $validForCustomerType;
+
         return $this;
     }
+
     /**
      * The max order sub total that this method is valid for
      *
      * @return float
      */
-    public function getValidForMaxItemsSubtotal() : ?float
+    public function getValidForMaxItemsSubtotal(): ?float
     {
         return $this->validForMaxItemsSubtotal;
     }
+
     /**
      * The max order sub total that this method is valid for
      *
@@ -260,20 +289,23 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setValidForMaxItemsSubtotal(float $validForMaxItemsSubtotal) : self
+    public function setValidForMaxItemsSubtotal(float $validForMaxItemsSubtotal): self
     {
         $this->validForMaxItemsSubtotal = $validForMaxItemsSubtotal;
+
         return $this;
     }
+
     /**
      * The max order weight that this method is valid for.
      *
      * @return float
      */
-    public function getValidForMaxWeight() : ?float
+    public function getValidForMaxWeight(): ?float
     {
         return $this->validForMaxWeight;
     }
+
     /**
      * The max order weight that this method is valid for.
      *
@@ -281,20 +313,23 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setValidForMaxWeight(float $validForMaxWeight) : self
+    public function setValidForMaxWeight(float $validForMaxWeight): self
     {
         $this->validForMaxWeight = $validForMaxWeight;
+
         return $this;
     }
+
     /**
      * The min order sub total that this method is valid for
      *
      * @return float
      */
-    public function getValidForMinItemsSubtotal() : ?float
+    public function getValidForMinItemsSubtotal(): ?float
     {
         return $this->validForMinItemsSubtotal;
     }
+
     /**
      * The min order sub total that this method is valid for
      *
@@ -302,20 +337,23 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setValidForMinItemsSubtotal(float $validForMinItemsSubtotal) : self
+    public function setValidForMinItemsSubtotal(float $validForMinItemsSubtotal): self
     {
         $this->validForMinItemsSubtotal = $validForMinItemsSubtotal;
+
         return $this;
     }
+
     /**
      * The min order weight that this method is valid for
      *
      * @return float
      */
-    public function getValidForMinWeight() : ?float
+    public function getValidForMinWeight(): ?float
     {
         return $this->validForMinWeight;
     }
+
     /**
      * The min order weight that this method is valid for
      *
@@ -323,9 +361,10 @@ class ShippingMethod
      *
      * @return self
      */
-    public function setValidForMinWeight(float $validForMinWeight) : self
+    public function setValidForMinWeight(float $validForMinWeight): self
     {
         $this->validForMinWeight = $validForMinWeight;
+
         return $this;
     }
 }

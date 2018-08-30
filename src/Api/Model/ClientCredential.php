@@ -22,15 +22,17 @@ class ClientCredential
      * @var string
      */
     protected $grantType;
+
     /**
      * Your client id
      *
      * @return string
      */
-    public function getClientId() : ?string
+    public function getClientId(): ?string
     {
         return $this->clientId;
     }
+
     /**
      * Your client id
      *
@@ -38,20 +40,23 @@ class ClientCredential
      *
      * @return self
      */
-    public function setClientId(string $clientId) : self
+    public function setClientId(string $clientId): self
     {
         $this->clientId = $clientId;
+
         return $this;
     }
+
     /**
      * Your client secret
      *
      * @return string
      */
-    public function getClientSecret() : ?string
+    public function getClientSecret(): ?string
     {
         return $this->clientSecret;
     }
+
     /**
      * Your client secret
      *
@@ -59,20 +64,23 @@ class ClientCredential
      *
      * @return self
      */
-    public function setClientSecret(string $clientSecret) : self
+    public function setClientSecret(string $clientSecret): self
     {
         $this->clientSecret = $clientSecret;
+
         return $this;
     }
+
     /**
      * The grant type to use for the request. At this time, only client_credentials is allowed
      *
      * @return string
      */
-    public function getGrantType() : ?string
+    public function getGrantType(): ?string
     {
         return $this->grantType;
     }
+
     /**
      * The grant type to use for the request. At this time, only client_credentials is allowed
      *
@@ -80,9 +88,10 @@ class ClientCredential
      *
      * @return self
      */
-    public function setGrantType(string $grantType) : self
+    public function setGrantType(string $grantType): self
     {
         $this->grantType = $grantType;
+
         return $this;
     }
 }

@@ -7,7 +7,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DeleteMediaFile extends Operation
 {
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'DELETE';
     }

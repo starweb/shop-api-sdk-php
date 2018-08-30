@@ -16,15 +16,17 @@ class ProductCategoryLink
      * @var int
      */
     protected $sortIndex;
+
     /**
      * The category id this product should be listed in
      *
      * @return int
      */
-    public function getCategoryId() : ?int
+    public function getCategoryId(): ?int
     {
         return $this->categoryId;
     }
+
     /**
      * The category id this product should be listed in
      *
@@ -32,20 +34,23 @@ class ProductCategoryLink
      *
      * @return self
      */
-    public function setCategoryId(int $categoryId) : self
+    public function setCategoryId(int $categoryId): self
     {
         $this->categoryId = $categoryId;
+
         return $this;
     }
+
     /**
      * The sort index this product have in the category
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex(): ?int
     {
         return $this->sortIndex;
     }
+
     /**
      * The sort index this product have in the category
      *
@@ -53,9 +58,10 @@ class ProductCategoryLink
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(int $sortIndex): self
     {
         $this->sortIndex = $sortIndex;
+
         return $this;
     }
 }

@@ -12,7 +12,7 @@ class ProductManufacturerItem
     /**
      * @return ProductManufacturer
      */
-    public function getData() : ?ProductManufacturer
+    public function getData(): ?ProductManufacturer
     {
         return $this->data;
     }
@@ -22,9 +22,10 @@ class ProductManufacturerItem
      *
      * @return self
      */
-    public function setData(ProductManufacturer $data) : self
+    public function setData(ProductManufacturer $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

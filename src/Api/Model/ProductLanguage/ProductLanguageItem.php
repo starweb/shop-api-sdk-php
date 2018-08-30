@@ -10,15 +10,17 @@ class ProductLanguageItem
      * @var ProductLanguage
      */
     protected $data;
+
     /**
      *
      *
      * @return ProductLanguage
      */
-    public function getData() : ?ProductLanguage
+    public function getData(): ?ProductLanguage
     {
         return $this->data;
     }
+
     /**
      *
      *
@@ -26,9 +28,10 @@ class ProductLanguageItem
      *
      * @return self
      */
-    public function setData(ProductLanguage $data) : self
+    public function setData(ProductLanguage $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

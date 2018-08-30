@@ -52,7 +52,8 @@ class ProductVariantResource extends Resource
             new CreateProductVariant(
                 $this,
                 $this->getSerializer()->normalize($item),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(ProductVariantItem::class);
 

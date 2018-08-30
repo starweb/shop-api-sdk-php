@@ -12,7 +12,7 @@ class ProductStockStatusItem
     /**
      * @return ProductStockStatus
      */
-    public function getData() : ?ProductStockStatus
+    public function getData(): ?ProductStockStatus
     {
         return $this->data;
     }
@@ -22,9 +22,10 @@ class ProductStockStatusItem
      *
      * @return self
      */
-    public function setData(ProductStockStatus $data) : self
+    public function setData(ProductStockStatus $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

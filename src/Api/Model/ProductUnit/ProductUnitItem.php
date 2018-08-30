@@ -12,7 +12,7 @@ class ProductUnitItem
     /**
      * @return ProductUnit
      */
-    public function getData() : ?ProductUnit
+    public function getData(): ?ProductUnit
     {
         return $this->data;
     }
@@ -22,9 +22,10 @@ class ProductUnitItem
      *
      * @return self
      */
-    public function setData(ProductUnit $data) : self
+    public function setData(ProductUnit $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

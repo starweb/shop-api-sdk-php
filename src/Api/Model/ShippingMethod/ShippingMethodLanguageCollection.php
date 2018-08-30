@@ -10,15 +10,17 @@ class ShippingMethodLanguageCollection
      * @var ShippingMethodLanguage[]
      */
     protected $data;
+
     /**
      * A collection of shipping method languages
      *
      * @return ShippingMethodLanguage[]
      */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
+
     /**
      * A collection of shipping method languages
      *
@@ -26,9 +28,10 @@ class ShippingMethodLanguageCollection
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(array $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

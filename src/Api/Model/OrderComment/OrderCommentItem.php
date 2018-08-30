@@ -10,15 +10,17 @@ class OrderCommentItem
      * @var OrderComment
      */
     protected $data;
+
     /**
      *
      *
      * @return OrderComment
      */
-    public function getData() : ?OrderComment
+    public function getData(): ?OrderComment
     {
         return $this->data;
     }
+
     /**
      *
      *
@@ -26,9 +28,10 @@ class OrderCommentItem
      *
      * @return self
      */
-    public function setData(OrderComment $data) : self
+    public function setData(OrderComment $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

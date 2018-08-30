@@ -16,15 +16,17 @@ class CustomerExternalService
      * @var string
      */
     protected $serviceName;
+
     /**
      * The external service ID
      *
      * @return string
      */
-    public function getExternalIdValue() : ?string
+    public function getExternalIdValue(): ?string
     {
         return $this->externalIdValue;
     }
+
     /**
      * The external service ID
      *
@@ -32,20 +34,23 @@ class CustomerExternalService
      *
      * @return self
      */
-    public function setExternalIdValue(string $externalIdValue) : self
+    public function setExternalIdValue(string $externalIdValue): self
     {
         $this->externalIdValue = $externalIdValue;
+
         return $this;
     }
+
     /**
      * The service name of the external service
      *
      * @return string
      */
-    public function getServiceName() : ?string
+    public function getServiceName(): ?string
     {
         return $this->serviceName;
     }
+
     /**
      * The service name of the external service
      *
@@ -53,9 +58,10 @@ class CustomerExternalService
      *
      * @return self
      */
-    public function setServiceName(string $serviceName) : self
+    public function setServiceName(string $serviceName): self
     {
         $this->serviceName = $serviceName;
+
         return $this;
     }
 }

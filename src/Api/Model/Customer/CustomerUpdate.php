@@ -17,13 +17,15 @@ class CustomerUpdate
      */
     protected $createdAt;
     /**
-     * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
+     * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional
+     * data collection
      *
      * @var string
      */
     protected $customInfo1;
     /**
-     * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
+     * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional
+     * data collection
      *
      * @var string
      */
@@ -58,15 +60,17 @@ class CustomerUpdate
      * @var string
      */
     protected $vatNo;
+
     /**
      *
      *
      * @return CustomerUpdateAddresses
      */
-    public function getAddresses() : ?CustomerUpdateAddresses
+    public function getAddresses(): ?CustomerUpdateAddresses
     {
         return $this->addresses;
     }
+
     /**
      *
      *
@@ -74,20 +78,23 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setAddresses(CustomerUpdateAddresses $addresses) : self
+    public function setAddresses(CustomerUpdateAddresses $addresses): self
     {
         $this->addresses = $addresses;
+
         return $this;
     }
+
     /**
      * A timestamp of when the customer was created. The time should be formatted using ISO-8601
      *
      * @return string
      */
-    public function getCreatedAt() : ?string
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
+
     /**
      * A timestamp of when the customer was created. The time should be formatted using ISO-8601
      *
@@ -95,62 +102,75 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setCreatedAt(string $createdAt) : self
+    public function setCreatedAt(string $createdAt): self
     {
         $this->createdAt = $createdAt;
+
         return $this;
     }
+
     /**
-     * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
+     * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional
+     * data collection
      *
      * @return string
      */
-    public function getCustomInfo1() : ?string
+    public function getCustomInfo1(): ?string
     {
         return $this->customInfo1;
     }
+
     /**
-     * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
+     * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional
+     * data collection
      *
      * @param string $customInfo1
      *
      * @return self
      */
-    public function setCustomInfo1(string $customInfo1) : self
+    public function setCustomInfo1(string $customInfo1): self
     {
         $this->customInfo1 = $customInfo1;
+
         return $this;
     }
+
     /**
-     * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
+     * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional
+     * data collection
      *
      * @return string
      */
-    public function getCustomInfo2() : ?string
+    public function getCustomInfo2(): ?string
     {
         return $this->customInfo2;
     }
+
     /**
-     * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
+     * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional
+     * data collection
      *
      * @param string $customInfo2
      *
      * @return self
      */
-    public function setCustomInfo2(string $customInfo2) : self
+    public function setCustomInfo2(string $customInfo2): self
     {
         $this->customInfo2 = $customInfo2;
+
         return $this;
     }
+
     /**
      * The customers ID
      *
      * @return int
      */
-    public function getCustomerId() : ?int
+    public function getCustomerId(): ?int
     {
         return $this->customerId;
     }
+
     /**
      * The customers ID
      *
@@ -158,20 +178,23 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setCustomerId(int $customerId) : self
+    public function setCustomerId(int $customerId): self
     {
         $this->customerId = $customerId;
+
         return $this;
     }
+
     /**
      * Email address of the customer
      *
      * @return string
      */
-    public function getEmail() : ?string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
+
     /**
      * Email address of the customer
      *
@@ -179,20 +202,23 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(string $email): self
     {
         $this->email = $email;
+
         return $this;
     }
+
     /**
      * National id number of the customer
      *
      * @return string
      */
-    public function getNationalIdNo() : ?string
+    public function getNationalIdNo(): ?string
     {
         return $this->nationalIdNo;
     }
+
     /**
      * National id number of the customer
      *
@@ -200,20 +226,23 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setNationalIdNo(string $nationalIdNo) : self
+    public function setNationalIdNo(string $nationalIdNo): self
     {
         $this->nationalIdNo = $nationalIdNo;
+
         return $this;
     }
+
     /**
      * The type of customer this is. Either: ”person” or ”company”
      *
      * @return string
      */
-    public function getType() : ?string
+    public function getType(): ?string
     {
         return $this->type;
     }
+
     /**
      * The type of customer this is. Either: ”person” or ”company”
      *
@@ -221,20 +250,23 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(string $type): self
     {
         $this->type = $type;
+
         return $this;
     }
+
     /**
      * VAT number of the customer
      *
      * @return string
      */
-    public function getVatNo() : ?string
+    public function getVatNo(): ?string
     {
         return $this->vatNo;
     }
+
     /**
      * VAT number of the customer
      *
@@ -242,9 +274,10 @@ class CustomerUpdate
      *
      * @return self
      */
-    public function setVatNo(string $vatNo) : self
+    public function setVatNo(string $vatNo): self
     {
         $this->vatNo = $vatNo;
+
         return $this;
     }
 }

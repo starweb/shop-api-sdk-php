@@ -54,7 +54,8 @@ class ProductVariantAttributeValueResource extends Resource
             new CreateProductVariantAttributeValue(
                 $this,
                 $this->getSerializer()->normalize($item),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(ProductVariantAttributeValueItem::class);
 
@@ -106,8 +107,10 @@ class ProductVariantAttributeValueResource extends Resource
      *
      * @throws \Http\Client\Exception
      */
-    public function replace(int $attributeValueId, ProductVariantAttributeValue $status): ProductVariantAttributeValueItem
-    {
+    public function replace(
+        int $attributeValueId,
+        ProductVariantAttributeValue $status
+    ): ProductVariantAttributeValueItem {
         $pathParameters = array_merge($this->getPathParameters(), ['attributeValueId' => $attributeValueId]);
         $response = $this->performOperation(
             new ReplaceProductVariantAttributeValue(

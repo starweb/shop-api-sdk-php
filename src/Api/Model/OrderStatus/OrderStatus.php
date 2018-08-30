@@ -28,15 +28,17 @@ class OrderStatus
      * @var int
      */
     protected $statusId;
+
     /**
      * Standard order statuses has an idCode as well. These are: created, picking, completed, canceled
      *
      * @return string
      */
-    public function getIdCode() : ?string
+    public function getIdCode(): ?string
     {
         return $this->idCode;
     }
+
     /**
      * Standard order statuses has an idCode as well. These are: created, picking, completed, canceled
      *
@@ -44,20 +46,23 @@ class OrderStatus
      *
      * @return self
      */
-    public function setIdCode(string $idCode) : self
+    public function setIdCode(string $idCode): self
     {
         $this->idCode = $idCode;
+
         return $this;
     }
+
     /**
      *
      *
      * @return OrderStatusLanguage[]
      */
-    public function getLanguages() : array
+    public function getLanguages(): array
     {
         return $this->languages;
     }
+
     /**
      *
      *
@@ -65,20 +70,23 @@ class OrderStatus
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(array $languages): self
     {
         $this->languages = $languages;
+
         return $this;
     }
+
     /**
      * Should an order status update email be sent out when an order gets this status
      *
      * @return bool
      */
-    public function getSendEmail() : ?bool
+    public function getSendEmail(): ?bool
     {
         return $this->sendEmail;
     }
+
     /**
      * Should an order status update email be sent out when an order gets this status
      *
@@ -86,20 +94,23 @@ class OrderStatus
      *
      * @return self
      */
-    public function setSendEmail(bool $sendEmail) : self
+    public function setSendEmail(bool $sendEmail): self
     {
         $this->sendEmail = $sendEmail;
+
         return $this;
     }
+
     /**
      * The id of the order status
      *
      * @return int
      */
-    public function getStatusId() : ?int
+    public function getStatusId(): ?int
     {
         return $this->statusId;
     }
+
     /**
      * The id of the order status
      *
@@ -107,9 +118,10 @@ class OrderStatus
      *
      * @return self
      */
-    public function setStatusId(int $statusId) : self
+    public function setStatusId(int $statusId): self
     {
         $this->statusId = $statusId;
+
         return $this;
     }
 }

@@ -41,7 +41,8 @@ class OrderResource extends Resource
             new CreateOrder(
                 $this,
                 $this->getSerializer()->normalize($order),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(OrderItem::class);
 

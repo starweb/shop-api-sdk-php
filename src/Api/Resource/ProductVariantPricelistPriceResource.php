@@ -54,7 +54,8 @@ class ProductVariantPricelistPriceResource extends Resource
             new CreateProductVariantPricelistPrice(
                 $this,
                 $this->getSerializer()->normalize($productVariantPricelistPrice),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $productVariantPricelistPrice = $response->getContentAsModel(ProductVariantPricelistPriceItem::class);
 

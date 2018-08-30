@@ -52,7 +52,8 @@ class ProductVatRateResource extends Resource
             new CreateProductVatRate(
                 $this,
                 $this->getSerializer()->normalize($item),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(ProductVatRateItem::class);
 

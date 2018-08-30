@@ -18,12 +18,13 @@ class CustomerCollection implements CollectionInterface
      * @var CustomerCollectionMeta
      */
     protected $meta;
+
     /**
      * A list of customers
      *
      * @return Customer[]
      */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
@@ -35,16 +36,17 @@ class CustomerCollection implements CollectionInterface
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(array $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 
     /**
      * @return CustomerCollectionMeta
      */
-    public function getMeta() : ?CustomerCollectionMeta
+    public function getMeta(): ?CustomerCollectionMeta
     {
         return $this->meta;
     }
@@ -54,9 +56,10 @@ class CustomerCollection implements CollectionInterface
      *
      * @return self
      */
-    public function setMeta(CustomerCollectionMeta $meta) : self
+    public function setMeta(CustomerCollectionMeta $meta): self
     {
         $this->meta = $meta;
+
         return $this;
     }
 }

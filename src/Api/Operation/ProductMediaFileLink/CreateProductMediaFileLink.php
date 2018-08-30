@@ -3,7 +3,6 @@
 namespace Starweb\Api\Operation\ProductMediaFileLink;
 
 use Starweb\Api\Operation\Operation;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CreateProductMediaFileLink extends Operation
 {

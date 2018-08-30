@@ -38,6 +38,7 @@ class TokenManager
 
     /**
      * TokenManager constructor.
+     *
      * @param HttpClient $client
      * @param MessageFactory $messageFactory
      * @param ClientCredentials $credentials
@@ -91,7 +92,7 @@ class TokenManager
             throw new InvalidBaseUriException(sprintf('invalid base uri "%s"', $this->baseUri), $request, $response);
         }
 
-        if (500=== $response->getStatusCode()) {
+        if (500 === $response->getStatusCode()) {
             throw new ServerErrorException('server error', $request, $response);
         }
 

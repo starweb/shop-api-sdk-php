@@ -30,15 +30,17 @@ class OrderComment implements ModelInterface
      * @var string
      */
     protected $text;
+
     /**
      * The comments id
      *
      * @return int
      */
-    public function getCommentId() : ?int
+    public function getCommentId(): ?int
     {
         return $this->commentId;
     }
+
     /**
      * The comments id
      *
@@ -46,20 +48,23 @@ class OrderComment implements ModelInterface
      *
      * @return self
      */
-    public function setCommentId(int $commentId) : self
+    public function setCommentId(int $commentId): self
     {
         $this->commentId = $commentId;
+
         return $this;
     }
+
     /**
      * A timestamp of when the comment was created. The time should be formatted using ISO-8601
      *
      * @return string
      */
-    public function getCreatedAt() : ?string
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
+
     /**
      * A timestamp of when the comment was created. The time should be formatted using ISO-8601
      *
@@ -67,20 +72,23 @@ class OrderComment implements ModelInterface
      *
      * @return self
      */
-    public function setCreatedAt(string $createdAt) : self
+    public function setCreatedAt(string $createdAt): self
     {
         $this->createdAt = $createdAt;
+
         return $this;
     }
+
     /**
      * The author of the comment. Either ”admin” or ”customer”
      *
      * @return string
      */
-    public function getFrom() : ?string
+    public function getFrom(): ?string
     {
         return $this->from;
     }
+
     /**
      * The author of the comment. Either ”admin” or ”customer”
      *
@@ -88,20 +96,23 @@ class OrderComment implements ModelInterface
      *
      * @return self
      */
-    public function setFrom(string $from) : self
+    public function setFrom(string $from): self
     {
         $this->from = $from;
+
         return $this;
     }
+
     /**
      * The comment
      *
      * @return string
      */
-    public function getText() : ?string
+    public function getText(): ?string
     {
         return $this->text;
     }
+
     /**
      * The comment
      *
@@ -109,9 +120,10 @@ class OrderComment implements ModelInterface
      *
      * @return self
      */
-    public function setText(string $text) : self
+    public function setText(string $text): self
     {
         $this->text = $text;
+
         return $this;
     }
 

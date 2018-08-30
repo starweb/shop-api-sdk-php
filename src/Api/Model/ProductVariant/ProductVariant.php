@@ -8,7 +8,8 @@ use Starweb\Api\Model\ProductVariantPricelistPrice\ProductVariantPricelistPrice;
 class ProductVariant
 {
     /**
-     * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true
+     * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if
+     * the product´s hasSeveralVariants field is set to true
      *
      * @var int[]
      */
@@ -68,7 +69,8 @@ class ProductVariant
      */
     protected $stockQuantity;
     /**
-     * The ID of the variants stock status. Available stock statuses can be fetched using the /product-stock-statuses endpoint
+     * The ID of the variants stock status. Available stock statuses can be fetched using the /product-stock-statuses
+     * endpoint
      *
      * @var int
      */
@@ -79,36 +81,43 @@ class ProductVariant
      * @var float
      */
     protected $weightInKg;
+
     /**
-     * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true
+     * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if
+     * the product´s hasSeveralVariants field is set to true
      *
      * @return int[]
      */
-    public function getAttributeValueLinks() : array
+    public function getAttributeValueLinks(): array
     {
         return $this->attributeValueLinks;
     }
+
     /**
-     * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true
+     * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if
+     * the product´s hasSeveralVariants field is set to true
      *
      * @param int[] $attributeValueLinks
      *
      * @return self
      */
-    public function setAttributeValueLinks(array $attributeValueLinks) : self
+    public function setAttributeValueLinks(array $attributeValueLinks): self
     {
         $this->attributeValueLinks = $attributeValueLinks;
+
         return $this;
     }
+
     /**
      * A collection of product variant attribute values
      *
      * @return ProductVariantAttributeValue[]
      */
-    public function getAttributes() : array
+    public function getAttributes(): array
     {
         return $this->attributes;
     }
+
     /**
      * A collection of product variant attribute values
      *
@@ -116,20 +125,23 @@ class ProductVariant
      *
      * @return self
      */
-    public function setAttributes(array $attributes) : self
+    public function setAttributes(array $attributes): self
     {
         $this->attributes = $attributes;
+
         return $this;
     }
+
     /**
      * The cost for this variant. Used for statistic and never displayed to customers
      *
      * @return string
      */
-    public function getCostPrice() : ?string
+    public function getCostPrice(): ?string
     {
         return $this->costPrice;
     }
+
     /**
      * The cost for this variant. Used for statistic and never displayed to customers
      *
@@ -137,20 +149,23 @@ class ProductVariant
      *
      * @return self
      */
-    public function setCostPrice(string $costPrice) : self
+    public function setCostPrice(string $costPrice): self
     {
         $this->costPrice = $costPrice;
+
         return $this;
     }
+
     /**
      * European article no
      *
      * @return string
      */
-    public function getEan() : ?string
+    public function getEan(): ?string
     {
         return $this->ean;
     }
+
     /**
      * European article no
      *
@@ -158,20 +173,23 @@ class ProductVariant
      *
      * @return self
      */
-    public function setEan(string $ean) : self
+    public function setEan(string $ean): self
     {
         $this->ean = $ean;
+
         return $this;
     }
+
     /**
      *
      *
      * @return int
      */
-    public function getImageFileId() : ?int
+    public function getImageFileId(): ?int
     {
         return $this->imageFileId;
     }
+
     /**
      *
      *
@@ -179,20 +197,23 @@ class ProductVariant
      *
      * @return self
      */
-    public function setImageFileId(int $imageFileId) : self
+    public function setImageFileId(int $imageFileId): self
     {
         $this->imageFileId = $imageFileId;
+
         return $this;
     }
+
     /**
      * Is this variant active? Only active variants are visible to customers
      *
      * @return bool
      */
-    public function getIsActive() : ?bool
+    public function getIsActive(): ?bool
     {
         return $this->isActive;
     }
+
     /**
      * Is this variant active? Only active variants are visible to customers
      *
@@ -200,20 +221,23 @@ class ProductVariant
      *
      * @return self
      */
-    public function setIsActive(bool $isActive) : self
+    public function setIsActive(bool $isActive): self
     {
         $this->isActive = $isActive;
+
         return $this;
     }
+
     /**
      * Manufacturer part no
      *
      * @return string
      */
-    public function getMpn() : ?string
+    public function getMpn(): ?string
     {
         return $this->mpn;
     }
+
     /**
      * Manufacturer part no
      *
@@ -221,20 +245,23 @@ class ProductVariant
      *
      * @return self
      */
-    public function setMpn(string $mpn) : self
+    public function setMpn(string $mpn): self
     {
         $this->mpn = $mpn;
+
         return $this;
     }
+
     /**
      * A collection of product variant prices
      *
      * @return ProductVariantPricelistPrice[]
      */
-    public function getPrices() : array
+    public function getPrices(): array
     {
         return $this->prices;
     }
+
     /**
      * A collection of product variant prices
      *
@@ -242,20 +269,23 @@ class ProductVariant
      *
      * @return self
      */
-    public function setPrices(array $prices) : self
+    public function setPrices(array $prices): self
     {
         $this->prices = $prices;
+
         return $this;
     }
+
     /**
      * The product variants SKU (stock keeping unit)
      *
      * @return string
      */
-    public function getSku() : ?string
+    public function getSku(): ?string
     {
         return $this->sku;
     }
+
     /**
      * The product variants SKU (stock keeping unit)
      *
@@ -263,20 +293,23 @@ class ProductVariant
      *
      * @return self
      */
-    public function setSku(string $sku) : self
+    public function setSku(string $sku): self
     {
         $this->sku = $sku;
+
         return $this;
     }
+
     /**
      * The current stock quantity for this variant
      *
      * @return int
      */
-    public function getStockQuantity() : ?int
+    public function getStockQuantity(): ?int
     {
         return $this->stockQuantity;
     }
+
     /**
      * The current stock quantity for this variant
      *
@@ -284,41 +317,49 @@ class ProductVariant
      *
      * @return self
      */
-    public function setStockQuantity(int $stockQuantity) : self
+    public function setStockQuantity(int $stockQuantity): self
     {
         $this->stockQuantity = $stockQuantity;
+
         return $this;
     }
+
     /**
-     * The ID of the variants stock status. Available stock statuses can be fetched using the /product-stock-statuses endpoint
+     * The ID of the variants stock status. Available stock statuses can be fetched using the /product-stock-statuses
+     * endpoint
      *
      * @return int
      */
-    public function getStockStatusId() : ?int
+    public function getStockStatusId(): ?int
     {
         return $this->stockStatusId;
     }
+
     /**
-     * The ID of the variants stock status. Available stock statuses can be fetched using the /product-stock-statuses endpoint
+     * The ID of the variants stock status. Available stock statuses can be fetched using the /product-stock-statuses
+     * endpoint
      *
      * @param int $stockStatusId
      *
      * @return self
      */
-    public function setStockStatusId(int $stockStatusId) : self
+    public function setStockStatusId(int $stockStatusId): self
     {
         $this->stockStatusId = $stockStatusId;
+
         return $this;
     }
+
     /**
      * The variants weight in KG
      *
      * @return float
      */
-    public function getWeightInKg() : ?float
+    public function getWeightInKg(): ?float
     {
         return $this->weightInKg;
     }
+
     /**
      * The variants weight in KG
      *
@@ -326,9 +367,10 @@ class ProductVariant
      *
      * @return self
      */
-    public function setWeightInKg(float $weightInKg) : self
+    public function setWeightInKg(float $weightInKg): self
     {
         $this->weightInKg = $weightInKg;
+
         return $this;
     }
 }

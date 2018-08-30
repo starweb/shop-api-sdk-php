@@ -12,7 +12,7 @@ class PaymentMethodItem
     /**
      * @return PaymentMethod
      */
-    public function getData() : ?PaymentMethod
+    public function getData(): ?PaymentMethod
     {
         return $this->data;
     }
@@ -22,9 +22,10 @@ class PaymentMethodItem
      *
      * @return self
      */
-    public function setData(PaymentMethod $data) : self
+    public function setData(PaymentMethod $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

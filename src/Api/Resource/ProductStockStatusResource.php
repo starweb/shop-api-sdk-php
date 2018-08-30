@@ -39,7 +39,8 @@ class ProductStockStatusResource extends Resource
             new CreateProductStockStatus(
                 $this,
                 $this->getSerializer()->normalize($productStockStatus),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(ProductStockStatusItem::class);
 

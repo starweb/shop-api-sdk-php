@@ -12,7 +12,7 @@ class OrderExternalServiceItem
     /**
      * @return OrderExternalService
      */
-    public function getData() : ?OrderExternalService
+    public function getData(): ?OrderExternalService
     {
         return $this->data;
     }
@@ -22,9 +22,10 @@ class OrderExternalServiceItem
      *
      * @return self
      */
-    public function setData(OrderExternalService $data) : self
+    public function setData(OrderExternalService $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

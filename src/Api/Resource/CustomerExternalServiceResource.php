@@ -2,17 +2,8 @@
 
 namespace Starweb\Api\Resource;
 
-use Starweb\Api\Model\Address\Address;
-use Starweb\Api\Model\CustomerAddress\CustomerAddressCollection;
-use Starweb\Api\Model\CustomerAddress\CustomerAddressItem;
-use Starweb\Api\Model\CustomerExternalService\CustomerExternalService;
 use Starweb\Api\Model\CustomerExternalService\CustomerExternalServiceCollection;
 use Starweb\Api\Model\CustomerExternalService\CustomerExternalServiceItem;
-use Starweb\Api\Operation\CustomerAddress\DeleteCustomerAddress;
-use Starweb\Api\Operation\CustomerAddress\ListCustomerAddresses;
-use Starweb\Api\Operation\CustomerAddress\ReplaceCustomerAddress;
-use Starweb\Api\Operation\CustomerAddress\RetrieveCustomerAddress;
-use Starweb\Api\Operation\CustomerAddress\UpdateCustomerAddress;
 use Starweb\Api\Operation\CustomerExternalService\ListCustomerExternalServices;
 use Starweb\Api\Operation\CustomerExternalService\RetrieveCustomerExternalService;
 use Symfony\Component\OptionsResolver\OptionsResolver;

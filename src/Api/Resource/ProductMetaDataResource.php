@@ -52,7 +52,8 @@ class ProductMetaDataResource extends Resource
             new CreateProductMetaData(
                 $this,
                 $this->getSerializer()->normalize($item),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $item = $response->getContentAsModel(ProductMetaDataItem::class);
 

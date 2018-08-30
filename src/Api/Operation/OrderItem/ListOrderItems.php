@@ -3,7 +3,6 @@
 namespace Starweb\Api\Operation\OrderItem;
 
 use Starweb\Api\Operation\Operation;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ListOrderItems extends Operation
 {

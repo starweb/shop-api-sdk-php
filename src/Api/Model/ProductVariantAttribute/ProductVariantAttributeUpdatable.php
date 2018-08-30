@@ -16,15 +16,17 @@ class ProductVariantAttributeUpdatable
      * @var ProductVariantAttributeLanguage[]
      */
     protected $languages;
+
     /**
      *
      *
      * @return int
      */
-    public function getAttributeId() : ?int
+    public function getAttributeId(): ?int
     {
         return $this->attributeId;
     }
+
     /**
      *
      *
@@ -32,20 +34,23 @@ class ProductVariantAttributeUpdatable
      *
      * @return self
      */
-    public function setAttributeId(int $attributeId) : self
+    public function setAttributeId(int $attributeId): self
     {
         $this->attributeId = $attributeId;
+
         return $this;
     }
+
     /**
      * A collection of attribute languages
      *
      * @return ProductVariantAttributeLanguage[]
      */
-    public function getLanguages() : array
+    public function getLanguages(): array
     {
         return $this->languages;
     }
+
     /**
      * A collection of attribute languages
      *
@@ -53,9 +58,10 @@ class ProductVariantAttributeUpdatable
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(array $languages): self
     {
         $this->languages = $languages;
+
         return $this;
     }
 }

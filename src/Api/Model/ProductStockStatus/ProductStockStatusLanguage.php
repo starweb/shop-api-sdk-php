@@ -16,15 +16,17 @@ class ProductStockStatusLanguage
      * @var string
      */
     protected $name;
+
     /**
      * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports.
      *
      * @return string
      */
-    public function getLangCode() : ?string
+    public function getLangCode(): ?string
     {
         return $this->langCode;
     }
+
     /**
      * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports.
      *
@@ -32,20 +34,23 @@ class ProductStockStatusLanguage
      *
      * @return self
      */
-    public function setLangCode(string $langCode) : self
+    public function setLangCode(string $langCode): self
     {
         $this->langCode = $langCode;
+
         return $this;
     }
+
     /**
      * The name of this stock status
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
+
     /**
      * The name of this stock status
      *
@@ -53,9 +58,10 @@ class ProductStockStatusLanguage
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
 }

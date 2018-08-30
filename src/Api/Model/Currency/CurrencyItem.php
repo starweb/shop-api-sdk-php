@@ -10,15 +10,17 @@ class CurrencyItem
      * @var Currency
      */
     protected $data;
+
     /**
      *
      *
      * @return Currency
      */
-    public function getData() : ?Currency
+    public function getData(): ?Currency
     {
         return $this->data;
     }
+
     /**
      *
      *
@@ -26,9 +28,10 @@ class CurrencyItem
      *
      * @return self
      */
-    public function setData(Currency $data) : self
+    public function setData(Currency $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }

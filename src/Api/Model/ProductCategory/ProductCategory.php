@@ -45,7 +45,8 @@ class ProductCategory
     protected $languages;
 
     /**
-     * Whether or not links to the category should open a category page listing its products and sub categories on click.
+     * Whether or not links to the category should open a category page listing its products and sub categories on
+     * click.
      *
      * @var bool
      */
@@ -63,20 +64,23 @@ class ProductCategory
      */
     protected $sortIndex;
     /**
-     * The category`s visibility settings. Possible values are: visible, hidden and pricelists. Pricelists means that the category is only visible for customers with access to specific pricelists
+     * The category`s visibility settings. Possible values are: visible, hidden and pricelists. Pricelists means that
+     * the category is only visible for customers with access to specific pricelists
      *
      * @var string
      */
     protected $visibility;
+
     /**
      * The product category Id
      *
      * @return int
      */
-    public function getCategoryId() : ?int
+    public function getCategoryId(): ?int
     {
         return $this->categoryId;
     }
+
     /**
      * The product category Id
      *
@@ -84,20 +88,23 @@ class ProductCategory
      *
      * @return self
      */
-    public function setCategoryId(int $categoryId) : self
+    public function setCategoryId(int $categoryId): self
     {
         $this->categoryId = $categoryId;
+
         return $this;
     }
+
     /**
      * The external Id for this category for the system named in externalType
      *
      * @return string
      */
-    public function getExternalId() : ?string
+    public function getExternalId(): ?string
     {
         return $this->externalId;
     }
+
     /**
      * The external Id for this category for the system named in externalType
      *
@@ -105,20 +112,23 @@ class ProductCategory
      *
      * @return self
      */
-    public function setExternalId(string $externalId) : self
+    public function setExternalId(string $externalId): self
     {
         $this->externalId = $externalId;
+
         return $this;
     }
+
     /**
      * The system name the externalId belongs to.
      *
      * @return string
      */
-    public function getExternalType() : ?string
+    public function getExternalType(): ?string
     {
         return $this->externalType;
     }
+
     /**
      * The system name the externalId belongs to.
      *
@@ -126,20 +136,23 @@ class ProductCategory
      *
      * @return self
      */
-    public function setExternalType(string $externalType) : self
+    public function setExternalType(string $externalType): self
     {
         $this->externalType = $externalType;
+
         return $this;
     }
+
     /**
      * Whether or not the category has any children categories
      *
      * @return bool
      */
-    public function getHasChildren() : ?bool
+    public function getHasChildren(): ?bool
     {
         return $this->hasChildren;
     }
+
     /**
      * Whether or not the category has any children categories
      *
@@ -147,20 +160,23 @@ class ProductCategory
      *
      * @return self
      */
-    public function setHasChildren(bool $hasChildren) : self
+    public function setHasChildren(bool $hasChildren): self
     {
         $this->hasChildren = $hasChildren;
+
         return $this;
     }
+
     /**
      * The Id to the category`s image file. Has to be an existing mediaFile
      *
      * @return int
      */
-    public function getImageFileId() : ?int
+    public function getImageFileId(): ?int
     {
         return $this->imageFileId;
     }
+
     /**
      * The Id to the category`s image file. Has to be an existing mediaFile
      *
@@ -168,11 +184,13 @@ class ProductCategory
      *
      * @return self
      */
-    public function setImageFileId(int $imageFileId) : self
+    public function setImageFileId(int $imageFileId): self
     {
         $this->imageFileId = $imageFileId;
+
         return $this;
     }
+
     /**
      *
      *
@@ -182,6 +200,7 @@ class ProductCategory
     {
         return $this->languages;
     }
+
     /**
      *
      *
@@ -189,41 +208,49 @@ class ProductCategory
      *
      * @return self
      */
-    public function setLanguages($languages) : self
+    public function setLanguages($languages): self
     {
         $this->languages = $languages;
+
         return $this;
     }
+
     /**
-     * Whether or not links to the category should open a category page listing its products and sub categories on click.
+     * Whether or not links to the category should open a category page listing its products and sub categories on
+     * click.
      *
      * @return bool
      */
-    public function getOpenPage() : ?bool
+    public function getOpenPage(): ?bool
     {
         return $this->openPage;
     }
+
     /**
-     * Whether or not links to the category should open a category page listing its products and sub categories on click.
+     * Whether or not links to the category should open a category page listing its products and sub categories on
+     * click.
      *
      * @param bool $openPage
      *
      * @return self
      */
-    public function setOpenPage(bool $openPage) : self
+    public function setOpenPage(bool $openPage): self
     {
         $this->openPage = $openPage;
+
         return $this;
     }
+
     /**
      * The category`s parent`s Id
      *
      * @return int
      */
-    public function getParentId() : ?int
+    public function getParentId(): ?int
     {
         return $this->parentId;
     }
+
     /**
      * The category`s parent`s Id
      *
@@ -231,20 +258,23 @@ class ProductCategory
      *
      * @return self
      */
-    public function setParentId(int $parentId) : self
+    public function setParentId(int $parentId): self
     {
         $this->parentId = $parentId;
+
         return $this;
     }
+
     /**
      * Sort index. A category with a lower value is displayed higher up in lists
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex(): ?int
     {
         return $this->sortIndex;
     }
+
     /**
      * Sort index. A category with a lower value is displayed higher up in lists
      *
@@ -252,30 +282,36 @@ class ProductCategory
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(int $sortIndex): self
     {
         $this->sortIndex = $sortIndex;
+
         return $this;
     }
+
     /**
-     * The category`s visibility settings. Possible values are: visible, hidden and pricelists. Pricelists means that the category is only visible for customers with access to specific pricelists
+     * The category`s visibility settings. Possible values are: visible, hidden and pricelists. Pricelists means that
+     * the category is only visible for customers with access to specific pricelists
      *
      * @return string
      */
-    public function getVisibility() : ?string
+    public function getVisibility(): ?string
     {
         return $this->visibility;
     }
+
     /**
-     * The category`s visibility settings. Possible values are: visible, hidden and pricelists. Pricelists means that the category is only visible for customers with access to specific pricelists
+     * The category`s visibility settings. Possible values are: visible, hidden and pricelists. Pricelists means that
+     * the category is only visible for customers with access to specific pricelists
      *
      * @param string $visibility
      *
      * @return self
      */
-    public function setVisibility(string $visibility) : self
+    public function setVisibility(string $visibility): self
     {
         $this->visibility = $visibility;
+
         return $this;
     }
 }

@@ -52,7 +52,8 @@ class OrderStatusResource extends Resource
             new CreateOrderStatus(
                 $this,
                 $this->getSerializer()->normalize($status),
-                $this->getPathParameters())
+                $this->getPathParameters()
+            )
         );
         $status = $response->getContentAsModel(OrderStatusItem::class);
 

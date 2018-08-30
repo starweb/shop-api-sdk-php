@@ -16,15 +16,17 @@ class Error
      * @var string
      */
     protected $errorDescription;
+
     /**
      * An error code for this type of error
      *
      * @return string
      */
-    public function getError() : ?string
+    public function getError(): ?string
     {
         return $this->error;
     }
+
     /**
      * An error code for this type of error
      *
@@ -32,20 +34,23 @@ class Error
      *
      * @return self
      */
-    public function setError(string $error) : self
+    public function setError(string $error): self
     {
         $this->error = $error;
+
         return $this;
     }
+
     /**
      * A human readable description of the error
      *
      * @return string
      */
-    public function getErrorDescription() : ?string
+    public function getErrorDescription(): ?string
     {
         return $this->errorDescription;
     }
+
     /**
      * A human readable description of the error
      *
@@ -53,9 +58,10 @@ class Error
      *
      * @return self
      */
-    public function setErrorDescription(string $errorDescription) : self
+    public function setErrorDescription(string $errorDescription): self
     {
         $this->errorDescription = $errorDescription;
+
         return $this;
     }
 }

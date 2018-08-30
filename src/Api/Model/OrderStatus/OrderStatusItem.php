@@ -10,15 +10,17 @@ class OrderStatusItem
      * @var OrderStatus
      */
     protected $data;
+
     /**
      *
      *
      * @return OrderStatus
      */
-    public function getData() : ?OrderStatus
+    public function getData(): ?OrderStatus
     {
         return $this->data;
     }
+
     /**
      *
      *
@@ -26,9 +28,10 @@ class OrderStatusItem
      *
      * @return self
      */
-    public function setData(OrderStatus $data) : self
+    public function setData(OrderStatus $data): self
     {
         $this->data = $data;
+
         return $this;
     }
 }
