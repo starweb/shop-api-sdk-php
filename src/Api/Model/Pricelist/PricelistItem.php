@@ -22,11 +22,11 @@ class PricelistItem
     /**
      *
      *
-     * @param PricelistModel $data
+     * @param Pricelist $data
      *
      * @return self
      */
-    public function setData(?PricelistModel $data) : self
+    public function setData(?Pricelist $data) : self
     {
         $this->data = $data;
         return $this;

@@ -22,11 +22,11 @@ class ProductLanguageItem
     /**
      *
      *
-     * @param ProductLanguageModel $data
+     * @param ProductLanguage $data
      *
      * @return self
      */
-    public function setData(?ProductLanguageModel $data) : self
+    public function setData(ProductLanguage $data) : self
     {
         $this->data = $data;
         return $this;

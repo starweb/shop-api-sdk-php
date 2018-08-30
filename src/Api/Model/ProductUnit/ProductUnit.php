@@ -28,11 +28,11 @@ class ProductUnit
     /**
      *
      *
-     * @param ProductUnitLanguageModelCollection $languages
+     * @param ProductUnitLanguageCollection $languages
      *
      * @return self
      */
-    public function setLanguages(?ProductUnitLanguageModelCollection $languages) : self
+    public function setLanguages(?ProductUnitLanguageCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

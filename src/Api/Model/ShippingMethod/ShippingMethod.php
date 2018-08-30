@@ -151,11 +151,11 @@ class ShippingMethod
     /**
      *
      *
-     * @param ShippingMethodLanguageModelCollection $languages
+     * @param ShippingMethodLanguageCollection $languages
      *
      * @return self
      */
-    public function setLanguages(?ShippingMethodLanguageModelCollection $languages) : self
+    public function setLanguages(?ShippingMethodLanguageCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

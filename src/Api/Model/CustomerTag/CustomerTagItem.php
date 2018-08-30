@@ -22,7 +22,7 @@ class CustomerTagItem
     /**
      *
      *
-     * @param CustomerAddedTagModel $data
+     * @param CustomerAddedTag $data
      *
      * @return self
      */

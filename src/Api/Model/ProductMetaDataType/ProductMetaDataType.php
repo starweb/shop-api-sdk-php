@@ -28,11 +28,11 @@ class ProductMetaDataType
     /**
      *
      *
-     * @param ProductMetaDataTypeLanguageModelCollection $languages
+     * @param ProductMetaDataTypeLanguageCollection $languages
      *
      * @return self
      */
-    public function setLanguages(?ProductMetaDataTypeLanguageModelCollection $languages) : self
+    public function setLanguages(?ProductMetaDataTypeLanguageCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

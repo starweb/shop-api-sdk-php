@@ -22,11 +22,11 @@ class ProductVariantAttributeValueItem
     /**
      *
      *
-     * @param ProductVariantAttributeValueModel $data
+     * @param ProductVariantAttributeValue $data
      *
      * @return self
      */
-    public function setData(?ProductVariantAttributeValueModel $data) : self
+    public function setData(?ProductVariantAttributeValue $data) : self
     {
         $this->data = $data;
         return $this;

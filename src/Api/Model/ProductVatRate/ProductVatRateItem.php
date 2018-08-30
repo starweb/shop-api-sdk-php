@@ -22,11 +22,11 @@ class ProductVatRateItem
     /**
      *
      *
-     * @param ProductVatRateModel $data
+     * @param ProductVatRate $data
      *
      * @return self
      */
-    public function setData(?ProductVatRateModel $data) : self
+    public function setData(?ProductVatRate $data) : self
     {
         $this->data = $data;
         return $this;

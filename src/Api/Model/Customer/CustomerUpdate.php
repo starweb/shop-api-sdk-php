@@ -70,11 +70,11 @@ class CustomerUpdate
     /**
      *
      *
-     * @param CustomerUpdateModelAddresses $addresses
+     * @param CustomerUpdateAddresses $addresses
      *
      * @return self
      */
-    public function setAddresses(?CustomerUpdateModelAddresses $addresses) : self
+    public function setAddresses(?CustomerUpdateAddresses $addresses) : self
     {
         $this->addresses = $addresses;
         return $this;

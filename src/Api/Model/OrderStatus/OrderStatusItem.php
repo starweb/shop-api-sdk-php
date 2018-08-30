@@ -22,11 +22,11 @@ class OrderStatusItem
     /**
      *
      *
-     * @param OrderStatusModel $data
+     * @param OrderStatus $data
      *
      * @return self
      */
-    public function setData(?OrderStatusModel $data) : self
+    public function setData(?OrderStatus $data) : self
     {
         $this->data = $data;
         return $this;

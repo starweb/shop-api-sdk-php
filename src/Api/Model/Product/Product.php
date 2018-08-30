@@ -124,11 +124,11 @@ class Product
     /**
      *
      *
-     * @param ProductCategoryLinkModelCollection $categories
+     * @param ProductCategoryLinkCollection $categories
      *
      * @return self
      */
-    public function setCategories(?ProductCategoryLinkModelCollection $categories) : self
+    public function setCategories(?ProductCategoryLinkCollection $categories) : self
     {
         $this->categories = $categories;
         return $this;
@@ -229,11 +229,11 @@ class Product
     /**
      *
      *
-     * @param ProductLanguageModelCollection $languages
+     * @param ProductLanguageCollection $languages
      *
      * @return self
      */
-    public function setLanguages(?ProductLanguageModelCollection $languages) : self
+    public function setLanguages(?ProductLanguageCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;
@@ -271,11 +271,11 @@ class Product
     /**
      *
      *
-     * @param ProductMediaFileLinkModelCollection $mediaFiles
+     * @param ProductMediaFileLinkCollection $mediaFiles
      *
      * @return self
      */
-    public function setMediaFiles(?ProductMediaFileLinkModelCollection $mediaFiles) : self
+    public function setMediaFiles(?ProductMediaFileLinkCollection $mediaFiles) : self
     {
         $this->mediaFiles = $mediaFiles;
         return $this;
@@ -292,11 +292,11 @@ class Product
     /**
      *
      *
-     * @param ProductMetaDataModelCollection $metaData
+     * @param ProductMetaDataCollection $metaData
      *
      * @return self
      */
-    public function setMetaData(?ProductMetaDataModelCollection $metaData) : self
+    public function setMetaData(?ProductMetaDataCollection $metaData) : self
     {
         $this->metaData = $metaData;
         return $this;
@@ -397,11 +397,11 @@ class Product
     /**
      *
      *
-     * @param ProductUnitModelItem $unit
+     * @param ProductUnitItem $unit
      *
      * @return self
      */
-    public function setUnit(?ProductUnitModelItem $unit) : self
+    public function setUnit(?ProductUnitItem $unit) : self
     {
         $this->unit = $unit;
         return $this;
@@ -439,11 +439,11 @@ class Product
     /**
      *
      *
-     * @param ProductVariantModelCollection $variants
+     * @param ProductVariantCollection $variants
      *
      * @return self
      */
-    public function setVariants(?ProductVariantModelCollection $variants) : self
+    public function setVariants(?ProductVariantCollection $variants) : self
     {
         $this->variants = $variants;
         return $this;
@@ -460,11 +460,11 @@ class Product
     /**
      *
      *
-     * @param ProductVatRateModelCollection $vatRates
+     * @param ProductVatRateCollection $vatRates
      *
      * @return self
      */
-    public function setVatRates(?ProductVatRateModelCollection $vatRates) : self
+    public function setVatRates(?ProductVatRateCollection $vatRates) : self
     {
         $this->vatRates = $vatRates;
         return $this;

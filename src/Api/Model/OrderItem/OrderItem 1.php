@@ -22,11 +22,11 @@ class OrderItem
     /**
      *
      *
-     * @param OrderModel $data
+     * @param Order $data
      *
      * @return self
      */
-    public function setData(?OrderModel $data) : self
+    public function setData(?Order $data) : self
     {
         $this->data = $data;
         return $this;

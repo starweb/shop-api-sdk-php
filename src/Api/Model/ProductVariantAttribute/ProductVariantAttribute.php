@@ -49,11 +49,11 @@ class ProductVariantAttribute
     /**
      * A collection of attribute languages
      *
-     * @param ProductVariantAttributeModelLanguages $languages
+     * @param ProductVariantAttributeLanguages $languages
      *
      * @return self
      */
-    public function setLanguages(?ProductVariantAttributeModelLanguages $languages) : self
+    public function setLanguages(?ProductVariantAttributeLanguages $languages) : self
     {
         $this->languages = $languages;
         return $this;

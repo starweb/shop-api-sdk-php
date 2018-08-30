@@ -106,11 +106,11 @@ class Customer
     /**
      *
      *
-     * @param CustomerTagModelCollection $tags
+     * @param CustomerTagCollection $tags
      *
      * @return self
      */
-    public function setTags(?CustomerTagModelCollection $tags) : self
+    public function setTags(?CustomerTagCollection $tags) : self
     {
         $this->tags = $tags;
         return $this;
@@ -127,11 +127,11 @@ class Customer
     /**
      *
      *
-     * @param CustomerAddressesModelCollection $addresses
+     * @param CustomerAddressesCollection $addresses
      *
      * @return self
      */
-    public function setAddresses(?CustomerAddressesModelCollection $addresses) : self
+    public function setAddresses(?CustomerAddressesCollection $addresses) : self
     {
         $this->addresses = $addresses;
         return $this;
@@ -295,11 +295,11 @@ class Customer
     /**
      *
      *
-     * @param CustomerExternalServicesModelCollection $externalServices
+     * @param CustomerExternalServicesCollection $externalServices
      *
      * @return self
      */
-    public function setExternalServices(?CustomerExternalServicesModelCollection $externalServices) : self
+    public function setExternalServices(?CustomerExternalServicesCollection $externalServices) : self
     {
         $this->externalServices = $externalServices;
         return $this;

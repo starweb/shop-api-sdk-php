@@ -22,11 +22,11 @@ class PaymentMethodItem
     /**
      *
      *
-     * @param PaymentMethodModel $data
+     * @param PaymentMethod $data
      *
      * @return self
      */
-    public function setData(?PaymentMethodModel $data) : self
+    public function setData(?PaymentMethod $data) : self
     {
         $this->data = $data;
         return $this;

@@ -22,11 +22,11 @@ class ProductManufacturerItem
     /**
      *
      *
-     * @param ProductManufacturerModel $data
+     * @param ProductManufacturer $data
      *
      * @return self
      */
-    public function setData(?ProductManufacturerModel $data) : self
+    public function setData(?ProductManufacturer $data) : self
     {
         $this->data = $data;
         return $this;

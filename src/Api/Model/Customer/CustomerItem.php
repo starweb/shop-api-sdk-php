@@ -22,11 +22,11 @@ class CustomerItem
     /**
      *
      *
-     * @param CustomerModel $data
+     * @param Customer $data
      *
      * @return self
      */
-    public function setData(?CustomerModel $data) : self
+    public function setData(?Customer $data) : self
     {
         $this->data = $data;
         return $this;

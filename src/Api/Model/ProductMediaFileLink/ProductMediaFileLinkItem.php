@@ -22,11 +22,11 @@ class ProductMediaFileLinkItem
     /**
      *
      *
-     * @param ProductMediaFileLinkModel $data
+     * @param ProductMediaFileLink $data
      *
      * @return self
      */
-    public function setData(?ProductMediaFileLinkModel $data) : self
+    public function setData(?ProductMediaFileLink $data) : self
     {
         $this->data = $data;
         return $this;

@@ -22,11 +22,11 @@ class ProductMetaLanguageDataItem
     /**
      *
      *
-     * @param ProductMetaLanguageDataModel $data
+     * @param ProductMetaLanguageData $data
      *
      * @return self
      */
-    public function setData(?ProductMetaLanguageDataModel $data) : self
+    public function setData(?ProductMetaLanguageData $data) : self
     {
         $this->data = $data;
         return $this;

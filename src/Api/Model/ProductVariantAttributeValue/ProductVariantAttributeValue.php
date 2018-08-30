@@ -46,11 +46,11 @@ class ProductVariantAttributeValue
     /**
      *
      *
-     * @param ProductVariantAttributeModel $attribute
+     * @param ProductVariantAttribute $attribute
      *
      * @return self
      */
-    public function setAttribute(?ProductVariantAttributeModel $attribute) : self
+    public function setAttribute(?ProductVariantAttribute $attribute) : self
     {
         $this->attribute = $attribute;
         return $this;

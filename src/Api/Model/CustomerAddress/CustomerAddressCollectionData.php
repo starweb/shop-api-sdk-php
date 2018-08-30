@@ -28,11 +28,11 @@ class CustomerAddressCollectionData
     /**
      *
      *
-     * @param AddressModel $delivery
+     * @param Address $delivery
      *
      * @return self
      */
-    public function setDelivery(?AddressModel $delivery) : self
+    public function setDelivery(?Address $delivery) : self
     {
         $this->delivery = $delivery;
         return $this;
@@ -49,11 +49,11 @@ class CustomerAddressCollectionData
     /**
      *
      *
-     * @param AddressModel $invoice
+     * @param Address $invoice
      *
      * @return self
      */
-    public function setInvoice(?AddressModel $invoice) : self
+    public function setInvoice(?Address $invoice) : self
     {
         $this->invoice = $invoice;
         return $this;

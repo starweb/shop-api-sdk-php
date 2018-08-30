@@ -157,11 +157,11 @@ class PaymentMethod
     /**
      *
      *
-     * @param PaymentMethodLanguageModelCollection $languages
+     * @param PaymentMethodLanguageCollection $languages
      *
      * @return self
      */
-    public function setLanguages(?PaymentMethodLanguageModelCollection $languages) : self
+    public function setLanguages(?PaymentMethodLanguageCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

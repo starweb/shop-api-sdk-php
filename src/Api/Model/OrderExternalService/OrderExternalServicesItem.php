@@ -22,11 +22,11 @@ class OrderExternalServicesItem
     /**
      *
      *
-     * @param OrderExternalServiceModel $data
+     * @param OrderExternalService $data
      *
      * @return self
      */
-    public function setData(?OrderExternalServiceModel $data) : self
+    public function setData(?OrderExternalService $data) : self
     {
         $this->data = $data;
         return $this;

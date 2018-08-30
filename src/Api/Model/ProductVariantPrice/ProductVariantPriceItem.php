@@ -22,11 +22,11 @@ class ProductVariantPriceItem
     /**
      *
      *
-     * @param ProductVariantPriceModel $data
+     * @param ProductVariantPrice $data
      *
      * @return self
      */
-    public function setData(?ProductVariantPriceModel $data) : self
+    public function setData(?ProductVariantPrice $data) : self
     {
         $this->data = $data;
         return $this;

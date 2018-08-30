@@ -22,11 +22,11 @@ class CustomerAddressItem
     /**
      *
      *
-     * @param AddressModel $data
+     * @param Address $data
      *
      * @return self
      */
-    public function setData(?AddressModel $data) : self
+    public function setData(?Address $data) : self
     {
         $this->data = $data;
         return $this;

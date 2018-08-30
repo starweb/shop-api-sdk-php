@@ -22,11 +22,11 @@ class ProductMetaDataItem
     /**
      *
      *
-     * @param ProductMetaDataModel $data
+     * @param ProductMetaData $data
      *
      * @return self
      */
-    public function setData(?ProductMetaDataModel $data) : self
+    public function setData(?ProductMetaData $data) : self
     {
         $this->data = $data;
         return $this;

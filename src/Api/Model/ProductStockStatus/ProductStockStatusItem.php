@@ -22,11 +22,11 @@ class ProductStockStatusItem
     /**
      *
      *
-     * @param ProductStockStatusModel $data
+     * @param ProductStockStatus $data
      *
      * @return self
      */
-    public function setData(?ProductStockStatusModel $data) : self
+    public function setData(?ProductStockStatus $data) : self
     {
         $this->data = $data;
         return $this;

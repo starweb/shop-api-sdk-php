@@ -22,11 +22,11 @@ class ShippingMethodItem
     /**
      *
      *
-     * @param ShippingMethodModel $data
+     * @param ShippingMethod $data
      *
      * @return self
      */
-    public function setData(?ShippingMethodModel $data) : self
+    public function setData(?ShippingMethod $data) : self
     {
         $this->data = $data;
         return $this;
