@@ -11,7 +11,7 @@ class OrderAddressItem
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return Address
      */
@@ -20,7 +20,7 @@ class OrderAddressItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param Address $data
      *

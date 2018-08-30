@@ -41,7 +41,7 @@ class Pricelist
      */
     protected $name;
     /**
-     * Does this pricelist has a parent price list. 
+     * Does this pricelist has a parent price list.
      *
      * @var int
      */
@@ -179,7 +179,7 @@ class Pricelist
         return $this;
     }
     /**
-     * Does this pricelist has a parent price list. 
+     * Does this pricelist has a parent price list.
      *
      * @return int
      */
@@ -188,7 +188,7 @@ class Pricelist
         return $this->parentPricelistId;
     }
     /**
-     * Does this pricelist has a parent price list. 
+     * Does this pricelist has a parent price list.
      *
      * @param int $parentPricelistId
      *

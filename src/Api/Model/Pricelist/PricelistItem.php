@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\Pricelist;
 class PricelistItem
 {
     /**
-     * 
+     *
      *
      * @var Pricelist
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return Pricelist
      */
@@ -20,7 +20,7 @@ class PricelistItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param PricelistModel $data
      *

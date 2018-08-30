@@ -11,13 +11,13 @@ class ProductUnitLanguage
      */
     protected $langCode;
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $name;
     /**
-     * 
+     *
      *
      * @var string
      */
@@ -44,7 +44,7 @@ class ProductUnitLanguage
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return string
      */
@@ -53,7 +53,7 @@ class ProductUnitLanguage
         return $this->name;
     }
     /**
-     * 
+     *
      *
      * @param string $name
      *
@@ -65,7 +65,7 @@ class ProductUnitLanguage
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return string
      */
@@ -74,7 +74,7 @@ class ProductUnitLanguage
         return $this->symbol;
     }
     /**
-     * 
+     *
      *
      * @param string $symbol
      *

@@ -11,7 +11,7 @@ class OrderStatus
      */
     protected $idCode;
     /**
-     * 
+     *
      *
      * @var OrderStatusLanguage[]
      */
@@ -50,7 +50,7 @@ class OrderStatus
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return OrderStatusLanguage[]
      */
@@ -59,7 +59,7 @@ class OrderStatus
         return $this->languages;
     }
     /**
-     * 
+     *
      *
      * @param OrderStatusLanguage[]
      *

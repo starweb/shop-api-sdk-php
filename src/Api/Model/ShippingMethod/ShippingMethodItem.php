@@ -5,13 +5,13 @@
 class ShippingMethodItem
 {
     /**
-     * 
+     *
      *
      * @var ShippingMethod
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return ShippingMethod
      */
@@ -20,7 +20,7 @@ class ShippingMethodItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param ShippingMethodModel $data
      *

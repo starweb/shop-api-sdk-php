@@ -11,7 +11,7 @@ class ProductCollection
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @var ProductCollectionMeta
      */
@@ -38,7 +38,7 @@ class ProductCollection
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return ProductCollectionMeta
      */
@@ -47,7 +47,7 @@ class ProductCollection
         return $this->meta;
     }
     /**
-     * 
+     *
      *
      * @param ProductModelCollectionMeta $meta
      *

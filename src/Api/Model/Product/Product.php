@@ -5,7 +5,7 @@ namespace Starweb\Api\Model\Product;
 class Product
 {
     /**
-     * 
+     *
      *
      * @var ProductCategoryLinkCollection
      */
@@ -35,7 +35,7 @@ class Product
      */
     protected $isBackInStockWatchable;
     /**
-     * 
+     *
      *
      * @var ProductLanguageCollection
      */
@@ -47,13 +47,13 @@ class Product
      */
     protected $manufacturerId;
     /**
-     * 
+     *
      *
      * @var ProductMediaFileLinkCollection
      */
     protected $mediaFiles;
     /**
-     * 
+     *
      *
      * @var ProductMetaDataCollection
      */
@@ -71,7 +71,7 @@ class Product
      */
     protected $moreInfoUrl;
     /**
-     * 
+     *
      *
      * @var int
      */
@@ -83,7 +83,7 @@ class Product
      */
     protected $sortIndex;
     /**
-     * 
+     *
      *
      * @var ProductUnitItem
      */
@@ -95,13 +95,13 @@ class Product
      */
     protected $unitId;
     /**
-     * 
+     *
      *
      * @var ProductVariantCollection
      */
     protected $variants;
     /**
-     * 
+     *
      *
      * @var ProductVatRateCollection
      */
@@ -113,7 +113,7 @@ class Product
      */
     protected $visibility;
     /**
-     * 
+     *
      *
      * @return ProductCategoryLinkCollection
      */
@@ -122,7 +122,7 @@ class Product
         return $this->categories;
     }
     /**
-     * 
+     *
      *
      * @param ProductCategoryLinkModelCollection $categories
      *
@@ -218,7 +218,7 @@ class Product
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return ProductLanguageCollection
      */
@@ -227,7 +227,7 @@ class Product
         return $this->languages;
     }
     /**
-     * 
+     *
      *
      * @param ProductLanguageModelCollection $languages
      *
@@ -260,7 +260,7 @@ class Product
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return ProductMediaFileLinkCollection
      */
@@ -269,7 +269,7 @@ class Product
         return $this->mediaFiles;
     }
     /**
-     * 
+     *
      *
      * @param ProductMediaFileLinkModelCollection $mediaFiles
      *
@@ -281,7 +281,7 @@ class Product
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return ProductMetaDataCollection
      */
@@ -290,7 +290,7 @@ class Product
         return $this->metaData;
     }
     /**
-     * 
+     *
      *
      * @param ProductMetaDataModelCollection $metaData
      *
@@ -344,7 +344,7 @@ class Product
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return int
      */
@@ -353,7 +353,7 @@ class Product
         return $this->productId;
     }
     /**
-     * 
+     *
      *
      * @param int $productId
      *
@@ -386,7 +386,7 @@ class Product
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return ProductUnitItem
      */
@@ -395,7 +395,7 @@ class Product
         return $this->unit;
     }
     /**
-     * 
+     *
      *
      * @param ProductUnitModelItem $unit
      *
@@ -428,7 +428,7 @@ class Product
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return ProductVariantCollection
      */
@@ -437,7 +437,7 @@ class Product
         return $this->variants;
     }
     /**
-     * 
+     *
      *
      * @param ProductVariantModelCollection $variants
      *
@@ -449,7 +449,7 @@ class Product
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return ProductVatRateCollection
      */
@@ -458,7 +458,7 @@ class Product
         return $this->vatRates;
     }
     /**
-     * 
+     *
      *
      * @param ProductVatRateModelCollection $vatRates
      *

@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\Product;
 class ProductCollectionMeta
 {
     /**
-     * 
+     *
      *
      * @var Pagination
      */
     protected $pagination;
     /**
-     * 
+     *
      *
      * @return Pagination
      */
@@ -20,7 +20,7 @@ class ProductCollectionMeta
         return $this->pagination;
     }
     /**
-     * 
+     *
      *
      * @param PaginationModel $pagination
      *

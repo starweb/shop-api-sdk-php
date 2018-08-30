@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\ProductMediaFileLink;
 class ProductMediaFileLinkItem
 {
     /**
-     * 
+     *
      *
      * @var ProductMediaFileLink
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return ProductMediaFileLink
      */
@@ -20,7 +20,7 @@ class ProductMediaFileLinkItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param ProductMediaFileLinkModel $data
      *

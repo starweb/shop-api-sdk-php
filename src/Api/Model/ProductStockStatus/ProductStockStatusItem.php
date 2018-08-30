@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\ProductStockStatus;
 class ProductStockStatusItem
 {
     /**
-     * 
+     *
      *
      * @var ProductStockStatus
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return ProductStockStatus
      */
@@ -20,7 +20,7 @@ class ProductStockStatusItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param ProductStockStatusModel $data
      *

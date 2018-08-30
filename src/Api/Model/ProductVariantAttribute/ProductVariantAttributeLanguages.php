@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\ProductVariantAttribute;
 class ProductVariantAttributeLanguages
 {
     /**
-     * 
+     *
      *
      * @var ProductVariantAttributeLanguage[]
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return ProductVariantAttributeLanguage[]
      */
@@ -20,7 +20,7 @@ class ProductVariantAttributeLanguages
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param ProductVariantAttributeLanguage[]
      *

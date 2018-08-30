@@ -5,7 +5,7 @@ namespace Starweb\Api\Model\ProductUnit;
 class ProductUnit
 {
     /**
-     * 
+     *
      *
      * @var ProductUnitLanguageCollection
      */
@@ -17,7 +17,7 @@ class ProductUnit
      */
     protected $unitId;
     /**
-     * 
+     *
      *
      * @return ProductUnitLanguageCollection
      */
@@ -26,7 +26,7 @@ class ProductUnit
         return $this->languages;
     }
     /**
-     * 
+     *
      *
      * @param ProductUnitLanguageModelCollection $languages
      *

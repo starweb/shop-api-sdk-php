@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\ProductLanguage;
 class ProductLanguageItem
 {
     /**
-     * 
+     *
      *
      * @var ProductLanguage
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return ProductLanguage
      */
@@ -20,7 +20,7 @@ class ProductLanguageItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param ProductLanguageModel $data
      *

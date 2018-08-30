@@ -5,7 +5,7 @@ namespace Starweb\Api\Model\Order;
 class OrderUpdate
 {
     /**
-     * 
+     *
      *
      * @var OrderAddress
      */
@@ -311,7 +311,7 @@ class OrderUpdate
      */
     protected $totalWeight;
     /**
-     * 
+     *
      *
      * @return OrderAddress
      */
@@ -320,7 +320,7 @@ class OrderUpdate
         return $this->addresses;
     }
     /**
-     * 
+     *
      *
      * @param OrderAddressModel $addresses
      *

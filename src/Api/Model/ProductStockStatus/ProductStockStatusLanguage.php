@@ -5,7 +5,7 @@ namespace Starweb\Api\Model\ProductStockStatus;
 class ProductStockStatusLanguage
 {
     /**
-     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. 
+     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports.
      *
      * @var string
      */
@@ -17,7 +17,7 @@ class ProductStockStatusLanguage
      */
     protected $name;
     /**
-     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. 
+     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports.
      *
      * @return string
      */
@@ -26,7 +26,7 @@ class ProductStockStatusLanguage
         return $this->langCode;
     }
     /**
-     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. 
+     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports.
      *
      * @param string $langCode
      *

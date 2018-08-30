@@ -29,7 +29,7 @@ class ProductVariant
      */
     protected $ean;
     /**
-     * 
+     *
      *
      * @var int
      */
@@ -161,7 +161,7 @@ class ProductVariant
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return int
      */
@@ -170,7 +170,7 @@ class ProductVariant
         return $this->imageFileId;
     }
     /**
-     * 
+     *
      *
      * @param int $imageFileId
      *

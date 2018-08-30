@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\ProductCategoryLink;
 class ProductCategoryLinkItem
 {
     /**
-     * 
+     *
      *
      * @var ProductCategoryLink
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return ProductCategoryLink
      */
@@ -20,7 +20,7 @@ class ProductCategoryLinkItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param ProductCategoryLinkModel $data
      *

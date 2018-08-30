@@ -71,7 +71,7 @@ class ProductUpdatable
      */
     protected $moreInfoUrl;
     /**
-     * 
+     *
      *
      * @var int
      */
@@ -338,7 +338,7 @@ class ProductUpdatable
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return int
      */
@@ -347,7 +347,7 @@ class ProductUpdatable
         return $this->productId;
     }
     /**
-     * 
+     *
      *
      * @param int $productId
      *

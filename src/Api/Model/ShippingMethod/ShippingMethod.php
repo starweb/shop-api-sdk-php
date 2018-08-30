@@ -23,7 +23,7 @@ class ShippingMethod
      */
     protected $freeShippingMinWeight;
     /**
-     * 
+     *
      *
      * @var ShippingMethodLanguageCollection
      */
@@ -140,7 +140,7 @@ class ShippingMethod
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return ShippingMethodLanguageCollection
      */
@@ -149,7 +149,7 @@ class ShippingMethod
         return $this->languages;
     }
     /**
-     * 
+     *
      *
      * @param ShippingMethodLanguageModelCollection $languages
      *

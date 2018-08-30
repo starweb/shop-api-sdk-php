@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\OrderComment;
 class OrderCommentItem
 {
     /**
-     * 
+     *
      *
      * @var OrderComment
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return OrderComment
      */
@@ -20,7 +20,7 @@ class OrderCommentItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param OrderCommentModel $data
      *

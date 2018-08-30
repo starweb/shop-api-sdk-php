@@ -23,7 +23,7 @@ class PaymentMethod
      */
     protected $idCode;
     /**
-     * 
+     *
      *
      * @var PaymentMethodLanguageCollection
      */
@@ -146,7 +146,7 @@ class PaymentMethod
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return PaymentMethodLanguageCollection
      */
@@ -155,7 +155,7 @@ class PaymentMethod
         return $this->languages;
     }
     /**
-     * 
+     *
      *
      * @param PaymentMethodLanguageModelCollection $languages
      *

@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\ProductVariantAttributeValue;
 class ProductVariantAttributeValueItem
 {
     /**
-     * 
+     *
      *
      * @var ProductVariantAttributeValue
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return ProductVariantAttributeValue
      */
@@ -20,7 +20,7 @@ class ProductVariantAttributeValueItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param ProductVariantAttributeValueModel $data
      *

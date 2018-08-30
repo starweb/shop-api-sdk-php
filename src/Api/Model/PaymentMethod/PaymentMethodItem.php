@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\PaymentMethod;
 class PaymentMethodItem
 {
     /**
-     * 
+     *
      *
      * @var PaymentMethod
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return PaymentMethod
      */
@@ -20,7 +20,7 @@ class PaymentMethodItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param PaymentMethodModel $data
      *

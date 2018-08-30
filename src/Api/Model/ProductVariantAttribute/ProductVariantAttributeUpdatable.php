@@ -5,7 +5,7 @@ namespace Starweb\Api\Model\ProductVariantAttribute;
 class ProductVariantAttributeUpdatable
 {
     /**
-     * 
+     *
      *
      * @var int
      */
@@ -17,7 +17,7 @@ class ProductVariantAttributeUpdatable
      */
     protected $languages;
     /**
-     * 
+     *
      *
      * @return int
      */
@@ -26,7 +26,7 @@ class ProductVariantAttributeUpdatable
         return $this->attributeId;
     }
     /**
-     * 
+     *
      *
      * @param int $attributeId
      *

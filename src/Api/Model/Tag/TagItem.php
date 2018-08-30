@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\Tag;
 class TagItem
 {
     /**
-     * 
+     *
      *
      * @var Tag
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return Tag
      */
@@ -20,7 +20,7 @@ class TagItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param Tag $data
      *

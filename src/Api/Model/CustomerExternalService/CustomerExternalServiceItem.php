@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\CustomerExternalService;
 class CustomerExternalServiceItem
 {
     /**
-     * 
+     *
      *
      * @var CustomerExternalService
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return CustomerExternalService
      */
@@ -20,7 +20,7 @@ class CustomerExternalServiceItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param CustomerExternalService $data
      *

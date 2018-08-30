@@ -5,7 +5,7 @@ namespace Starweb\Api\Model\ProductVariantAttributeValue;
 class ProductVariantAttributeValue
 {
     /**
-     * 
+     *
      *
      * @var ProductVariantAttribute
      */
@@ -35,7 +35,7 @@ class ProductVariantAttributeValue
      */
     protected $sortIndex;
     /**
-     * 
+     *
      *
      * @return ProductVariantAttribute
      */
@@ -44,7 +44,7 @@ class ProductVariantAttributeValue
         return $this->attribute;
     }
     /**
-     * 
+     *
      *
      * @param ProductVariantAttributeModel $attribute
      *

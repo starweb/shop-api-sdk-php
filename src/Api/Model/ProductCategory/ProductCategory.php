@@ -38,7 +38,7 @@ class ProductCategory
      */
     protected $imageFileId;
     /**
-     * 
+     *
      *
      * @var ProductCategoryLanguageCollection|ProductCategoryLanguage[]
      */
@@ -174,7 +174,7 @@ class ProductCategory
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return ProductCategoryLanguageCollection|ProductCategoryLanguage[]
      */
@@ -183,7 +183,7 @@ class ProductCategory
         return $this->languages;
     }
     /**
-     * 
+     *
      *
      * @param ProductCategoryLanguageCollection|ProductCategoryLanguage[] $languages
      *

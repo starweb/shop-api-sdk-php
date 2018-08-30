@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\OrderStatus;
 class OrderStatusItem
 {
     /**
-     * 
+     *
      *
      * @var OrderStatus
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return OrderStatus
      */
@@ -20,7 +20,7 @@ class OrderStatusItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param OrderStatusModel $data
      *

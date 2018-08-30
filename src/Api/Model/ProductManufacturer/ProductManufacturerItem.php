@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\ProductManufacturer;
 class ProductManufacturerItem
 {
     /**
-     * 
+     *
      *
      * @var ProductManufacturer
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return ProductManufacturer
      */
@@ -20,7 +20,7 @@ class ProductManufacturerItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param ProductManufacturerModel $data
      *

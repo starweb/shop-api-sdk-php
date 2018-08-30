@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\Customer;
 class Customer
 {
     /**
-     * 
+     *
      *
      * @var CustomerTagCollection
      */
     protected $tags;
     /**
-     * 
+     *
      *
      * @var CustomerAddressesCollection
      */
@@ -59,7 +59,7 @@ class Customer
      */
     protected $email;
     /**
-     * 
+     *
      *
      * @var CustomerExternalServicesCollection
      */
@@ -95,7 +95,7 @@ class Customer
      */
     protected $vatNo;
     /**
-     * 
+     *
      *
      * @return CustomerTagCollection
      */
@@ -104,7 +104,7 @@ class Customer
         return $this->tags;
     }
     /**
-     * 
+     *
      *
      * @param CustomerTagModelCollection $tags
      *
@@ -116,7 +116,7 @@ class Customer
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return CustomerAddressesCollection
      */
@@ -125,7 +125,7 @@ class Customer
         return $this->addresses;
     }
     /**
-     * 
+     *
      *
      * @param CustomerAddressesModelCollection $addresses
      *
@@ -284,7 +284,7 @@ class Customer
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return CustomerExternalServicesCollection
      */
@@ -293,7 +293,7 @@ class Customer
         return $this->externalServices;
     }
     /**
-     * 
+     *
      *
      * @param CustomerExternalServicesModelCollection $externalServices
      *

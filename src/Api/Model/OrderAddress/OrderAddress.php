@@ -101,7 +101,7 @@ class OrderAddress
         return $this->originalInvoice;
     }
     /**
-     * 
+     *
      *
      * @param Address $originalInvoice
      *
@@ -113,7 +113,7 @@ class OrderAddress
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return Address
      */
@@ -122,7 +122,7 @@ class OrderAddress
         return $this->paymentMethodDelivery;
     }
     /**
-     * 
+     *
      *
      * @param Address $paymentMethodDelivery
      *
@@ -134,7 +134,7 @@ class OrderAddress
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return Address
      */
@@ -143,7 +143,7 @@ class OrderAddress
         return $this->paymentMethodInvoice;
     }
     /**
-     * 
+     *
      *
      * @param Address $paymentMethodInvoice
      *

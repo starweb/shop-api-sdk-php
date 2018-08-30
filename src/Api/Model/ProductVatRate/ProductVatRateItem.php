@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\ProductVatRate;
 class ProductVatRateItem
 {
     /**
-     * 
+     *
      *
      * @var ProductVatRate
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return ProductVatRate
      */
@@ -20,7 +20,7 @@ class ProductVatRateItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param ProductVatRateModel $data
      *

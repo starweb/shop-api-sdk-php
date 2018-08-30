@@ -5,7 +5,7 @@ namespace Starweb\Api\Model\ProductMetaDataType;
 class ProductMetaDataType
 {
     /**
-     * 
+     *
      *
      * @var ProductMetaDataTypeLanguageCollection
      */
@@ -17,7 +17,7 @@ class ProductMetaDataType
      */
     protected $metaDataTypeId;
     /**
-     * 
+     *
      *
      * @return ProductMetaDataTypeLanguageCollection
      */
@@ -26,7 +26,7 @@ class ProductMetaDataType
         return $this->languages;
     }
     /**
-     * 
+     *
      *
      * @param ProductMetaDataTypeLanguageModelCollection $languages
      *

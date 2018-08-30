@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\Currency;
 class CurrencyItem
 {
     /**
-     * 
+     *
      *
      * @var Currency
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return Currency
      */
@@ -20,7 +20,7 @@ class CurrencyItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param Currency $data
      *

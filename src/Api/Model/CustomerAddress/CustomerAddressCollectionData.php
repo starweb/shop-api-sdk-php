@@ -5,19 +5,19 @@ namespace Starweb\Api\Model\CustomerAddress;
 class CustomerAddressCollectionData
 {
     /**
-     * 
+     *
      *
      * @var Address
      */
     protected $delivery;
     /**
-     * 
+     *
      *
      * @var Address
      */
     protected $invoice;
     /**
-     * 
+     *
      *
      * @return Address
      */
@@ -26,7 +26,7 @@ class CustomerAddressCollectionData
         return $this->delivery;
     }
     /**
-     * 
+     *
      *
      * @param AddressModel $delivery
      *
@@ -38,7 +38,7 @@ class CustomerAddressCollectionData
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return Address
      */
@@ -47,7 +47,7 @@ class CustomerAddressCollectionData
         return $this->invoice;
     }
     /**
-     * 
+     *
      *
      * @param AddressModel $invoice
      *

@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\ProductUnit;
 class ProductUnitItem
 {
     /**
-     * 
+     *
      *
      * @var ProductUnit
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return ProductUnit
      */
@@ -20,7 +20,7 @@ class ProductUnitItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param ProductUnitModel $data
      *

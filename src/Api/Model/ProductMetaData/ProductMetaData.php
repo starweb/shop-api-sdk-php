@@ -5,7 +5,7 @@ namespace Starweb\Api\Model\ProductMetaData;
 class ProductMetaData
 {
     /**
-     * 
+     *
      *
      * @var ProductMetaLanguageDataCollection
      */
@@ -23,7 +23,7 @@ class ProductMetaData
      */
     protected $sortIndex;
     /**
-     * 
+     *
      *
      * @return ProductMetaLanguageDataCollection
      */
@@ -32,7 +32,7 @@ class ProductMetaData
         return $this->languages;
     }
     /**
-     * 
+     *
      *
      * @param ProductMetaLanguageDataModelCollection $languages
      *

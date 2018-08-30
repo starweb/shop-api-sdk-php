@@ -5,7 +5,7 @@ namespace Starweb\Api\Model\Customer;
 class CustomerUpdate
 {
     /**
-     * 
+     *
      *
      * @var CustomerUpdateAddresses
      */
@@ -59,7 +59,7 @@ class CustomerUpdate
      */
     protected $vatNo;
     /**
-     * 
+     *
      *
      * @return CustomerUpdateAddresses
      */
@@ -68,7 +68,7 @@ class CustomerUpdate
         return $this->addresses;
     }
     /**
-     * 
+     *
      *
      * @param CustomerUpdateModelAddresses $addresses
      *

@@ -13,7 +13,7 @@ class CustomerCollection implements CollectionInterface
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @var CustomerCollectionMeta
      */

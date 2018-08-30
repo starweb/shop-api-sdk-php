@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\ProductMetaData;
 class ProductMetaDataItem
 {
     /**
-     * 
+     *
      *
      * @var ProductMetaData
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return ProductMetaData
      */
@@ -20,7 +20,7 @@ class ProductMetaDataItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param ProductMetaDataModel $data
      *

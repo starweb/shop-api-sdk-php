@@ -17,7 +17,7 @@ class ProductCategoryLanguages
      */
     protected $description;
     /**
-     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. 
+     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports.
      *
      * @var string
      */
@@ -89,7 +89,7 @@ class ProductCategoryLanguages
         return $this;
     }
     /**
-     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. 
+     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports.
      *
      * @return string
      */
@@ -98,7 +98,7 @@ class ProductCategoryLanguages
         return $this->langCode;
     }
     /**
-     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. 
+     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports.
      *
      * @param string $langCode
      *

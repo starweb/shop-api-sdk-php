@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\CustomerAddress;
 class CustomerAddressCollection
 {
     /**
-     * 
+     *
      *
      * @var CustomerAddressCollectionData
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return CustomerAddressCollectionData
      */
@@ -20,7 +20,7 @@ class CustomerAddressCollection
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param CustomerAddressesModelCollectionData $data
      *

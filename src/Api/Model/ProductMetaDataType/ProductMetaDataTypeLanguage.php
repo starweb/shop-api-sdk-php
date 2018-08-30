@@ -11,7 +11,7 @@ class ProductMetaDataTypeLanguage
      */
     protected $langCode;
     /**
-     * 
+     *
      *
      * @var string
      */
@@ -38,7 +38,7 @@ class ProductMetaDataTypeLanguage
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return string
      */
@@ -47,7 +47,7 @@ class ProductMetaDataTypeLanguage
         return $this->name;
     }
     /**
-     * 
+     *
      *
      * @param string $name
      *

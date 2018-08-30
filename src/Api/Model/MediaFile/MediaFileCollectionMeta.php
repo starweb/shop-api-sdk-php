@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\MediaFile;
 class MediaFileCollectionMeta
 {
     /**
-     * 
+     *
      *
      * @var Pagination
      */
     protected $pagination;
     /**
-     * 
+     *
      *
      * @return Pagination
      */
@@ -20,7 +20,7 @@ class MediaFileCollectionMeta
         return $this->pagination;
     }
     /**
-     * 
+     *
      *
      * @param PaginationModel $pagination
      *

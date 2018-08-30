@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\CustomerTag;
 class CustomerTagItem
 {
     /**
-     * 
+     *
      *
      * @var CustomerTag
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return CustomerTag
      */
@@ -20,7 +20,7 @@ class CustomerTagItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param CustomerAddedTagModel $data
      *

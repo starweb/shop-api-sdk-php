@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\CustomerAddress;
 class CustomerAddressItem
 {
     /**
-     * 
+     *
      *
      * @var Address
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return Address
      */
@@ -20,7 +20,7 @@ class CustomerAddressItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param AddressModel $data
      *

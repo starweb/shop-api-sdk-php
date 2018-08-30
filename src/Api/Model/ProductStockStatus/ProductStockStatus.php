@@ -17,7 +17,7 @@ class ProductStockStatus
      */
     protected $inStock;
     /**
-     * 
+     *
      *
      * @var ProductStockStatusLanguage[]
      */
@@ -89,7 +89,7 @@ class ProductStockStatus
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return ProductStockStatusLanguage[]
      */
@@ -98,7 +98,7 @@ class ProductStockStatus
         return $this->languages;
     }
     /**
-     * 
+     *
      *
      * @param ProductStockStatusLanguage[]
      *

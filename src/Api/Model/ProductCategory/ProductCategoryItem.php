@@ -5,13 +5,13 @@ namespace Starweb\Api\Model\ProductCategory;
 class ProductCategoryItem
 {
     /**
-     * 
+     *
      *
      * @var ProductCategory
      */
     protected $data;
     /**
-     * 
+     *
      *
      * @return ProductCategory
      */
@@ -20,7 +20,7 @@ class ProductCategoryItem
         return $this->data;
     }
     /**
-     * 
+     *
      *
      * @param ProductCategory $data
      *
