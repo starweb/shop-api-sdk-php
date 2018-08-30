@@ -20,6 +20,7 @@ use Starweb\Api\Resource\MediaFileResource;
 use Starweb\Api\Resource\OrderAddressResource;
 use Starweb\Api\Resource\OrderCommentResource;
 use Starweb\Api\Resource\OrderExternalServiceResource;
+use Starweb\Api\Resource\OrderItemResource;
 use Starweb\Api\Resource\TagResource;
 use Starweb\Exception\InvalidCredentialsException;
 use Starweb\HttpClient\Builder;
@@ -155,6 +156,9 @@ class Starweb
                 break;
             case 'OrderExternalService':
                 $resource = new OrderExternalServiceResource($this->client, $pathParameters);
+                break;
+            case 'OrderItem':
+                $resource = new OrderItemResource($this->client, $pathParameters);
                 break;
             case 'Shop':
                 $resource = new ShopResource($this->client, $pathParameters);

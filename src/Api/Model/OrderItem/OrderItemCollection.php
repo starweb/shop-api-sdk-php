@@ -10,6 +10,7 @@ class OrderItemCollection
      * @var OrderItem[]
      */
     protected $data;
+
     /**
      * A list of order items
      *
@@ -19,6 +20,7 @@ class OrderItemCollection
     {
         return $this->data;
     }
+
     /**
      * A list of order items
      *

@@ -16,13 +16,4 @@ class ListOrderItems extends Operation
     {
         return '/orders/{orderId}/items';
     }
-
-    protected function getPathParametersResolver(): OptionsResolver
-    {
-        $resolver = parent::getPathParametersResolver();
-        $resolver->setRequired('orderId');
-        $resolver->setAllowedTypes('orderId', 'integer');
-
-        return $resolver;
-    }
 }
