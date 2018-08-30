@@ -101,17 +101,17 @@ class CustomerAddressResource extends Resource
      * @param string $addressType
      * @param Address $address
      *
-     * @return CustomerAddressItem
+     * @return Address
      *
      * @throws \Http\Client\Exception
      */
-    public function update(int $tagId, Address $tag): CustomerAddressItem
+    public function update(string $addressType, Address $address): Address
     {
-        $pathParameters = array_merge($this->getPathParameters(), ['tagId' => $tagId]);
+        $pathParameters = array_merge($this->getPathParameters(), ['addressType' => $addressType]);
         $response = $this->performOperation(
             new UpdateCustomerAddress(
                 $this,
-                $this->getSerializer()->normalize($tag),
+                $this->getSerializer()->normalize($address),
                 $pathParameters
             )
         );

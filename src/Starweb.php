@@ -14,8 +14,10 @@ use Starweb\Api\Model\CustomerTag\CustomerTagItem;
 use Starweb\Api\Resource\CurrencyResource;
 use Starweb\Api\Resource\CustomerAddressResource;
 use Starweb\Api\Resource\CustomerExternalServiceResource;
+use Starweb\Api\Resource\CustomerResource;
 use Starweb\Api\Resource\CustomerTagResource;
 use Starweb\Api\Resource\MediaFileResource;
+use Starweb\Api\Resource\TagResource;
 use Starweb\Exception\InvalidCredentialsException;
 use Starweb\HttpClient\Builder;
 use Http\Discovery\HttpClientDiscovery;
@@ -138,6 +140,9 @@ class Starweb
                 break;
             case 'CustomerTag':
                 $resource = new CustomerTagResource($this->client, $pathParameters);
+                break;
+            case 'Customer':
+                $resource = new CustomerResource($this->client, $pathParameters);
                 break;
             case 'Shop':
                 $resource = new ShopResource($this->client, $pathParameters);

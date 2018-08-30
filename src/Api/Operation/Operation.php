@@ -20,6 +20,8 @@ abstract class Operation implements OperationInterface
 
     /**
      * Operation constructor.
+     *
+     * @param ResourceInterface $resource
      * @param array $parameters
      * @param array $pathParameters
      * @param array $headers
