@@ -1,10 +1,5 @@
 version: '3'
 services:
-    starweb-swagger-editor:
-        image: swaggerapi/swagger-editor
-        container_name: starweb-swagger-editor
-        ports:
-            - 4040:8080
     starweb-api-tools:
         image: lordrhodos/api-tools:latest
         container_name: starweb-api-tools
