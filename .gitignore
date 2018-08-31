@@ -6,11 +6,12 @@
 /vendor/
 composer.lock
 
+# specification
+resources/specification/*
+!resources/specification/openapi.json
+
 # test coverage
 resources/test-coverage
-
-# generated
-resources/generation/generated
 
 # examples
 resources/examples/config.php
