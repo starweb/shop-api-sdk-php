@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Model\Meta;
 
-use Starweb\Api\Model\Meta\Pagination;
+use Starweb\Api\Model\Pagination;
 
 class Meta
 {

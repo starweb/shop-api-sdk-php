@@ -2,6 +2,8 @@
 
 namespace Starweb\Api\Model\Order;
 
+use Starweb\Api\Model\Pagination;
+
 class OrderCollectionMeta
 {
     /**
