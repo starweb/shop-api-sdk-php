@@ -8,7 +8,7 @@ use Starweb\Starweb;
 use Starweb\Api\Authentication\ClientCredentials;
 use Starweb\Api\Resource\CustomerTagResource;
 use Starweb\Api\Model\CustomerTag\CustomerTagCollection;
-use Starweb\Api\Model\CustomerTag\CustomerTag;
+use Starweb\Api\Resource\Resources;
 use Http\Client\Common\Exception\ClientErrorException;
 
 // create the credentials object
@@ -19,7 +19,7 @@ $starweb = new Starweb($credentials, $apiBaseUri);
 
 // get a resource by its name in this case "CustomerTag"
 /** @var CustomerTagResource $customerTagResource */
-$customerTagResource = $starweb->resource('CustomerTag', ['customerId' => 101]);
+$customerTagResource = $starweb->resource(Resources::CUSTOMER_TAG, ['customerId' => 101]);
 
 /** @var CustomerTagCollection $customerTagCollection */
 $customerTagCollection = $customerTagResource->list();

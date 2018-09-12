@@ -10,6 +10,7 @@ use Starweb\Api\Resource\ProductCategoryResource;
 use Starweb\Api\Model\ProductCategory\ProductCategoryCollection;
 use Starweb\Api\Model\ProductCategory\ProductCategory;
 use Starweb\Api\Model\ProductLanguage\ProductCategoryLanguage;
+use Starweb\Api\Resource\Resources;
 
 // create the credentials object
 $credentials = new ClientCredentials($clientId, $clientSecret);
@@ -19,7 +20,7 @@ $starweb = new Starweb($credentials, $apiBaseUri);
 
 // get a resource by its name in this case "ProductCategory"
 /** @var ProductCategoryResource $resource */
-$resource = $starweb->resource('ProductCategory');
+$resource = $starweb->resource(Resources::PRODUCT_CATEGORY);
 
 // get the unfiltered collection
 /** @var ProductCategoryCollection $collection */

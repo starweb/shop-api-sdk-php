@@ -15,6 +15,7 @@ use Starweb\Api\Resource\MediaFileResource;
 use Starweb\Api\Resource\ProductCategoryResource;
 use Starweb\Api\Resource\Resource;
 use Starweb\Api\Resource\ResourceInterface;
+use Starweb\Api\Resource\Resources;
 use Starweb\Api\Resource\ShopResource;
 use Starweb\Starweb;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -101,7 +102,7 @@ class StarwebTest extends TestCase
     public function testResources(string $resourceKey): void
     {
         $starweb = $this->getStarweb();
-        $resourceFqcn = sprintf('%s\\%sResource', Starweb::RESOURCE_NAMESPACE, $resourceKey);
+        $resourceFqcn = sprintf('%s\\%sResource', Resources::RESOURCE_NAMESPACE, $resourceKey);
 
         $reflection = new \ReflectionClass($resourceFqcn);
         $reflectionMethod = $reflection->getMethod('getPathParametersResolver');
@@ -125,7 +126,7 @@ class StarwebTest extends TestCase
     public function resourceProvider(): array
     {
         $data = [];
-        foreach (Starweb::RESOURCE_KEYS as $key) {
+        foreach (Resources::getResources() as $key) {
             $data[] = [$key];
         }
 

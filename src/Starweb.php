@@ -39,6 +39,7 @@ use Starweb\Api\Resource\ProductVariantAttributeValueResource;
 use Starweb\Api\Resource\ProductVariantPricelistPriceResource;
 use Starweb\Api\Resource\ProductVariantResource;
 use Starweb\Api\Resource\ProductVatRateResource;
+use Starweb\Api\Resource\Resources;
 use Starweb\Api\Resource\ShippingMethodResource;
 use Starweb\Api\Resource\ShippingTrackingTypeResource;
 use Starweb\Api\Resource\TagResource;
@@ -59,44 +60,6 @@ class Starweb
     public const API_VERSION = '2.0.0';
 
     public const API_VERSION_URI_SUFFIX = 'v2';
-
-    public const RESOURCE_NAMESPACE = 'Starweb\\Api\\Resource';
-    public const RESOURCE_KEYS = [
-        'Currency',
-        'CustomerAddress',
-        'CustomerExternalService',
-        'CustomerTag',
-        'Customer',
-        'MediaFile',
-        'OrderAddress',
-        'OrderComment',
-        'OrderExternalService',
-        'OrderItem',
-        'OrderStatus',
-        'Order',
-        'PaymentMethod',
-        'Pricelist',
-        'ProductAttribute',
-        'ProductCategory',
-        'ProductCategoryLink',
-        'ProductLanguage',
-        'ProductManufacturer',
-        'ProductMediaFileLink',
-        'ProductMetaData',
-        'ProductMetaDataType',
-        'ProductStockStatus',
-        'ProductUnit',
-        'ProductVariantAttributeValue',
-        'ProductVariantAttribute',
-        'ProductVariantPricelistPrice',
-        'ProductVariant',
-        'ProductVatRate',
-        'Product',
-        'ShippingMethod',
-        'ShippingTrackingType',
-        'Shop',
-        'Tag'
-    ];
 
     /**
      * @var EnhancedHttpClient
@@ -189,14 +152,15 @@ class Starweb
      * @return ResourceInterface
      *
      * @throws \LogicException
+     * @throws \ReflectionException
      */
     public function resource(string $resourceKey, array $pathParameters = []): ResourceInterface
     {
-        if (!in_array($resourceKey, self::RESOURCE_KEYS, true)) {
+        if (!in_array($resourceKey, Resources::getResources(), true)) {
             throw new \LogicException(sprintf('Undefined resource instance called: "%s"', $resourceKey));
         }
 
-        $resourceFqcn = sprintf('%s\\%sResource', self::RESOURCE_NAMESPACE, $resourceKey);
+        $resourceFqcn = sprintf('%s\\%sResource', Resources::RESOURCE_NAMESPACE, $resourceKey);
         $resource = new $resourceFqcn($this->client, $pathParameters);
 
         return $resource;

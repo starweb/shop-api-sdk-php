@@ -11,6 +11,7 @@ use Starweb\Api\Model\Shop\Shop;
 use \Symfony\Component\Serializer\Serializer;
 use \Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use \Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Starweb\Api\Resource\Resources;
 
 // create the credentials object
 $credentials = new ClientCredentials($clientId, $clientSecret);
@@ -20,7 +21,7 @@ $starweb = new Starweb($credentials, $apiBaseUri);
 
 // get a resource by its name in this case "Shop"
 /** @var ShopResource $shopResource */
-$shopResource = $starweb->resource('Shop');
+$shopResource = $starweb->resource(Resources::SHOP);
 
 /** @var Shop $shop */
 $shop = $shopResource->retrieve();

@@ -9,6 +9,7 @@ use Starweb\Api\Authentication\ClientCredentials;
 use Starweb\Api\Resource\MediaFileResource;
 use Starweb\Api\Model\MediaFile\MediaFileUpload;
 use Starweb\Api\Model\MediaFile\MediaFile;
+use Starweb\Api\Resource\Resources;
 
 // create the credentials object
 $credentials = new ClientCredentials($clientId, $clientSecret);
@@ -18,7 +19,7 @@ $starweb = new Starweb($credentials, $apiBaseUri);
 
 // get a resource by its name in this case "MediaFile"
 /** @var MediaFileResource $mediaFileResource */
-$mediaFileResource = $starweb->resource('MediaFile');
+$mediaFileResource = $starweb->resource(Resources::MEDIA_FILE);
 
 /** @var \Starweb\Api\Model\MediaFile\MediaFileCollection $mediaFileCollection */
 $mediaFileCollection = $mediaFileResource->list();
