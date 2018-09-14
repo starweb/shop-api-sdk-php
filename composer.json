@@ -23,7 +23,6 @@
         "php-http/client-implementation": "^1.0",
         "php-http/multipart-stream-builder": "^1.0",
         "psr/http-message-implementation": "^1.0",
-        "symfony/psr-http-message-bridge": "^1.0",
         "symfony/cache": "^4.1",
         "symfony/serializer": "^4.1",
         "symfony/property-access": "^4.1",
