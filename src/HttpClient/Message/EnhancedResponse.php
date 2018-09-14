@@ -206,12 +206,12 @@ class EnhancedResponse implements ResponseInterface
     public function getContentAsModel(string $fqcn = null)
     {
         $body = $this->getRawContent();
-        if (strpos($this->getHeaderLine('Content-Type'), 'application/json') === 0) {
-            $content = json_decode($body, true);
-
-            if ($fqcn && class_exists($fqcn) && isset($content)) {
-                return $this->getSerializer()->deserialize(json_encode($content), $fqcn, 'json');
-            }
+        if (strpos($this->getHeaderLine('Content-Type'), 'application/json') === 0
+            && $this->isJson($body)
+            && $fqcn
+            && class_exists($fqcn)
+        ) {
+           return $this->getSerializer()->deserialize($body, $fqcn, 'json');
         }
 
         throw new InvalidResponseContentException('response content could not be transformed into a Starweb API model');
@@ -243,5 +243,12 @@ class EnhancedResponse implements ResponseInterface
         }
 
         return $this->serializer;
+    }
+
+    private function isJson(string $string): bool
+    {
+        $decoded = json_decode($string);
+
+        return ((is_string($string) && (is_object($decoded) || is_array($decoded)))) ? true : false;
     }
 }
