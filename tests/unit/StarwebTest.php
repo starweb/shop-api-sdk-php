@@ -36,9 +36,6 @@ class StarwebTest extends TestCase
         $this->assertInstanceOf(Starweb::class, $starweb);
     }
 
-    /**
-     * @expectedException \Starweb\Exception\InvalidCredentialsException
-     */
     public function testConstructorWithoutClientAndTokenCache()
     {
         $starweb = new Starweb(new ClientCredentials('id', 'secret'), self::DEFAULT_BASE_URI);
@@ -48,8 +45,6 @@ class StarwebTest extends TestCase
 
     /**
      * this is a real life test on the demo api with wrong credentials
-     *
-     * @expectedException \Starweb\Exception\InvalidCredentialsException
      */
     public function testConstructorWithInvalidCredentials()
     {
@@ -70,6 +65,8 @@ class StarwebTest extends TestCase
             self::DEFAULT_BASE_URI,
             $client
         );
+
+        $this->assertInstanceOf(Starweb::class, $starweb);
     }
 
     private function getStarweb(): Starweb
@@ -141,6 +138,15 @@ class StarwebTest extends TestCase
     {
         $starweb = $this->getStarweb();
         $resource = $starweb->resource('InvalidResource');
+    }
+
+    /**
+     * @expectedException \LogicException
+     */
+    public function testResourceWithoutBaseUriSet()
+    {
+        $starweb = new Starweb(new ClientCredentials('id', 'secret'));
+        $resource = $starweb->resource(Resources::CUSTOMER);
     }
 
     private function getStreamFactory()

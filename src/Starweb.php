@@ -62,6 +62,26 @@ class Starweb
     public const API_VERSION_URI_SUFFIX = 'v2';
 
     /**
+     * @var ClientCredentials
+     */
+    private $credentials;
+
+    /**
+     * @var HttpClient
+     */
+    private $httpClient;
+
+    /**
+     * @var MessageFactory
+     */
+    private $messageFactory;
+
+    /**
+     * @var TokenCacheInterface
+     */
+    private $tokenCache;
+
+    /**
      * @var EnhancedHttpClient
      */
     private $client;
@@ -89,26 +109,16 @@ class Starweb
      */
     public function __construct(
         ClientCredentials $credentials,
-        string $baseUri,
+        string $baseUri = null,
         HttpClient $httpClient = null,
         MessageFactory $messageFactory = null,
         TokenCacheInterface $tokenCache = null
     ) {
-        if (!$httpClient) {
-            $httpClient = HttpClientDiscovery::find();
-        }
-
-        if (!$messageFactory) {
-            $messageFactory = MessageFactoryDiscovery::find();
-        }
-
-        if (!$tokenCache) {
-            $tokenCache = new TokenFilesystemCache();
-        }
-
-        $this->baseUri      = $baseUri;
-        $this->tokenManager = new TokenManager($httpClient, $messageFactory, $credentials, $tokenCache, $baseUri);
-        $this->client       = $this->buildHttpClient($httpClient, $messageFactory);
+        $this->credentials  = $credentials;
+        $this->baseUri = $baseUri;
+        $this->httpClient = $httpClient ?? HttpClientDiscovery::find();
+        $this->messageFactory = $messageFactory ?? MessageFactoryDiscovery::find();
+        $this->tokenCache = $tokenCache ?? new TokenFilesystemCache();
     }
 
     /**
@@ -126,12 +136,12 @@ class Starweb
         $builder->setHttpClient($httpClient)
                 ->setMessageFactory($messageFactory)
                 ->addPlugin(new ErrorPlugin())
-                ->addPlugin(new RetryAuthenticationPlugin($this->tokenManager))
+                ->addPlugin(new RetryAuthenticationPlugin($this->getTokenManager()))
                 ->addPlugin(new BaseUriPlugin(UriFactoryDiscovery::find()->createUri($this->baseUri)))
                 ->addPlugin(new HeaderDefaultsPlugin([
                     'User-Agent' => 'starweb-sdk (https://github.com/starweb/starweb-sdk)',
                 ]))
-                ->addAuthentication($this->tokenManager->getToken());
+                ->addAuthentication($this->getTokenManager()->getToken());
 
         return $builder->build();
     }
@@ -160,16 +170,48 @@ class Starweb
             throw new \LogicException(sprintf('Undefined resource instance called: "%s"', $resourceKey));
         }
 
+        if ($this->baseUri === null) {
+            throw new \LogicException(
+                'You need to set the baseUri before calling the resource function. Either pass it to the the constructor
+                or use the setBaseUri() function');
+        }
+
         $resourceFqcn = sprintf('%s\\%sResource', Resources::RESOURCE_NAMESPACE, $resourceKey);
-        $resource = new $resourceFqcn($this->client, $pathParameters);
+        $resource = new $resourceFqcn($this->getClient(), $pathParameters);
 
         return $resource;
+    }
+
+    private function getClient(): EnhancedHttpClient
+    {
+        if (!$this->client) {
+            $this->client = $this->buildHttpClient($this->httpClient, $this->messageFactory);
+        }
+
+        return $this->client;
+    }
+
+    private function getTokenManager(): TokenManager
+    {
+        if ($this->tokenManager === null) {
+            $this->tokenManager = new TokenManager(
+                $this->httpClient,
+                $this->messageFactory,
+                $this->credentials,
+                $this->tokenCache,
+                $this->baseUri
+            );
+        }
+
+        return $this->tokenManager;
     }
 
     public function setBaseUri(string $baseUri): void
     {
         $this->baseUri = $baseUri;
-        $this->tokenManager->setBaseUri($baseUri);
+        if ($this->tokenManager !== null) {
+            $this->getTokenManager()->setBaseUri($baseUri);
+        }
     }
 
     public function getBaseUri(): string
