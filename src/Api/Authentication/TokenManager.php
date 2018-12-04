@@ -59,6 +59,21 @@ class TokenManager
         $this->baseUri = $baseUri;
     }
 
+    /**
+     * @param string $baseUri
+     */
+    public function setBaseUri(string $baseUri): void
+    {
+        $this->baseUri = $baseUri;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBaseUri(): string
+    {
+        return $this->baseUri;
+    }
 
     /**
      * @param HttpClient $client
