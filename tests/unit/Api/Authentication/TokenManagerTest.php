@@ -18,7 +18,6 @@ use Starweb\Api\Authentication\TokenManager;
 
 class TokenManagerTest extends TestCase
 {
-    private const DEFAULT_BASE_URI = 'https://demo.starweb.se/api/v2';
 
     public function testConstructor()
     {
@@ -86,15 +85,6 @@ class TokenManagerTest extends TestCase
         $this->assertNull($manager->refreshToken());
     }
 
-    public function testSetAndGetBaseUri()
-    {
-        $tokenManager = $this->getTokenManager();
-        $this->assertEquals(self::DEFAULT_BASE_URI, $tokenManager->getBaseUri());
-
-        $tokenManager->setBaseUri('https://example.com/api');
-        $this->assertEquals('https://example.com/api', $tokenManager->getBaseUri());
-    }
-
     private function getTokenManager(ResponseInterface $response = null, TokenCacheInterface $cache = null)
     {
         $client = new Client();
@@ -120,7 +110,7 @@ class TokenManagerTest extends TestCase
             $messageFactory,
             new ClientCredentials('id', 'secret'),
             $cache,
-            self::DEFAULT_BASE_URI
+            'http://demo.startweb.se/api/v2'
         );
     }
 }

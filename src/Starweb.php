@@ -165,15 +165,4 @@ class Starweb
 
         return $resource;
     }
-
-    public function setBaseUri(string $baseUri): void
-    {
-        $this->baseUri = $baseUri;
-        $this->tokenManager->setBaseUri($baseUri);
-    }
-
-    public function getBaseUri(): string
-    {
-        return $this->baseUri;
-    }
 }
