@@ -22,6 +22,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class StarwebTest extends TestCase
 {
+    private const DEFAULT_BASE_URI = 'https://demo.starweb.se/api/v2';
+
     /**
      * @var StreamFactory
      */
@@ -39,7 +41,7 @@ class StarwebTest extends TestCase
      */
     public function testConstructorWithoutClientAndTokenCache()
     {
-        $starweb = new Starweb(new ClientCredentials('id', 'secret'), 'https://demo.starweb.se/api/v2');
+        $starweb = new Starweb(new ClientCredentials('id', 'secret'), self::DEFAULT_BASE_URI);
 
         $this->assertInstanceOf(Starweb::class, $starweb);
     }
@@ -65,7 +67,7 @@ class StarwebTest extends TestCase
 
         $starweb = new Starweb(
             new ClientCredentials('id', 'secret'),
-            'https://demo.starweb.se/api/v2',
+            self::DEFAULT_BASE_URI,
             $client
         );
     }
@@ -89,7 +91,7 @@ class StarwebTest extends TestCase
 
         return new Starweb(
             new ClientCredentials('id', 'secret'),
-            'https://demo.starweb.se/api/v2',
+            self::DEFAULT_BASE_URI,
             $client,
             $messageFactory,
             $cache
