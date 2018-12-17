@@ -15,6 +15,7 @@ use Starweb\Api\Authentication\TokenCacheInterface;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenInterface;
 use Starweb\Api\Authentication\TokenManager;
+use Starweb\Tests\StarwebTest;
 
 class TokenManagerTest extends TestCase
 {
@@ -110,7 +111,7 @@ class TokenManagerTest extends TestCase
             $messageFactory,
             new ClientCredentials('id', 'secret'),
             $cache,
-            'http://demo.startweb.se/api/v2'
+            StarwebTest::DEFAULT_BASE_URI
         );
     }
 }

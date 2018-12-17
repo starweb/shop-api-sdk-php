@@ -22,7 +22,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class StarwebTest extends TestCase
 {
-    private const DEFAULT_BASE_URI = 'https://demo.starweb.se/api/v2';
+    public const DEFAULT_BASE_URI = 'https://demo.starweb.se/api/v2';
 
     /**
      * @var StreamFactory
