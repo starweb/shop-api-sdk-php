@@ -4,6 +4,8 @@ namespace Starweb\Api\Model\Address;
 
 class Address
 {
+    private const DEFAULT_COUNTRY_CODE = 'SE';
+
     /**
      * Address
      *
@@ -44,7 +46,7 @@ class Address
      *
      * @var string
      */
-    protected $countryCode;
+    protected $countryCode = self::DEFAULT_COUNTRY_CODE;
 
     /**
      * First name
