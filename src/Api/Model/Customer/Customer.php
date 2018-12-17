@@ -26,13 +26,13 @@ class Customer
     /**
      * If the customer is approved or not. Can be null if the customer is neither approved nor disapproved yet
      *
-     * @var bool
+     * @var ?bool
      */
     protected $approved;
     /**
      * A timestamp of when the customer was was approved/disapproved. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var ?string
      */
     protected $approvedAt;
     /**
@@ -88,7 +88,7 @@ class Customer
     /**
      * The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)
      *
-     * @var int
+     * @var ?int
      */
     protected $pricelistId;
     /**
@@ -193,7 +193,7 @@ class Customer
      *
      * @return self
      */
-    public function setApprovedAt(string $approvedAt): self
+    public function setApprovedAt(?string $approvedAt): self
     {
         $this->approvedAt = $approvedAt;
 
@@ -413,7 +413,7 @@ class Customer
      *
      * @return self
      */
-    public function setPricelistId(int $pricelistId): self
+    public function setPricelistId(?int $pricelistId): self
     {
         $this->pricelistId = $pricelistId;
 
