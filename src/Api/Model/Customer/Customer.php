@@ -8,6 +8,9 @@ use Starweb\Api\Model\CustomerTag\CustomerTagCollection;
 
 class Customer
 {
+    public const TYPE_PERSON = 'person';
+    public const TYPE_COMPANY = 'company';
+
     /**
      *
      *
@@ -166,7 +169,7 @@ class Customer
      *
      * @return self
      */
-    public function setApproved(bool $approved): self
+    public function setApproved(?bool $approved): self
     {
         $this->approved = $approved;
 
