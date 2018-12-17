@@ -2,6 +2,10 @@
 
 namespace Starweb\Api\Model\Customer;
 
+use Starweb\Api\Model\CustomerAddress\CustomerAddressCollection;
+use Starweb\Api\Model\CustomerExternalService\CustomerExternalServiceCollection;
+use Starweb\Api\Model\CustomerTag\CustomerTagCollection;
+
 class Customer
 {
     /**
@@ -13,7 +17,7 @@ class Customer
     /**
      *
      *
-     * @var CustomerAddressesCollection
+     * @var CustomerAddressCollection
      */
     protected $addresses;
     /**
@@ -63,7 +67,7 @@ class Customer
     /**
      *
      *
-     * @var CustomerExternalServicesCollection
+     * @var CustomerExternalServiceCollection
      */
     protected $externalServices;
     /**
@@ -124,9 +128,9 @@ class Customer
     /**
      *
      *
-     * @return CustomerAddressesCollection
+     * @return CustomerAddressCollection
      */
-    public function getAddresses(): ?CustomerAddressesCollection
+    public function getAddresses(): ?CustomerAddressCollection
     {
         return $this->addresses;
     }
@@ -134,11 +138,11 @@ class Customer
     /**
      *
      *
-     * @param CustomerAddressesCollection $addresses
+     * @param CustomerAddressCollection $addresses
      *
      * @return self
      */
-    public function setAddresses(CustomerAddressesCollection $addresses): self
+    public function setAddresses(CustomerAddressCollection $addresses): self
     {
         $this->addresses = $addresses;
 
@@ -320,9 +324,9 @@ class Customer
     /**
      *
      *
-     * @return CustomerExternalServicesCollection
+     * @return CustomerExternalServiceCollection
      */
-    public function getExternalServices(): ?CustomerExternalServicesCollection
+    public function getExternalServices(): ?CustomerExternalServiceCollection
     {
         return $this->externalServices;
     }
@@ -330,11 +334,11 @@ class Customer
     /**
      *
      *
-     * @param CustomerExternalServicesCollection $externalServices
+     * @param CustomerExternalServiceCollection $externalServices
      *
      * @return self
      */
-    public function setExternalServices(CustomerExternalServicesCollection $externalServices): self
+    public function setExternalServices(CustomerExternalServiceCollection $externalServices): self
     {
         $this->externalServices = $externalServices;
 
