@@ -24,11 +24,11 @@ class CustomerAddressCollection
     /**
      *
      *
-     * @param CustomerAddressesCollectionData $data
+     * @param CustomerAddressCollectionData $data
      *
      * @return self
      */
-    public function setData(CustomerAddressesCollectionData $data): self
+    public function setData(CustomerAddressCollectionData $data): self
     {
         $this->data = $data;
 
