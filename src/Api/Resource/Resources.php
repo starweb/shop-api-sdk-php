@@ -4,7 +4,6 @@ namespace Starweb\Api\Resource;
 
 final class Resources
 {
-
     public const RESOURCE_NAMESPACE = 'Starweb\\Api\\Resource';
 
     public const CURRENCY = 'Currency';
@@ -13,6 +12,7 @@ final class Resources
     public const CUSTOMER_TAG = 'CustomerTag';
     public const CUSTOMER = 'Customer';
     public const MEDIA_FILE = 'MediaFile';
+    public const NOTIFICATION = 'Notification';
     public const ORDER_ADDRESS = 'OrderAddress';
     public const ORDER_COMMENT = 'OrderComment';
     public const ORDER_EXTERNAL_SERVICE = 'OrderExternalService';
