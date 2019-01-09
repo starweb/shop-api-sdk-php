@@ -2,6 +2,8 @@
 
 namespace Starweb\Api\Model\CustomerAddress;
 
+use Starweb\Api\Model\Address\Address;
+
 class CustomerAddressCollectionData
 {
     /**

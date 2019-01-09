@@ -5,6 +5,7 @@ namespace Starweb\Api\Resource;
 use Starweb\Api\Model\Customer\Customer;
 use Starweb\Api\Model\Customer\CustomerCollection;
 use Starweb\Api\Model\Customer\CustomerItem;
+use Starweb\Api\Model\Customer\CustomerUpdate;
 use Starweb\Api\Operation\Customer\CreateCustomer;
 use Starweb\Api\Operation\Customer\DeleteCustomer;
 use Starweb\Api\Operation\Customer\ListCustomers;
@@ -29,13 +30,13 @@ class CustomerResource extends Resource
     }
 
     /**
-     * @param Customer $customer
+     * @param CustomerUpdate $customer
      *
      * @return Customer
      *
      * @throws \Http\Client\Exception
      */
-    public function create(Customer $customer): Customer
+    public function create(CustomerUpdate $customer): Customer
     {
         $response = $this->performOperation(
             new CreateCustomer(

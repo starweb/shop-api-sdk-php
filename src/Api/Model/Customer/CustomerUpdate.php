@@ -2,14 +2,14 @@
 
 namespace Starweb\Api\Model\Customer;
 
-use Starweb\Api\Model\Address\Address;
+use Starweb\Api\Model\CustomerAddress\CustomerAddressCollectionData;
 
 class CustomerUpdate
 {
     /**
      *
      *
-     * @var Address[]
+     * @var CustomerAddressCollectionData
      */
     protected $addresses;
     /**
@@ -64,11 +64,9 @@ class CustomerUpdate
     protected $vatNo;
 
     /**
-     *
-     *
-     * @return Address[]
+     * @return CustomerAddressCollectionData
      */
-    public function getAddresses(): ?array
+    public function getAddresses(): ?CustomerAddressCollectionData
     {
         return $this->addresses;
     }
@@ -76,11 +74,11 @@ class CustomerUpdate
     /**
      *
      *
-     * @param Address[] $addresses
+     * @param CustomerAddressCollectionData $addresses
      *
      * @return self
      */
-    public function setAddresses(array $addresses): self
+    public function setAddresses(?CustomerAddressCollectionData $addresses): self
     {
         $this->addresses = $addresses;
 

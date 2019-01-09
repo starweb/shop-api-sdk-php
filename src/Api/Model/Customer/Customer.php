@@ -2,8 +2,15 @@
 
 namespace Starweb\Api\Model\Customer;
 
+use Starweb\Api\Model\CustomerAddress\CustomerAddressCollection;
+use Starweb\Api\Model\CustomerExternalService\CustomerExternalServiceCollection;
+use Starweb\Api\Model\CustomerTag\CustomerTagCollection;
+
 class Customer
 {
+    public const TYPE_PERSON = 'person';
+    public const TYPE_COMPANY = 'company';
+
     /**
      *
      *
@@ -13,19 +20,19 @@ class Customer
     /**
      *
      *
-     * @var CustomerAddressesCollection
+     * @var CustomerAddressCollection
      */
     protected $addresses;
     /**
      * If the customer is approved or not. Can be null if the customer is neither approved nor disapproved yet
      *
-     * @var bool
+     * @var ?bool
      */
     protected $approved;
     /**
      * A timestamp of when the customer was was approved/disapproved. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var ?string
      */
     protected $approvedAt;
     /**
@@ -63,7 +70,7 @@ class Customer
     /**
      *
      *
-     * @var CustomerExternalServicesCollection
+     * @var CustomerExternalServiceCollection
      */
     protected $externalServices;
     /**
@@ -81,7 +88,7 @@ class Customer
     /**
      * The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)
      *
-     * @var int
+     * @var ?int
      */
     protected $pricelistId;
     /**
@@ -124,9 +131,9 @@ class Customer
     /**
      *
      *
-     * @return CustomerAddressesCollection
+     * @return CustomerAddressCollection
      */
-    public function getAddresses(): ?CustomerAddressesCollection
+    public function getAddresses(): ?CustomerAddressCollection
     {
         return $this->addresses;
     }
@@ -134,11 +141,11 @@ class Customer
     /**
      *
      *
-     * @param CustomerAddressesCollection $addresses
+     * @param CustomerAddressCollection $addresses
      *
      * @return self
      */
-    public function setAddresses(CustomerAddressesCollection $addresses): self
+    public function setAddresses(CustomerAddressCollection $addresses): self
     {
         $this->addresses = $addresses;
 
@@ -162,7 +169,7 @@ class Customer
      *
      * @return self
      */
-    public function setApproved(bool $approved): self
+    public function setApproved(?bool $approved): self
     {
         $this->approved = $approved;
 
@@ -186,7 +193,7 @@ class Customer
      *
      * @return self
      */
-    public function setApprovedAt(string $approvedAt): self
+    public function setApprovedAt(?string $approvedAt): self
     {
         $this->approvedAt = $approvedAt;
 
@@ -320,9 +327,9 @@ class Customer
     /**
      *
      *
-     * @return CustomerExternalServicesCollection
+     * @return CustomerExternalServiceCollection
      */
-    public function getExternalServices(): ?CustomerExternalServicesCollection
+    public function getExternalServices(): ?CustomerExternalServiceCollection
     {
         return $this->externalServices;
     }
@@ -330,11 +337,11 @@ class Customer
     /**
      *
      *
-     * @param CustomerExternalServicesCollection $externalServices
+     * @param CustomerExternalServiceCollection $externalServices
      *
      * @return self
      */
-    public function setExternalServices(CustomerExternalServicesCollection $externalServices): self
+    public function setExternalServices(CustomerExternalServiceCollection $externalServices): self
     {
         $this->externalServices = $externalServices;
 
@@ -406,7 +413,7 @@ class Customer
      *
      * @return self
      */
-    public function setPricelistId(int $pricelistId): self
+    public function setPricelistId(?int $pricelistId): self
     {
         $this->pricelistId = $pricelistId;
 
