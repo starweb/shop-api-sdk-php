@@ -17,7 +17,7 @@ use Http\Discovery\HttpClientDiscovery;
 use Starweb\Api\Authentication\ClientCredentials;
 use Starweb\Api\Authentication\TokenCacheInterface;
 use Starweb\Api\Resource\ResourceInterface;
-use Starweb\HttpClient\EnhancedHttpClient;
+use Starweb\HttpClient\DecoratedHttpClient;
 use Starweb\HttpClient\Plugin\ErrorPlugin;
 use Starweb\HttpClient\Plugin\RetryAuthenticationPlugin;
 
@@ -28,7 +28,7 @@ class Starweb
     public const API_VERSION_URI_SUFFIX = 'v2';
 
     /**
-     * @var EnhancedHttpClient
+     * @var DecoratedHttpClient
      */
     private $client;
 
@@ -81,12 +81,12 @@ class Starweb
      * @param HttpClient $httpClient
      * @param MessageFactory $messageFactory
      *
-     * @return EnhancedHttpClient
+     * @return DecoratedHttpClient
      *
      * @throws InvalidCredentialsException
      * @throws \Http\Client\Exception
      */
-    private function buildHttpClient(HttpClient $httpClient, MessageFactory $messageFactory): EnhancedHttpClient
+    private function buildHttpClient(HttpClient $httpClient, MessageFactory $messageFactory): DecoratedHttpClient
     {
         $builder = new Builder();
         $builder->setHttpClient($httpClient)

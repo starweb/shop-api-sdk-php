@@ -6,7 +6,7 @@ use Http\Discovery\MessageFactoryDiscovery;
 use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
 use Starweb\Api\Model\MediaFile\MediaFileUpload;
-use Starweb\HttpClient\EnhancedHttpClient;
+use Starweb\HttpClient\DecoratedHttpClient;
 use Starweb\HttpClient\Message\EnhancedResponse;
 
 class EnhancedHttpClientTest extends TestCase
@@ -15,7 +15,7 @@ class EnhancedHttpClientTest extends TestCase
     {
         $client = $this->getDefaultClient();
 
-        $this->assertInstanceOf(EnhancedHttpClient::class, $client);
+        $this->assertInstanceOf(DecoratedHttpClient::class, $client);
     }
 
     public function testGet()
@@ -87,6 +87,6 @@ class EnhancedHttpClientTest extends TestCase
         $client = new Client();
         $requestFactory = MessageFactoryDiscovery::find();
 
-        return new EnhancedHttpClient($client, $requestFactory);
+        return new DecoratedHttpClient($client, $requestFactory);
     }
 }

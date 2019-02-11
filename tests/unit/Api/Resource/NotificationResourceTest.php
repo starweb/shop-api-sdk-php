@@ -9,14 +9,14 @@ use Starweb\Api\Resource\MediaFileResource;
 use Starweb\Api\Resource\NotificationResource;
 use Starweb\Api\Resource\Resource;
 use Starweb\Api\Resource\ResourceInterface;
-use Starweb\HttpClient\EnhancedHttpClient;
+use Starweb\HttpClient\DecoratedHttpClient;
 use Starweb\HttpClient\Message\EnhancedResponse;
 
 class NotificationResourceTest extends TestCase
 {
     public function testConstructor()
     {
-        $client = $this->createMock(EnhancedHttpClient::class);
+        $client = $this->createMock(DecoratedHttpClient::class);
         $resource = new NotificationResource($client);
 
         $this->assertInstanceOf(ResourceInterface::class, $resource);
@@ -27,7 +27,7 @@ class NotificationResourceTest extends TestCase
     public function create()
     {
         $response = $this->createMock(EnhancedResponse::class);
-        $client = $this->createMock(EnhancedHttpClient::class);
+        $client = $this->createMock(DecoratedHttpClient::class);
         $resource = new NotificationResource($client);
 
         $notification = new Notification();

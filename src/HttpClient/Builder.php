@@ -88,13 +88,13 @@ class Builder
     }
 
     /**
-     * @return EnhancedHttpClient
+     * @return DecoratedHttpClient
      */
-    public function build(): EnhancedHttpClient
+    public function build(): DecoratedHttpClient
     {
         $factory = new PluginClientFactory();
         $pluginClient = $factory->createClient($this->getHttpClient(), $this->plugins);
-        $client = new EnhancedHttpClient($pluginClient, $this->getMessageFactory());
+        $client = new DecoratedHttpClient($pluginClient, $this->getMessageFactory());
 
         return $client;
     }

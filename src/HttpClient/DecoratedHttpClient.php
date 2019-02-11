@@ -13,7 +13,7 @@ use Psr\Http\Message\UriInterface;
 use Starweb\Api\Model\UploadFileInterface;
 use Starweb\HttpClient\Message\EnhancedResponse;
 
-class EnhancedHttpClient implements HttpClient
+class DecoratedHttpClient implements HttpClient
 {
     /**
      * @var HttpClient

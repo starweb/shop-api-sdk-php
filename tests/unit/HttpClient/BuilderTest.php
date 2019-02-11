@@ -9,7 +9,7 @@ use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
 use Starweb\Api\Authentication\AccessToken;
 use Starweb\HttpClient\Builder;
-use Starweb\HttpClient\EnhancedHttpClient;
+use Starweb\HttpClient\DecoratedHttpClient;
 
 class BuilderTest extends TestCase
 {
@@ -28,7 +28,7 @@ class BuilderTest extends TestCase
         $client = $builder->build();
 
         $this->assertInstanceOf(Builder::class, $builder);
-        $this->assertInstanceOf(EnhancedHttpClient::class, $client);
+        $this->assertInstanceOf(DecoratedHttpClient::class, $client);
     }
 
     public function testSetMessageFactory()
@@ -38,7 +38,7 @@ class BuilderTest extends TestCase
         $client = $builder->build();
 
         $this->assertInstanceOf(Builder::class, $builder);
-        $this->assertInstanceOf(EnhancedHttpClient::class, $client);
+        $this->assertInstanceOf(DecoratedHttpClient::class, $client);
     }
 
     public function testAddPlugin()

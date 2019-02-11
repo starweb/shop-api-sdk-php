@@ -10,14 +10,14 @@ use Starweb\Api\Model\MediaFile\MediaFileItem;
 use Starweb\Api\Resource\MediaFileResource;
 use Starweb\Api\Resource\Resource;
 use Starweb\Api\Resource\ResourceInterface;
-use Starweb\HttpClient\EnhancedHttpClient;
+use Starweb\HttpClient\DecoratedHttpClient;
 use Starweb\HttpClient\Message\EnhancedResponse;
 
 class MediaFileResourceTest extends TestCase
 {
     public function testConstructor()
     {
-        $client = $this->createMock(EnhancedHttpClient::class);
+        $client = $this->createMock(DecoratedHttpClient::class);
         $resource = new MediaFileResource($client);
 
         $this->assertInstanceOf(ResourceInterface::class, $resource);
@@ -28,7 +28,7 @@ class MediaFileResourceTest extends TestCase
     public function list()
     {
         $response = $this->createMock(EnhancedResponse::class);
-        $client = $this->createMock(EnhancedHttpClient::class);
+        $client = $this->createMock(DecoratedHttpClient::class);
         $resource = new MediaFileResource($client);
 
         $response->method('getContentAsModel')->willReturn(new MediaFileCollection());
@@ -51,7 +51,7 @@ class MediaFileResourceTest extends TestCase
         $mediaFileItem->setData($mediaFile);
 
         $response = $this->createMock(EnhancedResponse::class);
-        $client = $this->createMock(EnhancedHttpClient::class);
+        $client = $this->createMock(DecoratedHttpClient::class);
         $resource = new MediaFileResource($client);
 
         $response->method('getContentAsModel')->willReturn($mediaFileItem);

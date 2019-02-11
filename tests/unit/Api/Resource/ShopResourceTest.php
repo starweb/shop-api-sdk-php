@@ -8,14 +8,14 @@ use Starweb\Api\Model\Shop\ShopItem;
 use Starweb\Api\Resource\Resource;
 use Starweb\Api\Resource\ResourceInterface;
 use Starweb\Api\Resource\ShopResource;
-use Starweb\HttpClient\EnhancedHttpClient;
+use Starweb\HttpClient\DecoratedHttpClient;
 use Starweb\HttpClient\Message\EnhancedResponse;
 
 class ShopResourceTest extends TestCase
 {
     public function testConstructor()
     {
-        $client = $this->createMock(EnhancedHttpClient::class);
+        $client = $this->createMock(DecoratedHttpClient::class);
         $resource = new ShopResource($client);
 
         $this->assertInstanceOf(ResourceInterface::class, $resource);
@@ -31,7 +31,7 @@ class ShopResourceTest extends TestCase
         $shopItem->setData($shop);
 
         $response = $this->createMock(EnhancedResponse::class);
-        $client = $this->createMock(EnhancedHttpClient::class);
+        $client = $this->createMock(DecoratedHttpClient::class);
         $resource = new ShopResource($client);
         $response->method('getContentAsModel')->willReturn($shopItem);
         $client->method('get')->willReturn($response);
