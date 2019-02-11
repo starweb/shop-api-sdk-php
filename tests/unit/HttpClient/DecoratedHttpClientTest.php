@@ -9,7 +9,7 @@ use Starweb\Api\Model\MediaFile\MediaFileUpload;
 use Starweb\HttpClient\DecoratedHttpClient;
 use Starweb\HttpClient\Message\EnhancedResponse;
 
-class EnhancedHttpClientTest extends TestCase
+class DecoratedHttpClientTest extends TestCase
 {
     public function testConstructor()
     {
