@@ -65,7 +65,7 @@ class StarwebTest extends TestCase
         $client->addResponse($response);
         $response->method('getStatusCode')->willReturn(400);
 
-        $starweb = new Starweb(
+        new Starweb(
             new ClientCredentials('id', 'secret'),
             self::DEFAULT_BASE_URI,
             $client
@@ -141,7 +141,7 @@ class StarwebTest extends TestCase
     public function testInvalidResource()
     {
         $starweb = $this->getStarweb();
-        $resource = $starweb->resource('InvalidResource');
+        $starweb->resource('InvalidResource');
     }
 
     private function getStreamFactory()
