@@ -47,7 +47,7 @@ class Starweb
      *
      * @param ClientCredentials $credentials
      * @param string $baseUri
-     * @param HttpClient|null $httpClient
+     * @param DecoratedHttpClient|null $decoratedHttpClient
      * @param MessageFactory|null $messageFactory
      * @param TokenCacheInterface|null $tokenCache
      *
@@ -56,13 +56,15 @@ class Starweb
     public function __construct(
         ClientCredentials $credentials,
         string $baseUri,
-        HttpClient $httpClient = null,
+        DecoratedHttpClient $decoratedHttpClient = null,
         MessageFactory $messageFactory = null,
         TokenCacheInterface $tokenCache = null
     ) {
-        if (!$httpClient) {
-            $httpClient = HttpClientDiscovery::find();
+        if (!$decoratedHttpClient) {
+            $decoratedHttpClient = $this->buildHttpClient(HttpClientDiscovery::find(), $messageFactory);
         }
+        $httpClient = $decoratedHttpClient->getHttpClient();
+        $this->client = $decoratedHttpClient;
 
         if (!$messageFactory) {
             $messageFactory = MessageFactoryDiscovery::find();
@@ -74,7 +76,6 @@ class Starweb
 
         $this->baseUri      = $baseUri;
         $this->tokenManager = new TokenManager($httpClient, $messageFactory, $credentials, $tokenCache, $baseUri);
-        $this->client       = $this->buildHttpClient($httpClient, $messageFactory);
     }
 
     /**
@@ -86,7 +87,7 @@ class Starweb
      * @throws InvalidCredentialsException
      * @throws \Http\Client\Exception
      */
-    private function buildHttpClient(HttpClient $httpClient, MessageFactory $messageFactory): DecoratedHttpClient
+    protected function buildHttpClient(HttpClient $httpClient, MessageFactory $messageFactory): DecoratedHttpClient
     {
         $builder = new Builder();
         $builder->setHttpClient($httpClient)
