@@ -37,6 +37,22 @@ class DecoratedHttpClient implements HttpClient
     }
 
     /**
+     * @return HttpClient
+     */
+    public function getHttpClient(): HttpClient
+    {
+        return $this->httpClient;
+    }
+
+    /**
+     * @return RequestFactory
+     */
+    public function getRequestFactory(): RequestFactory
+    {
+        return $this->requestFactory;
+    }
+
+    /**
      * Convenience method representing the HTTP verb **get**
      *
      * @param $path
