@@ -3,8 +3,13 @@
 namespace Starweb\Tests;
 
 use GuzzleHttp\Psr7\Response;
+use Http\Client\Common\Plugin\BaseUriPlugin;
+use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
+use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;
 use Http\Discovery\StreamFactoryDiscovery;
+use Http\Discovery\UriFactoryDiscovery;
+use Http\Message\MessageFactory;
 use Http\Message\StreamFactory;
 use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
@@ -17,6 +22,10 @@ use Starweb\Api\Resource\Resource;
 use Starweb\Api\Resource\ResourceInterface;
 use Starweb\Api\Resource\Resources;
 use Starweb\Api\Resource\ShopResource;
+use Starweb\HttpClient\Builder;
+use Starweb\HttpClient\DecoratedHttpClient;
+use Starweb\HttpClient\Plugin\ErrorPlugin;
+use Starweb\HttpClient\Plugin\RetryAuthenticationPlugin;
 use Starweb\Starweb;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -65,10 +74,12 @@ class StarwebTest extends TestCase
         $client->addResponse($response);
         $response->method('getStatusCode')->willReturn(400);
 
+        $messageFactory = MessageFactoryDiscovery::find();
+        $decoratedHttpClient = new DecoratedHttpClient($client, $messageFactory);
+
         new Starweb(
             new ClientCredentials('id', 'secret'),
-            self::DEFAULT_BASE_URI,
-            $client
+            self::DEFAULT_BASE_URI
         );
     }
 
@@ -92,7 +103,7 @@ class StarwebTest extends TestCase
         return new Starweb(
             new ClientCredentials('id', 'secret'),
             self::DEFAULT_BASE_URI,
-            $client,
+            null,
             $messageFactory,
             $cache
         );
@@ -151,5 +162,24 @@ class StarwebTest extends TestCase
         }
 
         return $this->streamFactory;
+    }
+
+    private function buildDecoratedHttpClient(
+        HttpClient $httpClient,
+        MessageFactory $messageFactory
+    ): DecoratedHttpClient {
+        $builder = new Builder();
+
+        $builder->setHttpClient($httpClient)
+                ->setMessageFactory($messageFactory)
+                ->addPlugin(new ErrorPlugin())
+                ->addPlugin(new RetryAuthenticationPlugin($this->tokenManager))
+                ->addPlugin(new BaseUriPlugin(UriFactoryDiscovery::find()->createUri($this->baseUri)))
+                ->addPlugin(new HeaderDefaultsPlugin([
+                    'User-Agent' => 'starweb-sdk (https://github.com/starweb/starweb-sdk)',
+                ]))
+                ->addAuthentication($this->tokenManager->getToken());
+
+        return $builder->build();
     }
 }

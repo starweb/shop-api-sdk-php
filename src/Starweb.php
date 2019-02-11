@@ -61,7 +61,8 @@ class Starweb
         TokenCacheInterface $tokenCache = null
     ) {
         if (!$decoratedHttpClient) {
-            $decoratedHttpClient = $this->buildHttpClient(HttpClientDiscovery::find(), $messageFactory);
+            $httpClient = HttpClientDiscovery::find();
+
         }
         $httpClient = $decoratedHttpClient->getHttpClient();
         $this->client = $decoratedHttpClient;
@@ -87,7 +88,7 @@ class Starweb
      * @throws InvalidCredentialsException
      * @throws \Http\Client\Exception
      */
-    protected function buildHttpClient(HttpClient $httpClient, MessageFactory $messageFactory): DecoratedHttpClient
+    private function buildHttpClient(HttpClient $httpClient, MessageFactory $messageFactory): DecoratedHttpClient
     {
         $builder = new Builder();
         $builder->setHttpClient($httpClient)

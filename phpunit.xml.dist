@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="vendor/autoload.php" colors="true">
+<phpunit bootstrap="vendor/autoload.php" colors="true" stopOnError="true" stopOnFailure="true">
     <testsuites>
         <testsuite name="Starweb SDK Test Suite">
             <directory suffix=".php">tests/</directory>
