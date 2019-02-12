@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 use Starweb\Api\Model\UploadFileInterface;
-use Starweb\HttpClient\Message\EnhancedResponse;
+use Starweb\HttpClient\Message\DecoratedResponse;
 
 class DecoratedHttpClient implements HttpClient
 {
@@ -59,11 +59,11 @@ class DecoratedHttpClient implements HttpClient
      * @param array $parameters
      * @param array $requestHeaders
      *
-     * @return EnhancedResponse
+     * @return DecoratedResponse
      *
      * @throws \Http\Client\Exception
      */
-    public function get($path, array $parameters = [], array $requestHeaders = []): EnhancedResponse
+    public function get($path, array $parameters = [], array $requestHeaders = []): DecoratedResponse
     {
         if (count($parameters) > 0) {
             $path .= '?'.http_build_query($parameters);
@@ -71,7 +71,7 @@ class DecoratedHttpClient implements HttpClient
 
         $response = $this->send('GET', $path, $requestHeaders);
 
-        return new EnhancedResponse($response);
+        return new DecoratedResponse($response);
     }
 
     /**
@@ -81,11 +81,11 @@ class DecoratedHttpClient implements HttpClient
      * @param array $parameters
      * @param array $requestHeaders
      *
-     * @return EnhancedResponse
+     * @return DecoratedResponse
      *
      * @throws \Http\Client\Exception
      */
-    public function head($path, array $parameters = [], array $requestHeaders = []): EnhancedResponse
+    public function head($path, array $parameters = [], array $requestHeaders = []): DecoratedResponse
     {
         if (array_key_exists('ref', $parameters) && is_null($parameters['ref'])) {
             unset($parameters['ref']);
@@ -97,7 +97,7 @@ class DecoratedHttpClient implements HttpClient
 
         $response = $this->send('HEAD', $path, $requestHeaders);
 
-        return new EnhancedResponse($response);
+        return new DecoratedResponse($response);
     }
 
     /**
@@ -105,11 +105,11 @@ class DecoratedHttpClient implements HttpClient
      * @param array $parameters
      * @param array $requestHeaders
      *
-     * @return EnhancedResponse
+     * @return DecoratedResponse
      *
      * @throws \Http\Client\Exception
      */
-    public function post($path, array $parameters = [], array $requestHeaders = []): EnhancedResponse
+    public function post($path, array $parameters = [], array $requestHeaders = []): DecoratedResponse
     {
         $requestHeaders['Content-Type'] = 'application/json';
 
@@ -121,18 +121,18 @@ class DecoratedHttpClient implements HttpClient
      * @param array $parameters
      * @param array $requestHeaders
      *
-     * @return EnhancedResponse
+     * @return DecoratedResponse
      *
      * @throws \Http\Client\Exception
      */
-    public function postWwwFormUrlencoded($path, array $parameters = [], array $requestHeaders = []): EnhancedResponse
+    public function postWwwFormUrlencoded($path, array $parameters = [], array $requestHeaders = []): DecoratedResponse
     {
         $requestHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
 
         return $this->postRaw($path, http_build_query($parameters), $requestHeaders);
     }
 
-    public function uploadFile(string $method, string $path, UploadFileInterface $file): EnhancedResponse
+    public function uploadFile(string $method, string $path, UploadFileInterface $file): DecoratedResponse
     {
         $boundary = '----boundary';
         $builder = $this->getMultipartStreamBuilderForFile($file, $boundary);
@@ -142,7 +142,7 @@ class DecoratedHttpClient implements HttpClient
 
         $response = $this->send($method, $path, $requestHeaders, $body);
 
-        return new EnhancedResponse($response);
+        return new DecoratedResponse($response);
     }
 
     private function getMultipartStreamBuilderForFile(UploadFileInterface $file, string $boundary)
@@ -167,15 +167,15 @@ class DecoratedHttpClient implements HttpClient
      * @param $body
      * @param array $requestHeaders
      *
-     * @return EnhancedResponse
+     * @return DecoratedResponse
      *
      * @throws \Http\Client\Exception
      */
-    public function postRaw($path, $body, array $requestHeaders = []): EnhancedResponse
+    public function postRaw($path, $body, array $requestHeaders = []): DecoratedResponse
     {
         $response = $this->send('POST', $path, $requestHeaders, $body);
 
-        return new EnhancedResponse($response);
+        return new DecoratedResponse($response);
     }
 
     /**
@@ -183,16 +183,16 @@ class DecoratedHttpClient implements HttpClient
      * @param array $parameters
      * @param array $requestHeaders
      *
-     * @return EnhancedResponse
+     * @return DecoratedResponse
      *
      * @throws \Http\Client\Exception
      */
-    public function patch($path, array $parameters = [], array $requestHeaders = []): EnhancedResponse
+    public function patch($path, array $parameters = [], array $requestHeaders = []): DecoratedResponse
     {
         $requestHeaders['Content-Type'] = 'application/json';
         $response = $this->send('PATCH', $path, $requestHeaders, $this->createJsonBody($parameters));
 
-        return new EnhancedResponse($response);
+        return new DecoratedResponse($response);
     }
 
     /**
@@ -200,16 +200,16 @@ class DecoratedHttpClient implements HttpClient
      * @param array $parameters
      * @param array $requestHeaders
      *
-     * @return EnhancedResponse
+     * @return DecoratedResponse
      *
      * @throws \Http\Client\Exception
      */
-    public function put($path, array $parameters = [], array $requestHeaders = []): EnhancedResponse
+    public function put($path, array $parameters = [], array $requestHeaders = []): DecoratedResponse
     {
         $requestHeaders['Content-Type'] = 'application/json';
         $response = $this->send('PUT', $path, $requestHeaders, $this->createJsonBody($parameters));
 
-        return new EnhancedResponse($response);
+        return new DecoratedResponse($response);
     }
 
     /**
@@ -217,15 +217,15 @@ class DecoratedHttpClient implements HttpClient
      * @param array $parameters
      * @param array $requestHeaders
      *
-     * @return EnhancedResponse
+     * @return DecoratedResponse
      *
      * @throws \Http\Client\Exception
      */
-    public function delete($path, array $parameters = [], array $requestHeaders = []): EnhancedResponse
+    public function delete($path, array $parameters = [], array $requestHeaders = []): DecoratedResponse
     {
         $response = $this->send('DELETE', $path, $requestHeaders, $this->createJsonBody($parameters));
 
-        return new EnhancedResponse($response);
+        return new DecoratedResponse($response);
     }
 
     /**

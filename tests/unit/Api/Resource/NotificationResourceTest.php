@@ -10,7 +10,7 @@ use Starweb\Api\Resource\NotificationResource;
 use Starweb\Api\Resource\Resource;
 use Starweb\Api\Resource\ResourceInterface;
 use Starweb\HttpClient\DecoratedHttpClient;
-use Starweb\HttpClient\Message\EnhancedResponse;
+use Starweb\HttpClient\Message\DecoratedResponse;
 
 class NotificationResourceTest extends TestCase
 {
@@ -26,7 +26,7 @@ class NotificationResourceTest extends TestCase
 
     public function create()
     {
-        $response = $this->createMock(EnhancedResponse::class);
+        $response = $this->createMock(DecoratedResponse::class);
         $client = $this->createMock(DecoratedHttpClient::class);
         $resource = new NotificationResource($client);
 

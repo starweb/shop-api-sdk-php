@@ -22,7 +22,7 @@ use Symfony\Component\Serializer\Serializer;
  *
  * @package Starweb\HttpClient\Message
  */
-class EnhancedResponse implements ResponseInterface
+class DecoratedResponse implements ResponseInterface
 {
     /**
      * @var ResponseInterface

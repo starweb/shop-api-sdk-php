@@ -9,7 +9,7 @@ use Starweb\Api\Resource\Resource;
 use Starweb\Api\Resource\ResourceInterface;
 use Starweb\Api\Resource\ShopResource;
 use Starweb\HttpClient\DecoratedHttpClient;
-use Starweb\HttpClient\Message\EnhancedResponse;
+use Starweb\HttpClient\Message\DecoratedResponse;
 
 class ShopResourceTest extends TestCase
 {
@@ -30,7 +30,7 @@ class ShopResourceTest extends TestCase
         $shopItem = new ShopItem();
         $shopItem->setData($shop);
 
-        $response = $this->createMock(EnhancedResponse::class);
+        $response = $this->createMock(DecoratedResponse::class);
         $client = $this->createMock(DecoratedHttpClient::class);
         $resource = new ShopResource($client);
         $response->method('getContentAsModel')->willReturn($shopItem);

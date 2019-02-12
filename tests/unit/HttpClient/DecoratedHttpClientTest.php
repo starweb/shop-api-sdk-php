@@ -7,7 +7,7 @@ use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
 use Starweb\Api\Model\MediaFile\MediaFileUpload;
 use Starweb\HttpClient\DecoratedHttpClient;
-use Starweb\HttpClient\Message\EnhancedResponse;
+use Starweb\HttpClient\Message\DecoratedResponse;
 
 class DecoratedHttpClientTest extends TestCase
 {
@@ -22,7 +22,7 @@ class DecoratedHttpClientTest extends TestCase
     {
         $client = $this->getDefaultClient();
 
-        $this->assertInstanceOf(EnhancedResponse::class, $client->get('/path', ['foo' => 'bar']));
+        $this->assertInstanceOf(DecoratedResponse::class, $client->get('/path', ['foo' => 'bar']));
     }
 
     public function testHead()
@@ -30,7 +30,7 @@ class DecoratedHttpClientTest extends TestCase
         $client = $this->getDefaultClient();
         $response = $client->head('/path', ['foo' => 'bar', 'ref' => null], ['X-Custom-Header' => 'Foo meets bar']);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     public function testPost()
@@ -38,7 +38,7 @@ class DecoratedHttpClientTest extends TestCase
         $client = $this->getDefaultClient();
         $response = $client->post('/path', ['foo' => 'bar'], ['X-Custom-Header' => 'Foo meets bar']);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     public function testPostWwwFormUrlencoded()
@@ -46,7 +46,7 @@ class DecoratedHttpClientTest extends TestCase
         $client = $this->getDefaultClient();
         $response = $client->postWwwFormUrlencoded('/path', ['foo' => 'bar'], ['X-Custom-Header' => 'Foo meets bar']);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     public function testUploadFile()
@@ -55,7 +55,7 @@ class DecoratedHttpClientTest extends TestCase
         $uploadFile = $this->createMock(MediaFileUpload::class);
         $response = $client->uploadFile('POST', '/path', $uploadFile);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     public function testPatch()
@@ -63,7 +63,7 @@ class DecoratedHttpClientTest extends TestCase
         $client = $this->getDefaultClient();
         $response = $client->patch('/path', ['foo' => 'bar'], ['X-Custom-Header' => 'Foo meets bar']);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     public function testPut()
@@ -71,7 +71,7 @@ class DecoratedHttpClientTest extends TestCase
         $client = $this->getDefaultClient();
         $response = $client->put('/path', ['foo' => 'bar'], ['X-Custom-Header' => 'Foo meets bar']);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     public function testDelete()
@@ -79,7 +79,7 @@ class DecoratedHttpClientTest extends TestCase
         $client = $this->getDefaultClient();
         $response = $client->delete('/path', ['foo' => 'bar'], ['X-Custom-Header' => 'Foo meets bar']);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     private function getDefaultClient()

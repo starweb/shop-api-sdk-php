@@ -6,7 +6,7 @@ use Starweb\Api\Model\ModelInterface;
 use Starweb\Api\Operation\OperationInterface;
 use Starweb\Api\Operation\UploadFileOperation;
 use Starweb\HttpClient\DecoratedHttpClient;
-use Starweb\HttpClient\Message\EnhancedResponse;
+use Starweb\HttpClient\Message\DecoratedResponse;
 use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -75,7 +75,7 @@ abstract class Resource implements ResourceInterface
         return new OptionsResolver();
     }
 
-    public function performOperation(OperationInterface $operation): EnhancedResponse
+    public function performOperation(OperationInterface $operation): DecoratedResponse
     {
         if ($operation instanceof UploadFileOperation) {
             return $this->performUploadFileOperation($operation);

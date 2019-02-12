@@ -11,7 +11,7 @@ use Starweb\Api\Resource\MediaFileResource;
 use Starweb\Api\Resource\Resource;
 use Starweb\Api\Resource\ResourceInterface;
 use Starweb\HttpClient\DecoratedHttpClient;
-use Starweb\HttpClient\Message\EnhancedResponse;
+use Starweb\HttpClient\Message\DecoratedResponse;
 
 class MediaFileResourceTest extends TestCase
 {
@@ -27,7 +27,7 @@ class MediaFileResourceTest extends TestCase
 
     public function list()
     {
-        $response = $this->createMock(EnhancedResponse::class);
+        $response = $this->createMock(DecoratedResponse::class);
         $client = $this->createMock(DecoratedHttpClient::class);
         $resource = new MediaFileResource($client);
 
@@ -50,7 +50,7 @@ class MediaFileResourceTest extends TestCase
         $mediaFileItem = new MediaFileItem();
         $mediaFileItem->setData($mediaFile);
 
-        $response = $this->createMock(EnhancedResponse::class);
+        $response = $this->createMock(DecoratedResponse::class);
         $client = $this->createMock(DecoratedHttpClient::class);
         $resource = new MediaFileResource($client);
 
