@@ -11,7 +11,7 @@ resources/specification/*
 !resources/specification/openapi.json
 
 # test coverage
-resources/test-coverage
+tests/coverage
 
 # examples
 resources/examples/config.php
