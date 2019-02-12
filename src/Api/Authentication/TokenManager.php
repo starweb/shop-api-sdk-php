@@ -95,7 +95,7 @@ class TokenManager
             throw new ServerErrorException('server error', $request, $response);
         }
 
-        if (400 === $response->getStatusCode() && 'invalid_client' === $responseData['error']) {
+        if (400 === $response->getStatusCode() && $responseData['error'] === 'invalid_client') {
             throw new InvalidCredentialsException($responseData['error_description'], $request, $response);
         }
 
