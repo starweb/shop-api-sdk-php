@@ -50,37 +50,9 @@ class StarwebTest extends TestCase
      */
     public function testConstructorWithoutClientAndTokenCache()
     {
-        $starweb = new Starweb(new ClientCredentials('id', 'secret'), self::DEFAULT_BASE_URI);
+        $starweb = Starweb::create(new ClientCredentials('id', 'secret'), self::DEFAULT_BASE_URI);
 
         $this->assertInstanceOf(Starweb::class, $starweb);
-    }
-
-    /**
-     * this is a real life test on the demo api with wrong credentials
-     *
-     * @expectedException \Starweb\Exception\InvalidCredentialsException
-     */
-    public function testConstructorWithInvalidCredentials()
-    {
-        $client = new Client();
-        $response = $this->createMock(Response::class);
-
-        $response->method('getBody')->willReturn(
-            $this->getStreamFactory()->createStream(
-                '{"error": "invalid_client", "error_description": "Invalid credentials"}'
-            )
-        )
-        ;
-        $client->addResponse($response);
-        $response->method('getStatusCode')->willReturn(400);
-
-        $messageFactory = MessageFactoryDiscovery::find();
-        $decoratedHttpClient = new DecoratedHttpClient($client, $messageFactory);
-
-        new Starweb(
-            new ClientCredentials('id', 'secret'),
-            self::DEFAULT_BASE_URI
-        );
     }
 
     private function getStarweb(): Starweb
@@ -100,7 +72,7 @@ class StarwebTest extends TestCase
         $cache->method('isExpired')->willReturn(false);
         $cache->method('getToken')->willReturn(new AccessToken('my-token'));
 
-        return new Starweb(
+        return Starweb::create(
             new ClientCredentials('id', 'secret'),
             self::DEFAULT_BASE_URI,
             null,

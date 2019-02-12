@@ -11,7 +11,6 @@ use Http\Message\MessageFactory;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenManager;
 use Starweb\Api\Resource\Resources;
-use Starweb\Exception\InvalidCredentialsException;
 use Starweb\HttpClient\Builder;
 use Http\Discovery\HttpClientDiscovery;
 use Starweb\Api\Authentication\ClientCredentials;
@@ -42,30 +41,23 @@ class Starweb
      */
     private $tokenManager;
 
-    /**
-     * Starweb constructor.
-     *
-     * @param ClientCredentials $credentials
-     * @param string $baseUri
-     * @param DecoratedHttpClient|null $decoratedHttpClient
-     * @param MessageFactory|null $messageFactory
-     * @param TokenCacheInterface|null $tokenCache
-     *
-     * @throws \Http\Client\Exception
-     */
-    public function __construct(
-        ClientCredentials $credentials,
+    public function __construct(DecoratedHttpClient $decoratedHttpClient, string $baseUri, TokenManager $tokenManager)
+    {
+        $this->client = $decoratedHttpClient;
+        $this->baseUri = $baseUri;
+        $this->tokenManager = $tokenManager;
+    }
+
+    public static function create(
+        ClientCredentials $clientCredentials,
         string $baseUri,
-        DecoratedHttpClient $decoratedHttpClient = null,
+        HttpClient $httpClient = null,
         MessageFactory $messageFactory = null,
         TokenCacheInterface $tokenCache = null
-    ) {
-        if (!$decoratedHttpClient) {
+    ): self {
+        if (!$httpClient) {
             $httpClient = HttpClientDiscovery::find();
-
         }
-        $httpClient = $decoratedHttpClient->getHttpClient();
-        $this->client = $decoratedHttpClient;
 
         if (!$messageFactory) {
             $messageFactory = MessageFactoryDiscovery::find();
@@ -75,31 +67,29 @@ class Starweb
             $tokenCache = new TokenFilesystemCache();
         }
 
-        $this->baseUri      = $baseUri;
-        $this->tokenManager = new TokenManager($httpClient, $messageFactory, $credentials, $tokenCache, $baseUri);
+        $tokenManager = new TokenManager($httpClient, $messageFactory, $clientCredentials, $tokenCache, $baseUri);
+        $decoratedHttpClient = self::buildHttpClient($httpClient, $messageFactory, $tokenManager, $baseUri);
+
+        return new static($decoratedHttpClient, $baseUri, $tokenManager);
     }
 
-    /**
-     * @param HttpClient $httpClient
-     * @param MessageFactory $messageFactory
-     *
-     * @return DecoratedHttpClient
-     *
-     * @throws InvalidCredentialsException
-     * @throws \Http\Client\Exception
-     */
-    private function buildHttpClient(HttpClient $httpClient, MessageFactory $messageFactory): DecoratedHttpClient
-    {
+    public static function buildHttpClient(
+        HttpClient $httpClient,
+        MessageFactory $messageFactory,
+        TokenManager $tokenManager,
+        string $baseUri
+    ): DecoratedHttpClient {
         $builder = new Builder();
         $builder->setHttpClient($httpClient)
                 ->setMessageFactory($messageFactory)
                 ->addPlugin(new ErrorPlugin())
-                ->addPlugin(new RetryAuthenticationPlugin($this->tokenManager))
-                ->addPlugin(new BaseUriPlugin(UriFactoryDiscovery::find()->createUri($this->baseUri)))
+                ->addPlugin(new RetryAuthenticationPlugin($tokenManager))
+                ->addPlugin(new BaseUriPlugin(UriFactoryDiscovery::find()->createUri($baseUri)))
                 ->addPlugin(new HeaderDefaultsPlugin([
                     'User-Agent' => 'starweb-sdk (https://github.com/starweb/starweb-sdk)',
                 ]))
-                ->addAuthentication($this->tokenManager->getToken());
+                ->addAuthentication($tokenManager->getToken())
+        ;
 
         return $builder->build();
     }
