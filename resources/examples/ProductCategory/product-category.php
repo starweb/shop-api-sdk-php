@@ -16,7 +16,7 @@ use Starweb\Api\Resource\Resources;
 $credentials = new ClientCredentials($clientId, $clientSecret);
 
 // create the sdk object
-$starweb = new Starweb($credentials, $apiBaseUri);
+$starweb = Starweb::create($credentials, $apiBaseUri);
 
 // get a resource by its name in this case "ProductCategory"
 /** @var ProductCategoryResource $resource */
