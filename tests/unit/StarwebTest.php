@@ -44,8 +44,7 @@ class StarwebTest extends TestCase
             $response = $this->createMock(Response::class);
             $response->method('getBody')->willReturn(
                 $this->getStreamFactory()->createStream('{"access_token": "my-token", "expires_in": "3600"}')
-            )
-            ;
+            );
             $client->addResponse($response);
         }
 
