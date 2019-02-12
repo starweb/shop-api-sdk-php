@@ -3,99 +3,159 @@
 namespace Starweb\Tests;
 
 use GuzzleHttp\Psr7\Response;
+use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;
 use Http\Discovery\StreamFactoryDiscovery;
+use Http\Message\MessageFactory;
+use Http\Message\ResponseFactory;
 use Http\Message\StreamFactory;
 use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
 use Starweb\Api\Authentication\AccessToken;
 use Starweb\Api\Authentication\ClientCredentials;
+use Starweb\Api\Authentication\TokenCacheInterface;
 use Starweb\Api\Authentication\TokenFilesystemCache;
-use Starweb\Api\Resource\MediaFileResource;
-use Starweb\Api\Resource\ProductCategoryResource;
+use Starweb\Api\Authentication\TokenManager;
 use Starweb\Api\Resource\Resource;
 use Starweb\Api\Resource\ResourceInterface;
 use Starweb\Api\Resource\Resources;
-use Starweb\Api\Resource\ShopResource;
+use Starweb\HttpClient\DecoratedHttpClient;
 use Starweb\Starweb;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class StarwebTest extends TestCase
 {
-    public const DEFAULT_BASE_URI = 'https://demo.starweb.se/api/v2';
+    public const DEFAULT_BASE_URI = 'https://foo.test/v2';
 
     /**
      * @var StreamFactory
      */
     private $streamFactory;
 
-    public function testConstructorWithClientAndTokenCache()
-    {
-        $starweb = $this->getStarweb();
-
-        $this->assertInstanceOf(Starweb::class, $starweb);
-    }
-
     /**
-     * @expectedException \Starweb\Exception\InvalidCredentialsException
+     * @var MessageFactory
      */
-    public function testConstructorWithoutClientAndTokenCache()
+    private $messageFactory;
+
+    private function getStarweb(HttpClient $client = null, TokenCacheInterface $tokenCache = null): Starweb
     {
-        $starweb = new Starweb(new ClientCredentials('id', 'secret'), self::DEFAULT_BASE_URI);
-
-        $this->assertInstanceOf(Starweb::class, $starweb);
-    }
-
-    /**
-     * this is a real life test on the demo api with wrong credentials
-     *
-     * @expectedException \Starweb\Exception\InvalidCredentialsException
-     */
-    public function testConstructorWithInvalidCredentials()
-    {
-        $client = new Client();
-        $response = $this->createMock(Response::class);
-
-        $response->method('getBody')->willReturn(
-            $this->getStreamFactory()->createStream(
-                '{"error": "invalid_client", "error_description": "Invalid credentials"}'
-            )
-        )
-        ;
-        $client->addResponse($response);
-        $response->method('getStatusCode')->willReturn(400);
-
-        $starweb = new Starweb(
-            new ClientCredentials('id', 'secret'),
-            self::DEFAULT_BASE_URI,
-            $client
-        );
-    }
-
-    private function getStarweb(): Starweb
-    {
-        $client = new Client();
-        $response = $this->createMock(Response::class);
-        $response->method('getBody')->willReturn(
-            $this->getStreamFactory()->createStream('{"access_token": "my-token", "expires_in": "3600"}')
-        )
-        ;
-        $client->addResponse($response);
+        if (!$client) {
+            $client = new Client();
+            $response = $this->createMock(Response::class);
+            $response->method('getBody')->willReturn(
+                $this->getStreamFactory()->createStream('{"access_token": "my-token", "expires_in": "3600"}')
+            );
+            $client->addResponse($response);
+        }
 
         $messageFactory = MessageFactoryDiscovery::find();
 
-        $cache = $this->createMock(TokenFilesystemCache::class);
-        $cache->method('hasToken')->willReturn(true);
-        $cache->method('isExpired')->willReturn(false);
-        $cache->method('getToken')->willReturn(new AccessToken('my-token'));
+        if (!$tokenCache) {
+            $tokenCache = $this->createMock(TokenFilesystemCache::class);
+            $tokenCache->method('hasToken')->willReturn(true);
+            $tokenCache->method('isExpired')->willReturn(false);
+            $tokenCache->method('getToken')->willReturn(new AccessToken('my-token'));
+        }
 
-        return new Starweb(
+        return Starweb::create(
             new ClientCredentials('id', 'secret'),
             self::DEFAULT_BASE_URI,
             $client,
             $messageFactory,
-            $cache
+            $tokenCache
         );
+    }
+
+    public function testConstructor()
+    {
+        $decoratedHttpClient = $this->createMock(DecoratedHttpClient::class);
+        $tokenManager = $this->createMock(TokenManager::class);
+        $starweb = new Starweb($decoratedHttpClient, self::DEFAULT_BASE_URI, $tokenManager);
+
+        $this->assertSame(self::DEFAULT_BASE_URI, $starweb->getBaseUri());
+        $this->assertSame($decoratedHttpClient, $starweb->getClient());
+        $this->assertSame($tokenManager, $starweb->getTokenManager());
+    }
+
+    public function testCreate()
+    {
+        $starweb = $this->getStarweb();
+
+        $this->assertSame(self::DEFAULT_BASE_URI, $starweb->getBaseUri());
+    }
+
+    /**
+     * @expectedException \Http\Client\Exception\NetworkException
+     * @expectedException \Http\Client\Exception\RequestException
+     * @expectedException \Http\Client\Exception\HttpException
+     */
+    public function testCreateWithNonResolvableBaseUri()
+    {
+        $starweb = Starweb::create(new ClientCredentials('id', 'secret'), 'https://foo.test');
+
+        $this->assertInstanceOf(Starweb::class, $starweb);
+    }
+
+    /**
+     * @expectedException \Starweb\Exception\InvalidBaseUriException
+     * @expectedExceptionMessage invalid base uri
+     */
+    public function testCreateWithInvalidBaseUri()
+    {
+        $clientMock = new Client();
+        $response = $this->getResponseFactory()->createResponse(404);
+        $clientMock->addResponse($response);
+        $tokenCacheMock = $this->createMock(TokenFilesystemCache::class);
+
+        $this->getStarweb($clientMock, $tokenCacheMock);
+    }
+
+    /**
+     * @expectedException \Starweb\Exception\InvalidCredentialsException
+     */
+    public function testCreateWithInvalidCredentials()
+    {
+        $clientMock = new Client();
+        $response = $this->getResponseFactory()->createResponse(400);
+        $response = $response->withBody(
+            $this->getStreamFactory()->createStream('{"error": "invalid_client", "error_description": "message"}')
+        );
+        $clientMock->addResponse($response);
+        $tokenCacheMock = $this->createMock(TokenFilesystemCache::class);
+
+        $this->getStarweb($clientMock, $tokenCacheMock);
+    }
+
+    /**
+     * @expectedException \Http\Client\Common\Exception\ServerErrorException
+     */
+    public function testCreateWithServerError()
+    {
+        $clientMock = new Client();
+        $response = $this->getResponseFactory()->createResponse(500);
+        $response = $response->withBody(
+            $this->getStreamFactory()->createStream('{"error": "invalid_client", "error_description": "message"}')
+        );
+        $clientMock->addResponse($response);
+        $tokenCacheMock = $this->createMock(TokenFilesystemCache::class);
+
+        $this->getStarweb($clientMock, $tokenCacheMock);
+    }
+
+    public function testBuildHttpClient()
+    {
+        $clientMock = new Client();
+        $messageFactoryMock = $this->createMock(MessageFactory::class);
+        $tokenManagerMock = $this->createMock(TokenManager::class);
+
+        $decoratedHttpClient = Starweb::buildHttpClient(
+            $clientMock,
+            $messageFactoryMock,
+            $tokenManagerMock,
+            self::DEFAULT_BASE_URI
+        );
+
+        $this->assertInstanceOf(DecoratedHttpClient::class, $decoratedHttpClient);
     }
 
     /**
@@ -141,15 +201,24 @@ class StarwebTest extends TestCase
     public function testInvalidResource()
     {
         $starweb = $this->getStarweb();
-        $resource = $starweb->resource('InvalidResource');
+        $starweb->resource('InvalidResource');
     }
 
-    private function getStreamFactory()
+    private function getStreamFactory(): StreamFactory
     {
         if (!$this->streamFactory) {
             $this->streamFactory = StreamFactoryDiscovery::find();
         }
 
         return $this->streamFactory;
+    }
+
+    private function getResponseFactory(): ResponseFactory
+    {
+        if (!$this->messageFactory) {
+            $this->messageFactory = MessageFactoryDiscovery::find();
+        }
+
+        return $this->messageFactory;
     }
 }

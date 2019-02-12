@@ -2,27 +2,32 @@
 
 namespace Starweb\Tests\HttpClient;
 
+use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;
 use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
 use Starweb\Api\Model\MediaFile\MediaFileUpload;
-use Starweb\HttpClient\EnhancedHttpClient;
-use Starweb\HttpClient\Message\EnhancedResponse;
+use Starweb\HttpClient\DecoratedHttpClient;
+use Starweb\HttpClient\Message\DecoratedResponse;
 
-class EnhancedHttpClientTest extends TestCase
+class DecoratedHttpClientTest extends TestCase
 {
     public function testConstructor()
     {
-        $client = $this->getDefaultClient();
+        $client = new Client();
+        $requestFactory = MessageFactoryDiscovery::find();
+        $decoratedHttpClient = new DecoratedHttpClient($client, $requestFactory);
 
-        $this->assertInstanceOf(EnhancedHttpClient::class, $client);
+        $this->assertInstanceOf(HttpClient::class, $decoratedHttpClient);
+        $this->assertSame($client, $decoratedHttpClient->getHttpClient());
+        $this->assertSame($requestFactory, $decoratedHttpClient->getRequestFactory());
     }
 
     public function testGet()
     {
         $client = $this->getDefaultClient();
 
-        $this->assertInstanceOf(EnhancedResponse::class, $client->get('/path', ['foo' => 'bar']));
+        $this->assertInstanceOf(DecoratedResponse::class, $client->get('/path', ['foo' => 'bar']));
     }
 
     public function testHead()
@@ -30,7 +35,7 @@ class EnhancedHttpClientTest extends TestCase
         $client = $this->getDefaultClient();
         $response = $client->head('/path', ['foo' => 'bar', 'ref' => null], ['X-Custom-Header' => 'Foo meets bar']);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     public function testPost()
@@ -38,7 +43,7 @@ class EnhancedHttpClientTest extends TestCase
         $client = $this->getDefaultClient();
         $response = $client->post('/path', ['foo' => 'bar'], ['X-Custom-Header' => 'Foo meets bar']);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     public function testPostWwwFormUrlencoded()
@@ -46,7 +51,7 @@ class EnhancedHttpClientTest extends TestCase
         $client = $this->getDefaultClient();
         $response = $client->postWwwFormUrlencoded('/path', ['foo' => 'bar'], ['X-Custom-Header' => 'Foo meets bar']);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     public function testUploadFile()
@@ -55,7 +60,7 @@ class EnhancedHttpClientTest extends TestCase
         $uploadFile = $this->createMock(MediaFileUpload::class);
         $response = $client->uploadFile('POST', '/path', $uploadFile);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     public function testPatch()
@@ -63,7 +68,7 @@ class EnhancedHttpClientTest extends TestCase
         $client = $this->getDefaultClient();
         $response = $client->patch('/path', ['foo' => 'bar'], ['X-Custom-Header' => 'Foo meets bar']);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     public function testPut()
@@ -71,7 +76,7 @@ class EnhancedHttpClientTest extends TestCase
         $client = $this->getDefaultClient();
         $response = $client->put('/path', ['foo' => 'bar'], ['X-Custom-Header' => 'Foo meets bar']);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     public function testDelete()
@@ -79,7 +84,7 @@ class EnhancedHttpClientTest extends TestCase
         $client = $this->getDefaultClient();
         $response = $client->delete('/path', ['foo' => 'bar'], ['X-Custom-Header' => 'Foo meets bar']);
 
-        $this->assertInstanceOf(EnhancedResponse::class, $response);
+        $this->assertInstanceOf(DecoratedResponse::class, $response);
     }
 
     private function getDefaultClient()
@@ -87,6 +92,6 @@ class EnhancedHttpClientTest extends TestCase
         $client = new Client();
         $requestFactory = MessageFactoryDiscovery::find();
 
-        return new EnhancedHttpClient($client, $requestFactory);
+        return new DecoratedHttpClient($client, $requestFactory);
     }
 }

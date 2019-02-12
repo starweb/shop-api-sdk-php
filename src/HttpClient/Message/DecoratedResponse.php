@@ -22,7 +22,7 @@ use Symfony\Component\Serializer\Serializer;
  *
  * @package Starweb\HttpClient\Message
  */
-class EnhancedResponse implements ResponseInterface
+class DecoratedResponse implements ResponseInterface
 {
     /**
      * @var ResponseInterface
@@ -211,7 +211,7 @@ class EnhancedResponse implements ResponseInterface
             && $fqcn
             && class_exists($fqcn)
         ) {
-           return $this->getSerializer()->deserialize($body, $fqcn, 'json');
+            return $this->getSerializer()->deserialize($body, $fqcn, 'json');
         }
 
         throw new InvalidResponseContentException('response content could not be transformed into a Starweb API model');

@@ -19,7 +19,7 @@ class TokenManager
     /**
      * @var MessageFactory
      */
-    private $messageFactory;
+    private $requestFactory;
 
     /**
      * @var ClientCredentials
@@ -40,25 +40,24 @@ class TokenManager
      * TokenManager constructor.
      *
      * @param HttpClient $client
-     * @param MessageFactory $messageFactory
+     * @param RequestFactory $requestFactory
      * @param ClientCredentials $credentials
      * @param TokenCacheInterface $storage
      * @param string $baseUri
      */
     public function __construct(
         HttpClient $client,
-        RequestFactory $messageFactory,
+        RequestFactory $requestFactory,
         ClientCredentials $credentials,
         TokenCacheInterface $storage,
         string $baseUri
     ) {
         $this->client = $client;
-        $this->messageFactory = $messageFactory;
+        $this->requestFactory = $requestFactory;
         $this->credentials = $credentials;
         $this->storage = $storage;
         $this->baseUri = $baseUri;
     }
-
 
     /**
      * @param HttpClient $client
@@ -77,7 +76,7 @@ class TokenManager
             'client_secret' => $this->credentials->getSecret(),
         ];
 
-        $request = $this->messageFactory->createRequest(
+        $request = $this->requestFactory->createRequest(
             'POST',
             $this->baseUri.'/token',
             ['Content-Type' => 'application/x-www-form-urlencoded'],
@@ -96,7 +95,7 @@ class TokenManager
             throw new ServerErrorException('server error', $request, $response);
         }
 
-        if (400 === $response->getStatusCode() && 'invalid_client' === $responseData['error']) {
+        if (400 === $response->getStatusCode() && $responseData['error'] === 'invalid_client') {
             throw new InvalidCredentialsException($responseData['error_description'], $request, $response);
         }
 
@@ -104,8 +103,6 @@ class TokenManager
     }
 
     /**
-     * @param HttpClient $client
-     *
      * @return TokenInterface
      *
      * @throws InvalidCredentialsException

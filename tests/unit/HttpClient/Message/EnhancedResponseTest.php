@@ -8,13 +8,13 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Starweb\Api\Model\Shop\Shop;
-use Starweb\HttpClient\Message\EnhancedResponse;
+use Starweb\HttpClient\Message\DecoratedResponse;
 
 class EnhancedResponseTest extends TestCase
 {
     public function testConstructor()
     {
-        $this->assertInstanceOf(EnhancedResponse::class, $this->getDefaultResponse());
+        $this->assertInstanceOf(DecoratedResponse::class, $this->getDefaultResponse());
     }
 
     public function testGetProtocolVersion()
@@ -192,6 +192,6 @@ class EnhancedResponseTest extends TestCase
             $response = new Response();
         }
 
-        return new EnhancedResponse($response);
+        return new DecoratedResponse($response);
     }
 }

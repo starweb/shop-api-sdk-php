@@ -7,7 +7,7 @@ use Http\Client\Common\Exception\ServerErrorException;
 use Http\Client\Common\Plugin;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Starweb\HttpClient\Message\EnhancedResponse;
+use Starweb\HttpClient\Message\DecoratedResponse;
 
 /**
  * Copyright (c) 2015-2016 PHP HTTP Team <team@php-http.org>
@@ -69,14 +69,14 @@ final class ErrorPlugin implements Plugin
     protected function transformResponseToException(RequestInterface $request, ResponseInterface $response)
     {
         if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-            $response = new EnhancedResponse($response);
+            $response = new DecoratedResponse($response);
             $content = $response->getContent();
 
             throw new ClientErrorException($content['error_description'], $request, $response);
         }
 
         if ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
-            $response = new EnhancedResponse($response);
+            $response = new DecoratedResponse($response);
 
             throw new ServerErrorException($response->getReasonPhrase(), $request, $response);
         }
