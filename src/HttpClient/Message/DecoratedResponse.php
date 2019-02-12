@@ -211,7 +211,7 @@ class DecoratedResponse implements ResponseInterface
             && $fqcn
             && class_exists($fqcn)
         ) {
-           return $this->getSerializer()->deserialize($body, $fqcn, 'json');
+            return $this->getSerializer()->deserialize($body, $fqcn, 'json');
         }
 
         throw new InvalidResponseContentException('response content could not be transformed into a Starweb API model');

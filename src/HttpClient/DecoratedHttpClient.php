@@ -92,7 +92,7 @@ class DecoratedHttpClient implements HttpClient
         }
 
         if (count($parameters) > 0) {
-            $path .= '?'.http_build_query($parameters);
+            $path .= '?' . http_build_query($parameters);
         }
 
         $response = $this->send('HEAD', $path, $requestHeaders);
