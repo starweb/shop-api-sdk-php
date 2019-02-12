@@ -2,6 +2,7 @@
 
 namespace Starweb\Tests\HttpClient;
 
+use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;
 use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
@@ -13,9 +14,13 @@ class DecoratedHttpClientTest extends TestCase
 {
     public function testConstructor()
     {
-        $client = $this->getDefaultClient();
+        $client = new Client();
+        $requestFactory = MessageFactoryDiscovery::find();
+        $decoratedHttpClient = new DecoratedHttpClient($client, $requestFactory);
 
-        $this->assertInstanceOf(DecoratedHttpClient::class, $client);
+        $this->assertInstanceOf(HttpClient::class, $decoratedHttpClient);
+        $this->assertSame($client, $decoratedHttpClient->getHttpClient());
+        $this->assertSame($requestFactory, $decoratedHttpClient->getRequestFactory());
     }
 
     public function testGet()
