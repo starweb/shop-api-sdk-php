@@ -103,8 +103,6 @@ class TokenManager
     }
 
     /**
-     * @param HttpClient $client
-     *
      * @return TokenInterface
      *
      * @throws InvalidCredentialsException
