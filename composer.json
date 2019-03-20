@@ -1,13 +1,12 @@
 {
     "name": "starweb/starweb-sdk",
-    "version": "0.1.0",
-    "description": "Starweb SDK for PHP",
-    "keywords": ["ecommerce", "shop", "starweb", "api"],
-    "homepage": "https://www.starweb.com/",
+    "description": "Starweb Shop API Software Development Kit for PHP",
+    "keywords": ["ecommerce", "shop", "starweb", "api", "sdk"],
+    "homepage": "http://github.com/starweb/shop-api-sdk-php",
     "authors": [
         {
             "name": "Starweb AB",
-            "email": "starwebapi@starweb.se"
+            "email": "api@starweb.se"
         }
     ],
     "license": "BSD-3-Clause",
@@ -47,5 +46,10 @@
         "phpunit": "vendor/bin/phpunit --stop-on-error --stop-on-failure",
         "phpunit-coverage": "vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-html ${baseDir}resources/test-coverage",
         "phpcs": "vendor/bin/phpcs src --standard=resources/code-sniffer-standards/php-standard.xml"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
     }
 }
