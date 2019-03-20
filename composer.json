@@ -1,5 +1,5 @@
 {
-    "name": "starweb/starweb-sdk",
+    "name": "starweb/shop-api-sdk",
     "description": "Starweb Shop API Software Development Kit for PHP",
     "keywords": ["ecommerce", "shop", "starweb", "api", "sdk"],
     "homepage": "http://github.com/starweb/shop-api-sdk-php",
