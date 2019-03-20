@@ -1,0 +1,10 @@
+version: '3'
+services:
+    starweb-api-tools:
+        image: lordrhodos/api-tools:latest
+        container_name: starweb-api-tools
+        ports:
+            - 5000:5000
+        tty: true
+        volumes:
+            - .:/app
