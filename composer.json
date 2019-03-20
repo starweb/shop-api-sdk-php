@@ -46,10 +46,5 @@
         "phpunit": "vendor/bin/phpunit --stop-on-error --stop-on-failure",
         "phpunit-coverage": "vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-html ${baseDir}resources/test-coverage",
         "phpcs": "vendor/bin/phpcs src --standard=resources/code-sniffer-standards/php-standard.xml"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.1-dev"
-        }
     }
 }
