@@ -1,6 +1,6 @@
 # Starweb Shop API Software Development Kit for PHP
 
-## ATTENTION: This sdk is under current development and should not be used in a productive environment!
+## ATTENTION: This sdk is under development and should not be used in a production environment!
 
 ## System Requirements
 - PHP >= 7.1  (extension requirements in composer.json).
