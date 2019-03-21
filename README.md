@@ -1,5 +1,8 @@
 # Starweb Shop API Software Development Kit for PHP
 
+[![Build Status](https://travis-ci.org/starweb/shop-api-sdk-php.svg?branch=master)](https://travis-ci.org/starweb/shop-api-sdk-php)
+[![Code Coverage](https://scrutinizer-ci.com/g/starweb/shop-api-sdk-php/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/starweb/shop-api-sdk-php/?branch=master)
+
 ## ATTENTION: This sdk is under development and should not be used in a production environment!
 
 ## System Requirements
