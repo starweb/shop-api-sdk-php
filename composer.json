@@ -10,6 +10,8 @@
         }
     ],
     "license": "BSD-3-Clause",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": ">=7.1",
         "ext-json": "*",
@@ -34,7 +36,8 @@
         "php-http/guzzle6-adapter": "^1.0",
         "guzzlehttp/psr7": "^1.4",
         "php-http/mock-client": "^1.1",
-        "squizlabs/php_codesniffer": "^3.3"
+        "squizlabs/php_codesniffer": "^3.3",
+        "jane-php/open-api": "dev-master"
     },
     "autoload": {
         "psr-4": {"Starweb\\": "src/"}
