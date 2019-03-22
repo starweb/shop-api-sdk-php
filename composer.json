@@ -44,7 +44,8 @@
     },
     "scripts": {
         "phpunit": "vendor/bin/phpunit --stop-on-error --stop-on-failure",
-        "phpunit-coverage": "vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-html ${baseDir}resources/test-coverage",
+        "phpunit-coverage-html": "vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-html ${baseDir}resources/test-coverage",
+        "phpunit-coverage-text": "vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-text",
         "phpcs": "vendor/bin/phpcs src --standard=resources/code-sniffer-standards/php-standard.xml"
     }
 }

@@ -9,7 +9,8 @@ install:
   - composer install --dev --no-interaction
 
 script:
-  - vendor/bin/phpunit --coverage-text
+  - composer run phpunit-coverage-text
+  - composer run phpcs
 
 notifications:
     email: false
