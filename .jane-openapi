@@ -1,0 +1,7 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/resources/specification/openapi.json',
+    'namespace' => 'Starweb\Api\Client',
+    'directory' => __DIR__ . '/src/Api/Client',
+];
