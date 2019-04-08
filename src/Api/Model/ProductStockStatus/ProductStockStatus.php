@@ -18,9 +18,7 @@ class ProductStockStatus
      */
     protected $inStock;
     /**
-     *
-     *
-     * @var ProductStockStatusLanguage[]
+     * @var ProductStockStatusLanguageCollection
      */
     protected $languages;
     /**
@@ -45,7 +43,7 @@ class ProductStockStatus
      * This has to be set to another, existing stock status id, or null. If a product has its quantity changed to
      * negative, the product will then change stock status to the one with this id
      *
-     * @var int
+     * @var ?int
      */
     protected $stockoutNewStatusId;
 
@@ -100,23 +98,19 @@ class ProductStockStatus
     }
 
     /**
-     *
-     *
-     * @return ProductStockStatusLanguage[]
+     * @return ProductStockStatusLanguageCollection
      */
-    public function getLanguages(): array
+    public function getLanguages(): ProductStockStatusLanguageCollection
     {
         return $this->languages;
     }
 
     /**
-     *
-     *
-     * @param ProductStockStatusLanguage[]
+     * @param ProductStockStatusLanguageCollection
      *
      * @return self
      */
-    public function setLanguages(array $languages): self
+    public function setLanguages(ProductStockStatusLanguageCollection $languages): self
     {
         $this->languages = $languages;
 
@@ -210,11 +204,11 @@ class ProductStockStatus
      * This has to be set to another, existing stock status id, or null. If a product has its quantity changed to
      * negative, the product will then change stock status to the one with this id
      *
-     * @param int $stockoutNewStatusId
+     * @param int|null $stockoutNewStatusId
      *
      * @return self
      */
-    public function setStockoutNewStatusId(int $stockoutNewStatusId): self
+    public function setStockoutNewStatusId(?int $stockoutNewStatusId): self
     {
         $this->stockoutNewStatusId = $stockoutNewStatusId;
 
