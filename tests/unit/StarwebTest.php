@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Starweb\Tests;
 
@@ -16,6 +16,7 @@ use Starweb\Api\Authentication\ClientCredentials;
 use Starweb\Api\Authentication\TokenCacheInterface;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenManager;
+use Starweb\Api\Client\Client as JaneOpenApiClient;
 use Starweb\Api\Resource\Resource;
 use Starweb\Api\Resource\ResourceInterface;
 use Starweb\Api\Resource\Resources;
@@ -68,12 +69,12 @@ class StarwebTest extends TestCase
 
     public function testConstructor()
     {
-        $decoratedHttpClient = $this->createMock(DecoratedHttpClient::class);
+        $clientMock = $this->createMock(JaneOpenApiClient::class);
         $tokenManager = $this->createMock(TokenManager::class);
-        $starweb = new Starweb($decoratedHttpClient, self::DEFAULT_BASE_URI, $tokenManager);
+        $starweb = new Starweb($clientMock, self::DEFAULT_BASE_URI, $tokenManager);
 
         $this->assertSame(self::DEFAULT_BASE_URI, $starweb->getBaseUri());
-        $this->assertSame($decoratedHttpClient, $starweb->getClient());
+        $this->assertSame($clientMock, $starweb->getClient());
         $this->assertSame($tokenManager, $starweb->getTokenManager());
     }
 
@@ -148,60 +149,14 @@ class StarwebTest extends TestCase
         $messageFactoryMock = $this->createMock(MessageFactory::class);
         $tokenManagerMock = $this->createMock(TokenManager::class);
 
-        $decoratedHttpClient = Starweb::buildHttpClient(
+        $client = Starweb::buildHttpClient(
             $clientMock,
             $messageFactoryMock,
             $tokenManagerMock,
             self::DEFAULT_BASE_URI
         );
 
-        $this->assertInstanceOf(DecoratedHttpClient::class, $decoratedHttpClient);
-    }
-
-    /**
-     * @dataProvider resourceProvider
-     */
-    public function testResources(string $resourceKey): void
-    {
-        $starweb = $this->getStarweb();
-        $resourceFqcn = sprintf('%s\\%sResource', Resources::RESOURCE_NAMESPACE, $resourceKey);
-
-        $reflection = new \ReflectionClass($resourceFqcn);
-        $reflectionMethod = $reflection->getMethod('getPathParametersResolver');
-
-        /** @var OptionsResolver $resolver */
-        $resourceMock = $this->createMock($resourceFqcn);
-        $resolver = $reflectionMethod->invoke($resourceMock);
-        $parameters = [];
-        foreach ($resolver->getRequiredOptions() as $option) {
-            $parameters[$option] = 1;
-        }
-
-        $resource = $starweb->resource($resourceKey, $parameters);
-
-
-        $this->assertInstanceOf(ResourceInterface::class, $resource);
-        $this->assertInstanceOf(Resource::class, $resource);
-        $this->assertInstanceOf($resourceFqcn, $resource);
-    }
-
-    public function resourceProvider(): array
-    {
-        $data = [];
-        foreach (Resources::getResources() as $key) {
-            $data[] = [$key];
-        }
-
-        return $data;
-    }
-
-    /**
-     * @expectedException \LogicException
-     */
-    public function testInvalidResource()
-    {
-        $starweb = $this->getStarweb();
-        $starweb->resource('InvalidResource');
+        $this->assertInstanceOf(JaneOpenApiClient::class, $client);
     }
 
     private function getStreamFactory(): StreamFactory

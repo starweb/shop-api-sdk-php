@@ -31,7 +31,9 @@ class GetShop extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ShopItem', 'json');
+            $serialized = $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ShopItem', 'json');
+
+            return $serialized;
         }
         if (404 === $status && 'application/json' === $contentType) {
             throw new \Starweb\Api\Client\Exception\GetShopNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));

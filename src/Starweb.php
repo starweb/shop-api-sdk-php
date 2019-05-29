@@ -10,13 +10,11 @@ use Http\Discovery\UriFactoryDiscovery;
 use Http\Message\MessageFactory;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenManager;
-use Starweb\Api\Resource\Resources;
+use Starweb\Api\Client\Client;
 use Starweb\HttpClient\Builder;
 use Http\Discovery\HttpClientDiscovery;
 use Starweb\Api\Authentication\ClientCredentials;
 use Starweb\Api\Authentication\TokenCacheInterface;
-use Starweb\Api\Resource\ResourceInterface;
-use Starweb\HttpClient\DecoratedHttpClient;
 use Starweb\HttpClient\Plugin\ErrorPlugin;
 use Starweb\HttpClient\Plugin\RetryAuthenticationPlugin;
 
@@ -27,7 +25,7 @@ class Starweb
     public const API_VERSION_URI_SUFFIX = 'v2';
 
     /**
-     * @var DecoratedHttpClient
+     * @var Client
      */
     private $client;
 
@@ -44,21 +42,21 @@ class Starweb
     /**
      * Starweb constructor.
      *
-     * @param DecoratedHttpClient $decoratedHttpClient
-     * @param string $baseUri
-     * @param TokenManager $tokenManager
+     * @param Client $client
+     * @param string              $baseUri
+     * @param TokenManager        $tokenManager
      */
-    public function __construct(DecoratedHttpClient $decoratedHttpClient, string $baseUri, TokenManager $tokenManager)
+    public function __construct(Client $client, string $baseUri, TokenManager $tokenManager)
     {
-        $this->client = $decoratedHttpClient;
+        $this->client = $client;
         $this->baseUri = $baseUri;
         $this->tokenManager = $tokenManager;
     }
 
     /**
-     * @return DecoratedHttpClient
+     * @return Client
      */
-    public function getClient(): DecoratedHttpClient
+    public function getClient(): Client
     {
         return $this->client;
     }
@@ -109,9 +107,9 @@ class Starweb
         }
 
         $tokenManager = new TokenManager($httpClient, $messageFactory, $clientCredentials, $tokenCache, $baseUri);
-        $decoratedHttpClient = self::buildHttpClient($httpClient, $messageFactory, $tokenManager, $baseUri);
+        $client = self::buildHttpClient($httpClient, $messageFactory, $tokenManager, $baseUri);
 
-        return new static($decoratedHttpClient, $baseUri, $tokenManager);
+        return new static($client, $baseUri, $tokenManager);
     }
 
     /**
@@ -120,7 +118,7 @@ class Starweb
      * @param TokenManager $tokenManager
      * @param string $baseUri
      *
-     * @return DecoratedHttpClient
+     * @return Client
      * @throws \Http\Client\Exception
      */
     public static function buildHttpClient(
@@ -128,7 +126,7 @@ class Starweb
         MessageFactory $messageFactory,
         TokenManager $tokenManager,
         string $baseUri
-    ): DecoratedHttpClient {
+    ): Client {
         $builder = new Builder();
         $builder->setHttpClient($httpClient)
                 ->setMessageFactory($messageFactory)

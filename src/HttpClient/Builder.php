@@ -9,9 +9,19 @@ use Http\Client\Common\PluginClientFactory;
 use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
+use Http\Discovery\StreamFactoryDiscovery;
 use Http\Message\Authentication\Bearer;
 use Http\Message\MessageFactory;
+use Http\Message\StreamFactory;
+use PhpParser\JsonDecoder;
 use Starweb\Api\Authentication\TokenInterface;
+use Starweb\Api\Client\Client;
+use Starweb\Api\Client\Normalizer\NormalizerFactory;
+use Symfony\Component\Serializer\Encoder\JsonDecode;
+use Symfony\Component\Serializer\Encoder\JsonEncode;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class Builder
 {
@@ -26,6 +36,16 @@ class Builder
      * @var MessageFactory
      */
     private $messageFactory;
+
+    /**
+     * @var StreamFactory
+     */
+    private $streamFactory;
+
+    /**
+     * @var SerializerInterface
+     */
+    private $serializer;
 
     /**
      * @var Plugin[]
@@ -88,13 +108,69 @@ class Builder
     }
 
     /**
-     * @return DecoratedHttpClient
+     * @param StreamFactory $streamFactory
+     *
+     * @return Builder
      */
-    public function build(): DecoratedHttpClient
+    public function setStreamFactory(StreamFactory $streamFactory): Builder
+    {
+        $this->streamFactory = $streamFactory;
+
+        return $this;
+    }
+
+    /**
+     * @return StreamFactory
+     */
+    private function getStreamFactory(): StreamFactory
+    {
+        if (!$this->streamFactory) {
+            $this->streamFactory = StreamFactoryDiscovery::find();
+        }
+
+        return $this->streamFactory;
+    }
+
+    /**
+     * @return SerializerInterface
+     */
+    public function getSerializer(): SerializerInterface
+    {
+        if (!$this->serializer) {
+            $this->serializer = $this->getDefaultSerializer();
+        }
+
+        return $this->serializer;
+    }
+
+    private function getDefaultSerializer(): SerializerInterface
+    {
+        $normalizers = NormalizerFactory::create();
+        $encoders = [new JsonEncoder(
+            new JsonEncode(),
+            new JsonDecode(false))
+        ];
+
+        return new Serializer($normalizers, $encoders);
+    }
+
+    /**
+     * @param SerializerInterface $serializer
+     */
+    public function setSerializer(SerializerInterface $serializer): void
+    {
+        $this->serializer = $serializer;
+    }
+
+    /**
+     * @return Client
+     */
+    public function build(): Client
     {
         $factory = new PluginClientFactory();
         $pluginClient = $factory->createClient($this->getHttpClient(), $this->plugins);
-        $client = new DecoratedHttpClient($pluginClient, $this->getMessageFactory());
+
+        $client = Client::create($pluginClient);
 
         return $client;
     }

@@ -1,15 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Starweb\Tests\HttpClient;
 
 use Http\Client\Common\Plugin\ErrorPlugin;
-use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;
 use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
 use Starweb\Api\Authentication\AccessToken;
 use Starweb\HttpClient\Builder;
-use Starweb\HttpClient\DecoratedHttpClient;
+use Starweb\Api\Client\Client as JaneOpenApiClient;
 
 class BuilderTest extends TestCase
 {
@@ -28,7 +27,7 @@ class BuilderTest extends TestCase
         $client = $builder->build();
 
         $this->assertInstanceOf(Builder::class, $builder);
-        $this->assertInstanceOf(DecoratedHttpClient::class, $client);
+        $this->assertInstanceOf(JaneOpenApiClient::class, $client);
     }
 
     public function testSetMessageFactory()
@@ -38,7 +37,7 @@ class BuilderTest extends TestCase
         $client = $builder->build();
 
         $this->assertInstanceOf(Builder::class, $builder);
-        $this->assertInstanceOf(DecoratedHttpClient::class, $client);
+        $this->assertInstanceOf(JaneOpenApiClient::class, $client);
     }
 
     public function testAddPlugin()
