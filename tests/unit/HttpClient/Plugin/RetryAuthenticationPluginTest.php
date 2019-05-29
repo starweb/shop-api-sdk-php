@@ -10,6 +10,7 @@ use Http\Promise\Promise;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 use Starweb\Api\Authentication\TokenManager;
+use Starweb\Exception\MaximumAuthenticationAttemptsReachedException;
 use Starweb\HttpClient\Plugin\RetryAuthenticationPlugin;
 
 class RetryAuthenticationPluginTest extends TestCase
@@ -73,7 +74,7 @@ class RetryAuthenticationPluginTest extends TestCase
         $this->assertInstanceOf(HttpFulfilledPromise::class, $response);
     }
 
-    public function testHandleRequestWithInvalidTokenResponseHittinRetryMaximum()
+    public function testHandleRequestWithInvalidTokenResponseHittingRetryMaximum()
     {
         $manager = $this->createMock(TokenManager::class);
         $plugin = new RetryAuthenticationPlugin($manager);
@@ -87,17 +88,30 @@ class RetryAuthenticationPluginTest extends TestCase
         );
 
         for ($i = 0; $i <= RetryAuthenticationPlugin::MAXIMUM_ATTEMPTS; $i++) {
+            if ($i < RetryAuthenticationPlugin::MAXIMUM_ATTEMPTS) {
+                $promise = new HttpFulfilledPromise($response);
+            } else {
+                $requestMock = $this->createMock(RequestInterface::class);
+                $exception = new MaximumAuthenticationAttemptsReachedException(
+                    'max retries hit',
+                    $requestMock,
+                    $response
+                );
+                $promise = new HttpRejectedPromise($exception);
+            }
+
             $resolvedResponse = $plugin->handleRequest(
                 $this->createMock(Request::class),
-                function(RequestInterface $request) use ($response, $i)
+                function(RequestInterface $request) use ($response, $promise)
                 {
-                    return new HttpFulfilledPromise($response);
+                    return $promise;
                 },
                 function(RequestInterface $request) use ($response)
                 {
                     return $response;
                 }
             );
+
         }
 
         $this->assertInstanceOf(HttpRejectedPromise::class, $resolvedResponse);

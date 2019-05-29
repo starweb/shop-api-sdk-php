@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Starweb\HttpClient\Plugin;
 
@@ -49,7 +49,7 @@ class RetryAuthenticationPlugin implements Plugin
 
         return $promise->then(function (ResponseInterface $response) use ($request, $first) {
             $statusCode = $response->getStatusCode();
-            $content = json_decode($response->getBody(), true);
+            $content = \json_decode($response->getBody()->getContents(), true);
 
             if (401 === $statusCode && 'invalid_token' === $content['error']) {
                 if (self::MAXIMUM_ATTEMPTS <= $this->retryCount) {

@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Starweb\Exception;
 
-use Http\Client\Common\Exception\ClientErrorException;
+use Http\Client\Exception\HttpException;
 
-class InvalidBaseUriException extends ClientErrorException
+class InvalidBaseUriException extends HttpException
 {
 }
