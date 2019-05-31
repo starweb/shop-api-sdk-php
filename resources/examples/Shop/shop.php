@@ -14,7 +14,7 @@ $credentials = new ClientCredentials($clientId, $clientSecret);
 // create the sdk object
 $sdk = Starweb::create($credentials, $apiBaseUri);
 
-// get the object, each returned object is namespaced, you can retrieve the model by calling getData()
+// get namespaced shop item (data) and shop model
 /** @var \Starweb\Api\Client\Model\ShopItem $shopItem */
 $shopItem = $sdk->getClient()->getShop();
 

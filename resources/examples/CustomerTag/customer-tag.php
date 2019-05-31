@@ -6,53 +6,46 @@ require_once __DIR__.'/../config.php';
 
 use Starweb\Starweb;
 use Starweb\Api\Authentication\ClientCredentials;
-use Starweb\Api\Resource\CustomerTagResource;
-use Starweb\Api\Model\CustomerTag\CustomerTagCollection;
-use Starweb\Api\Resource\Resources;
 use Http\Client\Common\Exception\ClientErrorException;
 
 // create the credentials object
 $credentials = new ClientCredentials($clientId, $clientSecret);
 
 // create the sdk object
-$starweb = Starweb::create($credentials, $apiBaseUri);
+$sdk = Starweb::create($credentials, $apiBaseUri);
 
-// get a resource by its name in this case "CustomerTag"
-/** @var CustomerTagResource $customerTagResource */
-$customerTagResource = $starweb->resource(Resources::CUSTOMER_TAG, ['customerId' => 101]);
-
-/** @var CustomerTagCollection $customerTagCollection */
-$customerTagCollection = $customerTagResource->list();
-
-// get customer tags from collection
-$tags = $customerTagCollection->getData();
-
-try {
-    // add a new tag
-    $addedTag = $customerTagResource->create(1);
-} catch (ClientErrorException $exception) {
-    // handle exception here
-    echo $exception->getMessage();
+// get collection
+$customerTagCollection = $sdk->getClient()->getCustomerTags(101);
+if ($customerTagCollection !== null) {
+    $customerTags = $customerTagCollection->getData();
 }
 
-/** @var CustomerTagCollection $customerTagCollection */
-$updatedCollection = $customerTagResource->list();
-$updateTags = $updatedCollection->getData();
+// get single customer tag
+$customerTagItem = $sdk->getClient()->getCustomerTag(101, 1);
+if ($customerTagItem !== null) {
+    $customerTag = $customerTagItem->getData();
+}
 
-// get a single tag
+// add a customer tag
 try {
-    $customerTag = $customerTagResource->retrieve(1);
+    $tagToAdd = new \Starweb\Api\Client\Model\CustomerAddedTagModel();
+    $tagToAdd->setTagId(3);
+    $addedTag = $sdk->getClient()->addTagToCustomer(101, $tagToAdd);
 } catch (ClientErrorException $exception) {
     echo $exception->getMessage();
 }
+
+// get the updated collection
+$updatedTagCollection = $sdk->getClient()->getCustomerTags(101);
+$updatedTags = $updatedTagCollection->getData();
 
 // delete a tag
 try {
-    $deleted = $customerTagResource->delete(2);
+    $deleted = $sdk->getClient()->removeTagFromCustomer(101, $addedTag->getData()->getTagId());
 } catch (ClientErrorException $exception) {
     echo $exception->getMessage();
 }
 
-/** @var CustomerTagCollection $customerTagCollection */
-$updatedCollection = $customerTagResource->list();
-$updateTags = $updatedCollection->getData();
+// get the updated collection
+$updatedTagCollection = $sdk->getClient()->getCustomerTags(1);
+$updatedTags = $updatedTagCollection->getData();

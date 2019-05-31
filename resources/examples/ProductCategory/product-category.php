@@ -6,74 +6,74 @@ require_once __DIR__.'/../config.php';
 
 use Starweb\Starweb;
 use Starweb\Api\Authentication\ClientCredentials;
-use Starweb\Api\Resource\ProductCategoryResource;
-use Starweb\Api\Model\ProductCategory\ProductCategoryCollection;
-use Starweb\Api\Model\ProductCategory\ProductCategory;
-use Starweb\Api\Model\ProductLanguage\ProductCategoryLanguage;
-use Starweb\Api\Resource\Resources;
 
 // create the credentials object
 $credentials = new ClientCredentials($clientId, $clientSecret);
 
 // create the sdk object
-$starweb = Starweb::create($credentials, $apiBaseUri);
+$sdk = Starweb::create($credentials, $apiBaseUri);
 
-// get a resource by its name in this case "ProductCategory"
-/** @var ProductCategoryResource $resource */
-$resource = $starweb->resource(Resources::PRODUCT_CATEGORY);
-
-// get the unfiltered collection
-/** @var ProductCategoryCollection $collection */
-$collection = $resource->list();
+// get all product categories
+$categoryCollection = $sdk->getClient()->listProductCategories();
+if ($categoryCollection !== null) {
+    $categories = $categoryCollection->getData();
+}
 
 // get a collection including the languages
-/** @var ProductCategoryCollection $collection */
-$collection = $resource->list(['include' => 'languages']);
+$categoryCollectionWithLanguages = $sdk->getClient()->listProductCategories(['include' => 'languages']);
+if ($categoryCollectionWithLanguages !== null) {
+    $categoriesWithLanguages = $categoryCollectionWithLanguages->getData();
+}
 
 // create a new product category
 try {
-    $productCategoryLanguage = new ProductCategoryLanguage();
+    $newCategory = new \Starweb\Api\Client\Model\ProductCategoryModelUpdatable();
+    $newCategory->setVisibility('visible');
+
+    $productCategoryLanguage = new \Starweb\Api\Client\Model\ProductCategoryLanguagesModel();
     $productCategoryLanguage->setName('my new category');
     $productCategoryLanguage->setLangCode('en');
-    $newCategory = new ProductCategory();
-    $newCategory->setVisibility('visible');
     $newCategory->setLanguages([$productCategoryLanguage]);
-    $createdCategory = $resource->create($newCategory);
+
+    $createdCategory = $sdk->getClient()->createProductCategory($newCategory);
 } catch (Exception $exception) {
     echo $exception->getMessage();
 }
 
 // retrieve a product category
-$category = $resource->retrieve(1);
+$categoryItem = $sdk->getClient()->getProductCategory($createdCategory->getData()->getCategoryId());
+if ($categoryItem !== null) {
+    $category = $categoryItem->getData();
+}
 
-// replace a product category
+// replace a product category (PUT)
 try {
-    $productCategoryLanguage = new ProductCategoryLanguage();
-    $productCategoryLanguage->setName('a replaced category');
-    $productCategoryLanguage->setLangCode('sv');
+    $replaceRequestBody = new \Starweb\Api\Client\Model\ProductCategoryModelUpdatable();
+    $replaceRequestBody->setVisibility('hidden');
 
-    $newCategory = new ProductCategory();
-    $newCategory->setLanguages([$productCategoryLanguage]);
-    $newCategory->setVisibility('visible');
+    $productCategoryLanguage = new \Starweb\Api\Client\Model\ProductCategoryLanguagesModel();
+    $productCategoryLanguage->setName('my replaced category');
+    $productCategoryLanguage->setLangCode('en');
+    $replaceRequestBody->setLanguages([$productCategoryLanguage]);
 
-    $replacedCategory = $resource->replace($createdCategory->getCategoryId(), $newCategory);
+    $replacedCategory = $sdk->getClient()->putProductCategory($createdCategory->getData()->getCategoryId(), $replaceRequestBody);
 } catch (Exception $exception) {
     echo $exception->getMessage();
 }
 
-// update a product category
+// update a product category (PATCH)
 try {
-    $updateCategory = $category;
-    $updateCategory->setLanguages([$productCategoryLanguage]);
-    $updateCategory->setVisibility('hidden');
-    $updatedCategory = $resource->update(2, $updateCategory);
+    $replaceRequestBody = new \Starweb\Api\Client\Model\ProductCategoryModelUpdatable();
+    $replaceRequestBody->setVisibility('pricelists');
+
+    $replacedCategory = $sdk->getClient()->patchProductCategory($createdCategory->getData()->getCategoryId(), $replaceRequestBody);
 } catch (Exception $exception) {
     echo $exception->getMessage();
 }
 
 // delete a product category
 try {
-    $deleted = $resource->delete($createdCategory->getCategoryId());
+    $deleted = $sdk->getClient()->deleteProductCategory($createdCategory->getData()->getCategoryId());
 } catch (Exception $exception) {
     echo $exception->getMessage();
 }
