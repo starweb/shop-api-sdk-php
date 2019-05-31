@@ -12,6 +12,12 @@
     "license": "BSD-3-Clause",
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/lordrhodos/janephp"
+        }
+    ],
     "require": {
         "php": ">=7.1",
         "ext-json": "*",
@@ -37,7 +43,7 @@
         "guzzlehttp/psr7": "^1.4",
         "php-http/mock-client": "^1.1",
         "squizlabs/php_codesniffer": "^3.3",
-        "jane-php/open-api": "dev-master"
+        "jane-php/jane-php": "dev-fix_missing_content_type_in_endpoint_trait"
     },
     "autoload": {
         "psr-4": {"Starweb\\": "src/"}
