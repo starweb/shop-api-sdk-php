@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Starweb\HttpClient;
+namespace Starweb\Api;
 
 use Starweb\Api\Generated\Client as BaseClient;
+use Starweb\HttpClient\Model;
 
 class Client extends BaseClient
 {
