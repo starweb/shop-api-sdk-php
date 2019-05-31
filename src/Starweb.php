@@ -10,7 +10,7 @@ use Http\Discovery\UriFactoryDiscovery;
 use Http\Message\MessageFactory;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenManager;
-use Starweb\Api\Client\Client;
+use Starweb\Api\Generated\Client;
 use Starweb\HttpClient\Builder;
 use Http\Discovery\HttpClientDiscovery;
 use Starweb\Api\Authentication\ClientCredentials;

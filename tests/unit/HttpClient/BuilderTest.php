@@ -8,7 +8,7 @@ use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
 use Starweb\Api\Authentication\AccessToken;
 use Starweb\HttpClient\Builder;
-use Starweb\Api\Client\Client as JaneOpenApiClient;
+use Starweb\Api\Generated\Client as JaneOpenApiClient;
 
 class BuilderTest extends TestCase
 {

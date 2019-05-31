@@ -27,10 +27,10 @@ if ($categoryCollectionWithLanguages !== null) {
 
 // create a new product category
 try {
-    $newCategory = new \Starweb\Api\Client\Model\ProductCategoryModelUpdatable();
+    $newCategory = new \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable();
     $newCategory->setVisibility('visible');
 
-    $productCategoryLanguage = new \Starweb\Api\Client\Model\ProductCategoryLanguagesModel();
+    $productCategoryLanguage = new \Starweb\Api\Generated\Model\ProductCategoryLanguagesModel();
     $productCategoryLanguage->setName('my new category');
     $productCategoryLanguage->setLangCode('en');
     $newCategory->setLanguages([$productCategoryLanguage]);
@@ -48,10 +48,10 @@ if ($categoryItem !== null) {
 
 // replace a product category (PUT)
 try {
-    $replaceRequestBody = new \Starweb\Api\Client\Model\ProductCategoryModelUpdatable();
+    $replaceRequestBody = new \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable();
     $replaceRequestBody->setVisibility('hidden');
 
-    $productCategoryLanguage = new \Starweb\Api\Client\Model\ProductCategoryLanguagesModel();
+    $productCategoryLanguage = new \Starweb\Api\Generated\Model\ProductCategoryLanguagesModel();
     $productCategoryLanguage->setName('my replaced category');
     $productCategoryLanguage->setLangCode('en');
     $replaceRequestBody->setLanguages([$productCategoryLanguage]);
@@ -63,7 +63,7 @@ try {
 
 // update a product category (PATCH)
 try {
-    $replaceRequestBody = new \Starweb\Api\Client\Model\ProductCategoryModelUpdatable();
+    $replaceRequestBody = new \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable();
     $replaceRequestBody->setVisibility('pricelists');
 
     $replacedCategory = $sdk->getClient()->patchProductCategory($createdCategory->getData()->getCategoryId(), $replaceRequestBody);

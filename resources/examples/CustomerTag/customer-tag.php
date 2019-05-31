@@ -28,7 +28,7 @@ if ($customerTagItem !== null) {
 
 // add a customer tag
 try {
-    $tagToAdd = new \Starweb\Api\Client\Model\CustomerAddedTagModel();
+    $tagToAdd = new \Starweb\Api\Generated\Model\CustomerAddedTagModel();
     $tagToAdd->setTagId(3);
     $addedTag = $sdk->getClient()->addTagToCustomer(101, $tagToAdd);
 } catch (ClientErrorException $exception) {

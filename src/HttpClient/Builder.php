@@ -14,7 +14,7 @@ use Http\Message\Authentication\Bearer;
 use Http\Message\MessageFactory;
 use Http\Message\StreamFactory;
 use Starweb\Api\Authentication\TokenInterface;
-use Starweb\Api\Client\Normalizer\NormalizerFactory;
+use Starweb\Api\Generated\Normalizer\NormalizerFactory;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;

@@ -25,7 +25,7 @@ $currentPage = $metaData->getPagination()->getCurrentPage();
 $mediaFile = $sdk->getClient()->getMediaFile(\current($mediaFiles)->getMediaFileId());
 
 // uploading a file
-$uploadFile = new \Starweb\Api\Client\Model\MediaFileUploadModel();
+$uploadFile = new \Starweb\Api\Generated\Model\MediaFileUploadModel();
 $uploadFile->setFileName(file_get_contents(__DIR__ . '/test.jpg'));
 
 try {
@@ -39,7 +39,7 @@ try {
 $deleted = $sdk->getClient()->deleteMediaFile($uploadedMediaFile->getData()->getMediaFileId());
 
 // update a media file
-$updateUploadFile = new \Starweb\Api\Client\Model\MediaFileUploadModel();
+$updateUploadFile = new \Starweb\Api\Generated\Model\MediaFileUploadModel();
 $updateUploadFile->setFile(__DIR__ . '/test.jpg');
 $updatedMediaFile = $sdk->getClient()->putMediaFile(\current($files)->getId(), $updateUploadFile);
 

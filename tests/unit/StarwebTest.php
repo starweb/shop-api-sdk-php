@@ -16,7 +16,7 @@ use Starweb\Api\Authentication\ClientCredentials;
 use Starweb\Api\Authentication\TokenCacheInterface;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenManager;
-use Starweb\Api\Client\Client as JaneOpenApiClient;
+use Starweb\Api\Generated\Client as JaneOpenApiClient;
 use Starweb\Api\Resource\Resource;
 use Starweb\Api\Resource\ResourceInterface;
 use Starweb\Api\Resource\Resources;
