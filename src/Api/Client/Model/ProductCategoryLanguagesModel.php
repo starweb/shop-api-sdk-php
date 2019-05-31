@@ -5,13 +5,13 @@ namespace Starweb\Api\Client\Model;
 class ProductCategoryLanguagesModel
 {
     /**
-     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. 
+     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. (required)
      *
      * @var string
      */
     protected $langCode;
     /**
-     * The name of this product category
+     * The name of this product category (required)
      *
      * @var string
      */
@@ -47,7 +47,7 @@ class ProductCategoryLanguagesModel
      */
     protected $permalink;
     /**
-     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. 
+     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. (required)
      *
      * @return string
      */
@@ -56,7 +56,7 @@ class ProductCategoryLanguagesModel
         return $this->langCode;
     }
     /**
-     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. 
+     * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. (required)
      *
      * @param string $langCode
      *
@@ -68,7 +68,7 @@ class ProductCategoryLanguagesModel
         return $this;
     }
     /**
-     * The name of this product category
+     * The name of this product category (required)
      *
      * @return string
      */
@@ -77,7 +77,7 @@ class ProductCategoryLanguagesModel
         return $this->name;
     }
     /**
-     * The name of this product category
+     * The name of this product category (required)
      *
      * @param string $name
      *

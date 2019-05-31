@@ -6,34 +6,34 @@ class CreateOrderExternalService extends \Jane\OpenApiRuntime\Client\BaseEndpoin
 {
     protected $orderId;
     /**
-    * Create an order external servicea. Retrieves the created `OrderExternalService`
+    * Create an order external service. Retrieves the created `OrderExternalService`
                                        object
     *
     * @param int $orderId The orders id
     * @param \Starweb\Api\Client\Model\OrderExternalServiceModel $requestBody 
     */
-    function __construct(int $orderId, \Starweb\Api\Client\Model\OrderExternalServiceModel $requestBody)
+    public function __construct(int $orderId, \Starweb\Api\Client\Model\OrderExternalServiceModel $requestBody)
     {
         $this->orderId = $orderId;
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{orderId}'), array($this->orderId), '/orders/{orderId}/external-services');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Client\Model\OrderExternalServiceModel) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

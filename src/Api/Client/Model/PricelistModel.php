@@ -5,7 +5,7 @@ namespace Starweb\Api\Client\Model;
 class PricelistModel
 {
     /**
-     * The shipping methods Id
+     * The pricelist id
      *
      * @var int
      */
@@ -22,6 +22,12 @@ class PricelistModel
      * @var bool
      */
     protected $isMaster;
+    /**
+     * The region this pricelist is valid for
+     *
+     * @var string
+     */
+    protected $region;
     /**
      * The countryCodes this pricelist is valid for
      *
@@ -53,7 +59,7 @@ class PricelistModel
      */
     protected $isCountryPricelist;
     /**
-     * The shipping methods Id
+     * The pricelist id
      *
      * @return int
      */
@@ -62,7 +68,7 @@ class PricelistModel
         return $this->pricelistId;
     }
     /**
-     * The shipping methods Id
+     * The pricelist id
      *
      * @param int $pricelistId
      *
@@ -113,6 +119,27 @@ class PricelistModel
     public function setIsMaster(?bool $isMaster) : self
     {
         $this->isMaster = $isMaster;
+        return $this;
+    }
+    /**
+     * The region this pricelist is valid for
+     *
+     * @return string
+     */
+    public function getRegion() : ?string
+    {
+        return $this->region;
+    }
+    /**
+     * The region this pricelist is valid for
+     *
+     * @param string $region
+     *
+     * @return self
+     */
+    public function setRegion(?string $region) : self
+    {
+        $this->region = $region;
         return $this;
     }
     /**

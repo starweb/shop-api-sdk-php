@@ -11,28 +11,28 @@ class PatchProductManufacturer extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
      * @param int $manufacturerId The manufacturers id
      * @param \Starweb\Api\Client\Model\ProductManufacturerModel $requestBody 
      */
-    function __construct(int $manufacturerId, \Starweb\Api\Client\Model\ProductManufacturerModel $requestBody)
+    public function __construct(int $manufacturerId, \Starweb\Api\Client\Model\ProductManufacturerModel $requestBody)
     {
         $this->manufacturerId = $manufacturerId;
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'PATCH';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{manufacturerId}'), array($this->manufacturerId), '/product-manufacturers/{manufacturerId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Client\Model\ProductManufacturerModel) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

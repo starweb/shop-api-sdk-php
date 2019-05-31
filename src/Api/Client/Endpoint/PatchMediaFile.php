@@ -11,21 +11,21 @@ class PatchMediaFile extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * @param int $mediaFileId The media files id
      * @param \Starweb\Api\Client\Model\MediaFileUploadModel $requestBody 
      */
-    function __construct(int $mediaFileId, \Starweb\Api\Client\Model\MediaFileUploadModel $requestBody)
+    public function __construct(int $mediaFileId, \Starweb\Api\Client\Model\MediaFileUploadModel $requestBody)
     {
         $this->mediaFileId = $mediaFileId;
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'PATCH';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{mediaFileId}'), array($this->mediaFileId), '/media-files/{mediaFileId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Client\Model\MediaFileUploadModel) {
             $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
@@ -37,7 +37,7 @@ class PatchMediaFile extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
         }
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

@@ -10,27 +10,27 @@ class DeleteProductsLanguage extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
      * Delete a product language permanently.
      *
      * @param int $productId The product id
-     * @param string $langCode The language code you want to fetch/change. Supported language codes are: sv, en, no, da, fi, de, fr, es
+     * @param string $langCode The language code you want to fetch/change. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
      */
-    function __construct(int $productId, string $langCode)
+    public function __construct(int $productId, string $langCode)
     {
         $this->productId = $productId;
         $this->langCode = $langCode;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'DELETE';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{productId}', '{langCode}'), array($this->productId, $this->langCode), '/products/{productId}/languages/{langCode}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

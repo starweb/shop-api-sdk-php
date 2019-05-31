@@ -12,25 +12,25 @@ class DeleteProductsMediaFileLink extends \Jane\OpenApiRuntime\Client\BaseEndpoi
      * @param int $productId The product id
      * @param int $mediaFileId The media file id of the link you want to fetch/change
      */
-    function __construct(int $productId, int $mediaFileId)
+    public function __construct(int $productId, int $mediaFileId)
     {
         $this->productId = $productId;
         $this->mediaFileId = $mediaFileId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'DELETE';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{productId}', '{mediaFileId}'), array($this->productId, $this->mediaFileId), '/products/{productId}/media-files/{mediaFileId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

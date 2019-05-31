@@ -29,12 +29,6 @@ class ProductVariantAttributeValueModel
      */
     protected $languages;
     /**
-     * 
-     *
-     * @var ProductVariantAttributeModel
-     */
-    protected $attribute;
-    /**
      * The id for this attribute value
      *
      * @return int
@@ -116,27 +110,6 @@ class ProductVariantAttributeValueModel
     public function setLanguages(?array $languages) : self
     {
         $this->languages = $languages;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return ProductVariantAttributeModel
-     */
-    public function getAttribute() : ?ProductVariantAttributeModel
-    {
-        return $this->attribute;
-    }
-    /**
-     * 
-     *
-     * @param ProductVariantAttributeModel $attribute
-     *
-     * @return self
-     */
-    public function setAttribute(?ProductVariantAttributeModel $attribute) : self
-    {
-        $this->attribute = $attribute;
         return $this;
     }
 }

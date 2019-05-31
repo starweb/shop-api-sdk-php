@@ -9,27 +9,27 @@ class GenerateFetchAccessToken extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
      *
      * @param \Starweb\Api\Client\Model\ClientCredentialModel $requestBody 
      */
-    function __construct(\Starweb\Api\Client\Model\ClientCredentialModel $requestBody)
+    public function __construct(\Starweb\Api\Client\Model\ClientCredentialModel $requestBody)
     {
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/token';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Client\Model\ClientCredentialModel) {
             return array(array('Content-Type' => array('application/x-www-form-urlencoded')), http_build_query($serializer->normalize($this->body, 'json')));
         }
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

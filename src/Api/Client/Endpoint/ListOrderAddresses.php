@@ -10,24 +10,24 @@ class ListOrderAddresses extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      *
      * @param int $orderId The orders id
      */
-    function __construct(int $orderId)
+    public function __construct(int $orderId)
     {
         $this->orderId = $orderId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{orderId}'), array($this->orderId), '/orders/{orderId}/addresses');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

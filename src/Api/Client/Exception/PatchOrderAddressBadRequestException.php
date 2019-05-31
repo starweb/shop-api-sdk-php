@@ -5,12 +5,12 @@ namespace Starweb\Api\Client\Exception;
 class PatchOrderAddressBadRequestException extends \RuntimeException implements ClientException
 {
     private $errorModel;
-    function __construct(\Starweb\Api\Client\Model\ErrorModel $errorModel)
+    public function __construct(\Starweb\Api\Client\Model\ErrorModel $errorModel)
     {
         parent::__construct('Bad request', 400);
         $this->errorModel = $errorModel;
     }
-    function getErrorModel()
+    public function getErrorModel()
     {
         return $this->errorModel;
     }

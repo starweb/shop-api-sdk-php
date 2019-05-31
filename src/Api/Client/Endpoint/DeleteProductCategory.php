@@ -10,24 +10,24 @@ class DeleteProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
      *
      * @param int $categoryId The product category id
      */
-    function __construct(int $categoryId)
+    public function __construct(int $categoryId)
     {
         $this->categoryId = $categoryId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'DELETE';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{categoryId}'), array($this->categoryId), '/product-categories/{categoryId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

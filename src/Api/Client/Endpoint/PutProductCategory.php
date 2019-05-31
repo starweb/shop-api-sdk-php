@@ -9,30 +9,30 @@ class PutProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      * Update a product category. Retrieves the updated `ProductCategory` object
      *
      * @param int $categoryId The product category id
-     * @param \Starweb\Api\Client\Model\ProductCategoryModel $requestBody 
+     * @param \Starweb\Api\Client\Model\ProductCategoryModelUpdatable $requestBody 
      */
-    function __construct(int $categoryId, \Starweb\Api\Client\Model\ProductCategoryModel $requestBody)
+    public function __construct(int $categoryId, \Starweb\Api\Client\Model\ProductCategoryModelUpdatable $requestBody)
     {
         $this->categoryId = $categoryId;
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'PUT';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{categoryId}'), array($this->categoryId), '/product-categories/{categoryId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
-        if ($this->body instanceof \Starweb\Api\Client\Model\ProductCategoryModel) {
+        if ($this->body instanceof \Starweb\Api\Client\Model\ProductCategoryModelUpdatable) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

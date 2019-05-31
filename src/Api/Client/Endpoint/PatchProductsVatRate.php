@@ -13,29 +13,29 @@ class PatchProductsVatRate extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      * @param string $countryCode The country code for the vat rate to fetch/manipulate
      * @param \Starweb\Api\Client\Model\ProductVatRateModel $requestBody 
      */
-    function __construct(int $productId, string $countryCode, \Starweb\Api\Client\Model\ProductVatRateModel $requestBody)
+    public function __construct(int $productId, string $countryCode, \Starweb\Api\Client\Model\ProductVatRateModel $requestBody)
     {
         $this->productId = $productId;
         $this->countryCode = $countryCode;
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'PATCH';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{productId}', '{countryCode}'), array($this->productId, $this->countryCode), '/products/{productId}/vat-rates/{countryCode}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Client\Model\ProductVatRateModel) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

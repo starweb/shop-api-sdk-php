@@ -10,29 +10,29 @@ class ListProductsVariants extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      *
      * @param int $productId The products id
      * @param array $queryParameters {
-     *     @var int $page The page of customers to return
+     *     @var int $page The page of product variants to return
      *     @var string $include If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices, attributes, attributes.attribute
      * }
      */
-    function __construct(int $productId, array $queryParameters = array())
+    public function __construct(int $productId, array $queryParameters = array())
     {
         $this->productId = $productId;
         $this->queryParameters = $queryParameters;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{productId}'), array($this->productId), '/products/{productId}/variants');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

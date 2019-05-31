@@ -61,7 +61,7 @@ class ProductCategoryModel
     /**
      * 
      *
-     * @var ProductCategoryLanguagesModel[]
+     * @var ProductCategoryLanguagesModelCollection
      */
     protected $languages;
     /**
@@ -256,20 +256,20 @@ class ProductCategoryModel
     /**
      * 
      *
-     * @return ProductCategoryLanguagesModel[]
+     * @return ProductCategoryLanguagesModelCollection
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : ?ProductCategoryLanguagesModelCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductCategoryLanguagesModel[] $languages
+     * @param ProductCategoryLanguagesModelCollection $languages
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(?ProductCategoryLanguagesModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

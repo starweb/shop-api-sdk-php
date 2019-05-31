@@ -12,25 +12,25 @@ class GetProductsAttribute extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      * @param int $productId The product id
      * @param int $attributeId The attribute id you want to fetch.
      */
-    function __construct(int $productId, int $attributeId)
+    public function __construct(int $productId, int $attributeId)
     {
         $this->productId = $productId;
         $this->attributeId = $attributeId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{productId}', '{attributeId}'), array($this->productId, $this->attributeId), '/products/{productId}/attributes/{attributeId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

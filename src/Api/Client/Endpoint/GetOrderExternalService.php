@@ -12,25 +12,25 @@ class GetOrderExternalService extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
      * @param int $orderId The orders id
      * @param string $serviceName The service name
      */
-    function __construct(int $orderId, string $serviceName)
+    public function __construct(int $orderId, string $serviceName)
     {
         $this->orderId = $orderId;
         $this->serviceName = $serviceName;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{orderId}', '{serviceName}'), array($this->orderId, $this->serviceName), '/orders/{orderId}/external-services/{serviceName}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

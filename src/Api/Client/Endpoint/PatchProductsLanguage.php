@@ -10,32 +10,32 @@ class PatchProductsLanguage extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
      * Update a product language. Retrieves the update `ProductLanguage` object.
      *
      * @param int $productId The product id
-     * @param string $langCode The language code you want to fetch/change. Supported language codes are: sv, en, no, da, fi, de, fr, es
+     * @param string $langCode The language code you want to fetch/change. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
      * @param \Starweb\Api\Client\Model\ProductLanguageModel $requestBody 
      */
-    function __construct(int $productId, string $langCode, \Starweb\Api\Client\Model\ProductLanguageModel $requestBody)
+    public function __construct(int $productId, string $langCode, \Starweb\Api\Client\Model\ProductLanguageModel $requestBody)
     {
         $this->productId = $productId;
         $this->langCode = $langCode;
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'PATCH';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{productId}', '{langCode}'), array($this->productId, $this->langCode), '/products/{productId}/languages/{langCode}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Client\Model\ProductLanguageModel) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

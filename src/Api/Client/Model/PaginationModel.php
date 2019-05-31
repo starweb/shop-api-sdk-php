@@ -29,6 +29,12 @@ class PaginationModel
      */
     protected $count;
     /**
+     * Number of items on this page
+     *
+     * @var int
+     */
+    protected $totalPages;
+    /**
      * The current requested page
      *
      * @return int
@@ -110,6 +116,27 @@ class PaginationModel
     public function setCount(?int $count) : self
     {
         $this->count = $count;
+        return $this;
+    }
+    /**
+     * Number of items on this page
+     *
+     * @return int
+     */
+    public function getTotalPages() : ?int
+    {
+        return $this->totalPages;
+    }
+    /**
+     * Number of items on this page
+     *
+     * @param int $totalPages
+     *
+     * @return self
+     */
+    public function setTotalPages(?int $totalPages) : self
+    {
+        $this->totalPages = $totalPages;
         return $this;
     }
 }

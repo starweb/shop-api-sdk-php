@@ -9,30 +9,30 @@ class PatchProduct extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * Updates a product. Retrieves the update `Product` object.
      *
      * @param int $productId The product id
-     * @param \Starweb\Api\Client\Model\ProductModelUpdatable $requestBody 
+     * @param \Starweb\Api\Client\Model\ProductModelPatchable $requestBody 
      */
-    function __construct(int $productId, \Starweb\Api\Client\Model\ProductModelUpdatable $requestBody)
+    public function __construct(int $productId, \Starweb\Api\Client\Model\ProductModelPatchable $requestBody)
     {
         $this->productId = $productId;
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'PATCH';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{productId}'), array($this->productId), '/products/{productId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
-        if ($this->body instanceof \Starweb\Api\Client\Model\ProductModelUpdatable) {
+        if ($this->body instanceof \Starweb\Api\Client\Model\ProductModelPatchable) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

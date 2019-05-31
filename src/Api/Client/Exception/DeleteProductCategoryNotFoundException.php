@@ -5,12 +5,12 @@ namespace Starweb\Api\Client\Exception;
 class DeleteProductCategoryNotFoundException extends \RuntimeException implements ClientException
 {
     private $errorModel;
-    function __construct(\Starweb\Api\Client\Model\ErrorModel $errorModel)
+    public function __construct(\Starweb\Api\Client\Model\ErrorModel $errorModel)
     {
         parent::__construct('Entity not found', 404);
         $this->errorModel = $errorModel;
     }
-    function getErrorModel()
+    public function getErrorModel()
     {
         return $this->errorModel;
     }

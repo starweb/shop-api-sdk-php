@@ -10,24 +10,24 @@ class GetPricelist extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      *
      * @param int $pricelistId The pricelist id
      */
-    function __construct(int $pricelistId)
+    public function __construct(int $pricelistId)
     {
         $this->pricelistId = $pricelistId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{pricelistId}'), array($this->pricelistId), '/pricelists/{pricelistId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

@@ -9,27 +9,27 @@ class CreateOrderStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      *
      * @param \Starweb\Api\Client\Model\OrderStatusModel $requestBody 
      */
-    function __construct(\Starweb\Api\Client\Model\OrderStatusModel $requestBody)
+    public function __construct(\Starweb\Api\Client\Model\OrderStatusModel $requestBody)
     {
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/order-statuses';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Client\Model\OrderStatusModel) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

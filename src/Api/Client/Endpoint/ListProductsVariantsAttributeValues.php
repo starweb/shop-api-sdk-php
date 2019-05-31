@@ -13,25 +13,25 @@ class ListProductsVariantsAttributeValues extends \Jane\OpenApiRuntime\Client\Ba
      *     @var string $include If you want to include child data in the result. Example: ?include=attribute (to include the attribute the values belongs to). Available includes: attribute
      * }
      */
-    function __construct(int $attributeId, array $queryParameters = array())
+    public function __construct(int $attributeId, array $queryParameters = array())
     {
         $this->attributeId = $attributeId;
         $this->queryParameters = $queryParameters;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{attributeId}'), array($this->attributeId), '/product-attributes/{attributeId}/values');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

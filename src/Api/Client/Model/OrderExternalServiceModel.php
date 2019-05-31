@@ -5,7 +5,7 @@ namespace Starweb\Api\Client\Model;
 class OrderExternalServiceModel
 {
     /**
-     * The service name that this external id is linked to
+     * The service name that this external id is linked to. Please note that this service name has to be unique for the order
      *
      * @var string
      */
@@ -23,7 +23,7 @@ class OrderExternalServiceModel
      */
     protected $readOnly;
     /**
-     * The service name that this external id is linked to
+     * The service name that this external id is linked to. Please note that this service name has to be unique for the order
      *
      * @return string
      */
@@ -32,7 +32,7 @@ class OrderExternalServiceModel
         return $this->serviceName;
     }
     /**
-     * The service name that this external id is linked to
+     * The service name that this external id is linked to. Please note that this service name has to be unique for the order
      *
      * @param string $serviceName
      *

@@ -77,24 +77,6 @@ class CustomerModel
      */
     protected $pricelistId;
     /**
-     * 
-     *
-     * @var CustomerTagModelCollection
-     */
-    protected $tags;
-    /**
-     * 
-     *
-     * @var CustomerAddressesModelCollection
-     */
-    protected $addresses;
-    /**
-     * 
-     *
-     * @var CustomerExternalServicesModelCollection
-     */
-    protected $externalServices;
-    /**
      * The customers ID
      *
      * @return int
@@ -344,69 +326,6 @@ class CustomerModel
     public function setPricelistId(?int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return CustomerTagModelCollection
-     */
-    public function getTags() : ?CustomerTagModelCollection
-    {
-        return $this->tags;
-    }
-    /**
-     * 
-     *
-     * @param CustomerTagModelCollection $tags
-     *
-     * @return self
-     */
-    public function setTags(?CustomerTagModelCollection $tags) : self
-    {
-        $this->tags = $tags;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return CustomerAddressesModelCollection
-     */
-    public function getAddresses() : ?CustomerAddressesModelCollection
-    {
-        return $this->addresses;
-    }
-    /**
-     * 
-     *
-     * @param CustomerAddressesModelCollection $addresses
-     *
-     * @return self
-     */
-    public function setAddresses(?CustomerAddressesModelCollection $addresses) : self
-    {
-        $this->addresses = $addresses;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return CustomerExternalServicesModelCollection
-     */
-    public function getExternalServices() : ?CustomerExternalServicesModelCollection
-    {
-        return $this->externalServices;
-    }
-    /**
-     * 
-     *
-     * @param CustomerExternalServicesModelCollection $externalServices
-     *
-     * @return self
-     */
-    public function setExternalServices(?CustomerExternalServicesModelCollection $externalServices) : self
-    {
-        $this->externalServices = $externalServices;
         return $this;
     }
 }

@@ -10,24 +10,24 @@ class DeleteProduct extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      *
      * @param int $productId The product id
      */
-    function __construct(int $productId)
+    public function __construct(int $productId)
     {
         $this->productId = $productId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'DELETE';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{productId}'), array($this->productId), '/products/{productId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

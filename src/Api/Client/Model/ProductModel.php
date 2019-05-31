@@ -53,11 +53,23 @@ class ProductModel
      */
     protected $sortIndex;
     /**
+     * The type of product. Either ”basic” or ”bundle”. Default is ”basic”
+     *
+     * @var string
+     */
+    protected $type;
+    /**
      * Should this product be watchable for customers when it is back in stock?
      *
      * @var bool
      */
     protected $isBackInStockWatchable;
+    /**
+     * Should all bundled products have a manually entered price? Only applies if type is bundle
+     *
+     * @var bool
+     */
+    protected $bundleUseManualPrice;
     /**
      * Account number for managing accounting on product level
      *
@@ -85,13 +97,19 @@ class ProductModel
     /**
      * 
      *
+     * @var BundledProductsModelCollection
+     */
+    protected $bundledProducts;
+    /**
+     * 
+     *
      * @var ProductMediaFileLinkModelCollection
      */
     protected $mediaFiles;
     /**
      * 
      *
-     * @var ProductLanguageModelCollection
+     * @var ProductModelLanguages
      */
     protected $languages;
     /**
@@ -287,6 +305,27 @@ class ProductModel
         return $this;
     }
     /**
+     * The type of product. Either ”basic” or ”bundle”. Default is ”basic”
+     *
+     * @return string
+     */
+    public function getType() : ?string
+    {
+        return $this->type;
+    }
+    /**
+     * The type of product. Either ”basic” or ”bundle”. Default is ”basic”
+     *
+     * @param string $type
+     *
+     * @return self
+     */
+    public function setType(?string $type) : self
+    {
+        $this->type = $type;
+        return $this;
+    }
+    /**
      * Should this product be watchable for customers when it is back in stock?
      *
      * @return bool
@@ -305,6 +344,27 @@ class ProductModel
     public function setIsBackInStockWatchable(?bool $isBackInStockWatchable) : self
     {
         $this->isBackInStockWatchable = $isBackInStockWatchable;
+        return $this;
+    }
+    /**
+     * Should all bundled products have a manually entered price? Only applies if type is bundle
+     *
+     * @return bool
+     */
+    public function getBundleUseManualPrice() : ?bool
+    {
+        return $this->bundleUseManualPrice;
+    }
+    /**
+     * Should all bundled products have a manually entered price? Only applies if type is bundle
+     *
+     * @param bool $bundleUseManualPrice
+     *
+     * @return self
+     */
+    public function setBundleUseManualPrice(?bool $bundleUseManualPrice) : self
+    {
+        $this->bundleUseManualPrice = $bundleUseManualPrice;
         return $this;
     }
     /**
@@ -394,6 +454,27 @@ class ProductModel
     /**
      * 
      *
+     * @return BundledProductsModelCollection
+     */
+    public function getBundledProducts() : ?BundledProductsModelCollection
+    {
+        return $this->bundledProducts;
+    }
+    /**
+     * 
+     *
+     * @param BundledProductsModelCollection $bundledProducts
+     *
+     * @return self
+     */
+    public function setBundledProducts(?BundledProductsModelCollection $bundledProducts) : self
+    {
+        $this->bundledProducts = $bundledProducts;
+        return $this;
+    }
+    /**
+     * 
+     *
      * @return ProductMediaFileLinkModelCollection
      */
     public function getMediaFiles() : ?ProductMediaFileLinkModelCollection
@@ -415,20 +496,20 @@ class ProductModel
     /**
      * 
      *
-     * @return ProductLanguageModelCollection
+     * @return ProductModelLanguages
      */
-    public function getLanguages() : ?ProductLanguageModelCollection
+    public function getLanguages() : ?ProductModelLanguages
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductLanguageModelCollection $languages
+     * @param ProductModelLanguages $languages
      *
      * @return self
      */
-    public function setLanguages(?ProductLanguageModelCollection $languages) : self
+    public function setLanguages(?ProductModelLanguages $languages) : self
     {
         $this->languages = $languages;
         return $this;

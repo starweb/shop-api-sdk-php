@@ -7,29 +7,29 @@ class CreateProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     /**
      * Create a product category. Retrieves the created `ProductCategory` object
      *
-     * @param \Starweb\Api\Client\Model\ProductCategoryModel $requestBody 
+     * @param \Starweb\Api\Client\Model\ProductCategoryModelUpdatable $requestBody 
      */
-    function __construct(\Starweb\Api\Client\Model\ProductCategoryModel $requestBody)
+    public function __construct(\Starweb\Api\Client\Model\ProductCategoryModelUpdatable $requestBody)
     {
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/product-categories';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
-        if ($this->body instanceof \Starweb\Api\Client\Model\ProductCategoryModel) {
+        if ($this->body instanceof \Starweb\Api\Client\Model\ProductCategoryModelUpdatable) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

@@ -255,7 +255,7 @@ class OrderModel
      *
      * @var bool
      */
-    protected $hasComment;
+    protected $hasComments;
     /**
      * An internal comment placed by an administrator. Not available to the customer
      *
@@ -1200,20 +1200,20 @@ class OrderModel
      *
      * @return bool
      */
-    public function getHasComment() : ?bool
+    public function getHasComments() : ?bool
     {
-        return $this->hasComment;
+        return $this->hasComments;
     }
     /**
      * Whether the customer or an admin has added a comment to the order
      *
-     * @param bool $hasComment
+     * @param bool $hasComments
      *
      * @return self
      */
-    public function setHasComment(?bool $hasComment) : self
+    public function setHasComments(?bool $hasComments) : self
     {
-        $this->hasComment = $hasComment;
+        $this->hasComments = $hasComments;
         return $this;
     }
     /**

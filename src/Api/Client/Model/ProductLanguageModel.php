@@ -5,7 +5,7 @@ namespace Starweb\Api\Client\Model;
 class ProductLanguageModel
 {
     /**
-     * The langCode for this language. Supported language codes are: sv, en, no, da, fi, de, fr, es
+     * The langCode for this language. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
      *
      * @var string
      */
@@ -47,7 +47,7 @@ class ProductLanguageModel
      */
     protected $pageMetaDescription;
     /**
-     * The langCode for this language. Supported language codes are: sv, en, no, da, fi, de, fr, es
+     * The langCode for this language. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
      *
      * @return string
      */
@@ -56,7 +56,7 @@ class ProductLanguageModel
         return $this->langCode;
     }
     /**
-     * The langCode for this language. Supported language codes are: sv, en, no, da, fi, de, fr, es
+     * The langCode for this language. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
      *
      * @param string $langCode
      *

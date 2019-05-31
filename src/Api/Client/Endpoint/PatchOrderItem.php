@@ -7,35 +7,35 @@ class PatchOrderItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     protected $orderId;
     protected $orderItemId;
     /**
-     * Updates an oder item. Retrieves the updated `OrderItem` object
+     * Updates an order item. Retrieves the updated `OrderItem` object
      *
      * @param int $orderId The orders id
      * @param int $orderItemId The order item id
      * @param \Starweb\Api\Client\Model\OrderItemModel $requestBody 
      */
-    function __construct(int $orderId, int $orderItemId, \Starweb\Api\Client\Model\OrderItemModel $requestBody)
+    public function __construct(int $orderId, int $orderItemId, \Starweb\Api\Client\Model\OrderItemModel $requestBody)
     {
         $this->orderId = $orderId;
         $this->orderItemId = $orderItemId;
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'PATCH';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{orderId}', '{orderItemId}'), array($this->orderId, $this->orderItemId), '/orders/{orderId}/items/{orderItemId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Client\Model\OrderItemModel) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

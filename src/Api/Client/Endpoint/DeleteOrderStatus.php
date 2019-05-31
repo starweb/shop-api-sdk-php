@@ -6,29 +6,29 @@ class DeleteOrderStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
 {
     protected $orderStatusId;
     /**
-    * Deletes an oder status. Retrieves the updated `OrderItem` object. 
+    * Deletes an order status. Retrieves the updated `OrderItem` object. 
                        NB! You are not allowed to delete order statuses that is in use by an order, or standard order statuses (all statuses with an idCode set)
     *
     * @param int $orderStatusId The order status id
     */
-    function __construct(int $orderStatusId)
+    public function __construct(int $orderStatusId)
     {
         $this->orderStatusId = $orderStatusId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'DELETE';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{orderStatusId}'), array($this->orderStatusId), '/order-statuses/{orderStatusId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

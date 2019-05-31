@@ -15,7 +15,7 @@ class OrderStatusModel
      *
      * @var bool
      */
-    protected $sendEmail;
+    protected $shouldSendEmail;
     /**
      * Standard order statuses has an idCode as well. These are: created, picking, completed, canceled
      *
@@ -54,20 +54,20 @@ class OrderStatusModel
      *
      * @return bool
      */
-    public function getSendEmail() : ?bool
+    public function getShouldSendEmail() : ?bool
     {
-        return $this->sendEmail;
+        return $this->shouldSendEmail;
     }
     /**
      * Should an order status update email be sent out when an order gets this status
      *
-     * @param bool $sendEmail
+     * @param bool $shouldSendEmail
      *
      * @return self
      */
-    public function setSendEmail(?bool $sendEmail) : self
+    public function setShouldSendEmail(?bool $shouldSendEmail) : self
     {
-        $this->sendEmail = $sendEmail;
+        $this->shouldSendEmail = $shouldSendEmail;
         return $this;
     }
     /**

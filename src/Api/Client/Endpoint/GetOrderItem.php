@@ -12,25 +12,25 @@ class GetOrderItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * @param int $orderId The orders id
      * @param int $orderItemId The order item id
      */
-    function __construct(int $orderId, int $orderItemId)
+    public function __construct(int $orderId, int $orderItemId)
     {
         $this->orderId = $orderId;
         $this->orderItemId = $orderItemId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{orderId}', '{orderItemId}'), array($this->orderId, $this->orderItemId), '/orders/{orderId}/items/{orderItemId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

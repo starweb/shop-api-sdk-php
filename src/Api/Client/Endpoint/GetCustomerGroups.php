@@ -10,24 +10,24 @@ class GetCustomerGroups extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      *
      * @param int $customerId The customers id
      */
-    function __construct(int $customerId)
+    public function __construct(int $customerId)
     {
         $this->customerId = $customerId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{customerId}'), array($this->customerId), '/customers/{customerId}/addresses');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

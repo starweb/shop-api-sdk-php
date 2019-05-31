@@ -10,24 +10,24 @@ class DeleteAttribute extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *
      * @param int $attributeId The attribute value id
      */
-    function __construct(int $attributeId)
+    public function __construct(int $attributeId)
     {
         $this->attributeId = $attributeId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'DELETE';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{attributeId}'), array($this->attributeId), '/product-attributes/{attributeId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

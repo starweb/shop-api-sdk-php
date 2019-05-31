@@ -12,25 +12,25 @@ class GetOrderComment extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      * @param int $orderId The orders id
      * @param int $commentId The order comments id
      */
-    function __construct(int $orderId, int $commentId)
+    public function __construct(int $orderId, int $commentId)
     {
         $this->orderId = $orderId;
         $this->commentId = $commentId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{orderId}', '{commentId}'), array($this->orderId, $this->commentId), '/orders/{orderId}/comments/{commentId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

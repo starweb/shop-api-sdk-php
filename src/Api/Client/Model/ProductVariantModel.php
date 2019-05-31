@@ -17,6 +17,12 @@ class ProductVariantModel
      */
     protected $isActive;
     /**
+     * The sort index of this variant.
+     *
+     * @var int
+     */
+    protected $sortIndex;
+    /**
      * The ID of the variants stock status. Available stock statuses can be fetched using the /product-stock-statuses endpoint
      *
      * @var int
@@ -65,6 +71,12 @@ class ProductVariantModel
      */
     protected $attributeValueLinks;
     /**
+     * An array of pricelists IDs that will use inheritance
+     *
+     * @var int[]
+     */
+    protected $volumePricingInheritancePricelistIds;
+    /**
      * A collection of product variant prices
      *
      * @var ProductVariantPriceModel[]
@@ -75,7 +87,7 @@ class ProductVariantModel
      *
      * @var ProductVariantAttributeValueModel[]
      */
-    protected $attributes;
+    protected $attributeValues;
     /**
      * The product variants SKU (stock keeping unit)
      *
@@ -116,6 +128,27 @@ class ProductVariantModel
     public function setIsActive(?bool $isActive) : self
     {
         $this->isActive = $isActive;
+        return $this;
+    }
+    /**
+     * The sort index of this variant.
+     *
+     * @return int
+     */
+    public function getSortIndex() : ?int
+    {
+        return $this->sortIndex;
+    }
+    /**
+     * The sort index of this variant.
+     *
+     * @param int $sortIndex
+     *
+     * @return self
+     */
+    public function setSortIndex(?int $sortIndex) : self
+    {
+        $this->sortIndex = $sortIndex;
         return $this;
     }
     /**
@@ -287,6 +320,27 @@ class ProductVariantModel
         return $this;
     }
     /**
+     * An array of pricelists IDs that will use inheritance
+     *
+     * @return int[]
+     */
+    public function getVolumePricingInheritancePricelistIds() : ?array
+    {
+        return $this->volumePricingInheritancePricelistIds;
+    }
+    /**
+     * An array of pricelists IDs that will use inheritance
+     *
+     * @param int[] $volumePricingInheritancePricelistIds
+     *
+     * @return self
+     */
+    public function setVolumePricingInheritancePricelistIds(?array $volumePricingInheritancePricelistIds) : self
+    {
+        $this->volumePricingInheritancePricelistIds = $volumePricingInheritancePricelistIds;
+        return $this;
+    }
+    /**
      * A collection of product variant prices
      *
      * @return ProductVariantPriceModel[]
@@ -312,20 +366,20 @@ class ProductVariantModel
      *
      * @return ProductVariantAttributeValueModel[]
      */
-    public function getAttributes() : ?array
+    public function getAttributeValues() : ?array
     {
-        return $this->attributes;
+        return $this->attributeValues;
     }
     /**
      * A collection of product variant attribute values
      *
-     * @param ProductVariantAttributeValueModel[] $attributes
+     * @param ProductVariantAttributeValueModel[] $attributeValues
      *
      * @return self
      */
-    public function setAttributes(?array $attributes) : self
+    public function setAttributeValues(?array $attributeValues) : self
     {
-        $this->attributes = $attributes;
+        $this->attributeValues = $attributeValues;
         return $this;
     }
 }

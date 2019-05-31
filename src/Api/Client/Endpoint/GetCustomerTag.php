@@ -12,25 +12,25 @@ class GetCustomerTag extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * @param int $customerId The customers id
      * @param int $tagId The customer tag id
      */
-    function __construct(int $customerId, int $tagId)
+    public function __construct(int $customerId, int $tagId)
     {
         $this->customerId = $customerId;
         $this->tagId = $tagId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{customerId}', '{tagId}'), array($this->customerId, $this->tagId), '/customers/{customerId}/tags/{tagId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

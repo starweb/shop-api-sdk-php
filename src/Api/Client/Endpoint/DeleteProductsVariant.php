@@ -12,25 +12,25 @@ class DeleteProductsVariant extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
      * @param int $productId The product id
      * @param int $variantId The products variants id
      */
-    function __construct(int $productId, int $variantId)
+    public function __construct(int $productId, int $variantId)
     {
         $this->productId = $productId;
         $this->variantId = $variantId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'DELETE';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{productId}', '{variantId}'), array($this->productId, $this->variantId), '/products/{productId}/variants/{variantId}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

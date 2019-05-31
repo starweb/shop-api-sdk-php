@@ -12,25 +12,25 @@ class GetProductsVatRate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      * @param int $productId The product id
      * @param string $countryCode The country code for the vat rate to fetch/manipulate
      */
-    function __construct(int $productId, string $countryCode)
+    public function __construct(int $productId, string $countryCode)
     {
         $this->productId = $productId;
         $this->countryCode = $countryCode;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{productId}', '{countryCode}'), array($this->productId, $this->countryCode), '/products/{productId}/vat-rates/{countryCode}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

@@ -12,25 +12,25 @@ class GetCustomerAddress extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      * @param int $customerId The customers id
      * @param string $addressType The customer address type
      */
-    function __construct(int $customerId, string $addressType)
+    public function __construct(int $customerId, string $addressType)
     {
         $this->customerId = $customerId;
         $this->addressType = $addressType;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{customerId}', '{addressType}'), array($this->customerId, $this->addressType), '/customers/{customerId}/addresses/{addressType}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

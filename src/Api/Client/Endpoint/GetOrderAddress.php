@@ -12,25 +12,25 @@ class GetOrderAddress extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      * @param int $orderId The orders id
      * @param string $addressType The order address type
      */
-    function __construct(int $orderId, string $addressType)
+    public function __construct(int $orderId, string $addressType)
     {
         $this->orderId = $orderId;
         $this->addressType = $addressType;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{orderId}', '{addressType}'), array($this->orderId, $this->addressType), '/orders/{orderId}/addresses/{addressType}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

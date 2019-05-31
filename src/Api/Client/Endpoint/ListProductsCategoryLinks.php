@@ -10,24 +10,24 @@ class ListProductsCategoryLinks extends \Jane\OpenApiRuntime\Client\BaseEndpoint
      *
      * @param int $productId The products id
      */
-    function __construct(int $productId)
+    public function __construct(int $productId)
     {
         $this->productId = $productId;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{productId}'), array($this->productId), '/products/{productId}/categories');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

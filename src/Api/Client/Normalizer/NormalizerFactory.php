@@ -11,6 +11,7 @@ class NormalizerFactory
         $normalizers[] = new ErrorModelNormalizer();
         $normalizers[] = new PaginationModelNormalizer();
         $normalizers[] = new OrderModelNormalizer();
+        $normalizers[] = new OrderPutModelNormalizer();
         $normalizers[] = new OrderUpdateModelNormalizer();
         $normalizers[] = new OrderModelItemNormalizer();
         $normalizers[] = new OrderModelCollectionNormalizer();
@@ -38,6 +39,8 @@ class NormalizerFactory
         $normalizers[] = new CustomerUpdateModelAddressesNormalizer();
         $normalizers[] = new CustomerModelNormalizer();
         $normalizers[] = new CustomerModelItemNormalizer();
+        $normalizers[] = new CustomerCreatedModelNormalizer();
+        $normalizers[] = new CustomerCreatedModelItemNormalizer();
         $normalizers[] = new CustomerModelCollectionNormalizer();
         $normalizers[] = new CustomerModelCollectionMetaNormalizer();
         $normalizers[] = new CustomerAddedTagModelNormalizer();
@@ -76,12 +79,16 @@ class NormalizerFactory
         $normalizers[] = new MediaFileModelCollectionNormalizer();
         $normalizers[] = new MediaFileModelCollectionMetaNormalizer();
         $normalizers[] = new ProductCategoryModelNormalizer();
+        $normalizers[] = new ProductCategoryModelUpdatableNormalizer();
         $normalizers[] = new ProductCategoryLanguagesModelNormalizer();
+        $normalizers[] = new ProductCategoryLanguagesModelCollectionNormalizer();
         $normalizers[] = new ProductCategoryModelItemNormalizer();
         $normalizers[] = new ProductCategoryModelCollectionNormalizer();
         $normalizers[] = new ProductCategoryModelCollectionMetaNormalizer();
         $normalizers[] = new ProductModelNormalizer();
+        $normalizers[] = new ProductModelLanguagesNormalizer();
         $normalizers[] = new ProductModelUpdatableNormalizer();
+        $normalizers[] = new ProductModelPatchableNormalizer();
         $normalizers[] = new ProductModelItemNormalizer();
         $normalizers[] = new ProductModelCollectionNormalizer();
         $normalizers[] = new ProductModelCollectionMetaNormalizer();
@@ -94,6 +101,7 @@ class NormalizerFactory
         $normalizers[] = new ProductLanguageModelItemNormalizer();
         $normalizers[] = new ProductLanguageModelCollectionNormalizer();
         $normalizers[] = new ProductLanguageModelNormalizer();
+        $normalizers[] = new ProductLanguageSlimModelNormalizer();
         $normalizers[] = new ProductVatRateModelItemNormalizer();
         $normalizers[] = new ProductVatRateModelCollectionNormalizer();
         $normalizers[] = new ProductVatRateModelNormalizer();
@@ -115,6 +123,9 @@ class NormalizerFactory
         $normalizers[] = new ProductVariantPriceModelItemNormalizer();
         $normalizers[] = new ProductVariantPriceModelCollectionNormalizer();
         $normalizers[] = new ProductVariantPriceModelNormalizer();
+        $normalizers[] = new ProductVariantVolumePriceModelItemNormalizer();
+        $normalizers[] = new ProductVariantVolumePriceModelCollectionNormalizer();
+        $normalizers[] = new ProductVariantVolumePriceModelNormalizer();
         $normalizers[] = new ProductManufacturerModelItemNormalizer();
         $normalizers[] = new ProductManufacturerModelCollectionNormalizer();
         $normalizers[] = new ProductManufacturerModelNormalizer();
@@ -141,6 +152,29 @@ class NormalizerFactory
         $normalizers[] = new ProductVariantAttributeModelNormalizer();
         $normalizers[] = new ProductVariantAttributeModelLanguagesNormalizer();
         $normalizers[] = new ProductsAttributesModelItemNormalizer();
+        $normalizers[] = new VatRateModelItemNormalizer();
+        $normalizers[] = new VatRateModelCollectionNormalizer();
+        $normalizers[] = new VatRateModelNormalizer();
+        $normalizers[] = new WebHookModelNormalizer();
+        $normalizers[] = new WebHookModelItemNormalizer();
+        $normalizers[] = new WebHookModelCollectionNormalizer();
+        $normalizers[] = new BundledProductsModelCollectionNormalizer();
+        $normalizers[] = new BundledProductsModelItemNormalizer();
+        $normalizers[] = new BundledProductsModelNormalizer();
+        $normalizers[] = new ProductBundleProductPriceModelItemNormalizer();
+        $normalizers[] = new ProductBundleProductPriceModelCollectionNormalizer();
+        $normalizers[] = new ProductBundleProductPriceModelNormalizer();
+        $normalizers[] = new StockLocationModelNormalizer();
+        $normalizers[] = new StockLocationPostRequestModelNormalizer();
+        $normalizers[] = new StockLocationPutRequestModelNormalizer();
+        $normalizers[] = new StockLocationLanguagesModelNormalizer();
+        $normalizers[] = new StockLocationLanguagesModelCollectionNormalizer();
+        $normalizers[] = new StockLocationModelItemNormalizer();
+        $normalizers[] = new StockLocationModelCollectionNormalizer();
+        $normalizers[] = new ProductVariantStockModelItemNormalizer();
+        $normalizers[] = new ProductVariantStockModelCollectionNormalizer();
+        $normalizers[] = new ProductVariantStockResponseModelNormalizer();
+        $normalizers[] = new ProductVariantStockPutRequestModelNormalizer();
         return $normalizers;
     }
 }

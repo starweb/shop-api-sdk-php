@@ -5,13 +5,13 @@ namespace Starweb\Api\Client\Model;
 class PricelistModelCollection
 {
     /**
-     * A collection of shipping methods
+     * A collection of pricelists
      *
      * @var PricelistModel[]
      */
     protected $data;
     /**
-     * A collection of shipping methods
+     * A collection of pricelists
      *
      * @return PricelistModel[]
      */
@@ -20,7 +20,7 @@ class PricelistModelCollection
         return $this->data;
     }
     /**
-     * A collection of shipping methods
+     * A collection of pricelists
      *
      * @param PricelistModel[] $data
      *

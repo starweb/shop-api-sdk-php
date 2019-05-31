@@ -5,6 +5,12 @@ namespace Starweb\Api\Client\Model;
 class ProductMetaDataModel
 {
     /**
+     * The ID of the meta data.
+     *
+     * @var int
+     */
+    protected $metaDataId;
+    /**
      * The ID of the meta data type. Available meta data types can be fetched using the /product-meta-data-types endpoint
      *
      * @var int
@@ -22,6 +28,27 @@ class ProductMetaDataModel
      * @var ProductMetaLanguageDataModelCollection
      */
     protected $languages;
+    /**
+     * The ID of the meta data.
+     *
+     * @return int
+     */
+    public function getMetaDataId() : ?int
+    {
+        return $this->metaDataId;
+    }
+    /**
+     * The ID of the meta data.
+     *
+     * @param int $metaDataId
+     *
+     * @return self
+     */
+    public function setMetaDataId(?int $metaDataId) : self
+    {
+        $this->metaDataId = $metaDataId;
+        return $this;
+    }
     /**
      * The ID of the meta data type. Available meta data types can be fetched using the /product-meta-data-types endpoint
      *

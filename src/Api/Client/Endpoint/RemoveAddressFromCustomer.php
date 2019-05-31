@@ -12,31 +12,32 @@ class RemoveAddressFromCustomer extends \Jane\OpenApiRuntime\Client\BaseEndpoint
      * @param int $customerId The customers id
      * @param string $addressType The customer address type
      */
-    function __construct(int $customerId, string $addressType)
+    public function __construct(int $customerId, string $addressType)
     {
         $this->customerId = $customerId;
         $this->addressType = $addressType;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'DELETE';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{customerId}', '{addressType}'), array($this->customerId, $this->addressType), '/customers/{customerId}/addresses/{addressType}');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }
     /**
      * {@inheritdoc}
      *
+     * @throws \Starweb\Api\Client\Exception\RemoveAddressFromCustomerForbiddenException
      * @throws \Starweb\Api\Client\Exception\RemoveAddressFromCustomerNotFoundException
      *
      * @return null
@@ -45,6 +46,9 @@ class RemoveAddressFromCustomer extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     {
         if (204 === $status) {
             return null;
+        }
+        if (403 === $status && 'application/json' === $contentType) {
+            throw new \Starweb\Api\Client\Exception\RemoveAddressFromCustomerForbiddenException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
             throw new \Starweb\Api\Client\Exception\RemoveAddressFromCustomerNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));

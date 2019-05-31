@@ -5,19 +5,19 @@ namespace Starweb\Api\Client\Endpoint;
 class GetShop extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/shop';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }
@@ -31,9 +31,7 @@ class GetShop extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            $serialized = $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ShopItem', 'json');
-
-            return $serialized;
+            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ShopItem', 'json');
         }
         if (404 === $status && 'application/json' === $contentType) {
             throw new \Starweb\Api\Client\Exception\GetShopNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));

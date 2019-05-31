@@ -5,7 +5,7 @@ namespace Starweb\Api\Client\Model;
 class ProductVariantAttributeValueLanguageModel
 {
     /**
-     * The langCode for this language. Supported language codes are: sv, en, no, da, fi, de, fr, es
+     * The langCode for this language. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
      *
      * @var string
      */
@@ -17,7 +17,7 @@ class ProductVariantAttributeValueLanguageModel
      */
     protected $name;
     /**
-     * The langCode for this language. Supported language codes are: sv, en, no, da, fi, de, fr, es
+     * The langCode for this language. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
      *
      * @return string
      */
@@ -26,7 +26,7 @@ class ProductVariantAttributeValueLanguageModel
         return $this->langCode;
     }
     /**
-     * The langCode for this language. Supported language codes are: sv, en, no, da, fi, de, fr, es
+     * The langCode for this language. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
      *
      * @param string $langCode
      *

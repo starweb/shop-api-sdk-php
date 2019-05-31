@@ -9,20 +9,20 @@ class CreateMediaFile extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *
      * @param \Starweb\Api\Client\Model\MediaFileUploadModel $requestBody 
      */
-    function __construct(\Starweb\Api\Client\Model\MediaFileUploadModel $requestBody)
+    public function __construct(\Starweb\Api\Client\Model\MediaFileUploadModel $requestBody)
     {
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return '/media-files';
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Client\Model\MediaFileUploadModel) {
             $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
@@ -34,7 +34,7 @@ class CreateMediaFile extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         }
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }

@@ -11,28 +11,28 @@ class CreateProductVariant extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      * @param int $productId The products id
      * @param \Starweb\Api\Client\Model\ProductVariantModel $requestBody 
      */
-    function __construct(int $productId, \Starweb\Api\Client\Model\ProductVariantModel $requestBody)
+    public function __construct(int $productId, \Starweb\Api\Client\Model\ProductVariantModel $requestBody)
     {
         $this->productId = $productId;
         $this->body = $requestBody;
     }
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-    function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }
-    function getUri() : string
+    public function getUri() : string
     {
         return str_replace(array('{productId}'), array($this->productId), '/products/{productId}/variants');
     }
-    function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Client\Model\ProductVariantModel) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
     }
-    function getExtraHeaders() : array
+    public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
     }
