@@ -2,7 +2,6 @@
 
 namespace Starweb\HttpClient\Plugin;
 
-use GuzzleHttp\Psr7\Response;
 use Http\Client\Common\Exception\ClientErrorException;
 use Http\Client\Common\Exception\ServerErrorException;
 use Http\Client\Common\Plugin;
@@ -32,7 +31,7 @@ use Psr\Http\Message\ResponseInterface;
  */
 /**
  * This class has been copied from https://github.com/php-http/client-common/blob/master/src/Plugin/ErrorPlugin.php
- * and adpated to use the EnhancedResponse object inside the transformResponseToException function.
+ * and adapted to use the error description from the response body inside the transformResponseToException function.
  * The according licence has been added in the doc bloc above this comment.
  *
  * Throw exception when the response of a request is not acceptable.
