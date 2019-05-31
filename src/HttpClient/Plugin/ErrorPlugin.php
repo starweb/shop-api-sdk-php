@@ -68,7 +68,7 @@ final class ErrorPlugin implements Plugin
     protected function transformResponseToException(RequestInterface $request, ResponseInterface $response)
     {
         if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-            $content = \json_decode($response->getBody()->getContents(), true);
+            $content = \json_decode($response->getBody()->__toString(), true);
 
             throw new ClientErrorException($content['error_description'], $request, $response);
         }
