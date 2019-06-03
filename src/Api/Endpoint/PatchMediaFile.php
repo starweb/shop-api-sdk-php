@@ -6,5 +6,5 @@ use Starweb\Api\Generated\Endpoint\PatchMediaFile as PatchMediaFileBase;
 
 class PatchMediaFile extends PatchMediaFileBase
 {
-    use MediaFileEndpointGetBodyTrait;
+    use MediaFileEndpointTrait;
 }

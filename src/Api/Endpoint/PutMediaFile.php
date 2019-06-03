@@ -6,5 +6,5 @@ use Starweb\Api\Generated\Endpoint\PutMediaFile as PutMediaFileBase;
 
 class PutMediaFile extends PutMediaFileBase
 {
-    use MediaFileEndpointGetBodyTrait;
+    use MediaFileEndpointTrait;
 }

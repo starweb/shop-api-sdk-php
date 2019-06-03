@@ -7,7 +7,7 @@ use Http\Message\StreamFactory;
 use Starweb\Api\Model\MediaFileUploadModel;
 use Symfony\Component\Serializer\SerializerInterface;
 
-trait MediaFileEndpointGetBodyTrait
+trait MediaFileEndpointTrait
 {
     public function getBody(SerializerInterface $serializer, StreamFactory $streamFactory = null): array
     {

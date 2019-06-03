@@ -6,5 +6,5 @@ use Starweb\Api\Generated\Endpoint\CreateMediaFile as CreateMediaFileBase;
 
 class CreateMediaFile extends CreateMediaFileBase
 {
-    use MediaFileEndpointGetBodyTrait;
+    use MediaFileEndpointTrait;
 }
