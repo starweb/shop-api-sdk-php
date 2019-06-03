@@ -2,44 +2,49 @@
 
 namespace Starweb\Api;
 
-use Starweb\Api\Generated\Client as BaseClient;
-use Starweb\Api\Generated\Model\MediaFileUploadModel;
+use Starweb\Api\Endpoint\CreateMediaFile;
+use Starweb\Api\Endpoint\PatchMediaFile;
+use Starweb\Api\Endpoint\PutMediaFile;
+use Starweb\Api\Generated\Client as GeneratedClient;
+use Starweb\Api\Generated\Model\MediaFileUploadModel as GeneratedMediaFileUploadModel;
+use Starweb\Api\Model\MediaFileUploadModel;
 
-class Client extends BaseClient
+class Client extends GeneratedClient
 {
-    public function createMediaFile(MediaFileUploadModel $requestBody = null, string $fetch = BaseClient::FETCH_OBJECT)
-    {
+    public function createMediaFile(
+        GeneratedMediaFileUploadModel $requestBody = null,
+        string $fetch = GeneratedClient::FETCH_OBJECT
+    ) {
         $this->checkCustomMediaFileUploadModelInstance($requestBody);
 
-        return $this->executePsr7Endpoint(new \Starweb\Api\Endpoint\CreateMediaFile($requestBody), $fetch);
+        return $this->executePsr7Endpoint(new CreateMediaFile($requestBody), $fetch);
     }
 
     public function putMediaFile(
         int $mediaFileId,
-        MediaFileUploadModel $requestBody,
-        string $fetch = BaseClient::FETCH_OBJECT
-    )
-    {
+        GeneratedMediaFileUploadModel $requestBody,
+        string $fetch = GeneratedClient::FETCH_OBJECT
+    ) {
         $this->checkCustomMediaFileUploadModelInstance($requestBody);
 
-        return $this->executePsr7Endpoint(new \Starweb\Api\Endpoint\PutMediaFile($mediaFileId, $requestBody), $fetch);
+        return $this->executePsr7Endpoint(new PutMediaFile($mediaFileId, $requestBody), $fetch);
     }
 
     public function patchMediaFile(
         int $mediaFileId,
-        MediaFileUploadModel $requestBody,
-        string $fetch = BaseClient::FETCH_OBJECT
+        GeneratedMediaFileUploadModel $requestBody,
+        string $fetch = GeneratedClient::FETCH_OBJECT
     ) {
         $this->checkCustomMediaFileUploadModelInstance($requestBody);
 
-        return $this->executePsr7Endpoint(new \Starweb\Api\Endpoint\PatchMediaFile($mediaFileId, $requestBody), $fetch);
+        return $this->executePsr7Endpoint(new PatchMediaFile($mediaFileId, $requestBody), $fetch);
     }
 
-    private function checkCustomMediaFileUploadModelInstance(MediaFileUploadModel $requestBody): void
+    private function checkCustomMediaFileUploadModelInstance(GeneratedMediaFileUploadModel $requestBody): void
     {
-        if (!$requestBody instanceof \Starweb\Api\Model\MediaFileUploadModel) {
+        if (!$requestBody instanceof MediaFileUploadModel) {
             throw new \LogicException(
-                'you need to pass an object of type ' . \Starweb\Api\Model\MediaFileUploadModel::class
+                'you need to pass an object of type ' . MediaFileUploadModel::class
             );
         }
     }

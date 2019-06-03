@@ -13,14 +13,14 @@ use Starweb\Api\Generated\Client as JaneOpenApiClient;
 class BuilderTest extends TestCase
 {
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $builder = new Builder();
 
         $this->assertInstanceOf(Builder::class, $builder);
     }
 
-    public function testSetHttpClient()
+    public function testSetHttpClient(): void
     {
         $builder = new Builder();
         $builder->setHttpClient(new Client());
@@ -30,7 +30,7 @@ class BuilderTest extends TestCase
         $this->assertInstanceOf(JaneOpenApiClient::class, $client);
     }
 
-    public function testSetMessageFactory()
+    public function testSetMessageFactory(): void
     {
         $builder = new Builder();
         $builder->setMessageFactory(MessageFactoryDiscovery::find());
@@ -40,7 +40,7 @@ class BuilderTest extends TestCase
         $this->assertInstanceOf(JaneOpenApiClient::class, $client);
     }
 
-    public function testAddPlugin()
+    public function testAddPlugin(): void
     {
         $builder = new Builder();
 
@@ -48,7 +48,7 @@ class BuilderTest extends TestCase
         $this->assertInstanceOf(Builder::class, $builder->addPlugin(new ErrorPlugin()));
     }
 
-    public function testRemoveExistingPlugin()
+    public function testRemoveExistingPlugin(): void
     {
         $builder = new Builder();
         $builder->addPlugin(new ErrorPlugin());
@@ -56,14 +56,14 @@ class BuilderTest extends TestCase
         $this->assertInstanceOf(Builder::class, $builder->removePlugin(ErrorPlugin::class));
     }
 
-    public function testRemoveNotExistingPlugin()
+    public function testRemoveNotExistingPlugin(): void
     {
         $builder = new Builder();
 
         $this->assertInstanceOf(Builder::class, $builder->removePlugin(ErrorPlugin::class));
     }
 
-    public function testClearHeaders()
+    public function testClearHeaders(): void
     {
         $builder = new Builder();
 
@@ -71,7 +71,7 @@ class BuilderTest extends TestCase
         $this->assertInstanceOf(Builder::class, $builder->clearHeaders());
     }
 
-    public function testAddHeaders()
+    public function testAddHeaders(): void
     {
         $builder = new Builder();
 
@@ -79,7 +79,7 @@ class BuilderTest extends TestCase
         $this->assertInstanceOf(Builder::class, $builder->addHeaders(['X-Header-Key' => 'value']));
     }
 
-    public function testAddHeaderValue()
+    public function testAddHeaderValue(): void
     {
         $builder = new Builder();
 
@@ -87,7 +87,7 @@ class BuilderTest extends TestCase
         $this->assertInstanceOf(Builder::class, $builder->addHeaderValue('X-Header-Key', 'value'));
     }
 
-    public function testAddHeaderValueForExistingHeader()
+    public function testAddHeaderValueForExistingHeader(): void
     {
         $builder = new Builder();
         $builder->addHeaders(['X-Header-Key' => 'value']);
@@ -96,7 +96,7 @@ class BuilderTest extends TestCase
         $this->assertInstanceOf(Builder::class, $builder->addHeaderValue('X-Header-Key', 'updated value'));
     }
 
-    public function testAuthentication()
+    public function testAuthentication(): void
     {
         $builder = new Builder();
 

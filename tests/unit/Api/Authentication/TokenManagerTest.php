@@ -21,14 +21,14 @@ use Starweb\Tests\StarwebTest;
 class TokenManagerTest extends TestCase
 {
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $manager = $this->getTokenManager();
 
         $this->assertInstanceOf(TokenManager::class, $manager);
     }
 
-    public function testRequestToken()
+    public function testRequestToken(): void
     {
         $manager = $this->getTokenManager();
         $token = $manager->requestToken();
@@ -36,10 +36,12 @@ class TokenManagerTest extends TestCase
         $this->assertInstanceOf(TokenInterface::class, $token);
     }
 
-    public function testRequestTokenThrowsInvalidCredentialsException()
+    public function testRequestTokenThrowsInvalidCredentialsException(): void
     {
         $stream = $this->createMock(Stream::class);
-        $stream->method('__toString')->willReturn('{"error": "invalid_client", "error_description": "invalid credentials"}');
+        $stream->method('__toString')->willReturn(
+            '{"error": "invalid_client", "error_description": "invalid credentials"}'
+        );
 
         $response = $this->createMock(Response::class);
         $response->method('getBody')->willReturn($stream);
@@ -51,7 +53,7 @@ class TokenManagerTest extends TestCase
         $manager->requestToken();
     }
 
-    public function testGetToken()
+    public function testGetToken(): void
     {
         $manager = $this->getTokenManager();
         $token = $manager->getToken();
@@ -59,7 +61,7 @@ class TokenManagerTest extends TestCase
         $this->assertInstanceOf(TokenInterface::class, $token);
     }
 
-    public function testGetTokenWithExistingToken()
+    public function testGetTokenWithExistingToken(): void
     {
         $cache = $this->createMock(TokenFilesystemCache::class);
         $cache->method('hasToken')->willReturn(true);
@@ -73,7 +75,7 @@ class TokenManagerTest extends TestCase
         $this->assertInstanceOf(TokenInterface::class, $token);
     }
 
-    public function testRefreshToken()
+    public function testRefreshToken(): void
     {
         $cache = $this->createMock(TokenFilesystemCache::class);
         $cache->method('hasToken')->willReturn(true);
@@ -85,8 +87,10 @@ class TokenManagerTest extends TestCase
         $this->assertNull($manager->refreshToken());
     }
 
-    private function getTokenManager(ResponseInterface $response = null, TokenCacheInterface $cache = null)
-    {
+    private function getTokenManager(
+        ResponseInterface $response = null,
+        TokenCacheInterface $cache = null
+    ): TokenManager {
         $client = new Client();
 
         if (!$response) {

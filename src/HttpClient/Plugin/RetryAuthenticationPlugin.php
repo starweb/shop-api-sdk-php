@@ -11,9 +11,6 @@ use Starweb\Exception\MaximumAuthenticationAttemptsReachedException;
 
 class RetryAuthenticationPlugin implements Plugin
 {
-    /**
-     * the maximum number of
-     */
     public const MAXIMUM_ATTEMPTS = 2;
 
     /**
@@ -26,23 +23,11 @@ class RetryAuthenticationPlugin implements Plugin
      */
     private $tokenManager;
 
-    /**
-     * RetryAuthenticationPlugin constructor.
-     *
-     * @param TokenManager $tokenManager
-     */
     public function __construct(TokenManager $tokenManager)
     {
         $this->tokenManager = $tokenManager;
     }
 
-    /**
-     * @param RequestInterface $request
-     * @param callable $next
-     * @param callable $first
-     *
-     * @return Promise
-     */
     public function handleRequest(RequestInterface $request, callable $next, callable $first): Promise
     {
         $promise = $next($request);
@@ -54,7 +39,7 @@ class RetryAuthenticationPlugin implements Plugin
             if (401 === $statusCode && 'invalid_token' === $content['error']) {
                 if (self::MAXIMUM_ATTEMPTS <= $this->retryCount) {
                     throw new MaximumAuthenticationAttemptsReachedException(
-                        sprintf(
+                        \sprintf(
                             'the maxium number of %s authentication attempts has been reached.',
                             self::MAXIMUM_ATTEMPTS
                         ),

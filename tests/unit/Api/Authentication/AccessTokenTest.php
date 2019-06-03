@@ -7,13 +7,13 @@ use Starweb\Api\Authentication\AccessToken;
 
 class AccessTokenTest extends TestCase
 {
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $token = new AccessToken('my-token');
         $this->assertInstanceOf(AccessToken::class, $token);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $token = new AccessToken('my-token');
 
@@ -21,7 +21,7 @@ class AccessTokenTest extends TestCase
         $this->assertEquals('my-token', (string) $token);
     }
 
-    public function testGetTtl()
+    public function testGetTtl(): void
     {
         $token = new AccessToken('my-token');
 
@@ -29,7 +29,7 @@ class AccessTokenTest extends TestCase
         $this->assertEquals(3600, $token->getTtl());
     }
 
-    public function testGetCustomTtl()
+    public function testGetCustomTtl(): void
     {
         $token = new AccessToken('my-token', 7200);
 
@@ -37,7 +37,7 @@ class AccessTokenTest extends TestCase
         $this->assertEquals(7200, $token->getTtl());
     }
 
-    public function testGetExpiresIn()
+    public function testGetExpiresIn(): void
     {
         // the actual expiresIn datetime will be sooner
         $token = new AccessToken('my-token');

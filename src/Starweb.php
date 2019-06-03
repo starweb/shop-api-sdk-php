@@ -39,13 +39,6 @@ class Starweb
      */
     private $tokenManager;
 
-    /**
-     * Starweb constructor.
-     *
-     * @param Client $client
-     * @param string              $baseUri
-     * @param TokenManager        $tokenManager
-     */
     public function __construct(Client $client, string $baseUri, TokenManager $tokenManager)
     {
         $this->client = $client;
@@ -53,38 +46,22 @@ class Starweb
         $this->tokenManager = $tokenManager;
     }
 
-    /**
-     * @return Client
-     */
     public function getClient(): Client
     {
         return $this->client;
     }
 
-    /**
-     * @return string
-     */
     public function getBaseUri(): string
     {
         return $this->baseUri;
     }
 
-    /**
-     * @return TokenManager
-     */
     public function getTokenManager(): TokenManager
     {
         return $this->tokenManager;
     }
 
     /**
-     * @param ClientCredentials $clientCredentials
-     * @param string $baseUri
-     * @param HttpClient|null $httpClient
-     * @param MessageFactory|null $messageFactory
-     * @param TokenCacheInterface|null $tokenCache
-     *
-     * @return Starweb
      * @throws \Http\Client\Exception
      */
     public static function create(
@@ -113,12 +90,6 @@ class Starweb
     }
 
     /**
-     * @param HttpClient $httpClient
-     * @param MessageFactory $messageFactory
-     * @param TokenManager $tokenManager
-     * @param string $baseUri
-     *
-     * @return Client
      * @throws \Http\Client\Exception
      */
     public static function buildHttpClient(

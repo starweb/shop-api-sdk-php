@@ -2,12 +2,9 @@
 
 namespace Starweb\Tests;
 
-use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\Response;
 use Http\Client\Common\Exception\ServerErrorException;
-use Http\Client\Exception\HttpException;
 use Http\Client\Exception\NetworkException;
-use Http\Client\Exception\RequestException;
 use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;
 use Http\Discovery\StreamFactoryDiscovery;
@@ -69,7 +66,7 @@ class StarwebTest extends TestCase
         );
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $clientMock = $this->createMock(\Starweb\Api\Client::class);
         $tokenManager = $this->createMock(TokenManager::class);
@@ -80,20 +77,20 @@ class StarwebTest extends TestCase
         $this->assertSame($tokenManager, $starweb->getTokenManager());
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $starweb = $this->getStarweb();
 
         $this->assertSame(self::DEFAULT_BASE_URI, $starweb->getBaseUri());
     }
 
-    public function testCreateWithNonResolvableBaseUri()
+    public function testCreateWithNonResolvableBaseUri(): void
     {
         $this->expectException(NetworkException::class);
         Starweb::create(new ClientCredentials('id', 'secret'), 'https://foo.test');
     }
 
-    public function testCreateWithInvalidBaseUri()
+    public function testCreateWithInvalidBaseUri(): void
     {
         $clientMock = new Client();
         $response = $this->getResponseFactory()->createResponse(404);
@@ -105,7 +102,7 @@ class StarwebTest extends TestCase
         $this->getStarweb($clientMock, $tokenCacheMock);
     }
 
-    public function testCreateWithInvalidCredentials()
+    public function testCreateWithInvalidCredentials(): void
     {
         $clientMock = new Client();
         $response = $this->getResponseFactory()->createResponse(400);
@@ -119,7 +116,7 @@ class StarwebTest extends TestCase
         $this->getStarweb($clientMock, $tokenCacheMock);
     }
 
-    public function testCreateWithServerError()
+    public function testCreateWithServerError(): void
     {
         $clientMock = new Client();
         $response = $this->getResponseFactory()->createResponse(500);
@@ -133,7 +130,7 @@ class StarwebTest extends TestCase
         $this->getStarweb($clientMock, $tokenCacheMock);
     }
 
-    public function testBuildHttpClient()
+    public function testBuildHttpClient(): void
     {
         $clientMock = new Client();
         $messageFactoryMock = $this->createMock(MessageFactory::class);

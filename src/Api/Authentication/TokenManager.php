@@ -36,15 +36,6 @@ class TokenManager
      */
     private $baseUri;
 
-    /**
-     * TokenManager constructor.
-     *
-     * @param HttpClient $client
-     * @param RequestFactory $requestFactory
-     * @param ClientCredentials $credentials
-     * @param TokenCacheInterface $storage
-     * @param string $baseUri
-     */
     public function __construct(
         HttpClient $client,
         RequestFactory $requestFactory,
@@ -60,10 +51,6 @@ class TokenManager
     }
 
     /**
-     * @param HttpClient $client
-     *
-     * @return TokenInterface
-     *
      * @throws InvalidBaseUriException
      * @throws InvalidCredentialsException
      * @throws \Http\Client\Exception
@@ -103,8 +90,6 @@ class TokenManager
     }
 
     /**
-     * @return TokenInterface
-     *
      * @throws InvalidCredentialsException
      * @throws \Http\Client\Exception
      */

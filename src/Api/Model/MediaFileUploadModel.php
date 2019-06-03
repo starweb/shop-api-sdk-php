@@ -2,24 +2,20 @@
 
 namespace Starweb\Api\Model;
 
-class MediaFileUploadModel extends \Starweb\Api\Generated\Model\MediaFileUploadModel
+use Starweb\Api\Generated\Model\MediaFileUploadModel as GeneratedMediaFileUploadModel;
+
+class MediaFileUploadModel extends GeneratedMediaFileUploadModel
 {
     /**
      * @var string
      */
     private $filename;
 
-    /**
-     * @return string
-     */
     public function getFilename(): string
     {
         return $this->filename;
     }
 
-    /**
-     * @param string $filename
-     */
     public function setFilename(string $filename): void
     {
         $this->filename = $filename;

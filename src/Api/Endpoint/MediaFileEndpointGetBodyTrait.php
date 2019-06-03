@@ -2,20 +2,28 @@
 
 namespace Starweb\Api\Endpoint;
 
+use Http\Message\MultipartStream\MultipartStreamBuilder;
+use Http\Message\StreamFactory;
+use Starweb\Api\Model\MediaFileUploadModel;
+use Symfony\Component\Serializer\SerializerInterface;
+
 trait MediaFileEndpointGetBodyTrait
 {
-    public function getBody(
-        \Symfony\Component\Serializer\SerializerInterface $serializer,
-        \Http\Message\StreamFactory $streamFactory = null
-    ): array {
-        if ($this->body instanceof \Starweb\Api\Model\MediaFileUploadModel) {
-            $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
+    public function getBody(SerializerInterface $serializer, StreamFactory $streamFactory = null): array
+    {
+        if ($this->body instanceof MediaFileUploadModel) {
+            $bodyBuilder = new MultipartStreamBuilder($streamFactory);
             $formParameters = $serializer->normalize($this->body, 'json');
             foreach ($formParameters as $key => $value) {
                 $bodyBuilder->addResource($key, $value, ['filename' => $this->body->getFilename()]);
             }
-            return array(array('Content-Type' => array('multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '""'))), $bodyBuilder->build());
+
+            return [
+                ['Content-Type' => array('multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '""'))],
+                $bodyBuilder->build()
+            ];
         }
-        return array(array(), null);
+
+        return [[], null];
     }
 }

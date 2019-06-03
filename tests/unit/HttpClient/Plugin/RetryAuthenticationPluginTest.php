@@ -15,7 +15,7 @@ use Starweb\HttpClient\Plugin\RetryAuthenticationPlugin;
 
 class RetryAuthenticationPluginTest extends TestCase
 {
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $manager = $this->createMock(TokenManager::class);
         $plugin = new RetryAuthenticationPlugin($manager);
@@ -23,7 +23,7 @@ class RetryAuthenticationPluginTest extends TestCase
         $this->assertInstanceOf(RetryAuthenticationPlugin::class, $plugin);
     }
 
-    public function testHandleRequestWithValidTokenResponse()
+    public function testHandleRequestWithValidTokenResponse(): void
     {
         $manager = $this->createMock(TokenManager::class);
         $plugin = new RetryAuthenticationPlugin($manager);
@@ -46,7 +46,7 @@ class RetryAuthenticationPluginTest extends TestCase
         $this->assertInstanceOf(Promise::class, $response);
     }
 
-    public function testHandleRequestWithInvalidTokenResponse()
+    public function testHandleRequestWithInvalidTokenResponse(): void
     {
         $manager = $this->createMock(TokenManager::class);
         $plugin = new RetryAuthenticationPlugin($manager);
@@ -74,7 +74,7 @@ class RetryAuthenticationPluginTest extends TestCase
         $this->assertInstanceOf(HttpFulfilledPromise::class, $response);
     }
 
-    public function testHandleRequestWithInvalidTokenResponseHittingRetryMaximum()
+    public function testHandleRequestWithInvalidTokenResponseHittingRetryMaximum(): void
     {
         $manager = $this->createMock(TokenManager::class);
         $plugin = new RetryAuthenticationPlugin($manager);

@@ -21,7 +21,7 @@ class TokenFileSystemCacheTest extends TestCase
         $this->cache = new TokenFilesystemCache();
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $tokenCache = new TokenFilesystemCache();
 
@@ -29,12 +29,12 @@ class TokenFileSystemCacheTest extends TestCase
         $this->assertInstanceOf(FilesystemCache::class, $tokenCache);
     }
 
-    public function testSetToken()
+    public function testSetToken(): void
     {
         $this->assertNull($this->cache->setToken(new AccessToken('my-token')));
     }
 
-    public function testHasToken()
+    public function testHasToken(): void
     {
         $this->cache->setToken(new AccessToken('my-token'));
         $hasToken = $this->cache->hasToken();
@@ -43,7 +43,7 @@ class TokenFileSystemCacheTest extends TestCase
         $this->assertTrue($hasToken);
     }
 
-    public function testGetToken()
+    public function testGetToken(): void
     {
         $this->cache->setToken(new AccessToken('my-token'));
 
@@ -51,7 +51,7 @@ class TokenFileSystemCacheTest extends TestCase
         $this->assertEquals('my-token', $this->cache->getToken()->__toString());
     }
 
-    public function testClearToken()
+    public function testClearToken(): void
     {
         $this->cache->setToken(new AccessToken('my-token'));
         $this->cache->clearToken();
@@ -59,7 +59,7 @@ class TokenFileSystemCacheTest extends TestCase
         $this->assertFalse($this->cache->hasToken());
     }
 
-    public function testIsExpired()
+    public function testIsExpired(): void
     {
         $this->cache->setToken(new AccessToken('my-token'));
 
@@ -67,7 +67,7 @@ class TokenFileSystemCacheTest extends TestCase
         $this->assertFalse($this->cache->isExpired());
     }
 
-    public function testIsExpiredWithOneSecondTtl()
+    public function testIsExpiredWithOneSecondTtl(): void
     {
         $token = new AccessToken('my-token', 0);
         $this->cache->setToken($token);

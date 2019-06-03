@@ -6,5 +6,4 @@ use Http\Client\Common\Exception\ClientErrorException;
 
 class MaximumAuthenticationAttemptsReachedException extends ClientErrorException
 {
-
 }
