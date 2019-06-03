@@ -17,12 +17,7 @@ use Starweb\Api\Authentication\TokenCacheInterface;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenManager;
 use Starweb\Api\Generated\Client as JaneOpenApiClient;
-use Starweb\Api\Resource\Resource;
-use Starweb\Api\Resource\ResourceInterface;
-use Starweb\Api\Resource\Resources;
-use Starweb\HttpClient\DecoratedHttpClient;
 use Starweb\Starweb;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class StarwebTest extends TestCase
 {
@@ -69,7 +64,7 @@ class StarwebTest extends TestCase
 
     public function testConstructor()
     {
-        $clientMock = $this->createMock(JaneOpenApiClient::class);
+        $clientMock = $this->createMock(\Starweb\Api\Client::class);
         $tokenManager = $this->createMock(TokenManager::class);
         $starweb = new Starweb($clientMock, self::DEFAULT_BASE_URI, $tokenManager);
 
