@@ -1,16 +1,13 @@
-# development
 .DS_STORE
 .idea
 
-# composer
 /vendor/
 composer.lock
 
-# specification
 resources/specification/*
 !resources/specification/openapi.json
 
-# test coverage
+.phpunit.result.cache
 tests/coverage
 
 # examples
