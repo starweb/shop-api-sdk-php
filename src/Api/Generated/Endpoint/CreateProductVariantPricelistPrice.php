@@ -8,11 +8,11 @@ class CreateProductVariantPricelistPrice extends \Jane\OpenApiRuntime\Client\Bas
     protected $variantId;
     /**
     * Creates a product variant pricelist price. 
-                       * Retrieves the created `ProductVariantPricelistPrice` object
+                       Retrieves the created `ProductVariantPricelistPrice` object
     *
-    * @param int                                                   $productId The products id
-    * @param int                                                   $variantId The products variants id
-    * @param \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody
+    * @param int $productId The products id
+    * @param int $variantId The products variants id
+    * @param \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody 
     */
     public function __construct(int $productId, int $variantId, \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody)
     {
@@ -42,16 +42,18 @@ class CreateProductVariantPricelistPrice extends \Jane\OpenApiRuntime\Client\Bas
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateProductVariantPricelistPriceBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantPriceModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductVariantPriceModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVariantPriceModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateProductVariantPricelistPriceBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateProductVariantPricelistPriceBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

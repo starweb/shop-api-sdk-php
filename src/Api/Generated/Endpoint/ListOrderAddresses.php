@@ -33,12 +33,14 @@ class ListOrderAddresses extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     }
     /**
      * {@inheritdoc}
+     *
+     *
      * @return null|\Starweb\Api\Generated\Model\OrderAddressCollection
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\OrderAddressCollection', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\OrderAddressCollection', 'json');
         }
     }
 }

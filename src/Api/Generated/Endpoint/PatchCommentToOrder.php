@@ -9,9 +9,9 @@ class PatchCommentToOrder extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     /**
      * Update a comment for an order. Retrieves the created `OrderComment` object
      *
-     * @param int                                            $orderId The orders id
-     * @param int                                            $commentId The order comments id
-     * @param \Starweb\Api\Generated\Model\OrderCommentModel $requestBody
+     * @param int $orderId The orders id
+     * @param int $commentId The order comments id
+     * @param \Starweb\Api\Generated\Model\OrderCommentModel $requestBody 
      */
     public function __construct(int $orderId, int $commentId, \Starweb\Api\Generated\Model\OrderCommentModel $requestBody)
     {
@@ -41,16 +41,18 @@ class PatchCommentToOrder extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PatchCommentToOrderBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\OrderCommentModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\OrderCommentModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\OrderCommentModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PatchCommentToOrderBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PatchCommentToOrderBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

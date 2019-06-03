@@ -23,12 +23,14 @@ class GetOrderStatuses extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     }
     /**
      * {@inheritdoc}
+     *
+     *
      * @return null|\Starweb\Api\Generated\Model\OrderStatusModelCollection
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\OrderStatusModelCollection', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\OrderStatusModelCollection', 'json');
         }
     }
 }

@@ -9,9 +9,9 @@ class PatchProductsMetaData extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     /**
      * Updates a product meta data. Retrieves the update `ProductMetaData` object.
      *
-     * @param int                                                        $productId The product id
-     * @param int                                                        $metaDataTypeId The meta data type id
-     * @param \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody
+     * @param int $productId The product id
+     * @param int $metaDataTypeId The meta data type id
+     * @param \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody 
      */
     public function __construct(int $productId, int $metaDataTypeId, \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody)
     {
@@ -41,20 +41,22 @@ class PatchProductsMetaData extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PatchProductsMetaDataBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductsMetaDataNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductMetaDataModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductMetaDataModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductMetaDataModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PatchProductsMetaDataBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PatchProductsMetaDataBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PatchProductsMetaDataNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PatchProductsMetaDataNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

@@ -7,7 +7,7 @@ class CreateStockLocation extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     /**
      * Create a stock location. Retrieves the created `StockLocation` object
      *
-     * @param \Starweb\Api\Generated\Model\StockLocationPostRequestModel $requestBody
+     * @param \Starweb\Api\Generated\Model\StockLocationPostRequestModel $requestBody 
      */
     public function __construct(\Starweb\Api\Generated\Model\StockLocationPostRequestModel $requestBody)
     {
@@ -35,16 +35,18 @@ class CreateStockLocation extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateStockLocationBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\StockLocationModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\StockLocationModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\StockLocationModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateStockLocationBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateStockLocationBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

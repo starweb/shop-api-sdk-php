@@ -55,16 +55,18 @@ class ListCustomers extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\ListCustomersBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\CustomerModelCollection
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\CustomerModelCollection', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\CustomerModelCollection', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\ListCustomersBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\ListCustomersBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

@@ -36,7 +36,9 @@ class DeleteProductsBundledProduct extends \Jane\OpenApiRuntime\Client\BaseEndpo
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\DeleteProductsBundledProductNotFoundException
+     *
      * @return null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
@@ -45,7 +47,7 @@ class DeleteProductsBundledProduct extends \Jane\OpenApiRuntime\Client\BaseEndpo
             return null;
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\DeleteProductsBundledProductNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\DeleteProductsBundledProductNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

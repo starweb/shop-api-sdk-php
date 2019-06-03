@@ -36,7 +36,9 @@ class DeleteProductsMediaFileLink extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\DeleteProductsMediaFileLinkNotFoundException
+     *
      * @return null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
@@ -45,7 +47,7 @@ class DeleteProductsMediaFileLink extends \Jane\OpenApiRuntime\Client\BaseEndpoi
             return null;
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\DeleteProductsMediaFileLinkNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\DeleteProductsMediaFileLinkNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

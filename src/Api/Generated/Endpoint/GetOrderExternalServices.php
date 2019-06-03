@@ -33,12 +33,14 @@ class GetOrderExternalServices extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
     }
     /**
      * {@inheritdoc}
+     *
+     *
      * @return null|\Starweb\Api\Generated\Model\OrderExternalServiceModelCollection
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\OrderExternalServiceModelCollection', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\OrderExternalServiceModelCollection', 'json');
         }
     }
 }

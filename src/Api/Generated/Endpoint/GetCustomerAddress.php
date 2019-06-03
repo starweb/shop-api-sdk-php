@@ -36,16 +36,18 @@ class GetCustomerAddress extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\GetCustomerAddressNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\CustomerAddressesModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\CustomerAddressesModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\CustomerAddressesModelItem', 'json');
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\GetCustomerAddressNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\GetCustomerAddressNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

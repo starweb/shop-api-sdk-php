@@ -8,8 +8,8 @@ class CreateProductVatRate extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     /**
      * Creates a product vat rate. Retrieves the create `ProductVatRate` object.
      *
-     * @param int                                              $productId The products id
-     * @param \Starweb\Api\Generated\Model\ProductVatRateModel $requestBody
+     * @param int $productId The products id
+     * @param \Starweb\Api\Generated\Model\ProductVatRateModel $requestBody 
      */
     public function __construct(int $productId, \Starweb\Api\Generated\Model\ProductVatRateModel $requestBody)
     {
@@ -38,16 +38,18 @@ class CreateProductVatRate extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateProductVatRateBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductVatRateModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductVatRateModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVatRateModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateProductVatRateBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateProductVatRateBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

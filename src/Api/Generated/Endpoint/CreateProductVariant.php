@@ -8,8 +8,8 @@ class CreateProductVariant extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     /**
      * Creates a product variant. Retrieves the created `ProductVariant` object
      *
-     * @param int                                              $productId The products id
-     * @param \Starweb\Api\Generated\Model\ProductVariantModel $requestBody
+     * @param int $productId The products id
+     * @param \Starweb\Api\Generated\Model\ProductVariantModel $requestBody 
      */
     public function __construct(int $productId, \Starweb\Api\Generated\Model\ProductVariantModel $requestBody)
     {
@@ -38,16 +38,18 @@ class CreateProductVariant extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateProductVariantBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductVariantModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVariantModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateProductVariantBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateProductVariantBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

@@ -9,9 +9,9 @@ class PatchProductsCategoryLink extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     /**
      * Update a product category link. Retrieves the update `ProductCategoryLink` object.
      *
-     * @param int                                                   $productId The product id
-     * @param int                                                   $categoryId The category id
-     * @param \Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody
+     * @param int $productId The product id
+     * @param int $categoryId The category id
+     * @param \Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody 
      */
     public function __construct(int $productId, int $categoryId, \Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody)
     {
@@ -41,20 +41,22 @@ class PatchProductsCategoryLink extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PatchProductsCategoryLinkBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductsCategoryLinkNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductCategoryLinkModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductCategoryLinkModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductCategoryLinkModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PatchProductsCategoryLinkBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PatchProductsCategoryLinkBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PatchProductsCategoryLinkNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PatchProductsCategoryLinkNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

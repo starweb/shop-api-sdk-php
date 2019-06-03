@@ -33,7 +33,9 @@ class DeleteOrder extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\DeleteOrderNotFoundException
+     *
      * @return null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
@@ -42,7 +44,7 @@ class DeleteOrder extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
             return null;
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\DeleteOrderNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\DeleteOrderNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

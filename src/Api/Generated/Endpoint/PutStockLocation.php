@@ -8,8 +8,8 @@ class PutStockLocation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     /**
      * Update a stock location. Retrieves the updated `StockLocation` object
      *
-     * @param int                                                       $stockLocationId The stock location id
-     * @param \Starweb\Api\Generated\Model\StockLocationPutRequestModel $requestBody
+     * @param int $stockLocationId The stock location id
+     * @param \Starweb\Api\Generated\Model\StockLocationPutRequestModel $requestBody 
      */
     public function __construct(int $stockLocationId, \Starweb\Api\Generated\Model\StockLocationPutRequestModel $requestBody)
     {
@@ -38,20 +38,22 @@ class PutStockLocation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PutStockLocationBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutStockLocationNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\StockLocationModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\StockLocationModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\StockLocationModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutStockLocationBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutStockLocationBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutStockLocationNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutStockLocationNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

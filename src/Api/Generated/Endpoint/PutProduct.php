@@ -8,8 +8,8 @@ class PutProduct extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     /**
      * Updates a product. Retrieves the update `Product` object.
      *
-     * @param int                                                $productId The product id
-     * @param \Starweb\Api\Generated\Model\ProductModelUpdatable $requestBody
+     * @param int $productId The product id
+     * @param \Starweb\Api\Generated\Model\ProductModelUpdatable $requestBody 
      */
     public function __construct(int $productId, \Starweb\Api\Generated\Model\ProductModelUpdatable $requestBody)
     {
@@ -38,20 +38,22 @@ class PutProduct extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PutProductBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutProductBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutProductBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutProductNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutProductNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

@@ -23,12 +23,14 @@ class GetPricelists extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     }
     /**
      * {@inheritdoc}
+     *
+     *
      * @return null|\Starweb\Api\Generated\Model\PricelistModelCollection
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\PricelistModelCollection', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\PricelistModelCollection', 'json');
         }
     }
 }

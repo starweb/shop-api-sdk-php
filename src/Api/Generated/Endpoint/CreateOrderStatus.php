@@ -7,7 +7,7 @@ class CreateOrderStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     /**
      * Create an order status. Retrieves the created `OrderStatus` object
      *
-     * @param \Starweb\Api\Generated\Model\OrderStatusModel $requestBody
+     * @param \Starweb\Api\Generated\Model\OrderStatusModel $requestBody 
      */
     public function __construct(\Starweb\Api\Generated\Model\OrderStatusModel $requestBody)
     {
@@ -35,16 +35,18 @@ class CreateOrderStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateOrderStatusBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\OrderStatusModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\OrderStatusModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\OrderStatusModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateOrderStatusBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateOrderStatusBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

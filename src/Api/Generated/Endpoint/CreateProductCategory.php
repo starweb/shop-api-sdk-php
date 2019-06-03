@@ -7,7 +7,7 @@ class CreateProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     /**
      * Create a product category. Retrieves the created `ProductCategory` object
      *
-     * @param \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody
+     * @param \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody 
      */
     public function __construct(\Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody)
     {
@@ -35,16 +35,18 @@ class CreateProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateProductCategoryBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductCategoryModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductCategoryModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductCategoryModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateProductCategoryBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateProductCategoryBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

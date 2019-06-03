@@ -9,9 +9,9 @@ class PutCustomerAddress extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     /**
      * Updates a customer address. Retrieves the updated `CustomerAddress` object
      *
-     * @param int                                       $customerId The customers id
-     * @param string                                    $addressType The customer address type
-     * @param \Starweb\Api\Generated\Model\AddressModel $requestBody
+     * @param int $customerId The customers id
+     * @param string $addressType The customer address type
+     * @param \Starweb\Api\Generated\Model\AddressModel $requestBody 
      */
     public function __construct(int $customerId, string $addressType, \Starweb\Api\Generated\Model\AddressModel $requestBody)
     {
@@ -41,20 +41,22 @@ class PutCustomerAddress extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PutCustomerAddressBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutCustomerAddressNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\CustomerAddressesModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\CustomerAddressesModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\CustomerAddressesModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutCustomerAddressBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutCustomerAddressBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutCustomerAddressNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutCustomerAddressNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

@@ -8,11 +8,11 @@ class PutOrderExternalService extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
     protected $serviceName;
     /**
     * Updates an order external service. 
-                       * Retrieves the updated `OrderExternalService` object
+                       Retrieves the updated `OrderExternalService` object
     *
-    * @param int                                                    $orderId The orders id
-    * @param string                                                 $serviceName The service name
-    * @param \Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody
+    * @param int $orderId The orders id
+    * @param string $serviceName The service name
+    * @param \Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody 
     */
     public function __construct(int $orderId, string $serviceName, \Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody)
     {
@@ -42,20 +42,22 @@ class PutOrderExternalService extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PutOrderExternalServiceBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutOrderExternalServiceNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\OrderExternalServicesModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\OrderExternalServicesModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\OrderExternalServicesModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutOrderExternalServiceBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutOrderExternalServiceBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutOrderExternalServiceNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutOrderExternalServiceNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

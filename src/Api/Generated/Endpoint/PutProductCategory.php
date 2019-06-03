@@ -8,8 +8,8 @@ class PutProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     /**
      * Update a product category. Retrieves the updated `ProductCategory` object
      *
-     * @param int                                                        $categoryId The product category id
-     * @param \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody
+     * @param int $categoryId The product category id
+     * @param \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody 
      */
     public function __construct(int $categoryId, \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody)
     {
@@ -38,20 +38,22 @@ class PutProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PutProductCategoryBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductCategoryNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductCategoryModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductCategoryModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductCategoryModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutProductCategoryBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutProductCategoryBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutProductCategoryNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutProductCategoryNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

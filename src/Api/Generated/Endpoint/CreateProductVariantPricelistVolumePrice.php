@@ -9,12 +9,12 @@ class CreateProductVariantPricelistVolumePrice extends \Jane\OpenApiRuntime\Clie
     protected $pricelistId;
     /**
     * Creates a variant volume pricelist price. 
-                       * Retrieves the created `ProductVariantPricelistVolumePrice` object
+                       Retrieves the created `ProductVariantPricelistVolumePrice` object
     *
-    * @param int                                                         $productId The products id
-    * @param int                                                         $variantId The products variants id
-    * @param int                                                         $pricelistId The pricelist id
-    * @param \Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody
+    * @param int $productId The products id
+    * @param int $variantId The products variants id
+    * @param int $pricelistId The pricelist id
+    * @param \Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody 
     */
     public function __construct(int $productId, int $variantId, int $pricelistId, \Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody)
     {
@@ -45,16 +45,18 @@ class CreateProductVariantPricelistVolumePrice extends \Jane\OpenApiRuntime\Clie
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateProductVariantPricelistVolumePriceBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantVolumePriceModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductVariantVolumePriceModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVariantVolumePriceModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateProductVariantPricelistVolumePriceBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateProductVariantPricelistVolumePriceBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

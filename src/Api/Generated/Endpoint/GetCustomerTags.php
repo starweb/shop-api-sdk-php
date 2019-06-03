@@ -33,12 +33,14 @@ class GetCustomerTags extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     }
     /**
      * {@inheritdoc}
+     *
+     *
      * @return null|\Starweb\Api\Generated\Model\CustomerAddedTagModelCollection
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\CustomerAddedTagModelCollection', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\CustomerAddedTagModelCollection', 'json');
         }
     }
 }

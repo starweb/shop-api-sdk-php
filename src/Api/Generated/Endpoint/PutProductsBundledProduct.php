@@ -9,9 +9,9 @@ class PutProductsBundledProduct extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     /**
      * Updates a bundled product. Retrieves the updated `BundledProduct` object
      *
-     * @param int                                               $productId The product id
-     * @param int                                               $bundledProductId The bundled products id
-     * @param \Starweb\Api\Generated\Model\BundledProductsModel $requestBody
+     * @param int $productId The product id
+     * @param int $bundledProductId The bundled products id
+     * @param \Starweb\Api\Generated\Model\BundledProductsModel $requestBody 
      */
     public function __construct(int $productId, int $bundledProductId, \Starweb\Api\Generated\Model\BundledProductsModel $requestBody)
     {
@@ -41,20 +41,22 @@ class PutProductsBundledProduct extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PutProductsBundledProductBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductsBundledProductNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\BundledProductsModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\BundledProductsModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\BundledProductsModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutProductsBundledProductBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutProductsBundledProductBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutProductsBundledProductNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutProductsBundledProductNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

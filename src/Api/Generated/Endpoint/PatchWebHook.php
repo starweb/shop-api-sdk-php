@@ -6,8 +6,10 @@ class PatchWebHook extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
 {
     protected $webHookId;
     /**
-     * @param int                                       $webHookId The web hook id
-     * @param \Starweb\Api\Generated\Model\WebHookModel $requestBody
+     * 
+     *
+     * @param int $webHookId The web hook id
+     * @param \Starweb\Api\Generated\Model\WebHookModel $requestBody 
      */
     public function __construct(int $webHookId, \Starweb\Api\Generated\Model\WebHookModel $requestBody)
     {
@@ -36,20 +38,22 @@ class PatchWebHook extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PatchWebHookBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchWebHookNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\WebHookModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\WebHookModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\WebHookModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PatchWebHookBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PatchWebHookBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PatchWebHookNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PatchWebHookNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

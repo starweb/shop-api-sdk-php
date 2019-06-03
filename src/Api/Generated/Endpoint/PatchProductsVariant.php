@@ -9,9 +9,9 @@ class PatchProductsVariant extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     /**
      * Updates a product variant. Retrieves the updated `ProductVariant` object
      *
-     * @param int                                              $productId The product id
-     * @param int                                              $variantId The products variants id
-     * @param \Starweb\Api\Generated\Model\ProductVariantModel $requestBody
+     * @param int $productId The product id
+     * @param int $variantId The products variants id
+     * @param \Starweb\Api\Generated\Model\ProductVariantModel $requestBody 
      */
     public function __construct(int $productId, int $variantId, \Starweb\Api\Generated\Model\ProductVariantModel $requestBody)
     {
@@ -41,20 +41,22 @@ class PatchProductsVariant extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PatchProductsVariantBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductsVariantNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductVariantModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVariantModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PatchProductsVariantBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PatchProductsVariantBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PatchProductsVariantNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PatchProductsVariantNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

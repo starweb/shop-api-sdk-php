@@ -7,7 +7,7 @@ class CreateProductStockStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
     /**
      * Create a product stock status. Retrieves the created `ProductStockStatus` object.
      *
-     * @param \Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody
+     * @param \Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody 
      */
     public function __construct(\Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody)
     {
@@ -35,16 +35,18 @@ class CreateProductStockStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateProductStockStatusBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductStockStatusModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductStockStatusModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductStockStatusModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateProductStockStatusBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateProductStockStatusBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

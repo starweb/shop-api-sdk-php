@@ -36,8 +36,10 @@ class RemoveAddressFromCustomer extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\RemoveAddressFromCustomerForbiddenException
      * @throws \Starweb\Api\Generated\Exception\RemoveAddressFromCustomerNotFoundException
+     *
      * @return null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
@@ -46,10 +48,10 @@ class RemoveAddressFromCustomer extends \Jane\OpenApiRuntime\Client\BaseEndpoint
             return null;
         }
         if (403 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\RemoveAddressFromCustomerForbiddenException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\RemoveAddressFromCustomerForbiddenException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\RemoveAddressFromCustomerNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\RemoveAddressFromCustomerNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

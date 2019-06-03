@@ -8,8 +8,8 @@ class PatchOrder extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     /**
      * Updates an order. Retrieves the updated `Order` object
      *
-     * @param int                                           $orderId The orders id
-     * @param \Starweb\Api\Generated\Model\OrderUpdateModel $requestBody
+     * @param int $orderId The orders id
+     * @param \Starweb\Api\Generated\Model\OrderUpdateModel $requestBody 
      */
     public function __construct(int $orderId, \Starweb\Api\Generated\Model\OrderUpdateModel $requestBody)
     {
@@ -38,20 +38,22 @@ class PatchOrder extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PatchOrderBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchOrderNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\OrderModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\OrderModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\OrderModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PatchOrderBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PatchOrderBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PatchOrderNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PatchOrderNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

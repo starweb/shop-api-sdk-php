@@ -9,9 +9,9 @@ class PutProductsLanguage extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     /**
      * Update a product language. Retrieves the update `ProductLanguage` object.
      *
-     * @param int                                               $productId The product id
-     * @param string                                            $langCode The language code you want to fetch/change. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
-     * @param \Starweb\Api\Generated\Model\ProductLanguageModel $requestBody
+     * @param int $productId The product id
+     * @param string $langCode The language code you want to fetch/change. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
+     * @param \Starweb\Api\Generated\Model\ProductLanguageModel $requestBody 
      */
     public function __construct(int $productId, string $langCode, \Starweb\Api\Generated\Model\ProductLanguageModel $requestBody)
     {
@@ -41,20 +41,22 @@ class PutProductsLanguage extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PutProductsLanguageBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductsLanguageNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductLanguageModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductLanguageModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductLanguageModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutProductsLanguageBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutProductsLanguageBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutProductsLanguageNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutProductsLanguageNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

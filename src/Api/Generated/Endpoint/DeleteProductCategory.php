@@ -33,7 +33,9 @@ class DeleteProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\DeleteProductCategoryNotFoundException
+     *
      * @return null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
@@ -42,7 +44,7 @@ class DeleteProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
             return null;
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\DeleteProductCategoryNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\DeleteProductCategoryNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

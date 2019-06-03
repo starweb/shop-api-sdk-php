@@ -8,8 +8,8 @@ class AddCommentToOrder extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     /**
      * Add a comment to an order. Retrieves the created `OrderComment` object
      *
-     * @param int                                            $orderId The orders id
-     * @param \Starweb\Api\Generated\Model\OrderCommentModel $requestBody
+     * @param int $orderId The orders id
+     * @param \Starweb\Api\Generated\Model\OrderCommentModel $requestBody 
      */
     public function __construct(int $orderId, \Starweb\Api\Generated\Model\OrderCommentModel $requestBody)
     {
@@ -38,16 +38,18 @@ class AddCommentToOrder extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\AddCommentToOrderBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\OrderCommentModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\OrderCommentModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\OrderCommentModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\AddCommentToOrderBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\AddCommentToOrderBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

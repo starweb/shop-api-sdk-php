@@ -8,8 +8,8 @@ class AddTagToCustomer extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     /**
      * Add a tag to a customer. Retrieves the created `CustomerTag` object
      *
-     * @param int                                                $customerId The customers id
-     * @param \Starweb\Api\Generated\Model\CustomerAddedTagModel $requestBody
+     * @param int $customerId The customers id
+     * @param \Starweb\Api\Generated\Model\CustomerAddedTagModel $requestBody 
      */
     public function __construct(int $customerId, \Starweb\Api\Generated\Model\CustomerAddedTagModel $requestBody)
     {
@@ -38,16 +38,18 @@ class AddTagToCustomer extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\AddTagToCustomerBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\CustomerAddedTagModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\CustomerAddedTagModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\CustomerAddedTagModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\AddTagToCustomerBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\AddTagToCustomerBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

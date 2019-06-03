@@ -8,8 +8,8 @@ class CreateProductsMetaData extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
     /**
      * Creates a product meta data. Retrieves the created `ProductMetaData` object.
      *
-     * @param int                                                        $productId The products id
-     * @param \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody
+     * @param int $productId The products id
+     * @param \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody 
      */
     public function __construct(int $productId, \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody)
     {
@@ -38,16 +38,18 @@ class CreateProductsMetaData extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateProductsMetaDataBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductMetaDataModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductMetaDataModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductMetaDataModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateProductsMetaDataBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateProductsMetaDataBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

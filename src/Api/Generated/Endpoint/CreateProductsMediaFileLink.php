@@ -7,10 +7,10 @@ class CreateProductsMediaFileLink extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     protected $productId;
     /**
     * Creates a product media file link. 
-                       * Retrieves the create `ProductMediaFileLink` object.
+                       Retrieves the create `ProductMediaFileLink` object.
     *
-    * @param int                                                    $productId The products id
-    * @param \Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody
+    * @param int $productId The products id
+    * @param \Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody 
     */
     public function __construct(int $productId, \Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody)
     {
@@ -39,16 +39,18 @@ class CreateProductsMediaFileLink extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateProductsMediaFileLinkBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductMediaFileLinkModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductMediaFileLinkModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductMediaFileLinkModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateProductsMediaFileLinkBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateProductsMediaFileLinkBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

@@ -8,11 +8,11 @@ class PatchProductsMediaFileLink extends \Jane\OpenApiRuntime\Client\BaseEndpoin
     protected $mediaFileId;
     /**
     * Updates a product media file link. 
-                       * Retrieves the update `ProductMediaFileLink` object.
+                       Retrieves the update `ProductMediaFileLink` object.
     *
-    * @param int                                                    $productId The product id
-    * @param int                                                    $mediaFileId The media file id of the link you want to fetch/change
-    * @param \Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody
+    * @param int $productId The product id
+    * @param int $mediaFileId The media file id of the link you want to fetch/change
+    * @param \Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody 
     */
     public function __construct(int $productId, int $mediaFileId, \Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody)
     {
@@ -42,20 +42,22 @@ class PatchProductsMediaFileLink extends \Jane\OpenApiRuntime\Client\BaseEndpoin
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PatchProductsMediaFileLinkBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductsMediaFileLinkNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductMediaFileLinkModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductMediaFileLinkModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductMediaFileLinkModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PatchProductsMediaFileLinkBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PatchProductsMediaFileLinkBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PatchProductsMediaFileLinkNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PatchProductsMediaFileLinkNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

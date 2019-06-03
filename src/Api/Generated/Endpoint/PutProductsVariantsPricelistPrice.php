@@ -9,12 +9,12 @@ class PutProductsVariantsPricelistPrice extends \Jane\OpenApiRuntime\Client\Base
     protected $pricelistId;
     /**
     * Updates a product variant pricelist price. 
-                       * Retrieves the updated `ProductVariantPricelistPrice` object
+                       Retrieves the updated `ProductVariantPricelistPrice` object
     *
-    * @param int                                                   $productId The product id
-    * @param int                                                   $variantId The products variants id
-    * @param int                                                   $pricelistId The pricelist id
-    * @param \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody
+    * @param int $productId The product id
+    * @param int $variantId The products variants id
+    * @param int $pricelistId The pricelist id
+    * @param \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody 
     */
     public function __construct(int $productId, int $variantId, int $pricelistId, \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody)
     {
@@ -45,20 +45,22 @@ class PutProductsVariantsPricelistPrice extends \Jane\OpenApiRuntime\Client\Base
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistPriceBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistPriceNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantPriceModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductVariantPriceModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVariantPriceModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistPriceBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistPriceBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistPriceNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistPriceNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

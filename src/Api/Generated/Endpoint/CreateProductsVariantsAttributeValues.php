@@ -7,10 +7,10 @@ class CreateProductsVariantsAttributeValues extends \Jane\OpenApiRuntime\Client\
     protected $attributeId;
     /**
     * Creates a product variant attribute value.
-                       * Retrieves the created `ProductVariantAttributeValue` object.
+                       Retrieves the created `ProductVariantAttributeValue` object.
     *
-    * @param int                                                                     $attributeId The attribute id
-    * @param \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody
+    * @param int $attributeId The attribute id
+    * @param \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody 
     */
     public function __construct(int $attributeId, \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody)
     {
@@ -39,16 +39,18 @@ class CreateProductsVariantsAttributeValues extends \Jane\OpenApiRuntime\Client\
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateProductsVariantsAttributeValuesBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelCollection
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductVariantAttributeValueModelCollection', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueModelCollection', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateProductsVariantsAttributeValuesBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateProductsVariantsAttributeValuesBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

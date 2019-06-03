@@ -8,8 +8,8 @@ class PutCustomer extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     /**
      * Updates a customer. Retrieves the updated `Customer` object
      *
-     * @param int                                              $customerId The customers id
-     * @param \Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody
+     * @param int $customerId The customers id
+     * @param \Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody 
      */
     public function __construct(int $customerId, \Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody)
     {
@@ -38,20 +38,22 @@ class PutCustomer extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PutCustomerBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutCustomerNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\CustomerModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\CustomerModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\CustomerModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutCustomerBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutCustomerBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutCustomerNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutCustomerNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

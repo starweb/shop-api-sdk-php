@@ -5,7 +5,9 @@ namespace Starweb\Api\Generated\Endpoint;
 class CreateWebHook extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
     /**
-     * @param \Starweb\Api\Generated\Model\WebHookModel $requestBody
+     * 
+     *
+     * @param \Starweb\Api\Generated\Model\WebHookModel $requestBody 
      */
     public function __construct(\Starweb\Api\Generated\Model\WebHookModel $requestBody)
     {
@@ -33,16 +35,18 @@ class CreateWebHook extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateWebHookBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\WebHookModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\WebHookModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\WebHookModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateWebHookBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateWebHookBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

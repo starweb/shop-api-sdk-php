@@ -8,8 +8,8 @@ class CreateProductsCategoryLink extends \Jane\OpenApiRuntime\Client\BaseEndpoin
     /**
      * Retrieves the created `ProductCategoryLink` object
      *
-     * @param int                                                   $productId The products id
-     * @param \Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody
+     * @param int $productId The products id
+     * @param \Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody 
      */
     public function __construct(int $productId, \Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody)
     {
@@ -38,16 +38,18 @@ class CreateProductsCategoryLink extends \Jane\OpenApiRuntime\Client\BaseEndpoin
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateProductsCategoryLinkBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductCategoryLinkModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductCategoryLinkModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductCategoryLinkModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateProductsCategoryLinkBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateProductsCategoryLinkBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

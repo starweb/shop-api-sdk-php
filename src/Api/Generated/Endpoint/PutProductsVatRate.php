@@ -9,9 +9,9 @@ class PutProductsVatRate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     /**
      * Updates a product vat rate. Retrieves the update `ProductVatRate` object.
      *
-     * @param int                                              $productId The product id
-     * @param string                                           $countryCode The country code for the vat rate to fetch/manipulate
-     * @param \Starweb\Api\Generated\Model\ProductVatRateModel $requestBody
+     * @param int $productId The product id
+     * @param string $countryCode The country code for the vat rate to fetch/manipulate
+     * @param \Starweb\Api\Generated\Model\ProductVatRateModel $requestBody 
      */
     public function __construct(int $productId, string $countryCode, \Starweb\Api\Generated\Model\ProductVatRateModel $requestBody)
     {
@@ -41,20 +41,22 @@ class PutProductsVatRate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PutProductsVatRateBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductsVatRateNotFoundException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductVatRateModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductVatRateModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVatRateModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutProductsVatRateBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutProductsVatRateBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutProductsVatRateNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutProductsVatRateNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

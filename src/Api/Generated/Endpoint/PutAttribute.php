@@ -7,10 +7,10 @@ class PutAttribute extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     protected $attributeId;
     /**
     * Updates a product variant attribute.
-                       * Retrieves the updated `ProductVariantAttribute` object.
+                       Retrieves the updated `ProductVariantAttribute` object.
     *
-    * @param int                                                                $attributeId The attribute value id
-    * @param \Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody
+    * @param int $attributeId The attribute value id
+    * @param \Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody 
     */
     public function __construct(int $attributeId, \Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody)
     {
@@ -39,16 +39,18 @@ class PutAttribute extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\PutAttributeBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductVariantAttributeModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\PutAttributeBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\PutAttributeBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

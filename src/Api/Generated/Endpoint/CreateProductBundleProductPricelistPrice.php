@@ -8,11 +8,11 @@ class CreateProductBundleProductPricelistPrice extends \Jane\OpenApiRuntime\Clie
     protected $bundledProductId;
     /**
     * Creates a bundled product pricelist price. 
-                       * Retrieves the created `ProductBundleProductPricelistPrice` object
+                       Retrieves the created `ProductBundleProductPricelistPrice` object
     *
-    * @param int                                                         $productId The products id
-    * @param int                                                         $bundledProductId The bundled products id
-    * @param \Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody
+    * @param int $productId The products id
+    * @param int $bundledProductId The bundled products id
+    * @param \Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody 
     */
     public function __construct(int $productId, int $bundledProductId, \Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody)
     {
@@ -42,16 +42,18 @@ class CreateProductBundleProductPricelistPrice extends \Jane\OpenApiRuntime\Clie
     }
     /**
      * {@inheritdoc}
+     *
      * @throws \Starweb\Api\Generated\Exception\CreateProductBundleProductPricelistPriceBadRequestException
+     *
      * @return null|\Starweb\Api\Generated\Model\ProductBundleProductPriceModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (201 === $status && 'application/json' === $contentType) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ProductBundleProductPriceModelItem', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductBundleProductPriceModelItem', 'json');
         }
         if (400 === $status && 'application/json' === $contentType) {
-            throw new \Starweb\Api\Generated\Exception\CreateProductBundleProductPricelistPriceBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Client\\Model\\ErrorModel', 'json'));
+            throw new \Starweb\Api\Generated\Exception\CreateProductBundleProductPricelistPriceBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }
