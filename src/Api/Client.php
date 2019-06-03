@@ -12,7 +12,7 @@ use Starweb\Api\Model\MediaFileUploadModel;
 class Client extends GeneratedClient
 {
     public function createMediaFile(
-        GeneratedMediaFileUploadModel $requestBody = null,
+        GeneratedMediaFileUploadModel $requestBody,
         string $fetch = GeneratedClient::FETCH_OBJECT
     ) {
         $this->checkCustomMediaFileUploadModelInstance($requestBody);

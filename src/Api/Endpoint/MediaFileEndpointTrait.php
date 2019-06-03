@@ -19,7 +19,7 @@ trait MediaFileEndpointTrait
             }
 
             return [
-                ['Content-Type' => array('multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '""'))],
+                ['Content-Type' => ['multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '""')]],
                 $bodyBuilder->build()
             ];
         }
