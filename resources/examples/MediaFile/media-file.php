@@ -25,22 +25,37 @@ $currentPage = $metaData->getPagination()->getCurrentPage();
 $mediaFile = $sdk->getClient()->getMediaFile(\current($mediaFiles)->getMediaFileId());
 
 // uploading a file
-$uploadFile = new \Starweb\Api\Generated\Model\MediaFileUploadModel();
-$uploadFile->setFileName(file_get_contents(__DIR__ . '/test.jpg'));
+$uploadFile = new \Starweb\Api\Model\MediaFileUploadModel();
+$uploadFile->setFile(file_get_contents(__DIR__ . '/test.jpg'));
+$uploadFile->setFilename('foo.jpg');
 
 try {
     $uploadedMediaFile = $sdk->getClient()->createMediaFile($uploadFile);
 } catch (\Http\Client\Common\Exception\ClientErrorException $exception) {
     echo $exception->getMessage();
-    $body = $exception->getResponse()->getBody()->__toString();
 }
 
 // delete the media file
 $deleted = $sdk->getClient()->deleteMediaFile($uploadedMediaFile->getData()->getMediaFileId());
 
-// update a media file
-$updateUploadFile = new \Starweb\Api\Generated\Model\MediaFileUploadModel();
-$updateUploadFile->setFile(__DIR__ . '/test.jpg');
-$updatedMediaFile = $sdk->getClient()->putMediaFile(\current($files)->getId(), $updateUploadFile);
+// replace a media file (PUT)
+$putUploadFile = new \Starweb\Api\Model\MediaFileUploadModel();
+$putUploadFile->setFile(file_get_contents(__DIR__ . '/test.jpg'));
+$putUploadFile->setFilename('updated.jpg');
 
-$foo = 'foo';
+try {
+    $putMediaFile = $sdk->getClient()->putMediaFile(\current($mediaFiles)->getMediaFileId(), $putUploadFile);
+} catch (\Http\Client\Common\Exception\ClientErrorException $exception) {
+    echo $exception->getMessage();
+}
+
+// update a media file (PATCH)
+$patchUploadFile = new \Starweb\Api\Model\MediaFileUploadModel();
+$patchUploadFile->setFile(file_get_contents(__DIR__ . '/test.jpg'));
+$patchUploadFile->setFilename('updated.jpg');
+
+try {
+    $patchedMediaFile = $sdk->getClient()->patchMediaFile(\current($mediaFiles)->getMediaFileId(), $patchUploadFile);
+} catch (\Http\Client\Common\Exception\ClientErrorException $exception) {
+    echo $exception->getMessage();
+}
