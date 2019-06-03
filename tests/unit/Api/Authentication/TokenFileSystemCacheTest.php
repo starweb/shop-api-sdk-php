@@ -16,7 +16,7 @@ class TokenFileSystemCacheTest extends TestCase
      */
     private $cache;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->cache = new TokenFilesystemCache();
     }
@@ -76,7 +76,7 @@ class TokenFileSystemCacheTest extends TestCase
         $this->assertTrue($this->cache->isExpired());
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->cache->clearToken();
     }

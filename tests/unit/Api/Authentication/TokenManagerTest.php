@@ -15,6 +15,7 @@ use Starweb\Api\Authentication\TokenCacheInterface;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenInterface;
 use Starweb\Api\Authentication\TokenManager;
+use Starweb\Exception\InvalidCredentialsException;
 use Starweb\Tests\StarwebTest;
 
 class TokenManagerTest extends TestCase
@@ -35,9 +36,6 @@ class TokenManagerTest extends TestCase
         $this->assertInstanceOf(TokenInterface::class, $token);
     }
 
-    /**
-     * @expectedException \Starweb\Exception\InvalidCredentialsException
-     */
     public function testRequestTokenThrowsInvalidCredentialsException()
     {
         $stream = $this->createMock(Stream::class);
@@ -49,7 +47,8 @@ class TokenManagerTest extends TestCase
 
         $manager = $this->getTokenManager($response);
 
-        $token = $manager->requestToken();
+        $this->expectException(InvalidCredentialsException::class);
+        $manager->requestToken();
     }
 
     public function testGetToken()

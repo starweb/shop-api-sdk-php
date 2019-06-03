@@ -2,7 +2,12 @@
 
 namespace Starweb\Tests;
 
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\Response;
+use Http\Client\Common\Exception\ServerErrorException;
+use Http\Client\Exception\HttpException;
+use Http\Client\Exception\NetworkException;
+use Http\Client\Exception\RequestException;
 use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;
 use Http\Discovery\StreamFactoryDiscovery;
@@ -17,6 +22,8 @@ use Starweb\Api\Authentication\TokenCacheInterface;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenManager;
 use Starweb\Api\Generated\Client as JaneOpenApiClient;
+use Starweb\Exception\InvalidBaseUriException;
+use Starweb\Exception\InvalidCredentialsException;
 use Starweb\Starweb;
 
 class StarwebTest extends TestCase
@@ -80,22 +87,12 @@ class StarwebTest extends TestCase
         $this->assertSame(self::DEFAULT_BASE_URI, $starweb->getBaseUri());
     }
 
-    /**
-     * @expectedException \Http\Client\Exception\NetworkException
-     * @expectedException \Http\Client\Exception\RequestException
-     * @expectedException \Http\Client\Exception\HttpException
-     */
     public function testCreateWithNonResolvableBaseUri()
     {
-        $starweb = Starweb::create(new ClientCredentials('id', 'secret'), 'https://foo.test');
-
-        $this->assertInstanceOf(Starweb::class, $starweb);
+        $this->expectException(NetworkException::class);
+        Starweb::create(new ClientCredentials('id', 'secret'), 'https://foo.test');
     }
 
-    /**
-     * @expectedException \Starweb\Exception\InvalidBaseUriException
-     * @expectedExceptionMessage invalid base uri
-     */
     public function testCreateWithInvalidBaseUri()
     {
         $clientMock = new Client();
@@ -103,12 +100,11 @@ class StarwebTest extends TestCase
         $clientMock->addResponse($response);
         $tokenCacheMock = $this->createMock(TokenFilesystemCache::class);
 
+        $this->expectException(InvalidBaseUriException::class);
+        $this->expectExceptionMessage('invalid base uri');
         $this->getStarweb($clientMock, $tokenCacheMock);
     }
 
-    /**
-     * @expectedException \Starweb\Exception\InvalidCredentialsException
-     */
     public function testCreateWithInvalidCredentials()
     {
         $clientMock = new Client();
@@ -119,12 +115,10 @@ class StarwebTest extends TestCase
         $clientMock->addResponse($response);
         $tokenCacheMock = $this->createMock(TokenFilesystemCache::class);
 
+        $this->expectException(InvalidCredentialsException::class);
         $this->getStarweb($clientMock, $tokenCacheMock);
     }
 
-    /**
-     * @expectedException \Http\Client\Common\Exception\ServerErrorException
-     */
     public function testCreateWithServerError()
     {
         $clientMock = new Client();
@@ -135,6 +129,7 @@ class StarwebTest extends TestCase
         $clientMock->addResponse($response);
         $tokenCacheMock = $this->createMock(TokenFilesystemCache::class);
 
+        $this->expectException(ServerErrorException::class);
         $this->getStarweb($clientMock, $tokenCacheMock);
     }
 
