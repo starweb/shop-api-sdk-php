@@ -88,32 +88,18 @@ class RetryAuthenticationPluginTest extends TestCase
         );
 
         for ($i = 0; $i <= RetryAuthenticationPlugin::MAXIMUM_ATTEMPTS; $i++) {
-            if ($i < RetryAuthenticationPlugin::MAXIMUM_ATTEMPTS) {
-                $promise = new HttpFulfilledPromise($response);
-            } else {
-                $requestMock = $this->createMock(RequestInterface::class);
-                $exception = new MaximumAuthenticationAttemptsReachedException(
-                    'max retries hit',
-                    $requestMock,
-                    $response
-                );
-                $promise = new HttpRejectedPromise($exception);
-            }
-
             $resolvedResponse = $plugin->handleRequest(
                 $this->createMock(Request::class),
-                function(RequestInterface $request) use ($response, $promise)
+                function(RequestInterface $request) use ($response)
                 {
-                    return $promise;
+                    return new HttpFulfilledPromise($response);
                 },
                 function(RequestInterface $request) use ($response)
                 {
                     return $response;
                 }
             );
-
         }
-
         $this->assertInstanceOf(HttpRejectedPromise::class, $resolvedResponse);
     }
 }

@@ -34,13 +34,13 @@ class RetryAuthenticationPlugin implements Plugin
 
         return $promise->then(function (ResponseInterface $response) use ($request, $first) {
             $statusCode = $response->getStatusCode();
-            $content = \json_decode($response->getBody()->getContents(), true);
+            $content = \json_decode($response->getBody()->__toString(), true);
 
             if (401 === $statusCode && 'invalid_token' === $content['error']) {
                 if (self::MAXIMUM_ATTEMPTS <= $this->retryCount) {
                     throw new MaximumAuthenticationAttemptsReachedException(
                         \sprintf(
-                            'the maxium number of %s authentication attempts has been reached.',
+                            'the maximum number of %s authentication attempts has been reached.',
                             self::MAXIMUM_ATTEMPTS
                         ),
                         $request,
