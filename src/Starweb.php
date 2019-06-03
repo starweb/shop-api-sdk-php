@@ -10,7 +10,7 @@ use Http\Discovery\UriFactoryDiscovery;
 use Http\Message\MessageFactory;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenManager;
-use Starweb\Api\Generated\Client;
+use Starweb\Api\Client;
 use Starweb\HttpClient\Builder;
 use Http\Discovery\HttpClientDiscovery;
 use Starweb\Api\Authentication\ClientCredentials;
@@ -140,35 +140,5 @@ class Starweb
         ;
 
         return $builder->build();
-    }
-
-    /**
-     * retrieves a resource by name. Each resource gets injected the EnhancedHttpClient enabling
-     * it to query the api in a convenient way.
-     *
-     * If the resource is not supported a LogicException is thrown. Available resource keys are defined in
-     * @see self::RESOURCE_KEYS
-     *
-     * The $pathParameters argument is needed for nested resources, e.g. if you want to use a resource CustomerTag
-     * you need to pass in the parameter as ['customerId' => 123].
-     *
-     * @param string $resourceKey
-     * @param array $pathParameters
-     *
-     * @return ResourceInterface
-     *
-     * @throws \LogicException
-     * @throws \ReflectionException
-     */
-    public function resource(string $resourceKey, array $pathParameters = []): ResourceInterface
-    {
-        if (!in_array($resourceKey, Resources::getResources(), true)) {
-            throw new \LogicException(sprintf('Undefined resource instance called: "%s"', $resourceKey));
-        }
-
-        $resourceFqcn = sprintf('%s\\%sResource', Resources::RESOURCE_NAMESPACE, $resourceKey);
-        $resource = new $resourceFqcn($this->client, $pathParameters);
-
-        return $resource;
     }
 }
