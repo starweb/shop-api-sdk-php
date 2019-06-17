@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Starweb\HttpClient\Plugin;
 
@@ -7,7 +7,6 @@ use Http\Client\Common\Exception\ServerErrorException;
 use Http\Client\Common\Plugin;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Starweb\HttpClient\Message\DecoratedResponse;
 
 /**
  * Copyright (c) 2015-2016 PHP HTTP Team <team@php-http.org>
@@ -32,7 +31,7 @@ use Starweb\HttpClient\Message\DecoratedResponse;
  */
 /**
  * This class has been copied from https://github.com/php-http/client-common/blob/master/src/Plugin/ErrorPlugin.php
- * and adpated to use the EnhancedResponse object inside the transformResponseToException function.
+ * and adapted to use the error description from the response body inside the transformResponseToException function.
  * The according licence has been added in the doc bloc above this comment.
  *
  * Throw exception when the response of a request is not acceptable.
@@ -69,15 +68,12 @@ final class ErrorPlugin implements Plugin
     protected function transformResponseToException(RequestInterface $request, ResponseInterface $response)
     {
         if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-            $response = new DecoratedResponse($response);
-            $content = $response->getContent();
+            $content = \json_decode($response->getBody()->__toString(), true);
 
             throw new ClientErrorException($content['error_description'], $request, $response);
         }
 
         if ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
-            $response = new DecoratedResponse($response);
-
             throw new ServerErrorException($response->getReasonPhrase(), $request, $response);
         }
 

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Starweb\Api\Authentication;
 
@@ -14,29 +14,17 @@ final class ClientCredentials
      */
     private $secret;
 
-    /**
-     * ClientCredentials constructor.
-     *
-     * @param string $id
-     * @param string $secret
-     */
     public function __construct(string $id, string $secret)
     {
         $this->id = $id;
         $this->secret = $secret;
     }
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getSecret(): string
     {
         return $this->secret;

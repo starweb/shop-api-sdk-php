@@ -4,27 +4,26 @@
 require_once __DIR__.'/../../../vendor/autoload.php';
 require_once __DIR__.'/../config.php';
 
+use Starweb\Api\Generated\Client;
 use Starweb\Starweb;
 use Starweb\Api\Authentication\ClientCredentials;
-use Starweb\Api\Resource\ShopResource;
-use Starweb\Api\Model\Shop\Shop;
-use \Symfony\Component\Serializer\Serializer;
-use \Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use \Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Starweb\Api\Resource\Resources;
 
 // create the credentials object
 $credentials = new ClientCredentials($clientId, $clientSecret);
 
 // create the sdk object
-$starweb = Starweb::create($credentials, $apiBaseUri);
+$sdk = Starweb::create($credentials, $apiBaseUri);
 
-// get a resource by its name in this case "Shop"
-/** @var ShopResource $shopResource */
-$shopResource = $starweb->resource(Resources::SHOP);
+// get namespaced shop item (data) and shop model
+/** @var \Starweb\Api\Generated\Model\ShopItem $shopItem */
+$shopItem = $sdk->getClient()->getShop();
 
-/** @var Shop $shop */
-$shop = $shopResource->retrieve();
+/** @var \Starweb\Api\Generated\Model\ShopModel $shopModel */
+$shop = $shopItem->getData();
 
-$serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
-echo json_encode($serializer->normalize($shop));
+// get the plain response and body
+$response = $sdk->getClient()->getShop(Client::FETCH_RESPONSE);
+$body = $response->getBody()->__toString();
+$payload = \json_decode($response->getBody()->__toString(), true);
+
+$foo = 'bar';

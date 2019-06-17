@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Starweb\Api\Authentication;
 
@@ -7,8 +7,6 @@ use Symfony\Component\Cache\Simple\FilesystemCache;
 class TokenFilesystemCache extends FilesystemCache implements TokenCacheInterface
 {
     /**
-     * @return TokenInterface
-     *
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function getToken(): ?TokenInterface
@@ -17,8 +15,6 @@ class TokenFilesystemCache extends FilesystemCache implements TokenCacheInterfac
     }
 
     /**
-     * @return bool
-     *
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function hasToken(): bool
@@ -27,8 +23,6 @@ class TokenFilesystemCache extends FilesystemCache implements TokenCacheInterfac
     }
 
     /**
-     * @param string $token
-     *
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function setToken(TokenInterface $token): void
@@ -36,17 +30,12 @@ class TokenFilesystemCache extends FilesystemCache implements TokenCacheInterfac
         $this->set(self::TOKEN_CACHE_KEY, serialize($token), $token->getTtl());
     }
 
-    /**
-     * clear the token
-     */
     public function clearToken(): void
     {
         $this->delete(self::TOKEN_CACHE_KEY);
     }
 
     /**
-     * @return bool
-     *
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function isExpired(): bool

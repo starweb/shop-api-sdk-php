@@ -6,49 +6,56 @@ require_once __DIR__.'/../config.php';
 
 use Starweb\Starweb;
 use Starweb\Api\Authentication\ClientCredentials;
-use Starweb\Api\Resource\MediaFileResource;
-use Starweb\Api\Model\MediaFile\MediaFileUpload;
-use Starweb\Api\Model\MediaFile\MediaFile;
-use Starweb\Api\Resource\Resources;
 
 // create the credentials object
 $credentials = new ClientCredentials($clientId, $clientSecret);
 
 // create the sdk object
-$starweb = Starweb::create($credentials, $apiBaseUri);
+$sdk = Starweb::create($credentials, $apiBaseUri);
 
-// get a resource by its name in this case "MediaFile"
-/** @var MediaFileResource $mediaFileResource */
-$mediaFileResource = $starweb->resource(Resources::MEDIA_FILE);
+// get media files
+$mediaFileCollection = $sdk->getClient()->getMediaFiles();
+$mediaFiles = $mediaFileCollection->getData();
 
-/** @var \Starweb\Api\Model\MediaFile\MediaFileCollection $mediaFileCollection */
-$mediaFileCollection = $mediaFileResource->list();
-
-// get Media files
-$files = $mediaFileCollection->getData();
-
-// get meta (pagination) data
+// get current page via pagination meta data
 $metaData = $mediaFileCollection->getMeta();
-$currentPage = $mediaFileCollection->getMeta()->getPagination()->getCurrentPage();
+$currentPage = $metaData->getPagination()->getCurrentPage();
 
-/** @var MediaFile $firstFile */
-$firstFile = $mediaFileResource->retrieve(current($files)->getId());
+// get the first media file
+$mediaFile = $sdk->getClient()->getMediaFile(\current($mediaFiles)->getMediaFileId());
 
 // uploading a file
-$uploadFile = new MediaFileUpload(__DIR__ . '/test.jpg');
+$uploadFile = new \Starweb\Api\Model\MediaFileUploadModel();
+$uploadFile->setFile(file_get_contents(__DIR__ . '/test.jpg'));
+$uploadFile->setFilename('foo.jpg');
 
 try {
-    $mediaFile = $mediaFileResource->create($uploadFile);
-    var_dump($mediaFile);
+    $uploadedMediaFile = $sdk->getClient()->createMediaFile($uploadFile);
 } catch (\Http\Client\Common\Exception\ClientErrorException $exception) {
-    var_dump($exception);
+    echo $exception->getMessage();
 }
 
 // delete the media file
-$deleted = $mediaFileResource->delete($mediaFile->getId());
+$deleted = $sdk->getClient()->deleteMediaFile($uploadedMediaFile->getData()->getMediaFileId());
 
-// update a media file
-$updateUploadFile = new MediaFileUpload(__DIR__ . '/test.jpg');
-$updatedMediaFile = $mediaFileResource->update(current($files)->getId(), $updateUploadFile);
+// replace a media file (PUT)
+$putUploadFile = new \Starweb\Api\Model\MediaFileUploadModel();
+$putUploadFile->setFile(file_get_contents(__DIR__ . '/test.jpg'));
+$putUploadFile->setFilename('updated.jpg');
 
-var_dump($updatedMediaFile);
+try {
+    $putMediaFile = $sdk->getClient()->putMediaFile(\current($mediaFiles)->getMediaFileId(), $putUploadFile);
+} catch (\Http\Client\Common\Exception\ClientErrorException $exception) {
+    echo $exception->getMessage();
+}
+
+// update a media file (PATCH)
+$patchUploadFile = new \Starweb\Api\Model\MediaFileUploadModel();
+$patchUploadFile->setFile(file_get_contents(__DIR__ . '/test.jpg'));
+$patchUploadFile->setFilename('updated.jpg');
+
+try {
+    $patchedMediaFile = $sdk->getClient()->patchMediaFile(\current($mediaFiles)->getMediaFileId(), $patchUploadFile);
+} catch (\Http\Client\Common\Exception\ClientErrorException $exception) {
+    echo $exception->getMessage();
+}

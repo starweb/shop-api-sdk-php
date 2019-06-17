@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Starweb\HttpClient\Plugin;
 
@@ -11,9 +11,6 @@ use Starweb\Exception\MaximumAuthenticationAttemptsReachedException;
 
 class RetryAuthenticationPlugin implements Plugin
 {
-    /**
-     * the maximum number of
-     */
     public const MAXIMUM_ATTEMPTS = 2;
 
     /**
@@ -26,36 +23,24 @@ class RetryAuthenticationPlugin implements Plugin
      */
     private $tokenManager;
 
-    /**
-     * RetryAuthenticationPlugin constructor.
-     *
-     * @param TokenManager $tokenManager
-     */
     public function __construct(TokenManager $tokenManager)
     {
         $this->tokenManager = $tokenManager;
     }
 
-    /**
-     * @param RequestInterface $request
-     * @param callable $next
-     * @param callable $first
-     *
-     * @return Promise
-     */
     public function handleRequest(RequestInterface $request, callable $next, callable $first): Promise
     {
         $promise = $next($request);
 
         return $promise->then(function (ResponseInterface $response) use ($request, $first) {
             $statusCode = $response->getStatusCode();
-            $content = json_decode($response->getBody(), true);
+            $content = \json_decode($response->getBody()->__toString(), true);
 
             if (401 === $statusCode && 'invalid_token' === $content['error']) {
                 if (self::MAXIMUM_ATTEMPTS <= $this->retryCount) {
                     throw new MaximumAuthenticationAttemptsReachedException(
-                        sprintf(
-                            'the maxium number of %s authentication attempts has been reached.',
+                        \sprintf(
+                            'the maximum number of %s authentication attempts has been reached.',
                             self::MAXIMUM_ATTEMPTS
                         ),
                         $request,

@@ -15,7 +15,7 @@ $ composer require starweb/shop-api-sdk
 ```
 
 # Documentation
-tbd
+The Starweb Shop API SDK uses an auto generated client 
 
 # Issues
 Please use the [issue tracker](https://github.com/starweb/shop-api-sdk-php/issues?target=_blank) if you find any issues.

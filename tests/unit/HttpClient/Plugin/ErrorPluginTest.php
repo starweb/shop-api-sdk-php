@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Starweb\Tests\HttpClient\Plugin;
 
@@ -14,14 +14,14 @@ use Starweb\HttpClient\Plugin\ErrorPlugin;
 
 class ErrorPluginTest extends TestCase
 {
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $plugin = new ErrorPlugin();
 
         $this->assertInstanceOf(ErrorPlugin::class, $plugin);
     }
 
-    public function testHandleRequestWithSuccessfulResponse()
+    public function testHandleRequestWithSuccessfulResponse(): void
     {
         $plugin = new ErrorPlugin();
 
@@ -43,7 +43,7 @@ class ErrorPluginTest extends TestCase
         $this->assertInstanceOf(Promise::class, $response);
     }
 
-    public function testHandleRequestWithClientErrorResponse()
+    public function testHandleRequestWithClientErrorResponse(): void
     {
         $plugin = new ErrorPlugin();
 
@@ -71,7 +71,7 @@ class ErrorPluginTest extends TestCase
         $this->assertInstanceOf(HttpRejectedPromise::class, $response);
     }
 
-    public function testHandleRequestWithServerErrorResponse()
+    public function testHandleRequestWithServerErrorResponse(): void
     {
         $plugin = new ErrorPlugin();
 

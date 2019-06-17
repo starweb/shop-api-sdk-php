@@ -1,8 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Starweb\Tests;
 
 use GuzzleHttp\Psr7\Response;
+use Http\Client\Common\Exception\ServerErrorException;
+use Http\Client\Exception\NetworkException;
 use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;
 use Http\Discovery\StreamFactoryDiscovery;
@@ -16,12 +18,10 @@ use Starweb\Api\Authentication\ClientCredentials;
 use Starweb\Api\Authentication\TokenCacheInterface;
 use Starweb\Api\Authentication\TokenFilesystemCache;
 use Starweb\Api\Authentication\TokenManager;
-use Starweb\Api\Resource\Resource;
-use Starweb\Api\Resource\ResourceInterface;
-use Starweb\Api\Resource\Resources;
-use Starweb\HttpClient\DecoratedHttpClient;
+use Starweb\Api\Generated\Client as JaneOpenApiClient;
+use Starweb\Exception\InvalidBaseUriException;
+use Starweb\Exception\InvalidCredentialsException;
 use Starweb\Starweb;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class StarwebTest extends TestCase
 {
@@ -66,54 +66,43 @@ class StarwebTest extends TestCase
         );
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
-        $decoratedHttpClient = $this->createMock(DecoratedHttpClient::class);
+        $clientMock = $this->createMock(\Starweb\Api\Client::class);
         $tokenManager = $this->createMock(TokenManager::class);
-        $starweb = new Starweb($decoratedHttpClient, self::DEFAULT_BASE_URI, $tokenManager);
+        $starweb = new Starweb($clientMock, self::DEFAULT_BASE_URI, $tokenManager);
 
         $this->assertSame(self::DEFAULT_BASE_URI, $starweb->getBaseUri());
-        $this->assertSame($decoratedHttpClient, $starweb->getClient());
+        $this->assertSame($clientMock, $starweb->getClient());
         $this->assertSame($tokenManager, $starweb->getTokenManager());
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $starweb = $this->getStarweb();
 
         $this->assertSame(self::DEFAULT_BASE_URI, $starweb->getBaseUri());
     }
 
-    /**
-     * @expectedException \Http\Client\Exception\NetworkException
-     * @expectedException \Http\Client\Exception\RequestException
-     * @expectedException \Http\Client\Exception\HttpException
-     */
-    public function testCreateWithNonResolvableBaseUri()
+    public function testCreateWithNonResolvableBaseUri(): void
     {
-        $starweb = Starweb::create(new ClientCredentials('id', 'secret'), 'https://foo.test');
-
-        $this->assertInstanceOf(Starweb::class, $starweb);
+        $this->expectException(NetworkException::class);
+        Starweb::create(new ClientCredentials('id', 'secret'), 'https://foo.test');
     }
 
-    /**
-     * @expectedException \Starweb\Exception\InvalidBaseUriException
-     * @expectedExceptionMessage invalid base uri
-     */
-    public function testCreateWithInvalidBaseUri()
+    public function testCreateWithInvalidBaseUri(): void
     {
         $clientMock = new Client();
         $response = $this->getResponseFactory()->createResponse(404);
         $clientMock->addResponse($response);
         $tokenCacheMock = $this->createMock(TokenFilesystemCache::class);
 
+        $this->expectException(InvalidBaseUriException::class);
+        $this->expectExceptionMessage('invalid base uri');
         $this->getStarweb($clientMock, $tokenCacheMock);
     }
 
-    /**
-     * @expectedException \Starweb\Exception\InvalidCredentialsException
-     */
-    public function testCreateWithInvalidCredentials()
+    public function testCreateWithInvalidCredentials(): void
     {
         $clientMock = new Client();
         $response = $this->getResponseFactory()->createResponse(400);
@@ -123,13 +112,11 @@ class StarwebTest extends TestCase
         $clientMock->addResponse($response);
         $tokenCacheMock = $this->createMock(TokenFilesystemCache::class);
 
+        $this->expectException(InvalidCredentialsException::class);
         $this->getStarweb($clientMock, $tokenCacheMock);
     }
 
-    /**
-     * @expectedException \Http\Client\Common\Exception\ServerErrorException
-     */
-    public function testCreateWithServerError()
+    public function testCreateWithServerError(): void
     {
         $clientMock = new Client();
         $response = $this->getResponseFactory()->createResponse(500);
@@ -139,69 +126,24 @@ class StarwebTest extends TestCase
         $clientMock->addResponse($response);
         $tokenCacheMock = $this->createMock(TokenFilesystemCache::class);
 
+        $this->expectException(ServerErrorException::class);
         $this->getStarweb($clientMock, $tokenCacheMock);
     }
 
-    public function testBuildHttpClient()
+    public function testBuildHttpClient(): void
     {
         $clientMock = new Client();
         $messageFactoryMock = $this->createMock(MessageFactory::class);
         $tokenManagerMock = $this->createMock(TokenManager::class);
 
-        $decoratedHttpClient = Starweb::buildHttpClient(
+        $client = Starweb::buildHttpClient(
             $clientMock,
             $messageFactoryMock,
             $tokenManagerMock,
             self::DEFAULT_BASE_URI
         );
 
-        $this->assertInstanceOf(DecoratedHttpClient::class, $decoratedHttpClient);
-    }
-
-    /**
-     * @dataProvider resourceProvider
-     */
-    public function testResources(string $resourceKey): void
-    {
-        $starweb = $this->getStarweb();
-        $resourceFqcn = sprintf('%s\\%sResource', Resources::RESOURCE_NAMESPACE, $resourceKey);
-
-        $reflection = new \ReflectionClass($resourceFqcn);
-        $reflectionMethod = $reflection->getMethod('getPathParametersResolver');
-
-        /** @var OptionsResolver $resolver */
-        $resourceMock = $this->createMock($resourceFqcn);
-        $resolver = $reflectionMethod->invoke($resourceMock);
-        $parameters = [];
-        foreach ($resolver->getRequiredOptions() as $option) {
-            $parameters[$option] = 1;
-        }
-
-        $resource = $starweb->resource($resourceKey, $parameters);
-
-
-        $this->assertInstanceOf(ResourceInterface::class, $resource);
-        $this->assertInstanceOf(Resource::class, $resource);
-        $this->assertInstanceOf($resourceFqcn, $resource);
-    }
-
-    public function resourceProvider(): array
-    {
-        $data = [];
-        foreach (Resources::getResources() as $key) {
-            $data[] = [$key];
-        }
-
-        return $data;
-    }
-
-    /**
-     * @expectedException \LogicException
-     */
-    public function testInvalidResource()
-    {
-        $starweb = $this->getStarweb();
-        $starweb->resource('InvalidResource');
+        $this->assertInstanceOf(JaneOpenApiClient::class, $client);
     }
 
     private function getStreamFactory(): StreamFactory

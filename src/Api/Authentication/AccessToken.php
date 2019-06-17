@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Starweb\Api\Authentication;
 
@@ -19,12 +19,6 @@ final class AccessToken implements TokenInterface
      */
     private $expiresIn;
 
-    /**
-     * AccessToken constructor.
-     *
-     * @param string $token
-     * @param int $expiresIn
-     */
     public function __construct(string $token, int $expiresIn = 3600)
     {
         $this->token = $token;
