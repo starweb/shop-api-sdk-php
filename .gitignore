@@ -1,8 +1,7 @@
 .DS_STORE
 .idea
-
-/vendor/
-composer.lock
+/.phpunit.result.cache
+/composer.lock
 
 resources/specification/*
 !resources/specification/openapi.json
