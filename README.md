@@ -9,13 +9,23 @@
 - PHP >= 7.1  (extension requirements in composer.json).
 
 ## Installation
-Use [composer](https://getcomposer.org/?target=_blank) to install the package
+The sdk uses the [httplug](http://docs.php-http.org/en/latest/httplug/introduction.html) library for the http client implementation, 
+so you will need to install a library that provides the virtual `php-http/client-implementation` composer package, e.g. `php-http/guzzle6-adapter`. 
+
+Use [composer](https://getcomposer.org/?target=_blank) to install a http client of your choice 
+
+```bash
+$ composer require php-http/guzzle6-adapter
+```
+
+and the sdk itself:
+
 ```bash
 $ composer require starweb/shop-api-sdk
 ```
 
 # Documentation
-The Starweb Shop API SDK uses an auto generated client 
+The Starweb Shop API SDK uses an auto generated client based on [Jane](https://jane.readthedocs.io/) at its core.
 
 # Issues
 Please use the [issue tracker](https://github.com/starweb/shop-api-sdk-php/issues?target=_blank) if you find any issues.
