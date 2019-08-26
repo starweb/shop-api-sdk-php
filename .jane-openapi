@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'openapi-file' => 'https://leksaker.starweb.se/api/v2/openapi.json',
+    'openapi-file' => __DIR__ . '/resources/specification/openapi.json',
     'namespace' => 'Starweb\Api\Generated',
     'directory' => __DIR__ . '/src/Api/Generated',
 ];
