@@ -7,7 +7,7 @@ class PutProductsMetaData extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     protected $productId;
     protected $metaDataTypeId;
     /**
-     * Updates a product meta data. Retrieves the update `ProductMetaData` object.
+     * Updates a product meta data if it exists or creates a new product meta data for the given `metaDataTypeId` if it does not exist. Retrieves the update `ProductMetaData` object.
      *
      * @param int $productId The product id
      * @param int $metaDataTypeId The meta data type id

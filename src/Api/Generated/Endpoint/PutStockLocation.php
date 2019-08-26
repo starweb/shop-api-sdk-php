@@ -40,6 +40,7 @@ class PutStockLocation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      * {@inheritdoc}
      *
      * @throws \Starweb\Api\Generated\Exception\PutStockLocationBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\PutStockLocationForbiddenException
      * @throws \Starweb\Api\Generated\Exception\PutStockLocationNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\StockLocationModelItem
@@ -51,6 +52,9 @@ class PutStockLocation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
         }
         if (400 === $status && 'application/json' === $contentType) {
             throw new \Starweb\Api\Generated\Exception\PutStockLocationBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        }
+        if (403 === $status && 'application/json' === $contentType) {
+            throw new \Starweb\Api\Generated\Exception\PutStockLocationForbiddenException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
             throw new \Starweb\Api\Generated\Exception\PutStockLocationNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));

@@ -6,7 +6,7 @@ class CreateProductsMetaData extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
 {
     protected $productId;
     /**
-     * Creates a product meta data. Retrieves the created `ProductMetaData` object.
+     * Deprecated: use the [putProductsMetaData](#operation/putProductsMetaData) operation to create a new product meta data for the `metaDataTypeId` instead. Creates a product meta data. Retrieves the created `ProductMetaData` object.
      *
      * @param int $productId The products id
      * @param \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody 

@@ -132,6 +132,7 @@ class NormalizerFactory
         $normalizers[] = new ProductMetaDataTypeModelCollectionNormalizer();
         $normalizers[] = new ProductMetaDataTypeModelItemNormalizer();
         $normalizers[] = new ProductMetaDataTypeModelNormalizer();
+        $normalizers[] = new ProductMetaDataTypeModelUpdatableNormalizer();
         $normalizers[] = new ProductMetaDataTypeLanguageModelCollectionNormalizer();
         $normalizers[] = new ProductMetaDataTypeLanguageModelNormalizer();
         $normalizers[] = new ProductStockStatusModelNormalizer();
@@ -161,9 +162,6 @@ class NormalizerFactory
         $normalizers[] = new BundledProductsModelCollectionNormalizer();
         $normalizers[] = new BundledProductsModelItemNormalizer();
         $normalizers[] = new BundledProductsModelNormalizer();
-        $normalizers[] = new ProductBundleProductPriceModelItemNormalizer();
-        $normalizers[] = new ProductBundleProductPriceModelCollectionNormalizer();
-        $normalizers[] = new ProductBundleProductPriceModelNormalizer();
         $normalizers[] = new StockLocationModelNormalizer();
         $normalizers[] = new StockLocationPostRequestModelNormalizer();
         $normalizers[] = new StockLocationPutRequestModelNormalizer();
@@ -175,6 +173,27 @@ class NormalizerFactory
         $normalizers[] = new ProductVariantStockModelCollectionNormalizer();
         $normalizers[] = new ProductVariantStockResponseModelNormalizer();
         $normalizers[] = new ProductVariantStockPutRequestModelNormalizer();
+        $normalizers[] = new ProductBundleProductPriceModelItemNormalizer();
+        $normalizers[] = new ProductBundleProductPriceModelCollectionNormalizer();
+        $normalizers[] = new ProductBundleProductPriceModelNormalizer();
+        $normalizers[] = new ProductTagModelNormalizer();
+        $normalizers[] = new ProductTagLanguageModelNormalizer();
+        $normalizers[] = new ProductTagPostRequestModelNormalizer();
+        $normalizers[] = new ProductTagModelItemNormalizer();
+        $normalizers[] = new ProductTagModelCollectionNormalizer();
+        $normalizers[] = new ProductTagPutRequestModelNormalizer();
+        $normalizers[] = new ProductTagPatchRequestModelNormalizer();
+        $normalizers[] = new ProductTagLinkModelItemNormalizer();
+        $normalizers[] = new ProductTagLinkModelCollectionNormalizer();
+        $normalizers[] = new ProductTagLinkModelNormalizer();
+        $normalizers[] = new ProductTagLinkPostRequestModelNormalizer();
+        $normalizers[] = new ProductTagOptionModelNormalizer();
+        $normalizers[] = new ProductTagOptionLanguageModelNormalizer();
+        $normalizers[] = new ProductTagOptionPostRequestModelNormalizer();
+        $normalizers[] = new ProductTagOptionModelItemNormalizer();
+        $normalizers[] = new ProductTagOptionModelCollectionNormalizer();
+        $normalizers[] = new ProductTagOptionPutRequestModelNormalizer();
+        $normalizers[] = new ProductTagOptionPatchRequestModelNormalizer();
         return $normalizers;
     }
 }

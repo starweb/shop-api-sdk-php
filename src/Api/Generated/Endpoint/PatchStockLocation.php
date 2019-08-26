@@ -40,6 +40,7 @@ class PatchStockLocation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      * {@inheritdoc}
      *
      * @throws \Starweb\Api\Generated\Exception\PatchStockLocationBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\PatchStockLocationForbiddenException
      * @throws \Starweb\Api\Generated\Exception\PatchStockLocationNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\StockLocationModelItem
@@ -51,6 +52,9 @@ class PatchStockLocation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
         }
         if (400 === $status && 'application/json' === $contentType) {
             throw new \Starweb\Api\Generated\Exception\PatchStockLocationBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        }
+        if (403 === $status && 'application/json' === $contentType) {
+            throw new \Starweb\Api\Generated\Exception\PatchStockLocationForbiddenException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
             throw new \Starweb\Api\Generated\Exception\PatchStockLocationNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));

@@ -10,7 +10,7 @@ class GetProduct extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      * @param int $productId The product id
      * @param array $queryParameters {
-     *     @var string $include If you want to include child data in the result. Example: ?include=variants (to include product variants); ?include=variants,languages (to include both product variants and languages). Available includes: primaryVariant, primaryVariant.prices, mediaFiles, languages, vatRates, categories, unit, metaData, bundledProducts, bundledProducts.prices. NOTE! Only one variant is included in result for performance reason. To fetch all variants, instead use /products/x/variants (unnecessary if hasSeveralVariants is false)
+     *     @var string $include If you want to include child data in the result. Example: ?include=variants (to include product variants); ?include=variants,languages (to include both product variants and languages). Available includes: `primaryVariant`, `primaryVariant.prices`, `mediaFiles`, `languages`, `vatRates`, `categories`, `unit`, `metaData`, `bundledProducts`, `bundledProducts.prices`, `tags`. NOTE! Only one variant is included in result for performance reason. To fetch all variants, instead use /products/x/variants (unnecessary if hasSeveralVariants is false)
      * }
      */
     public function __construct(int $productId, array $queryParameters = array())

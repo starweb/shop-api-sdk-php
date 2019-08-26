@@ -1345,6 +1345,32 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductMetaDataTypes(), $fetch);
     }
     /**
+     * Create a product meta data type. Retrieves the created `ProductMetaDataType` object
+     *
+     * @param \Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\CreateProductMetaDataTypeBadRequestException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductMetaDataTypeModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function createProductMetaDataType(\Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductMetaDataType($requestBody), $fetch);
+    }
+    /**
+     * Delete a product meta data type permanently
+     *
+     * @param int $metaDataTypeId The meta data types id
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\DeleteProductMetaDataTypeNotFoundException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteProductMetaDataType(int $metaDataTypeId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductMetaDataType($metaDataTypeId), $fetch);
+    }
+    /**
      * Retrieves the `ProductMetaDataType` object.
      *
      * @param int $metaDataTypeId The meta data types id
@@ -1356,6 +1382,36 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     public function getProductMetaDataType(int $metaDataTypeId, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductMetaDataType($metaDataTypeId), $fetch);
+    }
+    /**
+     * Update a product meta data type. Retrieves the updated `ProductMetaDataType` object
+     *
+     * @param int $metaDataTypeId The meta data types id
+     * @param \Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\PatchProductMetaDataTypeBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\PatchProductMetaDataTypeNotFoundException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductMetaDataTypeModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function patchProductMetaDataType(int $metaDataTypeId, \Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductMetaDataType($metaDataTypeId, $requestBody), $fetch);
+    }
+    /**
+     * Update a product meta data type. Retrieves the updated `ProductMetaDataType` object
+     *
+     * @param int $metaDataTypeId The meta data types id
+     * @param \Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\PutProductMetaDataTypeBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\PutProductMetaDataTypeNotFoundException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductMetaDataTypeModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function putProductMetaDataType(int $metaDataTypeId, \Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductMetaDataType($metaDataTypeId, $requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1437,6 +1493,174 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductStockStatus($stockStatusId, $requestBody), $fetch);
     }
     /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductTagModelCollection|\Psr\Http\Message\ResponseInterface
+     */
+    public function getProductsTags(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsTags(), $fetch);
+    }
+    /**
+     * Creates a `ProductTag` object
+     *
+     * @param \Starweb\Api\Generated\Model\ProductTagPostRequestModel $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\CreateProductTagBadRequestException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductTagModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function createProductTag(\Starweb\Api\Generated\Model\ProductTagPostRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductTag($requestBody), $fetch);
+    }
+    /**
+     * Delete a product tag permanently
+     *
+     * @param int $productTagId The product tag id
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\DeleteProductTagNotFoundException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteProductTag(int $productTagId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductTag($productTagId), $fetch);
+    }
+    /**
+     * Retrieves a `Tag` object
+     *
+     * @param int $productTagId The product tag id
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\GetProductsTagNotFoundException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductTagModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getProductsTag(int $productTagId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsTag($productTagId), $fetch);
+    }
+    /**
+     * Partially updates a product tag. Retrieves the updated `ProductTag` object
+     *
+     * @param int $productTagId The product tag id
+     * @param \Starweb\Api\Generated\Model\ProductTagPatchRequestModel $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\PatchProductTagBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\PatchProductTagNotFoundException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductTagModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function patchProductTag(int $productTagId, \Starweb\Api\Generated\Model\ProductTagPatchRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductTag($productTagId, $requestBody), $fetch);
+    }
+    /**
+     * Update a product tag. Retrieves the updated `ProductTag` object
+     *
+     * @param int $productTagId The product tag id
+     * @param \Starweb\Api\Generated\Model\ProductTagPutRequestModel $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\PutProductTagBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\PutProductTagNotFoundException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductTagModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function putProductTag(int $productTagId, \Starweb\Api\Generated\Model\ProductTagPutRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductTag($productTagId, $requestBody), $fetch);
+    }
+    /**
+     * Returns a list of options
+     *
+     * @param int $productTagId The product tag id
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductTagOptionModelCollection|\Psr\Http\Message\ResponseInterface
+     */
+    public function getProductsTagOptions(int $productTagId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsTagOptions($productTagId), $fetch);
+    }
+    /**
+     * Create a tag option. Tag options can only be created for tags of type `option`. If you try to create options for a tag of type `boolean` an error `405` will be returned. Returns the created `ProductTagOption` object.
+     *
+     * @param int $productTagId The product tag id
+     * @param \Starweb\Api\Generated\Model\ProductTagOptionPostRequestModel $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\CreateProductTagOptionBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\CreateProductTagOptionMethodNotAllowedException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductTagOptionModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function createProductTagOption(int $productTagId, \Starweb\Api\Generated\Model\ProductTagOptionPostRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductTagOption($productTagId, $requestBody), $fetch);
+    }
+    /**
+     * Delete a tag option permanently. Tag options can only be deleted for tags of type `option`. If you try to delete a tag option for a tag of any other type an error `405` will be returned.
+     *
+     * @param int $productTagId The product tag id
+     * @param int $productTagOptionId The product tag option id
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\DeleteProductTagOptionNotFoundException
+     * @throws \Starweb\Api\Generated\Exception\DeleteProductTagOptionMethodNotAllowedException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteProductTagOption(int $productTagId, int $productTagOptionId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductTagOption($productTagId, $productTagOptionId), $fetch);
+    }
+    /**
+     * Retrieves a `TagOption` object
+     *
+     * @param int $productTagId The product tag id
+     * @param int $productTagOptionId The product tag option id
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\GetProductTagOptionsNotFoundException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductTagOptionModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getProductTagOptions(int $productTagId, int $productTagOptionId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductTagOptions($productTagId, $productTagOptionId), $fetch);
+    }
+    /**
+     * Partially updates a tag option. Tag options can only be updates for tags of type `option`. If you try to update a tag option for a tag of any other type an error `405` will be returned. Returns the updated `ProductTagOption` object.
+     *
+     * @param int $productTagId The product tag id
+     * @param int $productTagOptionId The product tag option id
+     * @param \Starweb\Api\Generated\Model\ProductTagOptionPatchRequestModel $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\PatchProductTagOptionBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\PatchProductTagOptionNotFoundException
+     * @throws \Starweb\Api\Generated\Exception\PatchProductTagOptionMethodNotAllowedException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductTagOptionModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function patchProductTagOption(int $productTagId, int $productTagOptionId, \Starweb\Api\Generated\Model\ProductTagOptionPatchRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductTagOption($productTagId, $productTagOptionId, $requestBody), $fetch);
+    }
+    /**
+     * Update a tag option. Tag options can only be updated for tags of type `option`. If you try to update a tag option for a tag of any other type an error `405` will be returned. Returns the updated `ProductTagOption` object.
+     *
+     * @param int $productTagId The product tag id
+     * @param int $productTagOptionId The product tag option id
+     * @param \Starweb\Api\Generated\Model\ProductTagOptionPutRequestModel $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\PutProductTagOptionBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\PutProductTagOptionNotFoundException
+     * @throws \Starweb\Api\Generated\Exception\PutProductTagOptionMethodNotAllowedException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductTagOptionModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function putProductTagOption(int $productTagId, int $productTagOptionId, \Starweb\Api\Generated\Model\ProductTagOptionPutRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductTagOption($productTagId, $productTagOptionId, $requestBody), $fetch);
+    }
+    /**
      * Returns a list of products.
      *
      * @param array $queryParameters {
@@ -1447,7 +1671,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var string $updatedSince Use this to only fetch products that has been modified since a certain time. The time should be formatted using ISO-8601 (url encoded)
      *     @var bool $filterVisible Only fetch products visible to visitors. Default is false.
      *     @var string $filterSku Only fetch a product with the specified SKU. Has to follow the pattern of /[A-Za-z0-9._-]+$/
-     *     @var string $include If you want to include child data in the result. Example: ?include=primaryVariant (to include primary product variant);?include=primaryVariant,languages (to include both primary product variant and languages). <br /><br />Available includes: primaryVariant, primaryVariant.prices, primaryVariant.attributeValues, attributes, mediaFiles, languages, vatRates, categories, unit, metaData, bundledProducts, bundledProducts.prices.<br /><br />NOTE! Only one variant and language is included in the result for performance reason. To fetch all variants, instead use /products/x/variants(unnecessary if hasSeveralVariants is false) and to fetch all languages for an object, instead use the individual objects language endpoint
+     *     @var string $include If you want to include child data in the result. Example: ?include=primaryVariant (to include primary product variant);?include=primaryVariant,languages (to include both primary product variant and languages). <br /><br />Available includes: `primaryVariant`, `primaryVariant.prices`, `primaryVariant.attributeValues`, `attributes`, `mediaFiles`, `languages`, `vatRates`, `categories`, `unit`, `metaData`, `bundledProducts`, `bundledProducts.prices`, `tags`.<br /><br />NOTE! Only one variant and language is included in the result for performance reason. To fetch all variants, instead use /products/x/variants(unnecessary if hasSeveralVariants is false) and to fetch all languages for an object, instead use the individual objects language endpoint
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\ListProductsBadRequestException
@@ -1489,7 +1713,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param int $productId The product id
      * @param array $queryParameters {
-     *     @var string $include If you want to include child data in the result. Example: ?include=variants (to include product variants); ?include=variants,languages (to include both product variants and languages). Available includes: primaryVariant, primaryVariant.prices, mediaFiles, languages, vatRates, categories, unit, metaData, bundledProducts, bundledProducts.prices. NOTE! Only one variant is included in result for performance reason. To fetch all variants, instead use /products/x/variants (unnecessary if hasSeveralVariants is false)
+     *     @var string $include If you want to include child data in the result. Example: ?include=variants (to include product variants); ?include=variants,languages (to include both product variants and languages). Available includes: `primaryVariant`, `primaryVariant.prices`, `mediaFiles`, `languages`, `vatRates`, `categories`, `unit`, `metaData`, `bundledProducts`, `bundledProducts.prices`, `tags`. NOTE! Only one variant is included in result for performance reason. To fetch all variants, instead use /products/x/variants (unnecessary if hasSeveralVariants is false)
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\GetProductNotFoundException
@@ -1630,7 +1854,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param int $productId The products id
      * @param array $queryParameters {
      *     @var int $page The page of product variants to return
-     *     @var string $include If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices, attributes, attributes.attribute
+     *     @var string $include If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices, attributeValues
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\ListProductsVariantsBadRequestException
@@ -1675,7 +1899,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param int $productId The product id
      * @param int $variantId The products variants id
      * @param array $queryParameters {
-     *     @var string $include If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices,  attributes, attributes.attribute
+     *     @var string $include If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices,  attributeValues
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\GetProductsVariantNotFoundException
@@ -2083,7 +2307,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsMetaData($productId), $fetch);
     }
     /**
-     * Creates a product meta data. Retrieves the created `ProductMetaData` object.
+     * Deprecated: use the [putProductsMetaData](#operation/putProductsMetaData) operation to create a new product meta data for the `metaDataTypeId` instead. Creates a product meta data. Retrieves the created `ProductMetaData` object.
      *
      * @param int $productId The products id
      * @param \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody 
@@ -2141,7 +2365,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsMetaData($productId, $metaDataTypeId, $requestBody), $fetch);
     }
     /**
-     * Updates a product meta data. Retrieves the update `ProductMetaData` object.
+     * Updates a product meta data if it exists or creates a new product meta data for the given `metaDataTypeId` if it does not exist. Retrieves the update `ProductMetaData` object.
      *
      * @param int $productId The product id
      * @param int $metaDataTypeId The meta data type id
@@ -2376,6 +2600,61 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductBundledProductsPricelistPrice($productId, $bundledProductId, $pricelistId, $requestBody), $fetch);
     }
     /**
+     * Returns a list of product tag links.
+     *
+     * @param int $productId The product id
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\ListProductTagLinksBadRequestException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductTagLinkModelCollection|\Psr\Http\Message\ResponseInterface
+     */
+    public function listProductTagLinks(int $productId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductTagLinks($productId), $fetch);
+    }
+    /**
+     * Create a product tag link by submitting the tagOptionId. Retrieves the created `ProductTagLink` object
+     *
+     * @param int $productId The product id
+     * @param \Starweb\Api\Generated\Model\ProductTagLinkPostRequestModel $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\CreateProductTagLinkBadRequestException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductTagLinkModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function createProductTagLink(int $productId, \Starweb\Api\Generated\Model\ProductTagLinkPostRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductTagLink($productId, $requestBody), $fetch);
+    }
+    /**
+     * Delete a product tag link permanently.
+     *
+     * @param int $productId The product id
+     * @param int $tagOptionId The id of the tag option
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\DeleteProductTagLinkNotFoundException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteProductTagLink(int $productId, int $tagOptionId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductTagLink($productId, $tagOptionId), $fetch);
+    }
+    /**
+     * Retrieves the `ProductTagLink` object
+     *
+     * @param int $productId The product id
+     * @param int $tagOptionId The id of the tag option
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\GetProductTagLinkNotFoundException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductTagLinkModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getProductTagLink(int $productId, int $tagOptionId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductTagLink($productId, $tagOptionId), $fetch);
+    }
+    /**
      * Returns a list of the variants pricelist volume prices
      *
      * @param int $productId The products id
@@ -2596,6 +2875,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \Starweb\Api\Generated\Model\StockLocationPostRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateStockLocationBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\CreateStockLocationForbiddenException
      *
      * @return null|\Starweb\Api\Generated\Model\StockLocationModelItem|\Psr\Http\Message\ResponseInterface
      */
@@ -2608,6 +2888,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param int $stockLocationId The stock location id
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\DeleteStockLocationForbiddenException
      * @throws \Starweb\Api\Generated\Exception\DeleteStockLocationNotFoundException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -2636,6 +2917,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param mixed $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchStockLocationBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\PatchStockLocationForbiddenException
      * @throws \Starweb\Api\Generated\Exception\PatchStockLocationNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\StockLocationModelItem|\Psr\Http\Message\ResponseInterface
@@ -2651,6 +2933,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \Starweb\Api\Generated\Model\StockLocationPutRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutStockLocationBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\PutStockLocationForbiddenException
      * @throws \Starweb\Api\Generated\Exception\PutStockLocationNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\StockLocationModelItem|\Psr\Http\Message\ResponseInterface
@@ -2748,7 +3031,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\HttpClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://{shopId}.sws.local/api/v2');
+            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://{shopId}.starwebserver.se/api/v2');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
