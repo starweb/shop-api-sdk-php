@@ -17,7 +17,7 @@ class WebHookModel
      */
     protected $name;
     /**
-     * The triggering event. Valid values are product-created, product-updated, product-removed, order-created, order-completed, order-updated, order-deleted, order-status-changed, shop-opened, shop-closed, shop-removed
+     * The triggering event. Valid values are product-created, product-updated, product-removed, order-created, order-completed, order-updated, order-deleted, order-status-changed, customer-created, customer-updated, customer-deleted, shop-opened, shop-closed, shop-removed
      *
      * @var string
      */
@@ -77,7 +77,7 @@ class WebHookModel
         return $this;
     }
     /**
-     * The triggering event. Valid values are product-created, product-updated, product-removed, order-created, order-completed, order-updated, order-deleted, order-status-changed, shop-opened, shop-closed, shop-removed
+     * The triggering event. Valid values are product-created, product-updated, product-removed, order-created, order-completed, order-updated, order-deleted, order-status-changed, customer-created, customer-updated, customer-deleted, shop-opened, shop-closed, shop-removed
      *
      * @return string
      */
@@ -86,7 +86,7 @@ class WebHookModel
         return $this->event;
     }
     /**
-     * The triggering event. Valid values are product-created, product-updated, product-removed, order-created, order-completed, order-updated, order-deleted, order-status-changed, shop-opened, shop-closed, shop-removed
+     * The triggering event. Valid values are product-created, product-updated, product-removed, order-created, order-completed, order-updated, order-deleted, order-status-changed, customer-created, customer-updated, customer-deleted, shop-opened, shop-closed, shop-removed
      *
      * @param string $event
      *

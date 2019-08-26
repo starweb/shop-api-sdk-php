@@ -37,6 +37,7 @@ class CreateStockLocation extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      * {@inheritdoc}
      *
      * @throws \Starweb\Api\Generated\Exception\CreateStockLocationBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\CreateStockLocationForbiddenException
      *
      * @return null|\Starweb\Api\Generated\Model\StockLocationModelItem
      */
@@ -47,6 +48,9 @@ class CreateStockLocation extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
         }
         if (400 === $status && 'application/json' === $contentType) {
             throw new \Starweb\Api\Generated\Exception\CreateStockLocationBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        }
+        if (403 === $status && 'application/json' === $contentType) {
+            throw new \Starweb\Api\Generated\Exception\CreateStockLocationForbiddenException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }
 }

@@ -34,6 +34,7 @@ class DeleteStockLocation extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     /**
      * {@inheritdoc}
      *
+     * @throws \Starweb\Api\Generated\Exception\DeleteStockLocationForbiddenException
      * @throws \Starweb\Api\Generated\Exception\DeleteStockLocationNotFoundException
      *
      * @return null
@@ -42,6 +43,9 @@ class DeleteStockLocation extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     {
         if (204 === $status) {
             return null;
+        }
+        if (403 === $status && 'application/json' === $contentType) {
+            throw new \Starweb\Api\Generated\Exception\DeleteStockLocationForbiddenException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
         if (404 === $status && 'application/json' === $contentType) {
             throw new \Starweb\Api\Generated\Exception\DeleteStockLocationNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
