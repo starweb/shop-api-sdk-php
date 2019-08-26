@@ -2,7 +2,6 @@
 
 namespace Starweb;
 
-use Http\Client\Common\Plugin\BaseUriPlugin;
 use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;
@@ -15,6 +14,7 @@ use Starweb\HttpClient\Builder;
 use Http\Discovery\HttpClientDiscovery;
 use Starweb\Api\Authentication\ClientCredentials;
 use Starweb\Api\Authentication\TokenCacheInterface;
+use Starweb\HttpClient\Plugin\BaseUriPlugin;
 use Starweb\HttpClient\Plugin\ErrorPlugin;
 use Starweb\HttpClient\Plugin\RetryAuthenticationPlugin;
 
