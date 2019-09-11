@@ -23,13 +23,19 @@ class PricelistModel
      */
     protected $isMaster;
     /**
+     * Shows if the pricelist is activated or not.
+     *
+     * @var bool
+     */
+    protected $isActive;
+    /**
      * The region this pricelist is valid for
      *
      * @var string
      */
     protected $region;
     /**
-     * The countryCodes this pricelist is valid for
+     * The countryCodes this pricelist is valid for. These will be set only if the `region` property is set to the value `selected` for specific countries.
      *
      * @var string[]
      */
@@ -122,6 +128,27 @@ class PricelistModel
         return $this;
     }
     /**
+     * Shows if the pricelist is activated or not.
+     *
+     * @return bool
+     */
+    public function getIsActive() : ?bool
+    {
+        return $this->isActive;
+    }
+    /**
+     * Shows if the pricelist is activated or not.
+     *
+     * @param bool $isActive
+     *
+     * @return self
+     */
+    public function setIsActive(?bool $isActive) : self
+    {
+        $this->isActive = $isActive;
+        return $this;
+    }
+    /**
      * The region this pricelist is valid for
      *
      * @return string
@@ -143,7 +170,7 @@ class PricelistModel
         return $this;
     }
     /**
-     * The countryCodes this pricelist is valid for
+     * The countryCodes this pricelist is valid for. These will be set only if the `region` property is set to the value `selected` for specific countries.
      *
      * @return string[]
      */
@@ -152,7 +179,7 @@ class PricelistModel
         return $this->countryCodes;
     }
     /**
-     * The countryCodes this pricelist is valid for
+     * The countryCodes this pricelist is valid for. These will be set only if the `region` property is set to the value `selected` for specific countries.
      *
      * @param string[] $countryCodes
      *

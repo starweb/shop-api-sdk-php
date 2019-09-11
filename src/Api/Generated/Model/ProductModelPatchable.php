@@ -29,6 +29,12 @@ class ProductModelPatchable
      */
     protected $visibility;
     /**
+     * The ID´s of the pricelists that the product should be visible for. Is required for when ”visibility” is set to ”pricelists” but should never be populated otherwise
+     *
+     * @var int[]
+     */
+    protected $visibilityPricelistIds;
+    /**
      * A valid URL to a web page with more information for this product
      *
      * @var string
@@ -200,6 +206,27 @@ class ProductModelPatchable
     public function setVisibility(?string $visibility) : self
     {
         $this->visibility = $visibility;
+        return $this;
+    }
+    /**
+     * The ID´s of the pricelists that the product should be visible for. Is required for when ”visibility” is set to ”pricelists” but should never be populated otherwise
+     *
+     * @return int[]
+     */
+    public function getVisibilityPricelistIds() : ?array
+    {
+        return $this->visibilityPricelistIds;
+    }
+    /**
+     * The ID´s of the pricelists that the product should be visible for. Is required for when ”visibility” is set to ”pricelists” but should never be populated otherwise
+     *
+     * @param int[] $visibilityPricelistIds
+     *
+     * @return self
+     */
+    public function setVisibilityPricelistIds(?array $visibilityPricelistIds) : self
+    {
+        $this->visibilityPricelistIds = $visibilityPricelistIds;
         return $this;
     }
     /**
