@@ -8,7 +8,7 @@
       "url": "https:\/\/www.starweb.se\/starweb-api",
       "email": "starwebapi@starweb.se"
     },
-    "version": "2.9.0",
+    "version": "2.11.0",
     "x-logo": {
       "url": "https:\/\/www.starweb.se\/content\/themes\/starweb\/dist\/images\/starweb-header-logo-2x.png",
       "backgroundColor": "#551F63",
@@ -412,7 +412,7 @@
             "name": "createdSince",
             "in": "query",
             "description": "Use this to only fetch customers that has been created since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "schema": {
               "type": "string"
             }
@@ -421,7 +421,7 @@
             "name": "updatedSince",
             "in": "query",
             "description": "Use this to only fetch customers that has been modified since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "schema": {
               "type": "string"
             }
@@ -2715,6 +2715,40 @@
         "tags": [
           "Pricelists"
         ]
+      },
+      "post": {
+        "operationId": "createPricelist",
+        "summary": "Create a pricelist",
+        "description": "Create a pricelist. Retrieves the created `Pricelist` object",
+        "responses": {
+          "201": {
+            "description": "The created pricelist is returned",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/PricelistModelItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#\/components\/responses\/BadRequest"
+          }
+        },
+        "requestBody": {
+          "description": "Pricelist data",
+          "required": true,
+          "content": {
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/PricelistPostRequestModel"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Pricelists"
+        ]
       }
     },
     "\/pricelists\/{pricelistId}": {
@@ -2742,6 +2776,99 @@
           "Pricelists"
         ]
       },
+      "delete": {
+        "operationId": "deletePricelist",
+        "summary": "Delete a pricelist",
+        "description": "Delete a pricelist permanently. The master pricelist can not be deleted and will return an error `403`",
+        "responses": {
+          "204": {
+            "$ref": "#\/components\/responses\/ItemDeleted"
+          },
+          "404": {
+            "$ref": "#\/components\/responses\/NotFound"
+          },
+          "403": {
+            "$ref": "#\/components\/responses\/Forbidden"
+          }
+        },
+        "tags": [
+          "Pricelists"
+        ]
+      },
+      "put": {
+        "operationId": "putPricelist",
+        "summary": "Update a pricelist",
+        "description": "Update a pricelist. Retrieves the updated `Pricelist` object",
+        "responses": {
+          "200": {
+            "description": "The updated pricelist is returned",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/PricelistModelItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#\/components\/responses\/BadRequest"
+          },
+          "404": {
+            "$ref": "#\/components\/responses\/NotFound"
+          }
+        },
+        "requestBody": {
+          "description": "Product category data",
+          "required": true,
+          "content": {
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/PricelistPutRequestModel"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Pricelists"
+        ]
+      },
+      "patch": {
+        "operationId": "patchPricelist",
+        "summary": "Update a pricelist",
+        "description": "Update a pricelist. Retrieves the updated `Pricelist` object",
+        "responses": {
+          "200": {
+            "description": "The updated pricelist is returned",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/PricelistModelItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#\/components\/responses\/BadRequest"
+          },
+          "404": {
+            "$ref": "#\/components\/responses\/NotFound"
+          }
+        },
+        "requestBody": {
+          "description": "Product category data",
+          "required": true,
+          "content": {
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/PricelistPatchRequestModel"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Pricelists"
+        ]
+      },
       "parameters": [
         {
           "name": "pricelistId",
@@ -2751,7 +2878,8 @@
           "schema": {
             "type": "integer",
             "minimum": 1,
-            "format": "int32"
+            "format": "int32",
+            "example": 123
           }
         }
       ]
@@ -4579,7 +4707,7 @@
             "name": "createdSince",
             "in": "query",
             "description": "Use this to only fetch products that has been created since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "schema": {
               "type": "string"
             }
@@ -4588,7 +4716,7 @@
             "name": "updatedSince",
             "in": "query",
             "description": "Use this to only fetch products that has been modified since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "schema": {
               "type": "string"
             }
@@ -8217,7 +8345,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -8271,7 +8399,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00"
+            "example": "2019-09-11T07:15:21+02:00"
           },
           "customerId": {
             "type": "integer",
@@ -8509,7 +8637,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -8563,7 +8691,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00"
+            "example": "2019-09-11T07:15:21+02:00"
           },
           "customerId": {
             "type": "integer",
@@ -8793,7 +8921,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -8847,7 +8975,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00"
+            "example": "2019-09-11T07:15:21+02:00"
           },
           "customerId": {
             "type": "integer",
@@ -9474,7 +9602,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00"
+            "example": "2019-09-11T07:15:21+02:00"
           },
           "type": {
             "type": "string",
@@ -9541,7 +9669,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00"
+            "example": "2019-09-11T07:15:21+02:00"
           },
           "type": {
             "type": "string",
@@ -9577,7 +9705,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was modified. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "readOnly": true
           },
           "approved": {
@@ -9589,7 +9717,7 @@
           "approvedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was was approved\/disapproved. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "readOnly": true
           },
           "pricelistId": {
@@ -9620,7 +9748,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00"
+            "example": "2019-09-11T07:15:21+02:00"
           },
           "type": {
             "type": "string",
@@ -9656,7 +9784,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was modified. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "readOnly": true
           },
           "approved": {
@@ -9668,7 +9796,7 @@
           "approvedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was was approved\/disapproved. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "readOnly": true
           },
           "pricelistId": {
@@ -10235,11 +10363,23 @@
             "example": true,
             "description": "If this pricelist is the default \u201dmaster\u201d\u00a0pricelist or not. Only one pricelist can be the master pricelist"
           },
+          "isActive": {
+            "type": "boolean",
+            "readOnly": true,
+            "default": false,
+            "description": "Shows if the pricelist is activated or not."
+          },
           "region": {
             "type": "string",
             "readOnly": true,
-            "example": "",
-            "description": "The region this pricelist is valid for"
+            "example": "all",
+            "description": "The region this pricelist is valid for",
+            "enum": [
+              "all",
+              "EU",
+              "non-EU",
+              "selected"
+            ]
           },
           "countryCodes": {
             "type": "array",
@@ -10252,7 +10392,7 @@
               "SE",
               "DK"
             ],
-            "description": "The countryCodes this pricelist is valid for"
+            "description": "The countryCodes this pricelist is valid for. These will be set only if the `region` property is set to the value `selected` for specific countries."
           },
           "currencyCode": {
             "type": "string",
@@ -10277,6 +10417,101 @@
           }
         }
       },
+      "PricelistPostRequestModel": {
+        "anyOf": [
+          {
+            "title": "Country Pricelist",
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 30,
+                "example": "My pricelist",
+                "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "currencyCode": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3,
+                "example": "SEK",
+                "description": "The currencyCode this pricelist is valid for."
+              },
+              "isActive": {
+                "type": "boolean",
+                "default": false,
+                "description": "Activate the pricelist. It is recommended that you do not activate the pricelist right away. On activation all product prices for that pricelist are set to `0` until you have mass updated the related products in the selected currency. You may want to change visibility settings for the selected countries as well. Defaults to `false`"
+              },
+              "region": {
+                "type": "string",
+                "maxLength": 10,
+                "example": "EU",
+                "default": "all",
+                "description": "The region this pricelist is valid for. Valid values are `all`, `EU`, `non-EU` or `selected` If you send in the latter you need to send in `countryCodes` for the selected countries as well. Will default to `all`"
+              },
+              "countryCodes": {
+                "type": "string",
+                "example": "SE,DK",
+                "pattern": "([a-zA-Z]{2})(,[a-zA-Z]{2})*",
+                "description": "The countryCodes this pricelist is valid for. These will considered  only if the `region` property is set to the value `selected` for specific countries."
+              },
+              "pricesInclVatByDefault": {
+                "type": "boolean",
+                "example": false,
+                "default": true,
+                "description": "Show prices inclusive VAT, defaults to `true`"
+              },
+              "inputAdminProductPricesInclVat": {
+                "type": "boolean",
+                "example": true,
+                "default": false,
+                "description": "Enter product prices in admin incl. VAT, defaults to `false`"
+              }
+            },
+            "required": [
+              "name",
+              "currencyCode"
+            ]
+          },
+          {
+            "title": "Customer Pricelist",
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 30,
+                "example": "My pricelist",
+                "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "parentPricelistId": {
+                "type": "integer",
+                "example": null,
+                "description": "It is possible to nest pricelists. If a pricelist has a parent pricelist it is considered to be a customer pricelist and `isCustomerPricelist` will be true. If no parent pricelist is set, it is considered a country pricelist and the `isCountryPricelist` is true."
+              },
+              "isActive": {
+                "type": "boolean",
+                "default": false,
+                "description": "Activate the pricelist. It is recommended that you do not activate the pricelist right away. On activation all product prices for that pricelist are set to `0` until you have mass updated the related products in the selected currency. You may want to change visibility settings for the selected countries as well. Defaults to `false`"
+              },
+              "pricesInclVatByDefault": {
+                "type": "boolean",
+                "example": false,
+                "default": true,
+                "description": "Show prices inclusive VAT, defaults to `true`"
+              },
+              "inputAdminProductPricesInclVat": {
+                "type": "boolean",
+                "example": true,
+                "default": false,
+                "description": "Enter product prices in admin incl. VAT, defaults to `false`"
+              }
+            },
+            "required": [
+              "name",
+              "parentPricelistId"
+            ]
+          }
+        ]
+      },
       "PricelistModelItem": {
         "properties": {
           "data": {
@@ -10295,6 +10530,262 @@
           }
         }
       },
+      "PricelistPutRequestModel": {
+        "anyOf": [
+          {
+            "title": "Master Pricelist",
+            "type": "object",
+            "properties": {
+              "currencyCode": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3,
+                "example": "SEK",
+                "description": "The currency code needs to be a currencyCode that does not exist in the database if it should be different from the existing base currencyCode."
+              },
+              "countryCodes": {
+                "type": "string",
+                "example": "SE",
+                "pattern": "[a-zA-Z]{2}"
+              },
+              "pricesInclVatByDefault": {
+                "type": "boolean",
+                "example": false,
+                "default": true,
+                "description": "Show prices inclusive VAT, defaults to `true`"
+              },
+              "inputAdminProductPricesInclVat": {
+                "type": "boolean",
+                "example": true,
+                "default": false,
+                "description": "Enter product prices in admin incl. VAT, defaults to `false`"
+              }
+            },
+            "required": [
+              "currencyCode"
+            ]
+          },
+          {
+            "title": "Country Pricelist",
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 30,
+                "example": "My pricelist",
+                "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "currencyCode": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3,
+                "example": "SEK",
+                "description": "The currencyCode this pricelist is valid for."
+              },
+              "isActive": {
+                "type": "boolean",
+                "default": false,
+                "description": "Activate the pricelist. It is recommended that you do not activate the pricelist right away. On activation all product prices for that pricelist are set to `0` until you have mass updated the related products in the selected currency. You may want to change visibility settings for the selected countries as well. Defaults to `false`"
+              },
+              "region": {
+                "type": "string",
+                "maxLength": 10,
+                "example": "EU",
+                "default": "all",
+                "description": "The region this pricelist is valid for. Valid values are `all`, `EU`, `non-EU` or `selected` If you send in the latter you need to send in `countryCodes` for the selected countries as well. Will default to `all`"
+              },
+              "countryCodes": {
+                "type": "string",
+                "example": "SE,DK",
+                "pattern": "([a-zA-Z]{2})(,[a-zA-Z]{2})*",
+                "description": "The countryCodes this pricelist is valid for. These will considered  only if the `region` property is set to the value `selected` for specific countries."
+              },
+              "pricesInclVatByDefault": {
+                "type": "boolean",
+                "example": false,
+                "default": true,
+                "description": "Show prices inclusive VAT, defaults to `true`"
+              },
+              "inputAdminProductPricesInclVat": {
+                "type": "boolean",
+                "example": true,
+                "default": false,
+                "description": "Enter product prices in admin incl. VAT, defaults to `false`"
+              }
+            },
+            "required": [
+              "name",
+              "currencyCode"
+            ]
+          },
+          {
+            "title": "Customer Pricelist",
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 30,
+                "example": "My pricelist",
+                "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "parentPricelistId": {
+                "type": "integer",
+                "example": null,
+                "description": "It is possible to nest pricelists. If a pricelist has a parent pricelist it is considered to be a customer pricelist and `isCustomerPricelist` will be true. If no parent pricelist is set, it is considered a country pricelist and the `isCountryPricelist` is true."
+              },
+              "isActive": {
+                "type": "boolean",
+                "default": false,
+                "description": "Activate the pricelist. It is recommended that you do not activate the pricelist right away. On activation all product prices for that pricelist are set to `0` until you have mass updated the related products in the selected currency. You may want to change visibility settings for the selected countries as well. Defaults to `false`"
+              },
+              "pricesInclVatByDefault": {
+                "type": "boolean",
+                "example": false,
+                "default": true,
+                "description": "Show prices inclusive VAT, defaults to `true`"
+              },
+              "inputAdminProductPricesInclVat": {
+                "type": "boolean",
+                "example": true,
+                "default": false,
+                "description": "Enter product prices in admin incl. VAT, defaults to `false`"
+              }
+            },
+            "required": [
+              "name",
+              "parentPricelistId"
+            ]
+          }
+        ]
+      },
+      "PricelistPatchRequestModel": {
+        "anyOf": [
+          {
+            "title": "Master Pricelist",
+            "type": "object",
+            "properties": {
+              "currencyCode": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3,
+                "example": "SEK",
+                "description": "The currency code needs to be a currencyCode that does not exist in the database if it should be different from the existing base currencyCode."
+              },
+              "countryCodes": {
+                "type": "string",
+                "example": "SE",
+                "pattern": "[a-zA-Z]{2}"
+              },
+              "pricesInclVatByDefault": {
+                "type": "boolean",
+                "example": false,
+                "default": true,
+                "description": "Show prices inclusive VAT, defaults to `true`"
+              },
+              "inputAdminProductPricesInclVat": {
+                "type": "boolean",
+                "example": true,
+                "default": false,
+                "description": "Enter product prices in admin incl. VAT, defaults to `false`"
+              }
+            },
+            "required": [
+              "currencyCode"
+            ]
+          },
+          {
+            "title": "Country Pricelist",
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 30,
+                "example": "My pricelist",
+                "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "currencyCode": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3,
+                "example": "SEK",
+                "description": "The currencyCode this pricelist is valid for."
+              },
+              "isActive": {
+                "type": "boolean",
+                "default": false,
+                "description": "Activate the pricelist. It is recommended that you do not activate the pricelist right away. On activation all product prices for that pricelist are set to `0` until you have mass updated the related products in the selected currency. You may want to change visibility settings for the selected countries as well. Defaults to `false`"
+              },
+              "region": {
+                "type": "string",
+                "maxLength": 10,
+                "example": "EU",
+                "default": "all",
+                "description": "The region this pricelist is valid for. Valid values are `all`, `EU`, `non-EU` or `selected` If you send in the latter you need to send in `countryCodes` for the selected countries as well. Will default to `all`"
+              },
+              "countryCodes": {
+                "type": "string",
+                "example": "SE,DK",
+                "pattern": "([a-zA-Z]{2})(,[a-zA-Z]{2})*",
+                "description": "The countryCodes this pricelist is valid for. These will considered  only if the `region` property is set to the value `selected` for specific countries."
+              },
+              "pricesInclVatByDefault": {
+                "type": "boolean",
+                "example": false,
+                "default": true,
+                "description": "Show prices inclusive VAT, defaults to `true`"
+              },
+              "inputAdminProductPricesInclVat": {
+                "type": "boolean",
+                "example": true,
+                "default": false,
+                "description": "Enter product prices in admin incl. VAT, defaults to `false`"
+              }
+            },
+            "required": [
+              "name",
+              "currencyCode"
+            ]
+          },
+          {
+            "title": "Customer Pricelist",
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 30,
+                "example": "My pricelist",
+                "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "parentPricelistId": {
+                "type": "integer",
+                "example": null,
+                "description": "It is possible to nest pricelists. If a pricelist has a parent pricelist it is considered to be a customer pricelist and `isCustomerPricelist` will be true. If no parent pricelist is set, it is considered a country pricelist and the `isCountryPricelist` is true."
+              },
+              "isActive": {
+                "type": "boolean",
+                "default": false,
+                "description": "Activate the pricelist. It is recommended that you do not activate the pricelist right away. On activation all product prices for that pricelist are set to `0` until you have mass updated the related products in the selected currency. You may want to change visibility settings for the selected countries as well. Defaults to `false`"
+              },
+              "pricesInclVatByDefault": {
+                "type": "boolean",
+                "example": false,
+                "default": true,
+                "description": "Show prices inclusive VAT, defaults to `true`"
+              },
+              "inputAdminProductPricesInclVat": {
+                "type": "boolean",
+                "example": true,
+                "default": false,
+                "description": "Enter product prices in admin incl. VAT, defaults to `false`"
+              }
+            },
+            "required": [
+              "name",
+              "parentPricelistId"
+            ]
+          }
+        ]
+      },
       "OrderCommentModel": {
         "type": "object",
         "properties": {
@@ -10307,7 +10798,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the comment was created. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00"
+            "example": "2019-09-11T07:15:21+02:00"
           },
           "text": {
             "type": "string",
@@ -10367,13 +10858,13 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the media file was created. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "readOnly": true
           },
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the media file was modifies. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "readOnly": true
           },
           "size": {
@@ -10647,7 +11138,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00"
+            "example": "2019-09-11T07:15:21+02:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -10658,6 +11149,15 @@
             "type": "string",
             "default": "hidden",
             "description": "The visibility of this product. Supported values are: hidden, visible, pricelists"
+          },
+          "visibilityPricelistIds": {
+            "type": "array",
+            "description": "The ID\u00b4s of the pricelists that the product should be visible for. Is required for when \u201dvisibility\u201d is set to \u201dpricelists\u201d but should never be populated otherwise",
+            "items": {
+              "type": "integer",
+              "description": "The ID of the pricelist the product should be visible for",
+              "example": 1
+            }
           },
           "moreInfoUrl": {
             "type": "string",
@@ -10716,7 +11216,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "readOnly": true
           },
           "variants": {
@@ -10764,7 +11264,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00"
+            "example": "2019-09-11T07:15:21+02:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -10775,6 +11275,15 @@
             "type": "string",
             "default": "hidden",
             "description": "The visibility of this product. Supported values are: hidden, visible, pricelists"
+          },
+          "visibilityPricelistIds": {
+            "type": "array",
+            "description": "The ID\u00b4s of the pricelists that the product should be visible for. Is required for when \u201dvisibility\u201d is set to \u201dpricelists\u201d but should never be populated otherwise",
+            "items": {
+              "type": "integer",
+              "description": "The ID of the pricelist the product should be visible for",
+              "example": 1
+            }
           },
           "moreInfoUrl": {
             "type": "string",
@@ -10833,7 +11342,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "readOnly": true
           },
           "variants": {
@@ -10898,7 +11407,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00"
+            "example": "2019-09-11T07:15:21+02:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -10909,6 +11418,15 @@
             "type": "string",
             "default": "hidden",
             "description": "The visibility of this product. Supported values are: hidden, visible, pricelists"
+          },
+          "visibilityPricelistIds": {
+            "type": "array",
+            "description": "The ID\u00b4s of the pricelists that the product should be visible for. Is required for when \u201dvisibility\u201d is set to \u201dpricelists\u201d but should never be populated otherwise",
+            "items": {
+              "type": "integer",
+              "description": "The ID of the pricelist the product should be visible for",
+              "example": 1
+            }
           },
           "moreInfoUrl": {
             "type": "string",
@@ -10967,7 +11485,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-08-26T10:58:47+02:00",
+            "example": "2019-09-11T07:15:21+02:00",
             "readOnly": true
           },
           "mediaFiles": {

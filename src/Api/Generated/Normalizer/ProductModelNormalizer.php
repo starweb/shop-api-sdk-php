@@ -40,6 +40,13 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (property_exists($data, 'visibility')) {
             $object->setVisibility($data->{'visibility'});
         }
+        if (property_exists($data, 'visibilityPricelistIds')) {
+            $values = array();
+            foreach ($data->{'visibilityPricelistIds'} as $value) {
+                $values[] = $value;
+            }
+            $object->setVisibilityPricelistIds($values);
+        }
         if (property_exists($data, 'moreInfoUrl')) {
             $object->setMoreInfoUrl($data->{'moreInfoUrl'});
         }
@@ -110,6 +117,13 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (null !== $object->getVisibility()) {
             $data->{'visibility'} = $object->getVisibility();
+        }
+        if (null !== $object->getVisibilityPricelistIds()) {
+            $values = array();
+            foreach ($object->getVisibilityPricelistIds() as $value) {
+                $values[] = $value;
+            }
+            $data->{'visibilityPricelistIds'} = $values;
         }
         if (null !== $object->getMoreInfoUrl()) {
             $data->{'moreInfoUrl'} = $object->getMoreInfoUrl();

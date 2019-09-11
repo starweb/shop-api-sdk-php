@@ -37,6 +37,9 @@ class PricelistModelNormalizer implements DenormalizerInterface, NormalizerInter
         if (property_exists($data, 'isMaster')) {
             $object->setIsMaster($data->{'isMaster'});
         }
+        if (property_exists($data, 'isActive')) {
+            $object->setIsActive($data->{'isActive'});
+        }
         if (property_exists($data, 'region')) {
             $object->setRegion($data->{'region'});
         }
@@ -72,6 +75,9 @@ class PricelistModelNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (null !== $object->getIsMaster()) {
             $data->{'isMaster'} = $object->getIsMaster();
+        }
+        if (null !== $object->getIsActive()) {
+            $data->{'isActive'} = $object->getIsActive();
         }
         if (null !== $object->getRegion()) {
             $data->{'region'} = $object->getRegion();

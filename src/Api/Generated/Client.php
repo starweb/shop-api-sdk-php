@@ -934,6 +934,33 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetPricelists(), $fetch);
     }
     /**
+     * Create a pricelist. Retrieves the created `Pricelist` object
+     *
+     * @param mixed $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\CreatePricelistBadRequestException
+     *
+     * @return null|\Starweb\Api\Generated\Model\PricelistModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function createPricelist(mixed $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreatePricelist($requestBody), $fetch);
+    }
+    /**
+     * Delete a pricelist permanently. The master pricelist can not be deleted and will return an error `403`
+     *
+     * @param int $pricelistId The pricelist id
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\DeletePricelistNotFoundException
+     * @throws \Starweb\Api\Generated\Exception\DeletePricelistForbiddenException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function deletePricelist(int $pricelistId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeletePricelist($pricelistId), $fetch);
+    }
+    /**
      * Retrieves a `Pricelist` object
      *
      * @param int $pricelistId The pricelist id
@@ -945,6 +972,36 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     public function getPricelist(int $pricelistId, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetPricelist($pricelistId), $fetch);
+    }
+    /**
+     * Update a pricelist. Retrieves the updated `Pricelist` object
+     *
+     * @param int $pricelistId The pricelist id
+     * @param mixed $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\PatchPricelistBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\PatchPricelistNotFoundException
+     *
+     * @return null|\Starweb\Api\Generated\Model\PricelistModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function patchPricelist(int $pricelistId, mixed $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchPricelist($pricelistId, $requestBody), $fetch);
+    }
+    /**
+     * Update a pricelist. Retrieves the updated `Pricelist` object
+     *
+     * @param int $pricelistId The pricelist id
+     * @param mixed $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\PutPricelistBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\PutPricelistNotFoundException
+     *
+     * @return null|\Starweb\Api\Generated\Model\PricelistModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function putPricelist(int $pricelistId, mixed $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutPricelist($pricelistId, $requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)

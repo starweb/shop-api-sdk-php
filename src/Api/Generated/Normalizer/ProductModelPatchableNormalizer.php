@@ -40,6 +40,13 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
         if (property_exists($data, 'visibility')) {
             $object->setVisibility($data->{'visibility'});
         }
+        if (property_exists($data, 'visibilityPricelistIds')) {
+            $values = array();
+            foreach ($data->{'visibilityPricelistIds'} as $value) {
+                $values[] = $value;
+            }
+            $object->setVisibilityPricelistIds($values);
+        }
         if (property_exists($data, 'moreInfoUrl')) {
             $object->setMoreInfoUrl($data->{'moreInfoUrl'});
         }
@@ -71,39 +78,39 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
             $object->setModifiedAt($data->{'modifiedAt'});
         }
         if (property_exists($data, 'mediaFiles')) {
-            $values = array();
-            foreach ($data->{'mediaFiles'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductMediaFileLinkModel', 'json', $context);
+            $values_1 = array();
+            foreach ($data->{'mediaFiles'} as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Starweb\\Api\\Generated\\Model\\ProductMediaFileLinkModel', 'json', $context);
             }
-            $object->setMediaFiles($values);
+            $object->setMediaFiles($values_1);
         }
         if (property_exists($data, 'languages')) {
-            $values_1 = array();
-            foreach ($data->{'languages'} as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Starweb\\Api\\Generated\\Model\\ProductLanguageModel', 'json', $context);
+            $values_2 = array();
+            foreach ($data->{'languages'} as $value_2) {
+                $values_2[] = $this->denormalizer->denormalize($value_2, 'Starweb\\Api\\Generated\\Model\\ProductLanguageModel', 'json', $context);
             }
-            $object->setLanguages($values_1);
+            $object->setLanguages($values_2);
         }
         if (property_exists($data, 'vatRates')) {
-            $values_2 = array();
-            foreach ($data->{'vatRates'} as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'Starweb\\Api\\Generated\\Model\\ProductVatRateModel', 'json', $context);
+            $values_3 = array();
+            foreach ($data->{'vatRates'} as $value_3) {
+                $values_3[] = $this->denormalizer->denormalize($value_3, 'Starweb\\Api\\Generated\\Model\\ProductVatRateModel', 'json', $context);
             }
-            $object->setVatRates($values_2);
+            $object->setVatRates($values_3);
         }
         if (property_exists($data, 'categories')) {
-            $values_3 = array();
-            foreach ($data->{'categories'} as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, 'Starweb\\Api\\Generated\\Model\\ProductCategoryLinkModel', 'json', $context);
+            $values_4 = array();
+            foreach ($data->{'categories'} as $value_4) {
+                $values_4[] = $this->denormalizer->denormalize($value_4, 'Starweb\\Api\\Generated\\Model\\ProductCategoryLinkModel', 'json', $context);
             }
-            $object->setCategories($values_3);
+            $object->setCategories($values_4);
         }
         if (property_exists($data, 'metaData')) {
-            $values_4 = array();
-            foreach ($data->{'metaData'} as $value_4) {
-                $values_4[] = $this->denormalizer->denormalize($value_4, 'Starweb\\Api\\Generated\\Model\\ProductMetaDataModelUpdatable', 'json', $context);
+            $values_5 = array();
+            foreach ($data->{'metaData'} as $value_5) {
+                $values_5[] = $this->denormalizer->denormalize($value_5, 'Starweb\\Api\\Generated\\Model\\ProductMetaDataModelUpdatable', 'json', $context);
             }
-            $object->setMetaData($values_4);
+            $object->setMetaData($values_5);
         }
         return $object;
     }
@@ -121,6 +128,13 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getVisibility()) {
             $data->{'visibility'} = $object->getVisibility();
+        }
+        if (null !== $object->getVisibilityPricelistIds()) {
+            $values = array();
+            foreach ($object->getVisibilityPricelistIds() as $value) {
+                $values[] = $value;
+            }
+            $data->{'visibilityPricelistIds'} = $values;
         }
         if (null !== $object->getMoreInfoUrl()) {
             $data->{'moreInfoUrl'} = $object->getMoreInfoUrl();
@@ -153,39 +167,39 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
             $data->{'modifiedAt'} = $object->getModifiedAt();
         }
         if (null !== $object->getMediaFiles()) {
-            $values = array();
-            foreach ($object->getMediaFiles() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data->{'mediaFiles'} = $values;
-        }
-        if (null !== $object->getLanguages()) {
             $values_1 = array();
-            foreach ($object->getLanguages() as $value_1) {
+            foreach ($object->getMediaFiles() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $data->{'languages'} = $values_1;
+            $data->{'mediaFiles'} = $values_1;
         }
-        if (null !== $object->getVatRates()) {
+        if (null !== $object->getLanguages()) {
             $values_2 = array();
-            foreach ($object->getVatRates() as $value_2) {
+            foreach ($object->getLanguages() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
-            $data->{'vatRates'} = $values_2;
+            $data->{'languages'} = $values_2;
         }
-        if (null !== $object->getCategories()) {
+        if (null !== $object->getVatRates()) {
             $values_3 = array();
-            foreach ($object->getCategories() as $value_3) {
+            foreach ($object->getVatRates() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
-            $data->{'categories'} = $values_3;
+            $data->{'vatRates'} = $values_3;
         }
-        if (null !== $object->getMetaData()) {
+        if (null !== $object->getCategories()) {
             $values_4 = array();
-            foreach ($object->getMetaData() as $value_4) {
+            foreach ($object->getCategories() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
-            $data->{'metaData'} = $values_4;
+            $data->{'categories'} = $values_4;
+        }
+        if (null !== $object->getMetaData()) {
+            $values_5 = array();
+            foreach ($object->getMetaData() as $value_5) {
+                $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
+            }
+            $data->{'metaData'} = $values_5;
         }
         return $data;
     }
