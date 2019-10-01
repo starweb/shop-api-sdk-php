@@ -21,7 +21,7 @@ class CustomerTagModel
      *
      * @return int
      */
-    public function getTagId() : ?int
+    public function getTagId() : int
     {
         return $this->tagId;
     }
@@ -32,7 +32,7 @@ class CustomerTagModel
      *
      * @return self
      */
-    public function setTagId(?int $tagId) : self
+    public function setTagId(int $tagId) : self
     {
         $this->tagId = $tagId;
         return $this;
@@ -42,7 +42,7 @@ class CustomerTagModel
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
@@ -53,7 +53,7 @@ class CustomerTagModel
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;

@@ -27,7 +27,7 @@ class ClientCredentialModel
      *
      * @return string
      */
-    public function getGrantType() : ?string
+    public function getGrantType() : string
     {
         return $this->grantType;
     }
@@ -38,7 +38,7 @@ class ClientCredentialModel
      *
      * @return self
      */
-    public function setGrantType(?string $grantType) : self
+    public function setGrantType(string $grantType) : self
     {
         $this->grantType = $grantType;
         return $this;
@@ -48,7 +48,7 @@ class ClientCredentialModel
      *
      * @return string
      */
-    public function getClientId() : ?string
+    public function getClientId() : string
     {
         return $this->clientId;
     }
@@ -59,7 +59,7 @@ class ClientCredentialModel
      *
      * @return self
      */
-    public function setClientId(?string $clientId) : self
+    public function setClientId(string $clientId) : self
     {
         $this->clientId = $clientId;
         return $this;
@@ -69,7 +69,7 @@ class ClientCredentialModel
      *
      * @return string
      */
-    public function getClientSecret() : ?string
+    public function getClientSecret() : string
     {
         return $this->clientSecret;
     }
@@ -80,7 +80,7 @@ class ClientCredentialModel
      *
      * @return self
      */
-    public function setClientSecret(?string $clientSecret) : self
+    public function setClientSecret(string $clientSecret) : self
     {
         $this->clientSecret = $clientSecret;
         return $this;

@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class DeleteProductTagLink extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class DeleteProductTagLink extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     protected $productId;
     protected $tagOptionId;
@@ -17,7 +17,7 @@ class DeleteProductTagLink extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $this->productId = $productId;
         $this->tagOptionId = $tagOptionId;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';
@@ -26,7 +26,7 @@ class DeleteProductTagLink extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     {
         return str_replace(array('{productId}', '{tagOptionId}'), array($this->productId, $this->tagOptionId), '/products/{productId}/tags/{tagOptionId}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return array(array(), null);
     }
@@ -46,7 +46,7 @@ class DeleteProductTagLink extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         if (204 === $status) {
             return null;
         }
-        if (404 === $status && 'application/json' === $contentType) {
+        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \Starweb\Api\Generated\Exception\DeleteProductTagLinkNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }

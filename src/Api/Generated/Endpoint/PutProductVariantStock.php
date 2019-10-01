@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class PutProductVariantStock extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class PutProductVariantStock extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     protected $productId;
     protected $variantId;
@@ -23,7 +23,7 @@ class PutProductVariantStock extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
         $this->stockLocationId = $stockLocationId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -32,7 +32,7 @@ class PutProductVariantStock extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
     {
         return str_replace(array('{productId}', '{variantId}', '{stockLocationId}'), array($this->productId, $this->variantId, $this->stockLocationId), '/products/{productId}/variants/{variantId}/stocks/{stockLocationId}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Generated\Model\ProductVariantStockPutRequestModel) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
@@ -53,13 +53,13 @@ class PutProductVariantStock extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && 'application/json' === $contentType) {
+        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVariantStockModelItem', 'json');
         }
-        if (400 === $status && 'application/json' === $contentType) {
+        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \Starweb\Api\Generated\Exception\PutProductVariantStockBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
-        if (404 === $status && 'application/json' === $contentType) {
+        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \Starweb\Api\Generated\Exception\PutProductVariantStockNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }

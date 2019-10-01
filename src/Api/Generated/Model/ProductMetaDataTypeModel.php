@@ -21,7 +21,7 @@ class ProductMetaDataTypeModel
      *
      * @return int
      */
-    public function getMetaDataTypeId() : ?int
+    public function getMetaDataTypeId() : int
     {
         return $this->metaDataTypeId;
     }
@@ -32,7 +32,7 @@ class ProductMetaDataTypeModel
      *
      * @return self
      */
-    public function setMetaDataTypeId(?int $metaDataTypeId) : self
+    public function setMetaDataTypeId(int $metaDataTypeId) : self
     {
         $this->metaDataTypeId = $metaDataTypeId;
         return $this;
@@ -42,7 +42,7 @@ class ProductMetaDataTypeModel
      *
      * @return ProductMetaDataTypeLanguageModelCollection
      */
-    public function getLanguages() : ?ProductMetaDataTypeLanguageModelCollection
+    public function getLanguages() : ProductMetaDataTypeLanguageModelCollection
     {
         return $this->languages;
     }
@@ -53,7 +53,7 @@ class ProductMetaDataTypeModel
      *
      * @return self
      */
-    public function setLanguages(?ProductMetaDataTypeLanguageModelCollection $languages) : self
+    public function setLanguages(ProductMetaDataTypeLanguageModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

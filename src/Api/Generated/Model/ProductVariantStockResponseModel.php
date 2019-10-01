@@ -27,7 +27,7 @@ class ProductVariantStockResponseModel
      *
      * @return int
      */
-    public function getStockLocationId() : ?int
+    public function getStockLocationId() : int
     {
         return $this->stockLocationId;
     }
@@ -38,7 +38,7 @@ class ProductVariantStockResponseModel
      *
      * @return self
      */
-    public function setStockLocationId(?int $stockLocationId) : self
+    public function setStockLocationId(int $stockLocationId) : self
     {
         $this->stockLocationId = $stockLocationId;
         return $this;
@@ -48,7 +48,7 @@ class ProductVariantStockResponseModel
      *
      * @return int
      */
-    public function getStockStatusId() : ?int
+    public function getStockStatusId() : int
     {
         return $this->stockStatusId;
     }
@@ -59,7 +59,7 @@ class ProductVariantStockResponseModel
      *
      * @return self
      */
-    public function setStockStatusId(?int $stockStatusId) : self
+    public function setStockStatusId(int $stockStatusId) : self
     {
         $this->stockStatusId = $stockStatusId;
         return $this;
@@ -69,7 +69,7 @@ class ProductVariantStockResponseModel
      *
      * @return float
      */
-    public function getStockQuantity() : ?float
+    public function getStockQuantity() : float
     {
         return $this->stockQuantity;
     }
@@ -80,7 +80,7 @@ class ProductVariantStockResponseModel
      *
      * @return self
      */
-    public function setStockQuantity(?float $stockQuantity) : self
+    public function setStockQuantity(float $stockQuantity) : self
     {
         $this->stockQuantity = $stockQuantity;
         return $this;

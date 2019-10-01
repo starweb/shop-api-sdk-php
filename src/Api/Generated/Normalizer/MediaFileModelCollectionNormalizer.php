@@ -20,7 +20,7 @@ class MediaFileModelCollectionNormalizer implements DenormalizerInterface, Norma
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\MediaFileModelCollection;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\MediaFileModelCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

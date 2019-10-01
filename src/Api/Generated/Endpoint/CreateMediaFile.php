@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class CreateMediaFile extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class CreateMediaFile extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * Creates a new `Media File` object
@@ -13,7 +13,7 @@ class CreateMediaFile extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     {
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -22,7 +22,7 @@ class CreateMediaFile extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     {
         return '/media-files';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Generated\Model\MediaFileUploadModel) {
             $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
@@ -47,10 +47,10 @@ class CreateMediaFile extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && 'application/json' === $contentType) {
+        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\MediaFileModelItem', 'json');
         }
-        if (400 === $status && 'application/json' === $contentType) {
+        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \Starweb\Api\Generated\Exception\CreateMediaFileBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }

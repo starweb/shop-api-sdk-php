@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class PutProductMetaDataType extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class PutProductMetaDataType extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     protected $metaDataTypeId;
     /**
@@ -16,7 +16,7 @@ class PutProductMetaDataType extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
         $this->metaDataTypeId = $metaDataTypeId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -25,7 +25,7 @@ class PutProductMetaDataType extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
     {
         return str_replace(array('{metaDataTypeId}'), array($this->metaDataTypeId), '/product-meta-data-types/{metaDataTypeId}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
@@ -46,13 +46,13 @@ class PutProductMetaDataType extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && 'application/json' === $contentType) {
+        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductMetaDataTypeModelItem', 'json');
         }
-        if (400 === $status && 'application/json' === $contentType) {
+        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \Starweb\Api\Generated\Exception\PutProductMetaDataTypeBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
-        if (404 === $status && 'application/json' === $contentType) {
+        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \Starweb\Api\Generated\Exception\PutProductMetaDataTypeNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }

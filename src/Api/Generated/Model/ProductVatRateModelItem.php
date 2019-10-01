@@ -15,7 +15,7 @@ class ProductVatRateModelItem
      *
      * @return ProductVatRateModel
      */
-    public function getData() : ?ProductVatRateModel
+    public function getData() : ProductVatRateModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class ProductVatRateModelItem
      *
      * @return self
      */
-    public function setData(?ProductVatRateModel $data) : self
+    public function setData(ProductVatRateModel $data) : self
     {
         $this->data = $data;
         return $this;

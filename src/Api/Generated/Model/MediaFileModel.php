@@ -63,7 +63,7 @@ class MediaFileModel
      *
      * @return int
      */
-    public function getMediaFileId() : ?int
+    public function getMediaFileId() : int
     {
         return $this->mediaFileId;
     }
@@ -74,7 +74,7 @@ class MediaFileModel
      *
      * @return self
      */
-    public function setMediaFileId(?int $mediaFileId) : self
+    public function setMediaFileId(int $mediaFileId) : self
     {
         $this->mediaFileId = $mediaFileId;
         return $this;
@@ -84,7 +84,7 @@ class MediaFileModel
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
@@ -95,7 +95,7 @@ class MediaFileModel
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -105,7 +105,7 @@ class MediaFileModel
      *
      * @return string
      */
-    public function getCreatedAt() : ?string
+    public function getCreatedAt() : string
     {
         return $this->createdAt;
     }
@@ -116,7 +116,7 @@ class MediaFileModel
      *
      * @return self
      */
-    public function setCreatedAt(?string $createdAt) : self
+    public function setCreatedAt(string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -126,7 +126,7 @@ class MediaFileModel
      *
      * @return string
      */
-    public function getModifiedAt() : ?string
+    public function getModifiedAt() : string
     {
         return $this->modifiedAt;
     }
@@ -137,7 +137,7 @@ class MediaFileModel
      *
      * @return self
      */
-    public function setModifiedAt(?string $modifiedAt) : self
+    public function setModifiedAt(string $modifiedAt) : self
     {
         $this->modifiedAt = $modifiedAt;
         return $this;
@@ -147,7 +147,7 @@ class MediaFileModel
      *
      * @return int
      */
-    public function getSize() : ?int
+    public function getSize() : int
     {
         return $this->size;
     }
@@ -158,7 +158,7 @@ class MediaFileModel
      *
      * @return self
      */
-    public function setSize(?int $size) : self
+    public function setSize(int $size) : self
     {
         $this->size = $size;
         return $this;
@@ -168,7 +168,7 @@ class MediaFileModel
      *
      * @return string
      */
-    public function getMime() : ?string
+    public function getMime() : string
     {
         return $this->mime;
     }
@@ -179,7 +179,7 @@ class MediaFileModel
      *
      * @return self
      */
-    public function setMime(?string $mime) : self
+    public function setMime(string $mime) : self
     {
         $this->mime = $mime;
         return $this;
@@ -189,7 +189,7 @@ class MediaFileModel
      *
      * @return int
      */
-    public function getHeight() : ?int
+    public function getHeight() : int
     {
         return $this->height;
     }
@@ -200,7 +200,7 @@ class MediaFileModel
      *
      * @return self
      */
-    public function setHeight(?int $height) : self
+    public function setHeight(int $height) : self
     {
         $this->height = $height;
         return $this;
@@ -210,7 +210,7 @@ class MediaFileModel
      *
      * @return int
      */
-    public function getWidth() : ?int
+    public function getWidth() : int
     {
         return $this->width;
     }
@@ -221,7 +221,7 @@ class MediaFileModel
      *
      * @return self
      */
-    public function setWidth(?int $width) : self
+    public function setWidth(int $width) : self
     {
         $this->width = $width;
         return $this;
@@ -231,7 +231,7 @@ class MediaFileModel
      *
      * @return string
      */
-    public function getUrl() : ?string
+    public function getUrl() : string
     {
         return $this->url;
     }
@@ -242,7 +242,7 @@ class MediaFileModel
      *
      * @return self
      */
-    public function setUrl(?string $url) : self
+    public function setUrl(string $url) : self
     {
         $this->url = $url;
         return $this;

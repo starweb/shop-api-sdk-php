@@ -15,7 +15,7 @@ class ProductCategoryModelItem
      *
      * @return ProductCategoryModel
      */
-    public function getData() : ?ProductCategoryModel
+    public function getData() : ProductCategoryModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class ProductCategoryModelItem
      *
      * @return self
      */
-    public function setData(?ProductCategoryModel $data) : self
+    public function setData(ProductCategoryModel $data) : self
     {
         $this->data = $data;
         return $this;

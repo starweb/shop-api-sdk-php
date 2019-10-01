@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class ListProducts extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class ListProducts extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * Returns a list of products.
@@ -22,7 +22,7 @@ class ListProducts extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -31,7 +31,7 @@ class ListProducts extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     {
         return '/products';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return array(array(), null);
     }
@@ -64,10 +64,10 @@ class ListProducts extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && 'application/json' === $contentType) {
+        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductModelCollection', 'json');
         }
-        if (400 === $status && 'application/json' === $contentType) {
+        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \Starweb\Api\Generated\Exception\ListProductsBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }

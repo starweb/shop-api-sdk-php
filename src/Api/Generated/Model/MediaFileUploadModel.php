@@ -15,7 +15,7 @@ class MediaFileUploadModel
      *
      * @return string
      */
-    public function getFile() : ?string
+    public function getFile() : string
     {
         return $this->file;
     }
@@ -26,7 +26,7 @@ class MediaFileUploadModel
      *
      * @return self
      */
-    public function setFile(?string $file) : self
+    public function setFile(string $file) : self
     {
         $this->file = $file;
         return $this;

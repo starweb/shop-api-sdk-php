@@ -15,7 +15,7 @@ class ProductTagModelItem
      *
      * @return ProductTagModel
      */
-    public function getData() : ?ProductTagModel
+    public function getData() : ProductTagModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class ProductTagModelItem
      *
      * @return self
      */
-    public function setData(?ProductTagModel $data) : self
+    public function setData(ProductTagModel $data) : self
     {
         $this->data = $data;
         return $this;

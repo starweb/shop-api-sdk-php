@@ -15,7 +15,7 @@ class PaymentMethodModelItem
      *
      * @return PaymentMethodModel
      */
-    public function getData() : ?PaymentMethodModel
+    public function getData() : PaymentMethodModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class PaymentMethodModelItem
      *
      * @return self
      */
-    public function setData(?PaymentMethodModel $data) : self
+    public function setData(PaymentMethodModel $data) : self
     {
         $this->data = $data;
         return $this;

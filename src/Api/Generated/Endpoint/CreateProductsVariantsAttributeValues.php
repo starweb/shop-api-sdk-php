@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class CreateProductsVariantsAttributeValues extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class CreateProductsVariantsAttributeValues extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     protected $attributeId;
     /**
@@ -17,7 +17,7 @@ class CreateProductsVariantsAttributeValues extends \Jane\OpenApiRuntime\Client\
         $this->attributeId = $attributeId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -26,7 +26,7 @@ class CreateProductsVariantsAttributeValues extends \Jane\OpenApiRuntime\Client\
     {
         return str_replace(array('{attributeId}'), array($this->attributeId), '/product-attributes/{attributeId}/values');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
@@ -46,10 +46,10 @@ class CreateProductsVariantsAttributeValues extends \Jane\OpenApiRuntime\Client\
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && 'application/json' === $contentType) {
+        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueModelCollection', 'json');
         }
-        if (400 === $status && 'application/json' === $contentType) {
+        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \Starweb\Api\Generated\Exception\CreateProductsVariantsAttributeValuesBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }

@@ -15,7 +15,7 @@ class CustomerAddedTagModelCollection
      *
      * @return CustomerAddedTagModel[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class CustomerAddedTagModelCollection
      *
      * @return self
      */
-    public function setData(?array $data) : self
+    public function setData(array $data) : self
     {
         $this->data = $data;
         return $this;

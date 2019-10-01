@@ -21,7 +21,7 @@ class CustomerExternalServicesModel
      *
      * @return string
      */
-    public function getServiceName() : ?string
+    public function getServiceName() : string
     {
         return $this->serviceName;
     }
@@ -32,7 +32,7 @@ class CustomerExternalServicesModel
      *
      * @return self
      */
-    public function setServiceName(?string $serviceName) : self
+    public function setServiceName(string $serviceName) : self
     {
         $this->serviceName = $serviceName;
         return $this;
@@ -42,7 +42,7 @@ class CustomerExternalServicesModel
      *
      * @return string
      */
-    public function getExternalIdValue() : ?string
+    public function getExternalIdValue() : string
     {
         return $this->externalIdValue;
     }
@@ -53,7 +53,7 @@ class CustomerExternalServicesModel
      *
      * @return self
      */
-    public function setExternalIdValue(?string $externalIdValue) : self
+    public function setExternalIdValue(string $externalIdValue) : self
     {
         $this->externalIdValue = $externalIdValue;
         return $this;

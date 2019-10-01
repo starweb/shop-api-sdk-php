@@ -27,7 +27,7 @@ class ProductManufacturerModel
      *
      * @return int
      */
-    public function getManufacturerId() : ?int
+    public function getManufacturerId() : int
     {
         return $this->manufacturerId;
     }
@@ -38,7 +38,7 @@ class ProductManufacturerModel
      *
      * @return self
      */
-    public function setManufacturerId(?int $manufacturerId) : self
+    public function setManufacturerId(int $manufacturerId) : self
     {
         $this->manufacturerId = $manufacturerId;
         return $this;
@@ -48,7 +48,7 @@ class ProductManufacturerModel
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
@@ -59,7 +59,7 @@ class ProductManufacturerModel
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -69,7 +69,7 @@ class ProductManufacturerModel
      *
      * @return string
      */
-    public function getUrl() : ?string
+    public function getUrl() : string
     {
         return $this->url;
     }
@@ -80,7 +80,7 @@ class ProductManufacturerModel
      *
      * @return self
      */
-    public function setUrl(?string $url) : self
+    public function setUrl(string $url) : self
     {
         $this->url = $url;
         return $this;

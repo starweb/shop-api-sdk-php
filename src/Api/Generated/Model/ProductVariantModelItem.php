@@ -15,7 +15,7 @@ class ProductVariantModelItem
      *
      * @return ProductVariantModel
      */
-    public function getData() : ?ProductVariantModel
+    public function getData() : ProductVariantModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class ProductVariantModelItem
      *
      * @return self
      */
-    public function setData(?ProductVariantModel $data) : self
+    public function setData(ProductVariantModel $data) : self
     {
         $this->data = $data;
         return $this;

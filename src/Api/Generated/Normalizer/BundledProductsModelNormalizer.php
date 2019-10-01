@@ -20,7 +20,7 @@ class BundledProductsModelNormalizer implements DenormalizerInterface, Normalize
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\BundledProductsModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\BundledProductsModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -64,9 +64,7 @@ class BundledProductsModelNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getVariantSku()) {
             $data->{'variantSku'} = $object->getVariantSku();
         }
-        if (null !== $object->getQuantity()) {
-            $data->{'quantity'} = $object->getQuantity();
-        }
+        $data->{'quantity'} = $object->getQuantity();
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
         }

@@ -20,7 +20,7 @@ class ProductVariantPriceModelNormalizer implements DenormalizerInterface, Norma
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ProductVariantPriceModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantPriceModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -48,9 +48,7 @@ class ProductVariantPriceModelNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getPriceExVat()) {
             $data->{'priceExVat'} = $object->getPriceExVat();
         }
-        if (null !== $object->getSpecialPriceExVat()) {
-            $data->{'specialPriceExVat'} = $object->getSpecialPriceExVat();
-        }
+        $data->{'specialPriceExVat'} = $object->getSpecialPriceExVat();
         return $data;
     }
 }

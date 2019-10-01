@@ -69,7 +69,7 @@ class OrderItemModel
      *
      * @return int
      */
-    public function getItemId() : ?int
+    public function getItemId() : int
     {
         return $this->itemId;
     }
@@ -80,7 +80,7 @@ class OrderItemModel
      *
      * @return self
      */
-    public function setItemId(?int $itemId) : self
+    public function setItemId(int $itemId) : self
     {
         $this->itemId = $itemId;
         return $this;
@@ -90,7 +90,7 @@ class OrderItemModel
      *
      * @return string
      */
-    public function getSku() : ?string
+    public function getSku() : string
     {
         return $this->sku;
     }
@@ -101,7 +101,7 @@ class OrderItemModel
      *
      * @return self
      */
-    public function setSku(?string $sku) : self
+    public function setSku(string $sku) : self
     {
         $this->sku = $sku;
         return $this;
@@ -111,7 +111,7 @@ class OrderItemModel
      *
      * @return string
      */
-    public function getDescription() : ?string
+    public function getDescription() : string
     {
         return $this->description;
     }
@@ -122,7 +122,7 @@ class OrderItemModel
      *
      * @return self
      */
-    public function setDescription(?string $description) : self
+    public function setDescription(string $description) : self
     {
         $this->description = $description;
         return $this;
@@ -132,7 +132,7 @@ class OrderItemModel
      *
      * @return int
      */
-    public function getQuantity() : ?int
+    public function getQuantity() : int
     {
         return $this->quantity;
     }
@@ -143,7 +143,7 @@ class OrderItemModel
      *
      * @return self
      */
-    public function setQuantity(?int $quantity) : self
+    public function setQuantity(int $quantity) : self
     {
         $this->quantity = $quantity;
         return $this;
@@ -153,7 +153,7 @@ class OrderItemModel
      *
      * @return string
      */
-    public function getUnitSymbol() : ?string
+    public function getUnitSymbol() : string
     {
         return $this->unitSymbol;
     }
@@ -164,7 +164,7 @@ class OrderItemModel
      *
      * @return self
      */
-    public function setUnitSymbol(?string $unitSymbol) : self
+    public function setUnitSymbol(string $unitSymbol) : self
     {
         $this->unitSymbol = $unitSymbol;
         return $this;
@@ -174,7 +174,7 @@ class OrderItemModel
      *
      * @return float
      */
-    public function getUnitPrice() : ?float
+    public function getUnitPrice() : float
     {
         return $this->unitPrice;
     }
@@ -185,7 +185,7 @@ class OrderItemModel
      *
      * @return self
      */
-    public function setUnitPrice(?float $unitPrice) : self
+    public function setUnitPrice(float $unitPrice) : self
     {
         $this->unitPrice = $unitPrice;
         return $this;
@@ -195,7 +195,7 @@ class OrderItemModel
      *
      * @return float
      */
-    public function getVatRate() : ?float
+    public function getVatRate() : float
     {
         return $this->vatRate;
     }
@@ -206,7 +206,7 @@ class OrderItemModel
      *
      * @return self
      */
-    public function setVatRate(?float $vatRate) : self
+    public function setVatRate(float $vatRate) : self
     {
         $this->vatRate = $vatRate;
         return $this;
@@ -216,7 +216,7 @@ class OrderItemModel
      *
      * @return float
      */
-    public function getDiscount() : ?float
+    public function getDiscount() : float
     {
         return $this->discount;
     }
@@ -227,7 +227,7 @@ class OrderItemModel
      *
      * @return self
      */
-    public function setDiscount(?float $discount) : self
+    public function setDiscount(float $discount) : self
     {
         $this->discount = $discount;
         return $this;
@@ -237,7 +237,7 @@ class OrderItemModel
      *
      * @return string
      */
-    public function getDiscountType() : ?string
+    public function getDiscountType() : string
     {
         return $this->discountType;
     }
@@ -248,7 +248,7 @@ class OrderItemModel
      *
      * @return self
      */
-    public function setDiscountType(?string $discountType) : self
+    public function setDiscountType(string $discountType) : self
     {
         $this->discountType = $discountType;
         return $this;
@@ -258,7 +258,7 @@ class OrderItemModel
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex() : int
     {
         return $this->sortIndex;
     }
@@ -269,7 +269,7 @@ class OrderItemModel
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;

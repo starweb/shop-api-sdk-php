@@ -20,7 +20,7 @@ class ProductVariantModelNormalizer implements DenormalizerInterface, Normalizer
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ProductVariantModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -100,27 +100,17 @@ class ProductVariantModelNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
         }
-        if (null !== $object->getStockStatusId()) {
-            $data->{'stockStatusId'} = $object->getStockStatusId();
-        }
-        if (null !== $object->getStockQuantity()) {
-            $data->{'stockQuantity'} = $object->getStockQuantity();
-        }
-        if (null !== $object->getWeightInKg()) {
-            $data->{'weightInKg'} = $object->getWeightInKg();
-        }
-        if (null !== $object->getCostPrice()) {
-            $data->{'costPrice'} = $object->getCostPrice();
-        }
+        $data->{'stockStatusId'} = $object->getStockStatusId();
+        $data->{'stockQuantity'} = $object->getStockQuantity();
+        $data->{'weightInKg'} = $object->getWeightInKg();
+        $data->{'costPrice'} = $object->getCostPrice();
         if (null !== $object->getEan()) {
             $data->{'ean'} = $object->getEan();
         }
         if (null !== $object->getMpn()) {
             $data->{'mpn'} = $object->getMpn();
         }
-        if (null !== $object->getImageFileId()) {
-            $data->{'imageFileId'} = $object->getImageFileId();
-        }
+        $data->{'imageFileId'} = $object->getImageFileId();
         if (null !== $object->getAttributeValueLinks()) {
             $values = array();
             foreach ($object->getAttributeValueLinks() as $value) {

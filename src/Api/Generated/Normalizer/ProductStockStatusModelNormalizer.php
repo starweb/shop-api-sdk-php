@@ -20,7 +20,7 @@ class ProductStockStatusModelNormalizer implements DenormalizerInterface, Normal
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ProductStockStatusModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductStockStatusModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -67,9 +67,7 @@ class ProductStockStatusModelNormalizer implements DenormalizerInterface, Normal
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
         }
-        if (null !== $object->getStockoutNewStatusId()) {
-            $data->{'stockoutNewStatusId'} = $object->getStockoutNewStatusId();
-        }
+        $data->{'stockoutNewStatusId'} = $object->getStockoutNewStatusId();
         if (null !== $object->getProductBuyable()) {
             $data->{'productBuyable'} = $object->getProductBuyable();
         }

@@ -15,7 +15,7 @@ class CustomerAddedTagModelItem
      *
      * @return CustomerAddedTagModel
      */
-    public function getData() : ?CustomerAddedTagModel
+    public function getData() : CustomerAddedTagModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class CustomerAddedTagModelItem
      *
      * @return self
      */
-    public function setData(?CustomerAddedTagModel $data) : self
+    public function setData(CustomerAddedTagModel $data) : self
     {
         $this->data = $data;
         return $this;

@@ -15,7 +15,7 @@ class ProductTagLinkPostRequestModel
      *
      * @return int
      */
-    public function getTagOptionId() : ?int
+    public function getTagOptionId() : int
     {
         return $this->tagOptionId;
     }
@@ -26,7 +26,7 @@ class ProductTagLinkPostRequestModel
      *
      * @return self
      */
-    public function setTagOptionId(?int $tagOptionId) : self
+    public function setTagOptionId(int $tagOptionId) : self
     {
         $this->tagOptionId = $tagOptionId;
         return $this;

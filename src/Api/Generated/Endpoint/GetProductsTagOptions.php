@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class GetProductsTagOptions extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class GetProductsTagOptions extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     protected $productTagId;
     /**
@@ -14,7 +14,7 @@ class GetProductsTagOptions extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     {
         $this->productTagId = $productTagId;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -23,7 +23,7 @@ class GetProductsTagOptions extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     {
         return str_replace(array('{productTagId}'), array($this->productTagId), '/product-tags/{productTagId}/options');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return array(array(), null);
     }
@@ -39,7 +39,7 @@ class GetProductsTagOptions extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && 'application/json' === $contentType) {
+        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductTagOptionModelCollection', 'json');
         }
     }

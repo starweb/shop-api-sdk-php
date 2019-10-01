@@ -21,7 +21,7 @@ class StockLocationPostRequestModel
      *
      * @var bool
      */
-    protected $ecommerceStockLocation;
+    protected $ecommerceStockLocation = false;
     /**
      * 
      *
@@ -33,7 +33,7 @@ class StockLocationPostRequestModel
      *
      * @return string
      */
-    public function getVisibility() : ?string
+    public function getVisibility() : string
     {
         return $this->visibility;
     }
@@ -44,7 +44,7 @@ class StockLocationPostRequestModel
      *
      * @return self
      */
-    public function setVisibility(?string $visibility) : self
+    public function setVisibility(string $visibility) : self
     {
         $this->visibility = $visibility;
         return $this;
@@ -54,7 +54,7 @@ class StockLocationPostRequestModel
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex() : int
     {
         return $this->sortIndex;
     }
@@ -65,7 +65,7 @@ class StockLocationPostRequestModel
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -75,7 +75,7 @@ class StockLocationPostRequestModel
      *
      * @return bool
      */
-    public function getEcommerceStockLocation() : ?bool
+    public function getEcommerceStockLocation() : bool
     {
         return $this->ecommerceStockLocation;
     }
@@ -86,7 +86,7 @@ class StockLocationPostRequestModel
      *
      * @return self
      */
-    public function setEcommerceStockLocation(?bool $ecommerceStockLocation) : self
+    public function setEcommerceStockLocation(bool $ecommerceStockLocation) : self
     {
         $this->ecommerceStockLocation = $ecommerceStockLocation;
         return $this;
@@ -96,7 +96,7 @@ class StockLocationPostRequestModel
      *
      * @return StockLocationLanguagesModelCollection
      */
-    public function getLanguages() : ?StockLocationLanguagesModelCollection
+    public function getLanguages() : StockLocationLanguagesModelCollection
     {
         return $this->languages;
     }
@@ -107,7 +107,7 @@ class StockLocationPostRequestModel
      *
      * @return self
      */
-    public function setLanguages(?StockLocationLanguagesModelCollection $languages) : self
+    public function setLanguages(StockLocationLanguagesModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

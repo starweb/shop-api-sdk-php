@@ -55,7 +55,7 @@ class CustomerUpdateModel
     /**
      * The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)
      *
-     * @var int
+     * @var int|null
      */
     protected $pricelistId;
     /**
@@ -75,7 +75,7 @@ class CustomerUpdateModel
      *
      * @return int
      */
-    public function getCustomerId() : ?int
+    public function getCustomerId() : int
     {
         return $this->customerId;
     }
@@ -86,7 +86,7 @@ class CustomerUpdateModel
      *
      * @return self
      */
-    public function setCustomerId(?int $customerId) : self
+    public function setCustomerId(int $customerId) : self
     {
         $this->customerId = $customerId;
         return $this;
@@ -96,7 +96,7 @@ class CustomerUpdateModel
      *
      * @return string
      */
-    public function getCreatedAt() : ?string
+    public function getCreatedAt() : string
     {
         return $this->createdAt;
     }
@@ -107,7 +107,7 @@ class CustomerUpdateModel
      *
      * @return self
      */
-    public function setCreatedAt(?string $createdAt) : self
+    public function setCreatedAt(string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -117,7 +117,7 @@ class CustomerUpdateModel
      *
      * @return string
      */
-    public function getType() : ?string
+    public function getType() : string
     {
         return $this->type;
     }
@@ -128,7 +128,7 @@ class CustomerUpdateModel
      *
      * @return self
      */
-    public function setType(?string $type) : self
+    public function setType(string $type) : self
     {
         $this->type = $type;
         return $this;
@@ -138,7 +138,7 @@ class CustomerUpdateModel
      *
      * @return string
      */
-    public function getEmail() : ?string
+    public function getEmail() : string
     {
         return $this->email;
     }
@@ -149,7 +149,7 @@ class CustomerUpdateModel
      *
      * @return self
      */
-    public function setEmail(?string $email) : self
+    public function setEmail(string $email) : self
     {
         $this->email = $email;
         return $this;
@@ -159,7 +159,7 @@ class CustomerUpdateModel
      *
      * @return string
      */
-    public function getNationalIdNo() : ?string
+    public function getNationalIdNo() : string
     {
         return $this->nationalIdNo;
     }
@@ -170,7 +170,7 @@ class CustomerUpdateModel
      *
      * @return self
      */
-    public function setNationalIdNo(?string $nationalIdNo) : self
+    public function setNationalIdNo(string $nationalIdNo) : self
     {
         $this->nationalIdNo = $nationalIdNo;
         return $this;
@@ -180,7 +180,7 @@ class CustomerUpdateModel
      *
      * @return string
      */
-    public function getVatNo() : ?string
+    public function getVatNo() : string
     {
         return $this->vatNo;
     }
@@ -191,7 +191,7 @@ class CustomerUpdateModel
      *
      * @return self
      */
-    public function setVatNo(?string $vatNo) : self
+    public function setVatNo(string $vatNo) : self
     {
         $this->vatNo = $vatNo;
         return $this;
@@ -201,7 +201,7 @@ class CustomerUpdateModel
      *
      * @return string
      */
-    public function getCustomInfo1() : ?string
+    public function getCustomInfo1() : string
     {
         return $this->customInfo1;
     }
@@ -212,7 +212,7 @@ class CustomerUpdateModel
      *
      * @return self
      */
-    public function setCustomInfo1(?string $customInfo1) : self
+    public function setCustomInfo1(string $customInfo1) : self
     {
         $this->customInfo1 = $customInfo1;
         return $this;
@@ -222,7 +222,7 @@ class CustomerUpdateModel
      *
      * @return string
      */
-    public function getCustomInfo2() : ?string
+    public function getCustomInfo2() : string
     {
         return $this->customInfo2;
     }
@@ -233,7 +233,7 @@ class CustomerUpdateModel
      *
      * @return self
      */
-    public function setCustomInfo2(?string $customInfo2) : self
+    public function setCustomInfo2(string $customInfo2) : self
     {
         $this->customInfo2 = $customInfo2;
         return $this;
@@ -241,7 +241,7 @@ class CustomerUpdateModel
     /**
      * The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)
      *
-     * @return int
+     * @return int|null
      */
     public function getPricelistId() : ?int
     {
@@ -250,7 +250,7 @@ class CustomerUpdateModel
     /**
      * The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)
      *
-     * @param int $pricelistId
+     * @param int|null $pricelistId
      *
      * @return self
      */
@@ -264,7 +264,7 @@ class CustomerUpdateModel
      *
      * @return string
      */
-    public function getLangCode() : ?string
+    public function getLangCode() : string
     {
         return $this->langCode;
     }
@@ -275,7 +275,7 @@ class CustomerUpdateModel
      *
      * @return self
      */
-    public function setLangCode(?string $langCode) : self
+    public function setLangCode(string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -285,7 +285,7 @@ class CustomerUpdateModel
      *
      * @return CustomerUpdateModelAddresses
      */
-    public function getAddresses() : ?CustomerUpdateModelAddresses
+    public function getAddresses() : CustomerUpdateModelAddresses
     {
         return $this->addresses;
     }
@@ -296,7 +296,7 @@ class CustomerUpdateModel
      *
      * @return self
      */
-    public function setAddresses(?CustomerUpdateModelAddresses $addresses) : self
+    public function setAddresses(CustomerUpdateModelAddresses $addresses) : self
     {
         $this->addresses = $addresses;
         return $this;

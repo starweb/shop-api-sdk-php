@@ -15,7 +15,7 @@ class ProductVariantStockModelItem
      *
      * @return ProductVariantStockResponseModel
      */
-    public function getData() : ?ProductVariantStockResponseModel
+    public function getData() : ProductVariantStockResponseModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class ProductVariantStockModelItem
      *
      * @return self
      */
-    public function setData(?ProductVariantStockResponseModel $data) : self
+    public function setData(ProductVariantStockResponseModel $data) : self
     {
         $this->data = $data;
         return $this;

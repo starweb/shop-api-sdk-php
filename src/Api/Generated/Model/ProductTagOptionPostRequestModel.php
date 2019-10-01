@@ -21,7 +21,7 @@ class ProductTagOptionPostRequestModel
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex() : int
     {
         return $this->sortIndex;
     }
@@ -32,7 +32,7 @@ class ProductTagOptionPostRequestModel
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -42,7 +42,7 @@ class ProductTagOptionPostRequestModel
      *
      * @return ProductTagOptionLanguageModel[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }
@@ -53,7 +53,7 @@ class ProductTagOptionPostRequestModel
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;

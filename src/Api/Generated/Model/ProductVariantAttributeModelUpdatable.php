@@ -21,7 +21,7 @@ class ProductVariantAttributeModelUpdatable
      *
      * @return int
      */
-    public function getAttributeId() : ?int
+    public function getAttributeId() : int
     {
         return $this->attributeId;
     }
@@ -32,7 +32,7 @@ class ProductVariantAttributeModelUpdatable
      *
      * @return self
      */
-    public function setAttributeId(?int $attributeId) : self
+    public function setAttributeId(int $attributeId) : self
     {
         $this->attributeId = $attributeId;
         return $this;
@@ -42,7 +42,7 @@ class ProductVariantAttributeModelUpdatable
      *
      * @return ProductVariantAttributeLanguageModel[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }
@@ -53,7 +53,7 @@ class ProductVariantAttributeModelUpdatable
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;

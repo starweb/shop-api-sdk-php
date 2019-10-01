@@ -27,7 +27,7 @@ class StockLocationModel
      *
      * @var bool
      */
-    protected $ecommerceStockLocation;
+    protected $ecommerceStockLocation = false;
     /**
      * 
      *
@@ -39,7 +39,7 @@ class StockLocationModel
      *
      * @return int
      */
-    public function getStockLocationId() : ?int
+    public function getStockLocationId() : int
     {
         return $this->stockLocationId;
     }
@@ -50,7 +50,7 @@ class StockLocationModel
      *
      * @return self
      */
-    public function setStockLocationId(?int $stockLocationId) : self
+    public function setStockLocationId(int $stockLocationId) : self
     {
         $this->stockLocationId = $stockLocationId;
         return $this;
@@ -60,7 +60,7 @@ class StockLocationModel
      *
      * @return string
      */
-    public function getVisibility() : ?string
+    public function getVisibility() : string
     {
         return $this->visibility;
     }
@@ -71,7 +71,7 @@ class StockLocationModel
      *
      * @return self
      */
-    public function setVisibility(?string $visibility) : self
+    public function setVisibility(string $visibility) : self
     {
         $this->visibility = $visibility;
         return $this;
@@ -81,7 +81,7 @@ class StockLocationModel
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex() : int
     {
         return $this->sortIndex;
     }
@@ -92,7 +92,7 @@ class StockLocationModel
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -102,7 +102,7 @@ class StockLocationModel
      *
      * @return bool
      */
-    public function getEcommerceStockLocation() : ?bool
+    public function getEcommerceStockLocation() : bool
     {
         return $this->ecommerceStockLocation;
     }
@@ -113,7 +113,7 @@ class StockLocationModel
      *
      * @return self
      */
-    public function setEcommerceStockLocation(?bool $ecommerceStockLocation) : self
+    public function setEcommerceStockLocation(bool $ecommerceStockLocation) : self
     {
         $this->ecommerceStockLocation = $ecommerceStockLocation;
         return $this;
@@ -123,7 +123,7 @@ class StockLocationModel
      *
      * @return StockLocationLanguagesModelCollection
      */
-    public function getLanguages() : ?StockLocationLanguagesModelCollection
+    public function getLanguages() : StockLocationLanguagesModelCollection
     {
         return $this->languages;
     }
@@ -134,7 +134,7 @@ class StockLocationModel
      *
      * @return self
      */
-    public function setLanguages(?StockLocationLanguagesModelCollection $languages) : self
+    public function setLanguages(StockLocationLanguagesModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

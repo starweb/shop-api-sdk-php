@@ -20,7 +20,7 @@ class ProductMediaFileLinkModelCollectionNormalizer implements DenormalizerInter
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ProductMediaFileLinkModelCollection;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMediaFileLinkModelCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

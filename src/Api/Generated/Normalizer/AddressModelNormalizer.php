@@ -20,7 +20,7 @@ class AddressModelNormalizer implements DenormalizerInterface, NormalizerInterfa
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\AddressModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\AddressModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

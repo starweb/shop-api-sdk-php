@@ -20,7 +20,7 @@ class CustomerUpdateModelNormalizer implements DenormalizerInterface, Normalizer
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\CustomerUpdateModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerUpdateModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -90,9 +90,7 @@ class CustomerUpdateModelNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getCustomInfo2()) {
             $data->{'customInfo2'} = $object->getCustomInfo2();
         }
-        if (null !== $object->getPricelistId()) {
-            $data->{'pricelistId'} = $object->getPricelistId();
-        }
+        $data->{'pricelistId'} = $object->getPricelistId();
         if (null !== $object->getLangCode()) {
             $data->{'langCode'} = $object->getLangCode();
         }

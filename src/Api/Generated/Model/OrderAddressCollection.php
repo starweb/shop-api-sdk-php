@@ -15,7 +15,7 @@ class OrderAddressCollection
      *
      * @return OrderAddressModel
      */
-    public function getData() : ?OrderAddressModel
+    public function getData() : OrderAddressModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class OrderAddressCollection
      *
      * @return self
      */
-    public function setData(?OrderAddressModel $data) : self
+    public function setData(OrderAddressModel $data) : self
     {
         $this->data = $data;
         return $this;

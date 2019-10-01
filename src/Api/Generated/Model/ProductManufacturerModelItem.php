@@ -15,7 +15,7 @@ class ProductManufacturerModelItem
      *
      * @return ProductManufacturerModel
      */
-    public function getData() : ?ProductManufacturerModel
+    public function getData() : ProductManufacturerModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class ProductManufacturerModelItem
      *
      * @return self
      */
-    public function setData(?ProductManufacturerModel $data) : self
+    public function setData(ProductManufacturerModel $data) : self
     {
         $this->data = $data;
         return $this;

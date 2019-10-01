@@ -15,7 +15,7 @@ class ShopItem
      *
      * @return ShopModel
      */
-    public function getData() : ?ShopModel
+    public function getData() : ShopModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class ShopItem
      *
      * @return self
      */
-    public function setData(?ShopModel $data) : self
+    public function setData(ShopModel $data) : self
     {
         $this->data = $data;
         return $this;

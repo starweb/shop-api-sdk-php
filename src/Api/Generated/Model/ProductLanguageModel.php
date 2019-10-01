@@ -51,7 +51,7 @@ class ProductLanguageModel
      *
      * @return string
      */
-    public function getLangCode() : ?string
+    public function getLangCode() : string
     {
         return $this->langCode;
     }
@@ -62,7 +62,7 @@ class ProductLanguageModel
      *
      * @return self
      */
-    public function setLangCode(?string $langCode) : self
+    public function setLangCode(string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -72,7 +72,7 @@ class ProductLanguageModel
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
@@ -83,7 +83,7 @@ class ProductLanguageModel
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -93,7 +93,7 @@ class ProductLanguageModel
      *
      * @return string
      */
-    public function getShortDescription() : ?string
+    public function getShortDescription() : string
     {
         return $this->shortDescription;
     }
@@ -104,7 +104,7 @@ class ProductLanguageModel
      *
      * @return self
      */
-    public function setShortDescription(?string $shortDescription) : self
+    public function setShortDescription(string $shortDescription) : self
     {
         $this->shortDescription = $shortDescription;
         return $this;
@@ -114,7 +114,7 @@ class ProductLanguageModel
      *
      * @return string
      */
-    public function getLongDescription() : ?string
+    public function getLongDescription() : string
     {
         return $this->longDescription;
     }
@@ -125,7 +125,7 @@ class ProductLanguageModel
      *
      * @return self
      */
-    public function setLongDescription(?string $longDescription) : self
+    public function setLongDescription(string $longDescription) : self
     {
         $this->longDescription = $longDescription;
         return $this;
@@ -135,7 +135,7 @@ class ProductLanguageModel
      *
      * @return string
      */
-    public function getPermalink() : ?string
+    public function getPermalink() : string
     {
         return $this->permalink;
     }
@@ -146,7 +146,7 @@ class ProductLanguageModel
      *
      * @return self
      */
-    public function setPermalink(?string $permalink) : self
+    public function setPermalink(string $permalink) : self
     {
         $this->permalink = $permalink;
         return $this;
@@ -156,7 +156,7 @@ class ProductLanguageModel
      *
      * @return string
      */
-    public function getPageTitle() : ?string
+    public function getPageTitle() : string
     {
         return $this->pageTitle;
     }
@@ -167,7 +167,7 @@ class ProductLanguageModel
      *
      * @return self
      */
-    public function setPageTitle(?string $pageTitle) : self
+    public function setPageTitle(string $pageTitle) : self
     {
         $this->pageTitle = $pageTitle;
         return $this;
@@ -177,7 +177,7 @@ class ProductLanguageModel
      *
      * @return string
      */
-    public function getPageMetaDescription() : ?string
+    public function getPageMetaDescription() : string
     {
         return $this->pageMetaDescription;
     }
@@ -188,7 +188,7 @@ class ProductLanguageModel
      *
      * @return self
      */
-    public function setPageMetaDescription(?string $pageMetaDescription) : self
+    public function setPageMetaDescription(string $pageMetaDescription) : self
     {
         $this->pageMetaDescription = $pageMetaDescription;
         return $this;

@@ -27,7 +27,7 @@ class ProductUnitLanguageModel
      *
      * @return string
      */
-    public function getLangCode() : ?string
+    public function getLangCode() : string
     {
         return $this->langCode;
     }
@@ -38,7 +38,7 @@ class ProductUnitLanguageModel
      *
      * @return self
      */
-    public function setLangCode(?string $langCode) : self
+    public function setLangCode(string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -48,7 +48,7 @@ class ProductUnitLanguageModel
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
@@ -59,7 +59,7 @@ class ProductUnitLanguageModel
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -69,7 +69,7 @@ class ProductUnitLanguageModel
      *
      * @return string
      */
-    public function getSymbol() : ?string
+    public function getSymbol() : string
     {
         return $this->symbol;
     }
@@ -80,7 +80,7 @@ class ProductUnitLanguageModel
      *
      * @return self
      */
-    public function setSymbol(?string $symbol) : self
+    public function setSymbol(string $symbol) : self
     {
         $this->symbol = $symbol;
         return $this;

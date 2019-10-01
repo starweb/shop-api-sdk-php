@@ -15,31 +15,31 @@ class VatRateModel
      *
      * @var float
      */
-    protected $defaultVatRate;
+    protected $defaultVatRate = 0;
     /**
      * The vat rates to use for this country for payment methods
      *
      * @var float
      */
-    protected $fixedOrderPaymentVatRate;
+    protected $fixedOrderPaymentVatRate = 0;
     /**
      * The vat rates to use for this country for shipping methods
      *
      * @var float
      */
-    protected $fixedOrderShippingVatRate;
+    protected $fixedOrderShippingVatRate = 0;
     /**
      * The vat rates to use for this country for discounts
      *
      * @var float
      */
-    protected $fixedOrderDiscountVatRate;
+    protected $fixedOrderDiscountVatRate = 0;
     /**
      * The country code this vat rates should be valid for. The country code should be set using ISO 3166-1 alpha-2
      *
      * @return string
      */
-    public function getCountryCode() : ?string
+    public function getCountryCode() : string
     {
         return $this->countryCode;
     }
@@ -50,7 +50,7 @@ class VatRateModel
      *
      * @return self
      */
-    public function setCountryCode(?string $countryCode) : self
+    public function setCountryCode(string $countryCode) : self
     {
         $this->countryCode = $countryCode;
         return $this;
@@ -60,7 +60,7 @@ class VatRateModel
      *
      * @return float
      */
-    public function getDefaultVatRate() : ?float
+    public function getDefaultVatRate() : float
     {
         return $this->defaultVatRate;
     }
@@ -71,7 +71,7 @@ class VatRateModel
      *
      * @return self
      */
-    public function setDefaultVatRate(?float $defaultVatRate) : self
+    public function setDefaultVatRate(float $defaultVatRate) : self
     {
         $this->defaultVatRate = $defaultVatRate;
         return $this;
@@ -81,7 +81,7 @@ class VatRateModel
      *
      * @return float
      */
-    public function getFixedOrderPaymentVatRate() : ?float
+    public function getFixedOrderPaymentVatRate() : float
     {
         return $this->fixedOrderPaymentVatRate;
     }
@@ -92,7 +92,7 @@ class VatRateModel
      *
      * @return self
      */
-    public function setFixedOrderPaymentVatRate(?float $fixedOrderPaymentVatRate) : self
+    public function setFixedOrderPaymentVatRate(float $fixedOrderPaymentVatRate) : self
     {
         $this->fixedOrderPaymentVatRate = $fixedOrderPaymentVatRate;
         return $this;
@@ -102,7 +102,7 @@ class VatRateModel
      *
      * @return float
      */
-    public function getFixedOrderShippingVatRate() : ?float
+    public function getFixedOrderShippingVatRate() : float
     {
         return $this->fixedOrderShippingVatRate;
     }
@@ -113,7 +113,7 @@ class VatRateModel
      *
      * @return self
      */
-    public function setFixedOrderShippingVatRate(?float $fixedOrderShippingVatRate) : self
+    public function setFixedOrderShippingVatRate(float $fixedOrderShippingVatRate) : self
     {
         $this->fixedOrderShippingVatRate = $fixedOrderShippingVatRate;
         return $this;
@@ -123,7 +123,7 @@ class VatRateModel
      *
      * @return float
      */
-    public function getFixedOrderDiscountVatRate() : ?float
+    public function getFixedOrderDiscountVatRate() : float
     {
         return $this->fixedOrderDiscountVatRate;
     }
@@ -134,7 +134,7 @@ class VatRateModel
      *
      * @return self
      */
-    public function setFixedOrderDiscountVatRate(?float $fixedOrderDiscountVatRate) : self
+    public function setFixedOrderDiscountVatRate(float $fixedOrderDiscountVatRate) : self
     {
         $this->fixedOrderDiscountVatRate = $fixedOrderDiscountVatRate;
         return $this;

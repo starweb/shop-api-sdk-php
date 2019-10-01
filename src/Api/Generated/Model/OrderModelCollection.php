@@ -21,7 +21,7 @@ class OrderModelCollection
      *
      * @return OrderModel[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }
@@ -32,7 +32,7 @@ class OrderModelCollection
      *
      * @return self
      */
-    public function setData(?array $data) : self
+    public function setData(array $data) : self
     {
         $this->data = $data;
         return $this;
@@ -42,7 +42,7 @@ class OrderModelCollection
      *
      * @return OrderModelCollectionMeta
      */
-    public function getMeta() : ?OrderModelCollectionMeta
+    public function getMeta() : OrderModelCollectionMeta
     {
         return $this->meta;
     }
@@ -53,7 +53,7 @@ class OrderModelCollection
      *
      * @return self
      */
-    public function setMeta(?OrderModelCollectionMeta $meta) : self
+    public function setMeta(OrderModelCollectionMeta $meta) : self
     {
         $this->meta = $meta;
         return $this;

@@ -27,7 +27,7 @@ class OrderExternalServiceModel
      *
      * @return string
      */
-    public function getServiceName() : ?string
+    public function getServiceName() : string
     {
         return $this->serviceName;
     }
@@ -38,7 +38,7 @@ class OrderExternalServiceModel
      *
      * @return self
      */
-    public function setServiceName(?string $serviceName) : self
+    public function setServiceName(string $serviceName) : self
     {
         $this->serviceName = $serviceName;
         return $this;
@@ -48,7 +48,7 @@ class OrderExternalServiceModel
      *
      * @return string
      */
-    public function getExternalIdValue() : ?string
+    public function getExternalIdValue() : string
     {
         return $this->externalIdValue;
     }
@@ -59,7 +59,7 @@ class OrderExternalServiceModel
      *
      * @return self
      */
-    public function setExternalIdValue(?string $externalIdValue) : self
+    public function setExternalIdValue(string $externalIdValue) : self
     {
         $this->externalIdValue = $externalIdValue;
         return $this;
@@ -69,7 +69,7 @@ class OrderExternalServiceModel
      *
      * @return bool
      */
-    public function getReadOnly() : ?bool
+    public function getReadOnly() : bool
     {
         return $this->readOnly;
     }
@@ -80,7 +80,7 @@ class OrderExternalServiceModel
      *
      * @return self
      */
-    public function setReadOnly(?bool $readOnly) : self
+    public function setReadOnly(bool $readOnly) : self
     {
         $this->readOnly = $readOnly;
         return $this;

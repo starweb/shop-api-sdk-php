@@ -20,7 +20,7 @@ class ProductCategoryModelNormalizer implements DenormalizerInterface, Normalize
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ProductCategoryModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductCategoryModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

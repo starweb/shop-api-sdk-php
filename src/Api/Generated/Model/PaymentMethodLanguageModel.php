@@ -33,7 +33,7 @@ class PaymentMethodLanguageModel
      *
      * @return string
      */
-    public function getLangCode() : ?string
+    public function getLangCode() : string
     {
         return $this->langCode;
     }
@@ -44,7 +44,7 @@ class PaymentMethodLanguageModel
      *
      * @return self
      */
-    public function setLangCode(?string $langCode) : self
+    public function setLangCode(string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -54,7 +54,7 @@ class PaymentMethodLanguageModel
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
@@ -65,7 +65,7 @@ class PaymentMethodLanguageModel
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -75,7 +75,7 @@ class PaymentMethodLanguageModel
      *
      * @return string
      */
-    public function getTitle() : ?string
+    public function getTitle() : string
     {
         return $this->title;
     }
@@ -86,7 +86,7 @@ class PaymentMethodLanguageModel
      *
      * @return self
      */
-    public function setTitle(?string $title) : self
+    public function setTitle(string $title) : self
     {
         $this->title = $title;
         return $this;
@@ -96,7 +96,7 @@ class PaymentMethodLanguageModel
      *
      * @return string
      */
-    public function getShortDescription() : ?string
+    public function getShortDescription() : string
     {
         return $this->shortDescription;
     }
@@ -107,7 +107,7 @@ class PaymentMethodLanguageModel
      *
      * @return self
      */
-    public function setShortDescription(?string $shortDescription) : self
+    public function setShortDescription(string $shortDescription) : self
     {
         $this->shortDescription = $shortDescription;
         return $this;

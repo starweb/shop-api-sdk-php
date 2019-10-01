@@ -15,7 +15,7 @@ class OrderCommentModelItem
      *
      * @return OrderCommentModel
      */
-    public function getData() : ?OrderCommentModel
+    public function getData() : OrderCommentModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class OrderCommentModelItem
      *
      * @return self
      */
-    public function setData(?OrderCommentModel $data) : self
+    public function setData(OrderCommentModel $data) : self
     {
         $this->data = $data;
         return $this;

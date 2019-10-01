@@ -39,7 +39,7 @@ class WebHookModel
      *
      * @return int
      */
-    public function getWebHookId() : ?int
+    public function getWebHookId() : int
     {
         return $this->webHookId;
     }
@@ -50,7 +50,7 @@ class WebHookModel
      *
      * @return self
      */
-    public function setWebHookId(?int $webHookId) : self
+    public function setWebHookId(int $webHookId) : self
     {
         $this->webHookId = $webHookId;
         return $this;
@@ -60,7 +60,7 @@ class WebHookModel
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
@@ -71,7 +71,7 @@ class WebHookModel
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -81,7 +81,7 @@ class WebHookModel
      *
      * @return string
      */
-    public function getEvent() : ?string
+    public function getEvent() : string
     {
         return $this->event;
     }
@@ -92,7 +92,7 @@ class WebHookModel
      *
      * @return self
      */
-    public function setEvent(?string $event) : self
+    public function setEvent(string $event) : self
     {
         $this->event = $event;
         return $this;
@@ -102,7 +102,7 @@ class WebHookModel
      *
      * @return int
      */
-    public function getStatusId() : ?int
+    public function getStatusId() : int
     {
         return $this->statusId;
     }
@@ -113,7 +113,7 @@ class WebHookModel
      *
      * @return self
      */
-    public function setStatusId(?int $statusId) : self
+    public function setStatusId(int $statusId) : self
     {
         $this->statusId = $statusId;
         return $this;
@@ -123,7 +123,7 @@ class WebHookModel
      *
      * @return string
      */
-    public function getUrl() : ?string
+    public function getUrl() : string
     {
         return $this->url;
     }
@@ -134,7 +134,7 @@ class WebHookModel
      *
      * @return self
      */
-    public function setUrl(?string $url) : self
+    public function setUrl(string $url) : self
     {
         $this->url = $url;
         return $this;

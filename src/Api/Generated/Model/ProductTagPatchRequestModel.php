@@ -27,7 +27,7 @@ class ProductTagPatchRequestModel
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
@@ -38,7 +38,7 @@ class ProductTagPatchRequestModel
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -48,7 +48,7 @@ class ProductTagPatchRequestModel
      *
      * @return string
      */
-    public function getType() : ?string
+    public function getType() : string
     {
         return $this->type;
     }
@@ -59,7 +59,7 @@ class ProductTagPatchRequestModel
      *
      * @return self
      */
-    public function setType(?string $type) : self
+    public function setType(string $type) : self
     {
         $this->type = $type;
         return $this;
@@ -69,7 +69,7 @@ class ProductTagPatchRequestModel
      *
      * @return ProductTagLanguageModel[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }
@@ -80,7 +80,7 @@ class ProductTagPatchRequestModel
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;

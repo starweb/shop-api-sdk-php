@@ -20,7 +20,7 @@ class ProductUnitModelNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ProductUnitModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductUnitModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

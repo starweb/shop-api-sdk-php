@@ -27,7 +27,7 @@ class PricelistModel
      *
      * @var bool
      */
-    protected $isActive;
+    protected $isActive = false;
     /**
      * The region this pricelist is valid for
      *
@@ -69,7 +69,7 @@ class PricelistModel
      *
      * @return int
      */
-    public function getPricelistId() : ?int
+    public function getPricelistId() : int
     {
         return $this->pricelistId;
     }
@@ -80,7 +80,7 @@ class PricelistModel
      *
      * @return self
      */
-    public function setPricelistId(?int $pricelistId) : self
+    public function setPricelistId(int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
         return $this;
@@ -90,7 +90,7 @@ class PricelistModel
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
@@ -101,7 +101,7 @@ class PricelistModel
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -111,7 +111,7 @@ class PricelistModel
      *
      * @return bool
      */
-    public function getIsMaster() : ?bool
+    public function getIsMaster() : bool
     {
         return $this->isMaster;
     }
@@ -122,7 +122,7 @@ class PricelistModel
      *
      * @return self
      */
-    public function setIsMaster(?bool $isMaster) : self
+    public function setIsMaster(bool $isMaster) : self
     {
         $this->isMaster = $isMaster;
         return $this;
@@ -132,7 +132,7 @@ class PricelistModel
      *
      * @return bool
      */
-    public function getIsActive() : ?bool
+    public function getIsActive() : bool
     {
         return $this->isActive;
     }
@@ -143,7 +143,7 @@ class PricelistModel
      *
      * @return self
      */
-    public function setIsActive(?bool $isActive) : self
+    public function setIsActive(bool $isActive) : self
     {
         $this->isActive = $isActive;
         return $this;
@@ -153,7 +153,7 @@ class PricelistModel
      *
      * @return string
      */
-    public function getRegion() : ?string
+    public function getRegion() : string
     {
         return $this->region;
     }
@@ -164,7 +164,7 @@ class PricelistModel
      *
      * @return self
      */
-    public function setRegion(?string $region) : self
+    public function setRegion(string $region) : self
     {
         $this->region = $region;
         return $this;
@@ -174,7 +174,7 @@ class PricelistModel
      *
      * @return string[]
      */
-    public function getCountryCodes() : ?array
+    public function getCountryCodes() : array
     {
         return $this->countryCodes;
     }
@@ -185,7 +185,7 @@ class PricelistModel
      *
      * @return self
      */
-    public function setCountryCodes(?array $countryCodes) : self
+    public function setCountryCodes(array $countryCodes) : self
     {
         $this->countryCodes = $countryCodes;
         return $this;
@@ -195,7 +195,7 @@ class PricelistModel
      *
      * @return string
      */
-    public function getCurrencyCode() : ?string
+    public function getCurrencyCode() : string
     {
         return $this->currencyCode;
     }
@@ -206,7 +206,7 @@ class PricelistModel
      *
      * @return self
      */
-    public function setCurrencyCode(?string $currencyCode) : self
+    public function setCurrencyCode(string $currencyCode) : self
     {
         $this->currencyCode = $currencyCode;
         return $this;
@@ -216,7 +216,7 @@ class PricelistModel
      *
      * @return int
      */
-    public function getParentPricelistId() : ?int
+    public function getParentPricelistId() : int
     {
         return $this->parentPricelistId;
     }
@@ -227,7 +227,7 @@ class PricelistModel
      *
      * @return self
      */
-    public function setParentPricelistId(?int $parentPricelistId) : self
+    public function setParentPricelistId(int $parentPricelistId) : self
     {
         $this->parentPricelistId = $parentPricelistId;
         return $this;
@@ -237,7 +237,7 @@ class PricelistModel
      *
      * @return bool
      */
-    public function getIsCustomerPricelist() : ?bool
+    public function getIsCustomerPricelist() : bool
     {
         return $this->isCustomerPricelist;
     }
@@ -248,7 +248,7 @@ class PricelistModel
      *
      * @return self
      */
-    public function setIsCustomerPricelist(?bool $isCustomerPricelist) : self
+    public function setIsCustomerPricelist(bool $isCustomerPricelist) : self
     {
         $this->isCustomerPricelist = $isCustomerPricelist;
         return $this;
@@ -258,7 +258,7 @@ class PricelistModel
      *
      * @return bool
      */
-    public function getIsCountryPricelist() : ?bool
+    public function getIsCountryPricelist() : bool
     {
         return $this->isCountryPricelist;
     }
@@ -269,7 +269,7 @@ class PricelistModel
      *
      * @return self
      */
-    public function setIsCountryPricelist(?bool $isCountryPricelist) : self
+    public function setIsCountryPricelist(bool $isCountryPricelist) : self
     {
         $this->isCountryPricelist = $isCountryPricelist;
         return $this;

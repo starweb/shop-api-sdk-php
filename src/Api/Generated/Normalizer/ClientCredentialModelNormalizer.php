@@ -20,7 +20,7 @@ class ClientCredentialModelNormalizer implements DenormalizerInterface, Normaliz
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ClientCredentialModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ClientCredentialModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

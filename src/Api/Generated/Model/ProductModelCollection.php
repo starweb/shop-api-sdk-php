@@ -21,7 +21,7 @@ class ProductModelCollection
      *
      * @return ProductModel[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }
@@ -32,7 +32,7 @@ class ProductModelCollection
      *
      * @return self
      */
-    public function setData(?array $data) : self
+    public function setData(array $data) : self
     {
         $this->data = $data;
         return $this;
@@ -42,7 +42,7 @@ class ProductModelCollection
      *
      * @return ProductModelCollectionMeta
      */
-    public function getMeta() : ?ProductModelCollectionMeta
+    public function getMeta() : ProductModelCollectionMeta
     {
         return $this->meta;
     }
@@ -53,7 +53,7 @@ class ProductModelCollection
      *
      * @return self
      */
-    public function setMeta(?ProductModelCollectionMeta $meta) : self
+    public function setMeta(ProductModelCollectionMeta $meta) : self
     {
         $this->meta = $meta;
         return $this;

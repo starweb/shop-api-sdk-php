@@ -21,7 +21,7 @@ class CustomerModelCollection
      *
      * @return CustomerModel[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }
@@ -32,7 +32,7 @@ class CustomerModelCollection
      *
      * @return self
      */
-    public function setData(?array $data) : self
+    public function setData(array $data) : self
     {
         $this->data = $data;
         return $this;
@@ -42,7 +42,7 @@ class CustomerModelCollection
      *
      * @return CustomerModelCollectionMeta
      */
-    public function getMeta() : ?CustomerModelCollectionMeta
+    public function getMeta() : CustomerModelCollectionMeta
     {
         return $this->meta;
     }
@@ -53,7 +53,7 @@ class CustomerModelCollection
      *
      * @return self
      */
-    public function setMeta(?CustomerModelCollectionMeta $meta) : self
+    public function setMeta(CustomerModelCollectionMeta $meta) : self
     {
         $this->meta = $meta;
         return $this;

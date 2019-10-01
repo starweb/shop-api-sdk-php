@@ -15,7 +15,7 @@ class OrderExternalServicesModelItem
      *
      * @return OrderExternalServiceModel
      */
-    public function getData() : ?OrderExternalServiceModel
+    public function getData() : OrderExternalServiceModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class OrderExternalServicesModelItem
      *
      * @return self
      */
-    public function setData(?OrderExternalServiceModel $data) : self
+    public function setData(OrderExternalServiceModel $data) : self
     {
         $this->data = $data;
         return $this;

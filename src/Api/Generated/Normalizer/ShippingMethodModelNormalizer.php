@@ -20,7 +20,7 @@ class ShippingMethodModelNormalizer implements DenormalizerInterface, Normalizer
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ShippingMethodModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ShippingMethodModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -92,27 +92,13 @@ class ShippingMethodModelNormalizer implements DenormalizerInterface, Normalizer
             }
             $data->{'validCountriesSelected'} = $values;
         }
-        if (null !== $object->getValidForMinItemsSubtotal()) {
-            $data->{'validForMinItemsSubtotal'} = $object->getValidForMinItemsSubtotal();
-        }
-        if (null !== $object->getValidForMaxItemsSubtotal()) {
-            $data->{'validForMaxItemsSubtotal'} = $object->getValidForMaxItemsSubtotal();
-        }
-        if (null !== $object->getValidForMinWeight()) {
-            $data->{'validForMinWeight'} = $object->getValidForMinWeight();
-        }
-        if (null !== $object->getValidForMaxWeight()) {
-            $data->{'validForMaxWeight'} = $object->getValidForMaxWeight();
-        }
-        if (null !== $object->getValidForCustomerType()) {
-            $data->{'validForCustomerType'} = $object->getValidForCustomerType();
-        }
-        if (null !== $object->getFreeShippingMinItemsSubtotal()) {
-            $data->{'freeShippingMinItemsSubtotal'} = $object->getFreeShippingMinItemsSubtotal();
-        }
-        if (null !== $object->getFreeShippingMinWeight()) {
-            $data->{'freeShippingMinWeight'} = $object->getFreeShippingMinWeight();
-        }
+        $data->{'validForMinItemsSubtotal'} = $object->getValidForMinItemsSubtotal();
+        $data->{'validForMaxItemsSubtotal'} = $object->getValidForMaxItemsSubtotal();
+        $data->{'validForMinWeight'} = $object->getValidForMinWeight();
+        $data->{'validForMaxWeight'} = $object->getValidForMaxWeight();
+        $data->{'validForCustomerType'} = $object->getValidForCustomerType();
+        $data->{'freeShippingMinItemsSubtotal'} = $object->getFreeShippingMinItemsSubtotal();
+        $data->{'freeShippingMinWeight'} = $object->getFreeShippingMinWeight();
         if (null !== $object->getIsClickAndCollect()) {
             $data->{'isClickAndCollect'} = $object->getIsClickAndCollect();
         }

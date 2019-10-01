@@ -15,7 +15,7 @@ class ProductMetaDataModelItem
      *
      * @return ProductMetaDataModel
      */
-    public function getData() : ?ProductMetaDataModel
+    public function getData() : ProductMetaDataModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class ProductMetaDataModelItem
      *
      * @return self
      */
-    public function setData(?ProductMetaDataModel $data) : self
+    public function setData(ProductMetaDataModel $data) : self
     {
         $this->data = $data;
         return $this;

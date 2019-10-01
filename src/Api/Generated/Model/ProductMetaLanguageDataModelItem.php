@@ -15,7 +15,7 @@ class ProductMetaLanguageDataModelItem
      *
      * @return ProductMetaLanguageDataModel
      */
-    public function getData() : ?ProductMetaLanguageDataModel
+    public function getData() : ProductMetaLanguageDataModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class ProductMetaLanguageDataModelItem
      *
      * @return self
      */
-    public function setData(?ProductMetaLanguageDataModel $data) : self
+    public function setData(ProductMetaLanguageDataModel $data) : self
     {
         $this->data = $data;
         return $this;
