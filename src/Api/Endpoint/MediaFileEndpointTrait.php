@@ -3,13 +3,12 @@
 namespace Starweb\Api\Endpoint;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
-use Http\Message\StreamFactory;
 use Starweb\Api\Model\MediaFileUploadModel;
 use Symfony\Component\Serializer\SerializerInterface;
 
 trait MediaFileEndpointTrait
 {
-    public function getBody(SerializerInterface $serializer, StreamFactory $streamFactory = null): array
+    public function getBody(SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof MediaFileUploadModel) {
             $bodyBuilder = new MultipartStreamBuilder($streamFactory);
