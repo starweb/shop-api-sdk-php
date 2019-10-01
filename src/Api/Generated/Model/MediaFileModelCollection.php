@@ -21,7 +21,7 @@ class MediaFileModelCollection
      *
      * @return MediaFileModel[]
      */
-    public function getData() : ?array
+    public function getData() : array
     {
         return $this->data;
     }
@@ -32,7 +32,7 @@ class MediaFileModelCollection
      *
      * @return self
      */
-    public function setData(?array $data) : self
+    public function setData(array $data) : self
     {
         $this->data = $data;
         return $this;
@@ -42,7 +42,7 @@ class MediaFileModelCollection
      *
      * @return MediaFileModelCollectionMeta
      */
-    public function getMeta() : ?MediaFileModelCollectionMeta
+    public function getMeta() : MediaFileModelCollectionMeta
     {
         return $this->meta;
     }
@@ -53,7 +53,7 @@ class MediaFileModelCollection
      *
      * @return self
      */
-    public function setMeta(?MediaFileModelCollectionMeta $meta) : self
+    public function setMeta(MediaFileModelCollectionMeta $meta) : self
     {
         $this->meta = $meta;
         return $this;

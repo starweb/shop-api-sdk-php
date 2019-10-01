@@ -15,7 +15,7 @@ class ProductsAttributesModelItem
      *
      * @return int
      */
-    public function getAttributeId() : ?int
+    public function getAttributeId() : int
     {
         return $this->attributeId;
     }
@@ -26,7 +26,7 @@ class ProductsAttributesModelItem
      *
      * @return self
      */
-    public function setAttributeId(?int $attributeId) : self
+    public function setAttributeId(int $attributeId) : self
     {
         $this->attributeId = $attributeId;
         return $this;

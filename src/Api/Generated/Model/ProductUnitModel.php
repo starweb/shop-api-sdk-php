@@ -21,7 +21,7 @@ class ProductUnitModel
      *
      * @return int
      */
-    public function getUnitId() : ?int
+    public function getUnitId() : int
     {
         return $this->unitId;
     }
@@ -32,7 +32,7 @@ class ProductUnitModel
      *
      * @return self
      */
-    public function setUnitId(?int $unitId) : self
+    public function setUnitId(int $unitId) : self
     {
         $this->unitId = $unitId;
         return $this;
@@ -42,7 +42,7 @@ class ProductUnitModel
      *
      * @return ProductUnitLanguageModelCollection
      */
-    public function getLanguages() : ?ProductUnitLanguageModelCollection
+    public function getLanguages() : ProductUnitLanguageModelCollection
     {
         return $this->languages;
     }
@@ -53,7 +53,7 @@ class ProductUnitModel
      *
      * @return self
      */
-    public function setLanguages(?ProductUnitLanguageModelCollection $languages) : self
+    public function setLanguages(ProductUnitLanguageModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

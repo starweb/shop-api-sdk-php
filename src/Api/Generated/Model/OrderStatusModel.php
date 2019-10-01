@@ -33,7 +33,7 @@ class OrderStatusModel
      *
      * @return int
      */
-    public function getStatusId() : ?int
+    public function getStatusId() : int
     {
         return $this->statusId;
     }
@@ -44,7 +44,7 @@ class OrderStatusModel
      *
      * @return self
      */
-    public function setStatusId(?int $statusId) : self
+    public function setStatusId(int $statusId) : self
     {
         $this->statusId = $statusId;
         return $this;
@@ -54,7 +54,7 @@ class OrderStatusModel
      *
      * @return bool
      */
-    public function getShouldSendEmail() : ?bool
+    public function getShouldSendEmail() : bool
     {
         return $this->shouldSendEmail;
     }
@@ -65,7 +65,7 @@ class OrderStatusModel
      *
      * @return self
      */
-    public function setShouldSendEmail(?bool $shouldSendEmail) : self
+    public function setShouldSendEmail(bool $shouldSendEmail) : self
     {
         $this->shouldSendEmail = $shouldSendEmail;
         return $this;
@@ -75,7 +75,7 @@ class OrderStatusModel
      *
      * @return string
      */
-    public function getIdCode() : ?string
+    public function getIdCode() : string
     {
         return $this->idCode;
     }
@@ -86,7 +86,7 @@ class OrderStatusModel
      *
      * @return self
      */
-    public function setIdCode(?string $idCode) : self
+    public function setIdCode(string $idCode) : self
     {
         $this->idCode = $idCode;
         return $this;
@@ -96,7 +96,7 @@ class OrderStatusModel
      *
      * @return OrderStatusLanguageModel[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }
@@ -107,7 +107,7 @@ class OrderStatusModel
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;

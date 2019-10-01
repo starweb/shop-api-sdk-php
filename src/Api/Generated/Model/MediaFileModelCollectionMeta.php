@@ -15,7 +15,7 @@ class MediaFileModelCollectionMeta
      *
      * @return PaginationModel
      */
-    public function getPagination() : ?PaginationModel
+    public function getPagination() : PaginationModel
     {
         return $this->pagination;
     }
@@ -26,7 +26,7 @@ class MediaFileModelCollectionMeta
      *
      * @return self
      */
-    public function setPagination(?PaginationModel $pagination) : self
+    public function setPagination(PaginationModel $pagination) : self
     {
         $this->pagination = $pagination;
         return $this;

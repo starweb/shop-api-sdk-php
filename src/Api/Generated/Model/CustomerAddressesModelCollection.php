@@ -15,7 +15,7 @@ class CustomerAddressesModelCollection
      *
      * @return CustomerAddressesModelCollectionData
      */
-    public function getData() : ?CustomerAddressesModelCollectionData
+    public function getData() : CustomerAddressesModelCollectionData
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class CustomerAddressesModelCollection
      *
      * @return self
      */
-    public function setData(?CustomerAddressesModelCollectionData $data) : self
+    public function setData(CustomerAddressesModelCollectionData $data) : self
     {
         $this->data = $data;
         return $this;

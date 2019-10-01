@@ -21,7 +21,7 @@ class CustomerUpdateModelAddresses
      *
      * @return AddressModel
      */
-    public function getInvoice() : ?AddressModel
+    public function getInvoice() : AddressModel
     {
         return $this->invoice;
     }
@@ -32,7 +32,7 @@ class CustomerUpdateModelAddresses
      *
      * @return self
      */
-    public function setInvoice(?AddressModel $invoice) : self
+    public function setInvoice(AddressModel $invoice) : self
     {
         $this->invoice = $invoice;
         return $this;
@@ -42,7 +42,7 @@ class CustomerUpdateModelAddresses
      *
      * @return AddressModel
      */
-    public function getDelivery() : ?AddressModel
+    public function getDelivery() : AddressModel
     {
         return $this->delivery;
     }
@@ -53,7 +53,7 @@ class CustomerUpdateModelAddresses
      *
      * @return self
      */
-    public function setDelivery(?AddressModel $delivery) : self
+    public function setDelivery(AddressModel $delivery) : self
     {
         $this->delivery = $delivery;
         return $this;

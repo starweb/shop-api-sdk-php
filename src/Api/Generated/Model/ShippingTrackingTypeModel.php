@@ -21,7 +21,7 @@ class ShippingTrackingTypeModel
      *
      * @return int
      */
-    public function getType() : ?int
+    public function getType() : int
     {
         return $this->type;
     }
@@ -32,7 +32,7 @@ class ShippingTrackingTypeModel
      *
      * @return self
      */
-    public function setType(?int $type) : self
+    public function setType(int $type) : self
     {
         $this->type = $type;
         return $this;
@@ -42,7 +42,7 @@ class ShippingTrackingTypeModel
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
@@ -53,7 +53,7 @@ class ShippingTrackingTypeModel
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;

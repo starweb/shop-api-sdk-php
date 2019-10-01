@@ -20,7 +20,7 @@ class ProductUnitLanguageModelNormalizer implements DenormalizerInterface, Norma
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ProductUnitLanguageModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductUnitLanguageModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

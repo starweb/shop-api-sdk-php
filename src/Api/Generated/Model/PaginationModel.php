@@ -39,7 +39,7 @@ class PaginationModel
      *
      * @return int
      */
-    public function getCurrentPage() : ?int
+    public function getCurrentPage() : int
     {
         return $this->currentPage;
     }
@@ -50,7 +50,7 @@ class PaginationModel
      *
      * @return self
      */
-    public function setCurrentPage(?int $currentPage) : self
+    public function setCurrentPage(int $currentPage) : self
     {
         $this->currentPage = $currentPage;
         return $this;
@@ -60,7 +60,7 @@ class PaginationModel
      *
      * @return int
      */
-    public function getPerPage() : ?int
+    public function getPerPage() : int
     {
         return $this->perPage;
     }
@@ -71,7 +71,7 @@ class PaginationModel
      *
      * @return self
      */
-    public function setPerPage(?int $perPage) : self
+    public function setPerPage(int $perPage) : self
     {
         $this->perPage = $perPage;
         return $this;
@@ -81,7 +81,7 @@ class PaginationModel
      *
      * @return int
      */
-    public function getTotal() : ?int
+    public function getTotal() : int
     {
         return $this->total;
     }
@@ -92,7 +92,7 @@ class PaginationModel
      *
      * @return self
      */
-    public function setTotal(?int $total) : self
+    public function setTotal(int $total) : self
     {
         $this->total = $total;
         return $this;
@@ -102,7 +102,7 @@ class PaginationModel
      *
      * @return int
      */
-    public function getCount() : ?int
+    public function getCount() : int
     {
         return $this->count;
     }
@@ -113,7 +113,7 @@ class PaginationModel
      *
      * @return self
      */
-    public function setCount(?int $count) : self
+    public function setCount(int $count) : self
     {
         $this->count = $count;
         return $this;
@@ -123,7 +123,7 @@ class PaginationModel
      *
      * @return int
      */
-    public function getTotalPages() : ?int
+    public function getTotalPages() : int
     {
         return $this->totalPages;
     }
@@ -134,7 +134,7 @@ class PaginationModel
      *
      * @return self
      */
-    public function setTotalPages(?int $totalPages) : self
+    public function setTotalPages(int $totalPages) : self
     {
         $this->totalPages = $totalPages;
         return $this;

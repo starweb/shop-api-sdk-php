@@ -20,7 +20,7 @@ class PaymentMethodModelNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\PaymentMethodModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\PaymentMethodModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -101,24 +101,14 @@ class PaymentMethodModelNormalizer implements DenormalizerInterface, NormalizerI
             }
             $data->{'validCountriesSelected'} = $values;
         }
-        if (null !== $object->getValidForMinItemsSubtotal()) {
-            $data->{'validForMinItemsSubtotal'} = $object->getValidForMinItemsSubtotal();
-        }
-        if (null !== $object->getValidForMaxItemsSubtotal()) {
-            $data->{'validForMaxItemsSubtotal'} = $object->getValidForMaxItemsSubtotal();
-        }
-        if (null !== $object->getValidForMinWeight()) {
-            $data->{'validForMinWeight'} = $object->getValidForMinWeight();
-        }
-        if (null !== $object->getValidForMaxWeight()) {
-            $data->{'validForMaxWeight'} = $object->getValidForMaxWeight();
-        }
+        $data->{'validForMinItemsSubtotal'} = $object->getValidForMinItemsSubtotal();
+        $data->{'validForMaxItemsSubtotal'} = $object->getValidForMaxItemsSubtotal();
+        $data->{'validForMinWeight'} = $object->getValidForMinWeight();
+        $data->{'validForMaxWeight'} = $object->getValidForMaxWeight();
         if (null !== $object->getValidForShippingMethods()) {
             $data->{'validForShippingMethods'} = $object->getValidForShippingMethods();
         }
-        if (null !== $object->getValidForCustomerType()) {
-            $data->{'validForCustomerType'} = $object->getValidForCustomerType();
-        }
+        $data->{'validForCustomerType'} = $object->getValidForCustomerType();
         if (null !== $object->getIsClickAndCollect()) {
             $data->{'isClickAndCollect'} = $object->getIsClickAndCollect();
         }

@@ -15,7 +15,7 @@ class ShippingMethodModelItem
      *
      * @return ShippingMethodModel
      */
-    public function getData() : ?ShippingMethodModel
+    public function getData() : ShippingMethodModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class ShippingMethodModelItem
      *
      * @return self
      */
-    public function setData(?ShippingMethodModel $data) : self
+    public function setData(ShippingMethodModel $data) : self
     {
         $this->data = $data;
         return $this;

@@ -25,7 +25,7 @@ class ProductStockStatusModel
     /**
      * This has to be set to another, existing stock status id, or null. If a product has its quantity changed to negative, the product will then change stock status to the one with this id
      *
-     * @var int
+     * @var int|null
      */
     protected $stockoutNewStatusId;
     /**
@@ -33,13 +33,13 @@ class ProductStockStatusModel
      *
      * @var bool
      */
-    protected $productBuyable;
+    protected $productBuyable = true;
     /**
      * Should the product be displayed as "in stock" when this status is set?
      *
      * @var bool
      */
-    protected $inStock;
+    protected $inStock = false;
     /**
      * 
      *
@@ -51,7 +51,7 @@ class ProductStockStatusModel
      *
      * @return int
      */
-    public function getStockStatusId() : ?int
+    public function getStockStatusId() : int
     {
         return $this->stockStatusId;
     }
@@ -62,7 +62,7 @@ class ProductStockStatusModel
      *
      * @return self
      */
-    public function setStockStatusId(?int $stockStatusId) : self
+    public function setStockStatusId(int $stockStatusId) : self
     {
         $this->stockStatusId = $stockStatusId;
         return $this;
@@ -72,7 +72,7 @@ class ProductStockStatusModel
      *
      * @return string
      */
-    public function getIdCode() : ?string
+    public function getIdCode() : string
     {
         return $this->idCode;
     }
@@ -83,7 +83,7 @@ class ProductStockStatusModel
      *
      * @return self
      */
-    public function setIdCode(?string $idCode) : self
+    public function setIdCode(string $idCode) : self
     {
         $this->idCode = $idCode;
         return $this;
@@ -93,7 +93,7 @@ class ProductStockStatusModel
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex() : int
     {
         return $this->sortIndex;
     }
@@ -104,7 +104,7 @@ class ProductStockStatusModel
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -112,7 +112,7 @@ class ProductStockStatusModel
     /**
      * This has to be set to another, existing stock status id, or null. If a product has its quantity changed to negative, the product will then change stock status to the one with this id
      *
-     * @return int
+     * @return int|null
      */
     public function getStockoutNewStatusId() : ?int
     {
@@ -121,7 +121,7 @@ class ProductStockStatusModel
     /**
      * This has to be set to another, existing stock status id, or null. If a product has its quantity changed to negative, the product will then change stock status to the one with this id
      *
-     * @param int $stockoutNewStatusId
+     * @param int|null $stockoutNewStatusId
      *
      * @return self
      */
@@ -135,7 +135,7 @@ class ProductStockStatusModel
      *
      * @return bool
      */
-    public function getProductBuyable() : ?bool
+    public function getProductBuyable() : bool
     {
         return $this->productBuyable;
     }
@@ -146,7 +146,7 @@ class ProductStockStatusModel
      *
      * @return self
      */
-    public function setProductBuyable(?bool $productBuyable) : self
+    public function setProductBuyable(bool $productBuyable) : self
     {
         $this->productBuyable = $productBuyable;
         return $this;
@@ -156,7 +156,7 @@ class ProductStockStatusModel
      *
      * @return bool
      */
-    public function getInStock() : ?bool
+    public function getInStock() : bool
     {
         return $this->inStock;
     }
@@ -167,7 +167,7 @@ class ProductStockStatusModel
      *
      * @return self
      */
-    public function setInStock(?bool $inStock) : self
+    public function setInStock(bool $inStock) : self
     {
         $this->inStock = $inStock;
         return $this;
@@ -177,7 +177,7 @@ class ProductStockStatusModel
      *
      * @return ProductStockStatusLanguageModel[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }
@@ -188,7 +188,7 @@ class ProductStockStatusModel
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;

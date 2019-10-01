@@ -21,7 +21,7 @@ class ProductVariantAttributeModel
      *
      * @return int
      */
-    public function getAttributeId() : ?int
+    public function getAttributeId() : int
     {
         return $this->attributeId;
     }
@@ -32,7 +32,7 @@ class ProductVariantAttributeModel
      *
      * @return self
      */
-    public function setAttributeId(?int $attributeId) : self
+    public function setAttributeId(int $attributeId) : self
     {
         $this->attributeId = $attributeId;
         return $this;
@@ -42,7 +42,7 @@ class ProductVariantAttributeModel
      *
      * @return ProductVariantAttributeModelLanguages
      */
-    public function getLanguages() : ?ProductVariantAttributeModelLanguages
+    public function getLanguages() : ProductVariantAttributeModelLanguages
     {
         return $this->languages;
     }
@@ -53,7 +53,7 @@ class ProductVariantAttributeModel
      *
      * @return self
      */
-    public function setLanguages(?ProductVariantAttributeModelLanguages $languages) : self
+    public function setLanguages(ProductVariantAttributeModelLanguages $languages) : self
     {
         $this->languages = $languages;
         return $this;

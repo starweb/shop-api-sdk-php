@@ -15,7 +15,7 @@ class CustomerExternalServicesModelItem
      *
      * @return CustomerExternalServicesModel
      */
-    public function getData() : ?CustomerExternalServicesModel
+    public function getData() : CustomerExternalServicesModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class CustomerExternalServicesModelItem
      *
      * @return self
      */
-    public function setData(?CustomerExternalServicesModel $data) : self
+    public function setData(CustomerExternalServicesModel $data) : self
     {
         $this->data = $data;
         return $this;

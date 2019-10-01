@@ -33,7 +33,7 @@ class ProductMetaDataModelUpdatable
      *
      * @return int
      */
-    public function getMetaDataId() : ?int
+    public function getMetaDataId() : int
     {
         return $this->metaDataId;
     }
@@ -44,7 +44,7 @@ class ProductMetaDataModelUpdatable
      *
      * @return self
      */
-    public function setMetaDataId(?int $metaDataId) : self
+    public function setMetaDataId(int $metaDataId) : self
     {
         $this->metaDataId = $metaDataId;
         return $this;
@@ -54,7 +54,7 @@ class ProductMetaDataModelUpdatable
      *
      * @return int
      */
-    public function getMetaDataTypeId() : ?int
+    public function getMetaDataTypeId() : int
     {
         return $this->metaDataTypeId;
     }
@@ -65,7 +65,7 @@ class ProductMetaDataModelUpdatable
      *
      * @return self
      */
-    public function setMetaDataTypeId(?int $metaDataTypeId) : self
+    public function setMetaDataTypeId(int $metaDataTypeId) : self
     {
         $this->metaDataTypeId = $metaDataTypeId;
         return $this;
@@ -75,7 +75,7 @@ class ProductMetaDataModelUpdatable
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex() : int
     {
         return $this->sortIndex;
     }
@@ -86,7 +86,7 @@ class ProductMetaDataModelUpdatable
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -96,7 +96,7 @@ class ProductMetaDataModelUpdatable
      *
      * @return ProductMetaLanguageDataModel[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }
@@ -107,7 +107,7 @@ class ProductMetaDataModelUpdatable
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;

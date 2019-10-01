@@ -13,7 +13,7 @@ class ProductBundleProductPriceModel
     /**
      * The special price excluding vat (a discounted price)
      *
-     * @var float
+     * @var float|null
      */
     protected $specialPriceExVat;
     /**
@@ -21,7 +21,7 @@ class ProductBundleProductPriceModel
      *
      * @return int
      */
-    public function getPricelistId() : ?int
+    public function getPricelistId() : int
     {
         return $this->pricelistId;
     }
@@ -32,7 +32,7 @@ class ProductBundleProductPriceModel
      *
      * @return self
      */
-    public function setPricelistId(?int $pricelistId) : self
+    public function setPricelistId(int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
         return $this;
@@ -40,7 +40,7 @@ class ProductBundleProductPriceModel
     /**
      * The special price excluding vat (a discounted price)
      *
-     * @return float
+     * @return float|null
      */
     public function getSpecialPriceExVat() : ?float
     {
@@ -49,7 +49,7 @@ class ProductBundleProductPriceModel
     /**
      * The special price excluding vat (a discounted price)
      *
-     * @param float $specialPriceExVat
+     * @param float|null $specialPriceExVat
      *
      * @return self
      */

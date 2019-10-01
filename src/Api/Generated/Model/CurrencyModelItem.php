@@ -15,7 +15,7 @@ class CurrencyModelItem
      *
      * @return CurrencyModel
      */
-    public function getData() : ?CurrencyModel
+    public function getData() : CurrencyModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class CurrencyModelItem
      *
      * @return self
      */
-    public function setData(?CurrencyModel $data) : self
+    public function setData(CurrencyModel $data) : self
     {
         $this->data = $data;
         return $this;

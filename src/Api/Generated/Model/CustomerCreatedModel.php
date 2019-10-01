@@ -61,7 +61,7 @@ class CustomerCreatedModel
     /**
      * If the customer is approved or not. Can be null if the customer is neither approved nor disapproved yet
      *
-     * @var bool
+     * @var bool|null
      */
     protected $approved;
     /**
@@ -73,7 +73,7 @@ class CustomerCreatedModel
     /**
      * The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)
      *
-     * @var int
+     * @var int|null
      */
     protected $pricelistId;
     /**
@@ -81,7 +81,7 @@ class CustomerCreatedModel
      *
      * @return int
      */
-    public function getCustomerId() : ?int
+    public function getCustomerId() : int
     {
         return $this->customerId;
     }
@@ -92,7 +92,7 @@ class CustomerCreatedModel
      *
      * @return self
      */
-    public function setCustomerId(?int $customerId) : self
+    public function setCustomerId(int $customerId) : self
     {
         $this->customerId = $customerId;
         return $this;
@@ -102,7 +102,7 @@ class CustomerCreatedModel
      *
      * @return string
      */
-    public function getCreatedAt() : ?string
+    public function getCreatedAt() : string
     {
         return $this->createdAt;
     }
@@ -113,7 +113,7 @@ class CustomerCreatedModel
      *
      * @return self
      */
-    public function setCreatedAt(?string $createdAt) : self
+    public function setCreatedAt(string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -123,7 +123,7 @@ class CustomerCreatedModel
      *
      * @return string
      */
-    public function getType() : ?string
+    public function getType() : string
     {
         return $this->type;
     }
@@ -134,7 +134,7 @@ class CustomerCreatedModel
      *
      * @return self
      */
-    public function setType(?string $type) : self
+    public function setType(string $type) : self
     {
         $this->type = $type;
         return $this;
@@ -144,7 +144,7 @@ class CustomerCreatedModel
      *
      * @return string
      */
-    public function getEmail() : ?string
+    public function getEmail() : string
     {
         return $this->email;
     }
@@ -155,7 +155,7 @@ class CustomerCreatedModel
      *
      * @return self
      */
-    public function setEmail(?string $email) : self
+    public function setEmail(string $email) : self
     {
         $this->email = $email;
         return $this;
@@ -165,7 +165,7 @@ class CustomerCreatedModel
      *
      * @return string
      */
-    public function getNationalIdNo() : ?string
+    public function getNationalIdNo() : string
     {
         return $this->nationalIdNo;
     }
@@ -176,7 +176,7 @@ class CustomerCreatedModel
      *
      * @return self
      */
-    public function setNationalIdNo(?string $nationalIdNo) : self
+    public function setNationalIdNo(string $nationalIdNo) : self
     {
         $this->nationalIdNo = $nationalIdNo;
         return $this;
@@ -186,7 +186,7 @@ class CustomerCreatedModel
      *
      * @return string
      */
-    public function getVatNo() : ?string
+    public function getVatNo() : string
     {
         return $this->vatNo;
     }
@@ -197,7 +197,7 @@ class CustomerCreatedModel
      *
      * @return self
      */
-    public function setVatNo(?string $vatNo) : self
+    public function setVatNo(string $vatNo) : self
     {
         $this->vatNo = $vatNo;
         return $this;
@@ -207,7 +207,7 @@ class CustomerCreatedModel
      *
      * @return string
      */
-    public function getCustomInfo1() : ?string
+    public function getCustomInfo1() : string
     {
         return $this->customInfo1;
     }
@@ -218,7 +218,7 @@ class CustomerCreatedModel
      *
      * @return self
      */
-    public function setCustomInfo1(?string $customInfo1) : self
+    public function setCustomInfo1(string $customInfo1) : self
     {
         $this->customInfo1 = $customInfo1;
         return $this;
@@ -228,7 +228,7 @@ class CustomerCreatedModel
      *
      * @return string
      */
-    public function getCustomInfo2() : ?string
+    public function getCustomInfo2() : string
     {
         return $this->customInfo2;
     }
@@ -239,7 +239,7 @@ class CustomerCreatedModel
      *
      * @return self
      */
-    public function setCustomInfo2(?string $customInfo2) : self
+    public function setCustomInfo2(string $customInfo2) : self
     {
         $this->customInfo2 = $customInfo2;
         return $this;
@@ -249,7 +249,7 @@ class CustomerCreatedModel
      *
      * @return string
      */
-    public function getModifiedAt() : ?string
+    public function getModifiedAt() : string
     {
         return $this->modifiedAt;
     }
@@ -260,7 +260,7 @@ class CustomerCreatedModel
      *
      * @return self
      */
-    public function setModifiedAt(?string $modifiedAt) : self
+    public function setModifiedAt(string $modifiedAt) : self
     {
         $this->modifiedAt = $modifiedAt;
         return $this;
@@ -268,7 +268,7 @@ class CustomerCreatedModel
     /**
      * If the customer is approved or not. Can be null if the customer is neither approved nor disapproved yet
      *
-     * @return bool
+     * @return bool|null
      */
     public function getApproved() : ?bool
     {
@@ -277,7 +277,7 @@ class CustomerCreatedModel
     /**
      * If the customer is approved or not. Can be null if the customer is neither approved nor disapproved yet
      *
-     * @param bool $approved
+     * @param bool|null $approved
      *
      * @return self
      */
@@ -291,7 +291,7 @@ class CustomerCreatedModel
      *
      * @return string
      */
-    public function getApprovedAt() : ?string
+    public function getApprovedAt() : string
     {
         return $this->approvedAt;
     }
@@ -302,7 +302,7 @@ class CustomerCreatedModel
      *
      * @return self
      */
-    public function setApprovedAt(?string $approvedAt) : self
+    public function setApprovedAt(string $approvedAt) : self
     {
         $this->approvedAt = $approvedAt;
         return $this;
@@ -310,7 +310,7 @@ class CustomerCreatedModel
     /**
      * The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)
      *
-     * @return int
+     * @return int|null
      */
     public function getPricelistId() : ?int
     {
@@ -319,7 +319,7 @@ class CustomerCreatedModel
     /**
      * The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)
      *
-     * @param int $pricelistId
+     * @param int|null $pricelistId
      *
      * @return self
      */

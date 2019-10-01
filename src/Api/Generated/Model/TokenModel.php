@@ -27,7 +27,7 @@ class TokenModel
      *
      * @return string
      */
-    public function getAccessToken() : ?string
+    public function getAccessToken() : string
     {
         return $this->accessToken;
     }
@@ -38,7 +38,7 @@ class TokenModel
      *
      * @return self
      */
-    public function setAccessToken(?string $accessToken) : self
+    public function setAccessToken(string $accessToken) : self
     {
         $this->accessToken = $accessToken;
         return $this;
@@ -48,7 +48,7 @@ class TokenModel
      *
      * @return string
      */
-    public function getScope() : ?string
+    public function getScope() : string
     {
         return $this->scope;
     }
@@ -59,7 +59,7 @@ class TokenModel
      *
      * @return self
      */
-    public function setScope(?string $scope) : self
+    public function setScope(string $scope) : self
     {
         $this->scope = $scope;
         return $this;
@@ -69,7 +69,7 @@ class TokenModel
      *
      * @return int
      */
-    public function getExpiresIn() : ?int
+    public function getExpiresIn() : int
     {
         return $this->expiresIn;
     }
@@ -80,7 +80,7 @@ class TokenModel
      *
      * @return self
      */
-    public function setExpiresIn(?int $expiresIn) : self
+    public function setExpiresIn(int $expiresIn) : self
     {
         $this->expiresIn = $expiresIn;
         return $this;

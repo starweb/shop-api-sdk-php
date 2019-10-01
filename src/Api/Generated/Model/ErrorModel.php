@@ -21,7 +21,7 @@ class ErrorModel
      *
      * @return string
      */
-    public function getError() : ?string
+    public function getError() : string
     {
         return $this->error;
     }
@@ -32,7 +32,7 @@ class ErrorModel
      *
      * @return self
      */
-    public function setError(?string $error) : self
+    public function setError(string $error) : self
     {
         $this->error = $error;
         return $this;
@@ -42,7 +42,7 @@ class ErrorModel
      *
      * @return string
      */
-    public function getErrorDescription() : ?string
+    public function getErrorDescription() : string
     {
         return $this->errorDescription;
     }
@@ -53,7 +53,7 @@ class ErrorModel
      *
      * @return self
      */
-    public function setErrorDescription(?string $errorDescription) : self
+    public function setErrorDescription(string $errorDescription) : self
     {
         $this->errorDescription = $errorDescription;
         return $this;

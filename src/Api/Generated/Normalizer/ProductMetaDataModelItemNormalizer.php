@@ -20,7 +20,7 @@ class ProductMetaDataModelItemNormalizer implements DenormalizerInterface, Norma
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ProductMetaDataModelItem;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMetaDataModelItem';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

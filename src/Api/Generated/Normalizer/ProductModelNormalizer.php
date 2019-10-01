@@ -20,7 +20,7 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ProductModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -112,9 +112,7 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();
         }
-        if (null !== $object->getDefaultVatRate()) {
-            $data->{'defaultVatRate'} = $object->getDefaultVatRate();
-        }
+        $data->{'defaultVatRate'} = $object->getDefaultVatRate();
         if (null !== $object->getVisibility()) {
             $data->{'visibility'} = $object->getVisibility();
         }
@@ -128,15 +126,9 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getMoreInfoUrl()) {
             $data->{'moreInfoUrl'} = $object->getMoreInfoUrl();
         }
-        if (null !== $object->getManufacturerId()) {
-            $data->{'manufacturerId'} = $object->getManufacturerId();
-        }
-        if (null !== $object->getUnitId()) {
-            $data->{'unitId'} = $object->getUnitId();
-        }
-        if (null !== $object->getSortIndex()) {
-            $data->{'sortIndex'} = $object->getSortIndex();
-        }
+        $data->{'manufacturerId'} = $object->getManufacturerId();
+        $data->{'unitId'} = $object->getUnitId();
+        $data->{'sortIndex'} = $object->getSortIndex();
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
         }
@@ -146,9 +138,7 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getBundleUseManualPrice()) {
             $data->{'bundleUseManualPrice'} = $object->getBundleUseManualPrice();
         }
-        if (null !== $object->getAccounting()) {
-            $data->{'accounting'} = $object->getAccounting();
-        }
+        $data->{'accounting'} = $object->getAccounting();
         if (null !== $object->getHasSeveralVariants()) {
             $data->{'hasSeveralVariants'} = $object->getHasSeveralVariants();
         }

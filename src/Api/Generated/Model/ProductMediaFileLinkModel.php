@@ -33,7 +33,7 @@ class ProductMediaFileLinkModel
      *
      * @return int
      */
-    public function getProductMediaFileId() : ?int
+    public function getProductMediaFileId() : int
     {
         return $this->productMediaFileId;
     }
@@ -44,7 +44,7 @@ class ProductMediaFileLinkModel
      *
      * @return self
      */
-    public function setProductMediaFileId(?int $productMediaFileId) : self
+    public function setProductMediaFileId(int $productMediaFileId) : self
     {
         $this->productMediaFileId = $productMediaFileId;
         return $this;
@@ -54,7 +54,7 @@ class ProductMediaFileLinkModel
      *
      * @return int
      */
-    public function getMediaFileId() : ?int
+    public function getMediaFileId() : int
     {
         return $this->mediaFileId;
     }
@@ -65,7 +65,7 @@ class ProductMediaFileLinkModel
      *
      * @return self
      */
-    public function setMediaFileId(?int $mediaFileId) : self
+    public function setMediaFileId(int $mediaFileId) : self
     {
         $this->mediaFileId = $mediaFileId;
         return $this;
@@ -75,7 +75,7 @@ class ProductMediaFileLinkModel
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex() : int
     {
         return $this->sortIndex;
     }
@@ -86,7 +86,7 @@ class ProductMediaFileLinkModel
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -96,7 +96,7 @@ class ProductMediaFileLinkModel
      *
      * @return string
      */
-    public function getType() : ?string
+    public function getType() : string
     {
         return $this->type;
     }
@@ -107,7 +107,7 @@ class ProductMediaFileLinkModel
      *
      * @return self
      */
-    public function setType(?string $type) : self
+    public function setType(string $type) : self
     {
         $this->type = $type;
         return $this;

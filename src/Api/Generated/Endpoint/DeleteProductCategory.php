@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class DeleteProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class DeleteProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     protected $categoryId;
     /**
@@ -14,7 +14,7 @@ class DeleteProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     {
         $this->categoryId = $categoryId;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';
@@ -23,7 +23,7 @@ class DeleteProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     {
         return str_replace(array('{categoryId}'), array($this->categoryId), '/product-categories/{categoryId}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         return array(array(), null);
     }
@@ -43,7 +43,7 @@ class DeleteProductCategory extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
         if (204 === $status) {
             return null;
         }
-        if (404 === $status && 'application/json' === $contentType) {
+        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \Starweb\Api\Generated\Exception\DeleteProductCategoryNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
         }
     }

@@ -19,7 +19,7 @@ class ProductModel
     /**
      * The default vat rate for this product. Will fall back to shop default if null. To fetch country specific vat rates, please use include=vatRates or use the /products/x/vat-rates endpoint.
      *
-     * @var string
+     * @var string|null
      */
     protected $defaultVatRate;
     /**
@@ -27,7 +27,7 @@ class ProductModel
      *
      * @var string
      */
-    protected $visibility;
+    protected $visibility = 'hidden';
     /**
      * The ID´s of the pricelists that the product should be visible for. Is required for when ”visibility” is set to ”pricelists” but should never be populated otherwise
      *
@@ -43,19 +43,19 @@ class ProductModel
     /**
      * The id of the manufacturer to use for this product. Fetch and handle available manufacturers using the /product-manufacturers endpoint
      *
-     * @var int
+     * @var int|null
      */
     protected $manufacturerId;
     /**
      * The id of the unit to use for this product if not standard. Fetch and handle available units using the /product-units endpoint
      *
-     * @var int
+     * @var int|null
      */
     protected $unitId;
     /**
      * Sort index for this product in a list
      *
-     * @var int
+     * @var int|null
      */
     protected $sortIndex;
     /**
@@ -69,7 +69,7 @@ class ProductModel
      *
      * @var bool
      */
-    protected $isBackInStockWatchable;
+    protected $isBackInStockWatchable = true;
     /**
      * Should all bundled products have a manually entered price? Only applies if type is bundle
      *
@@ -79,7 +79,7 @@ class ProductModel
     /**
      * Account number for managing accounting on product level
      *
-     * @var int
+     * @var int|null
      */
     protected $accounting;
     /**
@@ -147,7 +147,7 @@ class ProductModel
      *
      * @return int
      */
-    public function getProductId() : ?int
+    public function getProductId() : int
     {
         return $this->productId;
     }
@@ -158,7 +158,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setProductId(?int $productId) : self
+    public function setProductId(int $productId) : self
     {
         $this->productId = $productId;
         return $this;
@@ -168,7 +168,7 @@ class ProductModel
      *
      * @return string
      */
-    public function getCreatedAt() : ?string
+    public function getCreatedAt() : string
     {
         return $this->createdAt;
     }
@@ -179,7 +179,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setCreatedAt(?string $createdAt) : self
+    public function setCreatedAt(string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -187,7 +187,7 @@ class ProductModel
     /**
      * The default vat rate for this product. Will fall back to shop default if null. To fetch country specific vat rates, please use include=vatRates or use the /products/x/vat-rates endpoint.
      *
-     * @return string
+     * @return string|null
      */
     public function getDefaultVatRate() : ?string
     {
@@ -196,7 +196,7 @@ class ProductModel
     /**
      * The default vat rate for this product. Will fall back to shop default if null. To fetch country specific vat rates, please use include=vatRates or use the /products/x/vat-rates endpoint.
      *
-     * @param string $defaultVatRate
+     * @param string|null $defaultVatRate
      *
      * @return self
      */
@@ -210,7 +210,7 @@ class ProductModel
      *
      * @return string
      */
-    public function getVisibility() : ?string
+    public function getVisibility() : string
     {
         return $this->visibility;
     }
@@ -221,7 +221,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setVisibility(?string $visibility) : self
+    public function setVisibility(string $visibility) : self
     {
         $this->visibility = $visibility;
         return $this;
@@ -231,7 +231,7 @@ class ProductModel
      *
      * @return int[]
      */
-    public function getVisibilityPricelistIds() : ?array
+    public function getVisibilityPricelistIds() : array
     {
         return $this->visibilityPricelistIds;
     }
@@ -242,7 +242,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setVisibilityPricelistIds(?array $visibilityPricelistIds) : self
+    public function setVisibilityPricelistIds(array $visibilityPricelistIds) : self
     {
         $this->visibilityPricelistIds = $visibilityPricelistIds;
         return $this;
@@ -252,7 +252,7 @@ class ProductModel
      *
      * @return string
      */
-    public function getMoreInfoUrl() : ?string
+    public function getMoreInfoUrl() : string
     {
         return $this->moreInfoUrl;
     }
@@ -263,7 +263,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setMoreInfoUrl(?string $moreInfoUrl) : self
+    public function setMoreInfoUrl(string $moreInfoUrl) : self
     {
         $this->moreInfoUrl = $moreInfoUrl;
         return $this;
@@ -271,7 +271,7 @@ class ProductModel
     /**
      * The id of the manufacturer to use for this product. Fetch and handle available manufacturers using the /product-manufacturers endpoint
      *
-     * @return int
+     * @return int|null
      */
     public function getManufacturerId() : ?int
     {
@@ -280,7 +280,7 @@ class ProductModel
     /**
      * The id of the manufacturer to use for this product. Fetch and handle available manufacturers using the /product-manufacturers endpoint
      *
-     * @param int $manufacturerId
+     * @param int|null $manufacturerId
      *
      * @return self
      */
@@ -292,7 +292,7 @@ class ProductModel
     /**
      * The id of the unit to use for this product if not standard. Fetch and handle available units using the /product-units endpoint
      *
-     * @return int
+     * @return int|null
      */
     public function getUnitId() : ?int
     {
@@ -301,7 +301,7 @@ class ProductModel
     /**
      * The id of the unit to use for this product if not standard. Fetch and handle available units using the /product-units endpoint
      *
-     * @param int $unitId
+     * @param int|null $unitId
      *
      * @return self
      */
@@ -313,7 +313,7 @@ class ProductModel
     /**
      * Sort index for this product in a list
      *
-     * @return int
+     * @return int|null
      */
     public function getSortIndex() : ?int
     {
@@ -322,7 +322,7 @@ class ProductModel
     /**
      * Sort index for this product in a list
      *
-     * @param int $sortIndex
+     * @param int|null $sortIndex
      *
      * @return self
      */
@@ -336,7 +336,7 @@ class ProductModel
      *
      * @return string
      */
-    public function getType() : ?string
+    public function getType() : string
     {
         return $this->type;
     }
@@ -347,7 +347,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setType(?string $type) : self
+    public function setType(string $type) : self
     {
         $this->type = $type;
         return $this;
@@ -357,7 +357,7 @@ class ProductModel
      *
      * @return bool
      */
-    public function getIsBackInStockWatchable() : ?bool
+    public function getIsBackInStockWatchable() : bool
     {
         return $this->isBackInStockWatchable;
     }
@@ -368,7 +368,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setIsBackInStockWatchable(?bool $isBackInStockWatchable) : self
+    public function setIsBackInStockWatchable(bool $isBackInStockWatchable) : self
     {
         $this->isBackInStockWatchable = $isBackInStockWatchable;
         return $this;
@@ -378,7 +378,7 @@ class ProductModel
      *
      * @return bool
      */
-    public function getBundleUseManualPrice() : ?bool
+    public function getBundleUseManualPrice() : bool
     {
         return $this->bundleUseManualPrice;
     }
@@ -389,7 +389,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setBundleUseManualPrice(?bool $bundleUseManualPrice) : self
+    public function setBundleUseManualPrice(bool $bundleUseManualPrice) : self
     {
         $this->bundleUseManualPrice = $bundleUseManualPrice;
         return $this;
@@ -397,7 +397,7 @@ class ProductModel
     /**
      * Account number for managing accounting on product level
      *
-     * @return int
+     * @return int|null
      */
     public function getAccounting() : ?int
     {
@@ -406,7 +406,7 @@ class ProductModel
     /**
      * Account number for managing accounting on product level
      *
-     * @param int $accounting
+     * @param int|null $accounting
      *
      * @return self
      */
@@ -420,7 +420,7 @@ class ProductModel
      *
      * @return bool
      */
-    public function getHasSeveralVariants() : ?bool
+    public function getHasSeveralVariants() : bool
     {
         return $this->hasSeveralVariants;
     }
@@ -431,7 +431,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setHasSeveralVariants(?bool $hasSeveralVariants) : self
+    public function setHasSeveralVariants(bool $hasSeveralVariants) : self
     {
         $this->hasSeveralVariants = $hasSeveralVariants;
         return $this;
@@ -441,7 +441,7 @@ class ProductModel
      *
      * @return string
      */
-    public function getModifiedAt() : ?string
+    public function getModifiedAt() : string
     {
         return $this->modifiedAt;
     }
@@ -452,7 +452,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setModifiedAt(?string $modifiedAt) : self
+    public function setModifiedAt(string $modifiedAt) : self
     {
         $this->modifiedAt = $modifiedAt;
         return $this;
@@ -462,7 +462,7 @@ class ProductModel
      *
      * @return ProductVariantModelCollection
      */
-    public function getVariants() : ?ProductVariantModelCollection
+    public function getVariants() : ProductVariantModelCollection
     {
         return $this->variants;
     }
@@ -473,7 +473,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setVariants(?ProductVariantModelCollection $variants) : self
+    public function setVariants(ProductVariantModelCollection $variants) : self
     {
         $this->variants = $variants;
         return $this;
@@ -483,7 +483,7 @@ class ProductModel
      *
      * @return BundledProductsModelCollection
      */
-    public function getBundledProducts() : ?BundledProductsModelCollection
+    public function getBundledProducts() : BundledProductsModelCollection
     {
         return $this->bundledProducts;
     }
@@ -494,7 +494,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setBundledProducts(?BundledProductsModelCollection $bundledProducts) : self
+    public function setBundledProducts(BundledProductsModelCollection $bundledProducts) : self
     {
         $this->bundledProducts = $bundledProducts;
         return $this;
@@ -504,7 +504,7 @@ class ProductModel
      *
      * @return ProductMediaFileLinkModelCollection
      */
-    public function getMediaFiles() : ?ProductMediaFileLinkModelCollection
+    public function getMediaFiles() : ProductMediaFileLinkModelCollection
     {
         return $this->mediaFiles;
     }
@@ -515,7 +515,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setMediaFiles(?ProductMediaFileLinkModelCollection $mediaFiles) : self
+    public function setMediaFiles(ProductMediaFileLinkModelCollection $mediaFiles) : self
     {
         $this->mediaFiles = $mediaFiles;
         return $this;
@@ -525,7 +525,7 @@ class ProductModel
      *
      * @return ProductModelLanguages
      */
-    public function getLanguages() : ?ProductModelLanguages
+    public function getLanguages() : ProductModelLanguages
     {
         return $this->languages;
     }
@@ -536,7 +536,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setLanguages(?ProductModelLanguages $languages) : self
+    public function setLanguages(ProductModelLanguages $languages) : self
     {
         $this->languages = $languages;
         return $this;
@@ -546,7 +546,7 @@ class ProductModel
      *
      * @return ProductVatRateModelCollection
      */
-    public function getVatRates() : ?ProductVatRateModelCollection
+    public function getVatRates() : ProductVatRateModelCollection
     {
         return $this->vatRates;
     }
@@ -557,7 +557,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setVatRates(?ProductVatRateModelCollection $vatRates) : self
+    public function setVatRates(ProductVatRateModelCollection $vatRates) : self
     {
         $this->vatRates = $vatRates;
         return $this;
@@ -567,7 +567,7 @@ class ProductModel
      *
      * @return ProductCategoryLinkModelCollection
      */
-    public function getCategories() : ?ProductCategoryLinkModelCollection
+    public function getCategories() : ProductCategoryLinkModelCollection
     {
         return $this->categories;
     }
@@ -578,7 +578,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setCategories(?ProductCategoryLinkModelCollection $categories) : self
+    public function setCategories(ProductCategoryLinkModelCollection $categories) : self
     {
         $this->categories = $categories;
         return $this;
@@ -588,7 +588,7 @@ class ProductModel
      *
      * @return ProductUnitModelItem
      */
-    public function getUnit() : ?ProductUnitModelItem
+    public function getUnit() : ProductUnitModelItem
     {
         return $this->unit;
     }
@@ -599,7 +599,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setUnit(?ProductUnitModelItem $unit) : self
+    public function setUnit(ProductUnitModelItem $unit) : self
     {
         $this->unit = $unit;
         return $this;
@@ -609,7 +609,7 @@ class ProductModel
      *
      * @return ProductMetaDataModelCollection
      */
-    public function getMetaData() : ?ProductMetaDataModelCollection
+    public function getMetaData() : ProductMetaDataModelCollection
     {
         return $this->metaData;
     }
@@ -620,7 +620,7 @@ class ProductModel
      *
      * @return self
      */
-    public function setMetaData(?ProductMetaDataModelCollection $metaData) : self
+    public function setMetaData(ProductMetaDataModelCollection $metaData) : self
     {
         $this->metaData = $metaData;
         return $this;

@@ -20,7 +20,7 @@ class CustomerExternalServicesModelNormalizer implements DenormalizerInterface, 
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\CustomerExternalServicesModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerExternalServicesModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

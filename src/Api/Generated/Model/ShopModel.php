@@ -105,7 +105,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
@@ -116,7 +116,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -126,7 +126,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getIdCode() : ?string
+    public function getIdCode() : string
     {
         return $this->idCode;
     }
@@ -137,7 +137,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setIdCode(?string $idCode) : self
+    public function setIdCode(string $idCode) : self
     {
         $this->idCode = $idCode;
         return $this;
@@ -147,7 +147,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getStatus() : ?string
+    public function getStatus() : string
     {
         return $this->status;
     }
@@ -158,7 +158,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setStatus(?string $status) : self
+    public function setStatus(string $status) : self
     {
         $this->status = $status;
         return $this;
@@ -168,7 +168,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getDefaultLangCode() : ?string
+    public function getDefaultLangCode() : string
     {
         return $this->defaultLangCode;
     }
@@ -179,7 +179,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setDefaultLangCode(?string $defaultLangCode) : self
+    public function setDefaultLangCode(string $defaultLangCode) : self
     {
         $this->defaultLangCode = $defaultLangCode;
         return $this;
@@ -189,7 +189,7 @@ class ShopModel
      *
      * @return string[]
      */
-    public function getActiveLangCodes() : ?array
+    public function getActiveLangCodes() : array
     {
         return $this->activeLangCodes;
     }
@@ -200,7 +200,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setActiveLangCodes(?array $activeLangCodes) : self
+    public function setActiveLangCodes(array $activeLangCodes) : self
     {
         $this->activeLangCodes = $activeLangCodes;
         return $this;
@@ -210,7 +210,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getBaseCurrency() : ?string
+    public function getBaseCurrency() : string
     {
         return $this->baseCurrency;
     }
@@ -221,7 +221,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setBaseCurrency(?string $baseCurrency) : self
+    public function setBaseCurrency(string $baseCurrency) : self
     {
         $this->baseCurrency = $baseCurrency;
         return $this;
@@ -231,7 +231,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getDefaultCustomerCountryCode() : ?string
+    public function getDefaultCustomerCountryCode() : string
     {
         return $this->defaultCustomerCountryCode;
     }
@@ -242,7 +242,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setDefaultCustomerCountryCode(?string $defaultCustomerCountryCode) : self
+    public function setDefaultCustomerCountryCode(string $defaultCustomerCountryCode) : self
     {
         $this->defaultCustomerCountryCode = $defaultCustomerCountryCode;
         return $this;
@@ -252,7 +252,7 @@ class ShopModel
      *
      * @return float
      */
-    public function getGeneralDefaultVatRate() : ?float
+    public function getGeneralDefaultVatRate() : float
     {
         return $this->generalDefaultVatRate;
     }
@@ -263,7 +263,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setGeneralDefaultVatRate(?float $generalDefaultVatRate) : self
+    public function setGeneralDefaultVatRate(float $generalDefaultVatRate) : self
     {
         $this->generalDefaultVatRate = $generalDefaultVatRate;
         return $this;
@@ -273,7 +273,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getShopCompanyName() : ?string
+    public function getShopCompanyName() : string
     {
         return $this->shopCompanyName;
     }
@@ -284,7 +284,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setShopCompanyName(?string $shopCompanyName) : self
+    public function setShopCompanyName(string $shopCompanyName) : self
     {
         $this->shopCompanyName = $shopCompanyName;
         return $this;
@@ -294,7 +294,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getShopAddress() : ?string
+    public function getShopAddress() : string
     {
         return $this->shopAddress;
     }
@@ -305,7 +305,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setShopAddress(?string $shopAddress) : self
+    public function setShopAddress(string $shopAddress) : self
     {
         $this->shopAddress = $shopAddress;
         return $this;
@@ -315,7 +315,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getShopPostalCode() : ?string
+    public function getShopPostalCode() : string
     {
         return $this->shopPostalCode;
     }
@@ -326,7 +326,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setShopPostalCode(?string $shopPostalCode) : self
+    public function setShopPostalCode(string $shopPostalCode) : self
     {
         $this->shopPostalCode = $shopPostalCode;
         return $this;
@@ -336,7 +336,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getShopCity() : ?string
+    public function getShopCity() : string
     {
         return $this->shopCity;
     }
@@ -347,7 +347,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setShopCity(?string $shopCity) : self
+    public function setShopCity(string $shopCity) : self
     {
         $this->shopCity = $shopCity;
         return $this;
@@ -357,7 +357,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getShopOrgNo() : ?string
+    public function getShopOrgNo() : string
     {
         return $this->shopOrgNo;
     }
@@ -368,7 +368,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setShopOrgNo(?string $shopOrgNo) : self
+    public function setShopOrgNo(string $shopOrgNo) : self
     {
         $this->shopOrgNo = $shopOrgNo;
         return $this;
@@ -378,7 +378,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getShopPhoneNo() : ?string
+    public function getShopPhoneNo() : string
     {
         return $this->shopPhoneNo;
     }
@@ -389,7 +389,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setShopPhoneNo(?string $shopPhoneNo) : self
+    public function setShopPhoneNo(string $shopPhoneNo) : self
     {
         $this->shopPhoneNo = $shopPhoneNo;
         return $this;
@@ -399,7 +399,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getShopVatNo() : ?string
+    public function getShopVatNo() : string
     {
         return $this->shopVatNo;
     }
@@ -410,7 +410,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setShopVatNo(?string $shopVatNo) : self
+    public function setShopVatNo(string $shopVatNo) : self
     {
         $this->shopVatNo = $shopVatNo;
         return $this;
@@ -420,7 +420,7 @@ class ShopModel
      *
      * @return string
      */
-    public function getShopCountryCode() : ?string
+    public function getShopCountryCode() : string
     {
         return $this->shopCountryCode;
     }
@@ -431,7 +431,7 @@ class ShopModel
      *
      * @return self
      */
-    public function setShopCountryCode(?string $shopCountryCode) : self
+    public function setShopCountryCode(string $shopCountryCode) : self
     {
         $this->shopCountryCode = $shopCountryCode;
         return $this;

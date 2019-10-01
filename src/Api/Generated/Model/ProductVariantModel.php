@@ -15,7 +15,7 @@ class ProductVariantModel
      *
      * @var bool
      */
-    protected $isActive;
+    protected $isActive = true;
     /**
      * The sort index of this variant.
      *
@@ -25,25 +25,25 @@ class ProductVariantModel
     /**
      * The ID of the variants stock status. Available stock statuses can be fetched using the /product-stock-statuses endpoint
      *
-     * @var int
+     * @var int|null
      */
     protected $stockStatusId;
     /**
      * The current stock quantity for this variant
      *
-     * @var int
+     * @var int|null
      */
     protected $stockQuantity;
     /**
      * The variants weight in KG
      *
-     * @var float
+     * @var float|null
      */
     protected $weightInKg;
     /**
      * The cost for this variant. Used for statistic and never displayed to customers
      *
-     * @var string
+     * @var string|null
      */
     protected $costPrice;
     /**
@@ -61,7 +61,7 @@ class ProductVariantModel
     /**
      * The ID of this variant main image. Available media files can be fetched using the /media-files endpoint
      *
-     * @var int
+     * @var int|null
      */
     protected $imageFileId;
     /**
@@ -93,7 +93,7 @@ class ProductVariantModel
      *
      * @return string
      */
-    public function getSku() : ?string
+    public function getSku() : string
     {
         return $this->sku;
     }
@@ -104,7 +104,7 @@ class ProductVariantModel
      *
      * @return self
      */
-    public function setSku(?string $sku) : self
+    public function setSku(string $sku) : self
     {
         $this->sku = $sku;
         return $this;
@@ -114,7 +114,7 @@ class ProductVariantModel
      *
      * @return bool
      */
-    public function getIsActive() : ?bool
+    public function getIsActive() : bool
     {
         return $this->isActive;
     }
@@ -125,7 +125,7 @@ class ProductVariantModel
      *
      * @return self
      */
-    public function setIsActive(?bool $isActive) : self
+    public function setIsActive(bool $isActive) : self
     {
         $this->isActive = $isActive;
         return $this;
@@ -135,7 +135,7 @@ class ProductVariantModel
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex() : int
     {
         return $this->sortIndex;
     }
@@ -146,7 +146,7 @@ class ProductVariantModel
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -154,7 +154,7 @@ class ProductVariantModel
     /**
      * The ID of the variants stock status. Available stock statuses can be fetched using the /product-stock-statuses endpoint
      *
-     * @return int
+     * @return int|null
      */
     public function getStockStatusId() : ?int
     {
@@ -163,7 +163,7 @@ class ProductVariantModel
     /**
      * The ID of the variants stock status. Available stock statuses can be fetched using the /product-stock-statuses endpoint
      *
-     * @param int $stockStatusId
+     * @param int|null $stockStatusId
      *
      * @return self
      */
@@ -175,7 +175,7 @@ class ProductVariantModel
     /**
      * The current stock quantity for this variant
      *
-     * @return int
+     * @return int|null
      */
     public function getStockQuantity() : ?int
     {
@@ -184,7 +184,7 @@ class ProductVariantModel
     /**
      * The current stock quantity for this variant
      *
-     * @param int $stockQuantity
+     * @param int|null $stockQuantity
      *
      * @return self
      */
@@ -196,7 +196,7 @@ class ProductVariantModel
     /**
      * The variants weight in KG
      *
-     * @return float
+     * @return float|null
      */
     public function getWeightInKg() : ?float
     {
@@ -205,7 +205,7 @@ class ProductVariantModel
     /**
      * The variants weight in KG
      *
-     * @param float $weightInKg
+     * @param float|null $weightInKg
      *
      * @return self
      */
@@ -217,7 +217,7 @@ class ProductVariantModel
     /**
      * The cost for this variant. Used for statistic and never displayed to customers
      *
-     * @return string
+     * @return string|null
      */
     public function getCostPrice() : ?string
     {
@@ -226,7 +226,7 @@ class ProductVariantModel
     /**
      * The cost for this variant. Used for statistic and never displayed to customers
      *
-     * @param string $costPrice
+     * @param string|null $costPrice
      *
      * @return self
      */
@@ -240,7 +240,7 @@ class ProductVariantModel
      *
      * @return string
      */
-    public function getEan() : ?string
+    public function getEan() : string
     {
         return $this->ean;
     }
@@ -251,7 +251,7 @@ class ProductVariantModel
      *
      * @return self
      */
-    public function setEan(?string $ean) : self
+    public function setEan(string $ean) : self
     {
         $this->ean = $ean;
         return $this;
@@ -261,7 +261,7 @@ class ProductVariantModel
      *
      * @return string
      */
-    public function getMpn() : ?string
+    public function getMpn() : string
     {
         return $this->mpn;
     }
@@ -272,7 +272,7 @@ class ProductVariantModel
      *
      * @return self
      */
-    public function setMpn(?string $mpn) : self
+    public function setMpn(string $mpn) : self
     {
         $this->mpn = $mpn;
         return $this;
@@ -280,7 +280,7 @@ class ProductVariantModel
     /**
      * The ID of this variant main image. Available media files can be fetched using the /media-files endpoint
      *
-     * @return int
+     * @return int|null
      */
     public function getImageFileId() : ?int
     {
@@ -289,7 +289,7 @@ class ProductVariantModel
     /**
      * The ID of this variant main image. Available media files can be fetched using the /media-files endpoint
      *
-     * @param int $imageFileId
+     * @param int|null $imageFileId
      *
      * @return self
      */
@@ -303,7 +303,7 @@ class ProductVariantModel
      *
      * @return int[]
      */
-    public function getAttributeValueLinks() : ?array
+    public function getAttributeValueLinks() : array
     {
         return $this->attributeValueLinks;
     }
@@ -314,7 +314,7 @@ class ProductVariantModel
      *
      * @return self
      */
-    public function setAttributeValueLinks(?array $attributeValueLinks) : self
+    public function setAttributeValueLinks(array $attributeValueLinks) : self
     {
         $this->attributeValueLinks = $attributeValueLinks;
         return $this;
@@ -324,7 +324,7 @@ class ProductVariantModel
      *
      * @return int[]
      */
-    public function getVolumePricingInheritancePricelistIds() : ?array
+    public function getVolumePricingInheritancePricelistIds() : array
     {
         return $this->volumePricingInheritancePricelistIds;
     }
@@ -335,7 +335,7 @@ class ProductVariantModel
      *
      * @return self
      */
-    public function setVolumePricingInheritancePricelistIds(?array $volumePricingInheritancePricelistIds) : self
+    public function setVolumePricingInheritancePricelistIds(array $volumePricingInheritancePricelistIds) : self
     {
         $this->volumePricingInheritancePricelistIds = $volumePricingInheritancePricelistIds;
         return $this;
@@ -345,7 +345,7 @@ class ProductVariantModel
      *
      * @return ProductVariantPriceModel[]
      */
-    public function getPrices() : ?array
+    public function getPrices() : array
     {
         return $this->prices;
     }
@@ -356,7 +356,7 @@ class ProductVariantModel
      *
      * @return self
      */
-    public function setPrices(?array $prices) : self
+    public function setPrices(array $prices) : self
     {
         $this->prices = $prices;
         return $this;
@@ -366,7 +366,7 @@ class ProductVariantModel
      *
      * @return ProductVariantAttributeValueModel[]
      */
-    public function getAttributeValues() : ?array
+    public function getAttributeValues() : array
     {
         return $this->attributeValues;
     }
@@ -377,7 +377,7 @@ class ProductVariantModel
      *
      * @return self
      */
-    public function setAttributeValues(?array $attributeValues) : self
+    public function setAttributeValues(array $attributeValues) : self
     {
         $this->attributeValues = $attributeValues;
         return $this;

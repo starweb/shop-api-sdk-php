@@ -69,7 +69,7 @@ class ProductCategoryModelUpdatable
      *
      * @return int
      */
-    public function getCategoryId() : ?int
+    public function getCategoryId() : int
     {
         return $this->categoryId;
     }
@@ -80,7 +80,7 @@ class ProductCategoryModelUpdatable
      *
      * @return self
      */
-    public function setCategoryId(?int $categoryId) : self
+    public function setCategoryId(int $categoryId) : self
     {
         $this->categoryId = $categoryId;
         return $this;
@@ -90,7 +90,7 @@ class ProductCategoryModelUpdatable
      *
      * @return int
      */
-    public function getParentId() : ?int
+    public function getParentId() : int
     {
         return $this->parentId;
     }
@@ -101,7 +101,7 @@ class ProductCategoryModelUpdatable
      *
      * @return self
      */
-    public function setParentId(?int $parentId) : self
+    public function setParentId(int $parentId) : self
     {
         $this->parentId = $parentId;
         return $this;
@@ -111,7 +111,7 @@ class ProductCategoryModelUpdatable
      *
      * @return string
      */
-    public function getVisibility() : ?string
+    public function getVisibility() : string
     {
         return $this->visibility;
     }
@@ -122,7 +122,7 @@ class ProductCategoryModelUpdatable
      *
      * @return self
      */
-    public function setVisibility(?string $visibility) : self
+    public function setVisibility(string $visibility) : self
     {
         $this->visibility = $visibility;
         return $this;
@@ -132,7 +132,7 @@ class ProductCategoryModelUpdatable
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex() : int
     {
         return $this->sortIndex;
     }
@@ -143,7 +143,7 @@ class ProductCategoryModelUpdatable
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -153,7 +153,7 @@ class ProductCategoryModelUpdatable
      *
      * @return bool
      */
-    public function getOpenPage() : ?bool
+    public function getOpenPage() : bool
     {
         return $this->openPage;
     }
@@ -164,7 +164,7 @@ class ProductCategoryModelUpdatable
      *
      * @return self
      */
-    public function setOpenPage(?bool $openPage) : self
+    public function setOpenPage(bool $openPage) : self
     {
         $this->openPage = $openPage;
         return $this;
@@ -174,7 +174,7 @@ class ProductCategoryModelUpdatable
      *
      * @return int
      */
-    public function getImageFileId() : ?int
+    public function getImageFileId() : int
     {
         return $this->imageFileId;
     }
@@ -185,7 +185,7 @@ class ProductCategoryModelUpdatable
      *
      * @return self
      */
-    public function setImageFileId(?int $imageFileId) : self
+    public function setImageFileId(int $imageFileId) : self
     {
         $this->imageFileId = $imageFileId;
         return $this;
@@ -195,7 +195,7 @@ class ProductCategoryModelUpdatable
      *
      * @return string
      */
-    public function getExternalType() : ?string
+    public function getExternalType() : string
     {
         return $this->externalType;
     }
@@ -206,7 +206,7 @@ class ProductCategoryModelUpdatable
      *
      * @return self
      */
-    public function setExternalType(?string $externalType) : self
+    public function setExternalType(string $externalType) : self
     {
         $this->externalType = $externalType;
         return $this;
@@ -216,7 +216,7 @@ class ProductCategoryModelUpdatable
      *
      * @return string
      */
-    public function getExternalId() : ?string
+    public function getExternalId() : string
     {
         return $this->externalId;
     }
@@ -227,7 +227,7 @@ class ProductCategoryModelUpdatable
      *
      * @return self
      */
-    public function setExternalId(?string $externalId) : self
+    public function setExternalId(string $externalId) : self
     {
         $this->externalId = $externalId;
         return $this;
@@ -237,7 +237,7 @@ class ProductCategoryModelUpdatable
      *
      * @return bool
      */
-    public function getHasChildren() : ?bool
+    public function getHasChildren() : bool
     {
         return $this->hasChildren;
     }
@@ -248,7 +248,7 @@ class ProductCategoryModelUpdatable
      *
      * @return self
      */
-    public function setHasChildren(?bool $hasChildren) : self
+    public function setHasChildren(bool $hasChildren) : self
     {
         $this->hasChildren = $hasChildren;
         return $this;
@@ -258,7 +258,7 @@ class ProductCategoryModelUpdatable
      *
      * @return ProductCategoryLanguagesModel[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }
@@ -269,7 +269,7 @@ class ProductCategoryModelUpdatable
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;

@@ -15,7 +15,7 @@ class ProductLanguageModelItem
      *
      * @return ProductLanguageModel
      */
-    public function getData() : ?ProductLanguageModel
+    public function getData() : ProductLanguageModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class ProductLanguageModelItem
      *
      * @return self
      */
-    public function setData(?ProductLanguageModel $data) : self
+    public function setData(ProductLanguageModel $data) : self
     {
         $this->data = $data;
         return $this;

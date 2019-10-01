@@ -15,11 +15,11 @@ class ProductVariantPriceModel
      *
      * @var float
      */
-    protected $priceExVat;
+    protected $priceExVat = 0;
     /**
      * The special price excluding vat (a discounted price)
      *
-     * @var float
+     * @var float|null
      */
     protected $specialPriceExVat;
     /**
@@ -27,7 +27,7 @@ class ProductVariantPriceModel
      *
      * @return int
      */
-    public function getPricelistId() : ?int
+    public function getPricelistId() : int
     {
         return $this->pricelistId;
     }
@@ -38,7 +38,7 @@ class ProductVariantPriceModel
      *
      * @return self
      */
-    public function setPricelistId(?int $pricelistId) : self
+    public function setPricelistId(int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
         return $this;
@@ -48,7 +48,7 @@ class ProductVariantPriceModel
      *
      * @return float
      */
-    public function getPriceExVat() : ?float
+    public function getPriceExVat() : float
     {
         return $this->priceExVat;
     }
@@ -59,7 +59,7 @@ class ProductVariantPriceModel
      *
      * @return self
      */
-    public function setPriceExVat(?float $priceExVat) : self
+    public function setPriceExVat(float $priceExVat) : self
     {
         $this->priceExVat = $priceExVat;
         return $this;
@@ -67,7 +67,7 @@ class ProductVariantPriceModel
     /**
      * The special price excluding vat (a discounted price)
      *
-     * @return float
+     * @return float|null
      */
     public function getSpecialPriceExVat() : ?float
     {
@@ -76,7 +76,7 @@ class ProductVariantPriceModel
     /**
      * The special price excluding vat (a discounted price)
      *
-     * @param float $specialPriceExVat
+     * @param float|null $specialPriceExVat
      *
      * @return self
      */

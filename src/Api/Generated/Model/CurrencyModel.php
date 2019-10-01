@@ -27,7 +27,7 @@ class CurrencyModel
      *
      * @return string
      */
-    public function getCode() : ?string
+    public function getCode() : string
     {
         return $this->code;
     }
@@ -38,7 +38,7 @@ class CurrencyModel
      *
      * @return self
      */
-    public function setCode(?string $code) : self
+    public function setCode(string $code) : self
     {
         $this->code = $code;
         return $this;
@@ -48,7 +48,7 @@ class CurrencyModel
      *
      * @return float
      */
-    public function getExchangeRate() : ?float
+    public function getExchangeRate() : float
     {
         return $this->exchangeRate;
     }
@@ -59,7 +59,7 @@ class CurrencyModel
      *
      * @return self
      */
-    public function setExchangeRate(?float $exchangeRate) : self
+    public function setExchangeRate(float $exchangeRate) : self
     {
         $this->exchangeRate = $exchangeRate;
         return $this;
@@ -69,7 +69,7 @@ class CurrencyModel
      *
      * @return int
      */
-    public function getPrecision() : ?int
+    public function getPrecision() : int
     {
         return $this->precision;
     }
@@ -80,7 +80,7 @@ class CurrencyModel
      *
      * @return self
      */
-    public function setPrecision(?int $precision) : self
+    public function setPrecision(int $precision) : self
     {
         $this->precision = $precision;
         return $this;

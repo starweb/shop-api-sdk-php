@@ -15,7 +15,7 @@ class WebHookModelItem
      *
      * @return WebHookModel
      */
-    public function getData() : ?WebHookModel
+    public function getData() : WebHookModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class WebHookModelItem
      *
      * @return self
      */
-    public function setData(?WebHookModel $data) : self
+    public function setData(WebHookModel $data) : self
     {
         $this->data = $data;
         return $this;

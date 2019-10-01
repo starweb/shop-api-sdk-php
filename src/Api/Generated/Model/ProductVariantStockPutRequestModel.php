@@ -21,7 +21,7 @@ class ProductVariantStockPutRequestModel
      *
      * @return int
      */
-    public function getStockStatusId() : ?int
+    public function getStockStatusId() : int
     {
         return $this->stockStatusId;
     }
@@ -32,7 +32,7 @@ class ProductVariantStockPutRequestModel
      *
      * @return self
      */
-    public function setStockStatusId(?int $stockStatusId) : self
+    public function setStockStatusId(int $stockStatusId) : self
     {
         $this->stockStatusId = $stockStatusId;
         return $this;
@@ -42,7 +42,7 @@ class ProductVariantStockPutRequestModel
      *
      * @return float
      */
-    public function getStockQuantity() : ?float
+    public function getStockQuantity() : float
     {
         return $this->stockQuantity;
     }
@@ -53,7 +53,7 @@ class ProductVariantStockPutRequestModel
      *
      * @return self
      */
-    public function setStockQuantity(?float $stockQuantity) : self
+    public function setStockQuantity(float $stockQuantity) : self
     {
         $this->stockQuantity = $stockQuantity;
         return $this;

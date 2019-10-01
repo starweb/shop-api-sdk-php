@@ -15,7 +15,7 @@ class StockLocationModelItem
      *
      * @return StockLocationModel
      */
-    public function getData() : ?StockLocationModel
+    public function getData() : StockLocationModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class StockLocationModelItem
      *
      * @return self
      */
-    public function setData(?StockLocationModel $data) : self
+    public function setData(StockLocationModel $data) : self
     {
         $this->data = $data;
         return $this;

@@ -20,7 +20,7 @@ class ProductManufacturerModelNormalizer implements DenormalizerInterface, Norma
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ProductManufacturerModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductManufacturerModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

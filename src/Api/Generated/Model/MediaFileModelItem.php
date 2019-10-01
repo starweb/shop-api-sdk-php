@@ -15,7 +15,7 @@ class MediaFileModelItem
      *
      * @return MediaFileModel
      */
-    public function getData() : ?MediaFileModel
+    public function getData() : MediaFileModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class MediaFileModelItem
      *
      * @return self
      */
-    public function setData(?MediaFileModel $data) : self
+    public function setData(MediaFileModel $data) : self
     {
         $this->data = $data;
         return $this;

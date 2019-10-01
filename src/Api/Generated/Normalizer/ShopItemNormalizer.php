@@ -20,7 +20,7 @@ class ShopItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ShopItem;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ShopItem';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

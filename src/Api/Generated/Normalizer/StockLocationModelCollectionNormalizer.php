@@ -20,7 +20,7 @@ class StockLocationModelCollectionNormalizer implements DenormalizerInterface, N
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\StockLocationModelCollection;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\StockLocationModelCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

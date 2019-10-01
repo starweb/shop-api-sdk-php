@@ -20,7 +20,7 @@ class BundledProductsModelCollectionNormalizer implements DenormalizerInterface,
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\BundledProductsModelCollection;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\BundledProductsModelCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

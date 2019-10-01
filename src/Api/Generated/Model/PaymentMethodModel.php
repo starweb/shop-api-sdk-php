@@ -43,25 +43,25 @@ class PaymentMethodModel
     /**
      * The min order sub total that this method is valid for
      *
-     * @var float
+     * @var float|null
      */
     protected $validForMinItemsSubtotal;
     /**
      * The max order sub total that this method is valid for
      *
-     * @var float
+     * @var float|null
      */
     protected $validForMaxItemsSubtotal;
     /**
      * The min order weight that this method is valid for
      *
-     * @var float
+     * @var float|null
      */
     protected $validForMinWeight;
     /**
      * The max order weight that this method is valid for.
      *
-     * @var float
+     * @var float|null
      */
     protected $validForMaxWeight;
     /**
@@ -73,7 +73,7 @@ class PaymentMethodModel
     /**
      * The customer type this method is valid for. Valid values are: null (no restriction), person, company
      *
-     * @var string
+     * @var string|null
      */
     protected $validForCustomerType;
     /**
@@ -93,7 +93,7 @@ class PaymentMethodModel
      *
      * @return int
      */
-    public function getPaymentMethodId() : ?int
+    public function getPaymentMethodId() : int
     {
         return $this->paymentMethodId;
     }
@@ -104,7 +104,7 @@ class PaymentMethodModel
      *
      * @return self
      */
-    public function setPaymentMethodId(?int $paymentMethodId) : self
+    public function setPaymentMethodId(int $paymentMethodId) : self
     {
         $this->paymentMethodId = $paymentMethodId;
         return $this;
@@ -114,7 +114,7 @@ class PaymentMethodModel
      *
      * @return string
      */
-    public function getIdCode() : ?string
+    public function getIdCode() : string
     {
         return $this->idCode;
     }
@@ -125,7 +125,7 @@ class PaymentMethodModel
      *
      * @return self
      */
-    public function setIdCode(?string $idCode) : self
+    public function setIdCode(string $idCode) : self
     {
         $this->idCode = $idCode;
         return $this;
@@ -135,7 +135,7 @@ class PaymentMethodModel
      *
      * @return bool
      */
-    public function getActive() : ?bool
+    public function getActive() : bool
     {
         return $this->active;
     }
@@ -146,7 +146,7 @@ class PaymentMethodModel
      *
      * @return self
      */
-    public function setActive(?bool $active) : self
+    public function setActive(bool $active) : self
     {
         $this->active = $active;
         return $this;
@@ -156,7 +156,7 @@ class PaymentMethodModel
      *
      * @return float
      */
-    public function getFee() : ?float
+    public function getFee() : float
     {
         return $this->fee;
     }
@@ -167,7 +167,7 @@ class PaymentMethodModel
      *
      * @return self
      */
-    public function setFee(?float $fee) : self
+    public function setFee(float $fee) : self
     {
         $this->fee = $fee;
         return $this;
@@ -177,7 +177,7 @@ class PaymentMethodModel
      *
      * @return string
      */
-    public function getValidForCountries() : ?string
+    public function getValidForCountries() : string
     {
         return $this->validForCountries;
     }
@@ -188,7 +188,7 @@ class PaymentMethodModel
      *
      * @return self
      */
-    public function setValidForCountries(?string $validForCountries) : self
+    public function setValidForCountries(string $validForCountries) : self
     {
         $this->validForCountries = $validForCountries;
         return $this;
@@ -198,7 +198,7 @@ class PaymentMethodModel
      *
      * @return string[]
      */
-    public function getValidCountriesSelected() : ?array
+    public function getValidCountriesSelected() : array
     {
         return $this->validCountriesSelected;
     }
@@ -209,7 +209,7 @@ class PaymentMethodModel
      *
      * @return self
      */
-    public function setValidCountriesSelected(?array $validCountriesSelected) : self
+    public function setValidCountriesSelected(array $validCountriesSelected) : self
     {
         $this->validCountriesSelected = $validCountriesSelected;
         return $this;
@@ -217,7 +217,7 @@ class PaymentMethodModel
     /**
      * The min order sub total that this method is valid for
      *
-     * @return float
+     * @return float|null
      */
     public function getValidForMinItemsSubtotal() : ?float
     {
@@ -226,7 +226,7 @@ class PaymentMethodModel
     /**
      * The min order sub total that this method is valid for
      *
-     * @param float $validForMinItemsSubtotal
+     * @param float|null $validForMinItemsSubtotal
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class PaymentMethodModel
     /**
      * The max order sub total that this method is valid for
      *
-     * @return float
+     * @return float|null
      */
     public function getValidForMaxItemsSubtotal() : ?float
     {
@@ -247,7 +247,7 @@ class PaymentMethodModel
     /**
      * The max order sub total that this method is valid for
      *
-     * @param float $validForMaxItemsSubtotal
+     * @param float|null $validForMaxItemsSubtotal
      *
      * @return self
      */
@@ -259,7 +259,7 @@ class PaymentMethodModel
     /**
      * The min order weight that this method is valid for
      *
-     * @return float
+     * @return float|null
      */
     public function getValidForMinWeight() : ?float
     {
@@ -268,7 +268,7 @@ class PaymentMethodModel
     /**
      * The min order weight that this method is valid for
      *
-     * @param float $validForMinWeight
+     * @param float|null $validForMinWeight
      *
      * @return self
      */
@@ -280,7 +280,7 @@ class PaymentMethodModel
     /**
      * The max order weight that this method is valid for.
      *
-     * @return float
+     * @return float|null
      */
     public function getValidForMaxWeight() : ?float
     {
@@ -289,7 +289,7 @@ class PaymentMethodModel
     /**
      * The max order weight that this method is valid for.
      *
-     * @param float $validForMaxWeight
+     * @param float|null $validForMaxWeight
      *
      * @return self
      */
@@ -303,7 +303,7 @@ class PaymentMethodModel
      *
      * @return string
      */
-    public function getValidForShippingMethods() : ?string
+    public function getValidForShippingMethods() : string
     {
         return $this->validForShippingMethods;
     }
@@ -314,7 +314,7 @@ class PaymentMethodModel
      *
      * @return self
      */
-    public function setValidForShippingMethods(?string $validForShippingMethods) : self
+    public function setValidForShippingMethods(string $validForShippingMethods) : self
     {
         $this->validForShippingMethods = $validForShippingMethods;
         return $this;
@@ -322,7 +322,7 @@ class PaymentMethodModel
     /**
      * The customer type this method is valid for. Valid values are: null (no restriction), person, company
      *
-     * @return string
+     * @return string|null
      */
     public function getValidForCustomerType() : ?string
     {
@@ -331,7 +331,7 @@ class PaymentMethodModel
     /**
      * The customer type this method is valid for. Valid values are: null (no restriction), person, company
      *
-     * @param string $validForCustomerType
+     * @param string|null $validForCustomerType
      *
      * @return self
      */
@@ -345,7 +345,7 @@ class PaymentMethodModel
      *
      * @return bool
      */
-    public function getIsClickAndCollect() : ?bool
+    public function getIsClickAndCollect() : bool
     {
         return $this->isClickAndCollect;
     }
@@ -356,7 +356,7 @@ class PaymentMethodModel
      *
      * @return self
      */
-    public function setIsClickAndCollect(?bool $isClickAndCollect) : self
+    public function setIsClickAndCollect(bool $isClickAndCollect) : self
     {
         $this->isClickAndCollect = $isClickAndCollect;
         return $this;
@@ -366,7 +366,7 @@ class PaymentMethodModel
      *
      * @return PaymentMethodLanguageModelCollection
      */
-    public function getLanguages() : ?PaymentMethodLanguageModelCollection
+    public function getLanguages() : PaymentMethodLanguageModelCollection
     {
         return $this->languages;
     }
@@ -377,7 +377,7 @@ class PaymentMethodModel
      *
      * @return self
      */
-    public function setLanguages(?PaymentMethodLanguageModelCollection $languages) : self
+    public function setLanguages(PaymentMethodLanguageModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

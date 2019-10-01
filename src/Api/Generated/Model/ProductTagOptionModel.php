@@ -33,7 +33,7 @@ class ProductTagOptionModel
      *
      * @return int
      */
-    public function getTagOptionId() : ?int
+    public function getTagOptionId() : int
     {
         return $this->tagOptionId;
     }
@@ -44,7 +44,7 @@ class ProductTagOptionModel
      *
      * @return self
      */
-    public function setTagOptionId(?int $tagOptionId) : self
+    public function setTagOptionId(int $tagOptionId) : self
     {
         $this->tagOptionId = $tagOptionId;
         return $this;
@@ -54,7 +54,7 @@ class ProductTagOptionModel
      *
      * @return bool
      */
-    public function getValue() : ?bool
+    public function getValue() : bool
     {
         return $this->value;
     }
@@ -65,7 +65,7 @@ class ProductTagOptionModel
      *
      * @return self
      */
-    public function setValue(?bool $value) : self
+    public function setValue(bool $value) : self
     {
         $this->value = $value;
         return $this;
@@ -75,7 +75,7 @@ class ProductTagOptionModel
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex() : int
     {
         return $this->sortIndex;
     }
@@ -86,7 +86,7 @@ class ProductTagOptionModel
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -96,7 +96,7 @@ class ProductTagOptionModel
      *
      * @return ProductTagOptionLanguageModel[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }
@@ -107,7 +107,7 @@ class ProductTagOptionModel
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;

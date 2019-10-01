@@ -15,7 +15,7 @@ class PricelistModelItem
      *
      * @return PricelistModel
      */
-    public function getData() : ?PricelistModel
+    public function getData() : PricelistModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class PricelistModelItem
      *
      * @return self
      */
-    public function setData(?PricelistModel $data) : self
+    public function setData(PricelistModel $data) : self
     {
         $this->data = $data;
         return $this;

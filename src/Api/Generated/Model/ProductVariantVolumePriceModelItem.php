@@ -15,7 +15,7 @@ class ProductVariantVolumePriceModelItem
      *
      * @return ProductVariantVolumePriceModel
      */
-    public function getData() : ?ProductVariantVolumePriceModel
+    public function getData() : ProductVariantVolumePriceModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class ProductVariantVolumePriceModelItem
      *
      * @return self
      */
-    public function setData(?ProductVariantVolumePriceModel $data) : self
+    public function setData(ProductVariantVolumePriceModel $data) : self
     {
         $this->data = $data;
         return $this;

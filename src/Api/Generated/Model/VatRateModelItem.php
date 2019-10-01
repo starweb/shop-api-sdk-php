@@ -15,7 +15,7 @@ class VatRateModelItem
      *
      * @return VatRateModel
      */
-    public function getData() : ?VatRateModel
+    public function getData() : VatRateModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class VatRateModelItem
      *
      * @return self
      */
-    public function setData(?VatRateModel $data) : self
+    public function setData(VatRateModel $data) : self
     {
         $this->data = $data;
         return $this;

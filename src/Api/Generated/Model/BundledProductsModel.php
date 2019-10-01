@@ -25,7 +25,7 @@ class BundledProductsModel
     /**
      * The quantity for this bundled product
      *
-     * @var int
+     * @var int|null
      */
     protected $quantity;
     /**
@@ -45,7 +45,7 @@ class BundledProductsModel
      *
      * @return bool
      */
-    public function getSingleVariant() : ?bool
+    public function getSingleVariant() : bool
     {
         return $this->singleVariant;
     }
@@ -56,7 +56,7 @@ class BundledProductsModel
      *
      * @return self
      */
-    public function setSingleVariant(?bool $singleVariant) : self
+    public function setSingleVariant(bool $singleVariant) : self
     {
         $this->singleVariant = $singleVariant;
         return $this;
@@ -66,7 +66,7 @@ class BundledProductsModel
      *
      * @return int
      */
-    public function getBundledProductId() : ?int
+    public function getBundledProductId() : int
     {
         return $this->bundledProductId;
     }
@@ -77,7 +77,7 @@ class BundledProductsModel
      *
      * @return self
      */
-    public function setBundledProductId(?int $bundledProductId) : self
+    public function setBundledProductId(int $bundledProductId) : self
     {
         $this->bundledProductId = $bundledProductId;
         return $this;
@@ -87,7 +87,7 @@ class BundledProductsModel
      *
      * @return string
      */
-    public function getVariantSku() : ?string
+    public function getVariantSku() : string
     {
         return $this->variantSku;
     }
@@ -98,7 +98,7 @@ class BundledProductsModel
      *
      * @return self
      */
-    public function setVariantSku(?string $variantSku) : self
+    public function setVariantSku(string $variantSku) : self
     {
         $this->variantSku = $variantSku;
         return $this;
@@ -106,7 +106,7 @@ class BundledProductsModel
     /**
      * The quantity for this bundled product
      *
-     * @return int
+     * @return int|null
      */
     public function getQuantity() : ?int
     {
@@ -115,7 +115,7 @@ class BundledProductsModel
     /**
      * The quantity for this bundled product
      *
-     * @param int $quantity
+     * @param int|null $quantity
      *
      * @return self
      */
@@ -129,7 +129,7 @@ class BundledProductsModel
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex() : int
     {
         return $this->sortIndex;
     }
@@ -140,7 +140,7 @@ class BundledProductsModel
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -150,7 +150,7 @@ class BundledProductsModel
      *
      * @return ProductBundleProductPriceModel[]
      */
-    public function getPrices() : ?array
+    public function getPrices() : array
     {
         return $this->prices;
     }
@@ -161,7 +161,7 @@ class BundledProductsModel
      *
      * @return self
      */
-    public function setPrices(?array $prices) : self
+    public function setPrices(array $prices) : self
     {
         $this->prices = $prices;
         return $this;

@@ -15,7 +15,7 @@ class ProductVariantVolumePriceModel
      *
      * @var float
      */
-    protected $priceExVat;
+    protected $priceExVat = 0;
     /**
      * The minimum quantity required for the price to apply
      *
@@ -27,7 +27,7 @@ class ProductVariantVolumePriceModel
      *
      * @return int
      */
-    public function getPricelistId() : ?int
+    public function getPricelistId() : int
     {
         return $this->pricelistId;
     }
@@ -38,7 +38,7 @@ class ProductVariantVolumePriceModel
      *
      * @return self
      */
-    public function setPricelistId(?int $pricelistId) : self
+    public function setPricelistId(int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
         return $this;
@@ -48,7 +48,7 @@ class ProductVariantVolumePriceModel
      *
      * @return float
      */
-    public function getPriceExVat() : ?float
+    public function getPriceExVat() : float
     {
         return $this->priceExVat;
     }
@@ -59,7 +59,7 @@ class ProductVariantVolumePriceModel
      *
      * @return self
      */
-    public function setPriceExVat(?float $priceExVat) : self
+    public function setPriceExVat(float $priceExVat) : self
     {
         $this->priceExVat = $priceExVat;
         return $this;
@@ -69,7 +69,7 @@ class ProductVariantVolumePriceModel
      *
      * @return float
      */
-    public function getQuantity() : ?float
+    public function getQuantity() : float
     {
         return $this->quantity;
     }
@@ -80,7 +80,7 @@ class ProductVariantVolumePriceModel
      *
      * @return self
      */
-    public function setQuantity(?float $quantity) : self
+    public function setQuantity(float $quantity) : self
     {
         $this->quantity = $quantity;
         return $this;

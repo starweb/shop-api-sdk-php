@@ -20,7 +20,7 @@ class ProductVariantPriceModelItemNormalizer implements DenormalizerInterface, N
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\ProductVariantPriceModelItem;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantPriceModelItem';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

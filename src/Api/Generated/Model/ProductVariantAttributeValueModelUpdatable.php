@@ -15,7 +15,7 @@ class ProductVariantAttributeValueModelUpdatable
      *
      * @return ProductVariantAttributeValueLanguageModel[]
      */
-    public function getLanguages() : ?array
+    public function getLanguages() : array
     {
         return $this->languages;
     }
@@ -26,7 +26,7 @@ class ProductVariantAttributeValueModelUpdatable
      *
      * @return self
      */
-    public function setLanguages(?array $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;

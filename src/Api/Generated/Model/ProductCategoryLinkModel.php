@@ -21,7 +21,7 @@ class ProductCategoryLinkModel
      *
      * @return int
      */
-    public function getCategoryId() : ?int
+    public function getCategoryId() : int
     {
         return $this->categoryId;
     }
@@ -32,7 +32,7 @@ class ProductCategoryLinkModel
      *
      * @return self
      */
-    public function setCategoryId(?int $categoryId) : self
+    public function setCategoryId(int $categoryId) : self
     {
         $this->categoryId = $categoryId;
         return $this;
@@ -42,7 +42,7 @@ class ProductCategoryLinkModel
      *
      * @return int
      */
-    public function getSortIndex() : ?int
+    public function getSortIndex() : int
     {
         return $this->sortIndex;
     }
@@ -53,7 +53,7 @@ class ProductCategoryLinkModel
      *
      * @return self
      */
-    public function setSortIndex(?int $sortIndex) : self
+    public function setSortIndex(int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;

@@ -20,7 +20,7 @@ class TokenModelNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Starweb\Api\Generated\Model\TokenModel;
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\TokenModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

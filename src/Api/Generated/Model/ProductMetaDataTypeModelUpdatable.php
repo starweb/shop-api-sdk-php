@@ -15,7 +15,7 @@ class ProductMetaDataTypeModelUpdatable
      *
      * @return ProductMetaDataTypeLanguageModelCollection
      */
-    public function getLanguages() : ?ProductMetaDataTypeLanguageModelCollection
+    public function getLanguages() : ProductMetaDataTypeLanguageModelCollection
     {
         return $this->languages;
     }
@@ -26,7 +26,7 @@ class ProductMetaDataTypeModelUpdatable
      *
      * @return self
      */
-    public function setLanguages(?ProductMetaDataTypeLanguageModelCollection $languages) : self
+    public function setLanguages(ProductMetaDataTypeLanguageModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

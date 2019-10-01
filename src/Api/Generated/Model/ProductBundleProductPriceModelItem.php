@@ -15,7 +15,7 @@ class ProductBundleProductPriceModelItem
      *
      * @return ProductBundleProductPriceModel
      */
-    public function getData() : ?ProductBundleProductPriceModel
+    public function getData() : ProductBundleProductPriceModel
     {
         return $this->data;
     }
@@ -26,7 +26,7 @@ class ProductBundleProductPriceModelItem
      *
      * @return self
      */
-    public function setData(?ProductBundleProductPriceModel $data) : self
+    public function setData(ProductBundleProductPriceModel $data) : self
     {
         $this->data = $data;
         return $this;

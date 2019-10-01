@@ -33,7 +33,7 @@ class OrderCommentModel
      *
      * @return int
      */
-    public function getCommentId() : ?int
+    public function getCommentId() : int
     {
         return $this->commentId;
     }
@@ -44,7 +44,7 @@ class OrderCommentModel
      *
      * @return self
      */
-    public function setCommentId(?int $commentId) : self
+    public function setCommentId(int $commentId) : self
     {
         $this->commentId = $commentId;
         return $this;
@@ -54,7 +54,7 @@ class OrderCommentModel
      *
      * @return string
      */
-    public function getCreatedAt() : ?string
+    public function getCreatedAt() : string
     {
         return $this->createdAt;
     }
@@ -65,7 +65,7 @@ class OrderCommentModel
      *
      * @return self
      */
-    public function setCreatedAt(?string $createdAt) : self
+    public function setCreatedAt(string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -75,7 +75,7 @@ class OrderCommentModel
      *
      * @return string
      */
-    public function getText() : ?string
+    public function getText() : string
     {
         return $this->text;
     }
@@ -86,7 +86,7 @@ class OrderCommentModel
      *
      * @return self
      */
-    public function setText(?string $text) : self
+    public function setText(string $text) : self
     {
         $this->text = $text;
         return $this;
@@ -96,7 +96,7 @@ class OrderCommentModel
      *
      * @return string
      */
-    public function getFrom() : ?string
+    public function getFrom() : string
     {
         return $this->from;
     }
@@ -107,7 +107,7 @@ class OrderCommentModel
      *
      * @return self
      */
-    public function setFrom(?string $from) : self
+    public function setFrom(string $from) : self
     {
         $this->from = $from;
         return $this;

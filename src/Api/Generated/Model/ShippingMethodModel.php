@@ -31,43 +31,43 @@ class ShippingMethodModel
     /**
      * The min order sub total that this method is valid for
      *
-     * @var float
+     * @var float|null
      */
     protected $validForMinItemsSubtotal;
     /**
      * The max order sub total that this method is valid for
      *
-     * @var float
+     * @var float|null
      */
     protected $validForMaxItemsSubtotal;
     /**
      * The min order weight that this method is valid for
      *
-     * @var float
+     * @var float|null
      */
     protected $validForMinWeight;
     /**
      * The max order weight that this method is valid for.
      *
-     * @var float
+     * @var float|null
      */
     protected $validForMaxWeight;
     /**
      * The customer type this method is valid for. Valid values are: null (no restriction), person, company
      *
-     * @var string
+     * @var string|null
      */
     protected $validForCustomerType;
     /**
      * Offer free shipping with this method if the minimum order sub total amount is at least this value
      *
-     * @var float
+     * @var float|null
      */
     protected $freeShippingMinItemsSubtotal;
     /**
      * Offer free shipping with this method if the minimum order total weight is at least this value
      *
-     * @var float
+     * @var float|null
      */
     protected $freeShippingMinWeight;
     /**
@@ -87,7 +87,7 @@ class ShippingMethodModel
      *
      * @return int
      */
-    public function getShippingMethodId() : ?int
+    public function getShippingMethodId() : int
     {
         return $this->shippingMethodId;
     }
@@ -98,7 +98,7 @@ class ShippingMethodModel
      *
      * @return self
      */
-    public function setShippingMethodId(?int $shippingMethodId) : self
+    public function setShippingMethodId(int $shippingMethodId) : self
     {
         $this->shippingMethodId = $shippingMethodId;
         return $this;
@@ -108,7 +108,7 @@ class ShippingMethodModel
      *
      * @return bool
      */
-    public function getActive() : ?bool
+    public function getActive() : bool
     {
         return $this->active;
     }
@@ -119,7 +119,7 @@ class ShippingMethodModel
      *
      * @return self
      */
-    public function setActive(?bool $active) : self
+    public function setActive(bool $active) : self
     {
         $this->active = $active;
         return $this;
@@ -129,7 +129,7 @@ class ShippingMethodModel
      *
      * @return string
      */
-    public function getValidForCountries() : ?string
+    public function getValidForCountries() : string
     {
         return $this->validForCountries;
     }
@@ -140,7 +140,7 @@ class ShippingMethodModel
      *
      * @return self
      */
-    public function setValidForCountries(?string $validForCountries) : self
+    public function setValidForCountries(string $validForCountries) : self
     {
         $this->validForCountries = $validForCountries;
         return $this;
@@ -150,7 +150,7 @@ class ShippingMethodModel
      *
      * @return string[]
      */
-    public function getValidCountriesSelected() : ?array
+    public function getValidCountriesSelected() : array
     {
         return $this->validCountriesSelected;
     }
@@ -161,7 +161,7 @@ class ShippingMethodModel
      *
      * @return self
      */
-    public function setValidCountriesSelected(?array $validCountriesSelected) : self
+    public function setValidCountriesSelected(array $validCountriesSelected) : self
     {
         $this->validCountriesSelected = $validCountriesSelected;
         return $this;
@@ -169,7 +169,7 @@ class ShippingMethodModel
     /**
      * The min order sub total that this method is valid for
      *
-     * @return float
+     * @return float|null
      */
     public function getValidForMinItemsSubtotal() : ?float
     {
@@ -178,7 +178,7 @@ class ShippingMethodModel
     /**
      * The min order sub total that this method is valid for
      *
-     * @param float $validForMinItemsSubtotal
+     * @param float|null $validForMinItemsSubtotal
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class ShippingMethodModel
     /**
      * The max order sub total that this method is valid for
      *
-     * @return float
+     * @return float|null
      */
     public function getValidForMaxItemsSubtotal() : ?float
     {
@@ -199,7 +199,7 @@ class ShippingMethodModel
     /**
      * The max order sub total that this method is valid for
      *
-     * @param float $validForMaxItemsSubtotal
+     * @param float|null $validForMaxItemsSubtotal
      *
      * @return self
      */
@@ -211,7 +211,7 @@ class ShippingMethodModel
     /**
      * The min order weight that this method is valid for
      *
-     * @return float
+     * @return float|null
      */
     public function getValidForMinWeight() : ?float
     {
@@ -220,7 +220,7 @@ class ShippingMethodModel
     /**
      * The min order weight that this method is valid for
      *
-     * @param float $validForMinWeight
+     * @param float|null $validForMinWeight
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class ShippingMethodModel
     /**
      * The max order weight that this method is valid for.
      *
-     * @return float
+     * @return float|null
      */
     public function getValidForMaxWeight() : ?float
     {
@@ -241,7 +241,7 @@ class ShippingMethodModel
     /**
      * The max order weight that this method is valid for.
      *
-     * @param float $validForMaxWeight
+     * @param float|null $validForMaxWeight
      *
      * @return self
      */
@@ -253,7 +253,7 @@ class ShippingMethodModel
     /**
      * The customer type this method is valid for. Valid values are: null (no restriction), person, company
      *
-     * @return string
+     * @return string|null
      */
     public function getValidForCustomerType() : ?string
     {
@@ -262,7 +262,7 @@ class ShippingMethodModel
     /**
      * The customer type this method is valid for. Valid values are: null (no restriction), person, company
      *
-     * @param string $validForCustomerType
+     * @param string|null $validForCustomerType
      *
      * @return self
      */
@@ -274,7 +274,7 @@ class ShippingMethodModel
     /**
      * Offer free shipping with this method if the minimum order sub total amount is at least this value
      *
-     * @return float
+     * @return float|null
      */
     public function getFreeShippingMinItemsSubtotal() : ?float
     {
@@ -283,7 +283,7 @@ class ShippingMethodModel
     /**
      * Offer free shipping with this method if the minimum order sub total amount is at least this value
      *
-     * @param float $freeShippingMinItemsSubtotal
+     * @param float|null $freeShippingMinItemsSubtotal
      *
      * @return self
      */
@@ -295,7 +295,7 @@ class ShippingMethodModel
     /**
      * Offer free shipping with this method if the minimum order total weight is at least this value
      *
-     * @return float
+     * @return float|null
      */
     public function getFreeShippingMinWeight() : ?float
     {
@@ -304,7 +304,7 @@ class ShippingMethodModel
     /**
      * Offer free shipping with this method if the minimum order total weight is at least this value
      *
-     * @param float $freeShippingMinWeight
+     * @param float|null $freeShippingMinWeight
      *
      * @return self
      */
@@ -318,7 +318,7 @@ class ShippingMethodModel
      *
      * @return bool
      */
-    public function getIsClickAndCollect() : ?bool
+    public function getIsClickAndCollect() : bool
     {
         return $this->isClickAndCollect;
     }
@@ -329,7 +329,7 @@ class ShippingMethodModel
      *
      * @return self
      */
-    public function setIsClickAndCollect(?bool $isClickAndCollect) : self
+    public function setIsClickAndCollect(bool $isClickAndCollect) : self
     {
         $this->isClickAndCollect = $isClickAndCollect;
         return $this;
@@ -339,7 +339,7 @@ class ShippingMethodModel
      *
      * @return ShippingMethodLanguageModelCollection
      */
-    public function getLanguages() : ?ShippingMethodLanguageModelCollection
+    public function getLanguages() : ShippingMethodLanguageModelCollection
     {
         return $this->languages;
     }
@@ -350,7 +350,7 @@ class ShippingMethodModel
      *
      * @return self
      */
-    public function setLanguages(?ShippingMethodLanguageModelCollection $languages) : self
+    public function setLanguages(ShippingMethodLanguageModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;
