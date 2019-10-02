@@ -36,9 +36,6 @@ class ProductTagOptionModelItemNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getData()) {
-            $data->{'data'} = $this->normalizer->normalize($object->getData(), 'json', $context);
-        }
         return $data;
     }
 }

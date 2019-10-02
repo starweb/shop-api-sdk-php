@@ -117,9 +117,6 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getProductId()) {
-            $data->{'productId'} = $object->getProductId();
-        }
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();
         }
@@ -150,12 +147,6 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
             $data->{'bundleUseManualPrice'} = $object->getBundleUseManualPrice();
         }
         $data->{'accounting'} = $object->getAccounting();
-        if (null !== $object->getHasSeveralVariants()) {
-            $data->{'hasSeveralVariants'} = $object->getHasSeveralVariants();
-        }
-        if (null !== $object->getModifiedAt()) {
-            $data->{'modifiedAt'} = $object->getModifiedAt();
-        }
         if (null !== $object->getMediaFiles()) {
             $values_1 = array();
             foreach ($object->getMediaFiles() as $value_1) {

@@ -48,9 +48,6 @@ class WebHookModelNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getWebHookId()) {
-            $data->{'webHookId'} = $object->getWebHookId();
-        }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
         }

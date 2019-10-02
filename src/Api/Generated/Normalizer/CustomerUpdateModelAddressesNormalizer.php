@@ -39,12 +39,6 @@ class CustomerUpdateModelAddressesNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getInvoice()) {
-            $data->{'invoice'} = $this->normalizer->normalize($object->getInvoice(), 'json', $context);
-        }
-        if (null !== $object->getDelivery()) {
-            $data->{'delivery'} = $this->normalizer->normalize($object->getDelivery(), 'json', $context);
-        }
         return $data;
     }
 }

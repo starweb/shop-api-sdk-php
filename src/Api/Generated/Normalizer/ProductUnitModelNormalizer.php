@@ -39,12 +39,6 @@ class ProductUnitModelNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getUnitId()) {
-            $data->{'unitId'} = $object->getUnitId();
-        }
-        if (null !== $object->getLanguages()) {
-            $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
-        }
         return $data;
     }
 }

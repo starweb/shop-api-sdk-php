@@ -48,21 +48,6 @@ class PaginationModelNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getCurrentPage()) {
-            $data->{'current_page'} = $object->getCurrentPage();
-        }
-        if (null !== $object->getPerPage()) {
-            $data->{'per_page'} = $object->getPerPage();
-        }
-        if (null !== $object->getTotal()) {
-            $data->{'total'} = $object->getTotal();
-        }
-        if (null !== $object->getCount()) {
-            $data->{'count'} = $object->getCount();
-        }
-        if (null !== $object->getTotalPages()) {
-            $data->{'total_pages'} = $object->getTotalPages();
-        }
         return $data;
     }
 }

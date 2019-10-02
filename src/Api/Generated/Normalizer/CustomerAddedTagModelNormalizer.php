@@ -42,9 +42,6 @@ class CustomerAddedTagModelNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getTagId()) {
             $data->{'tagId'} = $object->getTagId();
         }
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
         return $data;
     }
 }

@@ -42,9 +42,6 @@ class ProductManufacturerModelNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getManufacturerId()) {
-            $data->{'manufacturerId'} = $object->getManufacturerId();
-        }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
         }

@@ -54,9 +54,6 @@ class StockLocationPutRequestModelNormalizer implements DenormalizerInterface, N
         if (null !== $object->getEcommerceStockLocation()) {
             $data->{'ecommerceStockLocation'} = $object->getEcommerceStockLocation();
         }
-        if (null !== $object->getLanguages()) {
-            $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
-        }
         return $data;
     }
 }

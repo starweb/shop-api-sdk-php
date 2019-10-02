@@ -198,36 +198,6 @@ class OrderModelNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getOrderId()) {
-            $data->{'orderId'} = $object->getOrderId();
-        }
-        if (null !== $object->getModifiedAt()) {
-            $data->{'modifiedAt'} = $object->getModifiedAt();
-        }
-        if (null !== $object->getBaseCurrencyCode()) {
-            $data->{'baseCurrencyCode'} = $object->getBaseCurrencyCode();
-        }
-        if (null !== $object->getShopCountryCode()) {
-            $data->{'shopCountryCode'} = $object->getShopCountryCode();
-        }
-        if (null !== $object->getTotalAmount()) {
-            $data->{'totalAmount'} = $object->getTotalAmount();
-        }
-        if (null !== $object->getTotalVat()) {
-            $data->{'totalVat'} = $object->getTotalVat();
-        }
-        if (null !== $object->getAmountToPay()) {
-            $data->{'amountToPay'} = $object->getAmountToPay();
-        }
-        if (null !== $object->getTotalAmountInBaseCurrency()) {
-            $data->{'totalAmountInBaseCurrency'} = $object->getTotalAmountInBaseCurrency();
-        }
-        if (null !== $object->getTotalVatInBaseCurrency()) {
-            $data->{'totalVatInBaseCurrency'} = $object->getTotalVatInBaseCurrency();
-        }
-        if (null !== $object->getAmountToPayInBaseCurrency()) {
-            $data->{'amountToPayInBaseCurrency'} = $object->getAmountToPayInBaseCurrency();
-        }
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();
         }
@@ -252,9 +222,6 @@ class OrderModelNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getPaymentMethodId()) {
             $data->{'paymentMethodId'} = $object->getPaymentMethodId();
         }
-        if (null !== $object->getPaymentMethodIdCode()) {
-            $data->{'paymentMethodIdCode'} = $object->getPaymentMethodIdCode();
-        }
         if (null !== $object->getPaymentMethodName()) {
             $data->{'paymentMethodName'} = $object->getPaymentMethodName();
         }
@@ -273,9 +240,6 @@ class OrderModelNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getShippingVatRate()) {
             $data->{'shippingVatRate'} = $object->getShippingVatRate();
         }
-        if (null !== $object->getTotalWeight()) {
-            $data->{'totalWeight'} = $object->getTotalWeight();
-        }
         if (null !== $object->getCustomInfo1()) {
             $data->{'customInfo1'} = $object->getCustomInfo1();
         }
@@ -293,9 +257,6 @@ class OrderModelNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getAmountPaid()) {
             $data->{'amountPaid'} = $object->getAmountPaid();
-        }
-        if (null !== $object->getAmountPaidInBaseCurrency()) {
-            $data->{'amountPaidInBaseCurrency'} = $object->getAmountPaidInBaseCurrency();
         }
         if (null !== $object->getIsComplete()) {
             $data->{'isComplete'} = $object->getIsComplete();
@@ -321,9 +282,6 @@ class OrderModelNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getIsRead()) {
             $data->{'isRead'} = $object->getIsRead();
         }
-        if (null !== $object->getHasComments()) {
-            $data->{'hasComments'} = $object->getHasComments();
-        }
         if (null !== $object->getInternalComment()) {
             $data->{'internalComment'} = $object->getInternalComment();
         }
@@ -347,21 +305,6 @@ class OrderModelNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getOriginalCustomerCustomInfo2()) {
             $data->{'originalCustomerCustomInfo2'} = $object->getOriginalCustomerCustomInfo2();
-        }
-        if (null !== $object->getItems()) {
-            $data->{'items'} = $this->normalizer->normalize($object->getItems(), 'json', $context);
-        }
-        if (null !== $object->getAddresses()) {
-            $data->{'addresses'} = $this->normalizer->normalize($object->getAddresses(), 'json', $context);
-        }
-        if (null !== $object->getExternalServices()) {
-            $data->{'externalServices'} = $this->normalizer->normalize($object->getExternalServices(), 'json', $context);
-        }
-        if (null !== $object->getCustomer()) {
-            $data->{'customer'} = $this->normalizer->normalize($object->getCustomer(), 'json', $context);
-        }
-        if (null !== $object->getStatus()) {
-            $data->{'status'} = $this->normalizer->normalize($object->getStatus(), 'json', $context);
         }
         return $data;
     }

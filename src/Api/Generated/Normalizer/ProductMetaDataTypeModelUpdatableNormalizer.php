@@ -36,9 +36,6 @@ class ProductMetaDataTypeModelUpdatableNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getLanguages()) {
-            $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
-        }
         return $data;
     }
 }

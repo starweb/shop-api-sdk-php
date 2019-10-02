@@ -43,9 +43,6 @@ class ProductVariantAttributeModelUpdatableNormalizer implements DenormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getAttributeId()) {
-            $data->{'attributeId'} = $object->getAttributeId();
-        }
         if (null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {

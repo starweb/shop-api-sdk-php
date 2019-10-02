@@ -54,9 +54,6 @@ class ProductMetaDataModelNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
         }
-        if (null !== $object->getLanguages()) {
-            $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
-        }
         return $data;
     }
 }

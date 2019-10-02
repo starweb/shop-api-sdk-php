@@ -36,9 +36,6 @@ class OrderModelCollectionMetaNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getPagination()) {
-            $data->{'pagination'} = $this->normalizer->normalize($object->getPagination(), 'json', $context);
-        }
         return $data;
     }
 }

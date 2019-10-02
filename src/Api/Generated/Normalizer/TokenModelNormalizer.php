@@ -42,15 +42,6 @@ class TokenModelNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getAccessToken()) {
-            $data->{'access_token'} = $object->getAccessToken();
-        }
-        if (null !== $object->getScope()) {
-            $data->{'scope'} = $object->getScope();
-        }
-        if (null !== $object->getExpiresIn()) {
-            $data->{'expires_in'} = $object->getExpiresIn();
-        }
         return $data;
     }
 }
