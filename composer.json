@@ -53,6 +53,7 @@
         "psr-4": {"Starweb\\Tests\\": "tests/unit"}
     },
     "scripts": {
+        "generate": "rm -r src/Api/Generated/* ; vendor/bin/jane-openapi generate",
         "phpunit": "vendor/bin/phpunit --stop-on-error --stop-on-failure",
         "phpunit-coverage-html": "vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-html ${baseDir}resources/test-coverage",
         "phpunit-coverage-text": "vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-text",
