@@ -11,7 +11,7 @@ class PatchPricelist extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * @param int $pricelistId The pricelist id
      * @param mixed $requestBody 
      */
-    public function __construct(int $pricelistId, mixed $requestBody)
+    public function __construct(int $pricelistId, $requestBody)
     {
         $this->pricelistId = $pricelistId;
         $this->body = $requestBody;

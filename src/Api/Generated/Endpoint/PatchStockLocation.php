@@ -11,7 +11,7 @@ class PatchStockLocation extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      * @param int $stockLocationId The stock location id
      * @param mixed $requestBody 
      */
-    public function __construct(int $stockLocationId, mixed $requestBody)
+    public function __construct(int $stockLocationId, $requestBody)
     {
         $this->stockLocationId = $stockLocationId;
         $this->body = $requestBody;

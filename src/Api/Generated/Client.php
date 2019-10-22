@@ -942,7 +942,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @return null|\Starweb\Api\Generated\Model\PricelistModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createPricelist(mixed $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createPricelist($requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreatePricelist($requestBody), $fetch);
     }
@@ -984,7 +984,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @return null|\Starweb\Api\Generated\Model\PricelistModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchPricelist(int $pricelistId, mixed $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchPricelist(int $pricelistId, $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchPricelist($pricelistId, $requestBody), $fetch);
     }
@@ -999,7 +999,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @return null|\Starweb\Api\Generated\Model\PricelistModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putPricelist(int $pricelistId, mixed $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putPricelist(int $pricelistId, $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutPricelist($pricelistId, $requestBody), $fetch);
     }
@@ -2979,7 +2979,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @return null|\Starweb\Api\Generated\Model\StockLocationModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchStockLocation(int $stockLocationId, mixed $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchStockLocation(int $stockLocationId, $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchStockLocation($stockLocationId, $requestBody), $fetch);
     }

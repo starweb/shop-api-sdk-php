@@ -9,7 +9,7 @@ class CreatePricelist extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *
      * @param mixed $requestBody 
      */
-    public function __construct(mixed $requestBody)
+    public function __construct($requestBody)
     {
         $this->body = $requestBody;
     }
