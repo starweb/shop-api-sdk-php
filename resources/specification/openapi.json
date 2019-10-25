@@ -12848,7 +12848,8 @@
             "type": "integer",
             "minimum": 1,
             "description": "The id of an order status. Only used with the order-status-changes event.",
-            "example": 1
+            "example": 1,
+            "nullable": true
           },
           "url": {
             "type": "string",
