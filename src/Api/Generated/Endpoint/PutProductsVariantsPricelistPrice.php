@@ -15,13 +15,17 @@ class PutProductsVariantsPricelistPrice extends \Jane\OpenApiRuntime\Client\Base
     * @param int $variantId The products variants id
     * @param int $pricelistId The pricelist id
     * @param \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody 
+    * @param array $queryParameters {
+    *     @var string $include If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices
+    * }
     */
-    public function __construct(int $productId, int $variantId, int $pricelistId, \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody)
+    public function __construct(int $productId, int $variantId, int $pricelistId, \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody, array $queryParameters = array())
     {
         $this->productId = $productId;
         $this->variantId = $variantId;
         $this->pricelistId = $pricelistId;
         $this->body = $requestBody;
+        $this->queryParameters = $queryParameters;
     }
     use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
@@ -42,6 +46,15 @@ class PutProductsVariantsPricelistPrice extends \Jane\OpenApiRuntime\Client\Base
     public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
+    }
+    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(array('include'));
+        $optionsResolver->setRequired(array());
+        $optionsResolver->setDefaults(array());
+        $optionsResolver->setAllowedTypes('include', array('string'));
+        return $optionsResolver;
     }
     /**
      * {@inheritdoc}

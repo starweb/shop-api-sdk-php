@@ -1306,13 +1306,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param \Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Starweb\Api\Generated\Exception\CreateProductManufacturersBadRequestException
+     * @throws \Starweb\Api\Generated\Exception\CreateProductManufacturerBadRequestException
      *
-     * @return null|\Starweb\Api\Generated\Model\ProductManufacturerModelCollection|\Psr\Http\Message\ResponseInterface
+     * @return null|\Starweb\Api\Generated\Model\ProductManufacturerModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductManufacturers(\Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductManufacturer(\Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductManufacturers($requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductManufacturer($requestBody), $fetch);
     }
     /**
      * Deletes the `ProductManufacturer` object.
@@ -1379,6 +1379,32 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductUnits(), $fetch);
     }
     /**
+     * Creates a product unit.
+     *
+     * @param \Starweb\Api\Generated\Model\ProductUnitModel $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\CreateProductUnitBadRequestException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductUnitModelCollection|\Psr\Http\Message\ResponseInterface
+     */
+    public function createProductUnit(\Starweb\Api\Generated\Model\ProductUnitModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductUnit($requestBody), $fetch);
+    }
+    /**
+     * Deletes the `ProductUnit` object.
+     *
+     * @param int $unitId The units id
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\DeleteProductUnitNotFoundException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteProductUnit(int $unitId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductUnit($unitId), $fetch);
+    }
+    /**
      * Retrieves the `ProductUnit` object.
      *
      * @param int $unitId The units id
@@ -1390,6 +1416,34 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     public function getProductUnit(int $unitId, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductUnit($unitId), $fetch);
+    }
+    /**
+     * Updates the `ProductUnit` object.
+     *
+     * @param int $unitId The units id
+     * @param \Starweb\Api\Generated\Model\ProductUnitModel $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\PatchProductUnitNotFoundException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductUnitModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function patchProductUnit(int $unitId, \Starweb\Api\Generated\Model\ProductUnitModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductUnit($unitId, $requestBody), $fetch);
+    }
+    /**
+     * Updates the `ProductUnit` object.
+     *
+     * @param int $unitId The units id
+     * @param \Starweb\Api\Generated\Model\ProductUnitModel $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Starweb\Api\Generated\Exception\PutProductUnitNotFoundException
+     *
+     * @return null|\Starweb\Api\Generated\Model\ProductUnitModelItem|\Psr\Http\Message\ResponseInterface
+     */
+    public function putProductUnit(int $unitId, \Starweb\Api\Generated\Model\ProductUnitModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductUnit($unitId, $requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -2469,14 +2523,17 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param int $productId The products id
      * @param int $variantId The products variants id
+     * @param array $queryParameters {
+     *     @var string $include If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices
+     * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\ListProductsVariantsPricelistPricesBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantPriceModelCollection|\Psr\Http\Message\ResponseInterface
      */
-    public function listProductsVariantsPricelistPrices(int $productId, int $variantId, string $fetch = self::FETCH_OBJECT)
+    public function listProductsVariantsPricelistPrices(int $productId, int $variantId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariantsPricelistPrices($productId, $variantId), $fetch);
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariantsPricelistPrices($productId, $variantId, $queryParameters), $fetch);
     }
     /**
     * Creates a product variant pricelist price. 
@@ -2485,14 +2542,17 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param int $productId The products id
     * @param int $variantId The products variants id
     * @param \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody 
+    * @param array $queryParameters {
+    *     @var string $include If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices
+    * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\CreateProductVariantPricelistPriceBadRequestException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantPriceModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function createProductVariantPricelistPrice(int $productId, int $variantId, \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductVariantPricelistPrice(int $productId, int $variantId, \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductVariantPricelistPrice($productId, $variantId, $requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductVariantPricelistPrice($productId, $variantId, $requestBody, $queryParameters), $fetch);
     }
     /**
      * Deletes a product variant pricelist price permanently.
@@ -2500,14 +2560,17 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param int $productId The product id
      * @param int $variantId The products variants id
      * @param int $pricelistId The pricelist id
+     * @param array $queryParameters {
+     *     @var string $include If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices
+     * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\DeleteProductsVariantsPricelistPriceNotFoundException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function deleteProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, string $fetch = self::FETCH_OBJECT)
+    public function deleteProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsVariantsPricelistPrice($productId, $variantId, $pricelistId), $fetch);
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $queryParameters), $fetch);
     }
     /**
      * Retrieves the `ProductVariantPricelistPrice` object
@@ -2515,14 +2578,17 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param int $productId The product id
      * @param int $variantId The products variants id
      * @param int $pricelistId The pricelist id
+     * @param array $queryParameters {
+     *     @var string $include If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices
+     * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\GetProductsVariantsPricelistPriceNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantPriceModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function getProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, string $fetch = self::FETCH_OBJECT)
+    public function getProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVariantsPricelistPrice($productId, $variantId, $pricelistId), $fetch);
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $queryParameters), $fetch);
     }
     /**
     * Updates a product variant pricelist price. 
@@ -2532,15 +2598,18 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param int $variantId The products variants id
     * @param int $pricelistId The pricelist id
     * @param \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody 
+    * @param array $queryParameters {
+    *     @var string $include If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices
+    * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PatchProductsVariantsPricelistPriceBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PatchProductsVariantsPricelistPriceNotFoundException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantPriceModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function patchProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $requestBody, $queryParameters), $fetch);
     }
     /**
     * Updates a product variant pricelist price. 
@@ -2550,15 +2619,18 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param int $variantId The products variants id
     * @param int $pricelistId The pricelist id
     * @param \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody 
+    * @param array $queryParameters {
+    *     @var string $include If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices
+    * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistPriceBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistPriceNotFoundException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantPriceModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function putProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $requestBody, $queryParameters), $fetch);
     }
     /**
      * Returns a list of product variant pricelist prices
@@ -3088,7 +3160,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\HttpClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://{shopId}.starwebserver.se/api/v2');
+            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://{shopId}.sws.local/api/v2');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);

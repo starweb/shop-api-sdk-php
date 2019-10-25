@@ -23,6 +23,12 @@ class ProductVariantPriceModel
      */
     protected $specialPriceExVat;
     /**
+     * A collection of volume prices
+     *
+     * @var ProductVariantVolumePriceModel[]
+     */
+    protected $volumePrices;
+    /**
      * The pricelist this price is for
      *
      * @return int
@@ -83,6 +89,27 @@ class ProductVariantPriceModel
     public function setSpecialPriceExVat(?float $specialPriceExVat) : self
     {
         $this->specialPriceExVat = $specialPriceExVat;
+        return $this;
+    }
+    /**
+     * A collection of volume prices
+     *
+     * @return ProductVariantVolumePriceModel[]
+     */
+    public function getVolumePrices() : array
+    {
+        return $this->volumePrices;
+    }
+    /**
+     * A collection of volume prices
+     *
+     * @param ProductVariantVolumePriceModel[] $volumePrices
+     *
+     * @return self
+     */
+    public function setVolumePrices(array $volumePrices) : self
+    {
+        $this->volumePrices = $volumePrices;
         return $this;
     }
 }

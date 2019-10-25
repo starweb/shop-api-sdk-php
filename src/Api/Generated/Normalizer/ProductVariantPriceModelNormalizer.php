@@ -37,6 +37,13 @@ class ProductVariantPriceModelNormalizer implements DenormalizerInterface, Norma
         if (property_exists($data, 'specialPriceExVat')) {
             $object->setSpecialPriceExVat($data->{'specialPriceExVat'});
         }
+        if (property_exists($data, 'volumePrices')) {
+            $values = array();
+            foreach ($data->{'volumePrices'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductVariantVolumePriceModel', 'json', $context);
+            }
+            $object->setVolumePrices($values);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -49,6 +56,13 @@ class ProductVariantPriceModelNormalizer implements DenormalizerInterface, Norma
             $data->{'priceExVat'} = $object->getPriceExVat();
         }
         $data->{'specialPriceExVat'} = $object->getSpecialPriceExVat();
+        if (null !== $object->getVolumePrices()) {
+            $values = array();
+            foreach ($object->getVolumePrices() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data->{'volumePrices'} = $values;
+        }
         return $data;
     }
 }

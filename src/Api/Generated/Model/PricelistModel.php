@@ -49,7 +49,7 @@ class PricelistModel
     /**
      * Does this pricelist has a parent price list. 
      *
-     * @var int
+     * @var int|null
      */
     protected $parentPricelistId;
     /**
@@ -214,20 +214,20 @@ class PricelistModel
     /**
      * Does this pricelist has a parent price list. 
      *
-     * @return int
+     * @return int|null
      */
-    public function getParentPricelistId() : int
+    public function getParentPricelistId() : ?int
     {
         return $this->parentPricelistId;
     }
     /**
      * Does this pricelist has a parent price list. 
      *
-     * @param int $parentPricelistId
+     * @param int|null $parentPricelistId
      *
      * @return self
      */
-    public function setParentPricelistId(int $parentPricelistId) : self
+    public function setParentPricelistId(?int $parentPricelistId) : self
     {
         $this->parentPricelistId = $parentPricelistId;
         return $this;

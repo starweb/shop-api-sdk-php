@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Starweb Shop API v.2",
-    "description": "This API is only allowed to be used by partners of Starweb AB and further requires explicit permission from both Starweb AB and the shop owner. If you are interested in using it, please contact us at starwebapi@starweb.se . Change log for this API can be found at: https:\/\/starwebserver.se\/API-CHANGELOG.md",
+    "description": "This API is only allowed to be used by partners of Starweb AB and further requires explicit permission from both Starweb AB and the shop owner. If you are interested in using it, please contact us at starwebapi@starweb.se . Change log for this API can be found at: https:\/\/sws.local\/API-CHANGELOG.md",
     "contact": {
       "name": "Starweb API support",
       "url": "https:\/\/www.starweb.se\/starweb-api",
@@ -17,7 +17,7 @@
   },
   "servers": [
     {
-      "url": "https:\/\/{shopId}.starwebserver.se\/api\/v2",
+      "url": "https:\/\/{shopId}.sws.local\/api\/v2",
       "description": "Shop API",
       "variables": {
         "shopId": {
@@ -412,7 +412,7 @@
             "name": "createdSince",
             "in": "query",
             "description": "Use this to only fetch customers that has been created since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "schema": {
               "type": "string"
             }
@@ -421,7 +421,7 @@
             "name": "updatedSince",
             "in": "query",
             "description": "Use this to only fetch customers that has been modified since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "schema": {
               "type": "string"
             }
@@ -2918,7 +2918,7 @@
         "description": "Retrieves the `VatRate` object.",
         "responses": {
           "200": {
-            "description": "A country\u0027s default vat rates are returned",
+            "description": "A country's default vat rates are returned",
             "content": {
               "application\/json": {
                 "schema": {
@@ -3647,7 +3647,7 @@
         ]
       },
       "post": {
-        "operationId": "createProductManufacturers",
+        "operationId": "createProductManufacturer",
         "summary": "Create a product manufacturer",
         "description": "Creates a product manufacturer.",
         "responses": {
@@ -3656,7 +3656,7 @@
             "content": {
               "application\/json": {
                 "schema": {
-                  "$ref": "#\/components\/schemas\/ProductManufacturerModelCollection"
+                  "$ref": "#\/components\/schemas\/ProductManufacturerModelItem"
                 }
               }
             }
@@ -3829,6 +3829,40 @@
         "tags": [
           "Product Units"
         ]
+      },
+      "post": {
+        "operationId": "createProductUnit",
+        "summary": "Create a product unit",
+        "description": "Creates a product unit.",
+        "responses": {
+          "200": {
+            "description": "The created product unit",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ProductUnitModelCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#\/components\/responses\/BadRequest"
+          }
+        },
+        "requestBody": {
+          "description": "Product unit data",
+          "required": true,
+          "content": {
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/ProductUnitModel"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Product Units"
+        ]
       }
     },
     "\/product-units\/{unitId}": {
@@ -3850,6 +3884,90 @@
           },
           "404": {
             "$ref": "#\/components\/responses\/NotFound"
+          }
+        },
+        "tags": [
+          "Product Units"
+        ]
+      },
+      "delete": {
+        "operationId": "deleteProductUnit",
+        "summary": "Deletes a product unit",
+        "description": "Deletes the `ProductUnit` object.",
+        "responses": {
+          "204": {
+            "$ref": "#\/components\/responses\/ItemDeleted"
+          },
+          "404": {
+            "$ref": "#\/components\/responses\/NotFound"
+          }
+        },
+        "tags": [
+          "Product Units"
+        ]
+      },
+      "put": {
+        "operationId": "putProductUnit",
+        "summary": "Update a product unit",
+        "description": "Updates the `ProductUnit` object.",
+        "responses": {
+          "200": {
+            "description": "The updated product unit",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ProductUnitModelItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#\/components\/responses\/NotFound"
+          }
+        },
+        "requestBody": {
+          "description": "Product unit data",
+          "required": true,
+          "content": {
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/ProductUnitModel"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Product Units"
+        ]
+      },
+      "patch": {
+        "operationId": "patchProductUnit",
+        "summary": "Update a product unit",
+        "description": "Updates the `ProductUnit` object.",
+        "responses": {
+          "200": {
+            "description": "The updated product unit",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ProductUnitModelItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#\/components\/responses\/NotFound"
+          }
+        },
+        "requestBody": {
+          "description": "Product unit data",
+          "required": true,
+          "content": {
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/ProductUnitModel"
+              }
+            }
           }
         },
         "tags": [
@@ -4707,7 +4825,7 @@
             "name": "createdSince",
             "in": "query",
             "description": "Use this to only fetch products that has been created since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "schema": {
               "type": "string"
             }
@@ -4716,7 +4834,7 @@
             "name": "updatedSince",
             "in": "query",
             "description": "Use this to only fetch products that has been modified since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "schema": {
               "type": "string"
             }
@@ -4744,7 +4862,7 @@
             "in": "query",
             "style": "form",
             "explode": false,
-            "description": "If you want to include child data in the result. Example: ?include=primaryVariant (to include primary product variant);?include=primaryVariant,languages (to include both primary product variant and languages). \u003Cbr \/\u003E\u003Cbr \/\u003EAvailable includes: `primaryVariant`, `primaryVariant.prices`, `primaryVariant.attributeValues`, `attributes`, `mediaFiles`, `languages`, `vatRates`, `categories`, `unit`, `metaData`, `bundledProducts`, `bundledProducts.prices`, `tags`.\u003Cbr \/\u003E\u003Cbr \/\u003ENOTE! Only one variant and language is included in the result for performance reason. To fetch all variants, instead use \/products\/x\/variants(unnecessary if hasSeveralVariants is false) and to fetch all languages for an object, instead use the individual objects language endpoint",
+            "description": "If you want to include child data in the result. Example: ?include=primaryVariant (to include primary product variant);?include=primaryVariant,languages (to include both primary product variant and languages). <br \/><br \/>Available includes: `primaryVariant`, `primaryVariant.prices`, `primaryVariant.attributeValues`, `attributes`, `mediaFiles`, `languages`, `vatRates`, `categories`, `unit`, `metaData`, `bundledProducts`, `bundledProducts.prices`, `tags`.<br \/><br \/>NOTE! Only one variant and language is included in the result for performance reason. To fetch all variants, instead use \/products\/x\/variants(unnecessary if hasSeveralVariants is false) and to fetch all languages for an object, instead use the individual objects language endpoint",
             "examples": {
               "primaryVariant": {
                 "value": "primaryVariant",
@@ -6779,6 +6897,22 @@
             "format": "int32",
             "example": 101
           }
+        },
+        {
+          "name": "include",
+          "in": "query",
+          "style": "form",
+          "explode": false,
+          "description": "If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices",
+          "examples": {
+            "volumePrices": {
+              "value": "volumePrices",
+              "summary": "include volume prices"
+            }
+          },
+          "schema": {
+            "type": "string"
+          }
         }
       ]
     },
@@ -6932,6 +7066,22 @@
             "minimum": 1,
             "format": "int32",
             "example": 1
+          }
+        },
+        {
+          "name": "include",
+          "in": "query",
+          "style": "form",
+          "explode": false,
+          "description": "If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices",
+          "examples": {
+            "volumePrices": {
+              "value": "volumePrices",
+              "summary": "include volume prices"
+            }
+          },
+          "schema": {
+            "type": "string"
           }
         }
       ]
@@ -8132,7 +8282,7 @@
           }
         },
         "requestBody": {
-          "description": "Web hook data\n---\nPlease note that you should always use HTTPS when adding Webhooks in order to ensure security.\n\n\n\n\nAlso, there is no way to validate that the request originate from Starweb, so it is important that you always validate\nthese event with an API call. For example, if you receive a Webhook event regarding an order status update,\nvalidate this and retrieve the actual data of that order using a GET to `\/api\/v2\/orders\/{order-id}`\n\n\n\n\nAll Webhook events will retry up to 10 times or until they get a 20x response. If they don\u0027t get a 20x response they\nwill retry again after 30 min.\n\n---\n\nAll webhooks will POST to the URL and contain a JSON payload with the following fields:\n---\n- uuid (a UUID of this event, will be the same even if the event is resent due to none 20x response)\n- eventId\n- shopIdCode\n- eventTimestamp\n\nAdditional fields depend on the event:\n---\n**product created \/ updated \/ deleted:**\n- productId\n\n**order created \/ updated \/ status-changed:**\n- orderId\n- shippingMethodId\n- paymentMethodId\n- orderStatusId\n- orderStatusIdCode\n- totalAmount\n- currencyCode",
+          "description": "Web hook data\n---\nPlease note that you should always use HTTPS when adding Webhooks in order to ensure security.\n\n\n\n\nAlso, there is no way to validate that the request originate from Starweb, so it is important that you always validate\nthese event with an API call. For example, if you receive a Webhook event regarding an order status update,\nvalidate this and retrieve the actual data of that order using a GET to `\/api\/v2\/orders\/{order-id}`\n\n\n\n\nAll Webhook events will retry up to 10 times or until they get a 20x response. If they don't get a 20x response they\nwill retry again after 30 min.\n\n---\n\nAll webhooks will POST to the URL and contain a JSON payload with the following fields:\n---\n- uuid (a UUID of this event, will be the same even if the event is resent due to none 20x response)\n- eventId\n- shopIdCode\n- eventTimestamp\n\nAdditional fields depend on the event:\n---\n**product created \/ updated \/ deleted:**\n- productId\n\n**order created \/ updated \/ status-changed:**\n- orderId\n- shippingMethodId\n- paymentMethodId\n- orderStatusId\n- orderStatusIdCode\n- totalAmount\n- currencyCode",
           "required": true,
           "content": {
             "application\/json": {
@@ -8208,7 +8358,7 @@
           }
         },
         "requestBody": {
-          "description": "Web hook data\n---\nPlease note that you should always use HTTPS when adding Webhooks in order to ensure security.\n\n\n\n\nAlso, there is no way to validate that the request originate from Starweb, so it is important that you always validate\nthese event with an API call. For example, if you receive a Webhook event regarding an order status update,\nvalidate this and retrieve the actual data of that order using a GET to `\/api\/v2\/orders\/{order-id}`\n\n\n\n\nAll Webhook events will retry up to 10 times or until they get a 20x response. If they don\u0027t get a 20x response they\nwill retry again after 30 min.\n\n---\n\nAll webhooks will POST to the URL and contain a JSON payload with the following fields:\n---\n- uuid (a UUID of this event, will be the same even if the event is resent due to none 20x response)\n- eventId\n- shopIdCode\n- eventTimestamp\n\nAdditional fields depend on the event:\n---\n**product created \/ updated \/ deleted:**\n- productId\n\n**order created \/ updated \/ status-changed:**\n- orderId\n- shippingMethodId\n- paymentMethodId\n- orderStatusId\n- orderStatusIdCode\n- totalAmount\n- currencyCode",
+          "description": "Web hook data\n---\nPlease note that you should always use HTTPS when adding Webhooks in order to ensure security.\n\n\n\n\nAlso, there is no way to validate that the request originate from Starweb, so it is important that you always validate\nthese event with an API call. For example, if you receive a Webhook event regarding an order status update,\nvalidate this and retrieve the actual data of that order using a GET to `\/api\/v2\/orders\/{order-id}`\n\n\n\n\nAll Webhook events will retry up to 10 times or until they get a 20x response. If they don't get a 20x response they\nwill retry again after 30 min.\n\n---\n\nAll webhooks will POST to the URL and contain a JSON payload with the following fields:\n---\n- uuid (a UUID of this event, will be the same even if the event is resent due to none 20x response)\n- eventId\n- shopIdCode\n- eventTimestamp\n\nAdditional fields depend on the event:\n---\n**product created \/ updated \/ deleted:**\n- productId\n\n**order created \/ updated \/ status-changed:**\n- orderId\n- shippingMethodId\n- paymentMethodId\n- orderStatusId\n- orderStatusIdCode\n- totalAmount\n- currencyCode",
           "required": true,
           "content": {
             "application\/json": {
@@ -8244,7 +8394,7 @@
           }
         },
         "requestBody": {
-          "description": "Web hook data\n---\nPlease note that you should always use HTTPS when adding Webhooks in order to ensure security.\n\n\n\n\nAlso, there is no way to validate that the request originate from Starweb, so it is important that you always validate\nthese event with an API call. For example, if you receive a Webhook event regarding an order status update,\nvalidate this and retrieve the actual data of that order using a GET to `\/api\/v2\/orders\/{order-id}`\n\n\n\n\nAll Webhook events will retry up to 10 times or until they get a 20x response. If they don\u0027t get a 20x response they\nwill retry again after 30 min.\n\n---\n\nAll webhooks will POST to the URL and contain a JSON payload with the following fields:\n---\n- uuid (a UUID of this event, will be the same even if the event is resent due to none 20x response)\n- eventId\n- shopIdCode\n- eventTimestamp\n\nAdditional fields depend on the event:\n---\n**product created \/ updated \/ deleted:**\n- productId\n\n**order created \/ updated \/ status-changed:**\n- orderId\n- shippingMethodId\n- paymentMethodId\n- orderStatusId\n- orderStatusIdCode\n- totalAmount\n- currencyCode",
+          "description": "Web hook data\n---\nPlease note that you should always use HTTPS when adding Webhooks in order to ensure security.\n\n\n\n\nAlso, there is no way to validate that the request originate from Starweb, so it is important that you always validate\nthese event with an API call. For example, if you receive a Webhook event regarding an order status update,\nvalidate this and retrieve the actual data of that order using a GET to `\/api\/v2\/orders\/{order-id}`\n\n\n\n\nAll Webhook events will retry up to 10 times or until they get a 20x response. If they don't get a 20x response they\nwill retry again after 30 min.\n\n---\n\nAll webhooks will POST to the URL and contain a JSON payload with the following fields:\n---\n- uuid (a UUID of this event, will be the same even if the event is resent due to none 20x response)\n- eventId\n- shopIdCode\n- eventTimestamp\n\nAdditional fields depend on the event:\n---\n**product created \/ updated \/ deleted:**\n- productId\n\n**order created \/ updated \/ status-changed:**\n- orderId\n- shippingMethodId\n- paymentMethodId\n- orderStatusId\n- orderStatusIdCode\n- totalAmount\n- currencyCode",
           "required": true,
           "content": {
             "application\/json": {
@@ -8345,7 +8495,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -8399,7 +8549,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-10-25T12:54:11+02:00"
           },
           "customerId": {
             "type": "integer",
@@ -8637,7 +8787,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -8691,7 +8841,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-10-25T12:54:11+02:00"
           },
           "customerId": {
             "type": "integer",
@@ -8921,7 +9071,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -8975,7 +9125,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-10-25T12:54:11+02:00"
           },
           "customerId": {
             "type": "integer",
@@ -9602,7 +9752,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-10-25T12:54:11+02:00"
           },
           "type": {
             "type": "string",
@@ -9669,7 +9819,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-10-25T12:54:11+02:00"
           },
           "type": {
             "type": "string",
@@ -9705,7 +9855,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "readOnly": true
           },
           "approved": {
@@ -9717,7 +9867,7 @@
           "approvedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was was approved\/disapproved. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "readOnly": true
           },
           "pricelistId": {
@@ -9748,7 +9898,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-10-25T12:54:11+02:00"
           },
           "type": {
             "type": "string",
@@ -9784,7 +9934,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "readOnly": true
           },
           "approved": {
@@ -9796,7 +9946,7 @@
           "approvedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was was approved\/disapproved. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "readOnly": true
           },
           "pricelistId": {
@@ -10149,7 +10299,7 @@
             "readOnly": true,
             "nullable": false,
             "example": false,
-            "description": "Tells whether this method is a \u0022click and collect\u0022 or not"
+            "description": "Tells whether this method is a \"click and collect\" or not"
           },
           "languages": {
             "$ref": "#\/components\/schemas\/PaymentMethodLanguageModelCollection"
@@ -10316,7 +10466,7 @@
             "readOnly": true,
             "nullable": false,
             "example": false,
-            "description": "Tells whether this method is a \u0022click and collect\u0022 or not"
+            "description": "Tells whether this method is a \"click and collect\" or not"
           },
           "languages": {
             "$ref": "#\/components\/schemas\/ShippingMethodLanguageModelCollection"
@@ -10405,7 +10555,8 @@
           "parentPricelistId": {
             "type": "integer",
             "example": null,
-            "description": "Does this pricelist has a parent price list. "
+            "description": "Does this pricelist has a parent price list. ",
+            "nullable": true
           },
           "isCustomerPricelist": {
             "type": "boolean",
@@ -10798,7 +10949,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the comment was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-10-25T12:54:11+02:00"
           },
           "text": {
             "type": "string",
@@ -10858,13 +11009,13 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the media file was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "readOnly": true
           },
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the media file was modifies. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "readOnly": true
           },
           "size": {
@@ -11138,7 +11289,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-10-25T12:54:11+02:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -11177,7 +11328,7 @@
           "sortIndex": {
             "type": "integer",
             "nullable": true,
-            "minimum": 1,
+            "minimum": 0,
             "maximum": 10000,
             "description": "Sort index for this product in a list"
           },
@@ -11216,7 +11367,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "readOnly": true
           },
           "variants": {
@@ -11264,7 +11415,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-10-25T12:54:11+02:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -11342,7 +11493,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "readOnly": true
           },
           "variants": {
@@ -11407,7 +11558,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-10-25T12:54:11+02:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -11485,7 +11636,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-10-25T12:54:11+02:00",
             "readOnly": true
           },
           "mediaFiles": {
@@ -12071,6 +12222,13 @@
             "nullable": true,
             "example": 13.6,
             "description": "The special price excluding vat (a discounted price)"
+          },
+          "volumePrices": {
+            "type": "array",
+            "description": "A collection of volume prices",
+            "items": {
+              "$ref": "#\/components\/schemas\/ProductVariantVolumePriceModel"
+            }
           }
         },
         "required": [
@@ -12271,7 +12429,7 @@
             "type": "boolean",
             "default": false,
             "example": true,
-            "description": "Should the product be displayed as \u0022in stock\u0022 when this status is set?"
+            "description": "Should the product be displayed as \"in stock\" when this status is set?"
           },
           "languages": {
             "type": "array",
@@ -12690,7 +12848,6 @@
             "type": "integer",
             "minimum": 1,
             "description": "The id of an order status. Only used with the order-status-changes event.",
-            "nullable": true,
             "example": 1
           },
           "url": {
@@ -13430,7 +13587,7 @@
         "description": "OAuth 2.0 using Client Credentials",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": "https:\/\/leksaker.starweb.se\/api\/v2\/token",
+            "tokenUrl": "http:\/\/dev-shop.sws.local\/api\/v2\/token",
             "scopes": {}
           }
         }

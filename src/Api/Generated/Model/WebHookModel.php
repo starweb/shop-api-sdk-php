@@ -25,7 +25,7 @@ class WebHookModel
     /**
      * The id of an order status. Only used with the order-status-changes event.
      *
-     * @var int|null
+     * @var int
      */
     protected $statusId;
     /**
@@ -100,20 +100,20 @@ class WebHookModel
     /**
      * The id of an order status. Only used with the order-status-changes event.
      *
-     * @return int|null
+     * @return int
      */
-    public function getStatusId() : ?int
+    public function getStatusId() : int
     {
         return $this->statusId;
     }
     /**
      * The id of an order status. Only used with the order-status-changes event.
      *
-     * @param int|null $statusId
+     * @param int $statusId
      *
      * @return self
      */
-    public function setStatusId(?int $statusId) : self
+    public function setStatusId(int $statusId) : self
     {
         $this->statusId = $statusId;
         return $this;

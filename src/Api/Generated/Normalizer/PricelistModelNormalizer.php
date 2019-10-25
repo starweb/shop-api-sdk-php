@@ -67,9 +67,7 @@ class PricelistModelNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getParentPricelistId()) {
-            $data->{'parentPricelistId'} = $object->getParentPricelistId();
-        }
+        $data->{'parentPricelistId'} = $object->getParentPricelistId();
         if (null !== $object->getIsCustomerPricelist()) {
             $data->{'isCustomerPricelist'} = $object->getIsCustomerPricelist();
         }
