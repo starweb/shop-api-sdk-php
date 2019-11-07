@@ -42,12 +42,12 @@ class CreateProductsVariantsAttributeValues extends \Jane\OpenApiRuntime\Client\
      *
      * @throws \Starweb\Api\Generated\Exception\CreateProductsVariantsAttributeValuesBadRequestException
      *
-     * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelCollection
+     * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueModelCollection', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueModelItem', 'json');
         }
         if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \Starweb\Api\Generated\Exception\CreateProductsVariantsAttributeValuesBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));

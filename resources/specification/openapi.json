@@ -3180,7 +3180,7 @@
             "content": {
               "application\/json": {
                 "schema": {
-                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModelCollection"
+                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModelItem"
                 }
               }
             }
@@ -3267,7 +3267,7 @@
             "content": {
               "application\/json": {
                 "schema": {
-                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModelCollection"
+                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModelItem"
                 }
               }
             }
@@ -3301,7 +3301,7 @@
             "content": {
               "application\/json": {
                 "schema": {
-                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModelCollection"
+                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModelItem"
                 }
               }
             }

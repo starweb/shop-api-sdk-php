@@ -1131,7 +1131,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\CreateProductsVariantsAttributeValuesBadRequestException
     *
-    * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelCollection|\Psr\Http\Message\ResponseInterface
+    * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelItem|\Psr\Http\Message\ResponseInterface
     */
     public function createProductsVariantsAttributeValues(int $attributeId, \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1178,7 +1178,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PatchProductsVariantsAttributeValuesBadRequestException
     *
-    * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelCollection|\Psr\Http\Message\ResponseInterface
+    * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelItem|\Psr\Http\Message\ResponseInterface
     */
     public function patchProductsVariantsAttributeValues(int $attributeId, int $attributeValueId, \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1194,7 +1194,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PutProductsVariantsAttributeValuesBadRequestException
     *
-    * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelCollection|\Psr\Http\Message\ResponseInterface
+    * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelItem|\Psr\Http\Message\ResponseInterface
     */
     public function putProductsVariantsAttributeValues(int $attributeId, int $attributeValueId, \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
     {
