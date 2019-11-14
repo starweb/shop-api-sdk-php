@@ -38,7 +38,11 @@ class StockLocationPostRequestModelNormalizer implements DenormalizerInterface, 
             $object->setEcommerceStockLocation($data->{'ecommerceStockLocation'});
         }
         if (property_exists($data, 'languages')) {
-            $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\StockLocationLanguagesModelCollection', 'json', $context));
+            $values = array();
+            foreach ($data->{'languages'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\StockLocationLanguagesModel', 'json', $context);
+            }
+            $object->setLanguages($values);
         }
         return $object;
     }
@@ -53,6 +57,13 @@ class StockLocationPostRequestModelNormalizer implements DenormalizerInterface, 
         }
         if (null !== $object->getEcommerceStockLocation()) {
             $data->{'ecommerceStockLocation'} = $object->getEcommerceStockLocation();
+        }
+        if (null !== $object->getLanguages()) {
+            $values = array();
+            foreach ($object->getLanguages() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data->{'languages'} = $values;
         }
         return $data;
     }

@@ -25,7 +25,7 @@ class StockLocationPutRequestModel
     /**
      * 
      *
-     * @var StockLocationLanguagesModelCollection
+     * @var StockLocationLanguagesModel[]
      */
     protected $languages;
     /**
@@ -94,20 +94,20 @@ class StockLocationPutRequestModel
     /**
      * 
      *
-     * @return StockLocationLanguagesModelCollection
+     * @return StockLocationLanguagesModel[]
      */
-    public function getLanguages() : StockLocationLanguagesModelCollection
+    public function getLanguages() : array
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param StockLocationLanguagesModelCollection $languages
+     * @param StockLocationLanguagesModel[] $languages
      *
      * @return self
      */
-    public function setLanguages(StockLocationLanguagesModelCollection $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;

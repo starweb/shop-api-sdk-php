@@ -12997,7 +12997,10 @@
             "default": false
           },
           "languages": {
-            "$ref": "#\/components\/schemas\/StockLocationLanguagesModelCollection"
+            "type": "array",
+            "items": {
+              "$ref": "#\/components\/schemas\/StockLocationLanguagesModel"
+            }
           }
         },
         "required": [
@@ -13031,7 +13034,10 @@
             "default": false
           },
           "languages": {
-            "$ref": "#\/components\/schemas\/StockLocationLanguagesModelCollection"
+            "type": "array",
+            "items": {
+              "$ref": "#\/components\/schemas\/StockLocationLanguagesModel"
+            }
           }
         },
         "required": [
