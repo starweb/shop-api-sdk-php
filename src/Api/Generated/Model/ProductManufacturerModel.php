@@ -19,7 +19,7 @@ class ProductManufacturerModel
     /**
      * The URL to the manufacturers website
      *
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
@@ -67,20 +67,20 @@ class ProductManufacturerModel
     /**
      * The URL to the manufacturers website
      *
-     * @return string
+     * @return string|null
      */
-    public function getUrl() : string
+    public function getUrl() : ?string
     {
         return $this->url;
     }
     /**
      * The URL to the manufacturers website
      *
-     * @param string $url
+     * @param string|null $url
      *
      * @return self
      */
-    public function setUrl(string $url) : self
+    public function setUrl(?string $url) : self
     {
         $this->url = $url;
         return $this;

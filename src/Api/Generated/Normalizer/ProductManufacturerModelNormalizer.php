@@ -45,9 +45,7 @@ class ProductManufacturerModelNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
         }
-        if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
-        }
+        $data->{'url'} = $object->getUrl();
         return $data;
     }
 }
