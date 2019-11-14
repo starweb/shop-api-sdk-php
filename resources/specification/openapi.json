@@ -12317,7 +12317,8 @@
             "type": "string",
             "maxLength": 255,
             "description": "The URL to the manufacturers website",
-            "example": "https:\/\/example.net"
+            "example": "https:\/\/example.net",
+            "nullable": true
           }
         },
         "required": [
