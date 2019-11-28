@@ -412,7 +412,7 @@
             "name": "createdSince",
             "in": "query",
             "description": "Use this to only fetch customers that has been created since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "schema": {
               "type": "string"
             }
@@ -421,7 +421,7 @@
             "name": "updatedSince",
             "in": "query",
             "description": "Use this to only fetch customers that has been modified since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "schema": {
               "type": "string"
             }
@@ -4838,7 +4838,7 @@
             "name": "createdSince",
             "in": "query",
             "description": "Use this to only fetch products that has been created since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "schema": {
               "type": "string"
             }
@@ -4847,7 +4847,7 @@
             "name": "updatedSince",
             "in": "query",
             "description": "Use this to only fetch products that has been modified since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "schema": {
               "type": "string"
             }
@@ -8508,7 +8508,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -8562,7 +8562,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "customerId": {
             "type": "integer",
@@ -8800,7 +8800,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -8854,7 +8854,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "customerId": {
             "type": "integer",
@@ -9084,7 +9084,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -9138,7 +9138,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "customerId": {
             "type": "integer",
@@ -9787,7 +9787,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "type": {
             "type": "string",
@@ -9854,7 +9854,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "type": {
             "type": "string",
@@ -9890,7 +9890,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was modified. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "approved": {
@@ -9902,7 +9902,7 @@
           "approvedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was was approved\/disapproved. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "pricelistId": {
@@ -9933,7 +9933,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "type": {
             "type": "string",
@@ -9969,7 +9969,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was modified. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "approved": {
@@ -9981,7 +9981,7 @@
           "approvedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was was approved\/disapproved. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "pricelistId": {
@@ -10991,7 +10991,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the comment was created. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "text": {
             "type": "string",
@@ -11051,13 +11051,13 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the media file was created. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the media file was modifies. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "size": {
@@ -11335,7 +11335,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -11413,7 +11413,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "variants": {
@@ -11461,7 +11461,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -11539,7 +11539,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "variants": {
@@ -11604,7 +11604,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -11682,7 +11682,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T12:53:20+01:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "mediaFiles": {
@@ -12943,8 +12943,7 @@
             "nullable": true,
             "minimum": 1,
             "description": "The id of an order status. Only used with the order-status-changes event.",
-            "example": 1,
-            "nullable": true
+            "example": 1
           },
           "url": {
             "type": "string",
@@ -13195,7 +13194,10 @@
                 "default": false
               },
               "languages": {
-                "$ref": "#\/components\/schemas\/StockLocationLanguagesModelCollection"
+                "type": "array",
+                "items": {
+                  "$ref": "#\/components\/schemas\/StockLocationLanguagesModel"
+                }
               }
             }
           },
