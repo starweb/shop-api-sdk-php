@@ -8,7 +8,7 @@
       "url": "https:\/\/www.starweb.se\/starweb-api",
       "email": "starwebapi@starweb.se"
     },
-    "version": "2.11.0",
+    "version": "2.12.0",
     "x-logo": {
       "url": "https:\/\/www.starweb.se\/content\/themes\/starweb\/dist\/images\/starweb-header-logo-2x.png",
       "backgroundColor": "#551F63",
@@ -412,7 +412,7 @@
             "name": "createdSince",
             "in": "query",
             "description": "Use this to only fetch customers that has been created since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "schema": {
               "type": "string"
             }
@@ -421,7 +421,7 @@
             "name": "updatedSince",
             "in": "query",
             "description": "Use this to only fetch customers that has been modified since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "schema": {
               "type": "string"
             }
@@ -1400,7 +1400,7 @@
             "in": "query",
             "style": "form",
             "explode": false,
-            "description": "If you want to include child data in the result. Example: ?include=items (to include order items) or ?include=items,externalServices (to include order items as well as external ids). Available includes: items, externalServices, status, customer, addresses",
+            "description": "If you want to include child data in the result. Example: ?include=items (to include order items) or ?include=items,externalServices (to include order items as well as external ids). or ?include=items.bundledItems (to include items and bundled items)Available includes: items, externalServices, status, customer, addresses",
             "examples": {
               "items": {
                 "value": "items",
@@ -2301,6 +2301,19 @@
         "operationId": "getOrderItem",
         "summary": "Retrieve an order item",
         "description": "Retrieves the `OrderItem` object",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "description": "If you want to include child data in the result. Example: ?include=bundledItems (to include bundled items). Available includes: bundledItems",
+            "example": "bundledItems",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "An order item is returned",
@@ -4825,7 +4838,7 @@
             "name": "createdSince",
             "in": "query",
             "description": "Use this to only fetch products that has been created since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "schema": {
               "type": "string"
             }
@@ -4834,7 +4847,7 @@
             "name": "updatedSince",
             "in": "query",
             "description": "Use this to only fetch products that has been modified since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "schema": {
               "type": "string"
             }
@@ -8495,7 +8508,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -8549,7 +8562,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00"
+            "example": "2019-11-28T12:53:20+01:00"
           },
           "customerId": {
             "type": "integer",
@@ -8787,7 +8800,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -8841,7 +8854,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00"
+            "example": "2019-11-28T12:53:20+01:00"
           },
           "customerId": {
             "type": "integer",
@@ -9071,7 +9084,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -9125,7 +9138,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00"
+            "example": "2019-11-28T12:53:20+01:00"
           },
           "customerId": {
             "type": "integer",
@@ -9649,13 +9662,35 @@
           }
         }
       },
+      "OrderItemBundledModelItem": {
+        "properties": {
+          "bundledItems": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#\/components\/schemas\/OrderItemModel"
+                }
+              }
+            }
+          }
+        }
+      },
       "OrderItemModelCollection": {
         "properties": {
           "data": {
             "type": "array",
             "description": "A list of order items",
             "items": {
-              "$ref": "#\/components\/schemas\/OrderItemModel"
+              "allOf": [
+                {
+                  "$ref": "#\/components\/schemas\/OrderItemModel"
+                },
+                {
+                  "$ref": "#\/components\/schemas\/OrderItemBundledModelItem"
+                }
+              ]
             }
           }
         }
@@ -9752,7 +9787,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00"
+            "example": "2019-11-28T12:53:20+01:00"
           },
           "type": {
             "type": "string",
@@ -9819,7 +9854,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00"
+            "example": "2019-11-28T12:53:20+01:00"
           },
           "type": {
             "type": "string",
@@ -9855,7 +9890,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was modified. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "readOnly": true
           },
           "approved": {
@@ -9867,7 +9902,7 @@
           "approvedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was was approved\/disapproved. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "readOnly": true
           },
           "pricelistId": {
@@ -9898,7 +9933,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00"
+            "example": "2019-11-28T12:53:20+01:00"
           },
           "type": {
             "type": "string",
@@ -9934,7 +9969,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was modified. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "readOnly": true
           },
           "approved": {
@@ -9946,7 +9981,7 @@
           "approvedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was was approved\/disapproved. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "readOnly": true
           },
           "pricelistId": {
@@ -10500,6 +10535,13 @@
             "example": 1,
             "description": "The pricelist id"
           },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist"
+          },
           "name": {
             "type": "string",
             "maxLength": 30,
@@ -10949,7 +10991,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the comment was created. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00"
+            "example": "2019-11-28T12:53:20+01:00"
           },
           "text": {
             "type": "string",
@@ -11009,13 +11051,13 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the media file was created. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "readOnly": true
           },
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the media file was modifies. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "readOnly": true
           },
           "size": {
@@ -11088,7 +11130,8 @@
           "parentId": {
             "type": "integer",
             "description": "The category`s parent`s Id",
-            "example": null
+            "example": null,
+            "nullable": true
           },
           "visibility": {
             "type": "string",
@@ -11108,7 +11151,8 @@
           "imageFileId": {
             "type": "integer",
             "description": "The Id to the category`s image file. Has to be an existing mediaFile",
-            "example": null
+            "example": null,
+            "nullable": true
           },
           "externalType": {
             "type": "string",
@@ -11145,7 +11189,8 @@
           "parentId": {
             "type": "integer",
             "description": "The category`s parent`s Id",
-            "example": null
+            "example": null,
+            "nullable": true
           },
           "visibility": {
             "type": "string",
@@ -11165,7 +11210,8 @@
           "imageFileId": {
             "type": "integer",
             "description": "The Id to the category`s image file. Has to be an existing mediaFile",
-            "example": null
+            "example": null,
+            "nullable": true
           },
           "externalType": {
             "type": "string",
@@ -11289,7 +11335,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00"
+            "example": "2019-11-28T12:53:20+01:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -11367,7 +11413,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "readOnly": true
           },
           "variants": {
@@ -11415,7 +11461,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00"
+            "example": "2019-11-28T12:53:20+01:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -11493,7 +11539,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "readOnly": true
           },
           "variants": {
@@ -11558,7 +11604,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00"
+            "example": "2019-11-28T12:53:20+01:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -11636,7 +11682,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-10-25T12:54:11+02:00",
+            "example": "2019-11-28T12:53:20+01:00",
             "readOnly": true
           },
           "mediaFiles": {
@@ -12144,8 +12190,18 @@
             "format": "int32",
             "example": 1
           },
+          "externalId": {
+            "type": "string",
+            "description": "The external id of this unit",
+            "example": "101",
+            "maxLength": 40,
+            "default": ""
+          },
           "languages": {
-            "$ref": "#\/components\/schemas\/ProductUnitLanguageModelCollection"
+            "type": "array",
+            "items": {
+              "$ref": "#\/components\/schemas\/ProductUnitLanguageModel"
+            }
           }
         }
       },
@@ -12306,6 +12362,13 @@
             "readOnly": true,
             "description": "The id of this manufacturer",
             "example": 2
+          },
+          "externalId": {
+            "type": "string",
+            "description": "The external id of this manufacturer",
+            "example": "101",
+            "maxLength": 40,
+            "default": ""
           },
           "name": {
             "type": "string",
@@ -12614,6 +12677,18 @@
       "ProductVariantAttributeValueModelUpdatable": {
         "type": "object",
         "properties": {
+          "skuSuffix": {
+            "type": "string",
+            "description": "The suggested suffix for new Variants using this attribute value",
+            "example": "W"
+          },
+          "sortIndex": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0,
+            "example": 9,
+            "description": "The sort order for this attribute value"
+          },
           "languages": {
             "type": "array",
             "description": "A collection of attribute value languages",
@@ -12643,6 +12718,13 @@
           "attributeValueId": {
             "type": "integer",
             "description": "The id for this attribute value"
+          },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this attribute value"
           },
           "skuSuffix": {
             "type": "string",
@@ -12691,6 +12773,13 @@
             "readOnly": true,
             "example": 1
           },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this attribute"
+          },
           "languages": {
             "type": "array",
             "description": "A collection of attribute languages",
@@ -12720,6 +12809,10 @@
           "attributeId": {
             "type": "integer",
             "description": "The id for this attribute"
+          },
+          "externalId": {
+            "type": "string",
+            "description": "The external id of this attribute"
           },
           "languages": {
             "type": "object",
@@ -12847,6 +12940,7 @@
           },
           "statusId": {
             "type": "integer",
+            "nullable": true,
             "minimum": 1,
             "description": "The id of an order status. Only used with the order-status-changes event.",
             "example": 1,
@@ -12947,6 +13041,13 @@
             "readOnly": true,
             "example": 101
           },
+          "externalId": {
+            "type": "string",
+            "description": "The external id of this stock location",
+            "example": "101",
+            "maxLength": 40,
+            "default": ""
+          },
           "visibility": {
             "type": "string",
             "enum": [
@@ -12976,6 +13077,13 @@
       "StockLocationPostRequestModel": {
         "type": "object",
         "properties": {
+          "externalId": {
+            "type": "string",
+            "description": "The external id of this stock location",
+            "example": "101",
+            "maxLength": 40,
+            "default": ""
+          },
           "visibility": {
             "type": "string",
             "enum": [
@@ -13013,6 +13121,13 @@
       "StockLocationPutRequestModel": {
         "type": "object",
         "properties": {
+          "externalId": {
+            "type": "string",
+            "description": "The external id of this stock location",
+            "example": "101",
+            "maxLength": 40,
+            "default": ""
+          },
           "visibility": {
             "type": "string",
             "enum": [
@@ -13051,6 +13166,13 @@
         "allOf": [
           {
             "properties": {
+              "externalId": {
+                "type": "string",
+                "description": "The external id of this stock location",
+                "example": "101",
+                "maxLength": 40,
+                "default": ""
+              },
               "visibility": {
                 "type": "string",
                 "enum": [
@@ -13080,6 +13202,12 @@
           {
             "title": "Property update",
             "anyOf": [
+              {
+                "title": "externalId update",
+                "required": [
+                  "externalId"
+                ]
+              },
               {
                 "title": "visibility update",
                 "required": [
