@@ -31,7 +31,7 @@ class OrderItemModelCollectionNormalizer implements DenormalizerInterface, Norma
         if (property_exists($data, 'data')) {
             $values = array();
             foreach ($data->{'data'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\OrderItemModel', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\OrderItemModelCollectionDataItem', 'json', $context);
             }
             $object->setData($values);
         }

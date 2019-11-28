@@ -31,6 +31,9 @@ class ProductVariantAttributeValueModelNormalizer implements DenormalizerInterfa
         if (property_exists($data, 'attributeValueId')) {
             $object->setAttributeValueId($data->{'attributeValueId'});
         }
+        if (property_exists($data, 'externalId')) {
+            $object->setExternalId($data->{'externalId'});
+        }
         if (property_exists($data, 'skuSuffix')) {
             $object->setSkuSuffix($data->{'skuSuffix'});
         }
@@ -51,6 +54,9 @@ class ProductVariantAttributeValueModelNormalizer implements DenormalizerInterfa
         $data = new \stdClass();
         if (null !== $object->getAttributeValueId()) {
             $data->{'attributeValueId'} = $object->getAttributeValueId();
+        }
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
         }
         if (null !== $object->getSkuSuffix()) {
             $data->{'skuSuffix'} = $object->getSkuSuffix();

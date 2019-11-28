@@ -31,6 +31,9 @@ class PricelistModelNormalizer implements DenormalizerInterface, NormalizerInter
         if (property_exists($data, 'pricelistId')) {
             $object->setPricelistId($data->{'pricelistId'});
         }
+        if (property_exists($data, 'externalId')) {
+            $object->setExternalId($data->{'externalId'});
+        }
         if (property_exists($data, 'name')) {
             $object->setName($data->{'name'});
         }
@@ -67,6 +70,9 @@ class PricelistModelNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
         $data->{'parentPricelistId'} = $object->getParentPricelistId();
         if (null !== $object->getIsCustomerPricelist()) {
             $data->{'isCustomerPricelist'} = $object->getIsCustomerPricelist();

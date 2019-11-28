@@ -63,9 +63,7 @@ class ProductCategoryModelNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getParentId()) {
-            $data->{'parentId'} = $object->getParentId();
-        }
+        $data->{'parentId'} = $object->getParentId();
         if (null !== $object->getVisibility()) {
             $data->{'visibility'} = $object->getVisibility();
         }
@@ -75,9 +73,7 @@ class ProductCategoryModelNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getOpenPage()) {
             $data->{'openPage'} = $object->getOpenPage();
         }
-        if (null !== $object->getImageFileId()) {
-            $data->{'imageFileId'} = $object->getImageFileId();
-        }
+        $data->{'imageFileId'} = $object->getImageFileId();
         if (null !== $object->getExternalType()) {
             $data->{'externalType'} = $object->getExternalType();
         }

@@ -31,14 +31,31 @@ class ProductUnitModelNormalizer implements DenormalizerInterface, NormalizerInt
         if (property_exists($data, 'unitId')) {
             $object->setUnitId($data->{'unitId'});
         }
+        if (property_exists($data, 'externalId')) {
+            $object->setExternalId($data->{'externalId'});
+        }
         if (property_exists($data, 'languages')) {
-            $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\ProductUnitLanguageModelCollection', 'json', $context));
+            $values = array();
+            foreach ($data->{'languages'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductUnitLanguageModel', 'json', $context);
+            }
+            $object->setLanguages($values);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
+        if (null !== $object->getLanguages()) {
+            $values = array();
+            foreach ($object->getLanguages() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data->{'languages'} = $values;
+        }
         return $data;
     }
 }

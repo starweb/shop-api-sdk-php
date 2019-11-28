@@ -5,6 +5,12 @@ namespace Starweb\Api\Generated\Model;
 class StockLocationPutRequestModel
 {
     /**
+     * The external id of this stock location
+     *
+     * @var string
+     */
+    protected $externalId = '';
+    /**
      * The stock location`s visibility settings.
      *
      * @var string
@@ -28,6 +34,27 @@ class StockLocationPutRequestModel
      * @var StockLocationLanguagesModel[]
      */
     protected $languages;
+    /**
+     * The external id of this stock location
+     *
+     * @return string
+     */
+    public function getExternalId() : string
+    {
+        return $this->externalId;
+    }
+    /**
+     * The external id of this stock location
+     *
+     * @param string $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(string $externalId) : self
+    {
+        $this->externalId = $externalId;
+        return $this;
+    }
     /**
      * The stock location`s visibility settings.
      *

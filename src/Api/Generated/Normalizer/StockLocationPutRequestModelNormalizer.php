@@ -28,6 +28,9 @@ class StockLocationPutRequestModelNormalizer implements DenormalizerInterface, N
             throw new InvalidArgumentException();
         }
         $object = new \Starweb\Api\Generated\Model\StockLocationPutRequestModel();
+        if (property_exists($data, 'externalId')) {
+            $object->setExternalId($data->{'externalId'});
+        }
         if (property_exists($data, 'visibility')) {
             $object->setVisibility($data->{'visibility'});
         }
@@ -49,6 +52,9 @@ class StockLocationPutRequestModelNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
         if (null !== $object->getVisibility()) {
             $data->{'visibility'} = $object->getVisibility();
         }

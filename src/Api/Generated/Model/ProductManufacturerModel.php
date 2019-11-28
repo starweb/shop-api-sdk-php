@@ -11,6 +11,12 @@ class ProductManufacturerModel
      */
     protected $manufacturerId;
     /**
+     * The external id of this manufacturer
+     *
+     * @var string
+     */
+    protected $externalId = '';
+    /**
      * The name of this manufacturer
      *
      * @var string
@@ -41,6 +47,27 @@ class ProductManufacturerModel
     public function setManufacturerId(int $manufacturerId) : self
     {
         $this->manufacturerId = $manufacturerId;
+        return $this;
+    }
+    /**
+     * The external id of this manufacturer
+     *
+     * @return string
+     */
+    public function getExternalId() : string
+    {
+        return $this->externalId;
+    }
+    /**
+     * The external id of this manufacturer
+     *
+     * @param string $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(string $externalId) : self
+    {
+        $this->externalId = $externalId;
         return $this;
     }
     /**

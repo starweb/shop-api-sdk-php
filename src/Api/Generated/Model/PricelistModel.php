@@ -11,6 +11,12 @@ class PricelistModel
      */
     protected $pricelistId;
     /**
+     * The external id of this pricelist
+     *
+     * @var string
+     */
+    protected $externalId = '';
+    /**
      * The name of this pricelist
      *
      * @var string
@@ -83,6 +89,27 @@ class PricelistModel
     public function setPricelistId(int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
+        return $this;
+    }
+    /**
+     * The external id of this pricelist
+     *
+     * @return string
+     */
+    public function getExternalId() : string
+    {
+        return $this->externalId;
+    }
+    /**
+     * The external id of this pricelist
+     *
+     * @param string $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(string $externalId) : self
+    {
+        $this->externalId = $externalId;
         return $this;
     }
     /**

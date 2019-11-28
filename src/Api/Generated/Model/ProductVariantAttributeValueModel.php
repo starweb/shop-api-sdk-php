@@ -11,6 +11,12 @@ class ProductVariantAttributeValueModel
      */
     protected $attributeValueId;
     /**
+     * The external id of this attribute value
+     *
+     * @var string
+     */
+    protected $externalId = '';
+    /**
      * The suggested suffix for new Variants using this attribute value
      *
      * @var string
@@ -47,6 +53,27 @@ class ProductVariantAttributeValueModel
     public function setAttributeValueId(int $attributeValueId) : self
     {
         $this->attributeValueId = $attributeValueId;
+        return $this;
+    }
+    /**
+     * The external id of this attribute value
+     *
+     * @return string
+     */
+    public function getExternalId() : string
+    {
+        return $this->externalId;
+    }
+    /**
+     * The external id of this attribute value
+     *
+     * @param string $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(string $externalId) : self
+    {
+        $this->externalId = $externalId;
         return $this;
     }
     /**

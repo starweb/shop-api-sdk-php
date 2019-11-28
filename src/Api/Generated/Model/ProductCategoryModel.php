@@ -13,7 +13,7 @@ class ProductCategoryModel
     /**
      * The category`s parent`s Id
      *
-     * @var int
+     * @var int|null
      */
     protected $parentId;
     /**
@@ -37,7 +37,7 @@ class ProductCategoryModel
     /**
      * The Id to the category`s image file. Has to be an existing mediaFile
      *
-     * @var int
+     * @var int|null
      */
     protected $imageFileId;
     /**
@@ -88,20 +88,20 @@ class ProductCategoryModel
     /**
      * The category`s parent`s Id
      *
-     * @return int
+     * @return int|null
      */
-    public function getParentId() : int
+    public function getParentId() : ?int
     {
         return $this->parentId;
     }
     /**
      * The category`s parent`s Id
      *
-     * @param int $parentId
+     * @param int|null $parentId
      *
      * @return self
      */
-    public function setParentId(int $parentId) : self
+    public function setParentId(?int $parentId) : self
     {
         $this->parentId = $parentId;
         return $this;
@@ -172,20 +172,20 @@ class ProductCategoryModel
     /**
      * The Id to the category`s image file. Has to be an existing mediaFile
      *
-     * @return int
+     * @return int|null
      */
-    public function getImageFileId() : int
+    public function getImageFileId() : ?int
     {
         return $this->imageFileId;
     }
     /**
      * The Id to the category`s image file. Has to be an existing mediaFile
      *
-     * @param int $imageFileId
+     * @param int|null $imageFileId
      *
      * @return self
      */
-    public function setImageFileId(int $imageFileId) : self
+    public function setImageFileId(?int $imageFileId) : self
     {
         $this->imageFileId = $imageFileId;
         return $this;

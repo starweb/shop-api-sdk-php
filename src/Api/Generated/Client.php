@@ -404,7 +404,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var int $statusFilter Only fetch orders with the specifiec order status. Use order status ID
      *     @var string $sortBy Sort the result using a specified field. orderId is default
      *     @var string $sortOrder ASC for an ascending sort order; or DESC for a descending sort order. DESC is default
-     *     @var string $include If you want to include child data in the result. Example: ?include=items (to include order items) or ?include=items,externalServices (to include order items as well as external ids). Available includes: items, externalServices, status, customer, addresses
+     *     @var string $include If you want to include child data in the result. Example: ?include=items (to include order items) or ?include=items,externalServices (to include order items as well as external ids). or ?include=items.bundledItems (to include items and bundled items)Available includes: items, externalServices, status, customer, addresses
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\ListOrdersBadRequestException
@@ -777,14 +777,17 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param int $orderId The orders id
      * @param int $orderItemId The order item id
+     * @param array $queryParameters {
+     *     @var string $include If you want to include child data in the result. Example: ?include=bundledItems (to include bundled items). Available includes: bundledItems
+     * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\GetOrderItemNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\OrderItemModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function getOrderItem(int $orderId, int $orderItemId, string $fetch = self::FETCH_OBJECT)
+    public function getOrderItem(int $orderId, int $orderItemId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetOrderItem($orderId, $orderItemId), $fetch);
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetOrderItem($orderId, $orderItemId, $queryParameters), $fetch);
     }
     /**
      * Updates an order item. Retrieves the updated `OrderItem` object

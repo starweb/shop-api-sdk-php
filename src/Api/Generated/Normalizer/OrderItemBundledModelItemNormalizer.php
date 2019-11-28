@@ -10,48 +10,35 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ProductManufacturerModelNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class OrderItemBundledModelItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Starweb\\Api\\Generated\\Model\\ProductManufacturerModel';
+        return $type === 'Starweb\\Api\\Generated\\Model\\OrderItemBundledModelItem';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductManufacturerModel';
+        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderItemBundledModelItem';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
             throw new InvalidArgumentException();
         }
-        $object = new \Starweb\Api\Generated\Model\ProductManufacturerModel();
-        if (property_exists($data, 'manufacturerId')) {
-            $object->setManufacturerId($data->{'manufacturerId'});
-        }
-        if (property_exists($data, 'externalId')) {
-            $object->setExternalId($data->{'externalId'});
-        }
-        if (property_exists($data, 'name')) {
-            $object->setName($data->{'name'});
-        }
-        if (property_exists($data, 'url')) {
-            $object->setUrl($data->{'url'});
+        $object = new \Starweb\Api\Generated\Model\OrderItemBundledModelItem();
+        if (property_exists($data, 'bundledItems')) {
+            $object->setBundledItems($this->denormalizer->denormalize($data->{'bundledItems'}, 'Starweb\\Api\\Generated\\Model\\OrderItemBundledModelItemBundledItems', 'json', $context));
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getExternalId()) {
-            $data->{'externalId'} = $object->getExternalId();
+        if (null !== $object->getBundledItems()) {
+            $data->{'bundledItems'} = $this->normalizer->normalize($object->getBundledItems(), 'json', $context);
         }
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
-        $data->{'url'} = $object->getUrl();
         return $data;
     }
 }

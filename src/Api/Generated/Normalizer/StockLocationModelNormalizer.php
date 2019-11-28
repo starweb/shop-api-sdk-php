@@ -31,6 +31,9 @@ class StockLocationModelNormalizer implements DenormalizerInterface, NormalizerI
         if (property_exists($data, 'stockLocationId')) {
             $object->setStockLocationId($data->{'stockLocationId'});
         }
+        if (property_exists($data, 'externalId')) {
+            $object->setExternalId($data->{'externalId'});
+        }
         if (property_exists($data, 'visibility')) {
             $object->setVisibility($data->{'visibility'});
         }
@@ -48,6 +51,9 @@ class StockLocationModelNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
         if (null !== $object->getVisibility()) {
             $data->{'visibility'} = $object->getVisibility();
         }

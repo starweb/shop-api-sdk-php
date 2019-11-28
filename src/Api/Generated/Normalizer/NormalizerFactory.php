@@ -28,7 +28,10 @@ class NormalizerFactory
         $normalizers[] = new OrderStatusModelCollectionNormalizer();
         $normalizers[] = new OrderItemModelNormalizer();
         $normalizers[] = new OrderItemModelItemNormalizer();
+        $normalizers[] = new OrderItemBundledModelItemNormalizer();
+        $normalizers[] = new OrderItemBundledModelItemBundledItemsNormalizer();
         $normalizers[] = new OrderItemModelCollectionNormalizer();
+        $normalizers[] = new OrderItemModelCollectionDataItemNormalizer();
         $normalizers[] = new OrderExternalServiceModelNormalizer();
         $normalizers[] = new OrderExternalServicesModelItemNormalizer();
         $normalizers[] = new OrderExternalServiceModelCollectionNormalizer();

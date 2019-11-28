@@ -31,6 +31,9 @@ class ProductVariantAttributeModelUpdatableNormalizer implements DenormalizerInt
         if (property_exists($data, 'attributeId')) {
             $object->setAttributeId($data->{'attributeId'});
         }
+        if (property_exists($data, 'externalId')) {
+            $object->setExternalId($data->{'externalId'});
+        }
         if (property_exists($data, 'languages')) {
             $values = array();
             foreach ($data->{'languages'} as $value) {
@@ -43,6 +46,9 @@ class ProductVariantAttributeModelUpdatableNormalizer implements DenormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
         if (null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {

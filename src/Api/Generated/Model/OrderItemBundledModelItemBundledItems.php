@@ -2,27 +2,27 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class OrderItemModelCollection
+class OrderItemBundledModelItemBundledItems
 {
     /**
-     * A list of order items
+     * 
      *
-     * @var OrderItemModelCollectionDataItem[]
+     * @var OrderItemModel[]
      */
     protected $data;
     /**
-     * A list of order items
+     * 
      *
-     * @return OrderItemModelCollectionDataItem[]
+     * @return OrderItemModel[]
      */
     public function getData() : array
     {
         return $this->data;
     }
     /**
-     * A list of order items
+     * 
      *
-     * @param OrderItemModelCollectionDataItem[] $data
+     * @param OrderItemModel[] $data
      *
      * @return self
      */

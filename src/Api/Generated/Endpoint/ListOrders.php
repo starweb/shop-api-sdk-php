@@ -18,7 +18,7 @@ class ListOrders extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *     @var int $statusFilter Only fetch orders with the specifiec order status. Use order status ID
      *     @var string $sortBy Sort the result using a specified field. orderId is default
      *     @var string $sortOrder ASC for an ascending sort order; or DESC for a descending sort order. DESC is default
-     *     @var string $include If you want to include child data in the result. Example: ?include=items (to include order items) or ?include=items,externalServices (to include order items as well as external ids). Available includes: items, externalServices, status, customer, addresses
+     *     @var string $include If you want to include child data in the result. Example: ?include=items (to include order items) or ?include=items,externalServices (to include order items as well as external ids). or ?include=items.bundledItems (to include items and bundled items)Available includes: items, externalServices, status, customer, addresses
      * }
      */
     public function __construct(array $queryParameters = array())

@@ -11,6 +11,12 @@ class StockLocationModel
      */
     protected $stockLocationId;
     /**
+     * The external id of this stock location
+     *
+     * @var string
+     */
+    protected $externalId = '';
+    /**
      * The stock location`s visibility settings.
      *
      * @var string
@@ -53,6 +59,27 @@ class StockLocationModel
     public function setStockLocationId(int $stockLocationId) : self
     {
         $this->stockLocationId = $stockLocationId;
+        return $this;
+    }
+    /**
+     * The external id of this stock location
+     *
+     * @return string
+     */
+    public function getExternalId() : string
+    {
+        return $this->externalId;
+    }
+    /**
+     * The external id of this stock location
+     *
+     * @param string $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(string $externalId) : self
+    {
+        $this->externalId = $externalId;
         return $this;
     }
     /**

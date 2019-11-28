@@ -11,9 +11,15 @@ class ProductUnitModel
      */
     protected $unitId;
     /**
+     * The external id of this unit
+     *
+     * @var string
+     */
+    protected $externalId = '';
+    /**
      * 
      *
-     * @var ProductUnitLanguageModelCollection
+     * @var ProductUnitLanguageModel[]
      */
     protected $languages;
     /**
@@ -38,22 +44,43 @@ class ProductUnitModel
         return $this;
     }
     /**
+     * The external id of this unit
+     *
+     * @return string
+     */
+    public function getExternalId() : string
+    {
+        return $this->externalId;
+    }
+    /**
+     * The external id of this unit
+     *
+     * @param string $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(string $externalId) : self
+    {
+        $this->externalId = $externalId;
+        return $this;
+    }
+    /**
      * 
      *
-     * @return ProductUnitLanguageModelCollection
+     * @return ProductUnitLanguageModel[]
      */
-    public function getLanguages() : ProductUnitLanguageModelCollection
+    public function getLanguages() : array
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductUnitLanguageModelCollection $languages
+     * @param ProductUnitLanguageModel[] $languages
      *
      * @return self
      */
-    public function setLanguages(ProductUnitLanguageModelCollection $languages) : self
+    public function setLanguages(array $languages) : self
     {
         $this->languages = $languages;
         return $this;

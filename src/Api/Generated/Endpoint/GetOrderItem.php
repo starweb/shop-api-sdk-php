@@ -11,11 +11,15 @@ class GetOrderItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      *
      * @param int $orderId The orders id
      * @param int $orderItemId The order item id
+     * @param array $queryParameters {
+     *     @var string $include If you want to include child data in the result. Example: ?include=bundledItems (to include bundled items). Available includes: bundledItems
+     * }
      */
-    public function __construct(int $orderId, int $orderItemId)
+    public function __construct(int $orderId, int $orderItemId, array $queryParameters = array())
     {
         $this->orderId = $orderId;
         $this->orderItemId = $orderItemId;
+        $this->queryParameters = $queryParameters;
     }
     use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
     public function getMethod() : string
@@ -33,6 +37,15 @@ class GetOrderItem extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
+    }
+    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(array('include'));
+        $optionsResolver->setRequired(array());
+        $optionsResolver->setDefaults(array());
+        $optionsResolver->setAllowedTypes('include', array('string'));
+        return $optionsResolver;
     }
     /**
      * {@inheritdoc}

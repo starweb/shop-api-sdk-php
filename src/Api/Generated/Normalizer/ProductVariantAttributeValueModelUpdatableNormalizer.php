@@ -28,6 +28,12 @@ class ProductVariantAttributeValueModelUpdatableNormalizer implements Denormaliz
             throw new InvalidArgumentException();
         }
         $object = new \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable();
+        if (property_exists($data, 'skuSuffix')) {
+            $object->setSkuSuffix($data->{'skuSuffix'});
+        }
+        if (property_exists($data, 'sortIndex')) {
+            $object->setSortIndex($data->{'sortIndex'});
+        }
         if (property_exists($data, 'languages')) {
             $values = array();
             foreach ($data->{'languages'} as $value) {
@@ -40,6 +46,12 @@ class ProductVariantAttributeValueModelUpdatableNormalizer implements Denormaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getSkuSuffix()) {
+            $data->{'skuSuffix'} = $object->getSkuSuffix();
+        }
+        if (null !== $object->getSortIndex()) {
+            $data->{'sortIndex'} = $object->getSortIndex();
+        }
         if (null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {
