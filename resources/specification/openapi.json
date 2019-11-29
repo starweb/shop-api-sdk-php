@@ -12677,6 +12677,13 @@
       "ProductVariantAttributeValueModelUpdatable": {
         "type": "object",
         "properties": {
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this attribute value"
+          },
           "skuSuffix": {
             "type": "string",
             "description": "The suggested suffix for new Variants using this attribute value",
