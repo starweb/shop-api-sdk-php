@@ -28,6 +28,9 @@ class ProductVariantAttributeValueModelUpdatableNormalizer implements Denormaliz
             throw new InvalidArgumentException();
         }
         $object = new \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable();
+        if (property_exists($data, 'externalId')) {
+            $object->setExternalId($data->{'externalId'});
+        }
         if (property_exists($data, 'skuSuffix')) {
             $object->setSkuSuffix($data->{'skuSuffix'});
         }
@@ -46,6 +49,9 @@ class ProductVariantAttributeValueModelUpdatableNormalizer implements Denormaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
         if (null !== $object->getSkuSuffix()) {
             $data->{'skuSuffix'} = $object->getSkuSuffix();
         }
