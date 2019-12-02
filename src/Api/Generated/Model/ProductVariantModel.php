@@ -11,6 +11,12 @@ class ProductVariantModel
      */
     protected $sku;
     /**
+     * The external id of this unit
+     *
+     * @var string
+     */
+    protected $externalId = '';
+    /**
      * Is this variant active? Only active variants are visible to customers
      *
      * @var bool
@@ -107,6 +113,27 @@ class ProductVariantModel
     public function setSku(string $sku) : self
     {
         $this->sku = $sku;
+        return $this;
+    }
+    /**
+     * The external id of this unit
+     *
+     * @return string
+     */
+    public function getExternalId() : string
+    {
+        return $this->externalId;
+    }
+    /**
+     * The external id of this unit
+     *
+     * @param string $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(string $externalId) : self
+    {
+        $this->externalId = $externalId;
         return $this;
     }
     /**

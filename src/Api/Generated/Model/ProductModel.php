@@ -11,6 +11,12 @@ class ProductModel
      */
     protected $productId;
     /**
+     * The external id of this unit
+     *
+     * @var string
+     */
+    protected $externalId = '';
+    /**
      * A timestamp of when the product was created. The time should be formatted using ISO-8601
      *
      * @var string
@@ -161,6 +167,27 @@ class ProductModel
     public function setProductId(int $productId) : self
     {
         $this->productId = $productId;
+        return $this;
+    }
+    /**
+     * The external id of this unit
+     *
+     * @return string
+     */
+    public function getExternalId() : string
+    {
+        return $this->externalId;
+    }
+    /**
+     * The external id of this unit
+     *
+     * @param string $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(string $externalId) : self
+    {
+        $this->externalId = $externalId;
         return $this;
     }
     /**
