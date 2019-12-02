@@ -11332,6 +11332,13 @@
             "readOnly": true,
             "example": 101
           },
+          "externalId": {
+            "type": "string",
+            "description": "The external id of this unit",
+            "example": "101",
+            "maxLength": 40,
+            "default": ""
+          },
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
@@ -11457,6 +11464,13 @@
             "type": "integer",
             "readOnly": true,
             "example": 101
+          },
+          "externalId": {
+            "type": "string",
+            "description": "The external id of this unit",
+            "example": "101",
+            "maxLength": 40,
+            "default": ""
           },
           "createdAt": {
             "type": "string",
@@ -11773,6 +11787,13 @@
             "type": "string",
             "maxLength": 40,
             "description": "The product variants SKU (stock keeping unit)"
+          },
+          "externalId": {
+            "type": "string",
+            "description": "The external id of this unit",
+            "example": "101",
+            "maxLength": 40,
+            "default": ""
           },
           "isActive": {
             "type": "boolean",
