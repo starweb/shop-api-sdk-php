@@ -11,11 +11,17 @@ class ProductModelUpdatable
      */
     protected $productId;
     /**
-     * The external id of this unit
+     * The external id of this pricelist
      *
      * @var string
      */
     protected $externalId = '';
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @var string
+     */
+    protected $externalIdType;
     /**
      * A timestamp of when the product was created. The time should be formatted using ISO-8601
      *
@@ -164,7 +170,7 @@ class ProductModelUpdatable
         return $this;
     }
     /**
-     * The external id of this unit
+     * The external id of this pricelist
      *
      * @return string
      */
@@ -173,7 +179,7 @@ class ProductModelUpdatable
         return $this->externalId;
     }
     /**
-     * The external id of this unit
+     * The external id of this pricelist
      *
      * @param string $externalId
      *
@@ -182,6 +188,27 @@ class ProductModelUpdatable
     public function setExternalId(string $externalId) : self
     {
         $this->externalId = $externalId;
+        return $this;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @return string
+     */
+    public function getExternalIdType() : string
+    {
+        return $this->externalIdType;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @param string $externalIdType
+     *
+     * @return self
+     */
+    public function setExternalIdType(string $externalIdType) : self
+    {
+        $this->externalIdType = $externalIdType;
         return $this;
     }
     /**

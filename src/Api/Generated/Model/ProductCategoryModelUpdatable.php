@@ -41,17 +41,23 @@ class ProductCategoryModelUpdatable
      */
     protected $imageFileId;
     /**
-     * The system name the externalId belongs to.
-     *
-     * @var string
-     */
-    protected $externalType;
-    /**
      * The external Id for this category for the system named in externalType
      *
      * @var string
      */
     protected $externalId;
+    /**
+     * Deprecated: use `externalIdType` instead
+     *
+     * @var string
+     */
+    protected $externalType;
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @var string
+     */
+    protected $externalIdType;
     /**
      * Whether or not the category has any children categories
      *
@@ -191,27 +197,6 @@ class ProductCategoryModelUpdatable
         return $this;
     }
     /**
-     * The system name the externalId belongs to.
-     *
-     * @return string
-     */
-    public function getExternalType() : string
-    {
-        return $this->externalType;
-    }
-    /**
-     * The system name the externalId belongs to.
-     *
-     * @param string $externalType
-     *
-     * @return self
-     */
-    public function setExternalType(string $externalType) : self
-    {
-        $this->externalType = $externalType;
-        return $this;
-    }
-    /**
      * The external Id for this category for the system named in externalType
      *
      * @return string
@@ -230,6 +215,48 @@ class ProductCategoryModelUpdatable
     public function setExternalId(string $externalId) : self
     {
         $this->externalId = $externalId;
+        return $this;
+    }
+    /**
+     * Deprecated: use `externalIdType` instead
+     *
+     * @return string
+     */
+    public function getExternalType() : string
+    {
+        return $this->externalType;
+    }
+    /**
+     * Deprecated: use `externalIdType` instead
+     *
+     * @param string $externalType
+     *
+     * @return self
+     */
+    public function setExternalType(string $externalType) : self
+    {
+        $this->externalType = $externalType;
+        return $this;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @return string
+     */
+    public function getExternalIdType() : string
+    {
+        return $this->externalIdType;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @param string $externalIdType
+     *
+     * @return self
+     */
+    public function setExternalIdType(string $externalIdType) : self
+    {
+        $this->externalIdType = $externalIdType;
         return $this;
     }
     /**

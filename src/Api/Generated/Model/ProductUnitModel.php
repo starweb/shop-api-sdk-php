@@ -11,11 +11,17 @@ class ProductUnitModel
      */
     protected $unitId;
     /**
-     * The external id of this unit
+     * The external id of this pricelist
      *
      * @var string
      */
     protected $externalId = '';
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @var string
+     */
+    protected $externalIdType;
     /**
      * 
      *
@@ -44,7 +50,7 @@ class ProductUnitModel
         return $this;
     }
     /**
-     * The external id of this unit
+     * The external id of this pricelist
      *
      * @return string
      */
@@ -53,7 +59,7 @@ class ProductUnitModel
         return $this->externalId;
     }
     /**
-     * The external id of this unit
+     * The external id of this pricelist
      *
      * @param string $externalId
      *
@@ -62,6 +68,27 @@ class ProductUnitModel
     public function setExternalId(string $externalId) : self
     {
         $this->externalId = $externalId;
+        return $this;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @return string
+     */
+    public function getExternalIdType() : string
+    {
+        return $this->externalIdType;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @param string $externalIdType
+     *
+     * @return self
+     */
+    public function setExternalIdType(string $externalIdType) : self
+    {
+        $this->externalIdType = $externalIdType;
         return $this;
     }
     /**

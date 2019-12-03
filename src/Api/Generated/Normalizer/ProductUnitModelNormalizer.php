@@ -34,6 +34,9 @@ class ProductUnitModelNormalizer implements DenormalizerInterface, NormalizerInt
         if (property_exists($data, 'externalId')) {
             $object->setExternalId($data->{'externalId'});
         }
+        if (property_exists($data, 'externalIdType')) {
+            $object->setExternalIdType($data->{'externalIdType'});
+        }
         if (property_exists($data, 'languages')) {
             $values = array();
             foreach ($data->{'languages'} as $value) {
@@ -48,6 +51,9 @@ class ProductUnitModelNormalizer implements DenormalizerInterface, NormalizerInt
         $data = new \stdClass();
         if (null !== $object->getExternalId()) {
             $data->{'externalId'} = $object->getExternalId();
+        }
+        if (null !== $object->getExternalIdType()) {
+            $data->{'externalIdType'} = $object->getExternalIdType();
         }
         if (null !== $object->getLanguages()) {
             $values = array();

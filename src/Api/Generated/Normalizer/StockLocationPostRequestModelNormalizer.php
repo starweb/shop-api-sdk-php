@@ -31,6 +31,9 @@ class StockLocationPostRequestModelNormalizer implements DenormalizerInterface, 
         if (property_exists($data, 'externalId')) {
             $object->setExternalId($data->{'externalId'});
         }
+        if (property_exists($data, 'externalIdType')) {
+            $object->setExternalIdType($data->{'externalIdType'});
+        }
         if (property_exists($data, 'visibility')) {
             $object->setVisibility($data->{'visibility'});
         }
@@ -54,6 +57,9 @@ class StockLocationPostRequestModelNormalizer implements DenormalizerInterface, 
         $data = new \stdClass();
         if (null !== $object->getExternalId()) {
             $data->{'externalId'} = $object->getExternalId();
+        }
+        if (null !== $object->getExternalIdType()) {
+            $data->{'externalIdType'} = $object->getExternalIdType();
         }
         if (null !== $object->getVisibility()) {
             $data->{'visibility'} = $object->getVisibility();

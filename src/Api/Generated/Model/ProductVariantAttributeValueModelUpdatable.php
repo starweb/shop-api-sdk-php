@@ -5,11 +5,17 @@ namespace Starweb\Api\Generated\Model;
 class ProductVariantAttributeValueModelUpdatable
 {
     /**
-     * The external id of this attribute value
+     * The external id of this pricelist
      *
      * @var string
      */
     protected $externalId = '';
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @var string
+     */
+    protected $externalIdType;
     /**
      * The suggested suffix for new Variants using this attribute value
      *
@@ -29,7 +35,7 @@ class ProductVariantAttributeValueModelUpdatable
      */
     protected $languages;
     /**
-     * The external id of this attribute value
+     * The external id of this pricelist
      *
      * @return string
      */
@@ -38,7 +44,7 @@ class ProductVariantAttributeValueModelUpdatable
         return $this->externalId;
     }
     /**
-     * The external id of this attribute value
+     * The external id of this pricelist
      *
      * @param string $externalId
      *
@@ -47,6 +53,27 @@ class ProductVariantAttributeValueModelUpdatable
     public function setExternalId(string $externalId) : self
     {
         $this->externalId = $externalId;
+        return $this;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @return string
+     */
+    public function getExternalIdType() : string
+    {
+        return $this->externalIdType;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @param string $externalIdType
+     *
+     * @return self
+     */
+    public function setExternalIdType(string $externalIdType) : self
+    {
+        $this->externalIdType = $externalIdType;
         return $this;
     }
     /**

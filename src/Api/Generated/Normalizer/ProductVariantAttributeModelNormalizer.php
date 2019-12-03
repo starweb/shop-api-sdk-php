@@ -34,6 +34,9 @@ class ProductVariantAttributeModelNormalizer implements DenormalizerInterface, N
         if (property_exists($data, 'externalId')) {
             $object->setExternalId($data->{'externalId'});
         }
+        if (property_exists($data, 'externalIdType')) {
+            $object->setExternalIdType($data->{'externalIdType'});
+        }
         if (property_exists($data, 'languages')) {
             $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeModelLanguages', 'json', $context));
         }
@@ -47,6 +50,9 @@ class ProductVariantAttributeModelNormalizer implements DenormalizerInterface, N
         }
         if (null !== $object->getExternalId()) {
             $data->{'externalId'} = $object->getExternalId();
+        }
+        if (null !== $object->getExternalIdType()) {
+            $data->{'externalIdType'} = $object->getExternalIdType();
         }
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);

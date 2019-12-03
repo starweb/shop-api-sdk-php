@@ -46,11 +46,14 @@ class ProductCategoryModelNormalizer implements DenormalizerInterface, Normalize
         if (property_exists($data, 'imageFileId')) {
             $object->setImageFileId($data->{'imageFileId'});
         }
+        if (property_exists($data, 'externalId')) {
+            $object->setExternalId($data->{'externalId'});
+        }
         if (property_exists($data, 'externalType')) {
             $object->setExternalType($data->{'externalType'});
         }
-        if (property_exists($data, 'externalId')) {
-            $object->setExternalId($data->{'externalId'});
+        if (property_exists($data, 'externalIdType')) {
+            $object->setExternalIdType($data->{'externalIdType'});
         }
         if (property_exists($data, 'hasChildren')) {
             $object->setHasChildren($data->{'hasChildren'});
@@ -74,11 +77,14 @@ class ProductCategoryModelNormalizer implements DenormalizerInterface, Normalize
             $data->{'openPage'} = $object->getOpenPage();
         }
         $data->{'imageFileId'} = $object->getImageFileId();
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
         if (null !== $object->getExternalType()) {
             $data->{'externalType'} = $object->getExternalType();
         }
-        if (null !== $object->getExternalId()) {
-            $data->{'externalId'} = $object->getExternalId();
+        if (null !== $object->getExternalIdType()) {
+            $data->{'externalIdType'} = $object->getExternalIdType();
         }
         return $data;
     }

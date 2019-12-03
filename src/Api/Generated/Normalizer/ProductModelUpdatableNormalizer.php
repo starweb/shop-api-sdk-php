@@ -34,6 +34,9 @@ class ProductModelUpdatableNormalizer implements DenormalizerInterface, Normaliz
         if (property_exists($data, 'externalId')) {
             $object->setExternalId($data->{'externalId'});
         }
+        if (property_exists($data, 'externalIdType')) {
+            $object->setExternalIdType($data->{'externalIdType'});
+        }
         if (property_exists($data, 'createdAt')) {
             $object->setCreatedAt($data->{'createdAt'});
         }
@@ -136,6 +139,9 @@ class ProductModelUpdatableNormalizer implements DenormalizerInterface, Normaliz
         $data = new \stdClass();
         if (null !== $object->getExternalId()) {
             $data->{'externalId'} = $object->getExternalId();
+        }
+        if (null !== $object->getExternalIdType()) {
+            $data->{'externalIdType'} = $object->getExternalIdType();
         }
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();

@@ -31,6 +31,12 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
         if (property_exists($data, 'productId')) {
             $object->setProductId($data->{'productId'});
         }
+        if (property_exists($data, 'externalId')) {
+            $object->setExternalId($data->{'externalId'});
+        }
+        if (property_exists($data, 'externalIdType')) {
+            $object->setExternalIdType($data->{'externalIdType'});
+        }
         if (property_exists($data, 'createdAt')) {
             $object->setCreatedAt($data->{'createdAt'});
         }
@@ -117,6 +123,12 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
+        if (null !== $object->getExternalIdType()) {
+            $data->{'externalIdType'} = $object->getExternalIdType();
+        }
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();
         }
