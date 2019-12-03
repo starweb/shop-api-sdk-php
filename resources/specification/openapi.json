@@ -10542,6 +10542,12 @@
             "example": "101",
             "description": "The external id of this pricelist"
           },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
+          },
           "name": {
             "type": "string",
             "maxLength": 30,
@@ -10622,6 +10628,19 @@
                 "example": "My pricelist",
                 "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
               },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist"
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system"
+              },
               "currencyCode": {
                 "type": "string",
                 "minLength": 3,
@@ -10674,6 +10693,19 @@
                 "maxLength": 30,
                 "example": "My pricelist",
                 "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist"
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system"
               },
               "parentPricelistId": {
                 "type": "integer",
@@ -10768,6 +10800,19 @@
                 "example": "My pricelist",
                 "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
               },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist"
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system"
+              },
               "currencyCode": {
                 "type": "string",
                 "minLength": 3,
@@ -10820,6 +10865,19 @@
                 "maxLength": 30,
                 "example": "My pricelist",
                 "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist"
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system"
               },
               "parentPricelistId": {
                 "type": "integer",
@@ -10880,6 +10938,19 @@
                 "example": true,
                 "default": false,
                 "description": "Enter product prices in admin incl. VAT, defaults to `false`"
+              },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist"
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system"
               }
             },
             "required": [
@@ -10895,6 +10966,19 @@
                 "maxLength": 30,
                 "example": "My pricelist",
                 "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist"
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system"
               },
               "currencyCode": {
                 "type": "string",
@@ -10948,6 +11032,19 @@
                 "maxLength": 30,
                 "example": "My pricelist",
                 "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist"
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system"
               },
               "parentPricelistId": {
                 "type": "integer",
@@ -11154,17 +11251,24 @@
             "example": null,
             "nullable": true
           },
-          "externalType": {
-            "type": "string",
-            "description": "The system name the externalId belongs to.",
-            "maxLength": 20,
-            "example": "Fortnox"
-          },
           "externalId": {
             "type": "string",
             "description": "The external Id for this category for the system named in externalType",
             "maxLength": 40,
             "example": "123"
+          },
+          "externalType": {
+            "type": "string",
+            "deprecated": true,
+            "description": "Deprecated: use `externalIdType` instead",
+            "maxLength": 20,
+            "example": "Fortnox"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "Fortnox"
           },
           "hasChildren": {
             "type": "boolean",
@@ -11213,17 +11317,24 @@
             "example": null,
             "nullable": true
           },
-          "externalType": {
-            "type": "string",
-            "description": "The system name the externalId belongs to.",
-            "maxLength": 20,
-            "example": "Fortnox"
-          },
           "externalId": {
             "type": "string",
             "description": "The external Id for this category for the system named in externalType",
             "maxLength": 40,
             "example": "123"
+          },
+          "externalType": {
+            "type": "string",
+            "deprecated": true,
+            "description": "Deprecated: use `externalIdType` instead",
+            "maxLength": 20,
+            "example": "Fortnox"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "Fortnox"
           },
           "hasChildren": {
             "type": "boolean",
@@ -11334,10 +11445,16 @@
           },
           "externalId": {
             "type": "string",
-            "description": "The external id of this unit",
-            "example": "101",
             "maxLength": 40,
-            "default": ""
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
           },
           "createdAt": {
             "type": "string",
@@ -11467,10 +11584,16 @@
           },
           "externalId": {
             "type": "string",
-            "description": "The external id of this unit",
-            "example": "101",
             "maxLength": 40,
-            "default": ""
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
           },
           "createdAt": {
             "type": "string",
@@ -11614,6 +11737,19 @@
             "type": "integer",
             "readOnly": true,
             "example": 101
+          },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
           },
           "createdAt": {
             "type": "string",
@@ -12213,10 +12349,16 @@
           },
           "externalId": {
             "type": "string",
-            "description": "The external id of this unit",
-            "example": "101",
             "maxLength": 40,
-            "default": ""
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
           },
           "languages": {
             "type": "array",
@@ -12386,10 +12528,16 @@
           },
           "externalId": {
             "type": "string",
-            "description": "The external id of this manufacturer",
-            "example": "101",
             "maxLength": 40,
-            "default": ""
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
           },
           "name": {
             "type": "string",
@@ -12703,7 +12851,13 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this attribute value"
+            "description": "The external id of this pricelist"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
           },
           "skuSuffix": {
             "type": "string",
@@ -12752,7 +12906,13 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this attribute value"
+            "description": "The external id of this pricelist"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
           },
           "skuSuffix": {
             "type": "string",
@@ -12806,7 +12966,13 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this attribute"
+            "description": "The external id of this pricelist"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
           },
           "languages": {
             "type": "array",
@@ -12840,7 +13006,16 @@
           },
           "externalId": {
             "type": "string",
-            "description": "The external id of this attribute"
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
           },
           "languages": {
             "type": "object",
@@ -13070,10 +13245,16 @@
           },
           "externalId": {
             "type": "string",
-            "description": "The external id of this stock location",
-            "example": "101",
             "maxLength": 40,
-            "default": ""
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
           },
           "visibility": {
             "type": "string",
@@ -13106,10 +13287,16 @@
         "properties": {
           "externalId": {
             "type": "string",
-            "description": "The external id of this stock location",
-            "example": "101",
             "maxLength": 40,
-            "default": ""
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
           },
           "visibility": {
             "type": "string",
@@ -13150,10 +13337,16 @@
         "properties": {
           "externalId": {
             "type": "string",
-            "description": "The external id of this stock location",
-            "example": "101",
             "maxLength": 40,
-            "default": ""
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
           },
           "visibility": {
             "type": "string",
@@ -13195,10 +13388,16 @@
             "properties": {
               "externalId": {
                 "type": "string",
-                "description": "The external id of this stock location",
-                "example": "101",
                 "maxLength": 40,
-                "default": ""
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist"
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system"
               },
               "visibility": {
                 "type": "string",
@@ -13236,6 +13435,12 @@
                 "title": "externalId update",
                 "required": [
                   "externalId"
+                ]
+              },
+              {
+                "title": "externalIdType update",
+                "required": [
+                  "externalIdType"
                 ]
               },
               {
