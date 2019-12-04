@@ -10540,13 +10540,15 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this pricelist"
+            "description": "The external id of this pricelist",
+            "nullable": true
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system"
+            "example": "ERP system",
+            "nullable": true
           },
           "name": {
             "type": "string",
@@ -10633,13 +10635,15 @@
                 "maxLength": 40,
                 "default": "",
                 "example": "101",
-                "description": "The external id of this pricelist"
+                "description": "The external id of this pricelist",
+                "nullable": true
               },
               "externalIdType": {
                 "type": "string",
                 "description": "The system name the externalId belongs to.",
                 "maxLength": 20,
-                "example": "ERP system"
+                "example": "ERP system",
+                "nullable": true
               },
               "currencyCode": {
                 "type": "string",
@@ -10699,13 +10703,15 @@
                 "maxLength": 40,
                 "default": "",
                 "example": "101",
-                "description": "The external id of this pricelist"
+                "description": "The external id of this pricelist",
+                "nullable": true
               },
               "externalIdType": {
                 "type": "string",
                 "description": "The system name the externalId belongs to.",
                 "maxLength": 20,
-                "example": "ERP system"
+                "example": "ERP system",
+                "nullable": true
               },
               "parentPricelistId": {
                 "type": "integer",
@@ -10805,13 +10811,15 @@
                 "maxLength": 40,
                 "default": "",
                 "example": "101",
-                "description": "The external id of this pricelist"
+                "description": "The external id of this pricelist",
+                "nullable": true
               },
               "externalIdType": {
                 "type": "string",
                 "description": "The system name the externalId belongs to.",
                 "maxLength": 20,
-                "example": "ERP system"
+                "example": "ERP system",
+                "nullable": true
               },
               "currencyCode": {
                 "type": "string",
@@ -10871,13 +10879,15 @@
                 "maxLength": 40,
                 "default": "",
                 "example": "101",
-                "description": "The external id of this pricelist"
+                "description": "The external id of this pricelist",
+                "nullable": true
               },
               "externalIdType": {
                 "type": "string",
                 "description": "The system name the externalId belongs to.",
                 "maxLength": 20,
-                "example": "ERP system"
+                "example": "ERP system",
+                "nullable": true
               },
               "parentPricelistId": {
                 "type": "integer",
@@ -10944,7 +10954,8 @@
                 "maxLength": 40,
                 "default": "",
                 "example": "101",
-                "description": "The external id of this pricelist"
+                "description": "The external id of this pricelist",
+                "nullable": true
               },
               "externalIdType": {
                 "type": "string",
@@ -10972,13 +10983,15 @@
                 "maxLength": 40,
                 "default": "",
                 "example": "101",
-                "description": "The external id of this pricelist"
+                "description": "The external id of this pricelist",
+                "nullable": true
               },
               "externalIdType": {
                 "type": "string",
                 "description": "The system name the externalId belongs to.",
                 "maxLength": 20,
-                "example": "ERP system"
+                "example": "ERP system",
+                "nullable": true
               },
               "currencyCode": {
                 "type": "string",
@@ -11038,13 +11051,15 @@
                 "maxLength": 40,
                 "default": "",
                 "example": "101",
-                "description": "The external id of this pricelist"
+                "description": "The external id of this pricelist",
+                "nullable": true
               },
               "externalIdType": {
                 "type": "string",
                 "description": "The system name the externalId belongs to.",
                 "maxLength": 20,
-                "example": "ERP system"
+                "example": "ERP system",
+                "nullable": true
               },
               "parentPricelistId": {
                 "type": "integer",
@@ -11448,13 +11463,15 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this pricelist"
+            "description": "The external id of this pricelist",
+            "nullable": true
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system"
+            "example": "ERP system",
+            "nullable": true
           },
           "createdAt": {
             "type": "string",
@@ -11587,13 +11604,15 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this pricelist"
+            "description": "The external id of this pricelist",
+            "nullable": true
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system"
+            "example": "ERP system",
+            "nullable": true
           },
           "createdAt": {
             "type": "string",
@@ -11743,13 +11762,15 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this pricelist"
+            "description": "The external id of this pricelist",
+            "nullable": true
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system"
+            "example": "ERP system",
+            "nullable": true
           },
           "createdAt": {
             "type": "string",
@@ -12352,13 +12373,15 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this pricelist"
+            "description": "The external id of this pricelist",
+            "nullable": true
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system"
+            "example": "ERP system",
+            "nullable": true
           },
           "languages": {
             "type": "array",
@@ -12531,13 +12554,15 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this pricelist"
+            "description": "The external id of this pricelist",
+            "nullable": true
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system"
+            "example": "ERP system",
+            "nullable": true
           },
           "name": {
             "type": "string",
@@ -12851,13 +12876,15 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this pricelist"
+            "description": "The external id of this pricelist",
+            "nullable": true
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system"
+            "example": "ERP system",
+            "nullable": true
           },
           "skuSuffix": {
             "type": "string",
@@ -12906,13 +12933,15 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this pricelist"
+            "description": "The external id of this pricelist",
+            "nullable": true
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system"
+            "example": "ERP system",
+            "nullable": true
           },
           "skuSuffix": {
             "type": "string",
@@ -12966,13 +12995,15 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this pricelist"
+            "description": "The external id of this pricelist",
+            "nullable": true
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system"
+            "example": "ERP system",
+            "nullable": true
           },
           "languages": {
             "type": "array",
@@ -13009,13 +13040,15 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this pricelist"
+            "description": "The external id of this pricelist",
+            "nullable": true
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system"
+            "example": "ERP system",
+            "nullable": true
           },
           "languages": {
             "type": "object",
@@ -13248,13 +13281,15 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this pricelist"
+            "description": "The external id of this pricelist",
+            "nullable": true
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system"
+            "example": "ERP system",
+            "nullable": true
           },
           "visibility": {
             "type": "string",
@@ -13290,13 +13325,15 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this pricelist"
+            "description": "The external id of this pricelist",
+            "nullable": true
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system"
+            "example": "ERP system",
+            "nullable": true
           },
           "visibility": {
             "type": "string",
@@ -13340,13 +13377,15 @@
             "maxLength": 40,
             "default": "",
             "example": "101",
-            "description": "The external id of this pricelist"
+            "description": "The external id of this pricelist",
+            "nullable": true
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system"
+            "example": "ERP system",
+            "nullable": true
           },
           "visibility": {
             "type": "string",
@@ -13391,13 +13430,15 @@
                 "maxLength": 40,
                 "default": "",
                 "example": "101",
-                "description": "The external id of this pricelist"
+                "description": "The external id of this pricelist",
+                "nullable": true
               },
               "externalIdType": {
                 "type": "string",
                 "description": "The system name the externalId belongs to.",
                 "maxLength": 20,
-                "example": "ERP system"
+                "example": "ERP system",
+                "nullable": true
               },
               "visibility": {
                 "type": "string",
