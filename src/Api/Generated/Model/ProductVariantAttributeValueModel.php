@@ -13,13 +13,13 @@ class ProductVariantAttributeValueModel
     /**
      * The external id of this pricelist
      *
-     * @var string
+     * @var string|null
      */
     protected $externalId = '';
     /**
      * The system name the externalId belongs to.
      *
-     * @var string
+     * @var string|null
      */
     protected $externalIdType;
     /**
@@ -64,20 +64,20 @@ class ProductVariantAttributeValueModel
     /**
      * The external id of this pricelist
      *
-     * @return string
+     * @return string|null
      */
-    public function getExternalId() : string
+    public function getExternalId() : ?string
     {
         return $this->externalId;
     }
     /**
      * The external id of this pricelist
      *
-     * @param string $externalId
+     * @param string|null $externalId
      *
      * @return self
      */
-    public function setExternalId(string $externalId) : self
+    public function setExternalId(?string $externalId) : self
     {
         $this->externalId = $externalId;
         return $this;
@@ -85,20 +85,20 @@ class ProductVariantAttributeValueModel
     /**
      * The system name the externalId belongs to.
      *
-     * @return string
+     * @return string|null
      */
-    public function getExternalIdType() : string
+    public function getExternalIdType() : ?string
     {
         return $this->externalIdType;
     }
     /**
      * The system name the externalId belongs to.
      *
-     * @param string $externalIdType
+     * @param string|null $externalIdType
      *
      * @return self
      */
-    public function setExternalIdType(string $externalIdType) : self
+    public function setExternalIdType(?string $externalIdType) : self
     {
         $this->externalIdType = $externalIdType;
         return $this;

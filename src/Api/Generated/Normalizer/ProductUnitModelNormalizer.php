@@ -49,12 +49,8 @@ class ProductUnitModelNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getExternalId()) {
-            $data->{'externalId'} = $object->getExternalId();
-        }
-        if (null !== $object->getExternalIdType()) {
-            $data->{'externalIdType'} = $object->getExternalIdType();
-        }
+        $data->{'externalId'} = $object->getExternalId();
+        $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {

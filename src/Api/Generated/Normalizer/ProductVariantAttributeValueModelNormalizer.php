@@ -58,12 +58,8 @@ class ProductVariantAttributeValueModelNormalizer implements DenormalizerInterfa
         if (null !== $object->getAttributeValueId()) {
             $data->{'attributeValueId'} = $object->getAttributeValueId();
         }
-        if (null !== $object->getExternalId()) {
-            $data->{'externalId'} = $object->getExternalId();
-        }
-        if (null !== $object->getExternalIdType()) {
-            $data->{'externalIdType'} = $object->getExternalIdType();
-        }
+        $data->{'externalId'} = $object->getExternalId();
+        $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getSkuSuffix()) {
             $data->{'skuSuffix'} = $object->getSkuSuffix();
         }

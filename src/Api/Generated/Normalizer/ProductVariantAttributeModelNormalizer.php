@@ -48,12 +48,8 @@ class ProductVariantAttributeModelNormalizer implements DenormalizerInterface, N
         if (null !== $object->getAttributeId()) {
             $data->{'attributeId'} = $object->getAttributeId();
         }
-        if (null !== $object->getExternalId()) {
-            $data->{'externalId'} = $object->getExternalId();
-        }
-        if (null !== $object->getExternalIdType()) {
-            $data->{'externalIdType'} = $object->getExternalIdType();
-        }
+        $data->{'externalId'} = $object->getExternalId();
+        $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
         }
