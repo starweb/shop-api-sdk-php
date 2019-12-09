@@ -20,7 +20,7 @@ class ProductVariantAttributeValueLanguageModelNormalizer implements Denormalize
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueLanguageModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueLanguageModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

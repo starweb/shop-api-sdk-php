@@ -20,7 +20,7 @@ class OrderAddressModelNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderAddressModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderAddressModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -51,6 +51,24 @@ class OrderAddressModelNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getOriginalInvoice()) {
+            $data->{'originalInvoice'} = $this->normalizer->normalize($object->getOriginalInvoice(), 'json', $context);
+        }
+        if (null !== $object->getOriginalDelivery()) {
+            $data->{'originalDelivery'} = $this->normalizer->normalize($object->getOriginalDelivery(), 'json', $context);
+        }
+        if (null !== $object->getCustomerInvoice()) {
+            $data->{'customerInvoice'} = $this->normalizer->normalize($object->getCustomerInvoice(), 'json', $context);
+        }
+        if (null !== $object->getCustomerDelivery()) {
+            $data->{'customerDelivery'} = $this->normalizer->normalize($object->getCustomerDelivery(), 'json', $context);
+        }
+        if (null !== $object->getPaymentMethodInvoice()) {
+            $data->{'paymentMethodInvoice'} = $this->normalizer->normalize($object->getPaymentMethodInvoice(), 'json', $context);
+        }
+        if (null !== $object->getPaymentMethodDelivery()) {
+            $data->{'paymentMethodDelivery'} = $this->normalizer->normalize($object->getPaymentMethodDelivery(), 'json', $context);
+        }
         return $data;
     }
 }

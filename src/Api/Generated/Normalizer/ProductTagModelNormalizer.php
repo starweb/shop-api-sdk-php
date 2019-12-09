@@ -20,7 +20,7 @@ class ProductTagModelNormalizer implements DenormalizerInterface, NormalizerInte
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductTagModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductTagModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -46,6 +46,12 @@ class ProductTagModelNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getTagId()) {
+            $data->{'tagId'} = $object->getTagId();
+        }
+        if (null !== $object->getType()) {
+            $data->{'type'} = $object->getType();
+        }
         if (null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {

@@ -20,7 +20,7 @@ class ProductMetaDataTypeModelCollectionNormalizer implements DenormalizerInterf
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMetaDataTypeModelCollection';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMetaDataTypeModelCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

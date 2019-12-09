@@ -20,7 +20,7 @@ class OrderModelCollectionNormalizer implements DenormalizerInterface, Normalize
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderModelCollection';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderModelCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

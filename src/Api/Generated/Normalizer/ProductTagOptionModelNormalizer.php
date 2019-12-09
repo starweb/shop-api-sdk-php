@@ -20,7 +20,7 @@ class ProductTagOptionModelNormalizer implements DenormalizerInterface, Normaliz
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductTagOptionModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductTagOptionModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -49,6 +49,12 @@ class ProductTagOptionModelNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getTagOptionId()) {
+            $data->{'tagOptionId'} = $object->getTagOptionId();
+        }
+        if (null !== $object->getValue()) {
+            $data->{'value'} = $object->getValue();
+        }
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
         }

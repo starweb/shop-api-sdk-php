@@ -20,7 +20,7 @@ class OrderCommentModelNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderCommentModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderCommentModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -45,6 +45,9 @@ class OrderCommentModelNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getCommentId()) {
+            $data->{'commentId'} = $object->getCommentId();
+        }
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();
         }

@@ -20,7 +20,7 @@ class ShippingTrackingTypeModelNormalizer implements DenormalizerInterface, Norm
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ShippingTrackingTypeModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ShippingTrackingTypeModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -39,6 +39,12 @@ class ShippingTrackingTypeModelNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getType()) {
+            $data->{'type'} = $object->getType();
+        }
+        if (null !== $object->getName()) {
+            $data->{'name'} = $object->getName();
+        }
         return $data;
     }
 }

@@ -20,7 +20,7 @@ class StockLocationModelNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\StockLocationModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\StockLocationModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -54,6 +54,9 @@ class StockLocationModelNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getStockLocationId()) {
+            $data->{'stockLocationId'} = $object->getStockLocationId();
+        }
         $data->{'externalId'} = $object->getExternalId();
         $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getVisibility()) {
@@ -64,6 +67,9 @@ class StockLocationModelNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (null !== $object->getEcommerceStockLocation()) {
             $data->{'ecommerceStockLocation'} = $object->getEcommerceStockLocation();
+        }
+        if (null !== $object->getLanguages()) {
+            $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
         }
         return $data;
     }

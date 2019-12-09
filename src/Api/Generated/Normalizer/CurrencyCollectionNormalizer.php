@@ -20,7 +20,7 @@ class CurrencyCollectionNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\CurrencyCollection';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\CurrencyCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

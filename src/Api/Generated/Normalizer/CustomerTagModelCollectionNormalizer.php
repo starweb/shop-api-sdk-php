@@ -20,7 +20,7 @@ class CustomerTagModelCollectionNormalizer implements DenormalizerInterface, Nor
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerTagModelCollection';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerTagModelCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

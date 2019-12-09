@@ -20,7 +20,7 @@ class ProductVariantStockResponseModelNormalizer implements DenormalizerInterfac
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantStockResponseModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantStockResponseModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -42,6 +42,9 @@ class ProductVariantStockResponseModelNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getStockLocationId()) {
+            $data->{'stockLocationId'} = $object->getStockLocationId();
+        }
         if (null !== $object->getStockStatusId()) {
             $data->{'stockStatusId'} = $object->getStockStatusId();
         }

@@ -20,7 +20,7 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -112,6 +112,9 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getProductId()) {
+            $data->{'productId'} = $object->getProductId();
+        }
         $data->{'externalId'} = $object->getExternalId();
         $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getCreatedAt()) {
@@ -144,8 +147,35 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data->{'bundleUseManualPrice'} = $object->getBundleUseManualPrice();
         }
         $data->{'accounting'} = $object->getAccounting();
+        if (null !== $object->getHasSeveralVariants()) {
+            $data->{'hasSeveralVariants'} = $object->getHasSeveralVariants();
+        }
+        if (null !== $object->getModifiedAt()) {
+            $data->{'modifiedAt'} = $object->getModifiedAt();
+        }
+        if (null !== $object->getVariants()) {
+            $data->{'variants'} = $this->normalizer->normalize($object->getVariants(), 'json', $context);
+        }
+        if (null !== $object->getBundledProducts()) {
+            $data->{'bundledProducts'} = $this->normalizer->normalize($object->getBundledProducts(), 'json', $context);
+        }
+        if (null !== $object->getMediaFiles()) {
+            $data->{'mediaFiles'} = $this->normalizer->normalize($object->getMediaFiles(), 'json', $context);
+        }
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
+        }
+        if (null !== $object->getVatRates()) {
+            $data->{'vatRates'} = $this->normalizer->normalize($object->getVatRates(), 'json', $context);
+        }
+        if (null !== $object->getCategories()) {
+            $data->{'categories'} = $this->normalizer->normalize($object->getCategories(), 'json', $context);
+        }
+        if (null !== $object->getUnit()) {
+            $data->{'unit'} = $this->normalizer->normalize($object->getUnit(), 'json', $context);
+        }
+        if (null !== $object->getMetaData()) {
+            $data->{'metaData'} = $this->normalizer->normalize($object->getMetaData(), 'json', $context);
         }
         return $data;
     }

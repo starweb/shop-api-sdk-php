@@ -20,7 +20,7 @@ class ShippingMethodModelNormalizer implements DenormalizerInterface, Normalizer
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ShippingMethodModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ShippingMethodModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -76,6 +76,35 @@ class ShippingMethodModelNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getShippingMethodId()) {
+            $data->{'shippingMethodId'} = $object->getShippingMethodId();
+        }
+        if (null !== $object->getActive()) {
+            $data->{'active'} = $object->getActive();
+        }
+        if (null !== $object->getValidForCountries()) {
+            $data->{'validForCountries'} = $object->getValidForCountries();
+        }
+        if (null !== $object->getValidCountriesSelected()) {
+            $values = array();
+            foreach ($object->getValidCountriesSelected() as $value) {
+                $values[] = $value;
+            }
+            $data->{'validCountriesSelected'} = $values;
+        }
+        $data->{'validForMinItemsSubtotal'} = $object->getValidForMinItemsSubtotal();
+        $data->{'validForMaxItemsSubtotal'} = $object->getValidForMaxItemsSubtotal();
+        $data->{'validForMinWeight'} = $object->getValidForMinWeight();
+        $data->{'validForMaxWeight'} = $object->getValidForMaxWeight();
+        $data->{'validForCustomerType'} = $object->getValidForCustomerType();
+        $data->{'freeShippingMinItemsSubtotal'} = $object->getFreeShippingMinItemsSubtotal();
+        $data->{'freeShippingMinWeight'} = $object->getFreeShippingMinWeight();
+        if (null !== $object->getIsClickAndCollect()) {
+            $data->{'isClickAndCollect'} = $object->getIsClickAndCollect();
+        }
+        if (null !== $object->getLanguages()) {
+            $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
+        }
         return $data;
     }
 }

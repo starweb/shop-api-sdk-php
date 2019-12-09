@@ -20,7 +20,7 @@ class PaymentMethodLanguageModelCollectionNormalizer implements DenormalizerInte
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\PaymentMethodLanguageModelCollection';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\PaymentMethodLanguageModelCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

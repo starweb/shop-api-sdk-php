@@ -20,7 +20,7 @@ class ProductBundleProductPriceModelItemNormalizer implements DenormalizerInterf
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductBundleProductPriceModelItem';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductBundleProductPriceModelItem';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -36,6 +36,9 @@ class ProductBundleProductPriceModelItemNormalizer implements DenormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getData()) {
+            $data->{'data'} = $this->normalizer->normalize($object->getData(), 'json', $context);
+        }
         return $data;
     }
 }

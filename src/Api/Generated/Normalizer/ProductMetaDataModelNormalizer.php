@@ -20,7 +20,7 @@ class ProductMetaDataModelNormalizer implements DenormalizerInterface, Normalize
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMetaDataModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMetaDataModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -53,6 +53,9 @@ class ProductMetaDataModelNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
+        }
+        if (null !== $object->getLanguages()) {
+            $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
         }
         return $data;
     }

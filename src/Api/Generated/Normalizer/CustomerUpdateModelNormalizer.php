@@ -20,7 +20,7 @@ class CustomerUpdateModelNormalizer implements DenormalizerInterface, Normalizer
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerUpdateModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerUpdateModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -66,6 +66,9 @@ class CustomerUpdateModelNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getCustomerId()) {
+            $data->{'customerId'} = $object->getCustomerId();
+        }
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();
         }
@@ -88,6 +91,9 @@ class CustomerUpdateModelNormalizer implements DenormalizerInterface, Normalizer
             $data->{'customInfo2'} = $object->getCustomInfo2();
         }
         $data->{'pricelistId'} = $object->getPricelistId();
+        if (null !== $object->getLangCode()) {
+            $data->{'langCode'} = $object->getLangCode();
+        }
         if (null !== $object->getAddresses()) {
             $data->{'addresses'} = $this->normalizer->normalize($object->getAddresses(), 'json', $context);
         }

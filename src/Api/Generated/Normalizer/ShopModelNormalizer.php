@@ -20,7 +20,7 @@ class ShopModelNormalizer implements DenormalizerInterface, NormalizerInterface,
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ShopModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ShopModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -85,6 +85,58 @@ class ShopModelNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getName()) {
+            $data->{'name'} = $object->getName();
+        }
+        if (null !== $object->getIdCode()) {
+            $data->{'idCode'} = $object->getIdCode();
+        }
+        if (null !== $object->getStatus()) {
+            $data->{'status'} = $object->getStatus();
+        }
+        if (null !== $object->getDefaultLangCode()) {
+            $data->{'defaultLangCode'} = $object->getDefaultLangCode();
+        }
+        if (null !== $object->getActiveLangCodes()) {
+            $values = array();
+            foreach ($object->getActiveLangCodes() as $value) {
+                $values[] = $value;
+            }
+            $data->{'activeLangCodes'} = $values;
+        }
+        if (null !== $object->getBaseCurrency()) {
+            $data->{'baseCurrency'} = $object->getBaseCurrency();
+        }
+        if (null !== $object->getDefaultCustomerCountryCode()) {
+            $data->{'defaultCustomerCountryCode'} = $object->getDefaultCustomerCountryCode();
+        }
+        if (null !== $object->getGeneralDefaultVatRate()) {
+            $data->{'generalDefaultVatRate'} = $object->getGeneralDefaultVatRate();
+        }
+        if (null !== $object->getShopCompanyName()) {
+            $data->{'shopCompanyName'} = $object->getShopCompanyName();
+        }
+        if (null !== $object->getShopAddress()) {
+            $data->{'shopAddress'} = $object->getShopAddress();
+        }
+        if (null !== $object->getShopPostalCode()) {
+            $data->{'shopPostalCode'} = $object->getShopPostalCode();
+        }
+        if (null !== $object->getShopCity()) {
+            $data->{'shopCity'} = $object->getShopCity();
+        }
+        if (null !== $object->getShopOrgNo()) {
+            $data->{'shopOrgNo'} = $object->getShopOrgNo();
+        }
+        if (null !== $object->getShopPhoneNo()) {
+            $data->{'shopPhoneNo'} = $object->getShopPhoneNo();
+        }
+        if (null !== $object->getShopVatNo()) {
+            $data->{'shopVatNo'} = $object->getShopVatNo();
+        }
+        if (null !== $object->getShopCountryCode()) {
+            $data->{'shopCountryCode'} = $object->getShopCountryCode();
+        }
         return $data;
     }
 }

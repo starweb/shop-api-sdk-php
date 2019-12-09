@@ -20,7 +20,7 @@ class StockLocationLanguagesModelCollectionNormalizer implements DenormalizerInt
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\StockLocationLanguagesModelCollection';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\StockLocationLanguagesModelCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

@@ -20,7 +20,7 @@ class TokenModelNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\TokenModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\TokenModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -42,6 +42,15 @@ class TokenModelNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getAccessToken()) {
+            $data->{'access_token'} = $object->getAccessToken();
+        }
+        if (null !== $object->getScope()) {
+            $data->{'scope'} = $object->getScope();
+        }
+        if (null !== $object->getExpiresIn()) {
+            $data->{'expires_in'} = $object->getExpiresIn();
+        }
         return $data;
     }
 }

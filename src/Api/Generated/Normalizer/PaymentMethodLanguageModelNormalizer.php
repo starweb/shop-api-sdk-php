@@ -20,7 +20,7 @@ class PaymentMethodLanguageModelNormalizer implements DenormalizerInterface, Nor
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\PaymentMethodLanguageModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\PaymentMethodLanguageModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -45,6 +45,18 @@ class PaymentMethodLanguageModelNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getLangCode()) {
+            $data->{'langCode'} = $object->getLangCode();
+        }
+        if (null !== $object->getName()) {
+            $data->{'name'} = $object->getName();
+        }
+        if (null !== $object->getTitle()) {
+            $data->{'title'} = $object->getTitle();
+        }
+        if (null !== $object->getShortDescription()) {
+            $data->{'shortDescription'} = $object->getShortDescription();
+        }
         return $data;
     }
 }

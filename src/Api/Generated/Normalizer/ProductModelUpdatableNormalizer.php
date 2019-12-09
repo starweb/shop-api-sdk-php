@@ -20,7 +20,7 @@ class ProductModelUpdatableNormalizer implements DenormalizerInterface, Normaliz
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductModelUpdatable';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductModelUpdatable';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -137,6 +137,9 @@ class ProductModelUpdatableNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getProductId()) {
+            $data->{'productId'} = $object->getProductId();
+        }
         $data->{'externalId'} = $object->getExternalId();
         $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getCreatedAt()) {
@@ -167,6 +170,12 @@ class ProductModelUpdatableNormalizer implements DenormalizerInterface, Normaliz
         }
         $data->{'bundleUseManualPrice'} = $object->getBundleUseManualPrice();
         $data->{'accounting'} = $object->getAccounting();
+        if (null !== $object->getHasSeveralVariants()) {
+            $data->{'hasSeveralVariants'} = $object->getHasSeveralVariants();
+        }
+        if (null !== $object->getModifiedAt()) {
+            $data->{'modifiedAt'} = $object->getModifiedAt();
+        }
         if (null !== $object->getVariants()) {
             $values_1 = array();
             foreach ($object->getVariants() as $value_1) {

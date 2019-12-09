@@ -20,7 +20,7 @@ class ProductVariantAttributeValueModelNormalizer implements DenormalizerInterfa
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

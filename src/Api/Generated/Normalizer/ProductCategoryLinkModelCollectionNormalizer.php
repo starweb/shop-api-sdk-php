@@ -20,7 +20,7 @@ class ProductCategoryLinkModelCollectionNormalizer implements DenormalizerInterf
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductCategoryLinkModelCollection';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductCategoryLinkModelCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

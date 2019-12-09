@@ -20,7 +20,7 @@ class CustomerAddedTagModelNormalizer implements DenormalizerInterface, Normaliz
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerAddedTagModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerAddedTagModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -41,6 +41,9 @@ class CustomerAddedTagModelNormalizer implements DenormalizerInterface, Normaliz
         $data = new \stdClass();
         if (null !== $object->getTagId()) {
             $data->{'tagId'} = $object->getTagId();
+        }
+        if (null !== $object->getName()) {
+            $data->{'name'} = $object->getName();
         }
         return $data;
     }

@@ -20,7 +20,7 @@ class ProductTagOptionLanguageModelNormalizer implements DenormalizerInterface, 
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductTagOptionLanguageModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductTagOptionLanguageModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

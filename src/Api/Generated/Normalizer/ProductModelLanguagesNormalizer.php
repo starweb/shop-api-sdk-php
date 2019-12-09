@@ -20,7 +20,7 @@ class ProductModelLanguagesNormalizer implements DenormalizerInterface, Normaliz
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductModelLanguages';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductModelLanguages';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

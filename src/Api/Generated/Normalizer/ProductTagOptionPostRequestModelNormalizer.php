@@ -20,7 +20,7 @@ class ProductTagOptionPostRequestModelNormalizer implements DenormalizerInterfac
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductTagOptionPostRequestModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductTagOptionPostRequestModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

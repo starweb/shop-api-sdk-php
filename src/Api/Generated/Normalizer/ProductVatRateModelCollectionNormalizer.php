@@ -20,7 +20,7 @@ class ProductVatRateModelCollectionNormalizer implements DenormalizerInterface, 
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVatRateModelCollection';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVatRateModelCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

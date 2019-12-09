@@ -20,7 +20,7 @@ class ProductCategoryModelNormalizer implements DenormalizerInterface, Normalize
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductCategoryModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductCategoryModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -66,6 +66,9 @@ class ProductCategoryModelNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getCategoryId()) {
+            $data->{'categoryId'} = $object->getCategoryId();
+        }
         $data->{'parentId'} = $object->getParentId();
         if (null !== $object->getVisibility()) {
             $data->{'visibility'} = $object->getVisibility();
@@ -85,6 +88,12 @@ class ProductCategoryModelNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getExternalIdType()) {
             $data->{'externalIdType'} = $object->getExternalIdType();
+        }
+        if (null !== $object->getHasChildren()) {
+            $data->{'hasChildren'} = $object->getHasChildren();
+        }
+        if (null !== $object->getLanguages()) {
+            $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
         }
         return $data;
     }

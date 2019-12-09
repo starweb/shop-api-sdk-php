@@ -20,7 +20,7 @@ class ProductManufacturerModelNormalizer implements DenormalizerInterface, Norma
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductManufacturerModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductManufacturerModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -48,6 +48,9 @@ class ProductManufacturerModelNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getManufacturerId()) {
+            $data->{'manufacturerId'} = $object->getManufacturerId();
+        }
         $data->{'externalId'} = $object->getExternalId();
         $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getName()) {

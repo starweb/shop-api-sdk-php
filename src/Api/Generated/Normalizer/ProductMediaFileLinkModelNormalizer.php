@@ -20,7 +20,7 @@ class ProductMediaFileLinkModelNormalizer implements DenormalizerInterface, Norm
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMediaFileLinkModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMediaFileLinkModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -45,11 +45,17 @@ class ProductMediaFileLinkModelNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getProductMediaFileId()) {
+            $data->{'productMediaFileId'} = $object->getProductMediaFileId();
+        }
         if (null !== $object->getMediaFileId()) {
             $data->{'mediaFileId'} = $object->getMediaFileId();
         }
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
+        }
+        if (null !== $object->getType()) {
+            $data->{'type'} = $object->getType();
         }
         return $data;
     }

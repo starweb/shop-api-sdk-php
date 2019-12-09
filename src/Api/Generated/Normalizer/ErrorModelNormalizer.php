@@ -20,7 +20,7 @@ class ErrorModelNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ErrorModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ErrorModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -39,6 +39,12 @@ class ErrorModelNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getError()) {
+            $data->{'error'} = $object->getError();
+        }
+        if (null !== $object->getErrorDescription()) {
+            $data->{'error_description'} = $object->getErrorDescription();
+        }
         return $data;
     }
 }

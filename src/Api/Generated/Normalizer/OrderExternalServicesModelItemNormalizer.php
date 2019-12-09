@@ -20,7 +20,7 @@ class OrderExternalServicesModelItemNormalizer implements DenormalizerInterface,
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderExternalServicesModelItem';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderExternalServicesModelItem';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -36,6 +36,9 @@ class OrderExternalServicesModelItemNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getData()) {
+            $data->{'data'} = $this->normalizer->normalize($object->getData(), 'json', $context);
+        }
         return $data;
     }
 }

@@ -20,7 +20,7 @@ class OrderItemModelCollectionDataItemNormalizer implements DenormalizerInterfac
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderItemModelCollectionDataItem';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderItemModelCollectionDataItem';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -66,6 +66,9 @@ class OrderItemModelCollectionDataItemNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getItemId()) {
+            $data->{'itemId'} = $object->getItemId();
+        }
         if (null !== $object->getSku()) {
             $data->{'sku'} = $object->getSku();
         }

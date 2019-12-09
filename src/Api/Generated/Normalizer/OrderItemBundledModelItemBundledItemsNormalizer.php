@@ -20,7 +20,7 @@ class OrderItemBundledModelItemBundledItemsNormalizer implements DenormalizerInt
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderItemBundledModelItemBundledItems';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderItemBundledModelItemBundledItems';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

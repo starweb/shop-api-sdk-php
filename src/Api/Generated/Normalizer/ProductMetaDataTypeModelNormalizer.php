@@ -20,7 +20,7 @@ class ProductMetaDataTypeModelNormalizer implements DenormalizerInterface, Norma
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMetaDataTypeModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMetaDataTypeModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -39,6 +39,12 @@ class ProductMetaDataTypeModelNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getMetaDataTypeId()) {
+            $data->{'metaDataTypeId'} = $object->getMetaDataTypeId();
+        }
+        if (null !== $object->getLanguages()) {
+            $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
+        }
         return $data;
     }
 }

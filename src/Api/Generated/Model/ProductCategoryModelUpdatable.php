@@ -49,6 +49,8 @@ class ProductCategoryModelUpdatable
     /**
      * Deprecated: use `externalIdType` instead
      *
+     * @deprecated
+     *
      * @var string
      */
     protected $externalType;
@@ -220,6 +222,8 @@ class ProductCategoryModelUpdatable
     /**
      * Deprecated: use `externalIdType` instead
      *
+     * @deprecated
+     *
      * @return string
      */
     public function getExternalType() : string
@@ -230,6 +234,8 @@ class ProductCategoryModelUpdatable
      * Deprecated: use `externalIdType` instead
      *
      * @param string $externalType
+     *
+     * @deprecated
      *
      * @return self
      */

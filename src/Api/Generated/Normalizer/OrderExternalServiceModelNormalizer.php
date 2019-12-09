@@ -20,7 +20,7 @@ class OrderExternalServiceModelNormalizer implements DenormalizerInterface, Norm
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderExternalServiceModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderExternalServiceModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -47,6 +47,9 @@ class OrderExternalServiceModelNormalizer implements DenormalizerInterface, Norm
         }
         if (null !== $object->getExternalIdValue()) {
             $data->{'externalIdValue'} = $object->getExternalIdValue();
+        }
+        if (null !== $object->getReadOnly()) {
+            $data->{'readOnly'} = $object->getReadOnly();
         }
         return $data;
     }

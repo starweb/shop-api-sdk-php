@@ -20,7 +20,7 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductModelPatchable';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductModelPatchable';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -123,6 +123,9 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getProductId()) {
+            $data->{'productId'} = $object->getProductId();
+        }
         $data->{'externalId'} = $object->getExternalId();
         $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getCreatedAt()) {
@@ -155,6 +158,12 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
             $data->{'bundleUseManualPrice'} = $object->getBundleUseManualPrice();
         }
         $data->{'accounting'} = $object->getAccounting();
+        if (null !== $object->getHasSeveralVariants()) {
+            $data->{'hasSeveralVariants'} = $object->getHasSeveralVariants();
+        }
+        if (null !== $object->getModifiedAt()) {
+            $data->{'modifiedAt'} = $object->getModifiedAt();
+        }
         if (null !== $object->getMediaFiles()) {
             $values_1 = array();
             foreach ($object->getMediaFiles() as $value_1) {

@@ -20,7 +20,7 @@ class ShippingMethodLanguageModelNormalizer implements DenormalizerInterface, No
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ShippingMethodLanguageModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ShippingMethodLanguageModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -45,6 +45,18 @@ class ShippingMethodLanguageModelNormalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getLangCode()) {
+            $data->{'langCode'} = $object->getLangCode();
+        }
+        if (null !== $object->getName()) {
+            $data->{'name'} = $object->getName();
+        }
+        if (null !== $object->getTitle()) {
+            $data->{'title'} = $object->getTitle();
+        }
+        if (null !== $object->getShortDescription()) {
+            $data->{'shortDescription'} = $object->getShortDescription();
+        }
         return $data;
     }
 }

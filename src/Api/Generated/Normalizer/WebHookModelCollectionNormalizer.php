@@ -20,7 +20,7 @@ class WebHookModelCollectionNormalizer implements DenormalizerInterface, Normali
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\WebHookModelCollection';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\WebHookModelCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {

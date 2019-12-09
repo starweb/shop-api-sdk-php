@@ -20,7 +20,7 @@ class ProductModelCollectionMetaNormalizer implements DenormalizerInterface, Nor
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductModelCollectionMeta';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductModelCollectionMeta';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -36,6 +36,9 @@ class ProductModelCollectionMetaNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getPagination()) {
+            $data->{'pagination'} = $this->normalizer->normalize($object->getPagination(), 'json', $context);
+        }
         return $data;
     }
 }

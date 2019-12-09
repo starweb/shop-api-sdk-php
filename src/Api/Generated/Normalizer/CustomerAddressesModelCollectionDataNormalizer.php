@@ -20,7 +20,7 @@ class CustomerAddressesModelCollectionDataNormalizer implements DenormalizerInte
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerAddressesModelCollectionData';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerAddressesModelCollectionData';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -39,6 +39,12 @@ class CustomerAddressesModelCollectionDataNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getInvoice()) {
+            $data->{'invoice'} = $this->normalizer->normalize($object->getInvoice(), 'json', $context);
+        }
+        if (null !== $object->getDelivery()) {
+            $data->{'delivery'} = $this->normalizer->normalize($object->getDelivery(), 'json', $context);
+        }
         return $data;
     }
 }

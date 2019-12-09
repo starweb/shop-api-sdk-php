@@ -20,7 +20,7 @@ class ProductMetaDataModelUpdatableNormalizer implements DenormalizerInterface, 
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMetaDataModelUpdatable';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMetaDataModelUpdatable';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -49,6 +49,9 @@ class ProductMetaDataModelUpdatableNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
+        if (null !== $object->getMetaDataId()) {
+            $data->{'metaDataId'} = $object->getMetaDataId();
+        }
         if (null !== $object->getMetaDataTypeId()) {
             $data->{'metaDataTypeId'} = $object->getMetaDataTypeId();
         }

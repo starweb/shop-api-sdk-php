@@ -20,7 +20,7 @@ class ProductBundleProductPriceModelCollectionNormalizer implements Denormalizer
     }
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductBundleProductPriceModelCollection';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductBundleProductPriceModelCollection';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
