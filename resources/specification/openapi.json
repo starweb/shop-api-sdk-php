@@ -11711,7 +11711,8 @@
             "description": "A collection of bundled products",
             "items": {
               "$ref": "#\/components\/schemas\/BundledProductsModel"
-            }
+            },
+            "nullable": true
           },
           "mediaFiles": {
             "type": "array",

@@ -174,13 +174,11 @@ class ProductModelUpdatableNormalizer implements DenormalizerInterface, Normaliz
             }
             $data->{'variants'} = $values_1;
         }
-        if (null !== $object->getBundledProducts()) {
-            $values_2 = array();
-            foreach ($object->getBundledProducts() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
-            }
-            $data->{'bundledProducts'} = $values_2;
+        $values_2 = array();
+        foreach ($object->getBundledProducts() as $value_2) {
+            $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
         }
+        $data->{'bundledProducts'} = $values_2;
         if (null !== $object->getMediaFiles()) {
             $values_3 = array();
             foreach ($object->getMediaFiles() as $value_3) {

@@ -115,7 +115,7 @@ class ProductModelUpdatable
     /**
      * A collection of bundled products
      *
-     * @var BundledProductsModel[]
+     * @var BundledProductsModel[]|null
      */
     protected $bundledProducts;
     /**
@@ -529,20 +529,20 @@ class ProductModelUpdatable
     /**
      * A collection of bundled products
      *
-     * @return BundledProductsModel[]
+     * @return BundledProductsModel[]|null
      */
-    public function getBundledProducts() : array
+    public function getBundledProducts() : ?array
     {
         return $this->bundledProducts;
     }
     /**
      * A collection of bundled products
      *
-     * @param BundledProductsModel[] $bundledProducts
+     * @param BundledProductsModel[]|null $bundledProducts
      *
      * @return self
      */
-    public function setBundledProducts(array $bundledProducts) : self
+    public function setBundledProducts(?array $bundledProducts) : self
     {
         $this->bundledProducts = $bundledProducts;
         return $this;
