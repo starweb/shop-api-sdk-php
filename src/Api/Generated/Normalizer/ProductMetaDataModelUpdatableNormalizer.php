@@ -49,9 +49,6 @@ class ProductMetaDataModelUpdatableNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getMetaDataId()) {
-            $data->{'metaDataId'} = $object->getMetaDataId();
-        }
         if (null !== $object->getMetaDataTypeId()) {
             $data->{'metaDataTypeId'} = $object->getMetaDataTypeId();
         }

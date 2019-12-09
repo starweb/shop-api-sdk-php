@@ -45,9 +45,6 @@ class OrderCommentModelNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getCommentId()) {
-            $data->{'commentId'} = $object->getCommentId();
-        }
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();
         }

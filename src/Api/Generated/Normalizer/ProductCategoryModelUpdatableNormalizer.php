@@ -70,9 +70,6 @@ class ProductCategoryModelUpdatableNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getCategoryId()) {
-            $data->{'categoryId'} = $object->getCategoryId();
-        }
         $data->{'parentId'} = $object->getParentId();
         if (null !== $object->getVisibility()) {
             $data->{'visibility'} = $object->getVisibility();
@@ -92,9 +89,6 @@ class ProductCategoryModelUpdatableNormalizer implements DenormalizerInterface, 
         }
         if (null !== $object->getExternalIdType()) {
             $data->{'externalIdType'} = $object->getExternalIdType();
-        }
-        if (null !== $object->getHasChildren()) {
-            $data->{'hasChildren'} = $object->getHasChildren();
         }
         if (null !== $object->getLanguages()) {
             $values = array();

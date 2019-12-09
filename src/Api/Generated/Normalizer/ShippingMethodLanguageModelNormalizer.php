@@ -45,18 +45,6 @@ class ShippingMethodLanguageModelNormalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getLangCode()) {
-            $data->{'langCode'} = $object->getLangCode();
-        }
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
-        if (null !== $object->getTitle()) {
-            $data->{'title'} = $object->getTitle();
-        }
-        if (null !== $object->getShortDescription()) {
-            $data->{'shortDescription'} = $object->getShortDescription();
-        }
         return $data;
     }
 }

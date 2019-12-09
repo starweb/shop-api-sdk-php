@@ -73,33 +73,8 @@ class PricelistModelNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getPricelistId()) {
-            $data->{'pricelistId'} = $object->getPricelistId();
-        }
         $data->{'externalId'} = $object->getExternalId();
         $data->{'externalIdType'} = $object->getExternalIdType();
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
-        if (null !== $object->getIsMaster()) {
-            $data->{'isMaster'} = $object->getIsMaster();
-        }
-        if (null !== $object->getIsActive()) {
-            $data->{'isActive'} = $object->getIsActive();
-        }
-        if (null !== $object->getRegion()) {
-            $data->{'region'} = $object->getRegion();
-        }
-        if (null !== $object->getCountryCodes()) {
-            $values = array();
-            foreach ($object->getCountryCodes() as $value) {
-                $values[] = $value;
-            }
-            $data->{'countryCodes'} = $values;
-        }
-        if (null !== $object->getCurrencyCode()) {
-            $data->{'currencyCode'} = $object->getCurrencyCode();
-        }
         $data->{'parentPricelistId'} = $object->getParentPricelistId();
         if (null !== $object->getIsCustomerPricelist()) {
             $data->{'isCustomerPricelist'} = $object->getIsCustomerPricelist();

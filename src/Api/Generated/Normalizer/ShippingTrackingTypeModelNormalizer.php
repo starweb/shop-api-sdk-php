@@ -39,12 +39,6 @@ class ShippingTrackingTypeModelNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
-        }
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
         return $data;
     }
 }

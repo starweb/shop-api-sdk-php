@@ -60,33 +60,6 @@ class MediaFileModelNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getMediaFileId()) {
-            $data->{'mediaFileId'} = $object->getMediaFileId();
-        }
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data->{'createdAt'} = $object->getCreatedAt();
-        }
-        if (null !== $object->getModifiedAt()) {
-            $data->{'modifiedAt'} = $object->getModifiedAt();
-        }
-        if (null !== $object->getSize()) {
-            $data->{'size'} = $object->getSize();
-        }
-        if (null !== $object->getMime()) {
-            $data->{'mime'} = $object->getMime();
-        }
-        if (null !== $object->getHeight()) {
-            $data->{'height'} = $object->getHeight();
-        }
-        if (null !== $object->getWidth()) {
-            $data->{'width'} = $object->getWidth();
-        }
-        if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
-        }
         return $data;
     }
 }

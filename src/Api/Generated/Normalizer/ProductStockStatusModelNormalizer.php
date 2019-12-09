@@ -58,12 +58,6 @@ class ProductStockStatusModelNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getStockStatusId()) {
-            $data->{'stockStatusId'} = $object->getStockStatusId();
-        }
-        if (null !== $object->getIdCode()) {
-            $data->{'idCode'} = $object->getIdCode();
-        }
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
         }

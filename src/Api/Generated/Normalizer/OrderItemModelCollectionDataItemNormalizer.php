@@ -66,9 +66,6 @@ class OrderItemModelCollectionDataItemNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getItemId()) {
-            $data->{'itemId'} = $object->getItemId();
-        }
         if (null !== $object->getSku()) {
             $data->{'sku'} = $object->getSku();
         }

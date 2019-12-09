@@ -48,9 +48,6 @@ class OrderExternalServiceModelNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getExternalIdValue()) {
             $data->{'externalIdValue'} = $object->getExternalIdValue();
         }
-        if (null !== $object->getReadOnly()) {
-            $data->{'readOnly'} = $object->getReadOnly();
-        }
         return $data;
     }
 }

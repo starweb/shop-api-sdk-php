@@ -39,9 +39,6 @@ class ProductMetaDataTypeModelNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getMetaDataTypeId()) {
-            $data->{'metaDataTypeId'} = $object->getMetaDataTypeId();
-        }
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
         }

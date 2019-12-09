@@ -49,14 +49,8 @@ class OrderStatusModelNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getStatusId()) {
-            $data->{'statusId'} = $object->getStatusId();
-        }
         if (null !== $object->getShouldSendEmail()) {
             $data->{'shouldSendEmail'} = $object->getShouldSendEmail();
-        }
-        if (null !== $object->getIdCode()) {
-            $data->{'idCode'} = $object->getIdCode();
         }
         if (null !== $object->getLanguages()) {
             $values = array();

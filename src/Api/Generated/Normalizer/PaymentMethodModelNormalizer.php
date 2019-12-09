@@ -79,39 +79,6 @@ class PaymentMethodModelNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getPaymentMethodId()) {
-            $data->{'paymentMethodId'} = $object->getPaymentMethodId();
-        }
-        if (null !== $object->getIdCode()) {
-            $data->{'idCode'} = $object->getIdCode();
-        }
-        if (null !== $object->getActive()) {
-            $data->{'active'} = $object->getActive();
-        }
-        if (null !== $object->getFee()) {
-            $data->{'fee'} = $object->getFee();
-        }
-        if (null !== $object->getValidForCountries()) {
-            $data->{'validForCountries'} = $object->getValidForCountries();
-        }
-        if (null !== $object->getValidCountriesSelected()) {
-            $values = array();
-            foreach ($object->getValidCountriesSelected() as $value) {
-                $values[] = $value;
-            }
-            $data->{'validCountriesSelected'} = $values;
-        }
-        $data->{'validForMinItemsSubtotal'} = $object->getValidForMinItemsSubtotal();
-        $data->{'validForMaxItemsSubtotal'} = $object->getValidForMaxItemsSubtotal();
-        $data->{'validForMinWeight'} = $object->getValidForMinWeight();
-        $data->{'validForMaxWeight'} = $object->getValidForMaxWeight();
-        if (null !== $object->getValidForShippingMethods()) {
-            $data->{'validForShippingMethods'} = $object->getValidForShippingMethods();
-        }
-        $data->{'validForCustomerType'} = $object->getValidForCustomerType();
-        if (null !== $object->getIsClickAndCollect()) {
-            $data->{'isClickAndCollect'} = $object->getIsClickAndCollect();
-        }
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
         }

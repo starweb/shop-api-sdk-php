@@ -190,36 +190,6 @@ class OrderUpdateModelNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getOrderId()) {
-            $data->{'orderId'} = $object->getOrderId();
-        }
-        if (null !== $object->getModifiedAt()) {
-            $data->{'modifiedAt'} = $object->getModifiedAt();
-        }
-        if (null !== $object->getBaseCurrencyCode()) {
-            $data->{'baseCurrencyCode'} = $object->getBaseCurrencyCode();
-        }
-        if (null !== $object->getShopCountryCode()) {
-            $data->{'shopCountryCode'} = $object->getShopCountryCode();
-        }
-        if (null !== $object->getTotalAmount()) {
-            $data->{'totalAmount'} = $object->getTotalAmount();
-        }
-        if (null !== $object->getTotalVat()) {
-            $data->{'totalVat'} = $object->getTotalVat();
-        }
-        if (null !== $object->getAmountToPay()) {
-            $data->{'amountToPay'} = $object->getAmountToPay();
-        }
-        if (null !== $object->getTotalAmountInBaseCurrency()) {
-            $data->{'totalAmountInBaseCurrency'} = $object->getTotalAmountInBaseCurrency();
-        }
-        if (null !== $object->getTotalVatInBaseCurrency()) {
-            $data->{'totalVatInBaseCurrency'} = $object->getTotalVatInBaseCurrency();
-        }
-        if (null !== $object->getAmountToPayInBaseCurrency()) {
-            $data->{'amountToPayInBaseCurrency'} = $object->getAmountToPayInBaseCurrency();
-        }
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();
         }
@@ -241,9 +211,6 @@ class OrderUpdateModelNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getPaymentMethodId()) {
             $data->{'paymentMethodId'} = $object->getPaymentMethodId();
         }
-        if (null !== $object->getPaymentMethodIdCode()) {
-            $data->{'paymentMethodIdCode'} = $object->getPaymentMethodIdCode();
-        }
         if (null !== $object->getPaymentMethodName()) {
             $data->{'paymentMethodName'} = $object->getPaymentMethodName();
         }
@@ -262,9 +229,6 @@ class OrderUpdateModelNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getShippingVatRate()) {
             $data->{'shippingVatRate'} = $object->getShippingVatRate();
         }
-        if (null !== $object->getTotalWeight()) {
-            $data->{'totalWeight'} = $object->getTotalWeight();
-        }
         if (null !== $object->getCustomInfo1()) {
             $data->{'customInfo1'} = $object->getCustomInfo1();
         }
@@ -282,9 +246,6 @@ class OrderUpdateModelNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getAmountPaid()) {
             $data->{'amountPaid'} = $object->getAmountPaid();
-        }
-        if (null !== $object->getAmountPaidInBaseCurrency()) {
-            $data->{'amountPaidInBaseCurrency'} = $object->getAmountPaidInBaseCurrency();
         }
         if (null !== $object->getIsComplete()) {
             $data->{'isComplete'} = $object->getIsComplete();
@@ -309,9 +270,6 @@ class OrderUpdateModelNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getIsRead()) {
             $data->{'isRead'} = $object->getIsRead();
-        }
-        if (null !== $object->getHasComment()) {
-            $data->{'hasComment'} = $object->getHasComment();
         }
         if (null !== $object->getInternalComment()) {
             $data->{'internalComment'} = $object->getInternalComment();
