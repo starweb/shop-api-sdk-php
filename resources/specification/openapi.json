@@ -11677,7 +11677,8 @@
           "bundleUseManualPrice": {
             "type": "boolean",
             "example": false,
-            "description": "Should all bundled products have a manually entered price? Only applies if type is bundle"
+            "description": "Should all bundled products have a manually entered price? Only applies if type is bundle",
+            "nullable": true
           },
           "accounting": {
             "type": "integer",

@@ -85,7 +85,7 @@ class ProductModelUpdatable
     /**
      * Should all bundled products have a manually entered price? Only applies if type is bundle
      *
-     * @var bool
+     * @var bool|null
      */
     protected $bundleUseManualPrice;
     /**
@@ -424,20 +424,20 @@ class ProductModelUpdatable
     /**
      * Should all bundled products have a manually entered price? Only applies if type is bundle
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getBundleUseManualPrice() : bool
+    public function getBundleUseManualPrice() : ?bool
     {
         return $this->bundleUseManualPrice;
     }
     /**
      * Should all bundled products have a manually entered price? Only applies if type is bundle
      *
-     * @param bool $bundleUseManualPrice
+     * @param bool|null $bundleUseManualPrice
      *
      * @return self
      */
-    public function setBundleUseManualPrice(bool $bundleUseManualPrice) : self
+    public function setBundleUseManualPrice(?bool $bundleUseManualPrice) : self
     {
         $this->bundleUseManualPrice = $bundleUseManualPrice;
         return $this;

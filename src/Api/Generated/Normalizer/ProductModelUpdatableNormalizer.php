@@ -165,9 +165,7 @@ class ProductModelUpdatableNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getIsBackInStockWatchable()) {
             $data->{'isBackInStockWatchable'} = $object->getIsBackInStockWatchable();
         }
-        if (null !== $object->getBundleUseManualPrice()) {
-            $data->{'bundleUseManualPrice'} = $object->getBundleUseManualPrice();
-        }
+        $data->{'bundleUseManualPrice'} = $object->getBundleUseManualPrice();
         $data->{'accounting'} = $object->getAccounting();
         if (null !== $object->getVariants()) {
             $values_1 = array();
