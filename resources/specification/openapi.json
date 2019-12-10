@@ -1907,7 +1907,7 @@
         "summary": "Add an order comment",
         "description": "Update a comment for an order. Retrieves the created `OrderComment` object",
         "responses": {
-          "201": {
+          "200": {
             "description": "The created order comment is returned",
             "content": {
               "application\/json": {
@@ -1941,7 +1941,7 @@
         "summary": "Updates an order comment",
         "description": "Update a comment for an order. Retrieves the created `OrderComment` object",
         "responses": {
-          "201": {
+          "200": {
             "description": "The created order comment is returned",
             "content": {
               "application\/json": {
@@ -3051,7 +3051,7 @@
         "summary": "Update a product variant attribute",
         "description": "Updates a product variant attribute.\n                    Retrieves the updated `ProductVariantAttribute` object.",
         "responses": {
-          "201": {
+          "200": {
             "description": "The updated attribute is returned",
             "content": {
               "application\/json": {
@@ -3085,7 +3085,7 @@
         "summary": "Update a product variant attribute",
         "description": "Updates a product variant attribute.\n                    Retrieves the updated `ProductVariantAttribute` object.",
         "responses": {
-          "201": {
+          "200": {
             "description": "The updated attribute is returned",
             "content": {
               "application\/json": {
