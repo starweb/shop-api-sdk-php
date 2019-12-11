@@ -44,11 +44,7 @@ class ProductVariantAttributeValueModelNormalizer implements DenormalizerInterfa
             $object->setSortIndex($data->{'sortIndex'});
         }
         if (property_exists($data, 'languages')) {
-            $values = array();
-            foreach ($data->{'languages'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueLanguageModel', 'json', $context);
-            }
-            $object->setLanguages($values);
+            $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueModelLanguages', 'json', $context));
         }
         return $object;
     }
@@ -67,11 +63,7 @@ class ProductVariantAttributeValueModelNormalizer implements DenormalizerInterfa
             $data->{'sortIndex'} = $object->getSortIndex();
         }
         if (null !== $object->getLanguages()) {
-            $values = array();
-            foreach ($object->getLanguages() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data->{'languages'} = $values;
+            $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
         }
         return $data;
     }

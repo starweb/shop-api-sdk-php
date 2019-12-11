@@ -149,6 +149,7 @@ class NormalizerFactory
         $normalizers[] = new ProductVariantAttributeValueModelUpdatableNormalizer();
         $normalizers[] = new ProductVariantAttributeValueLanguageModelNormalizer();
         $normalizers[] = new ProductVariantAttributeValueModelNormalizer();
+        $normalizers[] = new ProductVariantAttributeValueModelLanguagesNormalizer();
         $normalizers[] = new ProductVariantAttributeModelItemNormalizer();
         $normalizers[] = new ProductVariantAttributeModelCollectionNormalizer();
         $normalizers[] = new ProductVariantAttributeModelUpdatableNormalizer();

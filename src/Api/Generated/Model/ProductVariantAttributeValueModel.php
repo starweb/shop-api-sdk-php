@@ -37,7 +37,7 @@ class ProductVariantAttributeValueModel
     /**
      * A collection of attribute value languages
      *
-     * @var ProductVariantAttributeValueLanguageModel[]
+     * @var ProductVariantAttributeValueModelLanguages
      */
     protected $languages;
     /**
@@ -148,20 +148,20 @@ class ProductVariantAttributeValueModel
     /**
      * A collection of attribute value languages
      *
-     * @return ProductVariantAttributeValueLanguageModel[]
+     * @return ProductVariantAttributeValueModelLanguages
      */
-    public function getLanguages() : array
+    public function getLanguages() : ProductVariantAttributeValueModelLanguages
     {
         return $this->languages;
     }
     /**
      * A collection of attribute value languages
      *
-     * @param ProductVariantAttributeValueLanguageModel[] $languages
+     * @param ProductVariantAttributeValueModelLanguages $languages
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(ProductVariantAttributeValueModelLanguages $languages) : self
     {
         $this->languages = $languages;
         return $this;
