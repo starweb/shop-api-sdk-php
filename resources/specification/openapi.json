@@ -12958,10 +12958,15 @@
             "description": "The sort order for this attribute value"
           },
           "languages": {
-            "type": "array",
+            "type": "object",
             "description": "A collection of attribute value languages",
-            "items": {
-              "$ref": "#\/components\/schemas\/ProductVariantAttributeValueLanguageModel"
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueLanguageModel"
+                }
+              }
             }
           }
         }
