@@ -17,11 +17,17 @@ class ProductVariantModel
      */
     protected $sku;
     /**
-     * The external id of this unit
+     * The external id of this variant
      *
-     * @var string
+     * @var string|null
      */
-    protected $externalId = '';
+    protected $externalId;
+    /**
+     * The external id type of this variant
+     *
+     * @var string|null
+     */
+    protected $externalIdType;
     /**
      * Is this variant active? Only active variants are visible to customers
      *
@@ -143,24 +149,45 @@ class ProductVariantModel
         return $this;
     }
     /**
-     * The external id of this unit
+     * The external id of this variant
      *
-     * @return string
+     * @return string|null
      */
-    public function getExternalId() : string
+    public function getExternalId() : ?string
     {
         return $this->externalId;
     }
     /**
-     * The external id of this unit
+     * The external id of this variant
      *
-     * @param string $externalId
+     * @param string|null $externalId
      *
      * @return self
      */
-    public function setExternalId(string $externalId) : self
+    public function setExternalId(?string $externalId) : self
     {
         $this->externalId = $externalId;
+        return $this;
+    }
+    /**
+     * The external id type of this variant
+     *
+     * @return string|null
+     */
+    public function getExternalIdType() : ?string
+    {
+        return $this->externalIdType;
+    }
+    /**
+     * The external id type of this variant
+     *
+     * @param string|null $externalIdType
+     *
+     * @return self
+     */
+    public function setExternalIdType(?string $externalIdType) : self
+    {
+        $this->externalIdType = $externalIdType;
         return $this;
     }
     /**

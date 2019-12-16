@@ -37,6 +37,9 @@ class ProductVariantModelNormalizer implements DenormalizerInterface, Normalizer
         if (property_exists($data, 'externalId')) {
             $object->setExternalId($data->{'externalId'});
         }
+        if (property_exists($data, 'externalIdType')) {
+            $object->setExternalIdType($data->{'externalIdType'});
+        }
         if (property_exists($data, 'isActive')) {
             $object->setIsActive($data->{'isActive'});
         }
@@ -100,9 +103,8 @@ class ProductVariantModelNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getSku()) {
             $data->{'sku'} = $object->getSku();
         }
-        if (null !== $object->getExternalId()) {
-            $data->{'externalId'} = $object->getExternalId();
-        }
+        $data->{'externalId'} = $object->getExternalId();
+        $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getIsActive()) {
             $data->{'isActive'} = $object->getIsActive();
         }
