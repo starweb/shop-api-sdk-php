@@ -11942,6 +11942,11 @@
       "ProductVariantModel": {
         "type": "object",
         "properties": {
+          "variantId": {
+            "type": "integer",
+            "readOnly": true,
+            "example": 101
+          },
           "sku": {
             "type": "string",
             "maxLength": 40,
