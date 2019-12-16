@@ -28,6 +28,9 @@ class ProductVariantModelNormalizer implements DenormalizerInterface, Normalizer
             throw new InvalidArgumentException();
         }
         $object = new \Starweb\Api\Generated\Model\ProductVariantModel();
+        if (property_exists($data, 'variantId')) {
+            $object->setVariantId($data->{'variantId'});
+        }
         if (property_exists($data, 'sku')) {
             $object->setSku($data->{'sku'});
         }

@@ -5,6 +5,12 @@ namespace Starweb\Api\Generated\Model;
 class ProductVariantModel
 {
     /**
+     * 
+     *
+     * @var int
+     */
+    protected $variantId;
+    /**
      * The product variants SKU (stock keeping unit)
      *
      * @var string
@@ -94,6 +100,27 @@ class ProductVariantModel
      * @var ProductVariantAttributeValueModel[]
      */
     protected $attributeValues;
+    /**
+     * 
+     *
+     * @return int
+     */
+    public function getVariantId() : int
+    {
+        return $this->variantId;
+    }
+    /**
+     * 
+     *
+     * @param int $variantId
+     *
+     * @return self
+     */
+    public function setVariantId(int $variantId) : self
+    {
+        $this->variantId = $variantId;
+        return $this;
+    }
     /**
      * The product variants SKU (stock keeping unit)
      *
