@@ -11954,10 +11954,19 @@
           },
           "externalId": {
             "type": "string",
-            "description": "The external id of this unit",
+            "description": "The external id of this variant",
             "example": "101",
-            "maxLength": 40,
-            "default": ""
+            "maxLength": 255,
+            "nullable": true,
+            "default": null
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The external id type of this variant",
+            "example": "101",
+            "maxLength": 255,
+            "nullable": true,
+            "default": null
           },
           "isActive": {
             "type": "boolean",
