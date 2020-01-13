@@ -3188,7 +3188,7 @@
         "summary": "Create a product variant attribute value",
         "description": "Creates a product variant attribute value.\n                    Retrieves the created `ProductVariantAttributeValue` object.",
         "responses": {
-          "200": {
+          "201": {
             "description": "The created attribute value",
             "content": {
               "application\/json": {
