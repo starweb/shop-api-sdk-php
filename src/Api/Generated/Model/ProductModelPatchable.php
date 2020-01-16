@@ -49,7 +49,7 @@ class ProductModelPatchable
     /**
      * A valid URL to a web page with more information for this product
      *
-     * @var string
+     * @var string|null
      */
     protected $moreInfoUrl;
     /**
@@ -85,7 +85,7 @@ class ProductModelPatchable
     /**
      * Should all bundled products have a manually entered price? Only applies if type is bundle
      *
-     * @var bool
+     * @var bool|null
      */
     protected $bundleUseManualPrice;
     /**
@@ -286,20 +286,20 @@ class ProductModelPatchable
     /**
      * A valid URL to a web page with more information for this product
      *
-     * @return string
+     * @return string|null
      */
-    public function getMoreInfoUrl() : string
+    public function getMoreInfoUrl() : ?string
     {
         return $this->moreInfoUrl;
     }
     /**
      * A valid URL to a web page with more information for this product
      *
-     * @param string $moreInfoUrl
+     * @param string|null $moreInfoUrl
      *
      * @return self
      */
-    public function setMoreInfoUrl(string $moreInfoUrl) : self
+    public function setMoreInfoUrl(?string $moreInfoUrl) : self
     {
         $this->moreInfoUrl = $moreInfoUrl;
         return $this;
@@ -412,20 +412,20 @@ class ProductModelPatchable
     /**
      * Should all bundled products have a manually entered price? Only applies if type is bundle
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getBundleUseManualPrice() : bool
+    public function getBundleUseManualPrice() : ?bool
     {
         return $this->bundleUseManualPrice;
     }
     /**
      * Should all bundled products have a manually entered price? Only applies if type is bundle
      *
-     * @param bool $bundleUseManualPrice
+     * @param bool|null $bundleUseManualPrice
      *
      * @return self
      */
-    public function setBundleUseManualPrice(bool $bundleUseManualPrice) : self
+    public function setBundleUseManualPrice(?bool $bundleUseManualPrice) : self
     {
         $this->bundleUseManualPrice = $bundleUseManualPrice;
         return $this;

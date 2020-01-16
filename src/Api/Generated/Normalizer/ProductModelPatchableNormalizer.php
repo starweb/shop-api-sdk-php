@@ -139,9 +139,7 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
             }
             $data->{'visibilityPricelistIds'} = $values;
         }
-        if (null !== $object->getMoreInfoUrl()) {
-            $data->{'moreInfoUrl'} = $object->getMoreInfoUrl();
-        }
+        $data->{'moreInfoUrl'} = $object->getMoreInfoUrl();
         $data->{'manufacturerId'} = $object->getManufacturerId();
         $data->{'unitId'} = $object->getUnitId();
         $data->{'sortIndex'} = $object->getSortIndex();
@@ -151,9 +149,7 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getIsBackInStockWatchable()) {
             $data->{'isBackInStockWatchable'} = $object->getIsBackInStockWatchable();
         }
-        if (null !== $object->getBundleUseManualPrice()) {
-            $data->{'bundleUseManualPrice'} = $object->getBundleUseManualPrice();
-        }
+        $data->{'bundleUseManualPrice'} = $object->getBundleUseManualPrice();
         $data->{'accounting'} = $object->getAccounting();
         if (null !== $object->getMediaFiles()) {
             $values_1 = array();
