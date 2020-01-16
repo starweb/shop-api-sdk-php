@@ -11801,6 +11801,7 @@
           "moreInfoUrl": {
             "type": "string",
             "maxLength": 255,
+            "nullable": true,
             "description": "A valid URL to a web page with more information for this product"
           },
           "manufacturerId": {
@@ -11837,6 +11838,7 @@
           "bundleUseManualPrice": {
             "type": "boolean",
             "example": false,
+            "nullable": true,
             "description": "Should all bundled products have a manually entered price? Only applies if type is bundle"
           },
           "accounting": {
