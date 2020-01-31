@@ -1388,7 +1388,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductUnitBadRequestException
      *
-     * @return null|\Starweb\Api\Generated\Model\ProductUnitModelCollection|\Psr\Http\Message\ResponseInterface
+     * @return null|\Starweb\Api\Generated\Model\ProductUnitModelItem|\Psr\Http\Message\ResponseInterface
      */
     public function createProductUnit(\Starweb\Api\Generated\Model\ProductUnitModel $requestBody, string $fetch = self::FETCH_OBJECT)
     {

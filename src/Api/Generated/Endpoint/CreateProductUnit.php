@@ -38,12 +38,12 @@ class CreateProductUnit extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      *
      * @throws \Starweb\Api\Generated\Exception\CreateProductUnitBadRequestException
      *
-     * @return null|\Starweb\Api\Generated\Model\ProductUnitModelCollection
+     * @return null|\Starweb\Api\Generated\Model\ProductUnitModelItem
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductUnitModelCollection', 'json');
+            return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductUnitModelItem', 'json');
         }
         if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
             throw new \Starweb\Api\Generated\Exception\CreateProductUnitBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
