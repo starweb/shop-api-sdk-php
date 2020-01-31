@@ -1384,13 +1384,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * Creates a product unit.
      *
-     * @param \Starweb\Api\Generated\Model\ProductUnitModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductUnitBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductUnitModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductUnit(\Starweb\Api\Generated\Model\ProductUnitModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductUnit(\Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductUnit($requestBody), $fetch);
     }
@@ -1424,13 +1424,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * Updates the `ProductUnit` object.
      *
      * @param int $unitId The units id
-     * @param \Starweb\Api\Generated\Model\ProductUnitModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductUnitNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductUnitModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductUnit(int $unitId, \Starweb\Api\Generated\Model\ProductUnitModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductUnit(int $unitId, \Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductUnit($unitId, $requestBody), $fetch);
     }
@@ -1438,13 +1438,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * Updates the `ProductUnit` object.
      *
      * @param int $unitId The units id
-     * @param \Starweb\Api\Generated\Model\ProductUnitModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductUnitNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductUnitModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductUnit(int $unitId, \Starweb\Api\Generated\Model\ProductUnitModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductUnit(int $unitId, \Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductUnit($unitId, $requestBody), $fetch);
     }

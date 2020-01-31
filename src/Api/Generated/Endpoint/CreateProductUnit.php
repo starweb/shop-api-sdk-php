@@ -7,9 +7,9 @@ class CreateProductUnit extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     /**
      * Creates a product unit.
      *
-     * @param \Starweb\Api\Generated\Model\ProductUnitModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody 
      */
-    public function __construct(\Starweb\Api\Generated\Model\ProductUnitModel $requestBody)
+    public function __construct(\Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody)
     {
         $this->body = $requestBody;
     }
@@ -24,7 +24,7 @@ class CreateProductUnit extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductUnitModel) {
+        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductUnitModelUpdatable) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

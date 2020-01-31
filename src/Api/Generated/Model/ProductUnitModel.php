@@ -25,7 +25,7 @@ class ProductUnitModel
     /**
      * 
      *
-     * @var ProductUnitLanguageModel[]
+     * @var ProductUnitLanguageModelCollection
      */
     protected $languages;
     /**
@@ -94,20 +94,20 @@ class ProductUnitModel
     /**
      * 
      *
-     * @return ProductUnitLanguageModel[]
+     * @return ProductUnitLanguageModelCollection
      */
-    public function getLanguages() : array
+    public function getLanguages() : ProductUnitLanguageModelCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductUnitLanguageModel[] $languages
+     * @param ProductUnitLanguageModelCollection $languages
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(ProductUnitLanguageModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

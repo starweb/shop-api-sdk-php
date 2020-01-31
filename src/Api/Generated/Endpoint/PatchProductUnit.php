@@ -9,9 +9,9 @@ class PatchProductUnit extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      * Updates the `ProductUnit` object.
      *
      * @param int $unitId The units id
-     * @param \Starweb\Api\Generated\Model\ProductUnitModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody 
      */
-    public function __construct(int $unitId, \Starweb\Api\Generated\Model\ProductUnitModel $requestBody)
+    public function __construct(int $unitId, \Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody)
     {
         $this->unitId = $unitId;
         $this->body = $requestBody;
@@ -27,7 +27,7 @@ class PatchProductUnit extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductUnitModel) {
+        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductUnitModelUpdatable) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

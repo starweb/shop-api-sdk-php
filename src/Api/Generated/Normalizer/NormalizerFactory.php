@@ -121,6 +121,7 @@ class NormalizerFactory
         $normalizers[] = new ProductUnitModelCollectionNormalizer();
         $normalizers[] = new ProductUnitModelItemNormalizer();
         $normalizers[] = new ProductUnitModelNormalizer();
+        $normalizers[] = new ProductUnitModelUpdatableNormalizer();
         $normalizers[] = new ProductUnitLanguageModelCollectionNormalizer();
         $normalizers[] = new ProductUnitLanguageModelNormalizer();
         $normalizers[] = new ProductVariantPriceModelItemNormalizer();
