@@ -3868,7 +3868,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductUnitModel"
+                "$ref": "#\/components\/schemas\/ProductUnitModelUpdatable"
               }
             }
           }
@@ -3944,7 +3944,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductUnitModel"
+                "$ref": "#\/components\/schemas\/ProductUnitModelUpdatable"
               }
             }
           }
@@ -3978,7 +3978,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductUnitModel"
+                "$ref": "#\/components\/schemas\/ProductUnitModelUpdatable"
               }
             }
           }
@@ -12376,6 +12376,37 @@
         }
       },
       "ProductUnitModel": {
+        "type": "object",
+        "properties": {
+          "unitId": {
+            "type": "integer",
+            "readOnly": true,
+            "description": "The units id",
+            "minimum": 1,
+            "format": "int32",
+            "example": 1
+          },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
+          "languages": {
+            "$ref": "#\/components\/schemas\/ProductUnitLanguageModelCollection"
+          }
+        }
+      },
+      "ProductUnitModelUpdatable": {
         "type": "object",
         "properties": {
           "unitId": {
