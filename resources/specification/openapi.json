@@ -3853,7 +3853,7 @@
             "content": {
               "application\/json": {
                 "schema": {
-                  "$ref": "#\/components\/schemas\/ProductUnitModelCollection"
+                  "$ref": "#\/components\/schemas\/ProductUnitModelItem"
                 }
               }
             }
