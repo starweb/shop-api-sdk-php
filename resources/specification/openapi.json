@@ -3848,7 +3848,7 @@
         "summary": "Create a product unit",
         "description": "Creates a product unit.",
         "responses": {
-          "200": {
+          "201": {
             "description": "The created product unit",
             "content": {
               "application\/json": {

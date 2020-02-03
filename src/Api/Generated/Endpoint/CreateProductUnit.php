@@ -42,7 +42,7 @@ class CreateProductUnit extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductUnitModelItem', 'json');
         }
         if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
