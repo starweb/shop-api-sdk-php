@@ -12498,6 +12498,21 @@
             "type": "integer",
             "description": "The pricelist this price is for"
           },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 255,
+            "example": "ERP system",
+            "nullable": true
+          },
           "priceExVat": {
             "type": "number",
             "format": "float",
@@ -12550,6 +12565,21 @@
           "pricelistId": {
             "type": "integer",
             "description": "The pricelist this price is for"
+          },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 255,
+            "example": "ERP system",
+            "nullable": true
           },
           "priceExVat": {
             "type": "number",

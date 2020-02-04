@@ -31,6 +31,12 @@ class ProductVariantPriceModelNormalizer implements DenormalizerInterface, Norma
         if (property_exists($data, 'pricelistId')) {
             $object->setPricelistId($data->{'pricelistId'});
         }
+        if (property_exists($data, 'externalId')) {
+            $object->setExternalId($data->{'externalId'});
+        }
+        if (property_exists($data, 'externalIdType')) {
+            $object->setExternalIdType($data->{'externalIdType'});
+        }
         if (property_exists($data, 'priceExVat')) {
             $object->setPriceExVat($data->{'priceExVat'});
         }
@@ -52,6 +58,8 @@ class ProductVariantPriceModelNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getPricelistId()) {
             $data->{'pricelistId'} = $object->getPricelistId();
         }
+        $data->{'externalId'} = $object->getExternalId();
+        $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getPriceExVat()) {
             $data->{'priceExVat'} = $object->getPriceExVat();
         }

@@ -11,6 +11,18 @@ class ProductVariantPriceModel
      */
     protected $pricelistId;
     /**
+     * The external id of this pricelist
+     *
+     * @var string|null
+     */
+    protected $externalId = '';
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @var string|null
+     */
+    protected $externalIdType;
+    /**
      * The price excluding vat
      *
      * @var float
@@ -47,6 +59,48 @@ class ProductVariantPriceModel
     public function setPricelistId(int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
+        return $this;
+    }
+    /**
+     * The external id of this pricelist
+     *
+     * @return string|null
+     */
+    public function getExternalId() : ?string
+    {
+        return $this->externalId;
+    }
+    /**
+     * The external id of this pricelist
+     *
+     * @param string|null $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(?string $externalId) : self
+    {
+        $this->externalId = $externalId;
+        return $this;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @return string|null
+     */
+    public function getExternalIdType() : ?string
+    {
+        return $this->externalIdType;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @param string|null $externalIdType
+     *
+     * @return self
+     */
+    public function setExternalIdType(?string $externalIdType) : self
+    {
+        $this->externalIdType = $externalIdType;
         return $this;
     }
     /**
