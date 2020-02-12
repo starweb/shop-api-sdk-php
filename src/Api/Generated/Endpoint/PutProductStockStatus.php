@@ -9,9 +9,9 @@ class PutProductStockStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
      * Updates a product stock status. Retrieves the update `ProductStockStatus` object.
      *
      * @param int $stockStatusId The stock status id
-     * @param \Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
      */
-    public function __construct(int $stockStatusId, \Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody)
+    public function __construct(int $stockStatusId, \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody)
     {
         $this->stockStatusId = $stockStatusId;
         $this->body = $requestBody;
@@ -27,7 +27,7 @@ class PutProductStockStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductStockStatusModel) {
+        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductStockStatusRequestModel) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

@@ -1540,13 +1540,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * Create a product stock status. Retrieves the created `ProductStockStatus` object.
      *
-     * @param \Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductStockStatusBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductStockStatusModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductStockStatus(\Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductStockStatus(\Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductStockStatus($requestBody), $fetch);
     }
@@ -1580,14 +1580,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * Updates a product stock status. Retrieves the update `ProductStockStatus` object.
      *
      * @param int $stockStatusId The stock status id
-     * @param \Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductStockStatusBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductStockStatusNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductStockStatusModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductStockStatus(int $stockStatusId, \Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductStockStatus(int $stockStatusId, \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductStockStatus($stockStatusId, $requestBody), $fetch);
     }
@@ -1595,14 +1595,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * Updates a product stock status. Retrieves the update `ProductStockStatus` object.
      *
      * @param int $stockStatusId The stock status id
-     * @param \Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductStockStatusBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductStockStatusNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductStockStatusModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductStockStatus(int $stockStatusId, \Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductStockStatus(int $stockStatusId, \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductStockStatus($stockStatusId, $requestBody), $fetch);
     }

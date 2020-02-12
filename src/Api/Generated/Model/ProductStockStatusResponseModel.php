@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductStockStatusModel
+class ProductStockStatusResponseModel
 {
     /**
      * The stock status id
@@ -43,7 +43,7 @@ class ProductStockStatusModel
     /**
      * 
      *
-     * @var ProductStockStatusLanguageModel[]
+     * @var ProductStockStatusResponseModelLanguages
      */
     protected $languages;
     /**
@@ -175,20 +175,20 @@ class ProductStockStatusModel
     /**
      * 
      *
-     * @return ProductStockStatusLanguageModel[]
+     * @return ProductStockStatusResponseModelLanguages
      */
-    public function getLanguages() : array
+    public function getLanguages() : ProductStockStatusResponseModelLanguages
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductStockStatusLanguageModel[] $languages
+     * @param ProductStockStatusResponseModelLanguages $languages
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(ProductStockStatusResponseModelLanguages $languages) : self
     {
         $this->languages = $languages;
         return $this;

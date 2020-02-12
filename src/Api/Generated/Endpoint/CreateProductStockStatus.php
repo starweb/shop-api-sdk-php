@@ -7,9 +7,9 @@ class CreateProductStockStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
     /**
      * Create a product stock status. Retrieves the created `ProductStockStatus` object.
      *
-     * @param \Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
      */
-    public function __construct(\Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody)
+    public function __construct(\Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody)
     {
         $this->body = $requestBody;
     }
@@ -24,7 +24,7 @@ class CreateProductStockStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductStockStatusModel) {
+        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductStockStatusRequestModel) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

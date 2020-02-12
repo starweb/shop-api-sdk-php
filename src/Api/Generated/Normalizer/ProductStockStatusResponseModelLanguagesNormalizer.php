@@ -10,26 +10,30 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ProductStockStatusModelItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ProductStockStatusResponseModelLanguagesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Starweb\\Api\\Generated\\Model\\ProductStockStatusModelItem';
+        return $type === 'Starweb\\Api\\Generated\\Model\\ProductStockStatusResponseModelLanguages';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductStockStatusModelItem';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductStockStatusResponseModelLanguages';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
             throw new InvalidArgumentException();
         }
-        $object = new \Starweb\Api\Generated\Model\ProductStockStatusModelItem();
+        $object = new \Starweb\Api\Generated\Model\ProductStockStatusResponseModelLanguages();
         if (property_exists($data, 'data')) {
-            $object->setData($this->denormalizer->denormalize($data->{'data'}, 'Starweb\\Api\\Generated\\Model\\ProductStockStatusResponseModel', 'json', $context));
+            $values = array();
+            foreach ($data->{'data'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductStockStatusLanguageModel', 'json', $context);
+            }
+            $object->setData($values);
         }
         return $object;
     }
@@ -37,7 +41,11 @@ class ProductStockStatusModelItemNormalizer implements DenormalizerInterface, No
     {
         $data = new \stdClass();
         if (null !== $object->getData()) {
-            $data->{'data'} = $this->normalizer->normalize($object->getData(), 'json', $context);
+            $values = array();
+            foreach ($object->getData() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data->{'data'} = $values;
         }
         return $data;
     }

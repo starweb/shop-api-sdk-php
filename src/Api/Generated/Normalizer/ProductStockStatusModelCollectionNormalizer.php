@@ -31,7 +31,7 @@ class ProductStockStatusModelCollectionNormalizer implements DenormalizerInterfa
         if (property_exists($data, 'data')) {
             $values = array();
             foreach ($data->{'data'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductStockStatusModel', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductStockStatusResponseModel', 'json', $context);
             }
             $object->setData($values);
         }

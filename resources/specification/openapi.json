@@ -4242,7 +4242,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductStockStatusModel"
+                "$ref": "#\/components\/schemas\/ProductStockStatusRequestModel"
               }
             }
           }
@@ -4321,7 +4321,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductStockStatusModel"
+                "$ref": "#\/components\/schemas\/ProductStockStatusRequestModel"
               }
             }
           }
@@ -4358,7 +4358,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductStockStatusModel"
+                "$ref": "#\/components\/schemas\/ProductStockStatusRequestModel"
               }
             }
           }
@@ -12730,7 +12730,58 @@
           }
         }
       },
-      "ProductStockStatusModel": {
+      "ProductStockStatusResponseModel": {
+        "type": "object",
+        "properties": {
+          "stockStatusId": {
+            "type": "integer",
+            "readOnly": true,
+            "description": "The stock status id",
+            "example": 101
+          },
+          "idCode": {
+            "type": "string",
+            "maxLength": 20,
+            "readOnly": true,
+            "description": "The idCode of the status. Only standard statuses has idCodes set. It is also not permitted to change names for standard statuses",
+            "example": "inStock"
+          },
+          "sortIndex": {
+            "type": "integer",
+            "description": "Sort index for this status"
+          },
+          "stockoutNewStatusId": {
+            "type": "integer",
+            "nullable": true,
+            "example": null,
+            "description": "This has to be set to another, existing stock status id, or null. If a product has its quantity changed to negative, the product will then change stock status to the one with this id"
+          },
+          "productBuyable": {
+            "type": "boolean",
+            "default": true,
+            "example": false,
+            "description": "Is the product buyable when this status is set?"
+          },
+          "inStock": {
+            "type": "boolean",
+            "default": false,
+            "example": true,
+            "description": "Should the product be displayed as \"in stock\" when this status is set?"
+          },
+          "languages": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#\/components\/schemas\/ProductStockStatusLanguageModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ProductStockStatusRequestModel": {
         "type": "object",
         "properties": {
           "stockStatusId": {
@@ -12797,7 +12848,7 @@
       "ProductStockStatusModelItem": {
         "properties": {
           "data": {
-            "$ref": "#\/components\/schemas\/ProductStockStatusModel"
+            "$ref": "#\/components\/schemas\/ProductStockStatusResponseModel"
           }
         }
       },
@@ -12807,7 +12858,7 @@
             "type": "array",
             "description": "A list of product stock statuses",
             "items": {
-              "$ref": "#\/components\/schemas\/ProductStockStatusModel"
+              "$ref": "#\/components\/schemas\/ProductStockStatusResponseModel"
             }
           }
         }

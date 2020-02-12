@@ -139,7 +139,9 @@ class NormalizerFactory
         $normalizers[] = new ProductMetaDataTypeModelUpdatableNormalizer();
         $normalizers[] = new ProductMetaDataTypeLanguageModelCollectionNormalizer();
         $normalizers[] = new ProductMetaDataTypeLanguageModelNormalizer();
-        $normalizers[] = new ProductStockStatusModelNormalizer();
+        $normalizers[] = new ProductStockStatusResponseModelNormalizer();
+        $normalizers[] = new ProductStockStatusResponseModelLanguagesNormalizer();
+        $normalizers[] = new ProductStockStatusRequestModelNormalizer();
         $normalizers[] = new ProductStockStatusLanguageModelNormalizer();
         $normalizers[] = new ProductStockStatusModelItemNormalizer();
         $normalizers[] = new ProductStockStatusModelCollectionNormalizer();

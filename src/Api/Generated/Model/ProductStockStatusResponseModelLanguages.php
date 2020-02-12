@@ -2,27 +2,27 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductStockStatusModelCollection
+class ProductStockStatusResponseModelLanguages
 {
     /**
-     * A list of product stock statuses
+     * 
      *
-     * @var ProductStockStatusResponseModel[]
+     * @var ProductStockStatusLanguageModel[]
      */
     protected $data;
     /**
-     * A list of product stock statuses
+     * 
      *
-     * @return ProductStockStatusResponseModel[]
+     * @return ProductStockStatusLanguageModel[]
      */
     public function getData() : array
     {
         return $this->data;
     }
     /**
-     * A list of product stock statuses
+     * 
      *
-     * @param ProductStockStatusResponseModel[] $data
+     * @param ProductStockStatusLanguageModel[] $data
      *
      * @return self
      */
