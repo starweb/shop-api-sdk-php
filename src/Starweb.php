@@ -107,7 +107,7 @@ class Starweb
                 ->addPlugin(new HeaderDefaultsPlugin([
                     'User-Agent' => 'starweb-sdk (https://github.com/starweb/starweb-sdk)',
                 ]))
-                ->addAuthentication($tokenManager->getToken())
+                ->addAuthentication($tokenManager)
         ;
 
         return $builder->build();

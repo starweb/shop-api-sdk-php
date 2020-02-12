@@ -10,7 +10,6 @@ use Http\Promise\Promise;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 use Starweb\Api\Authentication\TokenManager;
-use Starweb\Exception\MaximumAuthenticationAttemptsReachedException;
 use Starweb\HttpClient\Plugin\RetryAuthenticationPlugin;
 
 class RetryAuthenticationPluginTest extends TestCase
@@ -67,7 +66,7 @@ class RetryAuthenticationPluginTest extends TestCase
             },
             function(RequestInterface $request) use ($response)
             {
-                return new $response;
+                return new HttpFulfilledPromise($response);
             }
         );
 
@@ -96,7 +95,7 @@ class RetryAuthenticationPluginTest extends TestCase
                 },
                 function(RequestInterface $request) use ($response)
                 {
-                    return $response;
+                    return new HttpFulfilledPromise($response);
                 }
             );
         }
