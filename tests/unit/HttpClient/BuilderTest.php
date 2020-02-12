@@ -7,6 +7,7 @@ use Http\Discovery\MessageFactoryDiscovery;
 use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
 use Starweb\Api\Authentication\AccessToken;
+use Starweb\Api\Authentication\TokenManager;
 use Starweb\HttpClient\Builder;
 use Starweb\Api\Generated\Client as JaneOpenApiClient;
 
@@ -98,9 +99,10 @@ class BuilderTest extends TestCase
 
     public function testAuthentication(): void
     {
+        $tokenManagerMock = $this->createMock(TokenManager::class);
         $builder = new Builder();
 
         $this->assertInstanceOf(Builder::class, $builder);
-        $this->assertInstanceOf(Builder::class, $builder->addAuthentication(new AccessToken('my-token')));
+        $this->assertInstanceOf(Builder::class, $builder->addAuthentication($tokenManagerMock));
     }
 }

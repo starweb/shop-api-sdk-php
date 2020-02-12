@@ -86,8 +86,10 @@ class StarwebTest extends TestCase
 
     public function testCreateWithNonResolvableBaseUri(): void
     {
+        $starweb = Starweb::create(new ClientCredentials('id', 'secret'), 'https://foo.test');
+
         $this->expectException(NetworkException::class);
-        Starweb::create(new ClientCredentials('id', 'secret'), 'https://foo.test');
+        $starweb->getClient()->getShop();
     }
 
     public function testCreateWithInvalidBaseUri(): void
@@ -97,9 +99,10 @@ class StarwebTest extends TestCase
         $clientMock->addResponse($response);
         $tokenCacheMock = $this->createMock(TokenFilesystemCache::class);
 
+        $starweb = $this->getStarweb($clientMock, $tokenCacheMock);
         $this->expectException(InvalidBaseUriException::class);
         $this->expectExceptionMessage('invalid base uri');
-        $this->getStarweb($clientMock, $tokenCacheMock);
+        $starweb->getClient()->getShop();
     }
 
     public function testCreateWithInvalidCredentials(): void
@@ -112,8 +115,10 @@ class StarwebTest extends TestCase
         $clientMock->addResponse($response);
         $tokenCacheMock = $this->createMock(TokenFilesystemCache::class);
 
+        $starweb = $this->getStarweb($clientMock, $tokenCacheMock);
+
         $this->expectException(InvalidCredentialsException::class);
-        $this->getStarweb($clientMock, $tokenCacheMock);
+        $starweb->getClient()->getShop();
     }
 
     public function testCreateWithServerError(): void
@@ -126,8 +131,10 @@ class StarwebTest extends TestCase
         $clientMock->addResponse($response);
         $tokenCacheMock = $this->createMock(TokenFilesystemCache::class);
 
+        $starweb = $this->getStarweb($clientMock, $tokenCacheMock);
+
         $this->expectException(ServerErrorException::class);
-        $this->getStarweb($clientMock, $tokenCacheMock);
+        $starweb->getClient()->getShop();
     }
 
     public function testBuildHttpClient(): void
