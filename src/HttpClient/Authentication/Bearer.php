@@ -14,7 +14,7 @@ final class Bearer implements Authentication
     private $tokenManager;
 
     /**
-     * @param string $token
+     * @param TokenManager $tokenManager
      */
     public function __construct(TokenManager $tokenManager)
     {
