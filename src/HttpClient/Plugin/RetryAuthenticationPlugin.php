@@ -50,7 +50,7 @@ class RetryAuthenticationPlugin implements Plugin
                 $this->tokenManager->refreshToken();
                 $this->retryCount++;
 
-                return $first($request);
+                return $first($request)->wait();
             }
 
             return $response;

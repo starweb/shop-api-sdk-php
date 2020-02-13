@@ -8,10 +8,10 @@ use Http\Client\Common\Plugin\HeaderAppendPlugin;
 use Http\Client\Common\PluginClientFactory;
 use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
-use Http\Message\Authentication\Bearer;
 use Http\Message\MessageFactory;
-use Starweb\Api\Authentication\TokenInterface;
+use Starweb\Api\Authentication\TokenManager;
 use Starweb\Api\Client;
+use Starweb\HttpClient\Authentication\Bearer;
 
 class Builder
 {
@@ -122,9 +122,9 @@ class Builder
         return $this;
     }
 
-    public function addAuthentication(TokenInterface $token): Builder
+    public function addAuthentication(TokenManager $tokenManager): Builder
     {
-        $authentication = new Bearer($token->__toString());
+        $authentication = new Bearer($tokenManager);
         $this->addPlugin(new AuthenticationPlugin($authentication));
 
         return $this;
