@@ -81,15 +81,9 @@ class ProductCategoryModelUpdatableNormalizer implements DenormalizerInterface, 
             $data->{'openPage'} = $object->getOpenPage();
         }
         $data->{'imageFileId'} = $object->getImageFileId();
-        if (null !== $object->getExternalId()) {
-            $data->{'externalId'} = $object->getExternalId();
-        }
-        if (null !== $object->getExternalType()) {
-            $data->{'externalType'} = $object->getExternalType();
-        }
-        if (null !== $object->getExternalIdType()) {
-            $data->{'externalIdType'} = $object->getExternalIdType();
-        }
+        $data->{'externalId'} = $object->getExternalId();
+        $data->{'externalType'} = $object->getExternalType();
+        $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {

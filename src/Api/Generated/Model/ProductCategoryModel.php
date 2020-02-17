@@ -43,7 +43,7 @@ class ProductCategoryModel
     /**
      * The external Id for this category for the system named in externalType
      *
-     * @var string
+     * @var string|null
      */
     protected $externalId;
     /**
@@ -51,13 +51,13 @@ class ProductCategoryModel
      *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $externalType;
     /**
      * The system name the externalId belongs to.
      *
-     * @var string
+     * @var string|null
      */
     protected $externalIdType;
     /**
@@ -201,20 +201,20 @@ class ProductCategoryModel
     /**
      * The external Id for this category for the system named in externalType
      *
-     * @return string
+     * @return string|null
      */
-    public function getExternalId() : string
+    public function getExternalId() : ?string
     {
         return $this->externalId;
     }
     /**
      * The external Id for this category for the system named in externalType
      *
-     * @param string $externalId
+     * @param string|null $externalId
      *
      * @return self
      */
-    public function setExternalId(string $externalId) : self
+    public function setExternalId(?string $externalId) : self
     {
         $this->externalId = $externalId;
         return $this;
@@ -224,22 +224,22 @@ class ProductCategoryModel
      *
      * @deprecated
      *
-     * @return string
+     * @return string|null
      */
-    public function getExternalType() : string
+    public function getExternalType() : ?string
     {
         return $this->externalType;
     }
     /**
      * Deprecated: use `externalIdType` instead
      *
-     * @param string $externalType
+     * @param string|null $externalType
      *
      * @deprecated
      *
      * @return self
      */
-    public function setExternalType(string $externalType) : self
+    public function setExternalType(?string $externalType) : self
     {
         $this->externalType = $externalType;
         return $this;
@@ -247,20 +247,20 @@ class ProductCategoryModel
     /**
      * The system name the externalId belongs to.
      *
-     * @return string
+     * @return string|null
      */
-    public function getExternalIdType() : string
+    public function getExternalIdType() : ?string
     {
         return $this->externalIdType;
     }
     /**
      * The system name the externalId belongs to.
      *
-     * @param string $externalIdType
+     * @param string|null $externalIdType
      *
      * @return self
      */
-    public function setExternalIdType(string $externalIdType) : self
+    public function setExternalIdType(?string $externalIdType) : self
     {
         $this->externalIdType = $externalIdType;
         return $this;

@@ -11270,11 +11270,15 @@
             "type": "string",
             "description": "The external Id for this category for the system named in externalType",
             "maxLength": 40,
+            "nullable": true,
+            "default": null,
             "example": "123"
           },
           "externalType": {
             "type": "string",
             "deprecated": true,
+            "nullable": true,
+            "default": null,
             "description": "Deprecated: use `externalIdType` instead",
             "maxLength": 20,
             "example": "Fortnox"
@@ -11283,6 +11287,8 @@
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
+            "nullable": true,
+            "default": null,
             "example": "Fortnox"
           },
           "hasChildren": {
@@ -11336,6 +11342,8 @@
             "type": "string",
             "description": "The external Id for this category for the system named in externalType",
             "maxLength": 40,
+            "nullable": true,
+            "default": null,
             "example": "123"
           },
           "externalType": {
@@ -11343,12 +11351,16 @@
             "deprecated": true,
             "description": "Deprecated: use `externalIdType` instead",
             "maxLength": 20,
+            "nullable": true,
+            "default": null,
             "example": "Fortnox"
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
+            "nullable": true,
+            "default": null,
             "example": "Fortnox"
           },
           "hasChildren": {

@@ -77,15 +77,9 @@ class ProductCategoryModelNormalizer implements DenormalizerInterface, Normalize
             $data->{'openPage'} = $object->getOpenPage();
         }
         $data->{'imageFileId'} = $object->getImageFileId();
-        if (null !== $object->getExternalId()) {
-            $data->{'externalId'} = $object->getExternalId();
-        }
-        if (null !== $object->getExternalType()) {
-            $data->{'externalType'} = $object->getExternalType();
-        }
-        if (null !== $object->getExternalIdType()) {
-            $data->{'externalIdType'} = $object->getExternalIdType();
-        }
+        $data->{'externalId'} = $object->getExternalId();
+        $data->{'externalType'} = $object->getExternalType();
+        $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
         }
