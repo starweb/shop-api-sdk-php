@@ -11396,30 +11396,35 @@
           "pageTitle": {
             "type": "string",
             "maxLength": 90,
+            "nullable": true,
             "description": "The page title for this product category",
             "example": "My category - find products here!"
           },
           "description": {
             "type": "string",
             "maxLength": 65535,
+            "nullable": true,
             "description": "The main\/top description of this product category",
             "example": "Lorem ipsum..."
           },
           "bottomDescription": {
             "type": "string",
             "maxLength": 65535,
+            "nullable": true,
             "description": "The extra\/bottom description of this product category",
             "example": "Lorem ipsum..."
           },
           "pageMetaDescription": {
             "type": "string",
             "maxLength": 278,
+            "nullable": true,
             "description": "The page meta data description of this product category",
             "example": "Lorem ipsum..."
           },
           "permalink": {
             "type": "string",
             "maxLength": 128,
+            "nullable": true,
             "description": "The permalink to this product category. Will auto generate if left out",
             "example": "my-category"
           }

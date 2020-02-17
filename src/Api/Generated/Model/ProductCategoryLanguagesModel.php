@@ -19,31 +19,31 @@ class ProductCategoryLanguagesModel
     /**
      * The page title for this product category
      *
-     * @var string
+     * @var string|null
      */
     protected $pageTitle;
     /**
      * The main/top description of this product category
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
      * The extra/bottom description of this product category
      *
-     * @var string
+     * @var string|null
      */
     protected $bottomDescription;
     /**
      * The page meta data description of this product category
      *
-     * @var string
+     * @var string|null
      */
     protected $pageMetaDescription;
     /**
      * The permalink to this product category. Will auto generate if left out
      *
-     * @var string
+     * @var string|null
      */
     protected $permalink;
     /**
@@ -91,20 +91,20 @@ class ProductCategoryLanguagesModel
     /**
      * The page title for this product category
      *
-     * @return string
+     * @return string|null
      */
-    public function getPageTitle() : string
+    public function getPageTitle() : ?string
     {
         return $this->pageTitle;
     }
     /**
      * The page title for this product category
      *
-     * @param string $pageTitle
+     * @param string|null $pageTitle
      *
      * @return self
      */
-    public function setPageTitle(string $pageTitle) : self
+    public function setPageTitle(?string $pageTitle) : self
     {
         $this->pageTitle = $pageTitle;
         return $this;
@@ -112,20 +112,20 @@ class ProductCategoryLanguagesModel
     /**
      * The main/top description of this product category
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription() : string
+    public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
      * The main/top description of this product category
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
-    public function setDescription(string $description) : self
+    public function setDescription(?string $description) : self
     {
         $this->description = $description;
         return $this;
@@ -133,20 +133,20 @@ class ProductCategoryLanguagesModel
     /**
      * The extra/bottom description of this product category
      *
-     * @return string
+     * @return string|null
      */
-    public function getBottomDescription() : string
+    public function getBottomDescription() : ?string
     {
         return $this->bottomDescription;
     }
     /**
      * The extra/bottom description of this product category
      *
-     * @param string $bottomDescription
+     * @param string|null $bottomDescription
      *
      * @return self
      */
-    public function setBottomDescription(string $bottomDescription) : self
+    public function setBottomDescription(?string $bottomDescription) : self
     {
         $this->bottomDescription = $bottomDescription;
         return $this;
@@ -154,20 +154,20 @@ class ProductCategoryLanguagesModel
     /**
      * The page meta data description of this product category
      *
-     * @return string
+     * @return string|null
      */
-    public function getPageMetaDescription() : string
+    public function getPageMetaDescription() : ?string
     {
         return $this->pageMetaDescription;
     }
     /**
      * The page meta data description of this product category
      *
-     * @param string $pageMetaDescription
+     * @param string|null $pageMetaDescription
      *
      * @return self
      */
-    public function setPageMetaDescription(string $pageMetaDescription) : self
+    public function setPageMetaDescription(?string $pageMetaDescription) : self
     {
         $this->pageMetaDescription = $pageMetaDescription;
         return $this;
@@ -175,20 +175,20 @@ class ProductCategoryLanguagesModel
     /**
      * The permalink to this product category. Will auto generate if left out
      *
-     * @return string
+     * @return string|null
      */
-    public function getPermalink() : string
+    public function getPermalink() : ?string
     {
         return $this->permalink;
     }
     /**
      * The permalink to this product category. Will auto generate if left out
      *
-     * @param string $permalink
+     * @param string|null $permalink
      *
      * @return self
      */
-    public function setPermalink(string $permalink) : self
+    public function setPermalink(?string $permalink) : self
     {
         $this->permalink = $permalink;
         return $this;

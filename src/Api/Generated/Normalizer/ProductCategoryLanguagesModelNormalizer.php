@@ -60,21 +60,11 @@ class ProductCategoryLanguagesModelNormalizer implements DenormalizerInterface, 
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
         }
-        if (null !== $object->getPageTitle()) {
-            $data->{'pageTitle'} = $object->getPageTitle();
-        }
-        if (null !== $object->getDescription()) {
-            $data->{'description'} = $object->getDescription();
-        }
-        if (null !== $object->getBottomDescription()) {
-            $data->{'bottomDescription'} = $object->getBottomDescription();
-        }
-        if (null !== $object->getPageMetaDescription()) {
-            $data->{'pageMetaDescription'} = $object->getPageMetaDescription();
-        }
-        if (null !== $object->getPermalink()) {
-            $data->{'permalink'} = $object->getPermalink();
-        }
+        $data->{'pageTitle'} = $object->getPageTitle();
+        $data->{'description'} = $object->getDescription();
+        $data->{'bottomDescription'} = $object->getBottomDescription();
+        $data->{'pageMetaDescription'} = $object->getPageMetaDescription();
+        $data->{'permalink'} = $object->getPermalink();
         return $data;
     }
 }
