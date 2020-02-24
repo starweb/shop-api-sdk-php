@@ -11,9 +11,9 @@ class PutProductsVariant extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      *
      * @param int $productId The product id
      * @param int $variantId The products variants id
-     * @param \Starweb\Api\Generated\Model\ProductVariantModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductVariantPutRequestModel $requestBody 
      */
-    public function __construct(int $productId, int $variantId, \Starweb\Api\Generated\Model\ProductVariantModel $requestBody)
+    public function __construct(int $productId, int $variantId, \Starweb\Api\Generated\Model\ProductVariantPutRequestModel $requestBody)
     {
         $this->productId = $productId;
         $this->variantId = $variantId;
@@ -30,7 +30,7 @@ class PutProductsVariant extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductVariantModel) {
+        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductVariantPutRequestModel) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

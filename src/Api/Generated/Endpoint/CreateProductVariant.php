@@ -9,9 +9,9 @@ class CreateProductVariant extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      * Creates a product variant. Retrieves the created `ProductVariant` object
      *
      * @param int $productId The products id
-     * @param \Starweb\Api\Generated\Model\ProductVariantModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductVariantRequestModel $requestBody 
      */
-    public function __construct(int $productId, \Starweb\Api\Generated\Model\ProductVariantModel $requestBody)
+    public function __construct(int $productId, \Starweb\Api\Generated\Model\ProductVariantRequestModel $requestBody)
     {
         $this->productId = $productId;
         $this->body = $requestBody;
@@ -27,7 +27,7 @@ class CreateProductVariant extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductVariantModel) {
+        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductVariantRequestModel) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

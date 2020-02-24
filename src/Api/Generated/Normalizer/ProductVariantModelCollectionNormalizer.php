@@ -31,7 +31,7 @@ class ProductVariantModelCollectionNormalizer implements DenormalizerInterface, 
         if (property_exists($data, 'data')) {
             $values = array();
             foreach ($data->{'data'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductVariantModel', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductVariantResponseModel', 'json', $context);
             }
             $object->setData($values);
         }

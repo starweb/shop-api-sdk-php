@@ -2,14 +2,8 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductVariantModel
+class ProductVariantRequestModel
 {
-    /**
-     * 
-     *
-     * @var int
-     */
-    protected $variantId;
     /**
      * The product variants SKU (stock keeping unit)
      *
@@ -17,27 +11,15 @@ class ProductVariantModel
      */
     protected $sku;
     /**
-     * The external id of this variant
-     *
-     * @var string|null
-     */
-    protected $externalId;
-    /**
-     * The external id type of this variant
-     *
-     * @var string|null
-     */
-    protected $externalIdType;
-    /**
      * Is this variant active? Only active variants are visible to customers
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isActive = true;
     /**
      * The sort index of this variant.
      *
-     * @var int
+     * @var int|null
      */
     protected $sortIndex;
     /**
@@ -67,13 +49,13 @@ class ProductVariantModel
     /**
      * European article no
      *
-     * @var string
+     * @var string|null
      */
     protected $ean;
     /**
      * Manufacturer part no
      *
-     * @var string
+     * @var string|null
      */
     protected $mpn;
     /**
@@ -83,7 +65,7 @@ class ProductVariantModel
      */
     protected $imageFileId;
     /**
-     * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true
+     * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true.
      *
      * @var int[]
      */
@@ -91,42 +73,9 @@ class ProductVariantModel
     /**
      * An array of pricelists IDs that will use inheritance
      *
-     * @var int[]
+     * @var int[]|null
      */
     protected $volumePricingInheritancePricelistIds;
-    /**
-     * A collection of product variant prices
-     *
-     * @var ProductVariantPriceModel[]
-     */
-    protected $prices;
-    /**
-     * A collection of product variant attribute values
-     *
-     * @var ProductVariantAttributeValueModel[]
-     */
-    protected $attributeValues;
-    /**
-     * 
-     *
-     * @return int
-     */
-    public function getVariantId() : int
-    {
-        return $this->variantId;
-    }
-    /**
-     * 
-     *
-     * @param int $variantId
-     *
-     * @return self
-     */
-    public function setVariantId(int $variantId) : self
-    {
-        $this->variantId = $variantId;
-        return $this;
-    }
     /**
      * The product variants SKU (stock keeping unit)
      *
@@ -149,64 +98,22 @@ class ProductVariantModel
         return $this;
     }
     /**
-     * The external id of this variant
-     *
-     * @return string|null
-     */
-    public function getExternalId() : ?string
-    {
-        return $this->externalId;
-    }
-    /**
-     * The external id of this variant
-     *
-     * @param string|null $externalId
-     *
-     * @return self
-     */
-    public function setExternalId(?string $externalId) : self
-    {
-        $this->externalId = $externalId;
-        return $this;
-    }
-    /**
-     * The external id type of this variant
-     *
-     * @return string|null
-     */
-    public function getExternalIdType() : ?string
-    {
-        return $this->externalIdType;
-    }
-    /**
-     * The external id type of this variant
-     *
-     * @param string|null $externalIdType
-     *
-     * @return self
-     */
-    public function setExternalIdType(?string $externalIdType) : self
-    {
-        $this->externalIdType = $externalIdType;
-        return $this;
-    }
-    /**
      * Is this variant active? Only active variants are visible to customers
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsActive() : bool
+    public function getIsActive() : ?bool
     {
         return $this->isActive;
     }
     /**
      * Is this variant active? Only active variants are visible to customers
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
-    public function setIsActive(bool $isActive) : self
+    public function setIsActive(?bool $isActive) : self
     {
         $this->isActive = $isActive;
         return $this;
@@ -214,20 +121,20 @@ class ProductVariantModel
     /**
      * The sort index of this variant.
      *
-     * @return int
+     * @return int|null
      */
-    public function getSortIndex() : int
+    public function getSortIndex() : ?int
     {
         return $this->sortIndex;
     }
     /**
      * The sort index of this variant.
      *
-     * @param int $sortIndex
+     * @param int|null $sortIndex
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(?int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -319,20 +226,20 @@ class ProductVariantModel
     /**
      * European article no
      *
-     * @return string
+     * @return string|null
      */
-    public function getEan() : string
+    public function getEan() : ?string
     {
         return $this->ean;
     }
     /**
      * European article no
      *
-     * @param string $ean
+     * @param string|null $ean
      *
      * @return self
      */
-    public function setEan(string $ean) : self
+    public function setEan(?string $ean) : self
     {
         $this->ean = $ean;
         return $this;
@@ -340,20 +247,20 @@ class ProductVariantModel
     /**
      * Manufacturer part no
      *
-     * @return string
+     * @return string|null
      */
-    public function getMpn() : string
+    public function getMpn() : ?string
     {
         return $this->mpn;
     }
     /**
      * Manufacturer part no
      *
-     * @param string $mpn
+     * @param string|null $mpn
      *
      * @return self
      */
-    public function setMpn(string $mpn) : self
+    public function setMpn(?string $mpn) : self
     {
         $this->mpn = $mpn;
         return $this;
@@ -380,7 +287,7 @@ class ProductVariantModel
         return $this;
     }
     /**
-     * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true
+     * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true.
      *
      * @return int[]
      */
@@ -389,7 +296,7 @@ class ProductVariantModel
         return $this->attributeValueLinks;
     }
     /**
-     * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true
+     * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true.
      *
      * @param int[] $attributeValueLinks
      *
@@ -403,64 +310,22 @@ class ProductVariantModel
     /**
      * An array of pricelists IDs that will use inheritance
      *
-     * @return int[]
+     * @return int[]|null
      */
-    public function getVolumePricingInheritancePricelistIds() : array
+    public function getVolumePricingInheritancePricelistIds() : ?array
     {
         return $this->volumePricingInheritancePricelistIds;
     }
     /**
      * An array of pricelists IDs that will use inheritance
      *
-     * @param int[] $volumePricingInheritancePricelistIds
+     * @param int[]|null $volumePricingInheritancePricelistIds
      *
      * @return self
      */
-    public function setVolumePricingInheritancePricelistIds(array $volumePricingInheritancePricelistIds) : self
+    public function setVolumePricingInheritancePricelistIds(?array $volumePricingInheritancePricelistIds) : self
     {
         $this->volumePricingInheritancePricelistIds = $volumePricingInheritancePricelistIds;
-        return $this;
-    }
-    /**
-     * A collection of product variant prices
-     *
-     * @return ProductVariantPriceModel[]
-     */
-    public function getPrices() : array
-    {
-        return $this->prices;
-    }
-    /**
-     * A collection of product variant prices
-     *
-     * @param ProductVariantPriceModel[] $prices
-     *
-     * @return self
-     */
-    public function setPrices(array $prices) : self
-    {
-        $this->prices = $prices;
-        return $this;
-    }
-    /**
-     * A collection of product variant attribute values
-     *
-     * @return ProductVariantAttributeValueModel[]
-     */
-    public function getAttributeValues() : array
-    {
-        return $this->attributeValues;
-    }
-    /**
-     * A collection of product variant attribute values
-     *
-     * @param ProductVariantAttributeValueModel[] $attributeValues
-     *
-     * @return self
-     */
-    public function setAttributeValues(array $attributeValues) : self
-    {
-        $this->attributeValues = $attributeValues;
         return $this;
     }
 }

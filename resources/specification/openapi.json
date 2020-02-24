@@ -5403,7 +5403,7 @@
             "in": "query",
             "style": "form",
             "explode": false,
-            "description": "If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices, attributeValues",
+            "description": "If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices, attributeValues, attributeValues.attribute",
             "examples": {
               "prices": {
                 "value": "prices",
@@ -5467,7 +5467,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductVariantModel"
+                "$ref": "#\/components\/schemas\/ProductVariantRequestModel"
               }
             }
           }
@@ -5518,7 +5518,7 @@
             "in": "query",
             "style": "form",
             "explode": false,
-            "description": "If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices,  attributeValues",
+            "description": "If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices,  attributeValues, attributeValues.attribute",
             "examples": {
               "prices": {
                 "value": "prices",
@@ -5586,7 +5586,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductVariantModel"
+                "$ref": "#\/components\/schemas\/ProductVariantPutRequestModel"
               }
             }
           }
@@ -5623,7 +5623,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductVariantModel"
+                "$ref": "#\/components\/schemas\/ProductVariantPatchRequestModel"
               }
             }
           }
@@ -11720,7 +11720,7 @@
             "type": "array",
             "description": "A collection of variants",
             "items": {
-              "$ref": "#\/components\/schemas\/ProductVariantModel"
+              "$ref": "#\/components\/schemas\/ProductVariantPutRequestModel"
             }
           },
           "bundledProducts": {
@@ -11943,7 +11943,7 @@
       "ProductVariantModelItem": {
         "properties": {
           "data": {
-            "$ref": "#\/components\/schemas\/ProductVariantModel"
+            "$ref": "#\/components\/schemas\/ProductVariantResponseModel"
           }
         }
       },
@@ -11953,48 +11953,29 @@
             "type": "array",
             "description": "A collection of product variants",
             "items": {
-              "$ref": "#\/components\/schemas\/ProductVariantModel"
+              "$ref": "#\/components\/schemas\/ProductVariantResponseModel"
             }
           }
         }
       },
-      "ProductVariantModel": {
+      "ProductVariantRequestModel": {
         "type": "object",
         "properties": {
-          "variantId": {
-            "type": "integer",
-            "readOnly": true,
-            "example": 101
-          },
           "sku": {
             "type": "string",
             "maxLength": 40,
             "description": "The product variants SKU (stock keeping unit)"
           },
-          "externalId": {
-            "type": "string",
-            "description": "The external id of this variant",
-            "example": "101",
-            "maxLength": 255,
-            "nullable": true,
-            "default": null
-          },
-          "externalIdType": {
-            "type": "string",
-            "description": "The external id type of this variant",
-            "example": "101",
-            "maxLength": 255,
-            "nullable": true,
-            "default": null
-          },
           "isActive": {
             "type": "boolean",
             "default": true,
-            "description": "Is this variant active? Only active variants are visible to customers"
+            "description": "Is this variant active? Only active variants are visible to customers",
+            "nullable": true
           },
           "sortIndex": {
             "type": "integer",
-            "description": "The sort index of this variant."
+            "description": "The sort index of this variant.",
+            "nullable": true
           },
           "stockStatusId": {
             "type": "integer",
@@ -12025,12 +12006,14 @@
           "ean": {
             "type": "string",
             "maxLength": 20,
-            "description": "European article no"
+            "description": "European article no",
+            "nullable": true
           },
           "mpn": {
             "type": "string",
             "maxLength": 40,
-            "description": "Manufacturer part no"
+            "description": "Manufacturer part no",
+            "nullable": true
           },
           "imageFileId": {
             "type": "integer",
@@ -12039,7 +12022,7 @@
           },
           "attributeValueLinks": {
             "type": "array",
-            "description": "An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product\u00b4s hasSeveralVariants field is set to true",
+            "description": "An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product\u00b4s hasSeveralVariants field is set to true.",
             "items": {
               "type": "integer",
               "minimum": 1,
@@ -12053,7 +12036,275 @@
               "type": "integer",
               "minimum": 1,
               "description": "The ID of the attribute value"
+            },
+            "nullable": true
+          }
+        },
+        "required": [
+          "sku",
+          "attributeValueLinks"
+        ]
+      },
+      "ProductVariantPutRequestModel": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "The product variants SKU (stock keeping unit)"
+          },
+          "isActive": {
+            "type": "boolean",
+            "default": true,
+            "description": "Is this variant active? Only active variants are visible to customers",
+            "nullable": true
+          },
+          "sortIndex": {
+            "type": "integer",
+            "description": "The sort index of this variant.",
+            "nullable": true
+          },
+          "stockStatusId": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The ID of the variants stock status. Available stock statuses can be fetched using the \/product-stock-statuses endpoint"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "nullable": true,
+            "maximum": 100000000,
+            "minimum": -100000000,
+            "description": "The current stock quantity for this variant"
+          },
+          "weightInKg": {
+            "type": "number",
+            "format": "float",
+            "nullable": true,
+            "minimum": 0,
+            "description": "The variants weight in KG",
+            "example": 0.15
+          },
+          "costPrice": {
+            "type": "string",
+            "minimum": 0,
+            "nullable": true,
+            "description": "The cost for this variant. Used for statistic and never displayed to customers"
+          },
+          "ean": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "European article no",
+            "nullable": true
+          },
+          "mpn": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "Manufacturer part no",
+            "nullable": true
+          },
+          "imageFileId": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The ID of this variant main image. Available media files can be fetched using the \/media-files endpoint"
+          },
+          "attributeValueLinks": {
+            "type": "array",
+            "description": "An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product\u00b4s hasSeveralVariants field is set to true.",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The ID of the attribute value"
+            },
+            "nullable": true
+          },
+          "volumePricingInheritancePricelistIds": {
+            "type": "array",
+            "description": "An array of pricelists IDs that will use inheritance",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The ID of the attribute value"
+            },
+            "nullable": true
+          }
+        },
+        "required": [
+          "sku",
+          "attributeValueLinks"
+        ]
+      },
+      "ProductVariantPatchRequestModel": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "The product variants SKU (stock keeping unit)"
+          },
+          "isActive": {
+            "type": "boolean",
+            "default": true,
+            "description": "Is this variant active? Only active variants are visible to customers",
+            "nullable": true
+          },
+          "sortIndex": {
+            "type": "integer",
+            "description": "The sort index of this variant.",
+            "nullable": true
+          },
+          "stockStatusId": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The ID of the variants stock status. Available stock statuses can be fetched using the \/product-stock-statuses endpoint"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "nullable": true,
+            "maximum": 100000000,
+            "minimum": -100000000,
+            "description": "The current stock quantity for this variant"
+          },
+          "weightInKg": {
+            "type": "number",
+            "format": "float",
+            "nullable": true,
+            "minimum": 0,
+            "description": "The variants weight in KG",
+            "example": 0.15
+          },
+          "costPrice": {
+            "type": "string",
+            "minimum": 0,
+            "nullable": true,
+            "description": "The cost for this variant. Used for statistic and never displayed to customers"
+          },
+          "ean": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "European article no",
+            "nullable": true
+          },
+          "mpn": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "Manufacturer part no",
+            "nullable": true
+          },
+          "imageFileId": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The ID of this variant main image. Available media files can be fetched using the \/media-files endpoint"
+          },
+          "attributeValueLinks": {
+            "type": "array",
+            "description": "An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product\u00b4s hasSeveralVariants field is set to true.",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The ID of the attribute value"
+            },
+            "nullable": true
+          },
+          "volumePricingInheritancePricelistIds": {
+            "type": "array",
+            "description": "An array of pricelists IDs that will use inheritance",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The ID of the attribute value"
+            },
+            "nullable": true
+          }
+        }
+      },
+      "ProductVariantResponseModel": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "The product variants SKU (stock keeping unit)"
+          },
+          "isActive": {
+            "type": "boolean",
+            "default": true,
+            "description": "Is this variant active? Only active variants are visible to customers",
+            "nullable": true
+          },
+          "sortIndex": {
+            "type": "integer",
+            "description": "The sort index of this variant.",
+            "nullable": true
+          },
+          "stockStatusId": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The ID of the variants stock status. Available stock statuses can be fetched using the \/product-stock-statuses endpoint"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "nullable": true,
+            "maximum": 100000000,
+            "minimum": -100000000,
+            "description": "The current stock quantity for this variant"
+          },
+          "weightInKg": {
+            "type": "number",
+            "format": "float",
+            "nullable": true,
+            "minimum": 0,
+            "description": "The variants weight in KG",
+            "example": 0.15
+          },
+          "costPrice": {
+            "type": "string",
+            "minimum": 0,
+            "nullable": true,
+            "description": "The cost for this variant. Used for statistic and never displayed to customers"
+          },
+          "ean": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "European article no",
+            "nullable": true
+          },
+          "mpn": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "Manufacturer part no",
+            "nullable": true
+          },
+          "imageFileId": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The ID of this variant main image. Available media files can be fetched using the \/media-files endpoint"
+          },
+          "attributeValueLinks": {
+            "type": "array",
+            "description": "An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product\u00b4s hasSeveralVariants field is set to true.",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The ID of the attribute value"
             }
+          },
+          "volumePricingInheritancePricelistIds": {
+            "type": "array",
+            "description": "An array of pricelists IDs that will use inheritance",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The ID of the attribute value"
+            },
+            "nullable": true
+          },
+          "variantId": {
+            "type": "integer",
+            "readOnly": true,
+            "description": "The variant id",
+            "minimum": 1,
+            "format": "int32",
+            "example": 1
           },
           "prices": {
             "type": "array",
@@ -12069,7 +12320,11 @@
               "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModel"
             }
           }
-        }
+        },
+        "required": [
+          "sku",
+          "attributeValueLinks"
+        ]
       },
       "ProductMediaFileLinkModelItem": {
         "properties": {

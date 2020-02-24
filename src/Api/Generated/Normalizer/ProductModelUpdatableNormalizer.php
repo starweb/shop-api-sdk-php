@@ -86,7 +86,7 @@ class ProductModelUpdatableNormalizer implements DenormalizerInterface, Normaliz
         if (property_exists($data, 'variants')) {
             $values_1 = array();
             foreach ($data->{'variants'} as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Starweb\\Api\\Generated\\Model\\ProductVariantModel', 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Starweb\\Api\\Generated\\Model\\ProductVariantPutRequestModel', 'json', $context);
             }
             $object->setVariants($values_1);
         }

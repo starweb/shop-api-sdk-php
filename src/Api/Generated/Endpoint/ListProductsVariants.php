@@ -11,7 +11,7 @@ class ListProductsVariants extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      * @param int $productId The products id
      * @param array $queryParameters {
      *     @var int $page The page of product variants to return
-     *     @var string $include If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices, attributeValues
+     *     @var string $include If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices, attributeValues, attributeValues.attribute
      * }
      */
     public function __construct(int $productId, array $queryParameters = array())

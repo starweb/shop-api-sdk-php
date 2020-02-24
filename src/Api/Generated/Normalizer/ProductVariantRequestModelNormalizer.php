@@ -10,35 +10,26 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ProductVariantModelNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ProductVariantRequestModelNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Starweb\\Api\\Generated\\Model\\ProductVariantModel';
+        return $type === 'Starweb\\Api\\Generated\\Model\\ProductVariantRequestModel';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantRequestModel';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
             throw new InvalidArgumentException();
         }
-        $object = new \Starweb\Api\Generated\Model\ProductVariantModel();
-        if (property_exists($data, 'variantId')) {
-            $object->setVariantId($data->{'variantId'});
-        }
+        $object = new \Starweb\Api\Generated\Model\ProductVariantRequestModel();
         if (property_exists($data, 'sku')) {
             $object->setSku($data->{'sku'});
-        }
-        if (property_exists($data, 'externalId')) {
-            $object->setExternalId($data->{'externalId'});
-        }
-        if (property_exists($data, 'externalIdType')) {
-            $object->setExternalIdType($data->{'externalIdType'});
         }
         if (property_exists($data, 'isActive')) {
             $object->setIsActive($data->{'isActive'});
@@ -81,20 +72,6 @@ class ProductVariantModelNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->setVolumePricingInheritancePricelistIds($values_1);
         }
-        if (property_exists($data, 'prices')) {
-            $values_2 = array();
-            foreach ($data->{'prices'} as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'Starweb\\Api\\Generated\\Model\\ProductVariantPriceModel', 'json', $context);
-            }
-            $object->setPrices($values_2);
-        }
-        if (property_exists($data, 'attributeValues')) {
-            $values_3 = array();
-            foreach ($data->{'attributeValues'} as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueModel', 'json', $context);
-            }
-            $object->setAttributeValues($values_3);
-        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -103,24 +80,14 @@ class ProductVariantModelNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getSku()) {
             $data->{'sku'} = $object->getSku();
         }
-        $data->{'externalId'} = $object->getExternalId();
-        $data->{'externalIdType'} = $object->getExternalIdType();
-        if (null !== $object->getIsActive()) {
-            $data->{'isActive'} = $object->getIsActive();
-        }
-        if (null !== $object->getSortIndex()) {
-            $data->{'sortIndex'} = $object->getSortIndex();
-        }
+        $data->{'isActive'} = $object->getIsActive();
+        $data->{'sortIndex'} = $object->getSortIndex();
         $data->{'stockStatusId'} = $object->getStockStatusId();
         $data->{'stockQuantity'} = $object->getStockQuantity();
         $data->{'weightInKg'} = $object->getWeightInKg();
         $data->{'costPrice'} = $object->getCostPrice();
-        if (null !== $object->getEan()) {
-            $data->{'ean'} = $object->getEan();
-        }
-        if (null !== $object->getMpn()) {
-            $data->{'mpn'} = $object->getMpn();
-        }
+        $data->{'ean'} = $object->getEan();
+        $data->{'mpn'} = $object->getMpn();
         $data->{'imageFileId'} = $object->getImageFileId();
         if (null !== $object->getAttributeValueLinks()) {
             $values = array();
@@ -136,19 +103,8 @@ class ProductVariantModelNormalizer implements DenormalizerInterface, Normalizer
             }
             $data->{'volumePricingInheritancePricelistIds'} = $values_1;
         }
-        if (null !== $object->getPrices()) {
-            $values_2 = array();
-            foreach ($object->getPrices() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
-            }
-            $data->{'prices'} = $values_2;
-        }
-        if (null !== $object->getAttributeValues()) {
-            $values_3 = array();
-            foreach ($object->getAttributeValues() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
-            }
-            $data->{'attributeValues'} = $values_3;
+        else {
+            $data->{'volumePricingInheritancePricelistIds'} = null;
         }
         return $data;
     }

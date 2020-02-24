@@ -97,7 +97,10 @@ class NormalizerFactory
         $normalizers[] = new ProductModelCollectionMetaNormalizer();
         $normalizers[] = new ProductVariantModelItemNormalizer();
         $normalizers[] = new ProductVariantModelCollectionNormalizer();
-        $normalizers[] = new ProductVariantModelNormalizer();
+        $normalizers[] = new ProductVariantRequestModelNormalizer();
+        $normalizers[] = new ProductVariantPutRequestModelNormalizer();
+        $normalizers[] = new ProductVariantPatchRequestModelNormalizer();
+        $normalizers[] = new ProductVariantResponseModelNormalizer();
         $normalizers[] = new ProductMediaFileLinkModelItemNormalizer();
         $normalizers[] = new ProductMediaFileLinkModelCollectionNormalizer();
         $normalizers[] = new ProductMediaFileLinkModelNormalizer();

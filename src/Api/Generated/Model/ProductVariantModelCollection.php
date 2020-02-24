@@ -7,13 +7,13 @@ class ProductVariantModelCollection
     /**
      * A collection of product variants
      *
-     * @var ProductVariantModel[]
+     * @var ProductVariantResponseModel[]
      */
     protected $data;
     /**
      * A collection of product variants
      *
-     * @return ProductVariantModel[]
+     * @return ProductVariantResponseModel[]
      */
     public function getData() : array
     {
@@ -22,7 +22,7 @@ class ProductVariantModelCollection
     /**
      * A collection of product variants
      *
-     * @param ProductVariantModel[] $data
+     * @param ProductVariantResponseModel[] $data
      *
      * @return self
      */

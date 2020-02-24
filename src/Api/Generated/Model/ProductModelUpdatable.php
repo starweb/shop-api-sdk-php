@@ -109,7 +109,7 @@ class ProductModelUpdatable
     /**
      * A collection of variants
      *
-     * @var ProductVariantModel[]
+     * @var ProductVariantPutRequestModel[]
      */
     protected $variants;
     /**
@@ -508,7 +508,7 @@ class ProductModelUpdatable
     /**
      * A collection of variants
      *
-     * @return ProductVariantModel[]
+     * @return ProductVariantPutRequestModel[]
      */
     public function getVariants() : array
     {
@@ -517,7 +517,7 @@ class ProductModelUpdatable
     /**
      * A collection of variants
      *
-     * @param ProductVariantModel[] $variants
+     * @param ProductVariantPutRequestModel[] $variants
      *
      * @return self
      */

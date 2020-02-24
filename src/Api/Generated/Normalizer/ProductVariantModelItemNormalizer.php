@@ -29,7 +29,7 @@ class ProductVariantModelItemNormalizer implements DenormalizerInterface, Normal
         }
         $object = new \Starweb\Api\Generated\Model\ProductVariantModelItem();
         if (property_exists($data, 'data')) {
-            $object->setData($this->denormalizer->denormalize($data->{'data'}, 'Starweb\\Api\\Generated\\Model\\ProductVariantModel', 'json', $context));
+            $object->setData($this->denormalizer->denormalize($data->{'data'}, 'Starweb\\Api\\Generated\\Model\\ProductVariantResponseModel', 'json', $context));
         }
         return $object;
     }

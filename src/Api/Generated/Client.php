@@ -1968,7 +1968,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param int $productId The products id
      * @param array $queryParameters {
      *     @var int $page The page of product variants to return
-     *     @var string $include If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices, attributeValues
+     *     @var string $include If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices, attributeValues, attributeValues.attribute
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\ListProductsVariantsBadRequestException
@@ -1983,13 +1983,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * Creates a product variant. Retrieves the created `ProductVariant` object
      *
      * @param int $productId The products id
-     * @param \Starweb\Api\Generated\Model\ProductVariantModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductVariantRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductVariantBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductVariant(int $productId, \Starweb\Api\Generated\Model\ProductVariantModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductVariant(int $productId, \Starweb\Api\Generated\Model\ProductVariantRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductVariant($productId, $requestBody), $fetch);
     }
@@ -2013,7 +2013,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param int $productId The product id
      * @param int $variantId The products variants id
      * @param array $queryParameters {
-     *     @var string $include If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices,  attributeValues
+     *     @var string $include If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices,  attributeValues, attributeValues.attribute
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\GetProductsVariantNotFoundException
@@ -2029,14 +2029,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param int $productId The product id
      * @param int $variantId The products variants id
-     * @param \Starweb\Api\Generated\Model\ProductVariantModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductVariantPatchRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductsVariantBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductsVariantNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductsVariant(int $productId, int $variantId, \Starweb\Api\Generated\Model\ProductVariantModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductsVariant(int $productId, int $variantId, \Starweb\Api\Generated\Model\ProductVariantPatchRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsVariant($productId, $variantId, $requestBody), $fetch);
     }
@@ -2045,14 +2045,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param int $productId The product id
      * @param int $variantId The products variants id
-     * @param \Starweb\Api\Generated\Model\ProductVariantModel $requestBody 
+     * @param \Starweb\Api\Generated\Model\ProductVariantPutRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductsVariantBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductsVariantNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductsVariant(int $productId, int $variantId, \Starweb\Api\Generated\Model\ProductVariantModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductsVariant(int $productId, int $variantId, \Starweb\Api\Generated\Model\ProductVariantPutRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductsVariant($productId, $variantId, $requestBody), $fetch);
     }
