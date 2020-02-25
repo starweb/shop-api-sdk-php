@@ -31,6 +31,12 @@ class ProductVariantPatchRequestModelNormalizer implements DenormalizerInterface
         if (property_exists($data, 'sku')) {
             $object->setSku($data->{'sku'});
         }
+        if (property_exists($data, 'externalId')) {
+            $object->setExternalId($data->{'externalId'});
+        }
+        if (property_exists($data, 'externalIdType')) {
+            $object->setExternalIdType($data->{'externalIdType'});
+        }
         if (property_exists($data, 'isActive')) {
             $object->setIsActive($data->{'isActive'});
         }
@@ -80,6 +86,8 @@ class ProductVariantPatchRequestModelNormalizer implements DenormalizerInterface
         if (null !== $object->getSku()) {
             $data->{'sku'} = $object->getSku();
         }
+        $data->{'externalId'} = $object->getExternalId();
+        $data->{'externalIdType'} = $object->getExternalIdType();
         $data->{'isActive'} = $object->getIsActive();
         $data->{'sortIndex'} = $object->getSortIndex();
         $data->{'stockStatusId'} = $object->getStockStatusId();
