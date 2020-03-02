@@ -7,9 +7,16 @@ php:
 install:
   - composer install --dev --no-interaction
 
+before_script:
+  - composer require php-coveralls/php-coveralls:^2.2.0
+  - composer install -n
+
 script:
-  - composer run phpunit-coverage-text
   - composer run phpcs
+  - vendor/bin/phpunit --coverage-text --coverage-clover=clover.xml
+
+after_success:
+  - vendor/bin/php-coveralls --coverage_clover=clover.xml
 
 notifications:
-    email: false
+  email: true
