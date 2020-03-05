@@ -28,9 +28,6 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
             throw new InvalidArgumentException();
         }
         $object = new \Starweb\Api\Generated\Model\ProductModelPatchable();
-        if (property_exists($data, 'productId')) {
-            $object->setProductId($data->{'productId'});
-        }
         if (property_exists($data, 'externalId')) {
             $object->setExternalId($data->{'externalId'});
         }

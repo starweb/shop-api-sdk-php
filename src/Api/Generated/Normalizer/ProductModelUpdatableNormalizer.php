@@ -28,9 +28,6 @@ class ProductModelUpdatableNormalizer implements DenormalizerInterface, Normaliz
             throw new InvalidArgumentException();
         }
         $object = new \Starweb\Api\Generated\Model\ProductModelUpdatable();
-        if (property_exists($data, 'productId')) {
-            $object->setProductId($data->{'productId'});
-        }
         if (property_exists($data, 'externalId')) {
             $object->setExternalId($data->{'externalId'});
         }

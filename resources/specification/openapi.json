@@ -11611,11 +11611,6 @@
       "ProductModelUpdatable": {
         "type": "object",
         "properties": {
-          "productId": {
-            "type": "integer",
-            "readOnly": true,
-            "example": 101
-          },
           "externalId": {
             "type": "string",
             "maxLength": 40,
@@ -11771,11 +11766,6 @@
       "ProductModelPatchable": {
         "type": "object",
         "properties": {
-          "productId": {
-            "type": "integer",
-            "readOnly": true,
-            "example": 101
-          },
           "externalId": {
             "type": "string",
             "maxLength": 40,

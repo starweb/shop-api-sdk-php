@@ -5,12 +5,6 @@ namespace Starweb\Api\Generated\Model;
 class ProductModelUpdatable
 {
     /**
-     * 
-     *
-     * @var int
-     */
-    protected $productId;
-    /**
      * The external id of this pricelist
      *
      * @var string|null
@@ -148,27 +142,6 @@ class ProductModelUpdatable
      * @var ProductMetaDataModelUpdatable[]
      */
     protected $metaData;
-    /**
-     * 
-     *
-     * @return int
-     */
-    public function getProductId() : int
-    {
-        return $this->productId;
-    }
-    /**
-     * 
-     *
-     * @param int $productId
-     *
-     * @return self
-     */
-    public function setProductId(int $productId) : self
-    {
-        $this->productId = $productId;
-        return $this;
-    }
     /**
      * The external id of this pricelist
      *
