@@ -74,12 +74,6 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
         if (property_exists($data, 'accounting')) {
             $object->setAccounting($data->{'accounting'});
         }
-        if (property_exists($data, 'hasSeveralVariants')) {
-            $object->setHasSeveralVariants($data->{'hasSeveralVariants'});
-        }
-        if (property_exists($data, 'modifiedAt')) {
-            $object->setModifiedAt($data->{'modifiedAt'});
-        }
         if (property_exists($data, 'mediaFiles')) {
             $values_1 = array();
             foreach ($data->{'mediaFiles'} as $value_1) {
@@ -135,6 +129,9 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
                 $values[] = $value;
             }
             $data->{'visibilityPricelistIds'} = $values;
+        }
+        else {
+            $data->{'visibilityPricelistIds'} = null;
         }
         $data->{'moreInfoUrl'} = $object->getMoreInfoUrl();
         $data->{'manufacturerId'} = $object->getManufacturerId();

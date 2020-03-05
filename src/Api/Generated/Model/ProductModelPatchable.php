@@ -37,7 +37,7 @@ class ProductModelPatchable
     /**
      * The ID´s of the pricelists that the product should be visible for. Is required for when ”visibility” is set to ”pricelists” but should never be populated otherwise
      *
-     * @var int[]
+     * @var int[]|null
      */
     protected $visibilityPricelistIds;
     /**
@@ -88,18 +88,6 @@ class ProductModelPatchable
      * @var int|null
      */
     protected $accounting;
-    /**
-     * Indicates if the products has several variants or not. The remaining variants can be fetched using the /products/{product id}/variants endpoint
-     *
-     * @var bool
-     */
-    protected $hasSeveralVariants;
-    /**
-     * A timestamp of when the product was modified. The time should be formatted using ISO-8601
-     *
-     * @var string
-     */
-    protected $modifiedAt;
     /**
      * A collection of media files
      *
@@ -238,20 +226,20 @@ class ProductModelPatchable
     /**
      * The ID´s of the pricelists that the product should be visible for. Is required for when ”visibility” is set to ”pricelists” but should never be populated otherwise
      *
-     * @return int[]
+     * @return int[]|null
      */
-    public function getVisibilityPricelistIds() : array
+    public function getVisibilityPricelistIds() : ?array
     {
         return $this->visibilityPricelistIds;
     }
     /**
      * The ID´s of the pricelists that the product should be visible for. Is required for when ”visibility” is set to ”pricelists” but should never be populated otherwise
      *
-     * @param int[] $visibilityPricelistIds
+     * @param int[]|null $visibilityPricelistIds
      *
      * @return self
      */
-    public function setVisibilityPricelistIds(array $visibilityPricelistIds) : self
+    public function setVisibilityPricelistIds(?array $visibilityPricelistIds) : self
     {
         $this->visibilityPricelistIds = $visibilityPricelistIds;
         return $this;
@@ -422,48 +410,6 @@ class ProductModelPatchable
     public function setAccounting(?int $accounting) : self
     {
         $this->accounting = $accounting;
-        return $this;
-    }
-    /**
-     * Indicates if the products has several variants or not. The remaining variants can be fetched using the /products/{product id}/variants endpoint
-     *
-     * @return bool
-     */
-    public function getHasSeveralVariants() : bool
-    {
-        return $this->hasSeveralVariants;
-    }
-    /**
-     * Indicates if the products has several variants or not. The remaining variants can be fetched using the /products/{product id}/variants endpoint
-     *
-     * @param bool $hasSeveralVariants
-     *
-     * @return self
-     */
-    public function setHasSeveralVariants(bool $hasSeveralVariants) : self
-    {
-        $this->hasSeveralVariants = $hasSeveralVariants;
-        return $this;
-    }
-    /**
-     * A timestamp of when the product was modified. The time should be formatted using ISO-8601
-     *
-     * @return string
-     */
-    public function getModifiedAt() : string
-    {
-        return $this->modifiedAt;
-    }
-    /**
-     * A timestamp of when the product was modified. The time should be formatted using ISO-8601
-     *
-     * @param string $modifiedAt
-     *
-     * @return self
-     */
-    public function setModifiedAt(string $modifiedAt) : self
-    {
-        $this->modifiedAt = $modifiedAt;
         return $this;
     }
     /**

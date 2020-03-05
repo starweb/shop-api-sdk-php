@@ -11648,7 +11648,8 @@
               "type": "integer",
               "description": "The ID of the pricelist the product should be visible for",
               "example": 1
-            }
+            },
+            "nullable": true
           },
           "moreInfoUrl": {
             "type": "string",
@@ -11698,18 +11699,6 @@
             "minimum": 100,
             "maximum": 9999,
             "description": "Account number for managing accounting on product level"
-          },
-          "hasSeveralVariants": {
-            "type": "boolean",
-            "description": "Indicates if the products has several variants or not. The remaining variants can be fetched using the \/products\/{product id}\/variants endpoint",
-            "readOnly": true,
-            "example": false
-          },
-          "modifiedAt": {
-            "type": "string",
-            "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T13:38:17+01:00",
-            "readOnly": true
           },
           "variants": {
             "type": "array",
@@ -11803,7 +11792,8 @@
               "type": "integer",
               "description": "The ID of the pricelist the product should be visible for",
               "example": 1
-            }
+            },
+            "nullable": true
           },
           "moreInfoUrl": {
             "type": "string",
@@ -11854,18 +11844,6 @@
             "minimum": 100,
             "maximum": 9999,
             "description": "Account number for managing accounting on product level"
-          },
-          "hasSeveralVariants": {
-            "type": "boolean",
-            "description": "Indicates if the products has several variants or not. The remaining variants can be fetched using the \/products\/{product id}\/variants endpoint",
-            "readOnly": true,
-            "example": false
-          },
-          "modifiedAt": {
-            "type": "string",
-            "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-11-28T13:38:17+01:00",
-            "readOnly": true
           },
           "mediaFiles": {
             "type": "array",

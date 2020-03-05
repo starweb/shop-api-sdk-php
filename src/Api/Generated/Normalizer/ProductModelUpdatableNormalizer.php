@@ -74,12 +74,6 @@ class ProductModelUpdatableNormalizer implements DenormalizerInterface, Normaliz
         if (property_exists($data, 'accounting')) {
             $object->setAccounting($data->{'accounting'});
         }
-        if (property_exists($data, 'hasSeveralVariants')) {
-            $object->setHasSeveralVariants($data->{'hasSeveralVariants'});
-        }
-        if (property_exists($data, 'modifiedAt')) {
-            $object->setModifiedAt($data->{'modifiedAt'});
-        }
         if (property_exists($data, 'variants')) {
             $values_1 = array();
             foreach ($data->{'variants'} as $value_1) {
@@ -149,6 +143,9 @@ class ProductModelUpdatableNormalizer implements DenormalizerInterface, Normaliz
                 $values[] = $value;
             }
             $data->{'visibilityPricelistIds'} = $values;
+        }
+        else {
+            $data->{'visibilityPricelistIds'} = null;
         }
         if (null !== $object->getMoreInfoUrl()) {
             $data->{'moreInfoUrl'} = $object->getMoreInfoUrl();
