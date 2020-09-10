@@ -29,7 +29,7 @@ class OrderAddressCollectionNormalizer implements DenormalizerInterface, Normali
         }
         $object = new \Starweb\Api\Generated\Model\OrderAddressCollection();
         if (property_exists($data, 'data')) {
-            $object->setData($this->denormalizer->denormalize($data->{'data'}, 'Starweb\\Api\\Generated\\Model\\OrderAddressModel', 'json', $context));
+            $object->setData($this->denormalizer->denormalize($data->{'data'}, 'Starweb\\Api\\Generated\\Model\\OrderAddressCollectionData', 'json', $context));
         }
         return $object;
     }

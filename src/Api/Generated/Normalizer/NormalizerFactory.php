@@ -22,6 +22,7 @@ class NormalizerFactory
         $normalizers[] = new AddressModelItemNormalizer();
         $normalizers[] = new OrderAddressModelNormalizer();
         $normalizers[] = new OrderAddressCollectionNormalizer();
+        $normalizers[] = new OrderAddressCollectionDataNormalizer();
         $normalizers[] = new OrderStatusModelNormalizer();
         $normalizers[] = new OrderStatusLanguageModelNormalizer();
         $normalizers[] = new OrderStatusModelItemNormalizer();

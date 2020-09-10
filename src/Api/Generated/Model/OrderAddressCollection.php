@@ -7,26 +7,26 @@ class OrderAddressCollection
     /**
      * 
      *
-     * @var OrderAddressModel
+     * @var OrderAddressCollectionData
      */
     protected $data;
     /**
      * 
      *
-     * @return OrderAddressModel
+     * @return OrderAddressCollectionData
      */
-    public function getData() : OrderAddressModel
+    public function getData() : OrderAddressCollectionData
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param OrderAddressModel $data
+     * @param OrderAddressCollectionData $data
      *
      * @return self
      */
-    public function setData(OrderAddressModel $data) : self
+    public function setData(OrderAddressCollectionData $data) : self
     {
         $this->data = $data;
         return $this;

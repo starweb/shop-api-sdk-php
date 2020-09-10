@@ -9520,7 +9520,27 @@
       "OrderAddressCollection": {
         "properties": {
           "data": {
-            "$ref": "#\/components\/schemas\/OrderAddressModel"
+            "type": "object",
+            "properties": {
+              "originalInvoice": {
+                "$ref": "#\/components\/schemas\/AddressModel"
+              },
+              "originalDelivery": {
+                "$ref": "#\/components\/schemas\/AddressModel"
+              },
+              "customerInvoice": {
+                "$ref": "#\/components\/schemas\/AddressModel"
+              },
+              "customerDelivery": {
+                "$ref": "#\/components\/schemas\/AddressModel"
+              },
+              "paymentMethodInvoice": {
+                "$ref": "#\/components\/schemas\/AddressModel"
+              },
+              "paymentMethodDelivery": {
+                "$ref": "#\/components\/schemas\/AddressModel"
+              }
+            }
           }
         }
       },
