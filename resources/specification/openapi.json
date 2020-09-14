@@ -9954,7 +9954,8 @@
             "type": "string",
             "description": "A timestamp of when the customer was was approved\/disapproved. The time should be formatted using ISO-8601",
             "example": "2019-11-28T13:38:17+01:00",
-            "readOnly": true
+            "readOnly": true,
+            "nullable": true
           },
           "pricelistId": {
             "type": "integer",

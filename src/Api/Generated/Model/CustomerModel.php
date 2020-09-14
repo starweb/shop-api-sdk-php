@@ -67,7 +67,7 @@ class CustomerModel
     /**
      * A timestamp of when the customer was was approved/disapproved. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var string|null
      */
     protected $approvedAt;
     /**
@@ -289,20 +289,20 @@ class CustomerModel
     /**
      * A timestamp of when the customer was was approved/disapproved. The time should be formatted using ISO-8601
      *
-     * @return string
+     * @return string|null
      */
-    public function getApprovedAt() : string
+    public function getApprovedAt() : ?string
     {
         return $this->approvedAt;
     }
     /**
      * A timestamp of when the customer was was approved/disapproved. The time should be formatted using ISO-8601
      *
-     * @param string $approvedAt
+     * @param string|null $approvedAt
      *
      * @return self
      */
-    public function setApprovedAt(string $approvedAt) : self
+    public function setApprovedAt(?string $approvedAt) : self
     {
         $this->approvedAt = $approvedAt;
         return $this;
