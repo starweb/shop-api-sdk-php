@@ -25,42 +25,66 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\ProductModelPatchable();
-        if (property_exists($data, 'externalId')) {
+        if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
             $object->setExternalId($data->{'externalId'});
         }
-        if (property_exists($data, 'externalIdType')) {
+        elseif (property_exists($data, 'externalId') && $data->{'externalId'} === null) {
+            $object->setExternalId(null);
+        }
+        if (property_exists($data, 'externalIdType') && $data->{'externalIdType'} !== null) {
             $object->setExternalIdType($data->{'externalIdType'});
+        }
+        elseif (property_exists($data, 'externalIdType') && $data->{'externalIdType'} === null) {
+            $object->setExternalIdType(null);
         }
         if (property_exists($data, 'createdAt')) {
             $object->setCreatedAt($data->{'createdAt'});
         }
-        if (property_exists($data, 'defaultVatRate')) {
+        if (property_exists($data, 'defaultVatRate') && $data->{'defaultVatRate'} !== null) {
             $object->setDefaultVatRate($data->{'defaultVatRate'});
+        }
+        elseif (property_exists($data, 'defaultVatRate') && $data->{'defaultVatRate'} === null) {
+            $object->setDefaultVatRate(null);
         }
         if (property_exists($data, 'visibility')) {
             $object->setVisibility($data->{'visibility'});
         }
-        if (property_exists($data, 'visibilityPricelistIds')) {
+        if (property_exists($data, 'visibilityPricelistIds') && $data->{'visibilityPricelistIds'} !== null) {
             $values = array();
             foreach ($data->{'visibilityPricelistIds'} as $value) {
                 $values[] = $value;
             }
             $object->setVisibilityPricelistIds($values);
         }
-        if (property_exists($data, 'moreInfoUrl')) {
+        elseif (property_exists($data, 'visibilityPricelistIds') && $data->{'visibilityPricelistIds'} === null) {
+            $object->setVisibilityPricelistIds(null);
+        }
+        if (property_exists($data, 'moreInfoUrl') && $data->{'moreInfoUrl'} !== null) {
             $object->setMoreInfoUrl($data->{'moreInfoUrl'});
         }
-        if (property_exists($data, 'manufacturerId')) {
+        elseif (property_exists($data, 'moreInfoUrl') && $data->{'moreInfoUrl'} === null) {
+            $object->setMoreInfoUrl(null);
+        }
+        if (property_exists($data, 'manufacturerId') && $data->{'manufacturerId'} !== null) {
             $object->setManufacturerId($data->{'manufacturerId'});
         }
-        if (property_exists($data, 'unitId')) {
+        elseif (property_exists($data, 'manufacturerId') && $data->{'manufacturerId'} === null) {
+            $object->setManufacturerId(null);
+        }
+        if (property_exists($data, 'unitId') && $data->{'unitId'} !== null) {
             $object->setUnitId($data->{'unitId'});
         }
-        if (property_exists($data, 'sortIndex')) {
+        elseif (property_exists($data, 'unitId') && $data->{'unitId'} === null) {
+            $object->setUnitId(null);
+        }
+        if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
             $object->setSortIndex($data->{'sortIndex'});
+        }
+        elseif (property_exists($data, 'sortIndex') && $data->{'sortIndex'} === null) {
+            $object->setSortIndex(null);
         }
         if (property_exists($data, 'type')) {
             $object->setType($data->{'type'});
@@ -68,11 +92,17 @@ class ProductModelPatchableNormalizer implements DenormalizerInterface, Normaliz
         if (property_exists($data, 'isBackInStockWatchable')) {
             $object->setIsBackInStockWatchable($data->{'isBackInStockWatchable'});
         }
-        if (property_exists($data, 'bundleUseManualPrice')) {
+        if (property_exists($data, 'bundleUseManualPrice') && $data->{'bundleUseManualPrice'} !== null) {
             $object->setBundleUseManualPrice($data->{'bundleUseManualPrice'});
         }
-        if (property_exists($data, 'accounting')) {
+        elseif (property_exists($data, 'bundleUseManualPrice') && $data->{'bundleUseManualPrice'} === null) {
+            $object->setBundleUseManualPrice(null);
+        }
+        if (property_exists($data, 'accounting') && $data->{'accounting'} !== null) {
             $object->setAccounting($data->{'accounting'});
+        }
+        elseif (property_exists($data, 'accounting') && $data->{'accounting'} === null) {
+            $object->setAccounting(null);
         }
         if (property_exists($data, 'mediaFiles')) {
             $values_1 = array();

@@ -25,17 +25,23 @@ class ProductVariantAttributeValueModelNormalizer implements DenormalizerInterfa
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\ProductVariantAttributeValueModel();
         if (property_exists($data, 'attributeValueId')) {
             $object->setAttributeValueId($data->{'attributeValueId'});
         }
-        if (property_exists($data, 'externalId')) {
+        if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
             $object->setExternalId($data->{'externalId'});
         }
-        if (property_exists($data, 'externalIdType')) {
+        elseif (property_exists($data, 'externalId') && $data->{'externalId'} === null) {
+            $object->setExternalId(null);
+        }
+        if (property_exists($data, 'externalIdType') && $data->{'externalIdType'} !== null) {
             $object->setExternalIdType($data->{'externalIdType'});
+        }
+        elseif (property_exists($data, 'externalIdType') && $data->{'externalIdType'} === null) {
+            $object->setExternalIdType(null);
         }
         if (property_exists($data, 'skuSuffix')) {
             $object->setSkuSuffix($data->{'skuSuffix'});

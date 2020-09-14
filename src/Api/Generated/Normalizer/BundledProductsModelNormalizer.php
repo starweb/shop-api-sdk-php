@@ -25,7 +25,7 @@ class BundledProductsModelNormalizer implements DenormalizerInterface, Normalize
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\BundledProductsModel();
         if (property_exists($data, 'singleVariant')) {
@@ -37,8 +37,11 @@ class BundledProductsModelNormalizer implements DenormalizerInterface, Normalize
         if (property_exists($data, 'variantSku')) {
             $object->setVariantSku($data->{'variantSku'});
         }
-        if (property_exists($data, 'quantity')) {
+        if (property_exists($data, 'quantity') && $data->{'quantity'} !== null) {
             $object->setQuantity($data->{'quantity'});
+        }
+        elseif (property_exists($data, 'quantity') && $data->{'quantity'} === null) {
+            $object->setQuantity(null);
         }
         if (property_exists($data, 'sortIndex')) {
             $object->setSortIndex($data->{'sortIndex'});

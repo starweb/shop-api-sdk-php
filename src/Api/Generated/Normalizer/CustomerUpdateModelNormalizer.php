@@ -25,7 +25,7 @@ class CustomerUpdateModelNormalizer implements DenormalizerInterface, Normalizer
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\CustomerUpdateModel();
         if (property_exists($data, 'customerId')) {
@@ -52,8 +52,11 @@ class CustomerUpdateModelNormalizer implements DenormalizerInterface, Normalizer
         if (property_exists($data, 'customInfo2')) {
             $object->setCustomInfo2($data->{'customInfo2'});
         }
-        if (property_exists($data, 'pricelistId')) {
+        if (property_exists($data, 'pricelistId') && $data->{'pricelistId'} !== null) {
             $object->setPricelistId($data->{'pricelistId'});
+        }
+        elseif (property_exists($data, 'pricelistId') && $data->{'pricelistId'} === null) {
+            $object->setPricelistId(null);
         }
         if (property_exists($data, 'langCode')) {
             $object->setLangCode($data->{'langCode'});

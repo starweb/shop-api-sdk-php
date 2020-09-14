@@ -25,7 +25,7 @@ class PaymentMethodModelNormalizer implements DenormalizerInterface, NormalizerI
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\PaymentMethodModel();
         if (property_exists($data, 'paymentMethodId')) {
@@ -50,23 +50,38 @@ class PaymentMethodModelNormalizer implements DenormalizerInterface, NormalizerI
             }
             $object->setValidCountriesSelected($values);
         }
-        if (property_exists($data, 'validForMinItemsSubtotal')) {
+        if (property_exists($data, 'validForMinItemsSubtotal') && $data->{'validForMinItemsSubtotal'} !== null) {
             $object->setValidForMinItemsSubtotal($data->{'validForMinItemsSubtotal'});
         }
-        if (property_exists($data, 'validForMaxItemsSubtotal')) {
+        elseif (property_exists($data, 'validForMinItemsSubtotal') && $data->{'validForMinItemsSubtotal'} === null) {
+            $object->setValidForMinItemsSubtotal(null);
+        }
+        if (property_exists($data, 'validForMaxItemsSubtotal') && $data->{'validForMaxItemsSubtotal'} !== null) {
             $object->setValidForMaxItemsSubtotal($data->{'validForMaxItemsSubtotal'});
         }
-        if (property_exists($data, 'validForMinWeight')) {
+        elseif (property_exists($data, 'validForMaxItemsSubtotal') && $data->{'validForMaxItemsSubtotal'} === null) {
+            $object->setValidForMaxItemsSubtotal(null);
+        }
+        if (property_exists($data, 'validForMinWeight') && $data->{'validForMinWeight'} !== null) {
             $object->setValidForMinWeight($data->{'validForMinWeight'});
         }
-        if (property_exists($data, 'validForMaxWeight')) {
+        elseif (property_exists($data, 'validForMinWeight') && $data->{'validForMinWeight'} === null) {
+            $object->setValidForMinWeight(null);
+        }
+        if (property_exists($data, 'validForMaxWeight') && $data->{'validForMaxWeight'} !== null) {
             $object->setValidForMaxWeight($data->{'validForMaxWeight'});
+        }
+        elseif (property_exists($data, 'validForMaxWeight') && $data->{'validForMaxWeight'} === null) {
+            $object->setValidForMaxWeight(null);
         }
         if (property_exists($data, 'validForShippingMethods')) {
             $object->setValidForShippingMethods($data->{'validForShippingMethods'});
         }
-        if (property_exists($data, 'validForCustomerType')) {
+        if (property_exists($data, 'validForCustomerType') && $data->{'validForCustomerType'} !== null) {
             $object->setValidForCustomerType($data->{'validForCustomerType'});
+        }
+        elseif (property_exists($data, 'validForCustomerType') && $data->{'validForCustomerType'} === null) {
+            $object->setValidForCustomerType(null);
         }
         if (property_exists($data, 'isClickAndCollect')) {
             $object->setIsClickAndCollect($data->{'isClickAndCollect'});

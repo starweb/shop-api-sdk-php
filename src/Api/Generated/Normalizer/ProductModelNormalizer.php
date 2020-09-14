@@ -25,23 +25,32 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\ProductModel();
         if (property_exists($data, 'productId')) {
             $object->setProductId($data->{'productId'});
         }
-        if (property_exists($data, 'externalId')) {
+        if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
             $object->setExternalId($data->{'externalId'});
         }
-        if (property_exists($data, 'externalIdType')) {
+        elseif (property_exists($data, 'externalId') && $data->{'externalId'} === null) {
+            $object->setExternalId(null);
+        }
+        if (property_exists($data, 'externalIdType') && $data->{'externalIdType'} !== null) {
             $object->setExternalIdType($data->{'externalIdType'});
+        }
+        elseif (property_exists($data, 'externalIdType') && $data->{'externalIdType'} === null) {
+            $object->setExternalIdType(null);
         }
         if (property_exists($data, 'createdAt')) {
             $object->setCreatedAt($data->{'createdAt'});
         }
-        if (property_exists($data, 'defaultVatRate')) {
+        if (property_exists($data, 'defaultVatRate') && $data->{'defaultVatRate'} !== null) {
             $object->setDefaultVatRate($data->{'defaultVatRate'});
+        }
+        elseif (property_exists($data, 'defaultVatRate') && $data->{'defaultVatRate'} === null) {
+            $object->setDefaultVatRate(null);
         }
         if (property_exists($data, 'visibility')) {
             $object->setVisibility($data->{'visibility'});
@@ -56,14 +65,23 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (property_exists($data, 'moreInfoUrl')) {
             $object->setMoreInfoUrl($data->{'moreInfoUrl'});
         }
-        if (property_exists($data, 'manufacturerId')) {
+        if (property_exists($data, 'manufacturerId') && $data->{'manufacturerId'} !== null) {
             $object->setManufacturerId($data->{'manufacturerId'});
         }
-        if (property_exists($data, 'unitId')) {
+        elseif (property_exists($data, 'manufacturerId') && $data->{'manufacturerId'} === null) {
+            $object->setManufacturerId(null);
+        }
+        if (property_exists($data, 'unitId') && $data->{'unitId'} !== null) {
             $object->setUnitId($data->{'unitId'});
         }
-        if (property_exists($data, 'sortIndex')) {
+        elseif (property_exists($data, 'unitId') && $data->{'unitId'} === null) {
+            $object->setUnitId(null);
+        }
+        if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
             $object->setSortIndex($data->{'sortIndex'});
+        }
+        elseif (property_exists($data, 'sortIndex') && $data->{'sortIndex'} === null) {
+            $object->setSortIndex(null);
         }
         if (property_exists($data, 'type')) {
             $object->setType($data->{'type'});
@@ -74,8 +92,11 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (property_exists($data, 'bundleUseManualPrice')) {
             $object->setBundleUseManualPrice($data->{'bundleUseManualPrice'});
         }
-        if (property_exists($data, 'accounting')) {
+        if (property_exists($data, 'accounting') && $data->{'accounting'} !== null) {
             $object->setAccounting($data->{'accounting'});
+        }
+        elseif (property_exists($data, 'accounting') && $data->{'accounting'} === null) {
+            $object->setAccounting(null);
         }
         if (property_exists($data, 'hasSeveralVariants')) {
             $object->setHasSeveralVariants($data->{'hasSeveralVariants'});

@@ -25,7 +25,7 @@ class CustomerCreatedModelNormalizer implements DenormalizerInterface, Normalize
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\CustomerCreatedModel();
         if (property_exists($data, 'customerId')) {
@@ -55,14 +55,20 @@ class CustomerCreatedModelNormalizer implements DenormalizerInterface, Normalize
         if (property_exists($data, 'modifiedAt')) {
             $object->setModifiedAt($data->{'modifiedAt'});
         }
-        if (property_exists($data, 'approved')) {
+        if (property_exists($data, 'approved') && $data->{'approved'} !== null) {
             $object->setApproved($data->{'approved'});
+        }
+        elseif (property_exists($data, 'approved') && $data->{'approved'} === null) {
+            $object->setApproved(null);
         }
         if (property_exists($data, 'approvedAt')) {
             $object->setApprovedAt($data->{'approvedAt'});
         }
-        if (property_exists($data, 'pricelistId')) {
+        if (property_exists($data, 'pricelistId') && $data->{'pricelistId'} !== null) {
             $object->setPricelistId($data->{'pricelistId'});
+        }
+        elseif (property_exists($data, 'pricelistId') && $data->{'pricelistId'} === null) {
+            $object->setPricelistId(null);
         }
         return $object;
     }

@@ -25,7 +25,7 @@ class WebHookModelNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\WebHookModel();
         if (property_exists($data, 'webHookId')) {
@@ -37,8 +37,11 @@ class WebHookModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (property_exists($data, 'event')) {
             $object->setEvent($data->{'event'});
         }
-        if (property_exists($data, 'statusId')) {
+        if (property_exists($data, 'statusId') && $data->{'statusId'} !== null) {
             $object->setStatusId($data->{'statusId'});
+        }
+        elseif (property_exists($data, 'statusId') && $data->{'statusId'} === null) {
+            $object->setStatusId(null);
         }
         if (property_exists($data, 'url')) {
             $object->setUrl($data->{'url'});

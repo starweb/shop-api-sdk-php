@@ -25,14 +25,17 @@ class ProductBundleProductPriceModelNormalizer implements DenormalizerInterface,
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\ProductBundleProductPriceModel();
         if (property_exists($data, 'pricelistId')) {
             $object->setPricelistId($data->{'pricelistId'});
         }
-        if (property_exists($data, 'specialPriceExVat')) {
+        if (property_exists($data, 'specialPriceExVat') && $data->{'specialPriceExVat'} !== null) {
             $object->setSpecialPriceExVat($data->{'specialPriceExVat'});
+        }
+        elseif (property_exists($data, 'specialPriceExVat') && $data->{'specialPriceExVat'} === null) {
+            $object->setSpecialPriceExVat(null);
         }
         return $object;
     }

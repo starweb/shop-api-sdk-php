@@ -25,7 +25,7 @@ class ProductCategoryLanguagesModelNormalizer implements DenormalizerInterface, 
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\ProductCategoryLanguagesModel();
         if (property_exists($data, 'langCode')) {
@@ -34,20 +34,35 @@ class ProductCategoryLanguagesModelNormalizer implements DenormalizerInterface, 
         if (property_exists($data, 'name')) {
             $object->setName($data->{'name'});
         }
-        if (property_exists($data, 'pageTitle')) {
+        if (property_exists($data, 'pageTitle') && $data->{'pageTitle'} !== null) {
             $object->setPageTitle($data->{'pageTitle'});
         }
-        if (property_exists($data, 'description')) {
+        elseif (property_exists($data, 'pageTitle') && $data->{'pageTitle'} === null) {
+            $object->setPageTitle(null);
+        }
+        if (property_exists($data, 'description') && $data->{'description'} !== null) {
             $object->setDescription($data->{'description'});
         }
-        if (property_exists($data, 'bottomDescription')) {
+        elseif (property_exists($data, 'description') && $data->{'description'} === null) {
+            $object->setDescription(null);
+        }
+        if (property_exists($data, 'bottomDescription') && $data->{'bottomDescription'} !== null) {
             $object->setBottomDescription($data->{'bottomDescription'});
         }
-        if (property_exists($data, 'pageMetaDescription')) {
+        elseif (property_exists($data, 'bottomDescription') && $data->{'bottomDescription'} === null) {
+            $object->setBottomDescription(null);
+        }
+        if (property_exists($data, 'pageMetaDescription') && $data->{'pageMetaDescription'} !== null) {
             $object->setPageMetaDescription($data->{'pageMetaDescription'});
         }
-        if (property_exists($data, 'permalink')) {
+        elseif (property_exists($data, 'pageMetaDescription') && $data->{'pageMetaDescription'} === null) {
+            $object->setPageMetaDescription(null);
+        }
+        if (property_exists($data, 'permalink') && $data->{'permalink'} !== null) {
             $object->setPermalink($data->{'permalink'});
+        }
+        elseif (property_exists($data, 'permalink') && $data->{'permalink'} === null) {
+            $object->setPermalink(null);
         }
         return $object;
     }

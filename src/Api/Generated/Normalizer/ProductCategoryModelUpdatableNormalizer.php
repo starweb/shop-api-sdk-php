@@ -25,14 +25,17 @@ class ProductCategoryModelUpdatableNormalizer implements DenormalizerInterface, 
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable();
         if (property_exists($data, 'categoryId')) {
             $object->setCategoryId($data->{'categoryId'});
         }
-        if (property_exists($data, 'parentId')) {
+        if (property_exists($data, 'parentId') && $data->{'parentId'} !== null) {
             $object->setParentId($data->{'parentId'});
+        }
+        elseif (property_exists($data, 'parentId') && $data->{'parentId'} === null) {
+            $object->setParentId(null);
         }
         if (property_exists($data, 'visibility')) {
             $object->setVisibility($data->{'visibility'});
@@ -43,17 +46,29 @@ class ProductCategoryModelUpdatableNormalizer implements DenormalizerInterface, 
         if (property_exists($data, 'openPage')) {
             $object->setOpenPage($data->{'openPage'});
         }
-        if (property_exists($data, 'imageFileId')) {
+        if (property_exists($data, 'imageFileId') && $data->{'imageFileId'} !== null) {
             $object->setImageFileId($data->{'imageFileId'});
         }
-        if (property_exists($data, 'externalId')) {
+        elseif (property_exists($data, 'imageFileId') && $data->{'imageFileId'} === null) {
+            $object->setImageFileId(null);
+        }
+        if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
             $object->setExternalId($data->{'externalId'});
         }
-        if (property_exists($data, 'externalType')) {
+        elseif (property_exists($data, 'externalId') && $data->{'externalId'} === null) {
+            $object->setExternalId(null);
+        }
+        if (property_exists($data, 'externalType') && $data->{'externalType'} !== null) {
             $object->setExternalType($data->{'externalType'});
         }
-        if (property_exists($data, 'externalIdType')) {
+        elseif (property_exists($data, 'externalType') && $data->{'externalType'} === null) {
+            $object->setExternalType(null);
+        }
+        if (property_exists($data, 'externalIdType') && $data->{'externalIdType'} !== null) {
             $object->setExternalIdType($data->{'externalIdType'});
+        }
+        elseif (property_exists($data, 'externalIdType') && $data->{'externalIdType'} === null) {
+            $object->setExternalIdType(null);
         }
         if (property_exists($data, 'hasChildren')) {
             $object->setHasChildren($data->{'hasChildren'});

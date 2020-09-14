@@ -25,7 +25,7 @@ class ProductStockStatusResponseModelNormalizer implements DenormalizerInterface
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\ProductStockStatusResponseModel();
         if (property_exists($data, 'stockStatusId')) {
@@ -37,8 +37,11 @@ class ProductStockStatusResponseModelNormalizer implements DenormalizerInterface
         if (property_exists($data, 'sortIndex')) {
             $object->setSortIndex($data->{'sortIndex'});
         }
-        if (property_exists($data, 'stockoutNewStatusId')) {
+        if (property_exists($data, 'stockoutNewStatusId') && $data->{'stockoutNewStatusId'} !== null) {
             $object->setStockoutNewStatusId($data->{'stockoutNewStatusId'});
+        }
+        elseif (property_exists($data, 'stockoutNewStatusId') && $data->{'stockoutNewStatusId'} === null) {
+            $object->setStockoutNewStatusId(null);
         }
         if (property_exists($data, 'productBuyable')) {
             $object->setProductBuyable($data->{'productBuyable'});

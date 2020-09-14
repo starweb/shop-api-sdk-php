@@ -25,7 +25,7 @@ class ProductsAttributesModelItemNormalizer implements DenormalizerInterface, No
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\ProductsAttributesModelItem();
         if (property_exists($data, 'attributeId')) {

@@ -25,7 +25,7 @@ class TokenModelNormalizer implements DenormalizerInterface, NormalizerInterface
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
         $object = new \Starweb\Api\Generated\Model\TokenModel();
         if (property_exists($data, 'access_token')) {
