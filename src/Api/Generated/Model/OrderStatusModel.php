@@ -25,7 +25,7 @@ class OrderStatusModel
     /**
      * 
      *
-     * @var OrderStatusLanguageModel[]
+     * @var OrderStatusLanguageModelCollection
      */
     protected $languages;
     /**
@@ -94,20 +94,20 @@ class OrderStatusModel
     /**
      * 
      *
-     * @return OrderStatusLanguageModel[]
+     * @return OrderStatusLanguageModelCollection
      */
-    public function getLanguages() : array
+    public function getLanguages() : OrderStatusLanguageModelCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param OrderStatusLanguageModel[] $languages
+     * @param OrderStatusLanguageModelCollection $languages
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(OrderStatusLanguageModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

@@ -38,11 +38,7 @@ class OrderStatusModelNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setIdCode($data->{'idCode'});
         }
         if (property_exists($data, 'languages')) {
-            $values = array();
-            foreach ($data->{'languages'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\OrderStatusLanguageModel', 'json', $context);
-            }
-            $object->setLanguages($values);
+            $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\OrderStatusLanguageModelCollection', 'json', $context));
         }
         return $object;
     }
@@ -53,11 +49,7 @@ class OrderStatusModelNormalizer implements DenormalizerInterface, NormalizerInt
             $data->{'shouldSendEmail'} = $object->getShouldSendEmail();
         }
         if (null !== $object->getLanguages()) {
-            $values = array();
-            foreach ($object->getLanguages() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data->{'languages'} = $values;
+            $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
         }
         return $data;
     }
