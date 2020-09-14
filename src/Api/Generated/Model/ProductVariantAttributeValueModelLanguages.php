@@ -7,26 +7,26 @@ class ProductVariantAttributeValueModelLanguages
     /**
      * 
      *
-     * @var ProductVariantAttributeValueLanguageModel[]
+     * @var ProductVariantAttributeValueLanguageModel[]|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductVariantAttributeValueLanguageModel[]
+     * @return ProductVariantAttributeValueLanguageModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductVariantAttributeValueLanguageModel[] $data
+     * @param ProductVariantAttributeValueLanguageModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

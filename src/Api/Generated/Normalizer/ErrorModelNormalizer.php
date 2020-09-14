@@ -25,14 +25,20 @@ class ErrorModelNormalizer implements DenormalizerInterface, NormalizerInterface
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ErrorModel();
-        if (property_exists($data, 'error')) {
+        if (property_exists($data, 'error') && $data->{'error'} !== null) {
             $object->setError($data->{'error'});
         }
-        if (property_exists($data, 'error_description')) {
+        elseif (property_exists($data, 'error') && $data->{'error'} === null) {
+            $object->setError(null);
+        }
+        if (property_exists($data, 'error_description') && $data->{'error_description'} !== null) {
             $object->setErrorDescription($data->{'error_description'});
+        }
+        elseif (property_exists($data, 'error_description') && $data->{'error_description'} === null) {
+            $object->setErrorDescription(null);
         }
         return $object;
     }

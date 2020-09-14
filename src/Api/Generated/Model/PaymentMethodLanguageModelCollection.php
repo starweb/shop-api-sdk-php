@@ -7,26 +7,26 @@ class PaymentMethodLanguageModelCollection
     /**
      * A collection of payment method languages
      *
-     * @var PaymentMethodLanguageModel[]
+     * @var PaymentMethodLanguageModel[]|null
      */
     protected $data;
     /**
      * A collection of payment method languages
      *
-     * @return PaymentMethodLanguageModel[]
+     * @return PaymentMethodLanguageModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A collection of payment method languages
      *
-     * @param PaymentMethodLanguageModel[] $data
+     * @param PaymentMethodLanguageModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

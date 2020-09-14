@@ -25,24 +25,36 @@ class ShippingMethodModelNormalizer implements DenormalizerInterface, Normalizer
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ShippingMethodModel();
-        if (property_exists($data, 'shippingMethodId')) {
+        if (property_exists($data, 'shippingMethodId') && $data->{'shippingMethodId'} !== null) {
             $object->setShippingMethodId($data->{'shippingMethodId'});
         }
-        if (property_exists($data, 'active')) {
+        elseif (property_exists($data, 'shippingMethodId') && $data->{'shippingMethodId'} === null) {
+            $object->setShippingMethodId(null);
+        }
+        if (property_exists($data, 'active') && $data->{'active'} !== null) {
             $object->setActive($data->{'active'});
         }
-        if (property_exists($data, 'validForCountries')) {
+        elseif (property_exists($data, 'active') && $data->{'active'} === null) {
+            $object->setActive(null);
+        }
+        if (property_exists($data, 'validForCountries') && $data->{'validForCountries'} !== null) {
             $object->setValidForCountries($data->{'validForCountries'});
         }
-        if (property_exists($data, 'validCountriesSelected')) {
+        elseif (property_exists($data, 'validForCountries') && $data->{'validForCountries'} === null) {
+            $object->setValidForCountries(null);
+        }
+        if (property_exists($data, 'validCountriesSelected') && $data->{'validCountriesSelected'} !== null) {
             $values = array();
             foreach ($data->{'validCountriesSelected'} as $value) {
                 $values[] = $value;
             }
             $object->setValidCountriesSelected($values);
+        }
+        elseif (property_exists($data, 'validCountriesSelected') && $data->{'validCountriesSelected'} === null) {
+            $object->setValidCountriesSelected(null);
         }
         if (property_exists($data, 'validForMinItemsSubtotal') && $data->{'validForMinItemsSubtotal'} !== null) {
             $object->setValidForMinItemsSubtotal($data->{'validForMinItemsSubtotal'});
@@ -86,11 +98,17 @@ class ShippingMethodModelNormalizer implements DenormalizerInterface, Normalizer
         elseif (property_exists($data, 'freeShippingMinWeight') && $data->{'freeShippingMinWeight'} === null) {
             $object->setFreeShippingMinWeight(null);
         }
-        if (property_exists($data, 'isClickAndCollect')) {
+        if (property_exists($data, 'isClickAndCollect') && $data->{'isClickAndCollect'} !== null) {
             $object->setIsClickAndCollect($data->{'isClickAndCollect'});
         }
-        if (property_exists($data, 'languages')) {
+        elseif (property_exists($data, 'isClickAndCollect') && $data->{'isClickAndCollect'} === null) {
+            $object->setIsClickAndCollect(null);
+        }
+        if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\ShippingMethodLanguageModelCollection', 'json', $context));
+        }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
         }
         return $object;
     }
@@ -99,6 +117,9 @@ class ShippingMethodModelNormalizer implements DenormalizerInterface, Normalizer
         $data = new \stdClass();
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

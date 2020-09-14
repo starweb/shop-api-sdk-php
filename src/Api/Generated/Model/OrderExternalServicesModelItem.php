@@ -7,26 +7,26 @@ class OrderExternalServicesModelItem
     /**
      * 
      *
-     * @var OrderExternalServiceModel
+     * @var OrderExternalServiceModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return OrderExternalServiceModel
+     * @return OrderExternalServiceModel|null
      */
-    public function getData() : OrderExternalServiceModel
+    public function getData() : ?OrderExternalServiceModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param OrderExternalServiceModel $data
+     * @param OrderExternalServiceModel|null $data
      *
      * @return self
      */
-    public function setData(OrderExternalServiceModel $data) : self
+    public function setData(?OrderExternalServiceModel $data) : self
     {
         $this->data = $data;
         return $this;

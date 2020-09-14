@@ -7,26 +7,26 @@ class OrderItemModelCollection
     /**
      * A list of order items
      *
-     * @var OrderItemModelCollectionDataItem[]
+     * @var OrderItemModelCollectionDataItem[]|null
      */
     protected $data;
     /**
      * A list of order items
      *
-     * @return OrderItemModelCollectionDataItem[]
+     * @return OrderItemModelCollectionDataItem[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A list of order items
      *
-     * @param OrderItemModelCollectionDataItem[] $data
+     * @param OrderItemModelCollectionDataItem[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

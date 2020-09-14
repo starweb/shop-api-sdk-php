@@ -7,26 +7,26 @@ class CustomerModelItem
     /**
      * 
      *
-     * @var CustomerModel
+     * @var CustomerModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return CustomerModel
+     * @return CustomerModel|null
      */
-    public function getData() : CustomerModel
+    public function getData() : ?CustomerModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param CustomerModel $data
+     * @param CustomerModel|null $data
      *
      * @return self
      */
-    public function setData(CustomerModel $data) : self
+    public function setData(?CustomerModel $data) : self
     {
         $this->data = $data;
         return $this;

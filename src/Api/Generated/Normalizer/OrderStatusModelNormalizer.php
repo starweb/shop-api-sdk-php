@@ -25,20 +25,32 @@ class OrderStatusModelNormalizer implements DenormalizerInterface, NormalizerInt
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\OrderStatusModel();
-        if (property_exists($data, 'statusId')) {
+        if (property_exists($data, 'statusId') && $data->{'statusId'} !== null) {
             $object->setStatusId($data->{'statusId'});
         }
-        if (property_exists($data, 'shouldSendEmail')) {
+        elseif (property_exists($data, 'statusId') && $data->{'statusId'} === null) {
+            $object->setStatusId(null);
+        }
+        if (property_exists($data, 'shouldSendEmail') && $data->{'shouldSendEmail'} !== null) {
             $object->setShouldSendEmail($data->{'shouldSendEmail'});
         }
-        if (property_exists($data, 'idCode')) {
+        elseif (property_exists($data, 'shouldSendEmail') && $data->{'shouldSendEmail'} === null) {
+            $object->setShouldSendEmail(null);
+        }
+        if (property_exists($data, 'idCode') && $data->{'idCode'} !== null) {
             $object->setIdCode($data->{'idCode'});
         }
-        if (property_exists($data, 'languages')) {
+        elseif (property_exists($data, 'idCode') && $data->{'idCode'} === null) {
+            $object->setIdCode(null);
+        }
+        if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\OrderStatusLanguageModelCollection', 'json', $context));
+        }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
         }
         return $object;
     }
@@ -48,8 +60,14 @@ class OrderStatusModelNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getShouldSendEmail()) {
             $data->{'shouldSendEmail'} = $object->getShouldSendEmail();
         }
+        else {
+            $data->{'shouldSendEmail'} = null;
+        }
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

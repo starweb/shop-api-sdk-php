@@ -7,26 +7,26 @@ class ProductTagOptionModelItem
     /**
      * 
      *
-     * @var ProductTagOptionModel
+     * @var ProductTagOptionModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductTagOptionModel
+     * @return ProductTagOptionModel|null
      */
-    public function getData() : ProductTagOptionModel
+    public function getData() : ?ProductTagOptionModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductTagOptionModel $data
+     * @param ProductTagOptionModel|null $data
      *
      * @return self
      */
-    public function setData(ProductTagOptionModel $data) : self
+    public function setData(?ProductTagOptionModel $data) : self
     {
         $this->data = $data;
         return $this;

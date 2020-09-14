@@ -25,11 +25,14 @@ class ProductBundleProductPriceModelNormalizer implements DenormalizerInterface,
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductBundleProductPriceModel();
-        if (property_exists($data, 'pricelistId')) {
+        if (property_exists($data, 'pricelistId') && $data->{'pricelistId'} !== null) {
             $object->setPricelistId($data->{'pricelistId'});
+        }
+        elseif (property_exists($data, 'pricelistId') && $data->{'pricelistId'} === null) {
+            $object->setPricelistId(null);
         }
         if (property_exists($data, 'specialPriceExVat') && $data->{'specialPriceExVat'} !== null) {
             $object->setSpecialPriceExVat($data->{'specialPriceExVat'});
@@ -45,7 +48,15 @@ class ProductBundleProductPriceModelNormalizer implements DenormalizerInterface,
         if (null !== $object->getPricelistId()) {
             $data->{'pricelistId'} = $object->getPricelistId();
         }
-        $data->{'specialPriceExVat'} = $object->getSpecialPriceExVat();
+        else {
+            $data->{'pricelistId'} = null;
+        }
+        if (null !== $object->getSpecialPriceExVat()) {
+            $data->{'specialPriceExVat'} = $object->getSpecialPriceExVat();
+        }
+        else {
+            $data->{'specialPriceExVat'} = null;
+        }
         return $data;
     }
 }

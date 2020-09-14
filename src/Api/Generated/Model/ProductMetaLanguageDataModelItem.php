@@ -7,26 +7,26 @@ class ProductMetaLanguageDataModelItem
     /**
      * 
      *
-     * @var ProductMetaLanguageDataModel
+     * @var ProductMetaLanguageDataModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductMetaLanguageDataModel
+     * @return ProductMetaLanguageDataModel|null
      */
-    public function getData() : ProductMetaLanguageDataModel
+    public function getData() : ?ProductMetaLanguageDataModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductMetaLanguageDataModel $data
+     * @param ProductMetaLanguageDataModel|null $data
      *
      * @return self
      */
-    public function setData(ProductMetaLanguageDataModel $data) : self
+    public function setData(?ProductMetaLanguageDataModel $data) : self
     {
         $this->data = $data;
         return $this;

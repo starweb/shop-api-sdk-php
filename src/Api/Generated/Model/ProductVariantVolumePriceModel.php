@@ -7,7 +7,7 @@ class ProductVariantVolumePriceModel
     /**
      * The pricelist this price is for
      *
-     * @var int
+     * @var int|null
      */
     protected $pricelistId;
     /**
@@ -25,32 +25,32 @@ class ProductVariantVolumePriceModel
     /**
      * The price excluding vat
      *
-     * @var float
+     * @var float|null
      */
     protected $priceExVat = 0;
     /**
      * The minimum quantity required for the price to apply
      *
-     * @var float
+     * @var float|null
      */
     protected $quantity;
     /**
      * The pricelist this price is for
      *
-     * @return int
+     * @return int|null
      */
-    public function getPricelistId() : int
+    public function getPricelistId() : ?int
     {
         return $this->pricelistId;
     }
     /**
      * The pricelist this price is for
      *
-     * @param int $pricelistId
+     * @param int|null $pricelistId
      *
      * @return self
      */
-    public function setPricelistId(int $pricelistId) : self
+    public function setPricelistId(?int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
         return $this;
@@ -100,20 +100,20 @@ class ProductVariantVolumePriceModel
     /**
      * The price excluding vat
      *
-     * @return float
+     * @return float|null
      */
-    public function getPriceExVat() : float
+    public function getPriceExVat() : ?float
     {
         return $this->priceExVat;
     }
     /**
      * The price excluding vat
      *
-     * @param float $priceExVat
+     * @param float|null $priceExVat
      *
      * @return self
      */
-    public function setPriceExVat(float $priceExVat) : self
+    public function setPriceExVat(?float $priceExVat) : self
     {
         $this->priceExVat = $priceExVat;
         return $this;
@@ -121,20 +121,20 @@ class ProductVariantVolumePriceModel
     /**
      * The minimum quantity required for the price to apply
      *
-     * @return float
+     * @return float|null
      */
-    public function getQuantity() : float
+    public function getQuantity() : ?float
     {
         return $this->quantity;
     }
     /**
      * The minimum quantity required for the price to apply
      *
-     * @param float $quantity
+     * @param float|null $quantity
      *
      * @return self
      */
-    public function setQuantity(float $quantity) : self
+    public function setQuantity(?float $quantity) : self
     {
         $this->quantity = $quantity;
         return $this;

@@ -7,26 +7,26 @@ class ProductVatRateModelItem
     /**
      * 
      *
-     * @var ProductVatRateModel
+     * @var ProductVatRateModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductVatRateModel
+     * @return ProductVatRateModel|null
      */
-    public function getData() : ProductVatRateModel
+    public function getData() : ?ProductVatRateModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductVatRateModel $data
+     * @param ProductVatRateModel|null $data
      *
      * @return self
      */
-    public function setData(ProductVatRateModel $data) : self
+    public function setData(?ProductVatRateModel $data) : self
     {
         $this->data = $data;
         return $this;

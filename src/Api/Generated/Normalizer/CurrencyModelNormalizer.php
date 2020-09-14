@@ -25,17 +25,26 @@ class CurrencyModelNormalizer implements DenormalizerInterface, NormalizerInterf
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\CurrencyModel();
-        if (property_exists($data, 'code')) {
+        if (property_exists($data, 'code') && $data->{'code'} !== null) {
             $object->setCode($data->{'code'});
         }
-        if (property_exists($data, 'exchangeRate')) {
+        elseif (property_exists($data, 'code') && $data->{'code'} === null) {
+            $object->setCode(null);
+        }
+        if (property_exists($data, 'exchangeRate') && $data->{'exchangeRate'} !== null) {
             $object->setExchangeRate($data->{'exchangeRate'});
         }
-        if (property_exists($data, 'precision')) {
+        elseif (property_exists($data, 'exchangeRate') && $data->{'exchangeRate'} === null) {
+            $object->setExchangeRate(null);
+        }
+        if (property_exists($data, 'precision') && $data->{'precision'} !== null) {
             $object->setPrecision($data->{'precision'});
+        }
+        elseif (property_exists($data, 'precision') && $data->{'precision'} === null) {
+            $object->setPrecision(null);
         }
         return $object;
     }
@@ -45,8 +54,14 @@ class CurrencyModelNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getExchangeRate()) {
             $data->{'exchangeRate'} = $object->getExchangeRate();
         }
+        else {
+            $data->{'exchangeRate'} = null;
+        }
         if (null !== $object->getPrecision()) {
             $data->{'precision'} = $object->getPrecision();
+        }
+        else {
+            $data->{'precision'} = null;
         }
         return $data;
     }

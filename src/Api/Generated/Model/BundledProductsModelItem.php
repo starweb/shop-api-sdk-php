@@ -7,26 +7,26 @@ class BundledProductsModelItem
     /**
      * 
      *
-     * @var BundledProductsModel
+     * @var BundledProductsModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return BundledProductsModel
+     * @return BundledProductsModel|null
      */
-    public function getData() : BundledProductsModel
+    public function getData() : ?BundledProductsModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param BundledProductsModel $data
+     * @param BundledProductsModel|null $data
      *
      * @return self
      */
-    public function setData(BundledProductsModel $data) : self
+    public function setData(?BundledProductsModel $data) : self
     {
         $this->data = $data;
         return $this;

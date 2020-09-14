@@ -7,26 +7,26 @@ class PaymentMethodModelItem
     /**
      * 
      *
-     * @var PaymentMethodModel
+     * @var PaymentMethodModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return PaymentMethodModel
+     * @return PaymentMethodModel|null
      */
-    public function getData() : PaymentMethodModel
+    public function getData() : ?PaymentMethodModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param PaymentMethodModel $data
+     * @param PaymentMethodModel|null $data
      *
      * @return self
      */
-    public function setData(PaymentMethodModel $data) : self
+    public function setData(?PaymentMethodModel $data) : self
     {
         $this->data = $data;
         return $this;

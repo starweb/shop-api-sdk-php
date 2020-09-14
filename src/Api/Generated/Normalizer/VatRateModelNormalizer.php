@@ -25,23 +25,38 @@ class VatRateModelNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\VatRateModel();
-        if (property_exists($data, 'countryCode')) {
+        if (property_exists($data, 'countryCode') && $data->{'countryCode'} !== null) {
             $object->setCountryCode($data->{'countryCode'});
         }
-        if (property_exists($data, 'defaultVatRate')) {
+        elseif (property_exists($data, 'countryCode') && $data->{'countryCode'} === null) {
+            $object->setCountryCode(null);
+        }
+        if (property_exists($data, 'defaultVatRate') && $data->{'defaultVatRate'} !== null) {
             $object->setDefaultVatRate($data->{'defaultVatRate'});
         }
-        if (property_exists($data, 'fixedOrderPaymentVatRate')) {
+        elseif (property_exists($data, 'defaultVatRate') && $data->{'defaultVatRate'} === null) {
+            $object->setDefaultVatRate(null);
+        }
+        if (property_exists($data, 'fixedOrderPaymentVatRate') && $data->{'fixedOrderPaymentVatRate'} !== null) {
             $object->setFixedOrderPaymentVatRate($data->{'fixedOrderPaymentVatRate'});
         }
-        if (property_exists($data, 'fixedOrderShippingVatRate')) {
+        elseif (property_exists($data, 'fixedOrderPaymentVatRate') && $data->{'fixedOrderPaymentVatRate'} === null) {
+            $object->setFixedOrderPaymentVatRate(null);
+        }
+        if (property_exists($data, 'fixedOrderShippingVatRate') && $data->{'fixedOrderShippingVatRate'} !== null) {
             $object->setFixedOrderShippingVatRate($data->{'fixedOrderShippingVatRate'});
         }
-        if (property_exists($data, 'fixedOrderDiscountVatRate')) {
+        elseif (property_exists($data, 'fixedOrderShippingVatRate') && $data->{'fixedOrderShippingVatRate'} === null) {
+            $object->setFixedOrderShippingVatRate(null);
+        }
+        if (property_exists($data, 'fixedOrderDiscountVatRate') && $data->{'fixedOrderDiscountVatRate'} !== null) {
             $object->setFixedOrderDiscountVatRate($data->{'fixedOrderDiscountVatRate'});
+        }
+        elseif (property_exists($data, 'fixedOrderDiscountVatRate') && $data->{'fixedOrderDiscountVatRate'} === null) {
+            $object->setFixedOrderDiscountVatRate(null);
         }
         return $object;
     }
@@ -51,17 +66,32 @@ class VatRateModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getCountryCode()) {
             $data->{'countryCode'} = $object->getCountryCode();
         }
+        else {
+            $data->{'countryCode'} = null;
+        }
         if (null !== $object->getDefaultVatRate()) {
             $data->{'defaultVatRate'} = $object->getDefaultVatRate();
+        }
+        else {
+            $data->{'defaultVatRate'} = null;
         }
         if (null !== $object->getFixedOrderPaymentVatRate()) {
             $data->{'fixedOrderPaymentVatRate'} = $object->getFixedOrderPaymentVatRate();
         }
+        else {
+            $data->{'fixedOrderPaymentVatRate'} = null;
+        }
         if (null !== $object->getFixedOrderShippingVatRate()) {
             $data->{'fixedOrderShippingVatRate'} = $object->getFixedOrderShippingVatRate();
         }
+        else {
+            $data->{'fixedOrderShippingVatRate'} = null;
+        }
         if (null !== $object->getFixedOrderDiscountVatRate()) {
             $data->{'fixedOrderDiscountVatRate'} = $object->getFixedOrderDiscountVatRate();
+        }
+        else {
+            $data->{'fixedOrderDiscountVatRate'} = null;
         }
         return $data;
     }

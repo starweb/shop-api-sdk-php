@@ -7,26 +7,26 @@ class ProductVariantModelItem
     /**
      * 
      *
-     * @var ProductVariantResponseModel
+     * @var ProductVariantResponseModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductVariantResponseModel
+     * @return ProductVariantResponseModel|null
      */
-    public function getData() : ProductVariantResponseModel
+    public function getData() : ?ProductVariantResponseModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductVariantResponseModel $data
+     * @param ProductVariantResponseModel|null $data
      *
      * @return self
      */
-    public function setData(ProductVariantResponseModel $data) : self
+    public function setData(?ProductVariantResponseModel $data) : self
     {
         $this->data = $data;
         return $this;

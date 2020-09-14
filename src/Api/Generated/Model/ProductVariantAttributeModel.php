@@ -7,7 +7,7 @@ class ProductVariantAttributeModel
     /**
      * The id for this attribute
      *
-     * @var int
+     * @var int|null
      */
     protected $attributeId;
     /**
@@ -25,26 +25,26 @@ class ProductVariantAttributeModel
     /**
      * A collection of attribute languages
      *
-     * @var ProductVariantAttributeModelLanguages
+     * @var ProductVariantAttributeModelLanguages|null
      */
     protected $languages;
     /**
      * The id for this attribute
      *
-     * @return int
+     * @return int|null
      */
-    public function getAttributeId() : int
+    public function getAttributeId() : ?int
     {
         return $this->attributeId;
     }
     /**
      * The id for this attribute
      *
-     * @param int $attributeId
+     * @param int|null $attributeId
      *
      * @return self
      */
-    public function setAttributeId(int $attributeId) : self
+    public function setAttributeId(?int $attributeId) : self
     {
         $this->attributeId = $attributeId;
         return $this;
@@ -94,20 +94,20 @@ class ProductVariantAttributeModel
     /**
      * A collection of attribute languages
      *
-     * @return ProductVariantAttributeModelLanguages
+     * @return ProductVariantAttributeModelLanguages|null
      */
-    public function getLanguages() : ProductVariantAttributeModelLanguages
+    public function getLanguages() : ?ProductVariantAttributeModelLanguages
     {
         return $this->languages;
     }
     /**
      * A collection of attribute languages
      *
-     * @param ProductVariantAttributeModelLanguages $languages
+     * @param ProductVariantAttributeModelLanguages|null $languages
      *
      * @return self
      */
-    public function setLanguages(ProductVariantAttributeModelLanguages $languages) : self
+    public function setLanguages(?ProductVariantAttributeModelLanguages $languages) : self
     {
         $this->languages = $languages;
         return $this;

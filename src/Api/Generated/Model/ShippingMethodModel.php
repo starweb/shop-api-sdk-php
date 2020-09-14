@@ -7,25 +7,25 @@ class ShippingMethodModel
     /**
      * The shipping methods Id
      *
-     * @var int
+     * @var int|null
      */
     protected $shippingMethodId;
     /**
      * If the shipping method is actively available on checkout or not
      *
-     * @var bool
+     * @var bool|null
      */
     protected $active;
     /**
      * The restrictions to countries this shipping method is valid for. Valid values are: all, EU, non-EU, selected, none
      *
-     * @var string
+     * @var string|null
      */
     protected $validForCountries;
     /**
      * The countries this method is valid for (if validForCountries is set to ”selected”)
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $validCountriesSelected;
     /**
@@ -73,32 +73,32 @@ class ShippingMethodModel
     /**
      * Tells whether this method is a "click and collect" or not
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isClickAndCollect;
     /**
      * 
      *
-     * @var ShippingMethodLanguageModelCollection
+     * @var ShippingMethodLanguageModelCollection|null
      */
     protected $languages;
     /**
      * The shipping methods Id
      *
-     * @return int
+     * @return int|null
      */
-    public function getShippingMethodId() : int
+    public function getShippingMethodId() : ?int
     {
         return $this->shippingMethodId;
     }
     /**
      * The shipping methods Id
      *
-     * @param int $shippingMethodId
+     * @param int|null $shippingMethodId
      *
      * @return self
      */
-    public function setShippingMethodId(int $shippingMethodId) : self
+    public function setShippingMethodId(?int $shippingMethodId) : self
     {
         $this->shippingMethodId = $shippingMethodId;
         return $this;
@@ -106,20 +106,20 @@ class ShippingMethodModel
     /**
      * If the shipping method is actively available on checkout or not
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getActive() : bool
+    public function getActive() : ?bool
     {
         return $this->active;
     }
     /**
      * If the shipping method is actively available on checkout or not
      *
-     * @param bool $active
+     * @param bool|null $active
      *
      * @return self
      */
-    public function setActive(bool $active) : self
+    public function setActive(?bool $active) : self
     {
         $this->active = $active;
         return $this;
@@ -127,20 +127,20 @@ class ShippingMethodModel
     /**
      * The restrictions to countries this shipping method is valid for. Valid values are: all, EU, non-EU, selected, none
      *
-     * @return string
+     * @return string|null
      */
-    public function getValidForCountries() : string
+    public function getValidForCountries() : ?string
     {
         return $this->validForCountries;
     }
     /**
      * The restrictions to countries this shipping method is valid for. Valid values are: all, EU, non-EU, selected, none
      *
-     * @param string $validForCountries
+     * @param string|null $validForCountries
      *
      * @return self
      */
-    public function setValidForCountries(string $validForCountries) : self
+    public function setValidForCountries(?string $validForCountries) : self
     {
         $this->validForCountries = $validForCountries;
         return $this;
@@ -148,20 +148,20 @@ class ShippingMethodModel
     /**
      * The countries this method is valid for (if validForCountries is set to ”selected”)
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getValidCountriesSelected() : array
+    public function getValidCountriesSelected() : ?array
     {
         return $this->validCountriesSelected;
     }
     /**
      * The countries this method is valid for (if validForCountries is set to ”selected”)
      *
-     * @param string[] $validCountriesSelected
+     * @param string[]|null $validCountriesSelected
      *
      * @return self
      */
-    public function setValidCountriesSelected(array $validCountriesSelected) : self
+    public function setValidCountriesSelected(?array $validCountriesSelected) : self
     {
         $this->validCountriesSelected = $validCountriesSelected;
         return $this;
@@ -316,20 +316,20 @@ class ShippingMethodModel
     /**
      * Tells whether this method is a "click and collect" or not
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsClickAndCollect() : bool
+    public function getIsClickAndCollect() : ?bool
     {
         return $this->isClickAndCollect;
     }
     /**
      * Tells whether this method is a "click and collect" or not
      *
-     * @param bool $isClickAndCollect
+     * @param bool|null $isClickAndCollect
      *
      * @return self
      */
-    public function setIsClickAndCollect(bool $isClickAndCollect) : self
+    public function setIsClickAndCollect(?bool $isClickAndCollect) : self
     {
         $this->isClickAndCollect = $isClickAndCollect;
         return $this;
@@ -337,20 +337,20 @@ class ShippingMethodModel
     /**
      * 
      *
-     * @return ShippingMethodLanguageModelCollection
+     * @return ShippingMethodLanguageModelCollection|null
      */
-    public function getLanguages() : ShippingMethodLanguageModelCollection
+    public function getLanguages() : ?ShippingMethodLanguageModelCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ShippingMethodLanguageModelCollection $languages
+     * @param ShippingMethodLanguageModelCollection|null $languages
      *
      * @return self
      */
-    public function setLanguages(ShippingMethodLanguageModelCollection $languages) : self
+    public function setLanguages(?ShippingMethodLanguageModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

@@ -7,32 +7,32 @@ class ProductModelCollection
     /**
      * A collection of products
      *
-     * @var ProductModel[]
+     * @var ProductModel[]|null
      */
     protected $data;
     /**
      * 
      *
-     * @var ProductModelCollectionMeta
+     * @var ProductModelCollectionMeta|null
      */
     protected $meta;
     /**
      * A collection of products
      *
-     * @return ProductModel[]
+     * @return ProductModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A collection of products
      *
-     * @param ProductModel[] $data
+     * @param ProductModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;
@@ -40,20 +40,20 @@ class ProductModelCollection
     /**
      * 
      *
-     * @return ProductModelCollectionMeta
+     * @return ProductModelCollectionMeta|null
      */
-    public function getMeta() : ProductModelCollectionMeta
+    public function getMeta() : ?ProductModelCollectionMeta
     {
         return $this->meta;
     }
     /**
      * 
      *
-     * @param ProductModelCollectionMeta $meta
+     * @param ProductModelCollectionMeta|null $meta
      *
      * @return self
      */
-    public function setMeta(ProductModelCollectionMeta $meta) : self
+    public function setMeta(?ProductModelCollectionMeta $meta) : self
     {
         $this->meta = $meta;
         return $this;

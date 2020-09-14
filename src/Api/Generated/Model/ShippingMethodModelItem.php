@@ -7,26 +7,26 @@ class ShippingMethodModelItem
     /**
      * 
      *
-     * @var ShippingMethodModel
+     * @var ShippingMethodModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ShippingMethodModel
+     * @return ShippingMethodModel|null
      */
-    public function getData() : ShippingMethodModel
+    public function getData() : ?ShippingMethodModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ShippingMethodModel $data
+     * @param ShippingMethodModel|null $data
      *
      * @return self
      */
-    public function setData(ShippingMethodModel $data) : self
+    public function setData(?ShippingMethodModel $data) : self
     {
         $this->data = $data;
         return $this;

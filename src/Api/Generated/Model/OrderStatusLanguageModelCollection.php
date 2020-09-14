@@ -7,26 +7,26 @@ class OrderStatusLanguageModelCollection
     /**
      * 
      *
-     * @var OrderStatusLanguageModel[]
+     * @var OrderStatusLanguageModel[]|null
      */
     protected $data;
     /**
      * 
      *
-     * @return OrderStatusLanguageModel[]
+     * @return OrderStatusLanguageModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param OrderStatusLanguageModel[] $data
+     * @param OrderStatusLanguageModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

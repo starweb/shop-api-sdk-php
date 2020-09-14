@@ -25,17 +25,26 @@ class OrderExternalServiceModelNormalizer implements DenormalizerInterface, Norm
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\OrderExternalServiceModel();
-        if (property_exists($data, 'serviceName')) {
+        if (property_exists($data, 'serviceName') && $data->{'serviceName'} !== null) {
             $object->setServiceName($data->{'serviceName'});
         }
-        if (property_exists($data, 'externalIdValue')) {
+        elseif (property_exists($data, 'serviceName') && $data->{'serviceName'} === null) {
+            $object->setServiceName(null);
+        }
+        if (property_exists($data, 'externalIdValue') && $data->{'externalIdValue'} !== null) {
             $object->setExternalIdValue($data->{'externalIdValue'});
         }
-        if (property_exists($data, 'readOnly')) {
+        elseif (property_exists($data, 'externalIdValue') && $data->{'externalIdValue'} === null) {
+            $object->setExternalIdValue(null);
+        }
+        if (property_exists($data, 'readOnly') && $data->{'readOnly'} !== null) {
             $object->setReadOnly($data->{'readOnly'});
+        }
+        elseif (property_exists($data, 'readOnly') && $data->{'readOnly'} === null) {
+            $object->setReadOnly(null);
         }
         return $object;
     }
@@ -45,8 +54,14 @@ class OrderExternalServiceModelNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getServiceName()) {
             $data->{'serviceName'} = $object->getServiceName();
         }
+        else {
+            $data->{'serviceName'} = null;
+        }
         if (null !== $object->getExternalIdValue()) {
             $data->{'externalIdValue'} = $object->getExternalIdValue();
+        }
+        else {
+            $data->{'externalIdValue'} = null;
         }
         return $data;
     }

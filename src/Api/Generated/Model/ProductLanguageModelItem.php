@@ -7,26 +7,26 @@ class ProductLanguageModelItem
     /**
      * 
      *
-     * @var ProductLanguageModel
+     * @var ProductLanguageModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductLanguageModel
+     * @return ProductLanguageModel|null
      */
-    public function getData() : ProductLanguageModel
+    public function getData() : ?ProductLanguageModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductLanguageModel $data
+     * @param ProductLanguageModel|null $data
      *
      * @return self
      */
-    public function setData(ProductLanguageModel $data) : self
+    public function setData(?ProductLanguageModel $data) : self
     {
         $this->data = $data;
         return $this;

@@ -25,17 +25,26 @@ class ProductVariantStockResponseModelNormalizer implements DenormalizerInterfac
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductVariantStockResponseModel();
-        if (property_exists($data, 'stockLocationId')) {
+        if (property_exists($data, 'stockLocationId') && $data->{'stockLocationId'} !== null) {
             $object->setStockLocationId($data->{'stockLocationId'});
         }
-        if (property_exists($data, 'stockStatusId')) {
+        elseif (property_exists($data, 'stockLocationId') && $data->{'stockLocationId'} === null) {
+            $object->setStockLocationId(null);
+        }
+        if (property_exists($data, 'stockStatusId') && $data->{'stockStatusId'} !== null) {
             $object->setStockStatusId($data->{'stockStatusId'});
         }
-        if (property_exists($data, 'stockQuantity')) {
+        elseif (property_exists($data, 'stockStatusId') && $data->{'stockStatusId'} === null) {
+            $object->setStockStatusId(null);
+        }
+        if (property_exists($data, 'stockQuantity') && $data->{'stockQuantity'} !== null) {
             $object->setStockQuantity($data->{'stockQuantity'});
+        }
+        elseif (property_exists($data, 'stockQuantity') && $data->{'stockQuantity'} === null) {
+            $object->setStockQuantity(null);
         }
         return $object;
     }
@@ -45,8 +54,14 @@ class ProductVariantStockResponseModelNormalizer implements DenormalizerInterfac
         if (null !== $object->getStockStatusId()) {
             $data->{'stockStatusId'} = $object->getStockStatusId();
         }
+        else {
+            $data->{'stockStatusId'} = null;
+        }
         if (null !== $object->getStockQuantity()) {
             $data->{'stockQuantity'} = $object->getStockQuantity();
+        }
+        else {
+            $data->{'stockQuantity'} = null;
         }
         return $data;
     }

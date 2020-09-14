@@ -7,26 +7,26 @@ class OrderItemBundledModelItem
     /**
      * 
      *
-     * @var OrderItemBundledModelItemBundledItems
+     * @var OrderItemBundledModelItemBundledItems|null
      */
     protected $bundledItems;
     /**
      * 
      *
-     * @return OrderItemBundledModelItemBundledItems
+     * @return OrderItemBundledModelItemBundledItems|null
      */
-    public function getBundledItems() : OrderItemBundledModelItemBundledItems
+    public function getBundledItems() : ?OrderItemBundledModelItemBundledItems
     {
         return $this->bundledItems;
     }
     /**
      * 
      *
-     * @param OrderItemBundledModelItemBundledItems $bundledItems
+     * @param OrderItemBundledModelItemBundledItems|null $bundledItems
      *
      * @return self
      */
-    public function setBundledItems(OrderItemBundledModelItemBundledItems $bundledItems) : self
+    public function setBundledItems(?OrderItemBundledModelItemBundledItems $bundledItems) : self
     {
         $this->bundledItems = $bundledItems;
         return $this;

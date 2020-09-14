@@ -7,32 +7,32 @@ class ErrorModel
     /**
      * An error code for this type of error
      *
-     * @var string
+     * @var string|null
      */
     protected $error;
     /**
      * A human readable description of the error
      *
-     * @var string
+     * @var string|null
      */
     protected $errorDescription;
     /**
      * An error code for this type of error
      *
-     * @return string
+     * @return string|null
      */
-    public function getError() : string
+    public function getError() : ?string
     {
         return $this->error;
     }
     /**
      * An error code for this type of error
      *
-     * @param string $error
+     * @param string|null $error
      *
      * @return self
      */
-    public function setError(string $error) : self
+    public function setError(?string $error) : self
     {
         $this->error = $error;
         return $this;
@@ -40,20 +40,20 @@ class ErrorModel
     /**
      * A human readable description of the error
      *
-     * @return string
+     * @return string|null
      */
-    public function getErrorDescription() : string
+    public function getErrorDescription() : ?string
     {
         return $this->errorDescription;
     }
     /**
      * A human readable description of the error
      *
-     * @param string $errorDescription
+     * @param string|null $errorDescription
      *
      * @return self
      */
-    public function setErrorDescription(string $errorDescription) : self
+    public function setErrorDescription(?string $errorDescription) : self
     {
         $this->errorDescription = $errorDescription;
         return $this;

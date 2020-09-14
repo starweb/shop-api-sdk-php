@@ -7,26 +7,26 @@ class StockLocationModelItem
     /**
      * 
      *
-     * @var StockLocationModel
+     * @var StockLocationModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return StockLocationModel
+     * @return StockLocationModel|null
      */
-    public function getData() : StockLocationModel
+    public function getData() : ?StockLocationModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param StockLocationModel $data
+     * @param StockLocationModel|null $data
      *
      * @return self
      */
-    public function setData(StockLocationModel $data) : self
+    public function setData(?StockLocationModel $data) : self
     {
         $this->data = $data;
         return $this;

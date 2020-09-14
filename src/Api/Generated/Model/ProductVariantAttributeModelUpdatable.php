@@ -7,7 +7,7 @@ class ProductVariantAttributeModelUpdatable
     /**
      * 
      *
-     * @var int
+     * @var int|null
      */
     protected $attributeId;
     /**
@@ -25,26 +25,26 @@ class ProductVariantAttributeModelUpdatable
     /**
      * A collection of attribute languages
      *
-     * @var ProductVariantAttributeLanguageModel[]
+     * @var ProductVariantAttributeLanguageModel[]|null
      */
     protected $languages;
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
-    public function getAttributeId() : int
+    public function getAttributeId() : ?int
     {
         return $this->attributeId;
     }
     /**
      * 
      *
-     * @param int $attributeId
+     * @param int|null $attributeId
      *
      * @return self
      */
-    public function setAttributeId(int $attributeId) : self
+    public function setAttributeId(?int $attributeId) : self
     {
         $this->attributeId = $attributeId;
         return $this;
@@ -94,20 +94,20 @@ class ProductVariantAttributeModelUpdatable
     /**
      * A collection of attribute languages
      *
-     * @return ProductVariantAttributeLanguageModel[]
+     * @return ProductVariantAttributeLanguageModel[]|null
      */
-    public function getLanguages() : array
+    public function getLanguages() : ?array
     {
         return $this->languages;
     }
     /**
      * A collection of attribute languages
      *
-     * @param ProductVariantAttributeLanguageModel[] $languages
+     * @param ProductVariantAttributeLanguageModel[]|null $languages
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(?array $languages) : self
     {
         $this->languages = $languages;
         return $this;

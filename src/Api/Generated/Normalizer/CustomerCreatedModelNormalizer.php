@@ -25,35 +25,62 @@ class CustomerCreatedModelNormalizer implements DenormalizerInterface, Normalize
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\CustomerCreatedModel();
-        if (property_exists($data, 'customerId')) {
+        if (property_exists($data, 'customerId') && $data->{'customerId'} !== null) {
             $object->setCustomerId($data->{'customerId'});
         }
-        if (property_exists($data, 'createdAt')) {
+        elseif (property_exists($data, 'customerId') && $data->{'customerId'} === null) {
+            $object->setCustomerId(null);
+        }
+        if (property_exists($data, 'createdAt') && $data->{'createdAt'} !== null) {
             $object->setCreatedAt($data->{'createdAt'});
         }
-        if (property_exists($data, 'type')) {
+        elseif (property_exists($data, 'createdAt') && $data->{'createdAt'} === null) {
+            $object->setCreatedAt(null);
+        }
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
         }
-        if (property_exists($data, 'email')) {
+        elseif (property_exists($data, 'type') && $data->{'type'} === null) {
+            $object->setType(null);
+        }
+        if (property_exists($data, 'email') && $data->{'email'} !== null) {
             $object->setEmail($data->{'email'});
         }
-        if (property_exists($data, 'nationalIdNo')) {
+        elseif (property_exists($data, 'email') && $data->{'email'} === null) {
+            $object->setEmail(null);
+        }
+        if (property_exists($data, 'nationalIdNo') && $data->{'nationalIdNo'} !== null) {
             $object->setNationalIdNo($data->{'nationalIdNo'});
         }
-        if (property_exists($data, 'vatNo')) {
+        elseif (property_exists($data, 'nationalIdNo') && $data->{'nationalIdNo'} === null) {
+            $object->setNationalIdNo(null);
+        }
+        if (property_exists($data, 'vatNo') && $data->{'vatNo'} !== null) {
             $object->setVatNo($data->{'vatNo'});
         }
-        if (property_exists($data, 'customInfo1')) {
+        elseif (property_exists($data, 'vatNo') && $data->{'vatNo'} === null) {
+            $object->setVatNo(null);
+        }
+        if (property_exists($data, 'customInfo1') && $data->{'customInfo1'} !== null) {
             $object->setCustomInfo1($data->{'customInfo1'});
         }
-        if (property_exists($data, 'customInfo2')) {
+        elseif (property_exists($data, 'customInfo1') && $data->{'customInfo1'} === null) {
+            $object->setCustomInfo1(null);
+        }
+        if (property_exists($data, 'customInfo2') && $data->{'customInfo2'} !== null) {
             $object->setCustomInfo2($data->{'customInfo2'});
         }
-        if (property_exists($data, 'modifiedAt')) {
+        elseif (property_exists($data, 'customInfo2') && $data->{'customInfo2'} === null) {
+            $object->setCustomInfo2(null);
+        }
+        if (property_exists($data, 'modifiedAt') && $data->{'modifiedAt'} !== null) {
             $object->setModifiedAt($data->{'modifiedAt'});
+        }
+        elseif (property_exists($data, 'modifiedAt') && $data->{'modifiedAt'} === null) {
+            $object->setModifiedAt(null);
         }
         if (property_exists($data, 'approved') && $data->{'approved'} !== null) {
             $object->setApproved($data->{'approved'});
@@ -61,8 +88,11 @@ class CustomerCreatedModelNormalizer implements DenormalizerInterface, Normalize
         elseif (property_exists($data, 'approved') && $data->{'approved'} === null) {
             $object->setApproved(null);
         }
-        if (property_exists($data, 'approvedAt')) {
+        if (property_exists($data, 'approvedAt') && $data->{'approvedAt'} !== null) {
             $object->setApprovedAt($data->{'approvedAt'});
+        }
+        elseif (property_exists($data, 'approvedAt') && $data->{'approvedAt'} === null) {
+            $object->setApprovedAt(null);
         }
         if (property_exists($data, 'pricelistId') && $data->{'pricelistId'} !== null) {
             $object->setPricelistId($data->{'pricelistId'});
@@ -78,23 +108,44 @@ class CustomerCreatedModelNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();
         }
+        else {
+            $data->{'createdAt'} = null;
+        }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
+        }
+        else {
+            $data->{'type'} = null;
         }
         if (null !== $object->getEmail()) {
             $data->{'email'} = $object->getEmail();
         }
+        else {
+            $data->{'email'} = null;
+        }
         if (null !== $object->getNationalIdNo()) {
             $data->{'nationalIdNo'} = $object->getNationalIdNo();
+        }
+        else {
+            $data->{'nationalIdNo'} = null;
         }
         if (null !== $object->getVatNo()) {
             $data->{'vatNo'} = $object->getVatNo();
         }
+        else {
+            $data->{'vatNo'} = null;
+        }
         if (null !== $object->getCustomInfo1()) {
             $data->{'customInfo1'} = $object->getCustomInfo1();
         }
+        else {
+            $data->{'customInfo1'} = null;
+        }
         if (null !== $object->getCustomInfo2()) {
             $data->{'customInfo2'} = $object->getCustomInfo2();
+        }
+        else {
+            $data->{'customInfo2'} = null;
         }
         return $data;
     }

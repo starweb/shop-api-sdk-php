@@ -25,20 +25,32 @@ class OrderCommentModelNormalizer implements DenormalizerInterface, NormalizerIn
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\OrderCommentModel();
-        if (property_exists($data, 'commentId')) {
+        if (property_exists($data, 'commentId') && $data->{'commentId'} !== null) {
             $object->setCommentId($data->{'commentId'});
         }
-        if (property_exists($data, 'createdAt')) {
+        elseif (property_exists($data, 'commentId') && $data->{'commentId'} === null) {
+            $object->setCommentId(null);
+        }
+        if (property_exists($data, 'createdAt') && $data->{'createdAt'} !== null) {
             $object->setCreatedAt($data->{'createdAt'});
         }
-        if (property_exists($data, 'text')) {
+        elseif (property_exists($data, 'createdAt') && $data->{'createdAt'} === null) {
+            $object->setCreatedAt(null);
+        }
+        if (property_exists($data, 'text') && $data->{'text'} !== null) {
             $object->setText($data->{'text'});
         }
-        if (property_exists($data, 'from')) {
+        elseif (property_exists($data, 'text') && $data->{'text'} === null) {
+            $object->setText(null);
+        }
+        if (property_exists($data, 'from') && $data->{'from'} !== null) {
             $object->setFrom($data->{'from'});
+        }
+        elseif (property_exists($data, 'from') && $data->{'from'} === null) {
+            $object->setFrom(null);
         }
         return $object;
     }
@@ -48,11 +60,20 @@ class OrderCommentModelNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();
         }
+        else {
+            $data->{'createdAt'} = null;
+        }
         if (null !== $object->getText()) {
             $data->{'text'} = $object->getText();
         }
+        else {
+            $data->{'text'} = null;
+        }
         if (null !== $object->getFrom()) {
             $data->{'from'} = $object->getFrom();
+        }
+        else {
+            $data->{'from'} = null;
         }
         return $data;
     }

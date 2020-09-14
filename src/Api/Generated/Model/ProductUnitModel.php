@@ -7,7 +7,7 @@ class ProductUnitModel
     /**
      * The units id
      *
-     * @var int
+     * @var int|null
      */
     protected $unitId;
     /**
@@ -25,26 +25,26 @@ class ProductUnitModel
     /**
      * 
      *
-     * @var ProductUnitLanguageModelCollection
+     * @var ProductUnitLanguageModelCollection|null
      */
     protected $languages;
     /**
      * The units id
      *
-     * @return int
+     * @return int|null
      */
-    public function getUnitId() : int
+    public function getUnitId() : ?int
     {
         return $this->unitId;
     }
     /**
      * The units id
      *
-     * @param int $unitId
+     * @param int|null $unitId
      *
      * @return self
      */
-    public function setUnitId(int $unitId) : self
+    public function setUnitId(?int $unitId) : self
     {
         $this->unitId = $unitId;
         return $this;
@@ -94,20 +94,20 @@ class ProductUnitModel
     /**
      * 
      *
-     * @return ProductUnitLanguageModelCollection
+     * @return ProductUnitLanguageModelCollection|null
      */
-    public function getLanguages() : ProductUnitLanguageModelCollection
+    public function getLanguages() : ?ProductUnitLanguageModelCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductUnitLanguageModelCollection $languages
+     * @param ProductUnitLanguageModelCollection|null $languages
      *
      * @return self
      */
-    public function setLanguages(ProductUnitLanguageModelCollection $languages) : self
+    public function setLanguages(?ProductUnitLanguageModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

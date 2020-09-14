@@ -25,17 +25,26 @@ class WebHookModelNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\WebHookModel();
-        if (property_exists($data, 'webHookId')) {
+        if (property_exists($data, 'webHookId') && $data->{'webHookId'} !== null) {
             $object->setWebHookId($data->{'webHookId'});
         }
-        if (property_exists($data, 'name')) {
+        elseif (property_exists($data, 'webHookId') && $data->{'webHookId'} === null) {
+            $object->setWebHookId(null);
+        }
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
         }
-        if (property_exists($data, 'event')) {
+        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
+        }
+        if (property_exists($data, 'event') && $data->{'event'} !== null) {
             $object->setEvent($data->{'event'});
+        }
+        elseif (property_exists($data, 'event') && $data->{'event'} === null) {
+            $object->setEvent(null);
         }
         if (property_exists($data, 'statusId') && $data->{'statusId'} !== null) {
             $object->setStatusId($data->{'statusId'});
@@ -43,8 +52,11 @@ class WebHookModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         elseif (property_exists($data, 'statusId') && $data->{'statusId'} === null) {
             $object->setStatusId(null);
         }
-        if (property_exists($data, 'url')) {
+        if (property_exists($data, 'url') && $data->{'url'} !== null) {
             $object->setUrl($data->{'url'});
+        }
+        elseif (property_exists($data, 'url') && $data->{'url'} === null) {
+            $object->setUrl(null);
         }
         return $object;
     }
@@ -54,12 +66,26 @@ class WebHookModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
         }
+        else {
+            $data->{'name'} = null;
+        }
         if (null !== $object->getEvent()) {
             $data->{'event'} = $object->getEvent();
         }
-        $data->{'statusId'} = $object->getStatusId();
+        else {
+            $data->{'event'} = null;
+        }
+        if (null !== $object->getStatusId()) {
+            $data->{'statusId'} = $object->getStatusId();
+        }
+        else {
+            $data->{'statusId'} = null;
+        }
         if (null !== $object->getUrl()) {
             $data->{'url'} = $object->getUrl();
+        }
+        else {
+            $data->{'url'} = null;
         }
         return $data;
     }

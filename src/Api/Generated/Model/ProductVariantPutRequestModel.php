@@ -7,7 +7,7 @@ class ProductVariantPutRequestModel
     /**
      * The product variants SKU (stock keeping unit)
      *
-     * @var string
+     * @var string|null
      */
     protected $sku;
     /**
@@ -91,20 +91,20 @@ class ProductVariantPutRequestModel
     /**
      * The product variants SKU (stock keeping unit)
      *
-     * @return string
+     * @return string|null
      */
-    public function getSku() : string
+    public function getSku() : ?string
     {
         return $this->sku;
     }
     /**
      * The product variants SKU (stock keeping unit)
      *
-     * @param string $sku
+     * @param string|null $sku
      *
      * @return self
      */
-    public function setSku(string $sku) : self
+    public function setSku(?string $sku) : self
     {
         $this->sku = $sku;
         return $this;

@@ -7,26 +7,26 @@ class ProductMetaDataModelItem
     /**
      * 
      *
-     * @var ProductMetaDataModel
+     * @var ProductMetaDataModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductMetaDataModel
+     * @return ProductMetaDataModel|null
      */
-    public function getData() : ProductMetaDataModel
+    public function getData() : ?ProductMetaDataModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductMetaDataModel $data
+     * @param ProductMetaDataModel|null $data
      *
      * @return self
      */
-    public function setData(ProductMetaDataModel $data) : self
+    public function setData(?ProductMetaDataModel $data) : self
     {
         $this->data = $data;
         return $this;

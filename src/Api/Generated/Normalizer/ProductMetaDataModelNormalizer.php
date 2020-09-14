@@ -25,20 +25,32 @@ class ProductMetaDataModelNormalizer implements DenormalizerInterface, Normalize
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductMetaDataModel();
-        if (property_exists($data, 'metaDataId')) {
+        if (property_exists($data, 'metaDataId') && $data->{'metaDataId'} !== null) {
             $object->setMetaDataId($data->{'metaDataId'});
         }
-        if (property_exists($data, 'metaDataTypeId')) {
+        elseif (property_exists($data, 'metaDataId') && $data->{'metaDataId'} === null) {
+            $object->setMetaDataId(null);
+        }
+        if (property_exists($data, 'metaDataTypeId') && $data->{'metaDataTypeId'} !== null) {
             $object->setMetaDataTypeId($data->{'metaDataTypeId'});
         }
-        if (property_exists($data, 'sortIndex')) {
+        elseif (property_exists($data, 'metaDataTypeId') && $data->{'metaDataTypeId'} === null) {
+            $object->setMetaDataTypeId(null);
+        }
+        if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
             $object->setSortIndex($data->{'sortIndex'});
         }
-        if (property_exists($data, 'languages')) {
+        elseif (property_exists($data, 'sortIndex') && $data->{'sortIndex'} === null) {
+            $object->setSortIndex(null);
+        }
+        if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\ProductMetaLanguageDataModelCollection', 'json', $context));
+        }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
         }
         return $object;
     }
@@ -48,14 +60,26 @@ class ProductMetaDataModelNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getMetaDataId()) {
             $data->{'metaDataId'} = $object->getMetaDataId();
         }
+        else {
+            $data->{'metaDataId'} = null;
+        }
         if (null !== $object->getMetaDataTypeId()) {
             $data->{'metaDataTypeId'} = $object->getMetaDataTypeId();
+        }
+        else {
+            $data->{'metaDataTypeId'} = null;
         }
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
         }
+        else {
+            $data->{'sortIndex'} = null;
+        }
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

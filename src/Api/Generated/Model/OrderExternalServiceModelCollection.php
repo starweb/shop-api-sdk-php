@@ -7,26 +7,26 @@ class OrderExternalServiceModelCollection
     /**
      * A list of order external services
      *
-     * @var OrderExternalServiceModel[]
+     * @var OrderExternalServiceModel[]|null
      */
     protected $data;
     /**
      * A list of order external services
      *
-     * @return OrderExternalServiceModel[]
+     * @return OrderExternalServiceModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A list of order external services
      *
-     * @param OrderExternalServiceModel[] $data
+     * @param OrderExternalServiceModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

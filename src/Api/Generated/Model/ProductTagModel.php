@@ -7,38 +7,38 @@ class ProductTagModel
     /**
      * The tag Id
      *
-     * @var int
+     * @var int|null
      */
     protected $tagId;
     /**
      * The tag type
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * 
      *
-     * @var ProductTagLanguageModel[]
+     * @var ProductTagLanguageModel[]|null
      */
     protected $languages;
     /**
      * The tag Id
      *
-     * @return int
+     * @return int|null
      */
-    public function getTagId() : int
+    public function getTagId() : ?int
     {
         return $this->tagId;
     }
     /**
      * The tag Id
      *
-     * @param int $tagId
+     * @param int|null $tagId
      *
      * @return self
      */
-    public function setTagId(int $tagId) : self
+    public function setTagId(?int $tagId) : self
     {
         $this->tagId = $tagId;
         return $this;
@@ -46,20 +46,20 @@ class ProductTagModel
     /**
      * The tag type
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType() : ?string
     {
         return $this->type;
     }
     /**
      * The tag type
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type) : self
     {
         $this->type = $type;
         return $this;
@@ -67,20 +67,20 @@ class ProductTagModel
     /**
      * 
      *
-     * @return ProductTagLanguageModel[]
+     * @return ProductTagLanguageModel[]|null
      */
-    public function getLanguages() : array
+    public function getLanguages() : ?array
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductTagLanguageModel[] $languages
+     * @param ProductTagLanguageModel[]|null $languages
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(?array $languages) : self
     {
         $this->languages = $languages;
         return $this;

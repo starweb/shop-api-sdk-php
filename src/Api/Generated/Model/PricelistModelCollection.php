@@ -7,26 +7,26 @@ class PricelistModelCollection
     /**
      * A collection of pricelists
      *
-     * @var PricelistModel[]
+     * @var PricelistModel[]|null
      */
     protected $data;
     /**
      * A collection of pricelists
      *
-     * @return PricelistModel[]
+     * @return PricelistModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A collection of pricelists
      *
-     * @param PricelistModel[] $data
+     * @param PricelistModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

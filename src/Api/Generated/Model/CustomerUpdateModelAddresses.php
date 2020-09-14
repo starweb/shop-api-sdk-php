@@ -7,32 +7,32 @@ class CustomerUpdateModelAddresses
     /**
      * 
      *
-     * @var AddressModel
+     * @var AddressModel|null
      */
     protected $invoice;
     /**
      * 
      *
-     * @var AddressModel
+     * @var AddressModel|null
      */
     protected $delivery;
     /**
      * 
      *
-     * @return AddressModel
+     * @return AddressModel|null
      */
-    public function getInvoice() : AddressModel
+    public function getInvoice() : ?AddressModel
     {
         return $this->invoice;
     }
     /**
      * 
      *
-     * @param AddressModel $invoice
+     * @param AddressModel|null $invoice
      *
      * @return self
      */
-    public function setInvoice(AddressModel $invoice) : self
+    public function setInvoice(?AddressModel $invoice) : self
     {
         $this->invoice = $invoice;
         return $this;
@@ -40,20 +40,20 @@ class CustomerUpdateModelAddresses
     /**
      * 
      *
-     * @return AddressModel
+     * @return AddressModel|null
      */
-    public function getDelivery() : AddressModel
+    public function getDelivery() : ?AddressModel
     {
         return $this->delivery;
     }
     /**
      * 
      *
-     * @param AddressModel $delivery
+     * @param AddressModel|null $delivery
      *
      * @return self
      */
-    public function setDelivery(AddressModel $delivery) : self
+    public function setDelivery(?AddressModel $delivery) : self
     {
         $this->delivery = $delivery;
         return $this;

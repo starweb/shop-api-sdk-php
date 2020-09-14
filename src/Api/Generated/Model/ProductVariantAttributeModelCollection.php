@@ -7,26 +7,26 @@ class ProductVariantAttributeModelCollection
     /**
      * A collection of attribute values
      *
-     * @var ProductVariantAttributeModel[]
+     * @var ProductVariantAttributeModel[]|null
      */
     protected $data;
     /**
      * A collection of attribute values
      *
-     * @return ProductVariantAttributeModel[]
+     * @return ProductVariantAttributeModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A collection of attribute values
      *
-     * @param ProductVariantAttributeModel[] $data
+     * @param ProductVariantAttributeModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

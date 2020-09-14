@@ -25,11 +25,14 @@ class OrderItemBundledModelItemNormalizer implements DenormalizerInterface, Norm
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\OrderItemBundledModelItem();
-        if (property_exists($data, 'bundledItems')) {
+        if (property_exists($data, 'bundledItems') && $data->{'bundledItems'} !== null) {
             $object->setBundledItems($this->denormalizer->denormalize($data->{'bundledItems'}, 'Starweb\\Api\\Generated\\Model\\OrderItemBundledModelItemBundledItems', 'json', $context));
+        }
+        elseif (property_exists($data, 'bundledItems') && $data->{'bundledItems'} === null) {
+            $object->setBundledItems(null);
         }
         return $object;
     }
@@ -38,6 +41,9 @@ class OrderItemBundledModelItemNormalizer implements DenormalizerInterface, Norm
         $data = new \stdClass();
         if (null !== $object->getBundledItems()) {
             $data->{'bundledItems'} = $this->normalizer->normalize($object->getBundledItems(), 'json', $context);
+        }
+        else {
+            $data->{'bundledItems'} = null;
         }
         return $data;
     }

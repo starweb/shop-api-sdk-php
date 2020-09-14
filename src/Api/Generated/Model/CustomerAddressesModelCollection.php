@@ -7,26 +7,26 @@ class CustomerAddressesModelCollection
     /**
      * 
      *
-     * @var CustomerAddressesModelCollectionData
+     * @var CustomerAddressesModelCollectionData|null
      */
     protected $data;
     /**
      * 
      *
-     * @return CustomerAddressesModelCollectionData
+     * @return CustomerAddressesModelCollectionData|null
      */
-    public function getData() : CustomerAddressesModelCollectionData
+    public function getData() : ?CustomerAddressesModelCollectionData
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param CustomerAddressesModelCollectionData $data
+     * @param CustomerAddressesModelCollectionData|null $data
      *
      * @return self
      */
-    public function setData(CustomerAddressesModelCollectionData $data) : self
+    public function setData(?CustomerAddressesModelCollectionData $data) : self
     {
         $this->data = $data;
         return $this;

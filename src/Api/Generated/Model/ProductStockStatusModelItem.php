@@ -7,26 +7,26 @@ class ProductStockStatusModelItem
     /**
      * 
      *
-     * @var ProductStockStatusResponseModel
+     * @var ProductStockStatusResponseModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductStockStatusResponseModel
+     * @return ProductStockStatusResponseModel|null
      */
-    public function getData() : ProductStockStatusResponseModel
+    public function getData() : ?ProductStockStatusResponseModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductStockStatusResponseModel $data
+     * @param ProductStockStatusResponseModel|null $data
      *
      * @return self
      */
-    public function setData(ProductStockStatusResponseModel $data) : self
+    public function setData(?ProductStockStatusResponseModel $data) : self
     {
         $this->data = $data;
         return $this;

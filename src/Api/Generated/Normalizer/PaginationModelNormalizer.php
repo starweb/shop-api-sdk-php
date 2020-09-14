@@ -25,23 +25,38 @@ class PaginationModelNormalizer implements DenormalizerInterface, NormalizerInte
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\PaginationModel();
-        if (property_exists($data, 'current_page')) {
+        if (property_exists($data, 'current_page') && $data->{'current_page'} !== null) {
             $object->setCurrentPage($data->{'current_page'});
         }
-        if (property_exists($data, 'per_page')) {
+        elseif (property_exists($data, 'current_page') && $data->{'current_page'} === null) {
+            $object->setCurrentPage(null);
+        }
+        if (property_exists($data, 'per_page') && $data->{'per_page'} !== null) {
             $object->setPerPage($data->{'per_page'});
         }
-        if (property_exists($data, 'total')) {
+        elseif (property_exists($data, 'per_page') && $data->{'per_page'} === null) {
+            $object->setPerPage(null);
+        }
+        if (property_exists($data, 'total') && $data->{'total'} !== null) {
             $object->setTotal($data->{'total'});
         }
-        if (property_exists($data, 'count')) {
+        elseif (property_exists($data, 'total') && $data->{'total'} === null) {
+            $object->setTotal(null);
+        }
+        if (property_exists($data, 'count') && $data->{'count'} !== null) {
             $object->setCount($data->{'count'});
         }
-        if (property_exists($data, 'total_pages')) {
+        elseif (property_exists($data, 'count') && $data->{'count'} === null) {
+            $object->setCount(null);
+        }
+        if (property_exists($data, 'total_pages') && $data->{'total_pages'} !== null) {
             $object->setTotalPages($data->{'total_pages'});
+        }
+        elseif (property_exists($data, 'total_pages') && $data->{'total_pages'} === null) {
+            $object->setTotalPages(null);
         }
         return $object;
     }

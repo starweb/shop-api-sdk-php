@@ -25,11 +25,14 @@ class ProductVariantAttributeModelNormalizer implements DenormalizerInterface, N
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductVariantAttributeModel();
-        if (property_exists($data, 'attributeId')) {
+        if (property_exists($data, 'attributeId') && $data->{'attributeId'} !== null) {
             $object->setAttributeId($data->{'attributeId'});
+        }
+        elseif (property_exists($data, 'attributeId') && $data->{'attributeId'} === null) {
+            $object->setAttributeId(null);
         }
         if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
             $object->setExternalId($data->{'externalId'});
@@ -43,8 +46,11 @@ class ProductVariantAttributeModelNormalizer implements DenormalizerInterface, N
         elseif (property_exists($data, 'externalIdType') && $data->{'externalIdType'} === null) {
             $object->setExternalIdType(null);
         }
-        if (property_exists($data, 'languages')) {
+        if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeModelLanguages', 'json', $context));
+        }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
         }
         return $object;
     }
@@ -54,10 +60,26 @@ class ProductVariantAttributeModelNormalizer implements DenormalizerInterface, N
         if (null !== $object->getAttributeId()) {
             $data->{'attributeId'} = $object->getAttributeId();
         }
-        $data->{'externalId'} = $object->getExternalId();
-        $data->{'externalIdType'} = $object->getExternalIdType();
+        else {
+            $data->{'attributeId'} = null;
+        }
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
+        else {
+            $data->{'externalId'} = null;
+        }
+        if (null !== $object->getExternalIdType()) {
+            $data->{'externalIdType'} = $object->getExternalIdType();
+        }
+        else {
+            $data->{'externalIdType'} = null;
+        }
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

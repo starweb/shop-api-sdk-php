@@ -25,11 +25,14 @@ class CustomerModelCollectionMetaNormalizer implements DenormalizerInterface, No
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\CustomerModelCollectionMeta();
-        if (property_exists($data, 'pagination')) {
+        if (property_exists($data, 'pagination') && $data->{'pagination'} !== null) {
             $object->setPagination($this->denormalizer->denormalize($data->{'pagination'}, 'Starweb\\Api\\Generated\\Model\\PaginationModel', 'json', $context));
+        }
+        elseif (property_exists($data, 'pagination') && $data->{'pagination'} === null) {
+            $object->setPagination(null);
         }
         return $object;
     }
@@ -38,6 +41,9 @@ class CustomerModelCollectionMetaNormalizer implements DenormalizerInterface, No
         $data = new \stdClass();
         if (null !== $object->getPagination()) {
             $data->{'pagination'} = $this->normalizer->normalize($object->getPagination(), 'json', $context);
+        }
+        else {
+            $data->{'pagination'} = null;
         }
         return $data;
     }

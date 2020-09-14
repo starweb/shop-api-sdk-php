@@ -7,55 +7,55 @@ class CustomerCreatedModel
     /**
      * The customers ID
      *
-     * @var int
+     * @var int|null
      */
     protected $customerId;
     /**
      * A timestamp of when the customer was created. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var string|null
      */
     protected $createdAt;
     /**
      * The type of customer this is. Either: ”person” or ”company”
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * Email address of the customer
      *
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
      * National id number of the customer
      *
-     * @var string
+     * @var string|null
      */
     protected $nationalIdNo;
     /**
      * VAT number of the customer
      *
-     * @var string
+     * @var string|null
      */
     protected $vatNo;
     /**
      * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
      *
-     * @var string
+     * @var string|null
      */
     protected $customInfo1;
     /**
      * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
      *
-     * @var string
+     * @var string|null
      */
     protected $customInfo2;
     /**
      * A timestamp of when the customer was modified. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var string|null
      */
     protected $modifiedAt;
     /**
@@ -67,7 +67,7 @@ class CustomerCreatedModel
     /**
      * A timestamp of when the customer was was approved/disapproved. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var string|null
      */
     protected $approvedAt;
     /**
@@ -79,20 +79,20 @@ class CustomerCreatedModel
     /**
      * The customers ID
      *
-     * @return int
+     * @return int|null
      */
-    public function getCustomerId() : int
+    public function getCustomerId() : ?int
     {
         return $this->customerId;
     }
     /**
      * The customers ID
      *
-     * @param int $customerId
+     * @param int|null $customerId
      *
      * @return self
      */
-    public function setCustomerId(int $customerId) : self
+    public function setCustomerId(?int $customerId) : self
     {
         $this->customerId = $customerId;
         return $this;
@@ -100,20 +100,20 @@ class CustomerCreatedModel
     /**
      * A timestamp of when the customer was created. The time should be formatted using ISO-8601
      *
-     * @return string
+     * @return string|null
      */
-    public function getCreatedAt() : string
+    public function getCreatedAt() : ?string
     {
         return $this->createdAt;
     }
     /**
      * A timestamp of when the customer was created. The time should be formatted using ISO-8601
      *
-     * @param string $createdAt
+     * @param string|null $createdAt
      *
      * @return self
      */
-    public function setCreatedAt(string $createdAt) : self
+    public function setCreatedAt(?string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -121,20 +121,20 @@ class CustomerCreatedModel
     /**
      * The type of customer this is. Either: ”person” or ”company”
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType() : ?string
     {
         return $this->type;
     }
     /**
      * The type of customer this is. Either: ”person” or ”company”
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type) : self
     {
         $this->type = $type;
         return $this;
@@ -142,20 +142,20 @@ class CustomerCreatedModel
     /**
      * Email address of the customer
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail() : string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
     /**
      * Email address of the customer
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(?string $email) : self
     {
         $this->email = $email;
         return $this;
@@ -163,20 +163,20 @@ class CustomerCreatedModel
     /**
      * National id number of the customer
      *
-     * @return string
+     * @return string|null
      */
-    public function getNationalIdNo() : string
+    public function getNationalIdNo() : ?string
     {
         return $this->nationalIdNo;
     }
     /**
      * National id number of the customer
      *
-     * @param string $nationalIdNo
+     * @param string|null $nationalIdNo
      *
      * @return self
      */
-    public function setNationalIdNo(string $nationalIdNo) : self
+    public function setNationalIdNo(?string $nationalIdNo) : self
     {
         $this->nationalIdNo = $nationalIdNo;
         return $this;
@@ -184,20 +184,20 @@ class CustomerCreatedModel
     /**
      * VAT number of the customer
      *
-     * @return string
+     * @return string|null
      */
-    public function getVatNo() : string
+    public function getVatNo() : ?string
     {
         return $this->vatNo;
     }
     /**
      * VAT number of the customer
      *
-     * @param string $vatNo
+     * @param string|null $vatNo
      *
      * @return self
      */
-    public function setVatNo(string $vatNo) : self
+    public function setVatNo(?string $vatNo) : self
     {
         $this->vatNo = $vatNo;
         return $this;
@@ -205,20 +205,20 @@ class CustomerCreatedModel
     /**
      * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
      *
-     * @return string
+     * @return string|null
      */
-    public function getCustomInfo1() : string
+    public function getCustomInfo1() : ?string
     {
         return $this->customInfo1;
     }
     /**
      * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
      *
-     * @param string $customInfo1
+     * @param string|null $customInfo1
      *
      * @return self
      */
-    public function setCustomInfo1(string $customInfo1) : self
+    public function setCustomInfo1(?string $customInfo1) : self
     {
         $this->customInfo1 = $customInfo1;
         return $this;
@@ -226,20 +226,20 @@ class CustomerCreatedModel
     /**
      * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
      *
-     * @return string
+     * @return string|null
      */
-    public function getCustomInfo2() : string
+    public function getCustomInfo2() : ?string
     {
         return $this->customInfo2;
     }
     /**
      * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
      *
-     * @param string $customInfo2
+     * @param string|null $customInfo2
      *
      * @return self
      */
-    public function setCustomInfo2(string $customInfo2) : self
+    public function setCustomInfo2(?string $customInfo2) : self
     {
         $this->customInfo2 = $customInfo2;
         return $this;
@@ -247,20 +247,20 @@ class CustomerCreatedModel
     /**
      * A timestamp of when the customer was modified. The time should be formatted using ISO-8601
      *
-     * @return string
+     * @return string|null
      */
-    public function getModifiedAt() : string
+    public function getModifiedAt() : ?string
     {
         return $this->modifiedAt;
     }
     /**
      * A timestamp of when the customer was modified. The time should be formatted using ISO-8601
      *
-     * @param string $modifiedAt
+     * @param string|null $modifiedAt
      *
      * @return self
      */
-    public function setModifiedAt(string $modifiedAt) : self
+    public function setModifiedAt(?string $modifiedAt) : self
     {
         $this->modifiedAt = $modifiedAt;
         return $this;
@@ -289,20 +289,20 @@ class CustomerCreatedModel
     /**
      * A timestamp of when the customer was was approved/disapproved. The time should be formatted using ISO-8601
      *
-     * @return string
+     * @return string|null
      */
-    public function getApprovedAt() : string
+    public function getApprovedAt() : ?string
     {
         return $this->approvedAt;
     }
     /**
      * A timestamp of when the customer was was approved/disapproved. The time should be formatted using ISO-8601
      *
-     * @param string $approvedAt
+     * @param string|null $approvedAt
      *
      * @return self
      */
-    public function setApprovedAt(string $approvedAt) : self
+    public function setApprovedAt(?string $approvedAt) : self
     {
         $this->approvedAt = $approvedAt;
         return $this;

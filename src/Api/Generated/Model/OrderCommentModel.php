@@ -7,44 +7,44 @@ class OrderCommentModel
     /**
      * The comments id
      *
-     * @var int
+     * @var int|null
      */
     protected $commentId;
     /**
      * A timestamp of when the comment was created. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var string|null
      */
     protected $createdAt;
     /**
      * The comment
      *
-     * @var string
+     * @var string|null
      */
     protected $text;
     /**
      * The author of the comment. Either ”admin” or ”customer”
      *
-     * @var string
+     * @var string|null
      */
     protected $from;
     /**
      * The comments id
      *
-     * @return int
+     * @return int|null
      */
-    public function getCommentId() : int
+    public function getCommentId() : ?int
     {
         return $this->commentId;
     }
     /**
      * The comments id
      *
-     * @param int $commentId
+     * @param int|null $commentId
      *
      * @return self
      */
-    public function setCommentId(int $commentId) : self
+    public function setCommentId(?int $commentId) : self
     {
         $this->commentId = $commentId;
         return $this;
@@ -52,20 +52,20 @@ class OrderCommentModel
     /**
      * A timestamp of when the comment was created. The time should be formatted using ISO-8601
      *
-     * @return string
+     * @return string|null
      */
-    public function getCreatedAt() : string
+    public function getCreatedAt() : ?string
     {
         return $this->createdAt;
     }
     /**
      * A timestamp of when the comment was created. The time should be formatted using ISO-8601
      *
-     * @param string $createdAt
+     * @param string|null $createdAt
      *
      * @return self
      */
-    public function setCreatedAt(string $createdAt) : self
+    public function setCreatedAt(?string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -73,20 +73,20 @@ class OrderCommentModel
     /**
      * The comment
      *
-     * @return string
+     * @return string|null
      */
-    public function getText() : string
+    public function getText() : ?string
     {
         return $this->text;
     }
     /**
      * The comment
      *
-     * @param string $text
+     * @param string|null $text
      *
      * @return self
      */
-    public function setText(string $text) : self
+    public function setText(?string $text) : self
     {
         $this->text = $text;
         return $this;
@@ -94,20 +94,20 @@ class OrderCommentModel
     /**
      * The author of the comment. Either ”admin” or ”customer”
      *
-     * @return string
+     * @return string|null
      */
-    public function getFrom() : string
+    public function getFrom() : ?string
     {
         return $this->from;
     }
     /**
      * The author of the comment. Either ”admin” or ”customer”
      *
-     * @param string $from
+     * @param string|null $from
      *
      * @return self
      */
-    public function setFrom(string $from) : self
+    public function setFrom(?string $from) : self
     {
         $this->from = $from;
         return $this;

@@ -7,26 +7,26 @@ class ProductTagLinkModelItem
     /**
      * 
      *
-     * @var ProductTagLinkModel
+     * @var ProductTagLinkModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductTagLinkModel
+     * @return ProductTagLinkModel|null
      */
-    public function getData() : ProductTagLinkModel
+    public function getData() : ?ProductTagLinkModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductTagLinkModel $data
+     * @param ProductTagLinkModel|null $data
      *
      * @return self
      */
-    public function setData(ProductTagLinkModel $data) : self
+    public function setData(?ProductTagLinkModel $data) : self
     {
         $this->data = $data;
         return $this;

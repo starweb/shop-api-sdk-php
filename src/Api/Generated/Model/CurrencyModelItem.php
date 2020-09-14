@@ -7,26 +7,26 @@ class CurrencyModelItem
     /**
      * 
      *
-     * @var CurrencyModel
+     * @var CurrencyModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return CurrencyModel
+     * @return CurrencyModel|null
      */
-    public function getData() : CurrencyModel
+    public function getData() : ?CurrencyModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param CurrencyModel $data
+     * @param CurrencyModel|null $data
      *
      * @return self
      */
-    public function setData(CurrencyModel $data) : self
+    public function setData(?CurrencyModel $data) : self
     {
         $this->data = $data;
         return $this;

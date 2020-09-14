@@ -7,26 +7,26 @@ class ProductBundleProductPriceModelItem
     /**
      * 
      *
-     * @var ProductBundleProductPriceModel
+     * @var ProductBundleProductPriceModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductBundleProductPriceModel
+     * @return ProductBundleProductPriceModel|null
      */
-    public function getData() : ProductBundleProductPriceModel
+    public function getData() : ?ProductBundleProductPriceModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductBundleProductPriceModel $data
+     * @param ProductBundleProductPriceModel|null $data
      *
      * @return self
      */
-    public function setData(ProductBundleProductPriceModel $data) : self
+    public function setData(?ProductBundleProductPriceModel $data) : self
     {
         $this->data = $data;
         return $this;

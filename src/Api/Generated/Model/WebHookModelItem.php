@@ -7,26 +7,26 @@ class WebHookModelItem
     /**
      * 
      *
-     * @var WebHookModel
+     * @var WebHookModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return WebHookModel
+     * @return WebHookModel|null
      */
-    public function getData() : WebHookModel
+    public function getData() : ?WebHookModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param WebHookModel $data
+     * @param WebHookModel|null $data
      *
      * @return self
      */
-    public function setData(WebHookModel $data) : self
+    public function setData(?WebHookModel $data) : self
     {
         $this->data = $data;
         return $this;

@@ -7,26 +7,26 @@ class ProductCategoryModelItem
     /**
      * 
      *
-     * @var ProductCategoryModel
+     * @var ProductCategoryModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductCategoryModel
+     * @return ProductCategoryModel|null
      */
-    public function getData() : ProductCategoryModel
+    public function getData() : ?ProductCategoryModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductCategoryModel $data
+     * @param ProductCategoryModel|null $data
      *
      * @return self
      */
-    public function setData(ProductCategoryModel $data) : self
+    public function setData(?ProductCategoryModel $data) : self
     {
         $this->data = $data;
         return $this;

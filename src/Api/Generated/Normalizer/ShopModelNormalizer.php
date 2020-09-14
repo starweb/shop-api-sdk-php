@@ -25,60 +25,108 @@ class ShopModelNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ShopModel();
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
         }
-        if (property_exists($data, 'idCode')) {
+        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
+        }
+        if (property_exists($data, 'idCode') && $data->{'idCode'} !== null) {
             $object->setIdCode($data->{'idCode'});
         }
-        if (property_exists($data, 'status')) {
+        elseif (property_exists($data, 'idCode') && $data->{'idCode'} === null) {
+            $object->setIdCode(null);
+        }
+        if (property_exists($data, 'status') && $data->{'status'} !== null) {
             $object->setStatus($data->{'status'});
         }
-        if (property_exists($data, 'defaultLangCode')) {
+        elseif (property_exists($data, 'status') && $data->{'status'} === null) {
+            $object->setStatus(null);
+        }
+        if (property_exists($data, 'defaultLangCode') && $data->{'defaultLangCode'} !== null) {
             $object->setDefaultLangCode($data->{'defaultLangCode'});
         }
-        if (property_exists($data, 'activeLangCodes')) {
+        elseif (property_exists($data, 'defaultLangCode') && $data->{'defaultLangCode'} === null) {
+            $object->setDefaultLangCode(null);
+        }
+        if (property_exists($data, 'activeLangCodes') && $data->{'activeLangCodes'} !== null) {
             $values = array();
             foreach ($data->{'activeLangCodes'} as $value) {
                 $values[] = $value;
             }
             $object->setActiveLangCodes($values);
         }
-        if (property_exists($data, 'baseCurrency')) {
+        elseif (property_exists($data, 'activeLangCodes') && $data->{'activeLangCodes'} === null) {
+            $object->setActiveLangCodes(null);
+        }
+        if (property_exists($data, 'baseCurrency') && $data->{'baseCurrency'} !== null) {
             $object->setBaseCurrency($data->{'baseCurrency'});
         }
-        if (property_exists($data, 'defaultCustomerCountryCode')) {
+        elseif (property_exists($data, 'baseCurrency') && $data->{'baseCurrency'} === null) {
+            $object->setBaseCurrency(null);
+        }
+        if (property_exists($data, 'defaultCustomerCountryCode') && $data->{'defaultCustomerCountryCode'} !== null) {
             $object->setDefaultCustomerCountryCode($data->{'defaultCustomerCountryCode'});
         }
-        if (property_exists($data, 'generalDefaultVatRate')) {
+        elseif (property_exists($data, 'defaultCustomerCountryCode') && $data->{'defaultCustomerCountryCode'} === null) {
+            $object->setDefaultCustomerCountryCode(null);
+        }
+        if (property_exists($data, 'generalDefaultVatRate') && $data->{'generalDefaultVatRate'} !== null) {
             $object->setGeneralDefaultVatRate($data->{'generalDefaultVatRate'});
         }
-        if (property_exists($data, 'shopCompanyName')) {
+        elseif (property_exists($data, 'generalDefaultVatRate') && $data->{'generalDefaultVatRate'} === null) {
+            $object->setGeneralDefaultVatRate(null);
+        }
+        if (property_exists($data, 'shopCompanyName') && $data->{'shopCompanyName'} !== null) {
             $object->setShopCompanyName($data->{'shopCompanyName'});
         }
-        if (property_exists($data, 'shopAddress')) {
+        elseif (property_exists($data, 'shopCompanyName') && $data->{'shopCompanyName'} === null) {
+            $object->setShopCompanyName(null);
+        }
+        if (property_exists($data, 'shopAddress') && $data->{'shopAddress'} !== null) {
             $object->setShopAddress($data->{'shopAddress'});
         }
-        if (property_exists($data, 'shopPostalCode')) {
+        elseif (property_exists($data, 'shopAddress') && $data->{'shopAddress'} === null) {
+            $object->setShopAddress(null);
+        }
+        if (property_exists($data, 'shopPostalCode') && $data->{'shopPostalCode'} !== null) {
             $object->setShopPostalCode($data->{'shopPostalCode'});
         }
-        if (property_exists($data, 'shopCity')) {
+        elseif (property_exists($data, 'shopPostalCode') && $data->{'shopPostalCode'} === null) {
+            $object->setShopPostalCode(null);
+        }
+        if (property_exists($data, 'shopCity') && $data->{'shopCity'} !== null) {
             $object->setShopCity($data->{'shopCity'});
         }
-        if (property_exists($data, 'shopOrgNo')) {
+        elseif (property_exists($data, 'shopCity') && $data->{'shopCity'} === null) {
+            $object->setShopCity(null);
+        }
+        if (property_exists($data, 'shopOrgNo') && $data->{'shopOrgNo'} !== null) {
             $object->setShopOrgNo($data->{'shopOrgNo'});
         }
-        if (property_exists($data, 'shopPhoneNo')) {
+        elseif (property_exists($data, 'shopOrgNo') && $data->{'shopOrgNo'} === null) {
+            $object->setShopOrgNo(null);
+        }
+        if (property_exists($data, 'shopPhoneNo') && $data->{'shopPhoneNo'} !== null) {
             $object->setShopPhoneNo($data->{'shopPhoneNo'});
         }
-        if (property_exists($data, 'shopVatNo')) {
+        elseif (property_exists($data, 'shopPhoneNo') && $data->{'shopPhoneNo'} === null) {
+            $object->setShopPhoneNo(null);
+        }
+        if (property_exists($data, 'shopVatNo') && $data->{'shopVatNo'} !== null) {
             $object->setShopVatNo($data->{'shopVatNo'});
         }
-        if (property_exists($data, 'shopCountryCode')) {
+        elseif (property_exists($data, 'shopVatNo') && $data->{'shopVatNo'} === null) {
+            $object->setShopVatNo(null);
+        }
+        if (property_exists($data, 'shopCountryCode') && $data->{'shopCountryCode'} !== null) {
             $object->setShopCountryCode($data->{'shopCountryCode'});
+        }
+        elseif (property_exists($data, 'shopCountryCode') && $data->{'shopCountryCode'} === null) {
+            $object->setShopCountryCode(null);
         }
         return $object;
     }

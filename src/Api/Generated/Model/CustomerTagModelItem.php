@@ -7,26 +7,26 @@ class CustomerTagModelItem
     /**
      * 
      *
-     * @var CustomerTagModel
+     * @var CustomerTagModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return CustomerTagModel
+     * @return CustomerTagModel|null
      */
-    public function getData() : CustomerTagModel
+    public function getData() : ?CustomerTagModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param CustomerTagModel $data
+     * @param CustomerTagModel|null $data
      *
      * @return self
      */
-    public function setData(CustomerTagModel $data) : self
+    public function setData(?CustomerTagModel $data) : self
     {
         $this->data = $data;
         return $this;

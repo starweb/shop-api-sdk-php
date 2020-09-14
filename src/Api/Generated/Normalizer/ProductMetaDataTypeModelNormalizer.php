@@ -25,14 +25,20 @@ class ProductMetaDataTypeModelNormalizer implements DenormalizerInterface, Norma
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductMetaDataTypeModel();
-        if (property_exists($data, 'metaDataTypeId')) {
+        if (property_exists($data, 'metaDataTypeId') && $data->{'metaDataTypeId'} !== null) {
             $object->setMetaDataTypeId($data->{'metaDataTypeId'});
         }
-        if (property_exists($data, 'languages')) {
+        elseif (property_exists($data, 'metaDataTypeId') && $data->{'metaDataTypeId'} === null) {
+            $object->setMetaDataTypeId(null);
+        }
+        if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\ProductMetaDataTypeLanguageModelCollection', 'json', $context));
+        }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
         }
         return $object;
     }
@@ -41,6 +47,9 @@ class ProductMetaDataTypeModelNormalizer implements DenormalizerInterface, Norma
         $data = new \stdClass();
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

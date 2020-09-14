@@ -7,26 +7,26 @@ class PaymentMethodModelCollection
     /**
      * A collection of payment methods
      *
-     * @var PaymentMethodModel[]
+     * @var PaymentMethodModel[]|null
      */
     protected $data;
     /**
      * A collection of payment methods
      *
-     * @return PaymentMethodModel[]
+     * @return PaymentMethodModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A collection of payment methods
      *
-     * @param PaymentMethodModel[] $data
+     * @param PaymentMethodModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

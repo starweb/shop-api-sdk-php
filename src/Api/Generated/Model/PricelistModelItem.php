@@ -7,26 +7,26 @@ class PricelistModelItem
     /**
      * 
      *
-     * @var PricelistModel
+     * @var PricelistModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return PricelistModel
+     * @return PricelistModel|null
      */
-    public function getData() : PricelistModel
+    public function getData() : ?PricelistModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param PricelistModel $data
+     * @param PricelistModel|null $data
      *
      * @return self
      */
-    public function setData(PricelistModel $data) : self
+    public function setData(?PricelistModel $data) : self
     {
         $this->data = $data;
         return $this;

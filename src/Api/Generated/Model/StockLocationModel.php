@@ -7,7 +7,7 @@ class StockLocationModel
     /**
      * The stock location Id
      *
-     * @var int
+     * @var int|null
      */
     protected $stockLocationId;
     /**
@@ -25,44 +25,44 @@ class StockLocationModel
     /**
      * The stock location`s visibility settings.
      *
-     * @var string
+     * @var string|null
      */
     protected $visibility;
     /**
      * Sort index. A stock location with a lower value is displayed higher up in lists
      *
-     * @var int
+     * @var int|null
      */
     protected $sortIndex;
     /**
      * Whether or not the stock location is the main ecommerce stock location There can only be one ecommerce stock location for the shop, so if you set this flag for any of the stock location it will be removed automatically from any other stock location
      *
-     * @var bool
+     * @var bool|null
      */
     protected $ecommerceStockLocation = false;
     /**
      * 
      *
-     * @var StockLocationLanguagesModelCollection
+     * @var StockLocationLanguagesModelCollection|null
      */
     protected $languages;
     /**
      * The stock location Id
      *
-     * @return int
+     * @return int|null
      */
-    public function getStockLocationId() : int
+    public function getStockLocationId() : ?int
     {
         return $this->stockLocationId;
     }
     /**
      * The stock location Id
      *
-     * @param int $stockLocationId
+     * @param int|null $stockLocationId
      *
      * @return self
      */
-    public function setStockLocationId(int $stockLocationId) : self
+    public function setStockLocationId(?int $stockLocationId) : self
     {
         $this->stockLocationId = $stockLocationId;
         return $this;
@@ -112,20 +112,20 @@ class StockLocationModel
     /**
      * The stock location`s visibility settings.
      *
-     * @return string
+     * @return string|null
      */
-    public function getVisibility() : string
+    public function getVisibility() : ?string
     {
         return $this->visibility;
     }
     /**
      * The stock location`s visibility settings.
      *
-     * @param string $visibility
+     * @param string|null $visibility
      *
      * @return self
      */
-    public function setVisibility(string $visibility) : self
+    public function setVisibility(?string $visibility) : self
     {
         $this->visibility = $visibility;
         return $this;
@@ -133,20 +133,20 @@ class StockLocationModel
     /**
      * Sort index. A stock location with a lower value is displayed higher up in lists
      *
-     * @return int
+     * @return int|null
      */
-    public function getSortIndex() : int
+    public function getSortIndex() : ?int
     {
         return $this->sortIndex;
     }
     /**
      * Sort index. A stock location with a lower value is displayed higher up in lists
      *
-     * @param int $sortIndex
+     * @param int|null $sortIndex
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(?int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -154,20 +154,20 @@ class StockLocationModel
     /**
      * Whether or not the stock location is the main ecommerce stock location There can only be one ecommerce stock location for the shop, so if you set this flag for any of the stock location it will be removed automatically from any other stock location
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getEcommerceStockLocation() : bool
+    public function getEcommerceStockLocation() : ?bool
     {
         return $this->ecommerceStockLocation;
     }
     /**
      * Whether or not the stock location is the main ecommerce stock location There can only be one ecommerce stock location for the shop, so if you set this flag for any of the stock location it will be removed automatically from any other stock location
      *
-     * @param bool $ecommerceStockLocation
+     * @param bool|null $ecommerceStockLocation
      *
      * @return self
      */
-    public function setEcommerceStockLocation(bool $ecommerceStockLocation) : self
+    public function setEcommerceStockLocation(?bool $ecommerceStockLocation) : self
     {
         $this->ecommerceStockLocation = $ecommerceStockLocation;
         return $this;
@@ -175,20 +175,20 @@ class StockLocationModel
     /**
      * 
      *
-     * @return StockLocationLanguagesModelCollection
+     * @return StockLocationLanguagesModelCollection|null
      */
-    public function getLanguages() : StockLocationLanguagesModelCollection
+    public function getLanguages() : ?StockLocationLanguagesModelCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param StockLocationLanguagesModelCollection $languages
+     * @param StockLocationLanguagesModelCollection|null $languages
      *
      * @return self
      */
-    public function setLanguages(StockLocationLanguagesModelCollection $languages) : self
+    public function setLanguages(?StockLocationLanguagesModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

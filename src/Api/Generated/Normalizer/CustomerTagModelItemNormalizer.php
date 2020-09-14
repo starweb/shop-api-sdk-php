@@ -25,11 +25,14 @@ class CustomerTagModelItemNormalizer implements DenormalizerInterface, Normalize
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\CustomerTagModelItem();
-        if (property_exists($data, 'data')) {
+        if (property_exists($data, 'data') && $data->{'data'} !== null) {
             $object->setData($this->denormalizer->denormalize($data->{'data'}, 'Starweb\\Api\\Generated\\Model\\CustomerTagModel', 'json', $context));
+        }
+        elseif (property_exists($data, 'data') && $data->{'data'} === null) {
+            $object->setData(null);
         }
         return $object;
     }
@@ -38,6 +41,9 @@ class CustomerTagModelItemNormalizer implements DenormalizerInterface, Normalize
         $data = new \stdClass();
         if (null !== $object->getData()) {
             $data->{'data'} = $this->normalizer->normalize($object->getData(), 'json', $context);
+        }
+        else {
+            $data->{'data'} = null;
         }
         return $data;
     }

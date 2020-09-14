@@ -25,35 +25,62 @@ class MediaFileModelNormalizer implements DenormalizerInterface, NormalizerInter
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\MediaFileModel();
-        if (property_exists($data, 'mediaFileId')) {
+        if (property_exists($data, 'mediaFileId') && $data->{'mediaFileId'} !== null) {
             $object->setMediaFileId($data->{'mediaFileId'});
         }
-        if (property_exists($data, 'name')) {
+        elseif (property_exists($data, 'mediaFileId') && $data->{'mediaFileId'} === null) {
+            $object->setMediaFileId(null);
+        }
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
         }
-        if (property_exists($data, 'createdAt')) {
+        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
+        }
+        if (property_exists($data, 'createdAt') && $data->{'createdAt'} !== null) {
             $object->setCreatedAt($data->{'createdAt'});
         }
-        if (property_exists($data, 'modifiedAt')) {
+        elseif (property_exists($data, 'createdAt') && $data->{'createdAt'} === null) {
+            $object->setCreatedAt(null);
+        }
+        if (property_exists($data, 'modifiedAt') && $data->{'modifiedAt'} !== null) {
             $object->setModifiedAt($data->{'modifiedAt'});
         }
-        if (property_exists($data, 'size')) {
+        elseif (property_exists($data, 'modifiedAt') && $data->{'modifiedAt'} === null) {
+            $object->setModifiedAt(null);
+        }
+        if (property_exists($data, 'size') && $data->{'size'} !== null) {
             $object->setSize($data->{'size'});
         }
-        if (property_exists($data, 'mime')) {
+        elseif (property_exists($data, 'size') && $data->{'size'} === null) {
+            $object->setSize(null);
+        }
+        if (property_exists($data, 'mime') && $data->{'mime'} !== null) {
             $object->setMime($data->{'mime'});
         }
-        if (property_exists($data, 'height')) {
+        elseif (property_exists($data, 'mime') && $data->{'mime'} === null) {
+            $object->setMime(null);
+        }
+        if (property_exists($data, 'height') && $data->{'height'} !== null) {
             $object->setHeight($data->{'height'});
         }
-        if (property_exists($data, 'width')) {
+        elseif (property_exists($data, 'height') && $data->{'height'} === null) {
+            $object->setHeight(null);
+        }
+        if (property_exists($data, 'width') && $data->{'width'} !== null) {
             $object->setWidth($data->{'width'});
         }
-        if (property_exists($data, 'url')) {
+        elseif (property_exists($data, 'width') && $data->{'width'} === null) {
+            $object->setWidth(null);
+        }
+        if (property_exists($data, 'url') && $data->{'url'} !== null) {
             $object->setUrl($data->{'url'});
+        }
+        elseif (property_exists($data, 'url') && $data->{'url'} === null) {
+            $object->setUrl(null);
         }
         return $object;
     }

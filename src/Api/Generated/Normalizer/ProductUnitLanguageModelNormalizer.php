@@ -25,17 +25,26 @@ class ProductUnitLanguageModelNormalizer implements DenormalizerInterface, Norma
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductUnitLanguageModel();
-        if (property_exists($data, 'langCode')) {
+        if (property_exists($data, 'langCode') && $data->{'langCode'} !== null) {
             $object->setLangCode($data->{'langCode'});
         }
-        if (property_exists($data, 'name')) {
+        elseif (property_exists($data, 'langCode') && $data->{'langCode'} === null) {
+            $object->setLangCode(null);
+        }
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
         }
-        if (property_exists($data, 'symbol')) {
+        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
+        }
+        if (property_exists($data, 'symbol') && $data->{'symbol'} !== null) {
             $object->setSymbol($data->{'symbol'});
+        }
+        elseif (property_exists($data, 'symbol') && $data->{'symbol'} === null) {
+            $object->setSymbol(null);
         }
         return $object;
     }
@@ -45,11 +54,20 @@ class ProductUnitLanguageModelNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getLangCode()) {
             $data->{'langCode'} = $object->getLangCode();
         }
+        else {
+            $data->{'langCode'} = null;
+        }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
         }
+        else {
+            $data->{'name'} = null;
+        }
         if (null !== $object->getSymbol()) {
             $data->{'symbol'} = $object->getSymbol();
+        }
+        else {
+            $data->{'symbol'} = null;
         }
         return $data;
     }

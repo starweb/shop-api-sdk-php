@@ -7,26 +7,26 @@ class MediaFileModelItem
     /**
      * 
      *
-     * @var MediaFileModel
+     * @var MediaFileModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return MediaFileModel
+     * @return MediaFileModel|null
      */
-    public function getData() : MediaFileModel
+    public function getData() : ?MediaFileModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param MediaFileModel $data
+     * @param MediaFileModel|null $data
      *
      * @return self
      */
-    public function setData(MediaFileModel $data) : self
+    public function setData(?MediaFileModel $data) : self
     {
         $this->data = $data;
         return $this;

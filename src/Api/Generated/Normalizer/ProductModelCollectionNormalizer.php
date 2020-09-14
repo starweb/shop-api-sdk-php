@@ -25,18 +25,24 @@ class ProductModelCollectionNormalizer implements DenormalizerInterface, Normali
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductModelCollection();
-        if (property_exists($data, 'data')) {
+        if (property_exists($data, 'data') && $data->{'data'} !== null) {
             $values = array();
             foreach ($data->{'data'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductModel', 'json', $context);
             }
             $object->setData($values);
         }
-        if (property_exists($data, 'meta')) {
+        elseif (property_exists($data, 'data') && $data->{'data'} === null) {
+            $object->setData(null);
+        }
+        if (property_exists($data, 'meta') && $data->{'meta'} !== null) {
             $object->setMeta($this->denormalizer->denormalize($data->{'meta'}, 'Starweb\\Api\\Generated\\Model\\ProductModelCollectionMeta', 'json', $context));
+        }
+        elseif (property_exists($data, 'meta') && $data->{'meta'} === null) {
+            $object->setMeta(null);
         }
         return $object;
     }
@@ -50,8 +56,14 @@ class ProductModelCollectionNormalizer implements DenormalizerInterface, Normali
             }
             $data->{'data'} = $values;
         }
+        else {
+            $data->{'data'} = null;
+        }
         if (null !== $object->getMeta()) {
             $data->{'meta'} = $this->normalizer->normalize($object->getMeta(), 'json', $context);
+        }
+        else {
+            $data->{'meta'} = null;
         }
         return $data;
     }

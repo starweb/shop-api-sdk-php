@@ -25,24 +25,36 @@ class ProductTagOptionModelNormalizer implements DenormalizerInterface, Normaliz
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductTagOptionModel();
-        if (property_exists($data, 'tagOptionId')) {
+        if (property_exists($data, 'tagOptionId') && $data->{'tagOptionId'} !== null) {
             $object->setTagOptionId($data->{'tagOptionId'});
         }
-        if (property_exists($data, 'value')) {
+        elseif (property_exists($data, 'tagOptionId') && $data->{'tagOptionId'} === null) {
+            $object->setTagOptionId(null);
+        }
+        if (property_exists($data, 'value') && $data->{'value'} !== null) {
             $object->setValue($data->{'value'});
         }
-        if (property_exists($data, 'sortIndex')) {
+        elseif (property_exists($data, 'value') && $data->{'value'} === null) {
+            $object->setValue(null);
+        }
+        if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
             $object->setSortIndex($data->{'sortIndex'});
         }
-        if (property_exists($data, 'languages')) {
+        elseif (property_exists($data, 'sortIndex') && $data->{'sortIndex'} === null) {
+            $object->setSortIndex(null);
+        }
+        if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $values = array();
             foreach ($data->{'languages'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductTagOptionLanguageModel', 'json', $context);
             }
             $object->setLanguages($values);
+        }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
         }
         return $object;
     }
@@ -52,12 +64,18 @@ class ProductTagOptionModelNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
         }
+        else {
+            $data->{'sortIndex'} = null;
+        }
         if (null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'languages'} = $values;
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

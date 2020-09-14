@@ -7,32 +7,32 @@ class ProductMetaDataTypeLanguageModel
     /**
      * The language code for this language
      *
-     * @var string
+     * @var string|null
      */
     protected $langCode;
     /**
      * The name of this meta data type
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * The language code for this language
      *
-     * @return string
+     * @return string|null
      */
-    public function getLangCode() : string
+    public function getLangCode() : ?string
     {
         return $this->langCode;
     }
     /**
      * The language code for this language
      *
-     * @param string $langCode
+     * @param string|null $langCode
      *
      * @return self
      */
-    public function setLangCode(string $langCode) : self
+    public function setLangCode(?string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -40,20 +40,20 @@ class ProductMetaDataTypeLanguageModel
     /**
      * The name of this meta data type
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * The name of this meta data type
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->name = $name;
         return $this;

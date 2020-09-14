@@ -25,14 +25,20 @@ class CustomerTagModelNormalizer implements DenormalizerInterface, NormalizerInt
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\CustomerTagModel();
-        if (property_exists($data, 'tagId')) {
+        if (property_exists($data, 'tagId') && $data->{'tagId'} !== null) {
             $object->setTagId($data->{'tagId'});
         }
-        if (property_exists($data, 'name')) {
+        elseif (property_exists($data, 'tagId') && $data->{'tagId'} === null) {
+            $object->setTagId(null);
+        }
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
+        }
+        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
         }
         return $object;
     }

@@ -7,26 +7,26 @@ class ProductStockStatusModelCollection
     /**
      * A list of product stock statuses
      *
-     * @var ProductStockStatusResponseModel[]
+     * @var ProductStockStatusResponseModel[]|null
      */
     protected $data;
     /**
      * A list of product stock statuses
      *
-     * @return ProductStockStatusResponseModel[]
+     * @return ProductStockStatusResponseModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A list of product stock statuses
      *
-     * @param ProductStockStatusResponseModel[] $data
+     * @param ProductStockStatusResponseModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

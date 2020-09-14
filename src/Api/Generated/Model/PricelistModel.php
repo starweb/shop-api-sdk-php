@@ -7,7 +7,7 @@ class PricelistModel
     /**
      * The pricelist id
      *
-     * @var int
+     * @var int|null
      */
     protected $pricelistId;
     /**
@@ -25,37 +25,37 @@ class PricelistModel
     /**
      * The name of this pricelist
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * If this pricelist is the default ”master” pricelist or not. Only one pricelist can be the master pricelist
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isMaster;
     /**
      * Shows if the pricelist is activated or not.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isActive = false;
     /**
      * The region this pricelist is valid for
      *
-     * @var string
+     * @var string|null
      */
     protected $region;
     /**
      * The countryCodes this pricelist is valid for. These will be set only if the `region` property is set to the value `selected` for specific countries.
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $countryCodes;
     /**
      * The currencyCode this pricelist is valid for
      *
-     * @var string
+     * @var string|null
      */
     protected $currencyCode;
     /**
@@ -67,32 +67,32 @@ class PricelistModel
     /**
      * Is this pricelist a ”customer” pricelist (for selected customer groups)
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isCustomerPricelist;
     /**
      * Is this pricelist a ”country” pricelist (base pricelist for a certain country)
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isCountryPricelist;
     /**
      * The pricelist id
      *
-     * @return int
+     * @return int|null
      */
-    public function getPricelistId() : int
+    public function getPricelistId() : ?int
     {
         return $this->pricelistId;
     }
     /**
      * The pricelist id
      *
-     * @param int $pricelistId
+     * @param int|null $pricelistId
      *
      * @return self
      */
-    public function setPricelistId(int $pricelistId) : self
+    public function setPricelistId(?int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
         return $this;
@@ -142,20 +142,20 @@ class PricelistModel
     /**
      * The name of this pricelist
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * The name of this pricelist
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -163,20 +163,20 @@ class PricelistModel
     /**
      * If this pricelist is the default ”master” pricelist or not. Only one pricelist can be the master pricelist
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsMaster() : bool
+    public function getIsMaster() : ?bool
     {
         return $this->isMaster;
     }
     /**
      * If this pricelist is the default ”master” pricelist or not. Only one pricelist can be the master pricelist
      *
-     * @param bool $isMaster
+     * @param bool|null $isMaster
      *
      * @return self
      */
-    public function setIsMaster(bool $isMaster) : self
+    public function setIsMaster(?bool $isMaster) : self
     {
         $this->isMaster = $isMaster;
         return $this;
@@ -184,20 +184,20 @@ class PricelistModel
     /**
      * Shows if the pricelist is activated or not.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsActive() : bool
+    public function getIsActive() : ?bool
     {
         return $this->isActive;
     }
     /**
      * Shows if the pricelist is activated or not.
      *
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
-    public function setIsActive(bool $isActive) : self
+    public function setIsActive(?bool $isActive) : self
     {
         $this->isActive = $isActive;
         return $this;
@@ -205,20 +205,20 @@ class PricelistModel
     /**
      * The region this pricelist is valid for
      *
-     * @return string
+     * @return string|null
      */
-    public function getRegion() : string
+    public function getRegion() : ?string
     {
         return $this->region;
     }
     /**
      * The region this pricelist is valid for
      *
-     * @param string $region
+     * @param string|null $region
      *
      * @return self
      */
-    public function setRegion(string $region) : self
+    public function setRegion(?string $region) : self
     {
         $this->region = $region;
         return $this;
@@ -226,20 +226,20 @@ class PricelistModel
     /**
      * The countryCodes this pricelist is valid for. These will be set only if the `region` property is set to the value `selected` for specific countries.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getCountryCodes() : array
+    public function getCountryCodes() : ?array
     {
         return $this->countryCodes;
     }
     /**
      * The countryCodes this pricelist is valid for. These will be set only if the `region` property is set to the value `selected` for specific countries.
      *
-     * @param string[] $countryCodes
+     * @param string[]|null $countryCodes
      *
      * @return self
      */
-    public function setCountryCodes(array $countryCodes) : self
+    public function setCountryCodes(?array $countryCodes) : self
     {
         $this->countryCodes = $countryCodes;
         return $this;
@@ -247,20 +247,20 @@ class PricelistModel
     /**
      * The currencyCode this pricelist is valid for
      *
-     * @return string
+     * @return string|null
      */
-    public function getCurrencyCode() : string
+    public function getCurrencyCode() : ?string
     {
         return $this->currencyCode;
     }
     /**
      * The currencyCode this pricelist is valid for
      *
-     * @param string $currencyCode
+     * @param string|null $currencyCode
      *
      * @return self
      */
-    public function setCurrencyCode(string $currencyCode) : self
+    public function setCurrencyCode(?string $currencyCode) : self
     {
         $this->currencyCode = $currencyCode;
         return $this;
@@ -289,20 +289,20 @@ class PricelistModel
     /**
      * Is this pricelist a ”customer” pricelist (for selected customer groups)
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsCustomerPricelist() : bool
+    public function getIsCustomerPricelist() : ?bool
     {
         return $this->isCustomerPricelist;
     }
     /**
      * Is this pricelist a ”customer” pricelist (for selected customer groups)
      *
-     * @param bool $isCustomerPricelist
+     * @param bool|null $isCustomerPricelist
      *
      * @return self
      */
-    public function setIsCustomerPricelist(bool $isCustomerPricelist) : self
+    public function setIsCustomerPricelist(?bool $isCustomerPricelist) : self
     {
         $this->isCustomerPricelist = $isCustomerPricelist;
         return $this;
@@ -310,20 +310,20 @@ class PricelistModel
     /**
      * Is this pricelist a ”country” pricelist (base pricelist for a certain country)
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsCountryPricelist() : bool
+    public function getIsCountryPricelist() : ?bool
     {
         return $this->isCountryPricelist;
     }
     /**
      * Is this pricelist a ”country” pricelist (base pricelist for a certain country)
      *
-     * @param bool $isCountryPricelist
+     * @param bool|null $isCountryPricelist
      *
      * @return self
      */
-    public function setIsCountryPricelist(bool $isCountryPricelist) : self
+    public function setIsCountryPricelist(?bool $isCountryPricelist) : self
     {
         $this->isCountryPricelist = $isCountryPricelist;
         return $this;

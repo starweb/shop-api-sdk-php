@@ -7,44 +7,44 @@ class ShippingMethodLanguageModel
     /**
      * Language code
      *
-     * @var string
+     * @var string|null
      */
     protected $langCode;
     /**
      * Name of shipping method
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * Title of shipping method
      *
-     * @var string
+     * @var string|null
      */
     protected $title;
     /**
      * A shorter informative description
      *
-     * @var string
+     * @var string|null
      */
     protected $shortDescription;
     /**
      * Language code
      *
-     * @return string
+     * @return string|null
      */
-    public function getLangCode() : string
+    public function getLangCode() : ?string
     {
         return $this->langCode;
     }
     /**
      * Language code
      *
-     * @param string $langCode
+     * @param string|null $langCode
      *
      * @return self
      */
-    public function setLangCode(string $langCode) : self
+    public function setLangCode(?string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -52,20 +52,20 @@ class ShippingMethodLanguageModel
     /**
      * Name of shipping method
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * Name of shipping method
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -73,20 +73,20 @@ class ShippingMethodLanguageModel
     /**
      * Title of shipping method
      *
-     * @return string
+     * @return string|null
      */
-    public function getTitle() : string
+    public function getTitle() : ?string
     {
         return $this->title;
     }
     /**
      * Title of shipping method
      *
-     * @param string $title
+     * @param string|null $title
      *
      * @return self
      */
-    public function setTitle(string $title) : self
+    public function setTitle(?string $title) : self
     {
         $this->title = $title;
         return $this;
@@ -94,20 +94,20 @@ class ShippingMethodLanguageModel
     /**
      * A shorter informative description
      *
-     * @return string
+     * @return string|null
      */
-    public function getShortDescription() : string
+    public function getShortDescription() : ?string
     {
         return $this->shortDescription;
     }
     /**
      * A shorter informative description
      *
-     * @param string $shortDescription
+     * @param string|null $shortDescription
      *
      * @return self
      */
-    public function setShortDescription(string $shortDescription) : self
+    public function setShortDescription(?string $shortDescription) : self
     {
         $this->shortDescription = $shortDescription;
         return $this;

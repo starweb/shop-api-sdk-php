@@ -7,26 +7,26 @@ class ProductVariantAttributeValueModelItem
     /**
      * 
      *
-     * @var ProductVariantAttributeValueModel
+     * @var ProductVariantAttributeValueModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductVariantAttributeValueModel
+     * @return ProductVariantAttributeValueModel|null
      */
-    public function getData() : ProductVariantAttributeValueModel
+    public function getData() : ?ProductVariantAttributeValueModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductVariantAttributeValueModel $data
+     * @param ProductVariantAttributeValueModel|null $data
      *
      * @return self
      */
-    public function setData(ProductVariantAttributeValueModel $data) : self
+    public function setData(?ProductVariantAttributeValueModel $data) : self
     {
         $this->data = $data;
         return $this;

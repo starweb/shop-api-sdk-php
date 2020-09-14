@@ -7,19 +7,19 @@ class WebHookModel
     /**
      * The id of the web hook
      *
-     * @var int
+     * @var int|null
      */
     protected $webHookId;
     /**
      * The name of the web hook
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * The triggering event. Valid values are product-created, product-updated, product-removed, order-created, order-completed, order-updated, order-deleted, order-status-changed, customer-created, customer-updated, customer-deleted, shop-opened, shop-closed, shop-removed
      *
-     * @var string
+     * @var string|null
      */
     protected $event;
     /**
@@ -31,26 +31,26 @@ class WebHookModel
     /**
      * The URL to call when the event triggers
      *
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
      * The id of the web hook
      *
-     * @return int
+     * @return int|null
      */
-    public function getWebHookId() : int
+    public function getWebHookId() : ?int
     {
         return $this->webHookId;
     }
     /**
      * The id of the web hook
      *
-     * @param int $webHookId
+     * @param int|null $webHookId
      *
      * @return self
      */
-    public function setWebHookId(int $webHookId) : self
+    public function setWebHookId(?int $webHookId) : self
     {
         $this->webHookId = $webHookId;
         return $this;
@@ -58,20 +58,20 @@ class WebHookModel
     /**
      * The name of the web hook
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * The name of the web hook
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->name = $name;
         return $this;
@@ -79,20 +79,20 @@ class WebHookModel
     /**
      * The triggering event. Valid values are product-created, product-updated, product-removed, order-created, order-completed, order-updated, order-deleted, order-status-changed, customer-created, customer-updated, customer-deleted, shop-opened, shop-closed, shop-removed
      *
-     * @return string
+     * @return string|null
      */
-    public function getEvent() : string
+    public function getEvent() : ?string
     {
         return $this->event;
     }
     /**
      * The triggering event. Valid values are product-created, product-updated, product-removed, order-created, order-completed, order-updated, order-deleted, order-status-changed, customer-created, customer-updated, customer-deleted, shop-opened, shop-closed, shop-removed
      *
-     * @param string $event
+     * @param string|null $event
      *
      * @return self
      */
-    public function setEvent(string $event) : self
+    public function setEvent(?string $event) : self
     {
         $this->event = $event;
         return $this;
@@ -121,20 +121,20 @@ class WebHookModel
     /**
      * The URL to call when the event triggers
      *
-     * @return string
+     * @return string|null
      */
-    public function getUrl() : string
+    public function getUrl() : ?string
     {
         return $this->url;
     }
     /**
      * The URL to call when the event triggers
      *
-     * @param string $url
+     * @param string|null $url
      *
      * @return self
      */
-    public function setUrl(string $url) : self
+    public function setUrl(?string $url) : self
     {
         $this->url = $url;
         return $this;

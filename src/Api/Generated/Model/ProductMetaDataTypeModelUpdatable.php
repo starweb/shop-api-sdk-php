@@ -7,26 +7,26 @@ class ProductMetaDataTypeModelUpdatable
     /**
      * 
      *
-     * @var ProductMetaDataTypeLanguageModelCollection
+     * @var ProductMetaDataTypeLanguageModelCollection|null
      */
     protected $languages;
     /**
      * 
      *
-     * @return ProductMetaDataTypeLanguageModelCollection
+     * @return ProductMetaDataTypeLanguageModelCollection|null
      */
-    public function getLanguages() : ProductMetaDataTypeLanguageModelCollection
+    public function getLanguages() : ?ProductMetaDataTypeLanguageModelCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductMetaDataTypeLanguageModelCollection $languages
+     * @param ProductMetaDataTypeLanguageModelCollection|null $languages
      *
      * @return self
      */
-    public function setLanguages(ProductMetaDataTypeLanguageModelCollection $languages) : self
+    public function setLanguages(?ProductMetaDataTypeLanguageModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

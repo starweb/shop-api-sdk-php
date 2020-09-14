@@ -7,7 +7,7 @@ class ProductVariantPriceModel
     /**
      * The pricelist this price is for
      *
-     * @var int
+     * @var int|null
      */
     protected $pricelistId;
     /**
@@ -25,7 +25,7 @@ class ProductVariantPriceModel
     /**
      * The price excluding vat
      *
-     * @var float
+     * @var float|null
      */
     protected $priceExVat = 0;
     /**
@@ -37,26 +37,26 @@ class ProductVariantPriceModel
     /**
      * A collection of volume prices
      *
-     * @var ProductVariantVolumePriceModel[]
+     * @var ProductVariantVolumePriceModel[]|null
      */
     protected $volumePrices;
     /**
      * The pricelist this price is for
      *
-     * @return int
+     * @return int|null
      */
-    public function getPricelistId() : int
+    public function getPricelistId() : ?int
     {
         return $this->pricelistId;
     }
     /**
      * The pricelist this price is for
      *
-     * @param int $pricelistId
+     * @param int|null $pricelistId
      *
      * @return self
      */
-    public function setPricelistId(int $pricelistId) : self
+    public function setPricelistId(?int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
         return $this;
@@ -106,20 +106,20 @@ class ProductVariantPriceModel
     /**
      * The price excluding vat
      *
-     * @return float
+     * @return float|null
      */
-    public function getPriceExVat() : float
+    public function getPriceExVat() : ?float
     {
         return $this->priceExVat;
     }
     /**
      * The price excluding vat
      *
-     * @param float $priceExVat
+     * @param float|null $priceExVat
      *
      * @return self
      */
-    public function setPriceExVat(float $priceExVat) : self
+    public function setPriceExVat(?float $priceExVat) : self
     {
         $this->priceExVat = $priceExVat;
         return $this;
@@ -148,20 +148,20 @@ class ProductVariantPriceModel
     /**
      * A collection of volume prices
      *
-     * @return ProductVariantVolumePriceModel[]
+     * @return ProductVariantVolumePriceModel[]|null
      */
-    public function getVolumePrices() : array
+    public function getVolumePrices() : ?array
     {
         return $this->volumePrices;
     }
     /**
      * A collection of volume prices
      *
-     * @param ProductVariantVolumePriceModel[] $volumePrices
+     * @param ProductVariantVolumePriceModel[]|null $volumePrices
      *
      * @return self
      */
-    public function setVolumePrices(array $volumePrices) : self
+    public function setVolumePrices(?array $volumePrices) : self
     {
         $this->volumePrices = $volumePrices;
         return $this;

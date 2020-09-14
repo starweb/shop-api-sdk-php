@@ -7,26 +7,26 @@ class OrderCommentModelCollection
     /**
      * A list of order comments
      *
-     * @var OrderCommentModel[]
+     * @var OrderCommentModel[]|null
      */
     protected $data;
     /**
      * A list of order comments
      *
-     * @return OrderCommentModel[]
+     * @return OrderCommentModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A list of order comments
      *
-     * @param OrderCommentModel[] $data
+     * @param OrderCommentModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

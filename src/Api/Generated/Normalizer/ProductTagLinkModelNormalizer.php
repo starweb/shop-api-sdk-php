@@ -25,14 +25,20 @@ class ProductTagLinkModelNormalizer implements DenormalizerInterface, Normalizer
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductTagLinkModel();
-        if (property_exists($data, 'tagOptionId')) {
+        if (property_exists($data, 'tagOptionId') && $data->{'tagOptionId'} !== null) {
             $object->setTagOptionId($data->{'tagOptionId'});
         }
-        if (property_exists($data, 'tagId')) {
+        elseif (property_exists($data, 'tagOptionId') && $data->{'tagOptionId'} === null) {
+            $object->setTagOptionId(null);
+        }
+        if (property_exists($data, 'tagId') && $data->{'tagId'} !== null) {
             $object->setTagId($data->{'tagId'});
+        }
+        elseif (property_exists($data, 'tagId') && $data->{'tagId'} === null) {
+            $object->setTagId(null);
         }
         return $object;
     }
@@ -42,8 +48,14 @@ class ProductTagLinkModelNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getTagOptionId()) {
             $data->{'tagOptionId'} = $object->getTagOptionId();
         }
+        else {
+            $data->{'tagOptionId'} = null;
+        }
         if (null !== $object->getTagId()) {
             $data->{'tagId'} = $object->getTagId();
+        }
+        else {
+            $data->{'tagId'} = null;
         }
         return $data;
     }

@@ -25,11 +25,14 @@ class ProductVariantPatchRequestModelNormalizer implements DenormalizerInterface
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductVariantPatchRequestModel();
-        if (property_exists($data, 'sku')) {
+        if (property_exists($data, 'sku') && $data->{'sku'} !== null) {
             $object->setSku($data->{'sku'});
+        }
+        elseif (property_exists($data, 'sku') && $data->{'sku'} === null) {
+            $object->setSku(null);
         }
         if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
             $object->setExternalId($data->{'externalId'});
@@ -125,17 +128,75 @@ class ProductVariantPatchRequestModelNormalizer implements DenormalizerInterface
         if (null !== $object->getSku()) {
             $data->{'sku'} = $object->getSku();
         }
-        $data->{'externalId'} = $object->getExternalId();
-        $data->{'externalIdType'} = $object->getExternalIdType();
-        $data->{'isActive'} = $object->getIsActive();
-        $data->{'sortIndex'} = $object->getSortIndex();
-        $data->{'stockStatusId'} = $object->getStockStatusId();
-        $data->{'stockQuantity'} = $object->getStockQuantity();
-        $data->{'weightInKg'} = $object->getWeightInKg();
-        $data->{'costPrice'} = $object->getCostPrice();
-        $data->{'ean'} = $object->getEan();
-        $data->{'mpn'} = $object->getMpn();
-        $data->{'imageFileId'} = $object->getImageFileId();
+        else {
+            $data->{'sku'} = null;
+        }
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
+        else {
+            $data->{'externalId'} = null;
+        }
+        if (null !== $object->getExternalIdType()) {
+            $data->{'externalIdType'} = $object->getExternalIdType();
+        }
+        else {
+            $data->{'externalIdType'} = null;
+        }
+        if (null !== $object->getIsActive()) {
+            $data->{'isActive'} = $object->getIsActive();
+        }
+        else {
+            $data->{'isActive'} = null;
+        }
+        if (null !== $object->getSortIndex()) {
+            $data->{'sortIndex'} = $object->getSortIndex();
+        }
+        else {
+            $data->{'sortIndex'} = null;
+        }
+        if (null !== $object->getStockStatusId()) {
+            $data->{'stockStatusId'} = $object->getStockStatusId();
+        }
+        else {
+            $data->{'stockStatusId'} = null;
+        }
+        if (null !== $object->getStockQuantity()) {
+            $data->{'stockQuantity'} = $object->getStockQuantity();
+        }
+        else {
+            $data->{'stockQuantity'} = null;
+        }
+        if (null !== $object->getWeightInKg()) {
+            $data->{'weightInKg'} = $object->getWeightInKg();
+        }
+        else {
+            $data->{'weightInKg'} = null;
+        }
+        if (null !== $object->getCostPrice()) {
+            $data->{'costPrice'} = $object->getCostPrice();
+        }
+        else {
+            $data->{'costPrice'} = null;
+        }
+        if (null !== $object->getEan()) {
+            $data->{'ean'} = $object->getEan();
+        }
+        else {
+            $data->{'ean'} = null;
+        }
+        if (null !== $object->getMpn()) {
+            $data->{'mpn'} = $object->getMpn();
+        }
+        else {
+            $data->{'mpn'} = null;
+        }
+        if (null !== $object->getImageFileId()) {
+            $data->{'imageFileId'} = $object->getImageFileId();
+        }
+        else {
+            $data->{'imageFileId'} = null;
+        }
         if (null !== $object->getAttributeValueLinks()) {
             $values = array();
             foreach ($object->getAttributeValueLinks() as $value) {

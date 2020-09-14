@@ -7,26 +7,26 @@ class ProductManufacturerModelCollection
     /**
      * A collection of product manufacturers
      *
-     * @var ProductManufacturerModel[]
+     * @var ProductManufacturerModel[]|null
      */
     protected $data;
     /**
      * A collection of product manufacturers
      *
-     * @return ProductManufacturerModel[]
+     * @return ProductManufacturerModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A collection of product manufacturers
      *
-     * @param ProductManufacturerModel[] $data
+     * @param ProductManufacturerModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

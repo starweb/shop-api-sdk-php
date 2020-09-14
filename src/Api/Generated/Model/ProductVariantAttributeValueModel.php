@@ -7,7 +7,7 @@ class ProductVariantAttributeValueModel
     /**
      * The id for this attribute value
      *
-     * @var int
+     * @var int|null
      */
     protected $attributeValueId;
     /**
@@ -25,38 +25,38 @@ class ProductVariantAttributeValueModel
     /**
      * The suggested suffix for new Variants using this attribute value
      *
-     * @var string
+     * @var string|null
      */
     protected $skuSuffix;
     /**
      * The sort order for this attribute value
      *
-     * @var int
+     * @var int|null
      */
     protected $sortIndex = 0;
     /**
      * A collection of attribute value languages
      *
-     * @var ProductVariantAttributeValueModelLanguages
+     * @var ProductVariantAttributeValueModelLanguages|null
      */
     protected $languages;
     /**
      * The id for this attribute value
      *
-     * @return int
+     * @return int|null
      */
-    public function getAttributeValueId() : int
+    public function getAttributeValueId() : ?int
     {
         return $this->attributeValueId;
     }
     /**
      * The id for this attribute value
      *
-     * @param int $attributeValueId
+     * @param int|null $attributeValueId
      *
      * @return self
      */
-    public function setAttributeValueId(int $attributeValueId) : self
+    public function setAttributeValueId(?int $attributeValueId) : self
     {
         $this->attributeValueId = $attributeValueId;
         return $this;
@@ -106,20 +106,20 @@ class ProductVariantAttributeValueModel
     /**
      * The suggested suffix for new Variants using this attribute value
      *
-     * @return string
+     * @return string|null
      */
-    public function getSkuSuffix() : string
+    public function getSkuSuffix() : ?string
     {
         return $this->skuSuffix;
     }
     /**
      * The suggested suffix for new Variants using this attribute value
      *
-     * @param string $skuSuffix
+     * @param string|null $skuSuffix
      *
      * @return self
      */
-    public function setSkuSuffix(string $skuSuffix) : self
+    public function setSkuSuffix(?string $skuSuffix) : self
     {
         $this->skuSuffix = $skuSuffix;
         return $this;
@@ -127,20 +127,20 @@ class ProductVariantAttributeValueModel
     /**
      * The sort order for this attribute value
      *
-     * @return int
+     * @return int|null
      */
-    public function getSortIndex() : int
+    public function getSortIndex() : ?int
     {
         return $this->sortIndex;
     }
     /**
      * The sort order for this attribute value
      *
-     * @param int $sortIndex
+     * @param int|null $sortIndex
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(?int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -148,20 +148,20 @@ class ProductVariantAttributeValueModel
     /**
      * A collection of attribute value languages
      *
-     * @return ProductVariantAttributeValueModelLanguages
+     * @return ProductVariantAttributeValueModelLanguages|null
      */
-    public function getLanguages() : ProductVariantAttributeValueModelLanguages
+    public function getLanguages() : ?ProductVariantAttributeValueModelLanguages
     {
         return $this->languages;
     }
     /**
      * A collection of attribute value languages
      *
-     * @param ProductVariantAttributeValueModelLanguages $languages
+     * @param ProductVariantAttributeValueModelLanguages|null $languages
      *
      * @return self
      */
-    public function setLanguages(ProductVariantAttributeValueModelLanguages $languages) : self
+    public function setLanguages(?ProductVariantAttributeValueModelLanguages $languages) : self
     {
         $this->languages = $languages;
         return $this;

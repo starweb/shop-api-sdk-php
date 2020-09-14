@@ -7,37 +7,37 @@ class PaymentMethodModel
     /**
      * The payment methods Id
      *
-     * @var int
+     * @var int|null
      */
     protected $paymentMethodId;
     /**
      * The payment methods idCode. This can be used to identify a payment method of a standarized type
      *
-     * @var string
+     * @var string|null
      */
     protected $idCode;
     /**
      * If the payment method is actively available on checkout or not
      *
-     * @var bool
+     * @var bool|null
      */
     protected $active;
     /**
      * Fee associated with this method
      *
-     * @var float
+     * @var float|null
      */
     protected $fee;
     /**
      * The restrictions to countries this payment method is valid for. Valid values are: all, EU, non-EU, selected, none
      *
-     * @var string
+     * @var string|null
      */
     protected $validForCountries;
     /**
      * The countries this method is valid for (if validForCountries is set to ”selected”)
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $validCountriesSelected;
     /**
@@ -67,7 +67,7 @@ class PaymentMethodModel
     /**
      * The shipping methods this is valid for. Valid values are: all, selected
      *
-     * @var string
+     * @var string|null
      */
     protected $validForShippingMethods;
     /**
@@ -79,32 +79,32 @@ class PaymentMethodModel
     /**
      * Tells whether this method is a "click and collect" or not
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isClickAndCollect;
     /**
      * 
      *
-     * @var PaymentMethodLanguageModelCollection
+     * @var PaymentMethodLanguageModelCollection|null
      */
     protected $languages;
     /**
      * The payment methods Id
      *
-     * @return int
+     * @return int|null
      */
-    public function getPaymentMethodId() : int
+    public function getPaymentMethodId() : ?int
     {
         return $this->paymentMethodId;
     }
     /**
      * The payment methods Id
      *
-     * @param int $paymentMethodId
+     * @param int|null $paymentMethodId
      *
      * @return self
      */
-    public function setPaymentMethodId(int $paymentMethodId) : self
+    public function setPaymentMethodId(?int $paymentMethodId) : self
     {
         $this->paymentMethodId = $paymentMethodId;
         return $this;
@@ -112,20 +112,20 @@ class PaymentMethodModel
     /**
      * The payment methods idCode. This can be used to identify a payment method of a standarized type
      *
-     * @return string
+     * @return string|null
      */
-    public function getIdCode() : string
+    public function getIdCode() : ?string
     {
         return $this->idCode;
     }
     /**
      * The payment methods idCode. This can be used to identify a payment method of a standarized type
      *
-     * @param string $idCode
+     * @param string|null $idCode
      *
      * @return self
      */
-    public function setIdCode(string $idCode) : self
+    public function setIdCode(?string $idCode) : self
     {
         $this->idCode = $idCode;
         return $this;
@@ -133,20 +133,20 @@ class PaymentMethodModel
     /**
      * If the payment method is actively available on checkout or not
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getActive() : bool
+    public function getActive() : ?bool
     {
         return $this->active;
     }
     /**
      * If the payment method is actively available on checkout or not
      *
-     * @param bool $active
+     * @param bool|null $active
      *
      * @return self
      */
-    public function setActive(bool $active) : self
+    public function setActive(?bool $active) : self
     {
         $this->active = $active;
         return $this;
@@ -154,20 +154,20 @@ class PaymentMethodModel
     /**
      * Fee associated with this method
      *
-     * @return float
+     * @return float|null
      */
-    public function getFee() : float
+    public function getFee() : ?float
     {
         return $this->fee;
     }
     /**
      * Fee associated with this method
      *
-     * @param float $fee
+     * @param float|null $fee
      *
      * @return self
      */
-    public function setFee(float $fee) : self
+    public function setFee(?float $fee) : self
     {
         $this->fee = $fee;
         return $this;
@@ -175,20 +175,20 @@ class PaymentMethodModel
     /**
      * The restrictions to countries this payment method is valid for. Valid values are: all, EU, non-EU, selected, none
      *
-     * @return string
+     * @return string|null
      */
-    public function getValidForCountries() : string
+    public function getValidForCountries() : ?string
     {
         return $this->validForCountries;
     }
     /**
      * The restrictions to countries this payment method is valid for. Valid values are: all, EU, non-EU, selected, none
      *
-     * @param string $validForCountries
+     * @param string|null $validForCountries
      *
      * @return self
      */
-    public function setValidForCountries(string $validForCountries) : self
+    public function setValidForCountries(?string $validForCountries) : self
     {
         $this->validForCountries = $validForCountries;
         return $this;
@@ -196,20 +196,20 @@ class PaymentMethodModel
     /**
      * The countries this method is valid for (if validForCountries is set to ”selected”)
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getValidCountriesSelected() : array
+    public function getValidCountriesSelected() : ?array
     {
         return $this->validCountriesSelected;
     }
     /**
      * The countries this method is valid for (if validForCountries is set to ”selected”)
      *
-     * @param string[] $validCountriesSelected
+     * @param string[]|null $validCountriesSelected
      *
      * @return self
      */
-    public function setValidCountriesSelected(array $validCountriesSelected) : self
+    public function setValidCountriesSelected(?array $validCountriesSelected) : self
     {
         $this->validCountriesSelected = $validCountriesSelected;
         return $this;
@@ -301,20 +301,20 @@ class PaymentMethodModel
     /**
      * The shipping methods this is valid for. Valid values are: all, selected
      *
-     * @return string
+     * @return string|null
      */
-    public function getValidForShippingMethods() : string
+    public function getValidForShippingMethods() : ?string
     {
         return $this->validForShippingMethods;
     }
     /**
      * The shipping methods this is valid for. Valid values are: all, selected
      *
-     * @param string $validForShippingMethods
+     * @param string|null $validForShippingMethods
      *
      * @return self
      */
-    public function setValidForShippingMethods(string $validForShippingMethods) : self
+    public function setValidForShippingMethods(?string $validForShippingMethods) : self
     {
         $this->validForShippingMethods = $validForShippingMethods;
         return $this;
@@ -343,20 +343,20 @@ class PaymentMethodModel
     /**
      * Tells whether this method is a "click and collect" or not
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsClickAndCollect() : bool
+    public function getIsClickAndCollect() : ?bool
     {
         return $this->isClickAndCollect;
     }
     /**
      * Tells whether this method is a "click and collect" or not
      *
-     * @param bool $isClickAndCollect
+     * @param bool|null $isClickAndCollect
      *
      * @return self
      */
-    public function setIsClickAndCollect(bool $isClickAndCollect) : self
+    public function setIsClickAndCollect(?bool $isClickAndCollect) : self
     {
         $this->isClickAndCollect = $isClickAndCollect;
         return $this;
@@ -364,20 +364,20 @@ class PaymentMethodModel
     /**
      * 
      *
-     * @return PaymentMethodLanguageModelCollection
+     * @return PaymentMethodLanguageModelCollection|null
      */
-    public function getLanguages() : PaymentMethodLanguageModelCollection
+    public function getLanguages() : ?PaymentMethodLanguageModelCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param PaymentMethodLanguageModelCollection $languages
+     * @param PaymentMethodLanguageModelCollection|null $languages
      *
      * @return self
      */
-    public function setLanguages(PaymentMethodLanguageModelCollection $languages) : self
+    public function setLanguages(?PaymentMethodLanguageModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

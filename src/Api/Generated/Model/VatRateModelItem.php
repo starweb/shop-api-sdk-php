@@ -7,26 +7,26 @@ class VatRateModelItem
     /**
      * 
      *
-     * @var VatRateModel
+     * @var VatRateModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return VatRateModel
+     * @return VatRateModel|null
      */
-    public function getData() : VatRateModel
+    public function getData() : ?VatRateModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param VatRateModel $data
+     * @param VatRateModel|null $data
      *
      * @return self
      */
-    public function setData(VatRateModel $data) : self
+    public function setData(?VatRateModel $data) : self
     {
         $this->data = $data;
         return $this;

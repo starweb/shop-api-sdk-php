@@ -25,11 +25,14 @@ class ProductTagLinkPostRequestModelNormalizer implements DenormalizerInterface,
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductTagLinkPostRequestModel();
-        if (property_exists($data, 'tagOptionId')) {
+        if (property_exists($data, 'tagOptionId') && $data->{'tagOptionId'} !== null) {
             $object->setTagOptionId($data->{'tagOptionId'});
+        }
+        elseif (property_exists($data, 'tagOptionId') && $data->{'tagOptionId'} === null) {
+            $object->setTagOptionId(null);
         }
         return $object;
     }
@@ -38,6 +41,9 @@ class ProductTagLinkPostRequestModelNormalizer implements DenormalizerInterface,
         $data = new \stdClass();
         if (null !== $object->getTagOptionId()) {
             $data->{'tagOptionId'} = $object->getTagOptionId();
+        }
+        else {
+            $data->{'tagOptionId'} = null;
         }
         return $data;
     }

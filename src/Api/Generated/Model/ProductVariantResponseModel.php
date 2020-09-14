@@ -7,7 +7,7 @@ class ProductVariantResponseModel
     /**
      * The product variants SKU (stock keeping unit)
      *
-     * @var string
+     * @var string|null
      */
     protected $sku;
     /**
@@ -79,7 +79,7 @@ class ProductVariantResponseModel
     /**
      * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true.
      *
-     * @var int[]
+     * @var int[]|null
      */
     protected $attributeValueLinks;
     /**
@@ -91,38 +91,38 @@ class ProductVariantResponseModel
     /**
      * The variant id
      *
-     * @var int
+     * @var int|null
      */
     protected $variantId;
     /**
      * A collection of product variant prices
      *
-     * @var ProductVariantPriceModel[]
+     * @var ProductVariantPriceModel[]|null
      */
     protected $prices;
     /**
      * A collection of product variant attribute values
      *
-     * @var ProductVariantAttributeValueModel[]
+     * @var ProductVariantAttributeValueModel[]|null
      */
     protected $attributeValues;
     /**
      * The product variants SKU (stock keeping unit)
      *
-     * @return string
+     * @return string|null
      */
-    public function getSku() : string
+    public function getSku() : ?string
     {
         return $this->sku;
     }
     /**
      * The product variants SKU (stock keeping unit)
      *
-     * @param string $sku
+     * @param string|null $sku
      *
      * @return self
      */
-    public function setSku(string $sku) : self
+    public function setSku(?string $sku) : self
     {
         $this->sku = $sku;
         return $this;
@@ -361,20 +361,20 @@ class ProductVariantResponseModel
     /**
      * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true.
      *
-     * @return int[]
+     * @return int[]|null
      */
-    public function getAttributeValueLinks() : array
+    public function getAttributeValueLinks() : ?array
     {
         return $this->attributeValueLinks;
     }
     /**
      * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true.
      *
-     * @param int[] $attributeValueLinks
+     * @param int[]|null $attributeValueLinks
      *
      * @return self
      */
-    public function setAttributeValueLinks(array $attributeValueLinks) : self
+    public function setAttributeValueLinks(?array $attributeValueLinks) : self
     {
         $this->attributeValueLinks = $attributeValueLinks;
         return $this;
@@ -403,20 +403,20 @@ class ProductVariantResponseModel
     /**
      * The variant id
      *
-     * @return int
+     * @return int|null
      */
-    public function getVariantId() : int
+    public function getVariantId() : ?int
     {
         return $this->variantId;
     }
     /**
      * The variant id
      *
-     * @param int $variantId
+     * @param int|null $variantId
      *
      * @return self
      */
-    public function setVariantId(int $variantId) : self
+    public function setVariantId(?int $variantId) : self
     {
         $this->variantId = $variantId;
         return $this;
@@ -424,20 +424,20 @@ class ProductVariantResponseModel
     /**
      * A collection of product variant prices
      *
-     * @return ProductVariantPriceModel[]
+     * @return ProductVariantPriceModel[]|null
      */
-    public function getPrices() : array
+    public function getPrices() : ?array
     {
         return $this->prices;
     }
     /**
      * A collection of product variant prices
      *
-     * @param ProductVariantPriceModel[] $prices
+     * @param ProductVariantPriceModel[]|null $prices
      *
      * @return self
      */
-    public function setPrices(array $prices) : self
+    public function setPrices(?array $prices) : self
     {
         $this->prices = $prices;
         return $this;
@@ -445,20 +445,20 @@ class ProductVariantResponseModel
     /**
      * A collection of product variant attribute values
      *
-     * @return ProductVariantAttributeValueModel[]
+     * @return ProductVariantAttributeValueModel[]|null
      */
-    public function getAttributeValues() : array
+    public function getAttributeValues() : ?array
     {
         return $this->attributeValues;
     }
     /**
      * A collection of product variant attribute values
      *
-     * @param ProductVariantAttributeValueModel[] $attributeValues
+     * @param ProductVariantAttributeValueModel[]|null $attributeValues
      *
      * @return self
      */
-    public function setAttributeValues(array $attributeValues) : self
+    public function setAttributeValues(?array $attributeValues) : self
     {
         $this->attributeValues = $attributeValues;
         return $this;

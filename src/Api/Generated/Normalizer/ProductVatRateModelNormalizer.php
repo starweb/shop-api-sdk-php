@@ -25,14 +25,20 @@ class ProductVatRateModelNormalizer implements DenormalizerInterface, Normalizer
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductVatRateModel();
-        if (property_exists($data, 'countryCode')) {
+        if (property_exists($data, 'countryCode') && $data->{'countryCode'} !== null) {
             $object->setCountryCode($data->{'countryCode'});
         }
-        if (property_exists($data, 'vatRate')) {
+        elseif (property_exists($data, 'countryCode') && $data->{'countryCode'} === null) {
+            $object->setCountryCode(null);
+        }
+        if (property_exists($data, 'vatRate') && $data->{'vatRate'} !== null) {
             $object->setVatRate($data->{'vatRate'});
+        }
+        elseif (property_exists($data, 'vatRate') && $data->{'vatRate'} === null) {
+            $object->setVatRate(null);
         }
         return $object;
     }
@@ -42,8 +48,14 @@ class ProductVatRateModelNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getCountryCode()) {
             $data->{'countryCode'} = $object->getCountryCode();
         }
+        else {
+            $data->{'countryCode'} = null;
+        }
         if (null !== $object->getVatRate()) {
             $data->{'vatRate'} = $object->getVatRate();
+        }
+        else {
+            $data->{'vatRate'} = null;
         }
         return $data;
     }

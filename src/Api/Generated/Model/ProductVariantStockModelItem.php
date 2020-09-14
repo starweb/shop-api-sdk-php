@@ -7,26 +7,26 @@ class ProductVariantStockModelItem
     /**
      * 
      *
-     * @var ProductVariantStockResponseModel
+     * @var ProductVariantStockResponseModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductVariantStockResponseModel
+     * @return ProductVariantStockResponseModel|null
      */
-    public function getData() : ProductVariantStockResponseModel
+    public function getData() : ?ProductVariantStockResponseModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductVariantStockResponseModel $data
+     * @param ProductVariantStockResponseModel|null $data
      *
      * @return self
      */
-    public function setData(ProductVariantStockResponseModel $data) : self
+    public function setData(?ProductVariantStockResponseModel $data) : self
     {
         $this->data = $data;
         return $this;

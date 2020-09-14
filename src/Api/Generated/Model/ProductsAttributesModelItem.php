@@ -7,26 +7,26 @@ class ProductsAttributesModelItem
     /**
      * The id for this attribute
      *
-     * @var int
+     * @var int|null
      */
     protected $attributeId;
     /**
      * The id for this attribute
      *
-     * @return int
+     * @return int|null
      */
-    public function getAttributeId() : int
+    public function getAttributeId() : ?int
     {
         return $this->attributeId;
     }
     /**
      * The id for this attribute
      *
-     * @param int $attributeId
+     * @param int|null $attributeId
      *
      * @return self
      */
-    public function setAttributeId(int $attributeId) : self
+    public function setAttributeId(?int $attributeId) : self
     {
         $this->attributeId = $attributeId;
         return $this;

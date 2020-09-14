@@ -7,26 +7,26 @@ class ProductMediaFileLinkModelCollection
     /**
      * A collection of product media file links
      *
-     * @var ProductMediaFileLinkModel[]
+     * @var ProductMediaFileLinkModel[]|null
      */
     protected $data;
     /**
      * A collection of product media file links
      *
-     * @return ProductMediaFileLinkModel[]
+     * @return ProductMediaFileLinkModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A collection of product media file links
      *
-     * @param ProductMediaFileLinkModel[] $data
+     * @param ProductMediaFileLinkModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

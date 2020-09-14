@@ -25,20 +25,32 @@ class ProductMediaFileLinkModelNormalizer implements DenormalizerInterface, Norm
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductMediaFileLinkModel();
-        if (property_exists($data, 'productMediaFileId')) {
+        if (property_exists($data, 'productMediaFileId') && $data->{'productMediaFileId'} !== null) {
             $object->setProductMediaFileId($data->{'productMediaFileId'});
         }
-        if (property_exists($data, 'mediaFileId')) {
+        elseif (property_exists($data, 'productMediaFileId') && $data->{'productMediaFileId'} === null) {
+            $object->setProductMediaFileId(null);
+        }
+        if (property_exists($data, 'mediaFileId') && $data->{'mediaFileId'} !== null) {
             $object->setMediaFileId($data->{'mediaFileId'});
         }
-        if (property_exists($data, 'sortIndex')) {
+        elseif (property_exists($data, 'mediaFileId') && $data->{'mediaFileId'} === null) {
+            $object->setMediaFileId(null);
+        }
+        if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
             $object->setSortIndex($data->{'sortIndex'});
         }
-        if (property_exists($data, 'type')) {
+        elseif (property_exists($data, 'sortIndex') && $data->{'sortIndex'} === null) {
+            $object->setSortIndex(null);
+        }
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
+        }
+        elseif (property_exists($data, 'type') && $data->{'type'} === null) {
+            $object->setType(null);
         }
         return $object;
     }
@@ -48,8 +60,14 @@ class ProductMediaFileLinkModelNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getMediaFileId()) {
             $data->{'mediaFileId'} = $object->getMediaFileId();
         }
+        else {
+            $data->{'mediaFileId'} = null;
+        }
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
+        }
+        else {
+            $data->{'sortIndex'} = null;
         }
         return $data;
     }

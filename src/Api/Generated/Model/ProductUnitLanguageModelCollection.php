@@ -7,26 +7,26 @@ class ProductUnitLanguageModelCollection
     /**
      * A collection of product unit languages
      *
-     * @var ProductUnitLanguageModel[]
+     * @var ProductUnitLanguageModel[]|null
      */
     protected $data;
     /**
      * A collection of product unit languages
      *
-     * @return ProductUnitLanguageModel[]
+     * @return ProductUnitLanguageModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A collection of product unit languages
      *
-     * @param ProductUnitLanguageModel[] $data
+     * @param ProductUnitLanguageModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

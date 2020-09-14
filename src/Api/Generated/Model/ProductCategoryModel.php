@@ -7,7 +7,7 @@ class ProductCategoryModel
     /**
      * The product category Id
      *
-     * @var int
+     * @var int|null
      */
     protected $categoryId;
     /**
@@ -19,19 +19,19 @@ class ProductCategoryModel
     /**
      * The category`s visibility settings. Possible values are: visible, hidden and pricelists. Pricelists means that the category is only visible for customers with access to specific pricelists
      *
-     * @var string
+     * @var string|null
      */
     protected $visibility;
     /**
      * Sort index. A category with a lower value is displayed higher up in lists
      *
-     * @var int
+     * @var int|null
      */
     protected $sortIndex;
     /**
      * Whether or not links to the category should open a category page listing its products and sub categories on click.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $openPage;
     /**
@@ -63,32 +63,32 @@ class ProductCategoryModel
     /**
      * Whether or not the category has any children categories
      *
-     * @var bool
+     * @var bool|null
      */
     protected $hasChildren;
     /**
      * 
      *
-     * @var ProductCategoryLanguagesModelCollection
+     * @var ProductCategoryLanguagesModelCollection|null
      */
     protected $languages;
     /**
      * The product category Id
      *
-     * @return int
+     * @return int|null
      */
-    public function getCategoryId() : int
+    public function getCategoryId() : ?int
     {
         return $this->categoryId;
     }
     /**
      * The product category Id
      *
-     * @param int $categoryId
+     * @param int|null $categoryId
      *
      * @return self
      */
-    public function setCategoryId(int $categoryId) : self
+    public function setCategoryId(?int $categoryId) : self
     {
         $this->categoryId = $categoryId;
         return $this;
@@ -117,20 +117,20 @@ class ProductCategoryModel
     /**
      * The category`s visibility settings. Possible values are: visible, hidden and pricelists. Pricelists means that the category is only visible for customers with access to specific pricelists
      *
-     * @return string
+     * @return string|null
      */
-    public function getVisibility() : string
+    public function getVisibility() : ?string
     {
         return $this->visibility;
     }
     /**
      * The category`s visibility settings. Possible values are: visible, hidden and pricelists. Pricelists means that the category is only visible for customers with access to specific pricelists
      *
-     * @param string $visibility
+     * @param string|null $visibility
      *
      * @return self
      */
-    public function setVisibility(string $visibility) : self
+    public function setVisibility(?string $visibility) : self
     {
         $this->visibility = $visibility;
         return $this;
@@ -138,20 +138,20 @@ class ProductCategoryModel
     /**
      * Sort index. A category with a lower value is displayed higher up in lists
      *
-     * @return int
+     * @return int|null
      */
-    public function getSortIndex() : int
+    public function getSortIndex() : ?int
     {
         return $this->sortIndex;
     }
     /**
      * Sort index. A category with a lower value is displayed higher up in lists
      *
-     * @param int $sortIndex
+     * @param int|null $sortIndex
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(?int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -159,20 +159,20 @@ class ProductCategoryModel
     /**
      * Whether or not links to the category should open a category page listing its products and sub categories on click.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getOpenPage() : bool
+    public function getOpenPage() : ?bool
     {
         return $this->openPage;
     }
     /**
      * Whether or not links to the category should open a category page listing its products and sub categories on click.
      *
-     * @param bool $openPage
+     * @param bool|null $openPage
      *
      * @return self
      */
-    public function setOpenPage(bool $openPage) : self
+    public function setOpenPage(?bool $openPage) : self
     {
         $this->openPage = $openPage;
         return $this;
@@ -268,20 +268,20 @@ class ProductCategoryModel
     /**
      * Whether or not the category has any children categories
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getHasChildren() : bool
+    public function getHasChildren() : ?bool
     {
         return $this->hasChildren;
     }
     /**
      * Whether or not the category has any children categories
      *
-     * @param bool $hasChildren
+     * @param bool|null $hasChildren
      *
      * @return self
      */
-    public function setHasChildren(bool $hasChildren) : self
+    public function setHasChildren(?bool $hasChildren) : self
     {
         $this->hasChildren = $hasChildren;
         return $this;
@@ -289,20 +289,20 @@ class ProductCategoryModel
     /**
      * 
      *
-     * @return ProductCategoryLanguagesModelCollection
+     * @return ProductCategoryLanguagesModelCollection|null
      */
-    public function getLanguages() : ProductCategoryLanguagesModelCollection
+    public function getLanguages() : ?ProductCategoryLanguagesModelCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductCategoryLanguagesModelCollection $languages
+     * @param ProductCategoryLanguagesModelCollection|null $languages
      *
      * @return self
      */
-    public function setLanguages(ProductCategoryLanguagesModelCollection $languages) : self
+    public function setLanguages(?ProductCategoryLanguagesModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

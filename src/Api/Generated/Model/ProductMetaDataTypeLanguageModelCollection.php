@@ -7,26 +7,26 @@ class ProductMetaDataTypeLanguageModelCollection
     /**
      * A collection of product meta data type languages
      *
-     * @var ProductMetaDataTypeLanguageModel[]
+     * @var ProductMetaDataTypeLanguageModel[]|null
      */
     protected $data;
     /**
      * A collection of product meta data type languages
      *
-     * @return ProductMetaDataTypeLanguageModel[]
+     * @return ProductMetaDataTypeLanguageModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A collection of product meta data type languages
      *
-     * @param ProductMetaDataTypeLanguageModel[] $data
+     * @param ProductMetaDataTypeLanguageModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

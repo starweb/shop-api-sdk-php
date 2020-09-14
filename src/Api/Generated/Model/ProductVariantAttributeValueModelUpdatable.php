@@ -19,19 +19,19 @@ class ProductVariantAttributeValueModelUpdatable
     /**
      * The suggested suffix for new Variants using this attribute value
      *
-     * @var string
+     * @var string|null
      */
     protected $skuSuffix;
     /**
      * The sort order for this attribute value
      *
-     * @var int
+     * @var int|null
      */
     protected $sortIndex = 0;
     /**
      * A collection of attribute value languages
      *
-     * @var ProductVariantAttributeValueLanguageModel[]
+     * @var ProductVariantAttributeValueLanguageModel[]|null
      */
     protected $languages;
     /**
@@ -79,20 +79,20 @@ class ProductVariantAttributeValueModelUpdatable
     /**
      * The suggested suffix for new Variants using this attribute value
      *
-     * @return string
+     * @return string|null
      */
-    public function getSkuSuffix() : string
+    public function getSkuSuffix() : ?string
     {
         return $this->skuSuffix;
     }
     /**
      * The suggested suffix for new Variants using this attribute value
      *
-     * @param string $skuSuffix
+     * @param string|null $skuSuffix
      *
      * @return self
      */
-    public function setSkuSuffix(string $skuSuffix) : self
+    public function setSkuSuffix(?string $skuSuffix) : self
     {
         $this->skuSuffix = $skuSuffix;
         return $this;
@@ -100,20 +100,20 @@ class ProductVariantAttributeValueModelUpdatable
     /**
      * The sort order for this attribute value
      *
-     * @return int
+     * @return int|null
      */
-    public function getSortIndex() : int
+    public function getSortIndex() : ?int
     {
         return $this->sortIndex;
     }
     /**
      * The sort order for this attribute value
      *
-     * @param int $sortIndex
+     * @param int|null $sortIndex
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(?int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -121,20 +121,20 @@ class ProductVariantAttributeValueModelUpdatable
     /**
      * A collection of attribute value languages
      *
-     * @return ProductVariantAttributeValueLanguageModel[]
+     * @return ProductVariantAttributeValueLanguageModel[]|null
      */
-    public function getLanguages() : array
+    public function getLanguages() : ?array
     {
         return $this->languages;
     }
     /**
      * A collection of attribute value languages
      *
-     * @param ProductVariantAttributeValueLanguageModel[] $languages
+     * @param ProductVariantAttributeValueLanguageModel[]|null $languages
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(?array $languages) : self
     {
         $this->languages = $languages;
         return $this;

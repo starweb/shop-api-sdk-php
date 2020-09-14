@@ -25,18 +25,24 @@ class ProductTagOptionPatchRequestModelNormalizer implements DenormalizerInterfa
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductTagOptionPatchRequestModel();
-        if (property_exists($data, 'sortIndex')) {
+        if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
             $object->setSortIndex($data->{'sortIndex'});
         }
-        if (property_exists($data, 'languages')) {
+        elseif (property_exists($data, 'sortIndex') && $data->{'sortIndex'} === null) {
+            $object->setSortIndex(null);
+        }
+        if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $values = array();
             foreach ($data->{'languages'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductTagOptionLanguageModel', 'json', $context);
             }
             $object->setLanguages($values);
+        }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
         }
         return $object;
     }
@@ -46,12 +52,18 @@ class ProductTagOptionPatchRequestModelNormalizer implements DenormalizerInterfa
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
         }
+        else {
+            $data->{'sortIndex'} = null;
+        }
         if (null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'languages'} = $values;
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

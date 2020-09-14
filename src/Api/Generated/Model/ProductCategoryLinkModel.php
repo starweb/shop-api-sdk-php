@@ -7,32 +7,32 @@ class ProductCategoryLinkModel
     /**
      * The category id this product should be listed in
      *
-     * @var int
+     * @var int|null
      */
     protected $categoryId;
     /**
      * The sort index this product have in the category
      *
-     * @var int
+     * @var int|null
      */
     protected $sortIndex;
     /**
      * The category id this product should be listed in
      *
-     * @return int
+     * @return int|null
      */
-    public function getCategoryId() : int
+    public function getCategoryId() : ?int
     {
         return $this->categoryId;
     }
     /**
      * The category id this product should be listed in
      *
-     * @param int $categoryId
+     * @param int|null $categoryId
      *
      * @return self
      */
-    public function setCategoryId(int $categoryId) : self
+    public function setCategoryId(?int $categoryId) : self
     {
         $this->categoryId = $categoryId;
         return $this;
@@ -40,20 +40,20 @@ class ProductCategoryLinkModel
     /**
      * The sort index this product have in the category
      *
-     * @return int
+     * @return int|null
      */
-    public function getSortIndex() : int
+    public function getSortIndex() : ?int
     {
         return $this->sortIndex;
     }
     /**
      * The sort index this product have in the category
      *
-     * @param int $sortIndex
+     * @param int|null $sortIndex
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(?int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;

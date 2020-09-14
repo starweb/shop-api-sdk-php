@@ -7,26 +7,26 @@ class ShopItem
     /**
      * 
      *
-     * @var ShopModel
+     * @var ShopModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ShopModel
+     * @return ShopModel|null
      */
-    public function getData() : ShopModel
+    public function getData() : ?ShopModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ShopModel $data
+     * @param ShopModel|null $data
      *
      * @return self
      */
-    public function setData(ShopModel $data) : self
+    public function setData(?ShopModel $data) : self
     {
         $this->data = $data;
         return $this;

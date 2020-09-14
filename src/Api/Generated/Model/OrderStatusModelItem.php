@@ -7,26 +7,26 @@ class OrderStatusModelItem
     /**
      * 
      *
-     * @var OrderStatusModel
+     * @var OrderStatusModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return OrderStatusModel
+     * @return OrderStatusModel|null
      */
-    public function getData() : OrderStatusModel
+    public function getData() : ?OrderStatusModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param OrderStatusModel $data
+     * @param OrderStatusModel|null $data
      *
      * @return self
      */
-    public function setData(OrderStatusModel $data) : self
+    public function setData(?OrderStatusModel $data) : self
     {
         $this->data = $data;
         return $this;

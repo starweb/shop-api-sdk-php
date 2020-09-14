@@ -25,15 +25,18 @@ class OrderCommentModelCollectionNormalizer implements DenormalizerInterface, No
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\OrderCommentModelCollection();
-        if (property_exists($data, 'data')) {
+        if (property_exists($data, 'data') && $data->{'data'} !== null) {
             $values = array();
             foreach ($data->{'data'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\OrderCommentModel', 'json', $context);
             }
             $object->setData($values);
+        }
+        elseif (property_exists($data, 'data') && $data->{'data'} === null) {
+            $object->setData(null);
         }
         return $object;
     }
@@ -46,6 +49,9 @@ class OrderCommentModelCollectionNormalizer implements DenormalizerInterface, No
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'data'} = $values;
+        }
+        else {
+            $data->{'data'} = null;
         }
         return $data;
     }

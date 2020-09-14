@@ -7,44 +7,44 @@ class OrderStatusModel
     /**
      * The id of the order status
      *
-     * @var int
+     * @var int|null
      */
     protected $statusId;
     /**
      * Should an order status update email be sent out when an order gets this status
      *
-     * @var bool
+     * @var bool|null
      */
     protected $shouldSendEmail;
     /**
      * Standard order statuses has an idCode as well. These are: created, picking, completed, canceled
      *
-     * @var string
+     * @var string|null
      */
     protected $idCode;
     /**
      * 
      *
-     * @var OrderStatusLanguageModelCollection
+     * @var OrderStatusLanguageModelCollection|null
      */
     protected $languages;
     /**
      * The id of the order status
      *
-     * @return int
+     * @return int|null
      */
-    public function getStatusId() : int
+    public function getStatusId() : ?int
     {
         return $this->statusId;
     }
     /**
      * The id of the order status
      *
-     * @param int $statusId
+     * @param int|null $statusId
      *
      * @return self
      */
-    public function setStatusId(int $statusId) : self
+    public function setStatusId(?int $statusId) : self
     {
         $this->statusId = $statusId;
         return $this;
@@ -52,20 +52,20 @@ class OrderStatusModel
     /**
      * Should an order status update email be sent out when an order gets this status
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getShouldSendEmail() : bool
+    public function getShouldSendEmail() : ?bool
     {
         return $this->shouldSendEmail;
     }
     /**
      * Should an order status update email be sent out when an order gets this status
      *
-     * @param bool $shouldSendEmail
+     * @param bool|null $shouldSendEmail
      *
      * @return self
      */
-    public function setShouldSendEmail(bool $shouldSendEmail) : self
+    public function setShouldSendEmail(?bool $shouldSendEmail) : self
     {
         $this->shouldSendEmail = $shouldSendEmail;
         return $this;
@@ -73,20 +73,20 @@ class OrderStatusModel
     /**
      * Standard order statuses has an idCode as well. These are: created, picking, completed, canceled
      *
-     * @return string
+     * @return string|null
      */
-    public function getIdCode() : string
+    public function getIdCode() : ?string
     {
         return $this->idCode;
     }
     /**
      * Standard order statuses has an idCode as well. These are: created, picking, completed, canceled
      *
-     * @param string $idCode
+     * @param string|null $idCode
      *
      * @return self
      */
-    public function setIdCode(string $idCode) : self
+    public function setIdCode(?string $idCode) : self
     {
         $this->idCode = $idCode;
         return $this;
@@ -94,20 +94,20 @@ class OrderStatusModel
     /**
      * 
      *
-     * @return OrderStatusLanguageModelCollection
+     * @return OrderStatusLanguageModelCollection|null
      */
-    public function getLanguages() : OrderStatusLanguageModelCollection
+    public function getLanguages() : ?OrderStatusLanguageModelCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param OrderStatusLanguageModelCollection $languages
+     * @param OrderStatusLanguageModelCollection|null $languages
      *
      * @return self
      */
-    public function setLanguages(OrderStatusLanguageModelCollection $languages) : self
+    public function setLanguages(?OrderStatusLanguageModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

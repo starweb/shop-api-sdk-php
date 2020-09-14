@@ -25,30 +25,48 @@ class PaymentMethodModelNormalizer implements DenormalizerInterface, NormalizerI
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\PaymentMethodModel();
-        if (property_exists($data, 'paymentMethodId')) {
+        if (property_exists($data, 'paymentMethodId') && $data->{'paymentMethodId'} !== null) {
             $object->setPaymentMethodId($data->{'paymentMethodId'});
         }
-        if (property_exists($data, 'idCode')) {
+        elseif (property_exists($data, 'paymentMethodId') && $data->{'paymentMethodId'} === null) {
+            $object->setPaymentMethodId(null);
+        }
+        if (property_exists($data, 'idCode') && $data->{'idCode'} !== null) {
             $object->setIdCode($data->{'idCode'});
         }
-        if (property_exists($data, 'active')) {
+        elseif (property_exists($data, 'idCode') && $data->{'idCode'} === null) {
+            $object->setIdCode(null);
+        }
+        if (property_exists($data, 'active') && $data->{'active'} !== null) {
             $object->setActive($data->{'active'});
         }
-        if (property_exists($data, 'fee')) {
+        elseif (property_exists($data, 'active') && $data->{'active'} === null) {
+            $object->setActive(null);
+        }
+        if (property_exists($data, 'fee') && $data->{'fee'} !== null) {
             $object->setFee($data->{'fee'});
         }
-        if (property_exists($data, 'validForCountries')) {
+        elseif (property_exists($data, 'fee') && $data->{'fee'} === null) {
+            $object->setFee(null);
+        }
+        if (property_exists($data, 'validForCountries') && $data->{'validForCountries'} !== null) {
             $object->setValidForCountries($data->{'validForCountries'});
         }
-        if (property_exists($data, 'validCountriesSelected')) {
+        elseif (property_exists($data, 'validForCountries') && $data->{'validForCountries'} === null) {
+            $object->setValidForCountries(null);
+        }
+        if (property_exists($data, 'validCountriesSelected') && $data->{'validCountriesSelected'} !== null) {
             $values = array();
             foreach ($data->{'validCountriesSelected'} as $value) {
                 $values[] = $value;
             }
             $object->setValidCountriesSelected($values);
+        }
+        elseif (property_exists($data, 'validCountriesSelected') && $data->{'validCountriesSelected'} === null) {
+            $object->setValidCountriesSelected(null);
         }
         if (property_exists($data, 'validForMinItemsSubtotal') && $data->{'validForMinItemsSubtotal'} !== null) {
             $object->setValidForMinItemsSubtotal($data->{'validForMinItemsSubtotal'});
@@ -74,8 +92,11 @@ class PaymentMethodModelNormalizer implements DenormalizerInterface, NormalizerI
         elseif (property_exists($data, 'validForMaxWeight') && $data->{'validForMaxWeight'} === null) {
             $object->setValidForMaxWeight(null);
         }
-        if (property_exists($data, 'validForShippingMethods')) {
+        if (property_exists($data, 'validForShippingMethods') && $data->{'validForShippingMethods'} !== null) {
             $object->setValidForShippingMethods($data->{'validForShippingMethods'});
+        }
+        elseif (property_exists($data, 'validForShippingMethods') && $data->{'validForShippingMethods'} === null) {
+            $object->setValidForShippingMethods(null);
         }
         if (property_exists($data, 'validForCustomerType') && $data->{'validForCustomerType'} !== null) {
             $object->setValidForCustomerType($data->{'validForCustomerType'});
@@ -83,11 +104,17 @@ class PaymentMethodModelNormalizer implements DenormalizerInterface, NormalizerI
         elseif (property_exists($data, 'validForCustomerType') && $data->{'validForCustomerType'} === null) {
             $object->setValidForCustomerType(null);
         }
-        if (property_exists($data, 'isClickAndCollect')) {
+        if (property_exists($data, 'isClickAndCollect') && $data->{'isClickAndCollect'} !== null) {
             $object->setIsClickAndCollect($data->{'isClickAndCollect'});
         }
-        if (property_exists($data, 'languages')) {
+        elseif (property_exists($data, 'isClickAndCollect') && $data->{'isClickAndCollect'} === null) {
+            $object->setIsClickAndCollect(null);
+        }
+        if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\PaymentMethodLanguageModelCollection', 'json', $context));
+        }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
         }
         return $object;
     }
@@ -96,6 +123,9 @@ class PaymentMethodModelNormalizer implements DenormalizerInterface, NormalizerI
         $data = new \stdClass();
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

@@ -25,29 +25,50 @@ class ProductLanguageModelNormalizer implements DenormalizerInterface, Normalize
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductLanguageModel();
-        if (property_exists($data, 'langCode')) {
+        if (property_exists($data, 'langCode') && $data->{'langCode'} !== null) {
             $object->setLangCode($data->{'langCode'});
         }
-        if (property_exists($data, 'name')) {
+        elseif (property_exists($data, 'langCode') && $data->{'langCode'} === null) {
+            $object->setLangCode(null);
+        }
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
         }
-        if (property_exists($data, 'shortDescription')) {
+        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
+        }
+        if (property_exists($data, 'shortDescription') && $data->{'shortDescription'} !== null) {
             $object->setShortDescription($data->{'shortDescription'});
         }
-        if (property_exists($data, 'longDescription')) {
+        elseif (property_exists($data, 'shortDescription') && $data->{'shortDescription'} === null) {
+            $object->setShortDescription(null);
+        }
+        if (property_exists($data, 'longDescription') && $data->{'longDescription'} !== null) {
             $object->setLongDescription($data->{'longDescription'});
         }
-        if (property_exists($data, 'permalink')) {
+        elseif (property_exists($data, 'longDescription') && $data->{'longDescription'} === null) {
+            $object->setLongDescription(null);
+        }
+        if (property_exists($data, 'permalink') && $data->{'permalink'} !== null) {
             $object->setPermalink($data->{'permalink'});
         }
-        if (property_exists($data, 'pageTitle')) {
+        elseif (property_exists($data, 'permalink') && $data->{'permalink'} === null) {
+            $object->setPermalink(null);
+        }
+        if (property_exists($data, 'pageTitle') && $data->{'pageTitle'} !== null) {
             $object->setPageTitle($data->{'pageTitle'});
         }
-        if (property_exists($data, 'pageMetaDescription')) {
+        elseif (property_exists($data, 'pageTitle') && $data->{'pageTitle'} === null) {
+            $object->setPageTitle(null);
+        }
+        if (property_exists($data, 'pageMetaDescription') && $data->{'pageMetaDescription'} !== null) {
             $object->setPageMetaDescription($data->{'pageMetaDescription'});
+        }
+        elseif (property_exists($data, 'pageMetaDescription') && $data->{'pageMetaDescription'} === null) {
+            $object->setPageMetaDescription(null);
         }
         return $object;
     }
@@ -57,23 +78,44 @@ class ProductLanguageModelNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getLangCode()) {
             $data->{'langCode'} = $object->getLangCode();
         }
+        else {
+            $data->{'langCode'} = null;
+        }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
+        }
+        else {
+            $data->{'name'} = null;
         }
         if (null !== $object->getShortDescription()) {
             $data->{'shortDescription'} = $object->getShortDescription();
         }
+        else {
+            $data->{'shortDescription'} = null;
+        }
         if (null !== $object->getLongDescription()) {
             $data->{'longDescription'} = $object->getLongDescription();
+        }
+        else {
+            $data->{'longDescription'} = null;
         }
         if (null !== $object->getPermalink()) {
             $data->{'permalink'} = $object->getPermalink();
         }
+        else {
+            $data->{'permalink'} = null;
+        }
         if (null !== $object->getPageTitle()) {
             $data->{'pageTitle'} = $object->getPageTitle();
         }
+        else {
+            $data->{'pageTitle'} = null;
+        }
         if (null !== $object->getPageMetaDescription()) {
             $data->{'pageMetaDescription'} = $object->getPageMetaDescription();
+        }
+        else {
+            $data->{'pageMetaDescription'} = null;
         }
         return $data;
     }

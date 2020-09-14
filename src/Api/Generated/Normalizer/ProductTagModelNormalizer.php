@@ -25,21 +25,30 @@ class ProductTagModelNormalizer implements DenormalizerInterface, NormalizerInte
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\ProductTagModel();
-        if (property_exists($data, 'tagId')) {
+        if (property_exists($data, 'tagId') && $data->{'tagId'} !== null) {
             $object->setTagId($data->{'tagId'});
         }
-        if (property_exists($data, 'type')) {
+        elseif (property_exists($data, 'tagId') && $data->{'tagId'} === null) {
+            $object->setTagId(null);
+        }
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
         }
-        if (property_exists($data, 'languages')) {
+        elseif (property_exists($data, 'type') && $data->{'type'} === null) {
+            $object->setType(null);
+        }
+        if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $values = array();
             foreach ($data->{'languages'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductTagLanguageModel', 'json', $context);
             }
             $object->setLanguages($values);
+        }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
         }
         return $object;
     }
@@ -52,6 +61,9 @@ class ProductTagModelNormalizer implements DenormalizerInterface, NormalizerInte
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'languages'} = $values;
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

@@ -7,26 +7,26 @@ class ProductMetaDataModelCollection
     /**
      * A collection of product meta data
      *
-     * @var ProductMetaDataModel[]
+     * @var ProductMetaDataModel[]|null
      */
     protected $data;
     /**
      * A collection of product meta data
      *
-     * @return ProductMetaDataModel[]
+     * @return ProductMetaDataModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A collection of product meta data
      *
-     * @param ProductMetaDataModel[] $data
+     * @param ProductMetaDataModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

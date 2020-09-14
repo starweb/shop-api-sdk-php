@@ -7,32 +7,32 @@ class ProductMetaDataTypeModel
     /**
      * The meta data type id
      *
-     * @var int
+     * @var int|null
      */
     protected $metaDataTypeId;
     /**
      * 
      *
-     * @var ProductMetaDataTypeLanguageModelCollection
+     * @var ProductMetaDataTypeLanguageModelCollection|null
      */
     protected $languages;
     /**
      * The meta data type id
      *
-     * @return int
+     * @return int|null
      */
-    public function getMetaDataTypeId() : int
+    public function getMetaDataTypeId() : ?int
     {
         return $this->metaDataTypeId;
     }
     /**
      * The meta data type id
      *
-     * @param int $metaDataTypeId
+     * @param int|null $metaDataTypeId
      *
      * @return self
      */
-    public function setMetaDataTypeId(int $metaDataTypeId) : self
+    public function setMetaDataTypeId(?int $metaDataTypeId) : self
     {
         $this->metaDataTypeId = $metaDataTypeId;
         return $this;
@@ -40,20 +40,20 @@ class ProductMetaDataTypeModel
     /**
      * 
      *
-     * @return ProductMetaDataTypeLanguageModelCollection
+     * @return ProductMetaDataTypeLanguageModelCollection|null
      */
-    public function getLanguages() : ProductMetaDataTypeLanguageModelCollection
+    public function getLanguages() : ?ProductMetaDataTypeLanguageModelCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductMetaDataTypeLanguageModelCollection $languages
+     * @param ProductMetaDataTypeLanguageModelCollection|null $languages
      *
      * @return self
      */
-    public function setLanguages(ProductMetaDataTypeLanguageModelCollection $languages) : self
+    public function setLanguages(?ProductMetaDataTypeLanguageModelCollection $languages) : self
     {
         $this->languages = $languages;
         return $this;

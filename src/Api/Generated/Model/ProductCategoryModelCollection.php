@@ -7,32 +7,32 @@ class ProductCategoryModelCollection
     /**
      * A list of product categories
      *
-     * @var ProductCategoryModel[]
+     * @var ProductCategoryModel[]|null
      */
     protected $data;
     /**
      * 
      *
-     * @var ProductCategoryModelCollectionMeta
+     * @var ProductCategoryModelCollectionMeta|null
      */
     protected $meta;
     /**
      * A list of product categories
      *
-     * @return ProductCategoryModel[]
+     * @return ProductCategoryModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A list of product categories
      *
-     * @param ProductCategoryModel[] $data
+     * @param ProductCategoryModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;
@@ -40,20 +40,20 @@ class ProductCategoryModelCollection
     /**
      * 
      *
-     * @return ProductCategoryModelCollectionMeta
+     * @return ProductCategoryModelCollectionMeta|null
      */
-    public function getMeta() : ProductCategoryModelCollectionMeta
+    public function getMeta() : ?ProductCategoryModelCollectionMeta
     {
         return $this->meta;
     }
     /**
      * 
      *
-     * @param ProductCategoryModelCollectionMeta $meta
+     * @param ProductCategoryModelCollectionMeta|null $meta
      *
      * @return self
      */
-    public function setMeta(ProductCategoryModelCollectionMeta $meta) : self
+    public function setMeta(?ProductCategoryModelCollectionMeta $meta) : self
     {
         $this->meta = $meta;
         return $this;

@@ -7,7 +7,7 @@ class ProductUnitModelUpdatable
     /**
      * The units id
      *
-     * @var int
+     * @var int|null
      */
     protected $unitId;
     /**
@@ -25,26 +25,26 @@ class ProductUnitModelUpdatable
     /**
      * 
      *
-     * @var ProductUnitLanguageModel[]
+     * @var ProductUnitLanguageModel[]|null
      */
     protected $languages;
     /**
      * The units id
      *
-     * @return int
+     * @return int|null
      */
-    public function getUnitId() : int
+    public function getUnitId() : ?int
     {
         return $this->unitId;
     }
     /**
      * The units id
      *
-     * @param int $unitId
+     * @param int|null $unitId
      *
      * @return self
      */
-    public function setUnitId(int $unitId) : self
+    public function setUnitId(?int $unitId) : self
     {
         $this->unitId = $unitId;
         return $this;
@@ -94,20 +94,20 @@ class ProductUnitModelUpdatable
     /**
      * 
      *
-     * @return ProductUnitLanguageModel[]
+     * @return ProductUnitLanguageModel[]|null
      */
-    public function getLanguages() : array
+    public function getLanguages() : ?array
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductUnitLanguageModel[] $languages
+     * @param ProductUnitLanguageModel[]|null $languages
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(?array $languages) : self
     {
         $this->languages = $languages;
         return $this;

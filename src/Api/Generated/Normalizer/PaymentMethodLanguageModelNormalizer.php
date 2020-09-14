@@ -25,20 +25,32 @@ class PaymentMethodLanguageModelNormalizer implements DenormalizerInterface, Nor
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\PaymentMethodLanguageModel();
-        if (property_exists($data, 'langCode')) {
+        if (property_exists($data, 'langCode') && $data->{'langCode'} !== null) {
             $object->setLangCode($data->{'langCode'});
         }
-        if (property_exists($data, 'name')) {
+        elseif (property_exists($data, 'langCode') && $data->{'langCode'} === null) {
+            $object->setLangCode(null);
+        }
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
         }
-        if (property_exists($data, 'title')) {
+        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
+        }
+        if (property_exists($data, 'title') && $data->{'title'} !== null) {
             $object->setTitle($data->{'title'});
         }
-        if (property_exists($data, 'shortDescription')) {
+        elseif (property_exists($data, 'title') && $data->{'title'} === null) {
+            $object->setTitle(null);
+        }
+        if (property_exists($data, 'shortDescription') && $data->{'shortDescription'} !== null) {
             $object->setShortDescription($data->{'shortDescription'});
+        }
+        elseif (property_exists($data, 'shortDescription') && $data->{'shortDescription'} === null) {
+            $object->setShortDescription(null);
         }
         return $object;
     }

@@ -7,7 +7,7 @@ class ProductManufacturerModel
     /**
      * The id of this manufacturer
      *
-     * @var int
+     * @var int|null
      */
     protected $manufacturerId;
     /**
@@ -25,7 +25,7 @@ class ProductManufacturerModel
     /**
      * The name of this manufacturer
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
@@ -37,20 +37,20 @@ class ProductManufacturerModel
     /**
      * The id of this manufacturer
      *
-     * @return int
+     * @return int|null
      */
-    public function getManufacturerId() : int
+    public function getManufacturerId() : ?int
     {
         return $this->manufacturerId;
     }
     /**
      * The id of this manufacturer
      *
-     * @param int $manufacturerId
+     * @param int|null $manufacturerId
      *
      * @return self
      */
-    public function setManufacturerId(int $manufacturerId) : self
+    public function setManufacturerId(?int $manufacturerId) : self
     {
         $this->manufacturerId = $manufacturerId;
         return $this;
@@ -100,20 +100,20 @@ class ProductManufacturerModel
     /**
      * The name of this manufacturer
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * The name of this manufacturer
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
         $this->name = $name;
         return $this;

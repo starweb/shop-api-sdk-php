@@ -19,7 +19,7 @@ class ProductModelUpdatable
     /**
      * A timestamp of when the product was created. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var string|null
      */
     protected $createdAt;
     /**
@@ -31,7 +31,7 @@ class ProductModelUpdatable
     /**
      * The visibility of this product. Supported values are: hidden, visible, pricelists
      *
-     * @var string
+     * @var string|null
      */
     protected $visibility = 'hidden';
     /**
@@ -43,7 +43,7 @@ class ProductModelUpdatable
     /**
      * A valid URL to a web page with more information for this product
      *
-     * @var string
+     * @var string|null
      */
     protected $moreInfoUrl;
     /**
@@ -67,13 +67,13 @@ class ProductModelUpdatable
     /**
      * The type of product. Either ”basic” or ”bundle”. Default is ”basic”
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * Should this product be watchable for customers when it is back in stock?
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isBackInStockWatchable = true;
     /**
@@ -91,7 +91,7 @@ class ProductModelUpdatable
     /**
      * A collection of variants
      *
-     * @var ProductVariantPutRequestModel[]
+     * @var ProductVariantPutRequestModel[]|null
      */
     protected $variants;
     /**
@@ -103,31 +103,31 @@ class ProductModelUpdatable
     /**
      * A collection of media files
      *
-     * @var ProductMediaFileLinkModel[]
+     * @var ProductMediaFileLinkModel[]|null
      */
     protected $mediaFiles;
     /**
      * A collection of product languages
      *
-     * @var ProductLanguageModel[]
+     * @var ProductLanguageModel[]|null
      */
     protected $languages;
     /**
      * A collection of country specific vat rates
      *
-     * @var ProductVatRateModel[]
+     * @var ProductVatRateModel[]|null
      */
     protected $vatRates;
     /**
      * A collection of categories
      *
-     * @var ProductCategoryLinkModel[]
+     * @var ProductCategoryLinkModel[]|null
      */
     protected $categories;
     /**
      * A collection of meta data
      *
-     * @var ProductMetaDataModelUpdatable[]
+     * @var ProductMetaDataModelUpdatable[]|null
      */
     protected $metaData;
     /**
@@ -175,20 +175,20 @@ class ProductModelUpdatable
     /**
      * A timestamp of when the product was created. The time should be formatted using ISO-8601
      *
-     * @return string
+     * @return string|null
      */
-    public function getCreatedAt() : string
+    public function getCreatedAt() : ?string
     {
         return $this->createdAt;
     }
     /**
      * A timestamp of when the product was created. The time should be formatted using ISO-8601
      *
-     * @param string $createdAt
+     * @param string|null $createdAt
      *
      * @return self
      */
-    public function setCreatedAt(string $createdAt) : self
+    public function setCreatedAt(?string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -217,20 +217,20 @@ class ProductModelUpdatable
     /**
      * The visibility of this product. Supported values are: hidden, visible, pricelists
      *
-     * @return string
+     * @return string|null
      */
-    public function getVisibility() : string
+    public function getVisibility() : ?string
     {
         return $this->visibility;
     }
     /**
      * The visibility of this product. Supported values are: hidden, visible, pricelists
      *
-     * @param string $visibility
+     * @param string|null $visibility
      *
      * @return self
      */
-    public function setVisibility(string $visibility) : self
+    public function setVisibility(?string $visibility) : self
     {
         $this->visibility = $visibility;
         return $this;
@@ -259,20 +259,20 @@ class ProductModelUpdatable
     /**
      * A valid URL to a web page with more information for this product
      *
-     * @return string
+     * @return string|null
      */
-    public function getMoreInfoUrl() : string
+    public function getMoreInfoUrl() : ?string
     {
         return $this->moreInfoUrl;
     }
     /**
      * A valid URL to a web page with more information for this product
      *
-     * @param string $moreInfoUrl
+     * @param string|null $moreInfoUrl
      *
      * @return self
      */
-    public function setMoreInfoUrl(string $moreInfoUrl) : self
+    public function setMoreInfoUrl(?string $moreInfoUrl) : self
     {
         $this->moreInfoUrl = $moreInfoUrl;
         return $this;
@@ -343,20 +343,20 @@ class ProductModelUpdatable
     /**
      * The type of product. Either ”basic” or ”bundle”. Default is ”basic”
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType() : ?string
     {
         return $this->type;
     }
     /**
      * The type of product. Either ”basic” or ”bundle”. Default is ”basic”
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type) : self
     {
         $this->type = $type;
         return $this;
@@ -364,20 +364,20 @@ class ProductModelUpdatable
     /**
      * Should this product be watchable for customers when it is back in stock?
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsBackInStockWatchable() : bool
+    public function getIsBackInStockWatchable() : ?bool
     {
         return $this->isBackInStockWatchable;
     }
     /**
      * Should this product be watchable for customers when it is back in stock?
      *
-     * @param bool $isBackInStockWatchable
+     * @param bool|null $isBackInStockWatchable
      *
      * @return self
      */
-    public function setIsBackInStockWatchable(bool $isBackInStockWatchable) : self
+    public function setIsBackInStockWatchable(?bool $isBackInStockWatchable) : self
     {
         $this->isBackInStockWatchable = $isBackInStockWatchable;
         return $this;
@@ -427,20 +427,20 @@ class ProductModelUpdatable
     /**
      * A collection of variants
      *
-     * @return ProductVariantPutRequestModel[]
+     * @return ProductVariantPutRequestModel[]|null
      */
-    public function getVariants() : array
+    public function getVariants() : ?array
     {
         return $this->variants;
     }
     /**
      * A collection of variants
      *
-     * @param ProductVariantPutRequestModel[] $variants
+     * @param ProductVariantPutRequestModel[]|null $variants
      *
      * @return self
      */
-    public function setVariants(array $variants) : self
+    public function setVariants(?array $variants) : self
     {
         $this->variants = $variants;
         return $this;
@@ -469,20 +469,20 @@ class ProductModelUpdatable
     /**
      * A collection of media files
      *
-     * @return ProductMediaFileLinkModel[]
+     * @return ProductMediaFileLinkModel[]|null
      */
-    public function getMediaFiles() : array
+    public function getMediaFiles() : ?array
     {
         return $this->mediaFiles;
     }
     /**
      * A collection of media files
      *
-     * @param ProductMediaFileLinkModel[] $mediaFiles
+     * @param ProductMediaFileLinkModel[]|null $mediaFiles
      *
      * @return self
      */
-    public function setMediaFiles(array $mediaFiles) : self
+    public function setMediaFiles(?array $mediaFiles) : self
     {
         $this->mediaFiles = $mediaFiles;
         return $this;
@@ -490,20 +490,20 @@ class ProductModelUpdatable
     /**
      * A collection of product languages
      *
-     * @return ProductLanguageModel[]
+     * @return ProductLanguageModel[]|null
      */
-    public function getLanguages() : array
+    public function getLanguages() : ?array
     {
         return $this->languages;
     }
     /**
      * A collection of product languages
      *
-     * @param ProductLanguageModel[] $languages
+     * @param ProductLanguageModel[]|null $languages
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(?array $languages) : self
     {
         $this->languages = $languages;
         return $this;
@@ -511,20 +511,20 @@ class ProductModelUpdatable
     /**
      * A collection of country specific vat rates
      *
-     * @return ProductVatRateModel[]
+     * @return ProductVatRateModel[]|null
      */
-    public function getVatRates() : array
+    public function getVatRates() : ?array
     {
         return $this->vatRates;
     }
     /**
      * A collection of country specific vat rates
      *
-     * @param ProductVatRateModel[] $vatRates
+     * @param ProductVatRateModel[]|null $vatRates
      *
      * @return self
      */
-    public function setVatRates(array $vatRates) : self
+    public function setVatRates(?array $vatRates) : self
     {
         $this->vatRates = $vatRates;
         return $this;
@@ -532,20 +532,20 @@ class ProductModelUpdatable
     /**
      * A collection of categories
      *
-     * @return ProductCategoryLinkModel[]
+     * @return ProductCategoryLinkModel[]|null
      */
-    public function getCategories() : array
+    public function getCategories() : ?array
     {
         return $this->categories;
     }
     /**
      * A collection of categories
      *
-     * @param ProductCategoryLinkModel[] $categories
+     * @param ProductCategoryLinkModel[]|null $categories
      *
      * @return self
      */
-    public function setCategories(array $categories) : self
+    public function setCategories(?array $categories) : self
     {
         $this->categories = $categories;
         return $this;
@@ -553,20 +553,20 @@ class ProductModelUpdatable
     /**
      * A collection of meta data
      *
-     * @return ProductMetaDataModelUpdatable[]
+     * @return ProductMetaDataModelUpdatable[]|null
      */
-    public function getMetaData() : array
+    public function getMetaData() : ?array
     {
         return $this->metaData;
     }
     /**
      * A collection of meta data
      *
-     * @param ProductMetaDataModelUpdatable[] $metaData
+     * @param ProductMetaDataModelUpdatable[]|null $metaData
      *
      * @return self
      */
-    public function setMetaData(array $metaData) : self
+    public function setMetaData(?array $metaData) : self
     {
         $this->metaData = $metaData;
         return $this;

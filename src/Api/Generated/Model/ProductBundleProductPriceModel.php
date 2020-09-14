@@ -7,7 +7,7 @@ class ProductBundleProductPriceModel
     /**
      * The pricelist this price is for
      *
-     * @var int
+     * @var int|null
      */
     protected $pricelistId;
     /**
@@ -19,20 +19,20 @@ class ProductBundleProductPriceModel
     /**
      * The pricelist this price is for
      *
-     * @return int
+     * @return int|null
      */
-    public function getPricelistId() : int
+    public function getPricelistId() : ?int
     {
         return $this->pricelistId;
     }
     /**
      * The pricelist this price is for
      *
-     * @param int $pricelistId
+     * @param int|null $pricelistId
      *
      * @return self
      */
-    public function setPricelistId(int $pricelistId) : self
+    public function setPricelistId(?int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
         return $this;

@@ -25,17 +25,26 @@ class TokenModelNormalizer implements DenormalizerInterface, NormalizerInterface
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\TokenModel();
-        if (property_exists($data, 'access_token')) {
+        if (property_exists($data, 'access_token') && $data->{'access_token'} !== null) {
             $object->setAccessToken($data->{'access_token'});
         }
-        if (property_exists($data, 'scope')) {
+        elseif (property_exists($data, 'access_token') && $data->{'access_token'} === null) {
+            $object->setAccessToken(null);
+        }
+        if (property_exists($data, 'scope') && $data->{'scope'} !== null) {
             $object->setScope($data->{'scope'});
         }
-        if (property_exists($data, 'expires_in')) {
+        elseif (property_exists($data, 'scope') && $data->{'scope'} === null) {
+            $object->setScope(null);
+        }
+        if (property_exists($data, 'expires_in') && $data->{'expires_in'} !== null) {
             $object->setExpiresIn($data->{'expires_in'});
+        }
+        elseif (property_exists($data, 'expires_in') && $data->{'expires_in'} === null) {
+            $object->setExpiresIn(null);
         }
         return $object;
     }

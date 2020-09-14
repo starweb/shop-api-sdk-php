@@ -7,326 +7,326 @@ class OrderUpdateModel
     /**
      * The orders ID
      *
-     * @var int
+     * @var int|null
      */
     protected $orderId;
     /**
      * A timestamp of when the order was modified. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var string|null
      */
     protected $modifiedAt;
     /**
      * The shops base currency code at the point of order creation
      *
-     * @var string
+     * @var string|null
      */
     protected $baseCurrencyCode;
     /**
      * The shops country code at the point of order creation
      *
-     * @var string
+     * @var string|null
      */
     protected $shopCountryCode;
     /**
      * The total order amount
      *
-     * @var float
+     * @var float|null
      */
     protected $totalAmount;
     /**
      * The total order VAT amount
      *
-     * @var float
+     * @var float|null
      */
     protected $totalVat;
     /**
      * The total order amount to pay
      *
-     * @var float
+     * @var float|null
      */
     protected $amountToPay;
     /**
      * The total order amount, in the shops base currency
      *
-     * @var float
+     * @var float|null
      */
     protected $totalAmountInBaseCurrency;
     /**
      * The total VAT amount, in the shops base currency
      *
-     * @var float
+     * @var float|null
      */
     protected $totalVatInBaseCurrency;
     /**
      * The total amount to pay, in the shops base currency
      *
-     * @var float
+     * @var float|null
      */
     protected $amountToPayInBaseCurrency;
     /**
      * A timestamp of when the order was created. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var string|null
      */
     protected $createdAt;
     /**
      * The ID of the orders customer
      *
-     * @var int
+     * @var int|null
      */
     protected $customerId;
     /**
      * The ID of the orders status
      *
-     * @var int
+     * @var int|null
      */
     protected $statusId;
     /**
      * Set this to false to prevent sending email to customer on changes to statusId and new orders
      *
-     * @var bool
+     * @var bool|null
      */
     protected $onOrderStatusChangeSendEmail = true;
     /**
      * Set this to false to prevent processing payment on changes to statusId. Only applies to payment methods that support processing payments. For example charging a reserved amount or cancel a created invoice
      *
-     * @var bool
+     * @var bool|null
      */
     protected $onOrderStatusChangeProcessPayment = true;
     /**
      * The ID of the orders shipping method
      *
-     * @var int
+     * @var int|null
      */
     protected $shippingMethodId;
     /**
      * The ID of the orders payment method
      *
-     * @var int
+     * @var int|null
      */
     protected $paymentMethodId;
     /**
      * The ID code of the payment method.
      *
-     * @var string
+     * @var string|null
      */
     protected $paymentMethodIdCode;
     /**
      * Title of the orders payment method
      *
-     * @var string
+     * @var string|null
      */
     protected $paymentMethodName;
     /**
      * Payment fee
      *
-     * @var float
+     * @var float|null
      */
     protected $paymentFee;
     /**
      * The VAT rate of the paymentFee in percent
      *
-     * @var float
+     * @var float|null
      */
     protected $paymentVatRate;
     /**
      * Title of the orders shipping method
      *
-     * @var string
+     * @var string|null
      */
     protected $shippingMethodName;
     /**
      * Shipping cost
      *
-     * @var float
+     * @var float|null
      */
     protected $shippingCost;
     /**
      * The VAT rate of the shippingCost in percent
      *
-     * @var float
+     * @var float|null
      */
     protected $shippingVatRate;
     /**
      * The total weight of the order in kg. This field is a calculated summary of all order items
      *
-     * @var float
+     * @var float|null
      */
     protected $totalWeight;
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
-     * @var string
+     * @var string|null
      */
     protected $customInfo1;
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
-     * @var string
+     * @var string|null
      */
     protected $customInfo2;
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
-     * @var string
+     * @var string|null
      */
     protected $customInfo3;
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
-     * @var string
+     * @var string|null
      */
     protected $customInfo4;
     /**
      * The code ID of a discount code that was used for this order
      *
-     * @var string
+     * @var string|null
      */
     protected $discountCode;
     /**
      * The amount paid via the payment method for this order
      *
-     * @var float
+     * @var float|null
      */
     protected $amountPaid;
     /**
      * Same as amountPaid, but in the shops base currency
      *
-     * @var float
+     * @var float|null
      */
     protected $amountPaidInBaseCurrency;
     /**
      * Is the order completed (that is, is it completely saved and has the payment method processed and confirmed it)
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isComplete;
     /**
      * The currency code of the currency that was used for this order. Has to be a valid ISO 4217 currency code
      *
-     * @var string
+     * @var string|null
      */
     protected $currencyCode;
     /**
      * The exchange rate between this orders currency and the shops base currency. Ff, for example, the shop base currency is SEK and this order was placed in NOK, where 1 SEK = 0.97 NOK - this value would be 0.97
      *
-     * @var float
+     * @var float|null
      */
     protected $currencyExchangeRate;
     /**
      * The number of decimals to display
      *
-     * @var int
+     * @var int|null
      */
     protected $currencyPrecision;
     /**
      * Language Code (ISO 639-1) used for placing this order. Has to be a valid lang code that the shop has setup. Used for order update emails, etc.
      *
-     * @var string
+     * @var string|null
      */
     protected $langCode;
     /**
      * Reference to the payment methods payment transaction
      *
-     * @var string
+     * @var string|null
      */
     protected $paymentReference;
     /**
      * Status of the payment methods payment transaction
      *
-     * @var string
+     * @var string|null
      */
     protected $paymentStatus;
     /**
      * An order is read when an administrator has read it via the admin GUI
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isRead;
     /**
      * Whether the customer or an admin has added a comment to the order
      *
-     * @var bool
+     * @var bool|null
      */
     protected $hasComment;
     /**
      * An internal comment placed by an administrator. Not available to the customer
      *
-     * @var string
+     * @var string|null
      */
     protected $internalComment;
     /**
      * The ID of the tracking number type. Types are available via: GET /shipping-tracker-types
      *
-     * @var int
+     * @var int|null
      */
     protected $shippingTrackerType;
     /**
      * The shipping tracking number. Has to be in the format that is used for the chosen tracking type (please contact the freight forwarder regarding this).
      *
-     * @var string
+     * @var string|null
      */
     protected $shippingTrackingNo;
     /**
      * The email address of the customer at the point of order creation
      *
-     * @var string
+     * @var string|null
      */
     protected $originalCustomerEmail;
     /**
      * The national id number of the customer at the point of order creation
      *
-     * @var string
+     * @var string|null
      */
     protected $originalCustomerNationalIdNo;
     /**
      * The VAT number of the customer at the point of order creation
      *
-     * @var string
+     * @var string|null
      */
     protected $originalCustomerVatNo;
     /**
      * Custom customer info at the point of order creation
      *
-     * @var string
+     * @var string|null
      */
     protected $originalCustomerCustomInfo1;
     /**
      * Custom customer info at the point of order creation
      *
-     * @var string
+     * @var string|null
      */
     protected $originalCustomerCustomInfo2;
     /**
      * A collection of order items
      *
-     * @var OrderItemModel[]
+     * @var OrderItemModel[]|null
      */
     protected $items;
     /**
      * 
      *
-     * @var OrderAddressModel
+     * @var OrderAddressModel|null
      */
     protected $addresses;
     /**
      * The orders ID
      *
-     * @return int
+     * @return int|null
      */
-    public function getOrderId() : int
+    public function getOrderId() : ?int
     {
         return $this->orderId;
     }
     /**
      * The orders ID
      *
-     * @param int $orderId
+     * @param int|null $orderId
      *
      * @return self
      */
-    public function setOrderId(int $orderId) : self
+    public function setOrderId(?int $orderId) : self
     {
         $this->orderId = $orderId;
         return $this;
@@ -334,20 +334,20 @@ class OrderUpdateModel
     /**
      * A timestamp of when the order was modified. The time should be formatted using ISO-8601
      *
-     * @return string
+     * @return string|null
      */
-    public function getModifiedAt() : string
+    public function getModifiedAt() : ?string
     {
         return $this->modifiedAt;
     }
     /**
      * A timestamp of when the order was modified. The time should be formatted using ISO-8601
      *
-     * @param string $modifiedAt
+     * @param string|null $modifiedAt
      *
      * @return self
      */
-    public function setModifiedAt(string $modifiedAt) : self
+    public function setModifiedAt(?string $modifiedAt) : self
     {
         $this->modifiedAt = $modifiedAt;
         return $this;
@@ -355,20 +355,20 @@ class OrderUpdateModel
     /**
      * The shops base currency code at the point of order creation
      *
-     * @return string
+     * @return string|null
      */
-    public function getBaseCurrencyCode() : string
+    public function getBaseCurrencyCode() : ?string
     {
         return $this->baseCurrencyCode;
     }
     /**
      * The shops base currency code at the point of order creation
      *
-     * @param string $baseCurrencyCode
+     * @param string|null $baseCurrencyCode
      *
      * @return self
      */
-    public function setBaseCurrencyCode(string $baseCurrencyCode) : self
+    public function setBaseCurrencyCode(?string $baseCurrencyCode) : self
     {
         $this->baseCurrencyCode = $baseCurrencyCode;
         return $this;
@@ -376,20 +376,20 @@ class OrderUpdateModel
     /**
      * The shops country code at the point of order creation
      *
-     * @return string
+     * @return string|null
      */
-    public function getShopCountryCode() : string
+    public function getShopCountryCode() : ?string
     {
         return $this->shopCountryCode;
     }
     /**
      * The shops country code at the point of order creation
      *
-     * @param string $shopCountryCode
+     * @param string|null $shopCountryCode
      *
      * @return self
      */
-    public function setShopCountryCode(string $shopCountryCode) : self
+    public function setShopCountryCode(?string $shopCountryCode) : self
     {
         $this->shopCountryCode = $shopCountryCode;
         return $this;
@@ -397,20 +397,20 @@ class OrderUpdateModel
     /**
      * The total order amount
      *
-     * @return float
+     * @return float|null
      */
-    public function getTotalAmount() : float
+    public function getTotalAmount() : ?float
     {
         return $this->totalAmount;
     }
     /**
      * The total order amount
      *
-     * @param float $totalAmount
+     * @param float|null $totalAmount
      *
      * @return self
      */
-    public function setTotalAmount(float $totalAmount) : self
+    public function setTotalAmount(?float $totalAmount) : self
     {
         $this->totalAmount = $totalAmount;
         return $this;
@@ -418,20 +418,20 @@ class OrderUpdateModel
     /**
      * The total order VAT amount
      *
-     * @return float
+     * @return float|null
      */
-    public function getTotalVat() : float
+    public function getTotalVat() : ?float
     {
         return $this->totalVat;
     }
     /**
      * The total order VAT amount
      *
-     * @param float $totalVat
+     * @param float|null $totalVat
      *
      * @return self
      */
-    public function setTotalVat(float $totalVat) : self
+    public function setTotalVat(?float $totalVat) : self
     {
         $this->totalVat = $totalVat;
         return $this;
@@ -439,20 +439,20 @@ class OrderUpdateModel
     /**
      * The total order amount to pay
      *
-     * @return float
+     * @return float|null
      */
-    public function getAmountToPay() : float
+    public function getAmountToPay() : ?float
     {
         return $this->amountToPay;
     }
     /**
      * The total order amount to pay
      *
-     * @param float $amountToPay
+     * @param float|null $amountToPay
      *
      * @return self
      */
-    public function setAmountToPay(float $amountToPay) : self
+    public function setAmountToPay(?float $amountToPay) : self
     {
         $this->amountToPay = $amountToPay;
         return $this;
@@ -460,20 +460,20 @@ class OrderUpdateModel
     /**
      * The total order amount, in the shops base currency
      *
-     * @return float
+     * @return float|null
      */
-    public function getTotalAmountInBaseCurrency() : float
+    public function getTotalAmountInBaseCurrency() : ?float
     {
         return $this->totalAmountInBaseCurrency;
     }
     /**
      * The total order amount, in the shops base currency
      *
-     * @param float $totalAmountInBaseCurrency
+     * @param float|null $totalAmountInBaseCurrency
      *
      * @return self
      */
-    public function setTotalAmountInBaseCurrency(float $totalAmountInBaseCurrency) : self
+    public function setTotalAmountInBaseCurrency(?float $totalAmountInBaseCurrency) : self
     {
         $this->totalAmountInBaseCurrency = $totalAmountInBaseCurrency;
         return $this;
@@ -481,20 +481,20 @@ class OrderUpdateModel
     /**
      * The total VAT amount, in the shops base currency
      *
-     * @return float
+     * @return float|null
      */
-    public function getTotalVatInBaseCurrency() : float
+    public function getTotalVatInBaseCurrency() : ?float
     {
         return $this->totalVatInBaseCurrency;
     }
     /**
      * The total VAT amount, in the shops base currency
      *
-     * @param float $totalVatInBaseCurrency
+     * @param float|null $totalVatInBaseCurrency
      *
      * @return self
      */
-    public function setTotalVatInBaseCurrency(float $totalVatInBaseCurrency) : self
+    public function setTotalVatInBaseCurrency(?float $totalVatInBaseCurrency) : self
     {
         $this->totalVatInBaseCurrency = $totalVatInBaseCurrency;
         return $this;
@@ -502,20 +502,20 @@ class OrderUpdateModel
     /**
      * The total amount to pay, in the shops base currency
      *
-     * @return float
+     * @return float|null
      */
-    public function getAmountToPayInBaseCurrency() : float
+    public function getAmountToPayInBaseCurrency() : ?float
     {
         return $this->amountToPayInBaseCurrency;
     }
     /**
      * The total amount to pay, in the shops base currency
      *
-     * @param float $amountToPayInBaseCurrency
+     * @param float|null $amountToPayInBaseCurrency
      *
      * @return self
      */
-    public function setAmountToPayInBaseCurrency(float $amountToPayInBaseCurrency) : self
+    public function setAmountToPayInBaseCurrency(?float $amountToPayInBaseCurrency) : self
     {
         $this->amountToPayInBaseCurrency = $amountToPayInBaseCurrency;
         return $this;
@@ -523,20 +523,20 @@ class OrderUpdateModel
     /**
      * A timestamp of when the order was created. The time should be formatted using ISO-8601
      *
-     * @return string
+     * @return string|null
      */
-    public function getCreatedAt() : string
+    public function getCreatedAt() : ?string
     {
         return $this->createdAt;
     }
     /**
      * A timestamp of when the order was created. The time should be formatted using ISO-8601
      *
-     * @param string $createdAt
+     * @param string|null $createdAt
      *
      * @return self
      */
-    public function setCreatedAt(string $createdAt) : self
+    public function setCreatedAt(?string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -544,20 +544,20 @@ class OrderUpdateModel
     /**
      * The ID of the orders customer
      *
-     * @return int
+     * @return int|null
      */
-    public function getCustomerId() : int
+    public function getCustomerId() : ?int
     {
         return $this->customerId;
     }
     /**
      * The ID of the orders customer
      *
-     * @param int $customerId
+     * @param int|null $customerId
      *
      * @return self
      */
-    public function setCustomerId(int $customerId) : self
+    public function setCustomerId(?int $customerId) : self
     {
         $this->customerId = $customerId;
         return $this;
@@ -565,20 +565,20 @@ class OrderUpdateModel
     /**
      * The ID of the orders status
      *
-     * @return int
+     * @return int|null
      */
-    public function getStatusId() : int
+    public function getStatusId() : ?int
     {
         return $this->statusId;
     }
     /**
      * The ID of the orders status
      *
-     * @param int $statusId
+     * @param int|null $statusId
      *
      * @return self
      */
-    public function setStatusId(int $statusId) : self
+    public function setStatusId(?int $statusId) : self
     {
         $this->statusId = $statusId;
         return $this;
@@ -586,20 +586,20 @@ class OrderUpdateModel
     /**
      * Set this to false to prevent sending email to customer on changes to statusId and new orders
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getOnOrderStatusChangeSendEmail() : bool
+    public function getOnOrderStatusChangeSendEmail() : ?bool
     {
         return $this->onOrderStatusChangeSendEmail;
     }
     /**
      * Set this to false to prevent sending email to customer on changes to statusId and new orders
      *
-     * @param bool $onOrderStatusChangeSendEmail
+     * @param bool|null $onOrderStatusChangeSendEmail
      *
      * @return self
      */
-    public function setOnOrderStatusChangeSendEmail(bool $onOrderStatusChangeSendEmail) : self
+    public function setOnOrderStatusChangeSendEmail(?bool $onOrderStatusChangeSendEmail) : self
     {
         $this->onOrderStatusChangeSendEmail = $onOrderStatusChangeSendEmail;
         return $this;
@@ -607,20 +607,20 @@ class OrderUpdateModel
     /**
      * Set this to false to prevent processing payment on changes to statusId. Only applies to payment methods that support processing payments. For example charging a reserved amount or cancel a created invoice
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getOnOrderStatusChangeProcessPayment() : bool
+    public function getOnOrderStatusChangeProcessPayment() : ?bool
     {
         return $this->onOrderStatusChangeProcessPayment;
     }
     /**
      * Set this to false to prevent processing payment on changes to statusId. Only applies to payment methods that support processing payments. For example charging a reserved amount or cancel a created invoice
      *
-     * @param bool $onOrderStatusChangeProcessPayment
+     * @param bool|null $onOrderStatusChangeProcessPayment
      *
      * @return self
      */
-    public function setOnOrderStatusChangeProcessPayment(bool $onOrderStatusChangeProcessPayment) : self
+    public function setOnOrderStatusChangeProcessPayment(?bool $onOrderStatusChangeProcessPayment) : self
     {
         $this->onOrderStatusChangeProcessPayment = $onOrderStatusChangeProcessPayment;
         return $this;
@@ -628,20 +628,20 @@ class OrderUpdateModel
     /**
      * The ID of the orders shipping method
      *
-     * @return int
+     * @return int|null
      */
-    public function getShippingMethodId() : int
+    public function getShippingMethodId() : ?int
     {
         return $this->shippingMethodId;
     }
     /**
      * The ID of the orders shipping method
      *
-     * @param int $shippingMethodId
+     * @param int|null $shippingMethodId
      *
      * @return self
      */
-    public function setShippingMethodId(int $shippingMethodId) : self
+    public function setShippingMethodId(?int $shippingMethodId) : self
     {
         $this->shippingMethodId = $shippingMethodId;
         return $this;
@@ -649,20 +649,20 @@ class OrderUpdateModel
     /**
      * The ID of the orders payment method
      *
-     * @return int
+     * @return int|null
      */
-    public function getPaymentMethodId() : int
+    public function getPaymentMethodId() : ?int
     {
         return $this->paymentMethodId;
     }
     /**
      * The ID of the orders payment method
      *
-     * @param int $paymentMethodId
+     * @param int|null $paymentMethodId
      *
      * @return self
      */
-    public function setPaymentMethodId(int $paymentMethodId) : self
+    public function setPaymentMethodId(?int $paymentMethodId) : self
     {
         $this->paymentMethodId = $paymentMethodId;
         return $this;
@@ -670,20 +670,20 @@ class OrderUpdateModel
     /**
      * The ID code of the payment method.
      *
-     * @return string
+     * @return string|null
      */
-    public function getPaymentMethodIdCode() : string
+    public function getPaymentMethodIdCode() : ?string
     {
         return $this->paymentMethodIdCode;
     }
     /**
      * The ID code of the payment method.
      *
-     * @param string $paymentMethodIdCode
+     * @param string|null $paymentMethodIdCode
      *
      * @return self
      */
-    public function setPaymentMethodIdCode(string $paymentMethodIdCode) : self
+    public function setPaymentMethodIdCode(?string $paymentMethodIdCode) : self
     {
         $this->paymentMethodIdCode = $paymentMethodIdCode;
         return $this;
@@ -691,20 +691,20 @@ class OrderUpdateModel
     /**
      * Title of the orders payment method
      *
-     * @return string
+     * @return string|null
      */
-    public function getPaymentMethodName() : string
+    public function getPaymentMethodName() : ?string
     {
         return $this->paymentMethodName;
     }
     /**
      * Title of the orders payment method
      *
-     * @param string $paymentMethodName
+     * @param string|null $paymentMethodName
      *
      * @return self
      */
-    public function setPaymentMethodName(string $paymentMethodName) : self
+    public function setPaymentMethodName(?string $paymentMethodName) : self
     {
         $this->paymentMethodName = $paymentMethodName;
         return $this;
@@ -712,20 +712,20 @@ class OrderUpdateModel
     /**
      * Payment fee
      *
-     * @return float
+     * @return float|null
      */
-    public function getPaymentFee() : float
+    public function getPaymentFee() : ?float
     {
         return $this->paymentFee;
     }
     /**
      * Payment fee
      *
-     * @param float $paymentFee
+     * @param float|null $paymentFee
      *
      * @return self
      */
-    public function setPaymentFee(float $paymentFee) : self
+    public function setPaymentFee(?float $paymentFee) : self
     {
         $this->paymentFee = $paymentFee;
         return $this;
@@ -733,20 +733,20 @@ class OrderUpdateModel
     /**
      * The VAT rate of the paymentFee in percent
      *
-     * @return float
+     * @return float|null
      */
-    public function getPaymentVatRate() : float
+    public function getPaymentVatRate() : ?float
     {
         return $this->paymentVatRate;
     }
     /**
      * The VAT rate of the paymentFee in percent
      *
-     * @param float $paymentVatRate
+     * @param float|null $paymentVatRate
      *
      * @return self
      */
-    public function setPaymentVatRate(float $paymentVatRate) : self
+    public function setPaymentVatRate(?float $paymentVatRate) : self
     {
         $this->paymentVatRate = $paymentVatRate;
         return $this;
@@ -754,20 +754,20 @@ class OrderUpdateModel
     /**
      * Title of the orders shipping method
      *
-     * @return string
+     * @return string|null
      */
-    public function getShippingMethodName() : string
+    public function getShippingMethodName() : ?string
     {
         return $this->shippingMethodName;
     }
     /**
      * Title of the orders shipping method
      *
-     * @param string $shippingMethodName
+     * @param string|null $shippingMethodName
      *
      * @return self
      */
-    public function setShippingMethodName(string $shippingMethodName) : self
+    public function setShippingMethodName(?string $shippingMethodName) : self
     {
         $this->shippingMethodName = $shippingMethodName;
         return $this;
@@ -775,20 +775,20 @@ class OrderUpdateModel
     /**
      * Shipping cost
      *
-     * @return float
+     * @return float|null
      */
-    public function getShippingCost() : float
+    public function getShippingCost() : ?float
     {
         return $this->shippingCost;
     }
     /**
      * Shipping cost
      *
-     * @param float $shippingCost
+     * @param float|null $shippingCost
      *
      * @return self
      */
-    public function setShippingCost(float $shippingCost) : self
+    public function setShippingCost(?float $shippingCost) : self
     {
         $this->shippingCost = $shippingCost;
         return $this;
@@ -796,20 +796,20 @@ class OrderUpdateModel
     /**
      * The VAT rate of the shippingCost in percent
      *
-     * @return float
+     * @return float|null
      */
-    public function getShippingVatRate() : float
+    public function getShippingVatRate() : ?float
     {
         return $this->shippingVatRate;
     }
     /**
      * The VAT rate of the shippingCost in percent
      *
-     * @param float $shippingVatRate
+     * @param float|null $shippingVatRate
      *
      * @return self
      */
-    public function setShippingVatRate(float $shippingVatRate) : self
+    public function setShippingVatRate(?float $shippingVatRate) : self
     {
         $this->shippingVatRate = $shippingVatRate;
         return $this;
@@ -817,20 +817,20 @@ class OrderUpdateModel
     /**
      * The total weight of the order in kg. This field is a calculated summary of all order items
      *
-     * @return float
+     * @return float|null
      */
-    public function getTotalWeight() : float
+    public function getTotalWeight() : ?float
     {
         return $this->totalWeight;
     }
     /**
      * The total weight of the order in kg. This field is a calculated summary of all order items
      *
-     * @param float $totalWeight
+     * @param float|null $totalWeight
      *
      * @return self
      */
-    public function setTotalWeight(float $totalWeight) : self
+    public function setTotalWeight(?float $totalWeight) : self
     {
         $this->totalWeight = $totalWeight;
         return $this;
@@ -838,20 +838,20 @@ class OrderUpdateModel
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
-     * @return string
+     * @return string|null
      */
-    public function getCustomInfo1() : string
+    public function getCustomInfo1() : ?string
     {
         return $this->customInfo1;
     }
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
-     * @param string $customInfo1
+     * @param string|null $customInfo1
      *
      * @return self
      */
-    public function setCustomInfo1(string $customInfo1) : self
+    public function setCustomInfo1(?string $customInfo1) : self
     {
         $this->customInfo1 = $customInfo1;
         return $this;
@@ -859,20 +859,20 @@ class OrderUpdateModel
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
-     * @return string
+     * @return string|null
      */
-    public function getCustomInfo2() : string
+    public function getCustomInfo2() : ?string
     {
         return $this->customInfo2;
     }
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
-     * @param string $customInfo2
+     * @param string|null $customInfo2
      *
      * @return self
      */
-    public function setCustomInfo2(string $customInfo2) : self
+    public function setCustomInfo2(?string $customInfo2) : self
     {
         $this->customInfo2 = $customInfo2;
         return $this;
@@ -880,20 +880,20 @@ class OrderUpdateModel
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
-     * @return string
+     * @return string|null
      */
-    public function getCustomInfo3() : string
+    public function getCustomInfo3() : ?string
     {
         return $this->customInfo3;
     }
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
-     * @param string $customInfo3
+     * @param string|null $customInfo3
      *
      * @return self
      */
-    public function setCustomInfo3(string $customInfo3) : self
+    public function setCustomInfo3(?string $customInfo3) : self
     {
         $this->customInfo3 = $customInfo3;
         return $this;
@@ -901,20 +901,20 @@ class OrderUpdateModel
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
-     * @return string
+     * @return string|null
      */
-    public function getCustomInfo4() : string
+    public function getCustomInfo4() : ?string
     {
         return $this->customInfo4;
     }
     /**
      * Custom info saved to an order. Can be linked to fields on the checkout page for additional data collection
      *
-     * @param string $customInfo4
+     * @param string|null $customInfo4
      *
      * @return self
      */
-    public function setCustomInfo4(string $customInfo4) : self
+    public function setCustomInfo4(?string $customInfo4) : self
     {
         $this->customInfo4 = $customInfo4;
         return $this;
@@ -922,20 +922,20 @@ class OrderUpdateModel
     /**
      * The code ID of a discount code that was used for this order
      *
-     * @return string
+     * @return string|null
      */
-    public function getDiscountCode() : string
+    public function getDiscountCode() : ?string
     {
         return $this->discountCode;
     }
     /**
      * The code ID of a discount code that was used for this order
      *
-     * @param string $discountCode
+     * @param string|null $discountCode
      *
      * @return self
      */
-    public function setDiscountCode(string $discountCode) : self
+    public function setDiscountCode(?string $discountCode) : self
     {
         $this->discountCode = $discountCode;
         return $this;
@@ -943,20 +943,20 @@ class OrderUpdateModel
     /**
      * The amount paid via the payment method for this order
      *
-     * @return float
+     * @return float|null
      */
-    public function getAmountPaid() : float
+    public function getAmountPaid() : ?float
     {
         return $this->amountPaid;
     }
     /**
      * The amount paid via the payment method for this order
      *
-     * @param float $amountPaid
+     * @param float|null $amountPaid
      *
      * @return self
      */
-    public function setAmountPaid(float $amountPaid) : self
+    public function setAmountPaid(?float $amountPaid) : self
     {
         $this->amountPaid = $amountPaid;
         return $this;
@@ -964,20 +964,20 @@ class OrderUpdateModel
     /**
      * Same as amountPaid, but in the shops base currency
      *
-     * @return float
+     * @return float|null
      */
-    public function getAmountPaidInBaseCurrency() : float
+    public function getAmountPaidInBaseCurrency() : ?float
     {
         return $this->amountPaidInBaseCurrency;
     }
     /**
      * Same as amountPaid, but in the shops base currency
      *
-     * @param float $amountPaidInBaseCurrency
+     * @param float|null $amountPaidInBaseCurrency
      *
      * @return self
      */
-    public function setAmountPaidInBaseCurrency(float $amountPaidInBaseCurrency) : self
+    public function setAmountPaidInBaseCurrency(?float $amountPaidInBaseCurrency) : self
     {
         $this->amountPaidInBaseCurrency = $amountPaidInBaseCurrency;
         return $this;
@@ -985,20 +985,20 @@ class OrderUpdateModel
     /**
      * Is the order completed (that is, is it completely saved and has the payment method processed and confirmed it)
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsComplete() : bool
+    public function getIsComplete() : ?bool
     {
         return $this->isComplete;
     }
     /**
      * Is the order completed (that is, is it completely saved and has the payment method processed and confirmed it)
      *
-     * @param bool $isComplete
+     * @param bool|null $isComplete
      *
      * @return self
      */
-    public function setIsComplete(bool $isComplete) : self
+    public function setIsComplete(?bool $isComplete) : self
     {
         $this->isComplete = $isComplete;
         return $this;
@@ -1006,20 +1006,20 @@ class OrderUpdateModel
     /**
      * The currency code of the currency that was used for this order. Has to be a valid ISO 4217 currency code
      *
-     * @return string
+     * @return string|null
      */
-    public function getCurrencyCode() : string
+    public function getCurrencyCode() : ?string
     {
         return $this->currencyCode;
     }
     /**
      * The currency code of the currency that was used for this order. Has to be a valid ISO 4217 currency code
      *
-     * @param string $currencyCode
+     * @param string|null $currencyCode
      *
      * @return self
      */
-    public function setCurrencyCode(string $currencyCode) : self
+    public function setCurrencyCode(?string $currencyCode) : self
     {
         $this->currencyCode = $currencyCode;
         return $this;
@@ -1027,20 +1027,20 @@ class OrderUpdateModel
     /**
      * The exchange rate between this orders currency and the shops base currency. Ff, for example, the shop base currency is SEK and this order was placed in NOK, where 1 SEK = 0.97 NOK - this value would be 0.97
      *
-     * @return float
+     * @return float|null
      */
-    public function getCurrencyExchangeRate() : float
+    public function getCurrencyExchangeRate() : ?float
     {
         return $this->currencyExchangeRate;
     }
     /**
      * The exchange rate between this orders currency and the shops base currency. Ff, for example, the shop base currency is SEK and this order was placed in NOK, where 1 SEK = 0.97 NOK - this value would be 0.97
      *
-     * @param float $currencyExchangeRate
+     * @param float|null $currencyExchangeRate
      *
      * @return self
      */
-    public function setCurrencyExchangeRate(float $currencyExchangeRate) : self
+    public function setCurrencyExchangeRate(?float $currencyExchangeRate) : self
     {
         $this->currencyExchangeRate = $currencyExchangeRate;
         return $this;
@@ -1048,20 +1048,20 @@ class OrderUpdateModel
     /**
      * The number of decimals to display
      *
-     * @return int
+     * @return int|null
      */
-    public function getCurrencyPrecision() : int
+    public function getCurrencyPrecision() : ?int
     {
         return $this->currencyPrecision;
     }
     /**
      * The number of decimals to display
      *
-     * @param int $currencyPrecision
+     * @param int|null $currencyPrecision
      *
      * @return self
      */
-    public function setCurrencyPrecision(int $currencyPrecision) : self
+    public function setCurrencyPrecision(?int $currencyPrecision) : self
     {
         $this->currencyPrecision = $currencyPrecision;
         return $this;
@@ -1069,20 +1069,20 @@ class OrderUpdateModel
     /**
      * Language Code (ISO 639-1) used for placing this order. Has to be a valid lang code that the shop has setup. Used for order update emails, etc.
      *
-     * @return string
+     * @return string|null
      */
-    public function getLangCode() : string
+    public function getLangCode() : ?string
     {
         return $this->langCode;
     }
     /**
      * Language Code (ISO 639-1) used for placing this order. Has to be a valid lang code that the shop has setup. Used for order update emails, etc.
      *
-     * @param string $langCode
+     * @param string|null $langCode
      *
      * @return self
      */
-    public function setLangCode(string $langCode) : self
+    public function setLangCode(?string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -1090,20 +1090,20 @@ class OrderUpdateModel
     /**
      * Reference to the payment methods payment transaction
      *
-     * @return string
+     * @return string|null
      */
-    public function getPaymentReference() : string
+    public function getPaymentReference() : ?string
     {
         return $this->paymentReference;
     }
     /**
      * Reference to the payment methods payment transaction
      *
-     * @param string $paymentReference
+     * @param string|null $paymentReference
      *
      * @return self
      */
-    public function setPaymentReference(string $paymentReference) : self
+    public function setPaymentReference(?string $paymentReference) : self
     {
         $this->paymentReference = $paymentReference;
         return $this;
@@ -1111,20 +1111,20 @@ class OrderUpdateModel
     /**
      * Status of the payment methods payment transaction
      *
-     * @return string
+     * @return string|null
      */
-    public function getPaymentStatus() : string
+    public function getPaymentStatus() : ?string
     {
         return $this->paymentStatus;
     }
     /**
      * Status of the payment methods payment transaction
      *
-     * @param string $paymentStatus
+     * @param string|null $paymentStatus
      *
      * @return self
      */
-    public function setPaymentStatus(string $paymentStatus) : self
+    public function setPaymentStatus(?string $paymentStatus) : self
     {
         $this->paymentStatus = $paymentStatus;
         return $this;
@@ -1132,20 +1132,20 @@ class OrderUpdateModel
     /**
      * An order is read when an administrator has read it via the admin GUI
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsRead() : bool
+    public function getIsRead() : ?bool
     {
         return $this->isRead;
     }
     /**
      * An order is read when an administrator has read it via the admin GUI
      *
-     * @param bool $isRead
+     * @param bool|null $isRead
      *
      * @return self
      */
-    public function setIsRead(bool $isRead) : self
+    public function setIsRead(?bool $isRead) : self
     {
         $this->isRead = $isRead;
         return $this;
@@ -1153,20 +1153,20 @@ class OrderUpdateModel
     /**
      * Whether the customer or an admin has added a comment to the order
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getHasComment() : bool
+    public function getHasComment() : ?bool
     {
         return $this->hasComment;
     }
     /**
      * Whether the customer or an admin has added a comment to the order
      *
-     * @param bool $hasComment
+     * @param bool|null $hasComment
      *
      * @return self
      */
-    public function setHasComment(bool $hasComment) : self
+    public function setHasComment(?bool $hasComment) : self
     {
         $this->hasComment = $hasComment;
         return $this;
@@ -1174,20 +1174,20 @@ class OrderUpdateModel
     /**
      * An internal comment placed by an administrator. Not available to the customer
      *
-     * @return string
+     * @return string|null
      */
-    public function getInternalComment() : string
+    public function getInternalComment() : ?string
     {
         return $this->internalComment;
     }
     /**
      * An internal comment placed by an administrator. Not available to the customer
      *
-     * @param string $internalComment
+     * @param string|null $internalComment
      *
      * @return self
      */
-    public function setInternalComment(string $internalComment) : self
+    public function setInternalComment(?string $internalComment) : self
     {
         $this->internalComment = $internalComment;
         return $this;
@@ -1195,20 +1195,20 @@ class OrderUpdateModel
     /**
      * The ID of the tracking number type. Types are available via: GET /shipping-tracker-types
      *
-     * @return int
+     * @return int|null
      */
-    public function getShippingTrackerType() : int
+    public function getShippingTrackerType() : ?int
     {
         return $this->shippingTrackerType;
     }
     /**
      * The ID of the tracking number type. Types are available via: GET /shipping-tracker-types
      *
-     * @param int $shippingTrackerType
+     * @param int|null $shippingTrackerType
      *
      * @return self
      */
-    public function setShippingTrackerType(int $shippingTrackerType) : self
+    public function setShippingTrackerType(?int $shippingTrackerType) : self
     {
         $this->shippingTrackerType = $shippingTrackerType;
         return $this;
@@ -1216,20 +1216,20 @@ class OrderUpdateModel
     /**
      * The shipping tracking number. Has to be in the format that is used for the chosen tracking type (please contact the freight forwarder regarding this).
      *
-     * @return string
+     * @return string|null
      */
-    public function getShippingTrackingNo() : string
+    public function getShippingTrackingNo() : ?string
     {
         return $this->shippingTrackingNo;
     }
     /**
      * The shipping tracking number. Has to be in the format that is used for the chosen tracking type (please contact the freight forwarder regarding this).
      *
-     * @param string $shippingTrackingNo
+     * @param string|null $shippingTrackingNo
      *
      * @return self
      */
-    public function setShippingTrackingNo(string $shippingTrackingNo) : self
+    public function setShippingTrackingNo(?string $shippingTrackingNo) : self
     {
         $this->shippingTrackingNo = $shippingTrackingNo;
         return $this;
@@ -1237,20 +1237,20 @@ class OrderUpdateModel
     /**
      * The email address of the customer at the point of order creation
      *
-     * @return string
+     * @return string|null
      */
-    public function getOriginalCustomerEmail() : string
+    public function getOriginalCustomerEmail() : ?string
     {
         return $this->originalCustomerEmail;
     }
     /**
      * The email address of the customer at the point of order creation
      *
-     * @param string $originalCustomerEmail
+     * @param string|null $originalCustomerEmail
      *
      * @return self
      */
-    public function setOriginalCustomerEmail(string $originalCustomerEmail) : self
+    public function setOriginalCustomerEmail(?string $originalCustomerEmail) : self
     {
         $this->originalCustomerEmail = $originalCustomerEmail;
         return $this;
@@ -1258,20 +1258,20 @@ class OrderUpdateModel
     /**
      * The national id number of the customer at the point of order creation
      *
-     * @return string
+     * @return string|null
      */
-    public function getOriginalCustomerNationalIdNo() : string
+    public function getOriginalCustomerNationalIdNo() : ?string
     {
         return $this->originalCustomerNationalIdNo;
     }
     /**
      * The national id number of the customer at the point of order creation
      *
-     * @param string $originalCustomerNationalIdNo
+     * @param string|null $originalCustomerNationalIdNo
      *
      * @return self
      */
-    public function setOriginalCustomerNationalIdNo(string $originalCustomerNationalIdNo) : self
+    public function setOriginalCustomerNationalIdNo(?string $originalCustomerNationalIdNo) : self
     {
         $this->originalCustomerNationalIdNo = $originalCustomerNationalIdNo;
         return $this;
@@ -1279,20 +1279,20 @@ class OrderUpdateModel
     /**
      * The VAT number of the customer at the point of order creation
      *
-     * @return string
+     * @return string|null
      */
-    public function getOriginalCustomerVatNo() : string
+    public function getOriginalCustomerVatNo() : ?string
     {
         return $this->originalCustomerVatNo;
     }
     /**
      * The VAT number of the customer at the point of order creation
      *
-     * @param string $originalCustomerVatNo
+     * @param string|null $originalCustomerVatNo
      *
      * @return self
      */
-    public function setOriginalCustomerVatNo(string $originalCustomerVatNo) : self
+    public function setOriginalCustomerVatNo(?string $originalCustomerVatNo) : self
     {
         $this->originalCustomerVatNo = $originalCustomerVatNo;
         return $this;
@@ -1300,20 +1300,20 @@ class OrderUpdateModel
     /**
      * Custom customer info at the point of order creation
      *
-     * @return string
+     * @return string|null
      */
-    public function getOriginalCustomerCustomInfo1() : string
+    public function getOriginalCustomerCustomInfo1() : ?string
     {
         return $this->originalCustomerCustomInfo1;
     }
     /**
      * Custom customer info at the point of order creation
      *
-     * @param string $originalCustomerCustomInfo1
+     * @param string|null $originalCustomerCustomInfo1
      *
      * @return self
      */
-    public function setOriginalCustomerCustomInfo1(string $originalCustomerCustomInfo1) : self
+    public function setOriginalCustomerCustomInfo1(?string $originalCustomerCustomInfo1) : self
     {
         $this->originalCustomerCustomInfo1 = $originalCustomerCustomInfo1;
         return $this;
@@ -1321,20 +1321,20 @@ class OrderUpdateModel
     /**
      * Custom customer info at the point of order creation
      *
-     * @return string
+     * @return string|null
      */
-    public function getOriginalCustomerCustomInfo2() : string
+    public function getOriginalCustomerCustomInfo2() : ?string
     {
         return $this->originalCustomerCustomInfo2;
     }
     /**
      * Custom customer info at the point of order creation
      *
-     * @param string $originalCustomerCustomInfo2
+     * @param string|null $originalCustomerCustomInfo2
      *
      * @return self
      */
-    public function setOriginalCustomerCustomInfo2(string $originalCustomerCustomInfo2) : self
+    public function setOriginalCustomerCustomInfo2(?string $originalCustomerCustomInfo2) : self
     {
         $this->originalCustomerCustomInfo2 = $originalCustomerCustomInfo2;
         return $this;
@@ -1342,20 +1342,20 @@ class OrderUpdateModel
     /**
      * A collection of order items
      *
-     * @return OrderItemModel[]
+     * @return OrderItemModel[]|null
      */
-    public function getItems() : array
+    public function getItems() : ?array
     {
         return $this->items;
     }
     /**
      * A collection of order items
      *
-     * @param OrderItemModel[] $items
+     * @param OrderItemModel[]|null $items
      *
      * @return self
      */
-    public function setItems(array $items) : self
+    public function setItems(?array $items) : self
     {
         $this->items = $items;
         return $this;
@@ -1363,20 +1363,20 @@ class OrderUpdateModel
     /**
      * 
      *
-     * @return OrderAddressModel
+     * @return OrderAddressModel|null
      */
-    public function getAddresses() : OrderAddressModel
+    public function getAddresses() : ?OrderAddressModel
     {
         return $this->addresses;
     }
     /**
      * 
      *
-     * @param OrderAddressModel $addresses
+     * @param OrderAddressModel|null $addresses
      *
      * @return self
      */
-    public function setAddresses(OrderAddressModel $addresses) : self
+    public function setAddresses(?OrderAddressModel $addresses) : self
     {
         $this->addresses = $addresses;
         return $this;

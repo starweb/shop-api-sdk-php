@@ -7,19 +7,19 @@ class BundledProductsModel
     /**
      * Bundled product only valid for a single variant
      *
-     * @var bool
+     * @var bool|null
      */
     protected $singleVariant;
     /**
      * The bundled products id
      *
-     * @var int
+     * @var int|null
      */
     protected $bundledProductId;
     /**
      * The sku of the variant the product is locked to in the variant
      *
-     * @var string
+     * @var string|null
      */
     protected $variantSku;
     /**
@@ -31,32 +31,32 @@ class BundledProductsModel
     /**
      * The sort index of this bundled product.
      *
-     * @var int
+     * @var int|null
      */
     protected $sortIndex;
     /**
      * A collection of bundled product prices
      *
-     * @var ProductBundleProductPriceModel[]
+     * @var ProductBundleProductPriceModel[]|null
      */
     protected $prices;
     /**
      * Bundled product only valid for a single variant
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getSingleVariant() : bool
+    public function getSingleVariant() : ?bool
     {
         return $this->singleVariant;
     }
     /**
      * Bundled product only valid for a single variant
      *
-     * @param bool $singleVariant
+     * @param bool|null $singleVariant
      *
      * @return self
      */
-    public function setSingleVariant(bool $singleVariant) : self
+    public function setSingleVariant(?bool $singleVariant) : self
     {
         $this->singleVariant = $singleVariant;
         return $this;
@@ -64,20 +64,20 @@ class BundledProductsModel
     /**
      * The bundled products id
      *
-     * @return int
+     * @return int|null
      */
-    public function getBundledProductId() : int
+    public function getBundledProductId() : ?int
     {
         return $this->bundledProductId;
     }
     /**
      * The bundled products id
      *
-     * @param int $bundledProductId
+     * @param int|null $bundledProductId
      *
      * @return self
      */
-    public function setBundledProductId(int $bundledProductId) : self
+    public function setBundledProductId(?int $bundledProductId) : self
     {
         $this->bundledProductId = $bundledProductId;
         return $this;
@@ -85,20 +85,20 @@ class BundledProductsModel
     /**
      * The sku of the variant the product is locked to in the variant
      *
-     * @return string
+     * @return string|null
      */
-    public function getVariantSku() : string
+    public function getVariantSku() : ?string
     {
         return $this->variantSku;
     }
     /**
      * The sku of the variant the product is locked to in the variant
      *
-     * @param string $variantSku
+     * @param string|null $variantSku
      *
      * @return self
      */
-    public function setVariantSku(string $variantSku) : self
+    public function setVariantSku(?string $variantSku) : self
     {
         $this->variantSku = $variantSku;
         return $this;
@@ -127,20 +127,20 @@ class BundledProductsModel
     /**
      * The sort index of this bundled product.
      *
-     * @return int
+     * @return int|null
      */
-    public function getSortIndex() : int
+    public function getSortIndex() : ?int
     {
         return $this->sortIndex;
     }
     /**
      * The sort index of this bundled product.
      *
-     * @param int $sortIndex
+     * @param int|null $sortIndex
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(?int $sortIndex) : self
     {
         $this->sortIndex = $sortIndex;
         return $this;
@@ -148,20 +148,20 @@ class BundledProductsModel
     /**
      * A collection of bundled product prices
      *
-     * @return ProductBundleProductPriceModel[]
+     * @return ProductBundleProductPriceModel[]|null
      */
-    public function getPrices() : array
+    public function getPrices() : ?array
     {
         return $this->prices;
     }
     /**
      * A collection of bundled product prices
      *
-     * @param ProductBundleProductPriceModel[] $prices
+     * @param ProductBundleProductPriceModel[]|null $prices
      *
      * @return self
      */
-    public function setPrices(array $prices) : self
+    public function setPrices(?array $prices) : self
     {
         $this->prices = $prices;
         return $this;

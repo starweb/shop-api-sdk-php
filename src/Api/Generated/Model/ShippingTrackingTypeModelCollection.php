@@ -7,26 +7,26 @@ class ShippingTrackingTypeModelCollection
     /**
      * A list of shipping tracking types
      *
-     * @var ShippingTrackingTypeModel[]
+     * @var ShippingTrackingTypeModel[]|null
      */
     protected $data;
     /**
      * A list of shipping tracking types
      *
-     * @return ShippingTrackingTypeModel[]
+     * @return ShippingTrackingTypeModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A list of shipping tracking types
      *
-     * @param ShippingTrackingTypeModel[] $data
+     * @param ShippingTrackingTypeModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

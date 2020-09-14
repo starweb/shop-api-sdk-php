@@ -7,49 +7,49 @@ class CustomerUpdateModel
     /**
      * The customers ID
      *
-     * @var int
+     * @var int|null
      */
     protected $customerId;
     /**
      * A timestamp of when the customer was created. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var string|null
      */
     protected $createdAt;
     /**
      * The type of customer this is. Either: ”person” or ”company”
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * Email address of the customer
      *
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
      * National id number of the customer
      *
-     * @var string
+     * @var string|null
      */
     protected $nationalIdNo;
     /**
      * VAT number of the customer
      *
-     * @var string
+     * @var string|null
      */
     protected $vatNo;
     /**
      * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
      *
-     * @var string
+     * @var string|null
      */
     protected $customInfo1;
     /**
      * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
      *
-     * @var string
+     * @var string|null
      */
     protected $customInfo2;
     /**
@@ -61,32 +61,32 @@ class CustomerUpdateModel
     /**
      * Language code for the customer
      *
-     * @var string
+     * @var string|null
      */
     protected $langCode;
     /**
      * 
      *
-     * @var CustomerUpdateModelAddresses
+     * @var CustomerUpdateModelAddresses|null
      */
     protected $addresses;
     /**
      * The customers ID
      *
-     * @return int
+     * @return int|null
      */
-    public function getCustomerId() : int
+    public function getCustomerId() : ?int
     {
         return $this->customerId;
     }
     /**
      * The customers ID
      *
-     * @param int $customerId
+     * @param int|null $customerId
      *
      * @return self
      */
-    public function setCustomerId(int $customerId) : self
+    public function setCustomerId(?int $customerId) : self
     {
         $this->customerId = $customerId;
         return $this;
@@ -94,20 +94,20 @@ class CustomerUpdateModel
     /**
      * A timestamp of when the customer was created. The time should be formatted using ISO-8601
      *
-     * @return string
+     * @return string|null
      */
-    public function getCreatedAt() : string
+    public function getCreatedAt() : ?string
     {
         return $this->createdAt;
     }
     /**
      * A timestamp of when the customer was created. The time should be formatted using ISO-8601
      *
-     * @param string $createdAt
+     * @param string|null $createdAt
      *
      * @return self
      */
-    public function setCreatedAt(string $createdAt) : self
+    public function setCreatedAt(?string $createdAt) : self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -115,20 +115,20 @@ class CustomerUpdateModel
     /**
      * The type of customer this is. Either: ”person” or ”company”
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType() : ?string
     {
         return $this->type;
     }
     /**
      * The type of customer this is. Either: ”person” or ”company”
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type) : self
     {
         $this->type = $type;
         return $this;
@@ -136,20 +136,20 @@ class CustomerUpdateModel
     /**
      * Email address of the customer
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail() : string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
     /**
      * Email address of the customer
      *
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(?string $email) : self
     {
         $this->email = $email;
         return $this;
@@ -157,20 +157,20 @@ class CustomerUpdateModel
     /**
      * National id number of the customer
      *
-     * @return string
+     * @return string|null
      */
-    public function getNationalIdNo() : string
+    public function getNationalIdNo() : ?string
     {
         return $this->nationalIdNo;
     }
     /**
      * National id number of the customer
      *
-     * @param string $nationalIdNo
+     * @param string|null $nationalIdNo
      *
      * @return self
      */
-    public function setNationalIdNo(string $nationalIdNo) : self
+    public function setNationalIdNo(?string $nationalIdNo) : self
     {
         $this->nationalIdNo = $nationalIdNo;
         return $this;
@@ -178,20 +178,20 @@ class CustomerUpdateModel
     /**
      * VAT number of the customer
      *
-     * @return string
+     * @return string|null
      */
-    public function getVatNo() : string
+    public function getVatNo() : ?string
     {
         return $this->vatNo;
     }
     /**
      * VAT number of the customer
      *
-     * @param string $vatNo
+     * @param string|null $vatNo
      *
      * @return self
      */
-    public function setVatNo(string $vatNo) : self
+    public function setVatNo(?string $vatNo) : self
     {
         $this->vatNo = $vatNo;
         return $this;
@@ -199,20 +199,20 @@ class CustomerUpdateModel
     /**
      * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
      *
-     * @return string
+     * @return string|null
      */
-    public function getCustomInfo1() : string
+    public function getCustomInfo1() : ?string
     {
         return $this->customInfo1;
     }
     /**
      * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
      *
-     * @param string $customInfo1
+     * @param string|null $customInfo1
      *
      * @return self
      */
-    public function setCustomInfo1(string $customInfo1) : self
+    public function setCustomInfo1(?string $customInfo1) : self
     {
         $this->customInfo1 = $customInfo1;
         return $this;
@@ -220,20 +220,20 @@ class CustomerUpdateModel
     /**
      * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
      *
-     * @return string
+     * @return string|null
      */
-    public function getCustomInfo2() : string
+    public function getCustomInfo2() : ?string
     {
         return $this->customInfo2;
     }
     /**
      * Custom info saved to a customer. Can be linked to text fields on the customer registration page for additional data collection
      *
-     * @param string $customInfo2
+     * @param string|null $customInfo2
      *
      * @return self
      */
-    public function setCustomInfo2(string $customInfo2) : self
+    public function setCustomInfo2(?string $customInfo2) : self
     {
         $this->customInfo2 = $customInfo2;
         return $this;
@@ -262,20 +262,20 @@ class CustomerUpdateModel
     /**
      * Language code for the customer
      *
-     * @return string
+     * @return string|null
      */
-    public function getLangCode() : string
+    public function getLangCode() : ?string
     {
         return $this->langCode;
     }
     /**
      * Language code for the customer
      *
-     * @param string $langCode
+     * @param string|null $langCode
      *
      * @return self
      */
-    public function setLangCode(string $langCode) : self
+    public function setLangCode(?string $langCode) : self
     {
         $this->langCode = $langCode;
         return $this;
@@ -283,20 +283,20 @@ class CustomerUpdateModel
     /**
      * 
      *
-     * @return CustomerUpdateModelAddresses
+     * @return CustomerUpdateModelAddresses|null
      */
-    public function getAddresses() : CustomerUpdateModelAddresses
+    public function getAddresses() : ?CustomerUpdateModelAddresses
     {
         return $this->addresses;
     }
     /**
      * 
      *
-     * @param CustomerUpdateModelAddresses $addresses
+     * @param CustomerUpdateModelAddresses|null $addresses
      *
      * @return self
      */
-    public function setAddresses(CustomerUpdateModelAddresses $addresses) : self
+    public function setAddresses(?CustomerUpdateModelAddresses $addresses) : self
     {
         $this->addresses = $addresses;
         return $this;

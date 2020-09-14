@@ -7,26 +7,26 @@ class ProductMediaFileLinkModelItem
     /**
      * 
      *
-     * @var ProductMediaFileLinkModel
+     * @var ProductMediaFileLinkModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductMediaFileLinkModel
+     * @return ProductMediaFileLinkModel|null
      */
-    public function getData() : ProductMediaFileLinkModel
+    public function getData() : ?ProductMediaFileLinkModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductMediaFileLinkModel $data
+     * @param ProductMediaFileLinkModel|null $data
      *
      * @return self
      */
-    public function setData(ProductMediaFileLinkModel $data) : self
+    public function setData(?ProductMediaFileLinkModel $data) : self
     {
         $this->data = $data;
         return $this;

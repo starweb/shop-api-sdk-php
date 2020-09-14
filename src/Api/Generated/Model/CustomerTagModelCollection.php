@@ -7,26 +7,26 @@ class CustomerTagModelCollection
     /**
      * A list of customer tags
      *
-     * @var CustomerTagModel[]
+     * @var CustomerTagModel[]|null
      */
     protected $data;
     /**
      * A list of customer tags
      *
-     * @return CustomerTagModel[]
+     * @return CustomerTagModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A list of customer tags
      *
-     * @param CustomerTagModel[] $data
+     * @param CustomerTagModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;

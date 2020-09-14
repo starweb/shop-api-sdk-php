@@ -7,26 +7,26 @@ class ProductUnitModelItem
     /**
      * 
      *
-     * @var ProductUnitModel
+     * @var ProductUnitModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductUnitModel
+     * @return ProductUnitModel|null
      */
-    public function getData() : ProductUnitModel
+    public function getData() : ?ProductUnitModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductUnitModel $data
+     * @param ProductUnitModel|null $data
      *
      * @return self
      */
-    public function setData(ProductUnitModel $data) : self
+    public function setData(?ProductUnitModel $data) : self
     {
         $this->data = $data;
         return $this;

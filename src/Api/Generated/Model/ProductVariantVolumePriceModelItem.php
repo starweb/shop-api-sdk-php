@@ -7,26 +7,26 @@ class ProductVariantVolumePriceModelItem
     /**
      * 
      *
-     * @var ProductVariantVolumePriceModel
+     * @var ProductVariantVolumePriceModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductVariantVolumePriceModel
+     * @return ProductVariantVolumePriceModel|null
      */
-    public function getData() : ProductVariantVolumePriceModel
+    public function getData() : ?ProductVariantVolumePriceModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductVariantVolumePriceModel $data
+     * @param ProductVariantVolumePriceModel|null $data
      *
      * @return self
      */
-    public function setData(ProductVariantVolumePriceModel $data) : self
+    public function setData(?ProductVariantVolumePriceModel $data) : self
     {
         $this->data = $data;
         return $this;

@@ -7,26 +7,26 @@ class ProductCategoryLinkModelItem
     /**
      * 
      *
-     * @var ProductCategoryLinkModel
+     * @var ProductCategoryLinkModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductCategoryLinkModel
+     * @return ProductCategoryLinkModel|null
      */
-    public function getData() : ProductCategoryLinkModel
+    public function getData() : ?ProductCategoryLinkModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductCategoryLinkModel $data
+     * @param ProductCategoryLinkModel|null $data
      *
      * @return self
      */
-    public function setData(ProductCategoryLinkModel $data) : self
+    public function setData(?ProductCategoryLinkModel $data) : self
     {
         $this->data = $data;
         return $this;

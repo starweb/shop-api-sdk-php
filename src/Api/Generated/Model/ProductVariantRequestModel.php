@@ -7,7 +7,7 @@ class ProductVariantRequestModel
     /**
      * The product variants SKU (stock keeping unit)
      *
-     * @var string
+     * @var string|null
      */
     protected $sku;
     /**
@@ -79,7 +79,7 @@ class ProductVariantRequestModel
     /**
      * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true.
      *
-     * @var int[]
+     * @var int[]|null
      */
     protected $attributeValueLinks;
     /**
@@ -91,20 +91,20 @@ class ProductVariantRequestModel
     /**
      * The product variants SKU (stock keeping unit)
      *
-     * @return string
+     * @return string|null
      */
-    public function getSku() : string
+    public function getSku() : ?string
     {
         return $this->sku;
     }
     /**
      * The product variants SKU (stock keeping unit)
      *
-     * @param string $sku
+     * @param string|null $sku
      *
      * @return self
      */
-    public function setSku(string $sku) : self
+    public function setSku(?string $sku) : self
     {
         $this->sku = $sku;
         return $this;
@@ -343,20 +343,20 @@ class ProductVariantRequestModel
     /**
      * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true.
      *
-     * @return int[]
+     * @return int[]|null
      */
-    public function getAttributeValueLinks() : array
+    public function getAttributeValueLinks() : ?array
     {
         return $this->attributeValueLinks;
     }
     /**
      * An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product´s hasSeveralVariants field is set to true.
      *
-     * @param int[] $attributeValueLinks
+     * @param int[]|null $attributeValueLinks
      *
      * @return self
      */
-    public function setAttributeValueLinks(array $attributeValueLinks) : self
+    public function setAttributeValueLinks(?array $attributeValueLinks) : self
     {
         $this->attributeValueLinks = $attributeValueLinks;
         return $this;

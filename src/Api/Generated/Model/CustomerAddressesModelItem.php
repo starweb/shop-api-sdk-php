@@ -7,26 +7,26 @@ class CustomerAddressesModelItem
     /**
      * 
      *
-     * @var AddressModel
+     * @var AddressModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return AddressModel
+     * @return AddressModel|null
      */
-    public function getData() : AddressModel
+    public function getData() : ?AddressModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param AddressModel $data
+     * @param AddressModel|null $data
      *
      * @return self
      */
-    public function setData(AddressModel $data) : self
+    public function setData(?AddressModel $data) : self
     {
         $this->data = $data;
         return $this;

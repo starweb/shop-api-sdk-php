@@ -25,11 +25,14 @@ class MediaFileUploadModelNormalizer implements DenormalizerInterface, Normalize
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \Starweb\Api\Generated\Model\MediaFileUploadModel();
-        if (property_exists($data, 'file')) {
+        if (property_exists($data, 'file') && $data->{'file'} !== null) {
             $object->setFile($data->{'file'});
+        }
+        elseif (property_exists($data, 'file') && $data->{'file'} === null) {
+            $object->setFile(null);
         }
         return $object;
     }
@@ -38,6 +41,9 @@ class MediaFileUploadModelNormalizer implements DenormalizerInterface, Normalize
         $data = new \stdClass();
         if (null !== $object->getFile()) {
             $data->{'file'} = $object->getFile();
+        }
+        else {
+            $data->{'file'} = null;
         }
         return $data;
     }

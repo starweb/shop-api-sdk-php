@@ -7,26 +7,26 @@ class ProductBundleProductPriceModelCollection
     /**
      * A collection of bundled product prices
      *
-     * @var ProductBundleProductPriceModel[]
+     * @var ProductBundleProductPriceModel[]|null
      */
     protected $data;
     /**
      * A collection of bundled product prices
      *
-     * @return ProductBundleProductPriceModel[]
+     * @return ProductBundleProductPriceModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A collection of bundled product prices
      *
-     * @param ProductBundleProductPriceModel[] $data
+     * @param ProductBundleProductPriceModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
         $this->data = $data;
         return $this;
