@@ -29,22 +29,22 @@ class OrderAddressModelNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $object = new \Starweb\Api\Generated\Model\OrderAddressModel();
         if (property_exists($data, 'originalInvoice')) {
-            $object->setOriginalInvoice($data->{'originalInvoice'});
+            $object->setOriginalInvoice($this->denormalizer->denormalize($data->{'originalInvoice'}, 'Starweb\\Api\\Generated\\Model\\AddressModel', 'json', $context));
         }
         if (property_exists($data, 'originalDelivery')) {
-            $object->setOriginalDelivery($data->{'originalDelivery'});
+            $object->setOriginalDelivery($this->denormalizer->denormalize($data->{'originalDelivery'}, 'Starweb\\Api\\Generated\\Model\\AddressModel', 'json', $context));
         }
         if (property_exists($data, 'customerInvoice')) {
-            $object->setCustomerInvoice($data->{'customerInvoice'});
+            $object->setCustomerInvoice($this->denormalizer->denormalize($data->{'customerInvoice'}, 'Starweb\\Api\\Generated\\Model\\AddressModel', 'json', $context));
         }
         if (property_exists($data, 'customerDelivery')) {
-            $object->setCustomerDelivery($data->{'customerDelivery'});
+            $object->setCustomerDelivery($this->denormalizer->denormalize($data->{'customerDelivery'}, 'Starweb\\Api\\Generated\\Model\\AddressModel', 'json', $context));
         }
         if (property_exists($data, 'paymentMethodInvoice')) {
-            $object->setPaymentMethodInvoice($data->{'paymentMethodInvoice'});
+            $object->setPaymentMethodInvoice($this->denormalizer->denormalize($data->{'paymentMethodInvoice'}, 'Starweb\\Api\\Generated\\Model\\AddressModel', 'json', $context));
         }
         if (property_exists($data, 'paymentMethodDelivery')) {
-            $object->setPaymentMethodDelivery($data->{'paymentMethodDelivery'});
+            $object->setPaymentMethodDelivery($this->denormalizer->denormalize($data->{'paymentMethodDelivery'}, 'Starweb\\Api\\Generated\\Model\\AddressModel', 'json', $context));
         }
         return $object;
     }
@@ -52,22 +52,22 @@ class OrderAddressModelNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $data = new \stdClass();
         if (null !== $object->getOriginalInvoice()) {
-            $data->{'originalInvoice'} = $object->getOriginalInvoice();
+            $data->{'originalInvoice'} = $this->normalizer->normalize($object->getOriginalInvoice(), 'json', $context);
         }
         if (null !== $object->getOriginalDelivery()) {
-            $data->{'originalDelivery'} = $object->getOriginalDelivery();
+            $data->{'originalDelivery'} = $this->normalizer->normalize($object->getOriginalDelivery(), 'json', $context);
         }
         if (null !== $object->getCustomerInvoice()) {
-            $data->{'customerInvoice'} = $object->getCustomerInvoice();
+            $data->{'customerInvoice'} = $this->normalizer->normalize($object->getCustomerInvoice(), 'json', $context);
         }
         if (null !== $object->getCustomerDelivery()) {
-            $data->{'customerDelivery'} = $object->getCustomerDelivery();
+            $data->{'customerDelivery'} = $this->normalizer->normalize($object->getCustomerDelivery(), 'json', $context);
         }
         if (null !== $object->getPaymentMethodInvoice()) {
-            $data->{'paymentMethodInvoice'} = $object->getPaymentMethodInvoice();
+            $data->{'paymentMethodInvoice'} = $this->normalizer->normalize($object->getPaymentMethodInvoice(), 'json', $context);
         }
         if (null !== $object->getPaymentMethodDelivery()) {
-            $data->{'paymentMethodDelivery'} = $object->getPaymentMethodDelivery();
+            $data->{'paymentMethodDelivery'} = $this->normalizer->normalize($object->getPaymentMethodDelivery(), 'json', $context);
         }
         return $data;
     }
