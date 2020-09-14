@@ -9544,10 +9544,7 @@
             "example": "created"
           },
           "languages": {
-            "type": "array",
-            "items": {
-              "$ref": "#\/components\/schemas\/OrderStatusLanguageModel"
-            }
+            "$ref": "#\/components\/schemas\/OrderStatusLanguageModelCollection"
           }
         }
       },
@@ -9566,6 +9563,17 @@
             "maxLength": 64,
             "description": "The name of this order status",
             "example": "Order Created"
+          }
+        }
+      },
+      "OrderStatusLanguageModelCollection": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#\/components\/schemas\/OrderStatusLanguageModel"
+            }
           }
         }
       },
