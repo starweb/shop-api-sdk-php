@@ -7,56 +7,56 @@ class OrderAddressModel
     /**
      * 
      *
-     * @var AddressModel
+     * @var mixed
      */
     protected $originalInvoice;
     /**
      * 
      *
-     * @var AddressModel
+     * @var mixed
      */
     protected $originalDelivery;
     /**
      * 
      *
-     * @var AddressModel
+     * @var mixed
      */
     protected $customerInvoice;
     /**
      * 
      *
-     * @var AddressModel
+     * @var mixed
      */
     protected $customerDelivery;
     /**
      * 
      *
-     * @var AddressModel
+     * @var mixed
      */
     protected $paymentMethodInvoice;
     /**
      * 
      *
-     * @var AddressModel
+     * @var mixed
      */
     protected $paymentMethodDelivery;
     /**
      * 
      *
-     * @return AddressModel
+     * @return mixed
      */
-    public function getOriginalInvoice() : AddressModel
+    public function getOriginalInvoice()
     {
         return $this->originalInvoice;
     }
     /**
      * 
      *
-     * @param AddressModel $originalInvoice
+     * @param mixed $originalInvoice
      *
      * @return self
      */
-    public function setOriginalInvoice(AddressModel $originalInvoice) : self
+    public function setOriginalInvoice($originalInvoice) : self
     {
         $this->originalInvoice = $originalInvoice;
         return $this;
@@ -64,20 +64,20 @@ class OrderAddressModel
     /**
      * 
      *
-     * @return AddressModel
+     * @return mixed
      */
-    public function getOriginalDelivery() : AddressModel
+    public function getOriginalDelivery()
     {
         return $this->originalDelivery;
     }
     /**
      * 
      *
-     * @param AddressModel $originalDelivery
+     * @param mixed $originalDelivery
      *
      * @return self
      */
-    public function setOriginalDelivery(AddressModel $originalDelivery) : self
+    public function setOriginalDelivery($originalDelivery) : self
     {
         $this->originalDelivery = $originalDelivery;
         return $this;
@@ -85,20 +85,20 @@ class OrderAddressModel
     /**
      * 
      *
-     * @return AddressModel
+     * @return mixed
      */
-    public function getCustomerInvoice() : AddressModel
+    public function getCustomerInvoice()
     {
         return $this->customerInvoice;
     }
     /**
      * 
      *
-     * @param AddressModel $customerInvoice
+     * @param mixed $customerInvoice
      *
      * @return self
      */
-    public function setCustomerInvoice(AddressModel $customerInvoice) : self
+    public function setCustomerInvoice($customerInvoice) : self
     {
         $this->customerInvoice = $customerInvoice;
         return $this;
@@ -106,20 +106,20 @@ class OrderAddressModel
     /**
      * 
      *
-     * @return AddressModel
+     * @return mixed
      */
-    public function getCustomerDelivery() : AddressModel
+    public function getCustomerDelivery()
     {
         return $this->customerDelivery;
     }
     /**
      * 
      *
-     * @param AddressModel $customerDelivery
+     * @param mixed $customerDelivery
      *
      * @return self
      */
-    public function setCustomerDelivery(AddressModel $customerDelivery) : self
+    public function setCustomerDelivery($customerDelivery) : self
     {
         $this->customerDelivery = $customerDelivery;
         return $this;
@@ -127,20 +127,20 @@ class OrderAddressModel
     /**
      * 
      *
-     * @return AddressModel
+     * @return mixed
      */
-    public function getPaymentMethodInvoice() : AddressModel
+    public function getPaymentMethodInvoice()
     {
         return $this->paymentMethodInvoice;
     }
     /**
      * 
      *
-     * @param AddressModel $paymentMethodInvoice
+     * @param mixed $paymentMethodInvoice
      *
      * @return self
      */
-    public function setPaymentMethodInvoice(AddressModel $paymentMethodInvoice) : self
+    public function setPaymentMethodInvoice($paymentMethodInvoice) : self
     {
         $this->paymentMethodInvoice = $paymentMethodInvoice;
         return $this;
@@ -148,20 +148,20 @@ class OrderAddressModel
     /**
      * 
      *
-     * @return AddressModel
+     * @return mixed
      */
-    public function getPaymentMethodDelivery() : AddressModel
+    public function getPaymentMethodDelivery()
     {
         return $this->paymentMethodDelivery;
     }
     /**
      * 
      *
-     * @param AddressModel $paymentMethodDelivery
+     * @param mixed $paymentMethodDelivery
      *
      * @return self
      */
-    public function setPaymentMethodDelivery(AddressModel $paymentMethodDelivery) : self
+    public function setPaymentMethodDelivery($paymentMethodDelivery) : self
     {
         $this->paymentMethodDelivery = $paymentMethodDelivery;
         return $this;

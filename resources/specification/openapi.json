@@ -9498,22 +9498,65 @@
         "type": "object",
         "properties": {
           "originalInvoice": {
-            "$ref": "#\/components\/schemas\/AddressModel"
+            "oneOf": [
+              {
+                "$ref": "#\/components\/schemas\/AddressModel"
+
+              },
+              {
+                "type": null
+              }
+            ]
           },
           "originalDelivery": {
-            "$ref": "#\/components\/schemas\/AddressModel"
+            "oneOf": [
+              {
+                "$ref": "#\/components\/schemas\/AddressModel"
+              },
+              {
+                "nullable": true
+              }
+            ]
           },
           "customerInvoice": {
-            "$ref": "#\/components\/schemas\/AddressModel"
+            "oneOf": [
+              {
+                "$ref": "#\/components\/schemas\/AddressModel"
+              },
+              {
+                "nullable": true
+              }
+            ]
           },
           "customerDelivery": {
-            "$ref": "#\/components\/schemas\/AddressModel"
+            "oneOf": [
+              {
+                "$ref": "#\/components\/schemas\/AddressModel"
+              },
+              {
+                "nullable": true
+              }
+            ]
           },
           "paymentMethodInvoice": {
-            "$ref": "#\/components\/schemas\/AddressModel"
+            "oneOf": [
+              {
+                "$ref": "#\/components\/schemas\/AddressModel"
+              },
+              {
+                "nullable": true
+              }
+            ]
           },
           "paymentMethodDelivery": {
-            "$ref": "#\/components\/schemas\/AddressModel"
+            "oneOf": [
+              {
+                "$ref": "#\/components\/schemas\/AddressModel"
+              },
+              {
+                "nullable": true
+              }
+            ]
           }
         }
       },
