@@ -31,14 +31,8 @@ class CustomerExternalServicesModelNormalizer implements DenormalizerInterface, 
         if (property_exists($data, 'serviceName') && $data->{'serviceName'} !== null) {
             $object->setServiceName($data->{'serviceName'});
         }
-        elseif (property_exists($data, 'serviceName') && $data->{'serviceName'} === null) {
-            $object->setServiceName(null);
-        }
         if (property_exists($data, 'externalIdValue') && $data->{'externalIdValue'} !== null) {
             $object->setExternalIdValue($data->{'externalIdValue'});
-        }
-        elseif (property_exists($data, 'externalIdValue') && $data->{'externalIdValue'} === null) {
-            $object->setExternalIdValue(null);
         }
         return $object;
     }
@@ -48,14 +42,8 @@ class CustomerExternalServicesModelNormalizer implements DenormalizerInterface, 
         if (null !== $object->getServiceName()) {
             $data->{'serviceName'} = $object->getServiceName();
         }
-        else {
-            $data->{'serviceName'} = null;
-        }
         if (null !== $object->getExternalIdValue()) {
             $data->{'externalIdValue'} = $object->getExternalIdValue();
-        }
-        else {
-            $data->{'externalIdValue'} = null;
         }
         return $data;
     }

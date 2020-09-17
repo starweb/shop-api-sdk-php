@@ -31,20 +31,11 @@ class CurrencyModelNormalizer implements DenormalizerInterface, NormalizerInterf
         if (property_exists($data, 'code') && $data->{'code'} !== null) {
             $object->setCode($data->{'code'});
         }
-        elseif (property_exists($data, 'code') && $data->{'code'} === null) {
-            $object->setCode(null);
-        }
         if (property_exists($data, 'exchangeRate') && $data->{'exchangeRate'} !== null) {
             $object->setExchangeRate($data->{'exchangeRate'});
         }
-        elseif (property_exists($data, 'exchangeRate') && $data->{'exchangeRate'} === null) {
-            $object->setExchangeRate(null);
-        }
         if (property_exists($data, 'precision') && $data->{'precision'} !== null) {
             $object->setPrecision($data->{'precision'});
-        }
-        elseif (property_exists($data, 'precision') && $data->{'precision'} === null) {
-            $object->setPrecision(null);
         }
         return $object;
     }
@@ -54,14 +45,8 @@ class CurrencyModelNormalizer implements DenormalizerInterface, NormalizerInterf
         if (null !== $object->getExchangeRate()) {
             $data->{'exchangeRate'} = $object->getExchangeRate();
         }
-        else {
-            $data->{'exchangeRate'} = null;
-        }
         if (null !== $object->getPrecision()) {
             $data->{'precision'} = $object->getPrecision();
-        }
-        else {
-            $data->{'precision'} = null;
         }
         return $data;
     }

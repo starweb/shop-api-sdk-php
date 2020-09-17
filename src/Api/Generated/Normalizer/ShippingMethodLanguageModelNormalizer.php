@@ -31,26 +31,14 @@ class ShippingMethodLanguageModelNormalizer implements DenormalizerInterface, No
         if (property_exists($data, 'langCode') && $data->{'langCode'} !== null) {
             $object->setLangCode($data->{'langCode'});
         }
-        elseif (property_exists($data, 'langCode') && $data->{'langCode'} === null) {
-            $object->setLangCode(null);
-        }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
-        }
-        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
-            $object->setName(null);
         }
         if (property_exists($data, 'title') && $data->{'title'} !== null) {
             $object->setTitle($data->{'title'});
         }
-        elseif (property_exists($data, 'title') && $data->{'title'} === null) {
-            $object->setTitle(null);
-        }
         if (property_exists($data, 'shortDescription') && $data->{'shortDescription'} !== null) {
             $object->setShortDescription($data->{'shortDescription'});
-        }
-        elseif (property_exists($data, 'shortDescription') && $data->{'shortDescription'} === null) {
-            $object->setShortDescription(null);
         }
         return $object;
     }

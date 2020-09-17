@@ -31,20 +31,11 @@ class OrderExternalServiceModelNormalizer implements DenormalizerInterface, Norm
         if (property_exists($data, 'serviceName') && $data->{'serviceName'} !== null) {
             $object->setServiceName($data->{'serviceName'});
         }
-        elseif (property_exists($data, 'serviceName') && $data->{'serviceName'} === null) {
-            $object->setServiceName(null);
-        }
         if (property_exists($data, 'externalIdValue') && $data->{'externalIdValue'} !== null) {
             $object->setExternalIdValue($data->{'externalIdValue'});
         }
-        elseif (property_exists($data, 'externalIdValue') && $data->{'externalIdValue'} === null) {
-            $object->setExternalIdValue(null);
-        }
         if (property_exists($data, 'readOnly') && $data->{'readOnly'} !== null) {
             $object->setReadOnly($data->{'readOnly'});
-        }
-        elseif (property_exists($data, 'readOnly') && $data->{'readOnly'} === null) {
-            $object->setReadOnly(null);
         }
         return $object;
     }
@@ -54,14 +45,8 @@ class OrderExternalServiceModelNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getServiceName()) {
             $data->{'serviceName'} = $object->getServiceName();
         }
-        else {
-            $data->{'serviceName'} = null;
-        }
         if (null !== $object->getExternalIdValue()) {
             $data->{'externalIdValue'} = $object->getExternalIdValue();
-        }
-        else {
-            $data->{'externalIdValue'} = null;
         }
         return $data;
     }

@@ -31,14 +31,8 @@ class CustomerAddedTagModelNormalizer implements DenormalizerInterface, Normaliz
         if (property_exists($data, 'tagId') && $data->{'tagId'} !== null) {
             $object->setTagId($data->{'tagId'});
         }
-        elseif (property_exists($data, 'tagId') && $data->{'tagId'} === null) {
-            $object->setTagId(null);
-        }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
-        }
-        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
-            $object->setName(null);
         }
         return $object;
     }
@@ -47,9 +41,6 @@ class CustomerAddedTagModelNormalizer implements DenormalizerInterface, Normaliz
         $data = new \stdClass();
         if (null !== $object->getTagId()) {
             $data->{'tagId'} = $object->getTagId();
-        }
-        else {
-            $data->{'tagId'} = null;
         }
         return $data;
     }

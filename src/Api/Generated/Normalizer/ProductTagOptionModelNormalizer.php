@@ -31,20 +31,11 @@ class ProductTagOptionModelNormalizer implements DenormalizerInterface, Normaliz
         if (property_exists($data, 'tagOptionId') && $data->{'tagOptionId'} !== null) {
             $object->setTagOptionId($data->{'tagOptionId'});
         }
-        elseif (property_exists($data, 'tagOptionId') && $data->{'tagOptionId'} === null) {
-            $object->setTagOptionId(null);
-        }
         if (property_exists($data, 'value') && $data->{'value'} !== null) {
             $object->setValue($data->{'value'});
         }
-        elseif (property_exists($data, 'value') && $data->{'value'} === null) {
-            $object->setValue(null);
-        }
         if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
             $object->setSortIndex($data->{'sortIndex'});
-        }
-        elseif (property_exists($data, 'sortIndex') && $data->{'sortIndex'} === null) {
-            $object->setSortIndex(null);
         }
         if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $values = array();
@@ -52,9 +43,6 @@ class ProductTagOptionModelNormalizer implements DenormalizerInterface, Normaliz
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductTagOptionLanguageModel', 'json', $context);
             }
             $object->setLanguages($values);
-        }
-        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
-            $object->setLanguages(null);
         }
         return $object;
     }
@@ -64,18 +52,12 @@ class ProductTagOptionModelNormalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
         }
-        else {
-            $data->{'sortIndex'} = null;
-        }
         if (null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'languages'} = $values;
-        }
-        else {
-            $data->{'languages'} = null;
         }
         return $data;
     }

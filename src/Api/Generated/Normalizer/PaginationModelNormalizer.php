@@ -31,32 +31,17 @@ class PaginationModelNormalizer implements DenormalizerInterface, NormalizerInte
         if (property_exists($data, 'current_page') && $data->{'current_page'} !== null) {
             $object->setCurrentPage($data->{'current_page'});
         }
-        elseif (property_exists($data, 'current_page') && $data->{'current_page'} === null) {
-            $object->setCurrentPage(null);
-        }
         if (property_exists($data, 'per_page') && $data->{'per_page'} !== null) {
             $object->setPerPage($data->{'per_page'});
-        }
-        elseif (property_exists($data, 'per_page') && $data->{'per_page'} === null) {
-            $object->setPerPage(null);
         }
         if (property_exists($data, 'total') && $data->{'total'} !== null) {
             $object->setTotal($data->{'total'});
         }
-        elseif (property_exists($data, 'total') && $data->{'total'} === null) {
-            $object->setTotal(null);
-        }
         if (property_exists($data, 'count') && $data->{'count'} !== null) {
             $object->setCount($data->{'count'});
         }
-        elseif (property_exists($data, 'count') && $data->{'count'} === null) {
-            $object->setCount(null);
-        }
         if (property_exists($data, 'total_pages') && $data->{'total_pages'} !== null) {
             $object->setTotalPages($data->{'total_pages'});
-        }
-        elseif (property_exists($data, 'total_pages') && $data->{'total_pages'} === null) {
-            $object->setTotalPages(null);
         }
         return $object;
     }

@@ -31,14 +31,8 @@ class ProductTagModelNormalizer implements DenormalizerInterface, NormalizerInte
         if (property_exists($data, 'tagId') && $data->{'tagId'} !== null) {
             $object->setTagId($data->{'tagId'});
         }
-        elseif (property_exists($data, 'tagId') && $data->{'tagId'} === null) {
-            $object->setTagId(null);
-        }
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
-        }
-        elseif (property_exists($data, 'type') && $data->{'type'} === null) {
-            $object->setType(null);
         }
         if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $values = array();
@@ -46,9 +40,6 @@ class ProductTagModelNormalizer implements DenormalizerInterface, NormalizerInte
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductTagLanguageModel', 'json', $context);
             }
             $object->setLanguages($values);
-        }
-        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
-            $object->setLanguages(null);
         }
         return $object;
     }
@@ -61,9 +52,6 @@ class ProductTagModelNormalizer implements DenormalizerInterface, NormalizerInte
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'languages'} = $values;
-        }
-        else {
-            $data->{'languages'} = null;
         }
         return $data;
     }

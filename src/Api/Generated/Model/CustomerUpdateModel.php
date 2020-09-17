@@ -59,6 +59,18 @@ class CustomerUpdateModel
      */
     protected $pricelistId;
     /**
+     * Customer's ID in Specter.
+     *
+     * @var string|null
+     */
+    protected $externalId;
+    /**
+     * Type of the customer's external ID defined in the 'externalId' value
+     *
+     * @var string|null
+     */
+    protected $externalIdType;
+    /**
      * Language code for the customer
      *
      * @var string|null
@@ -257,6 +269,48 @@ class CustomerUpdateModel
     public function setPricelistId(?int $pricelistId) : self
     {
         $this->pricelistId = $pricelistId;
+        return $this;
+    }
+    /**
+     * Customer's ID in Specter.
+     *
+     * @return string|null
+     */
+    public function getExternalId() : ?string
+    {
+        return $this->externalId;
+    }
+    /**
+     * Customer's ID in Specter.
+     *
+     * @param string|null $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(?string $externalId) : self
+    {
+        $this->externalId = $externalId;
+        return $this;
+    }
+    /**
+     * Type of the customer's external ID defined in the 'externalId' value
+     *
+     * @return string|null
+     */
+    public function getExternalIdType() : ?string
+    {
+        return $this->externalIdType;
+    }
+    /**
+     * Type of the customer's external ID defined in the 'externalId' value
+     *
+     * @param string|null $externalIdType
+     *
+     * @return self
+     */
+    public function setExternalIdType(?string $externalIdType) : self
+    {
+        $this->externalIdType = $externalIdType;
         return $this;
     }
     /**

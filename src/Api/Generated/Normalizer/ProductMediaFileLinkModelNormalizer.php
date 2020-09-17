@@ -31,26 +31,14 @@ class ProductMediaFileLinkModelNormalizer implements DenormalizerInterface, Norm
         if (property_exists($data, 'productMediaFileId') && $data->{'productMediaFileId'} !== null) {
             $object->setProductMediaFileId($data->{'productMediaFileId'});
         }
-        elseif (property_exists($data, 'productMediaFileId') && $data->{'productMediaFileId'} === null) {
-            $object->setProductMediaFileId(null);
-        }
         if (property_exists($data, 'mediaFileId') && $data->{'mediaFileId'} !== null) {
             $object->setMediaFileId($data->{'mediaFileId'});
-        }
-        elseif (property_exists($data, 'mediaFileId') && $data->{'mediaFileId'} === null) {
-            $object->setMediaFileId(null);
         }
         if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
             $object->setSortIndex($data->{'sortIndex'});
         }
-        elseif (property_exists($data, 'sortIndex') && $data->{'sortIndex'} === null) {
-            $object->setSortIndex(null);
-        }
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
-        }
-        elseif (property_exists($data, 'type') && $data->{'type'} === null) {
-            $object->setType(null);
         }
         return $object;
     }
@@ -60,14 +48,8 @@ class ProductMediaFileLinkModelNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getMediaFileId()) {
             $data->{'mediaFileId'} = $object->getMediaFileId();
         }
-        else {
-            $data->{'mediaFileId'} = null;
-        }
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
-        }
-        else {
-            $data->{'sortIndex'} = null;
         }
         return $data;
     }

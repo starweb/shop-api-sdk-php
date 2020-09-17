@@ -31,9 +31,6 @@ class OrderModelItemNormalizer implements DenormalizerInterface, NormalizerInter
         if (property_exists($data, 'data') && $data->{'data'} !== null) {
             $object->setData($this->denormalizer->denormalize($data->{'data'}, 'Starweb\\Api\\Generated\\Model\\OrderModel', 'json', $context));
         }
-        elseif (property_exists($data, 'data') && $data->{'data'} === null) {
-            $object->setData(null);
-        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -41,9 +38,6 @@ class OrderModelItemNormalizer implements DenormalizerInterface, NormalizerInter
         $data = new \stdClass();
         if (null !== $object->getData()) {
             $data->{'data'} = $this->normalizer->normalize($object->getData(), 'json', $context);
-        }
-        else {
-            $data->{'data'} = null;
         }
         return $data;
     }

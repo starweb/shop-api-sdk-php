@@ -31,62 +31,29 @@ class ProductManufacturerModelNormalizer implements DenormalizerInterface, Norma
         if (property_exists($data, 'manufacturerId') && $data->{'manufacturerId'} !== null) {
             $object->setManufacturerId($data->{'manufacturerId'});
         }
-        elseif (property_exists($data, 'manufacturerId') && $data->{'manufacturerId'} === null) {
-            $object->setManufacturerId(null);
-        }
         if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
             $object->setExternalId($data->{'externalId'});
-        }
-        elseif (property_exists($data, 'externalId') && $data->{'externalId'} === null) {
-            $object->setExternalId(null);
         }
         if (property_exists($data, 'externalIdType') && $data->{'externalIdType'} !== null) {
             $object->setExternalIdType($data->{'externalIdType'});
         }
-        elseif (property_exists($data, 'externalIdType') && $data->{'externalIdType'} === null) {
-            $object->setExternalIdType(null);
-        }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
         }
-        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
-            $object->setName(null);
-        }
         if (property_exists($data, 'url') && $data->{'url'} !== null) {
             $object->setUrl($data->{'url'});
-        }
-        elseif (property_exists($data, 'url') && $data->{'url'} === null) {
-            $object->setUrl(null);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        if (null !== $object->getExternalId()) {
-            $data->{'externalId'} = $object->getExternalId();
-        }
-        else {
-            $data->{'externalId'} = null;
-        }
-        if (null !== $object->getExternalIdType()) {
-            $data->{'externalIdType'} = $object->getExternalIdType();
-        }
-        else {
-            $data->{'externalIdType'} = null;
-        }
+        $data->{'externalId'} = $object->getExternalId();
+        $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
         }
-        else {
-            $data->{'name'} = null;
-        }
-        if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
-        }
-        else {
-            $data->{'url'} = null;
-        }
+        $data->{'url'} = $object->getUrl();
         return $data;
     }
 }

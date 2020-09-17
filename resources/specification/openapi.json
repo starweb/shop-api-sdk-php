@@ -9833,6 +9833,16 @@
             "nullable": true,
             "description": "The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)"
           },
+          "externalId": {
+            "type": "string",
+            "nullable": true,
+            "description": "Customer's ID in Specter."
+          },
+          "externalIdType": {
+            "type": "string",
+            "nullable": true,
+            "description": "Type of the customer's external ID defined in the 'externalId' value"
+          },
           "langCode": {
             "type": "string",
             "readOnly": true,
@@ -9919,6 +9929,16 @@
             "nullable": true,
             "description": "The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)",
             "readOnly": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true,
+            "description": "Customer's ID in Specter."
+          },
+          "externalIdType": {
+            "type": "string",
+            "nullable": true,
+            "description": "Type of the customer's external ID defined in the 'externalId' value"
           }
         },
         "type": "object"
@@ -9998,6 +10018,16 @@
             "nullable": true,
             "description": "The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)",
             "readOnly": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true,
+            "description": "Customer's ID in Specter."
+          },
+          "externalIdType": {
+            "type": "string",
+            "nullable": true,
+            "description": "Type of the customer's external ID defined in the 'externalId' value"
           }
         }
       },

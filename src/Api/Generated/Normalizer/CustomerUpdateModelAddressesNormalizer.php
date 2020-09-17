@@ -31,14 +31,8 @@ class CustomerUpdateModelAddressesNormalizer implements DenormalizerInterface, N
         if (property_exists($data, 'invoice') && $data->{'invoice'} !== null) {
             $object->setInvoice($this->denormalizer->denormalize($data->{'invoice'}, 'Starweb\\Api\\Generated\\Model\\AddressModel', 'json', $context));
         }
-        elseif (property_exists($data, 'invoice') && $data->{'invoice'} === null) {
-            $object->setInvoice(null);
-        }
         if (property_exists($data, 'delivery') && $data->{'delivery'} !== null) {
             $object->setDelivery($this->denormalizer->denormalize($data->{'delivery'}, 'Starweb\\Api\\Generated\\Model\\AddressModel', 'json', $context));
-        }
-        elseif (property_exists($data, 'delivery') && $data->{'delivery'} === null) {
-            $object->setDelivery(null);
         }
         return $object;
     }
@@ -48,14 +42,8 @@ class CustomerUpdateModelAddressesNormalizer implements DenormalizerInterface, N
         if (null !== $object->getInvoice()) {
             $data->{'invoice'} = $this->normalizer->normalize($object->getInvoice(), 'json', $context);
         }
-        else {
-            $data->{'invoice'} = null;
-        }
         if (null !== $object->getDelivery()) {
             $data->{'delivery'} = $this->normalizer->normalize($object->getDelivery(), 'json', $context);
-        }
-        else {
-            $data->{'delivery'} = null;
         }
         return $data;
     }
