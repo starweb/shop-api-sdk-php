@@ -31,26 +31,14 @@ class OrderCommentModelNormalizer implements DenormalizerInterface, NormalizerIn
         if (property_exists($data, 'commentId') && $data->{'commentId'} !== null) {
             $object->setCommentId($data->{'commentId'});
         }
-        elseif (property_exists($data, 'commentId') && $data->{'commentId'} === null) {
-            $object->setCommentId(null);
-        }
         if (property_exists($data, 'createdAt') && $data->{'createdAt'} !== null) {
             $object->setCreatedAt($data->{'createdAt'});
-        }
-        elseif (property_exists($data, 'createdAt') && $data->{'createdAt'} === null) {
-            $object->setCreatedAt(null);
         }
         if (property_exists($data, 'text') && $data->{'text'} !== null) {
             $object->setText($data->{'text'});
         }
-        elseif (property_exists($data, 'text') && $data->{'text'} === null) {
-            $object->setText(null);
-        }
         if (property_exists($data, 'from') && $data->{'from'} !== null) {
             $object->setFrom($data->{'from'});
-        }
-        elseif (property_exists($data, 'from') && $data->{'from'} === null) {
-            $object->setFrom(null);
         }
         return $object;
     }
@@ -60,20 +48,11 @@ class OrderCommentModelNormalizer implements DenormalizerInterface, NormalizerIn
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();
         }
-        else {
-            $data->{'createdAt'} = null;
-        }
         if (null !== $object->getText()) {
             $data->{'text'} = $object->getText();
         }
-        else {
-            $data->{'text'} = null;
-        }
         if (null !== $object->getFrom()) {
             $data->{'from'} = $object->getFrom();
-        }
-        else {
-            $data->{'from'} = null;
         }
         return $data;
     }

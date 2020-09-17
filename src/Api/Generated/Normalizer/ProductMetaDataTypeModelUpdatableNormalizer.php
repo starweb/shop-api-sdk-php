@@ -31,9 +31,6 @@ class ProductMetaDataTypeModelUpdatableNormalizer implements DenormalizerInterfa
         if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\ProductMetaDataTypeLanguageModelCollection', 'json', $context));
         }
-        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
-            $object->setLanguages(null);
-        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -41,9 +38,6 @@ class ProductMetaDataTypeModelUpdatableNormalizer implements DenormalizerInterfa
         $data = new \stdClass();
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
-        }
-        else {
-            $data->{'languages'} = null;
         }
         return $data;
     }

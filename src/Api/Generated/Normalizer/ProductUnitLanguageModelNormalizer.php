@@ -31,20 +31,11 @@ class ProductUnitLanguageModelNormalizer implements DenormalizerInterface, Norma
         if (property_exists($data, 'langCode') && $data->{'langCode'} !== null) {
             $object->setLangCode($data->{'langCode'});
         }
-        elseif (property_exists($data, 'langCode') && $data->{'langCode'} === null) {
-            $object->setLangCode(null);
-        }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
         }
-        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
-            $object->setName(null);
-        }
         if (property_exists($data, 'symbol') && $data->{'symbol'} !== null) {
             $object->setSymbol($data->{'symbol'});
-        }
-        elseif (property_exists($data, 'symbol') && $data->{'symbol'} === null) {
-            $object->setSymbol(null);
         }
         return $object;
     }
@@ -54,20 +45,11 @@ class ProductUnitLanguageModelNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getLangCode()) {
             $data->{'langCode'} = $object->getLangCode();
         }
-        else {
-            $data->{'langCode'} = null;
-        }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
         }
-        else {
-            $data->{'name'} = null;
-        }
         if (null !== $object->getSymbol()) {
             $data->{'symbol'} = $object->getSymbol();
-        }
-        else {
-            $data->{'symbol'} = null;
         }
         return $data;
     }

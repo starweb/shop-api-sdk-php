@@ -31,32 +31,17 @@ class ProductVariantPriceModelNormalizer implements DenormalizerInterface, Norma
         if (property_exists($data, 'pricelistId') && $data->{'pricelistId'} !== null) {
             $object->setPricelistId($data->{'pricelistId'});
         }
-        elseif (property_exists($data, 'pricelistId') && $data->{'pricelistId'} === null) {
-            $object->setPricelistId(null);
-        }
         if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
             $object->setExternalId($data->{'externalId'});
-        }
-        elseif (property_exists($data, 'externalId') && $data->{'externalId'} === null) {
-            $object->setExternalId(null);
         }
         if (property_exists($data, 'externalIdType') && $data->{'externalIdType'} !== null) {
             $object->setExternalIdType($data->{'externalIdType'});
         }
-        elseif (property_exists($data, 'externalIdType') && $data->{'externalIdType'} === null) {
-            $object->setExternalIdType(null);
-        }
         if (property_exists($data, 'priceExVat') && $data->{'priceExVat'} !== null) {
             $object->setPriceExVat($data->{'priceExVat'});
         }
-        elseif (property_exists($data, 'priceExVat') && $data->{'priceExVat'} === null) {
-            $object->setPriceExVat(null);
-        }
         if (property_exists($data, 'specialPriceExVat') && $data->{'specialPriceExVat'} !== null) {
             $object->setSpecialPriceExVat($data->{'specialPriceExVat'});
-        }
-        elseif (property_exists($data, 'specialPriceExVat') && $data->{'specialPriceExVat'} === null) {
-            $object->setSpecialPriceExVat(null);
         }
         if (property_exists($data, 'volumePrices') && $data->{'volumePrices'} !== null) {
             $values = array();
@@ -64,9 +49,6 @@ class ProductVariantPriceModelNormalizer implements DenormalizerInterface, Norma
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductVariantVolumePriceModel', 'json', $context);
             }
             $object->setVolumePrices($values);
-        }
-        elseif (property_exists($data, 'volumePrices') && $data->{'volumePrices'} === null) {
-            $object->setVolumePrices(null);
         }
         return $object;
     }
@@ -76,42 +58,18 @@ class ProductVariantPriceModelNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getPricelistId()) {
             $data->{'pricelistId'} = $object->getPricelistId();
         }
-        else {
-            $data->{'pricelistId'} = null;
-        }
-        if (null !== $object->getExternalId()) {
-            $data->{'externalId'} = $object->getExternalId();
-        }
-        else {
-            $data->{'externalId'} = null;
-        }
-        if (null !== $object->getExternalIdType()) {
-            $data->{'externalIdType'} = $object->getExternalIdType();
-        }
-        else {
-            $data->{'externalIdType'} = null;
-        }
+        $data->{'externalId'} = $object->getExternalId();
+        $data->{'externalIdType'} = $object->getExternalIdType();
         if (null !== $object->getPriceExVat()) {
             $data->{'priceExVat'} = $object->getPriceExVat();
         }
-        else {
-            $data->{'priceExVat'} = null;
-        }
-        if (null !== $object->getSpecialPriceExVat()) {
-            $data->{'specialPriceExVat'} = $object->getSpecialPriceExVat();
-        }
-        else {
-            $data->{'specialPriceExVat'} = null;
-        }
+        $data->{'specialPriceExVat'} = $object->getSpecialPriceExVat();
         if (null !== $object->getVolumePrices()) {
             $values = array();
             foreach ($object->getVolumePrices() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'volumePrices'} = $values;
-        }
-        else {
-            $data->{'volumePrices'} = null;
         }
         return $data;
     }

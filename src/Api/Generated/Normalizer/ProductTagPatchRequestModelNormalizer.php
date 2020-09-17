@@ -31,14 +31,8 @@ class ProductTagPatchRequestModelNormalizer implements DenormalizerInterface, No
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
         }
-        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
-            $object->setName(null);
-        }
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
-        }
-        elseif (property_exists($data, 'type') && $data->{'type'} === null) {
-            $object->setType(null);
         }
         if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $values = array();
@@ -46,9 +40,6 @@ class ProductTagPatchRequestModelNormalizer implements DenormalizerInterface, No
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductTagLanguageModel', 'json', $context);
             }
             $object->setLanguages($values);
-        }
-        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
-            $object->setLanguages(null);
         }
         return $object;
     }
@@ -58,14 +49,8 @@ class ProductTagPatchRequestModelNormalizer implements DenormalizerInterface, No
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
         }
-        else {
-            $data->{'name'} = null;
-        }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
-        }
-        else {
-            $data->{'type'} = null;
         }
         if (null !== $object->getLanguages()) {
             $values = array();
@@ -73,9 +58,6 @@ class ProductTagPatchRequestModelNormalizer implements DenormalizerInterface, No
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'languages'} = $values;
-        }
-        else {
-            $data->{'languages'} = null;
         }
         return $data;
     }

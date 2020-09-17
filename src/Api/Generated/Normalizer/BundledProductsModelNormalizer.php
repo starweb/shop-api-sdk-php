@@ -31,32 +31,17 @@ class BundledProductsModelNormalizer implements DenormalizerInterface, Normalize
         if (property_exists($data, 'singleVariant') && $data->{'singleVariant'} !== null) {
             $object->setSingleVariant($data->{'singleVariant'});
         }
-        elseif (property_exists($data, 'singleVariant') && $data->{'singleVariant'} === null) {
-            $object->setSingleVariant(null);
-        }
         if (property_exists($data, 'bundledProductId') && $data->{'bundledProductId'} !== null) {
             $object->setBundledProductId($data->{'bundledProductId'});
-        }
-        elseif (property_exists($data, 'bundledProductId') && $data->{'bundledProductId'} === null) {
-            $object->setBundledProductId(null);
         }
         if (property_exists($data, 'variantSku') && $data->{'variantSku'} !== null) {
             $object->setVariantSku($data->{'variantSku'});
         }
-        elseif (property_exists($data, 'variantSku') && $data->{'variantSku'} === null) {
-            $object->setVariantSku(null);
-        }
         if (property_exists($data, 'quantity') && $data->{'quantity'} !== null) {
             $object->setQuantity($data->{'quantity'});
         }
-        elseif (property_exists($data, 'quantity') && $data->{'quantity'} === null) {
-            $object->setQuantity(null);
-        }
         if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
             $object->setSortIndex($data->{'sortIndex'});
-        }
-        elseif (property_exists($data, 'sortIndex') && $data->{'sortIndex'} === null) {
-            $object->setSortIndex(null);
         }
         if (property_exists($data, 'prices') && $data->{'prices'} !== null) {
             $values = array();
@@ -64,9 +49,6 @@ class BundledProductsModelNormalizer implements DenormalizerInterface, Normalize
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductBundleProductPriceModel', 'json', $context);
             }
             $object->setPrices($values);
-        }
-        elseif (property_exists($data, 'prices') && $data->{'prices'} === null) {
-            $object->setPrices(null);
         }
         return $object;
     }
@@ -76,32 +58,15 @@ class BundledProductsModelNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getSingleVariant()) {
             $data->{'singleVariant'} = $object->getSingleVariant();
         }
-        else {
-            $data->{'singleVariant'} = null;
-        }
         if (null !== $object->getBundledProductId()) {
             $data->{'bundledProductId'} = $object->getBundledProductId();
-        }
-        else {
-            $data->{'bundledProductId'} = null;
         }
         if (null !== $object->getVariantSku()) {
             $data->{'variantSku'} = $object->getVariantSku();
         }
-        else {
-            $data->{'variantSku'} = null;
-        }
-        if (null !== $object->getQuantity()) {
-            $data->{'quantity'} = $object->getQuantity();
-        }
-        else {
-            $data->{'quantity'} = null;
-        }
+        $data->{'quantity'} = $object->getQuantity();
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
-        }
-        else {
-            $data->{'sortIndex'} = null;
         }
         if (null !== $object->getPrices()) {
             $values = array();
@@ -109,9 +74,6 @@ class BundledProductsModelNormalizer implements DenormalizerInterface, Normalize
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'prices'} = $values;
-        }
-        else {
-            $data->{'prices'} = null;
         }
         return $data;
     }

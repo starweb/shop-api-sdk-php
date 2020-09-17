@@ -31,9 +31,6 @@ class ProductsAttributesModelItemNormalizer implements DenormalizerInterface, No
         if (property_exists($data, 'attributeId') && $data->{'attributeId'} !== null) {
             $object->setAttributeId($data->{'attributeId'});
         }
-        elseif (property_exists($data, 'attributeId') && $data->{'attributeId'} === null) {
-            $object->setAttributeId(null);
-        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -41,9 +38,6 @@ class ProductsAttributesModelItemNormalizer implements DenormalizerInterface, No
         $data = new \stdClass();
         if (null !== $object->getAttributeId()) {
             $data->{'attributeId'} = $object->getAttributeId();
-        }
-        else {
-            $data->{'attributeId'} = null;
         }
         return $data;
     }
