@@ -57,9 +57,7 @@ class WebHookModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getEvent()) {
             $data->{'event'} = $object->getEvent();
         }
-        if (null !== $object->getStatusId()) {
-            $data->{'statusId'} = $object->getStatusId();
-        }
+        $data->{'statusId'} = $object->getStatusId();
         if (null !== $object->getUrl()) {
             $data->{'url'} = $object->getUrl();
         }

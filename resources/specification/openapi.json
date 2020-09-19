@@ -12690,6 +12690,7 @@
             "type": "integer",
             "minimum": 1,
             "description": "The id of an order status. Only used with the order-status-changes event.",
+            "nullable": true,
             "example": 1
           },
           "url": {
