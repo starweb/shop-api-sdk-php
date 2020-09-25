@@ -42,7 +42,7 @@ use Psr\Http\Message\ResponseInterface;
  */
 final class ErrorPlugin implements Plugin
 {
-    private const SECONDS_TO_SLEEP_ON_MAX_REQUEST_PER_LIMIT_ERROR = 5;
+    private const SECONDS_TO_SLEEP_ON_MAX_REQUEST_PER_MINUTE_ERROR = 5;
 
     /**
      * {@inheritdoc}
@@ -79,7 +79,7 @@ final class ErrorPlugin implements Plugin
 
                 // Starweb Shop API SDKs limit is 1000 requests per minute, so we sleep in incremental
                 // steps of seconds before we restart the request processing chain
-                sleep(self::SECONDS_TO_SLEEP_ON_MAX_REQUEST_PER_LIMIT_ERROR);
+                sleep(self::SECONDS_TO_SLEEP_ON_MAX_REQUEST_PER_MINUTE_ERROR);
                 $first($request);
             } else {
                 throw new ClientErrorException($content['error_description'], $request, $response);
