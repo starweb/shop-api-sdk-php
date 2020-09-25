@@ -42,6 +42,8 @@ use Psr\Http\Message\ResponseInterface;
  */
 final class ErrorPlugin implements Plugin
 {
+    private const SECONDS_TO_SLEEP_ON_MAX_REQUEST_PER_MINUTE_ERROR = 5;
+
     /**
      * {@inheritdoc}
      */
@@ -49,8 +51,8 @@ final class ErrorPlugin implements Plugin
     {
         $promise = $next($request);
 
-        return $promise->then(function (ResponseInterface $response) use ($request) {
-            return $this->transformResponseToException($request, $response);
+        return $promise->then(function (ResponseInterface $response) use ($request, $first) {
+            return $this->transformResponseToException($request, $response, $first);
         });
     }
 
@@ -65,12 +67,23 @@ final class ErrorPlugin implements Plugin
      *
      * @return ResponseInterface If status code is not in 4xx or 5xx return response
      */
-    protected function transformResponseToException(RequestInterface $request, ResponseInterface $response)
-    {
+    protected function transformResponseToException(
+        RequestInterface $request,
+        ResponseInterface $response,
+        callable $first
+    ) {
         if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
             $content = \json_decode($response->getBody()->__toString(), true);
 
-            throw new ClientErrorException($content['error_description'], $request, $response);
+            if ($this->isMaxRequestsLimitResponse($content)) {
+
+                // Starweb Shop API SDKs limit is 1000 requests per minute, so we sleep in incremental
+                // steps of seconds before we restart the request processing chain
+                sleep(self::SECONDS_TO_SLEEP_ON_MAX_REQUEST_PER_MINUTE_ERROR);
+                $first($request);
+            } else {
+                throw new ClientErrorException($content['error_description'], $request, $response);
+            }
         }
 
         if ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
@@ -78,5 +91,14 @@ final class ErrorPlugin implements Plugin
         }
 
         return $response;
+    }
+
+    private function isMaxRequestsLimitResponse(array $content): bool
+    {
+        if (!array_key_exists('error', $content)) {
+            return false;
+        }
+
+        return $content['error'] === 'Too Many Requests';
     }
 }
