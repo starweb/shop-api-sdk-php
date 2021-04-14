@@ -8771,6 +8771,16 @@
             "type": "string",
             "description": "Custom customer info at the point of order creation"
           },
+          "externalId": {
+            "type": "string",
+            "description": "An ID for this order at some other external service f.ex. Specter",
+            "example": "ABC-123"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "Name of the external service the externalId belongs to",
+            "example": "Specter"
+          },
           "items": {
             "$ref": "#\/components\/schemas\/OrderItemModelCollection"
           },
@@ -9340,6 +9350,16 @@
           "originalCustomerCustomInfo2": {
             "type": "string",
             "description": "Custom customer info at the point of order creation"
+          },
+          "externalId": {
+            "type": "string",
+            "description": "An ID for this order at some other external service f.ex. Specter",
+            "example": "ABC-123"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "Name of the external service the externalId belongs to",
+            "example": "Specter"
           },
           "items": {
             "type": "array",
