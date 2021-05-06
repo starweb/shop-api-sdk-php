@@ -17,6 +17,18 @@ class OrderModel
      */
     protected $modifiedAt;
     /**
+     * An external id of the payment method
+     *
+     * @var string|null
+     */
+    protected $paymentMethodExternalId;
+    /**
+     * An external id of the shipping method
+     *
+     * @var string|null
+     */
+    protected $shippingMethodExternalId;
+    /**
      * The shops base currency code at the point of order creation
      *
      * @var string|null
@@ -374,6 +386,48 @@ class OrderModel
     public function setModifiedAt(?string $modifiedAt) : self
     {
         $this->modifiedAt = $modifiedAt;
+        return $this;
+    }
+    /**
+     * An external id of the payment method
+     *
+     * @return string|null
+     */
+    public function getPaymentMethodExternalId() : ?string
+    {
+        return $this->paymentMethodExternalId;
+    }
+    /**
+     * An external id of the payment method
+     *
+     * @param string|null $paymentMethodExternalId
+     *
+     * @return self
+     */
+    public function setPaymentMethodExternalId(?string $paymentMethodExternalId) : self
+    {
+        $this->paymentMethodExternalId = $paymentMethodExternalId;
+        return $this;
+    }
+    /**
+     * An external id of the shipping method
+     *
+     * @return string|null
+     */
+    public function getShippingMethodExternalId() : ?string
+    {
+        return $this->shippingMethodExternalId;
+    }
+    /**
+     * An external id of the shipping method
+     *
+     * @param string|null $shippingMethodExternalId
+     *
+     * @return self
+     */
+    public function setShippingMethodExternalId(?string $shippingMethodExternalId) : self
+    {
+        $this->shippingMethodExternalId = $shippingMethodExternalId;
         return $this;
     }
     /**

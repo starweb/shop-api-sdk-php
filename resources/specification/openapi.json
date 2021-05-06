@@ -8511,6 +8511,18 @@
             "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
+          "paymentMethodExternalId": {
+            "type": "string",
+            "description": "An external id of the payment method",
+            "example": "Some-external-id",
+            "readOnly": true
+          },
+          "shippingMethodExternalId": {
+            "type": "string",
+            "description": "An external id of the shipping method",
+            "example": "Some-external-id",
+            "readOnly": true
+          },
           "baseCurrencyCode": {
             "type": "string",
             "description": "The shops base currency code at the point of order creation",

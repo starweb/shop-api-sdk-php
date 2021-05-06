@@ -34,6 +34,12 @@ class OrderModelNormalizer implements DenormalizerInterface, NormalizerInterface
         if (property_exists($data, 'modifiedAt') && $data->{'modifiedAt'} !== null) {
             $object->setModifiedAt($data->{'modifiedAt'});
         }
+        if (property_exists($data, 'paymentMethodExternalId') && $data->{'paymentMethodExternalId'} !== null) {
+            $object->setPaymentMethodExternalId($data->{'paymentMethodExternalId'});
+        }
+        if (property_exists($data, 'shippingMethodExternalId') && $data->{'shippingMethodExternalId'} !== null) {
+            $object->setShippingMethodExternalId($data->{'shippingMethodExternalId'});
+        }
         if (property_exists($data, 'baseCurrencyCode') && $data->{'baseCurrencyCode'} !== null) {
             $object->setBaseCurrencyCode($data->{'baseCurrencyCode'});
         }
