@@ -184,6 +184,12 @@ class OrderModelNormalizer implements DenormalizerInterface, NormalizerInterface
         if (property_exists($data, 'originalCustomerCustomInfo2') && $data->{'originalCustomerCustomInfo2'} !== null) {
             $object->setOriginalCustomerCustomInfo2($data->{'originalCustomerCustomInfo2'});
         }
+        if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
+            $object->setExternalId($data->{'externalId'});
+        }
+        if (property_exists($data, 'externalIdType') && $data->{'externalIdType'} !== null) {
+            $object->setExternalIdType($data->{'externalIdType'});
+        }
         if (property_exists($data, 'items') && $data->{'items'} !== null) {
             $object->setItems($this->denormalizer->denormalize($data->{'items'}, 'Starweb\\Api\\Generated\\Model\\OrderItemModelCollection', 'json', $context));
         }
@@ -311,6 +317,12 @@ class OrderModelNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getOriginalCustomerCustomInfo2()) {
             $data->{'originalCustomerCustomInfo2'} = $object->getOriginalCustomerCustomInfo2();
+        }
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
+        if (null !== $object->getExternalIdType()) {
+            $data->{'externalIdType'} = $object->getExternalIdType();
         }
         if (null !== $object->getItems()) {
             $data->{'items'} = $this->normalizer->normalize($object->getItems(), 'json', $context);

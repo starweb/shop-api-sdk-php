@@ -299,6 +299,18 @@ class OrderUpdateModel
      */
     protected $originalCustomerCustomInfo2;
     /**
+     * An ID for this order at some other external service f.ex. Specter
+     *
+     * @var string|null
+     */
+    protected $externalId;
+    /**
+     * Name of the external service the externalId belongs to
+     *
+     * @var string|null
+     */
+    protected $externalIdType;
+    /**
      * A collection of order items
      *
      * @var OrderItemModel[]|null
@@ -1337,6 +1349,48 @@ class OrderUpdateModel
     public function setOriginalCustomerCustomInfo2(?string $originalCustomerCustomInfo2) : self
     {
         $this->originalCustomerCustomInfo2 = $originalCustomerCustomInfo2;
+        return $this;
+    }
+    /**
+     * An ID for this order at some other external service f.ex. Specter
+     *
+     * @return string|null
+     */
+    public function getExternalId() : ?string
+    {
+        return $this->externalId;
+    }
+    /**
+     * An ID for this order at some other external service f.ex. Specter
+     *
+     * @param string|null $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(?string $externalId) : self
+    {
+        $this->externalId = $externalId;
+        return $this;
+    }
+    /**
+     * Name of the external service the externalId belongs to
+     *
+     * @return string|null
+     */
+    public function getExternalIdType() : ?string
+    {
+        return $this->externalIdType;
+    }
+    /**
+     * Name of the external service the externalId belongs to
+     *
+     * @param string|null $externalIdType
+     *
+     * @return self
+     */
+    public function setExternalIdType(?string $externalIdType) : self
+    {
+        $this->externalIdType = $externalIdType;
         return $this;
     }
     /**

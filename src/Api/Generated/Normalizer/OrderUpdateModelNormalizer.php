@@ -175,6 +175,12 @@ class OrderUpdateModelNormalizer implements DenormalizerInterface, NormalizerInt
         if (property_exists($data, 'originalCustomerCustomInfo2') && $data->{'originalCustomerCustomInfo2'} !== null) {
             $object->setOriginalCustomerCustomInfo2($data->{'originalCustomerCustomInfo2'});
         }
+        if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
+            $object->setExternalId($data->{'externalId'});
+        }
+        if (property_exists($data, 'externalIdType') && $data->{'externalIdType'} !== null) {
+            $object->setExternalIdType($data->{'externalIdType'});
+        }
         if (property_exists($data, 'items') && $data->{'items'} !== null) {
             $values = array();
             foreach ($data->{'items'} as $value) {
@@ -294,6 +300,12 @@ class OrderUpdateModelNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getOriginalCustomerCustomInfo2()) {
             $data->{'originalCustomerCustomInfo2'} = $object->getOriginalCustomerCustomInfo2();
+        }
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
+        if (null !== $object->getExternalIdType()) {
+            $data->{'externalIdType'} = $object->getExternalIdType();
         }
         if (null !== $object->getItems()) {
             $values = array();
