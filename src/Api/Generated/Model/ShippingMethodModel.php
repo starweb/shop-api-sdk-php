@@ -77,6 +77,12 @@ class ShippingMethodModel
      */
     protected $isClickAndCollect;
     /**
+     * External id for systems like Specter, Fortnox etc
+     *
+     * @var string|null
+     */
+    protected $externalId;
+    /**
      * 
      *
      * @var ShippingMethodLanguageModelCollection|null
@@ -332,6 +338,27 @@ class ShippingMethodModel
     public function setIsClickAndCollect(?bool $isClickAndCollect) : self
     {
         $this->isClickAndCollect = $isClickAndCollect;
+        return $this;
+    }
+    /**
+     * External id for systems like Specter, Fortnox etc
+     *
+     * @return string|null
+     */
+    public function getExternalId() : ?string
+    {
+        return $this->externalId;
+    }
+    /**
+     * External id for systems like Specter, Fortnox etc
+     *
+     * @param string|null $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(?string $externalId) : self
+    {
+        $this->externalId = $externalId;
         return $this;
     }
     /**
