@@ -71,6 +71,9 @@ class PaymentMethodModelNormalizer implements DenormalizerInterface, NormalizerI
         if (property_exists($data, 'isClickAndCollect') && $data->{'isClickAndCollect'} !== null) {
             $object->setIsClickAndCollect($data->{'isClickAndCollect'});
         }
+        if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
+            $object->setExternalId($data->{'externalId'});
+        }
         if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\PaymentMethodLanguageModelCollection', 'json', $context));
         }

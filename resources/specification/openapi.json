@@ -10407,6 +10407,13 @@
             "example": false,
             "description": "Tells whether this method is a \"click and collect\" or not"
           },
+          "externalId": {
+            "type": "string",
+            "readOnly": true,
+            "nullable": true,
+            "example": "ABC123",
+            "description": "External id for systems like Specter, Fortnox etc"
+          },
           "languages": {
             "$ref": "#\/components\/schemas\/PaymentMethodLanguageModelCollection"
           }
@@ -10573,6 +10580,13 @@
             "nullable": false,
             "example": false,
             "description": "Tells whether this method is a \"click and collect\" or not"
+          },
+          "externalId": {
+            "type": "string",
+            "readOnly": true,
+            "nullable": true,
+            "example": "ABC123",
+            "description": "External id for systems like Specter, Fortnox etc"
           },
           "languages": {
             "$ref": "#\/components\/schemas\/ShippingMethodLanguageModelCollection"
