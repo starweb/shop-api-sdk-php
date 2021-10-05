@@ -35,6 +35,9 @@ class OrderStatusLanguageModelCollectionNormalizer implements DenormalizerInterf
             }
             $object->setData($values);
         }
+        elseif (property_exists($data, 'data') && $data->{'data'} === null) {
+            $object->setData(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -46,6 +49,9 @@ class OrderStatusLanguageModelCollectionNormalizer implements DenormalizerInterf
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'data'} = $values;
+        }
+        else {
+            $data->{'data'} = null;
         }
         return $data;
     }

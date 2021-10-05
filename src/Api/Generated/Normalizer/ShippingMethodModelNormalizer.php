@@ -31,11 +31,20 @@ class ShippingMethodModelNormalizer implements DenormalizerInterface, Normalizer
         if (property_exists($data, 'shippingMethodId') && $data->{'shippingMethodId'} !== null) {
             $object->setShippingMethodId($data->{'shippingMethodId'});
         }
+        elseif (property_exists($data, 'shippingMethodId') && $data->{'shippingMethodId'} === null) {
+            $object->setShippingMethodId(null);
+        }
         if (property_exists($data, 'active') && $data->{'active'} !== null) {
             $object->setActive($data->{'active'});
         }
+        elseif (property_exists($data, 'active') && $data->{'active'} === null) {
+            $object->setActive(null);
+        }
         if (property_exists($data, 'validForCountries') && $data->{'validForCountries'} !== null) {
             $object->setValidForCountries($data->{'validForCountries'});
+        }
+        elseif (property_exists($data, 'validForCountries') && $data->{'validForCountries'} === null) {
+            $object->setValidForCountries(null);
         }
         if (property_exists($data, 'validCountriesSelected') && $data->{'validCountriesSelected'} !== null) {
             $values = array();
@@ -44,35 +53,68 @@ class ShippingMethodModelNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->setValidCountriesSelected($values);
         }
+        elseif (property_exists($data, 'validCountriesSelected') && $data->{'validCountriesSelected'} === null) {
+            $object->setValidCountriesSelected(null);
+        }
         if (property_exists($data, 'validForMinItemsSubtotal') && $data->{'validForMinItemsSubtotal'} !== null) {
             $object->setValidForMinItemsSubtotal($data->{'validForMinItemsSubtotal'});
+        }
+        elseif (property_exists($data, 'validForMinItemsSubtotal') && $data->{'validForMinItemsSubtotal'} === null) {
+            $object->setValidForMinItemsSubtotal(null);
         }
         if (property_exists($data, 'validForMaxItemsSubtotal') && $data->{'validForMaxItemsSubtotal'} !== null) {
             $object->setValidForMaxItemsSubtotal($data->{'validForMaxItemsSubtotal'});
         }
+        elseif (property_exists($data, 'validForMaxItemsSubtotal') && $data->{'validForMaxItemsSubtotal'} === null) {
+            $object->setValidForMaxItemsSubtotal(null);
+        }
         if (property_exists($data, 'validForMinWeight') && $data->{'validForMinWeight'} !== null) {
             $object->setValidForMinWeight($data->{'validForMinWeight'});
+        }
+        elseif (property_exists($data, 'validForMinWeight') && $data->{'validForMinWeight'} === null) {
+            $object->setValidForMinWeight(null);
         }
         if (property_exists($data, 'validForMaxWeight') && $data->{'validForMaxWeight'} !== null) {
             $object->setValidForMaxWeight($data->{'validForMaxWeight'});
         }
+        elseif (property_exists($data, 'validForMaxWeight') && $data->{'validForMaxWeight'} === null) {
+            $object->setValidForMaxWeight(null);
+        }
         if (property_exists($data, 'validForCustomerType') && $data->{'validForCustomerType'} !== null) {
             $object->setValidForCustomerType($data->{'validForCustomerType'});
+        }
+        elseif (property_exists($data, 'validForCustomerType') && $data->{'validForCustomerType'} === null) {
+            $object->setValidForCustomerType(null);
         }
         if (property_exists($data, 'freeShippingMinItemsSubtotal') && $data->{'freeShippingMinItemsSubtotal'} !== null) {
             $object->setFreeShippingMinItemsSubtotal($data->{'freeShippingMinItemsSubtotal'});
         }
+        elseif (property_exists($data, 'freeShippingMinItemsSubtotal') && $data->{'freeShippingMinItemsSubtotal'} === null) {
+            $object->setFreeShippingMinItemsSubtotal(null);
+        }
         if (property_exists($data, 'freeShippingMinWeight') && $data->{'freeShippingMinWeight'} !== null) {
             $object->setFreeShippingMinWeight($data->{'freeShippingMinWeight'});
+        }
+        elseif (property_exists($data, 'freeShippingMinWeight') && $data->{'freeShippingMinWeight'} === null) {
+            $object->setFreeShippingMinWeight(null);
         }
         if (property_exists($data, 'isClickAndCollect') && $data->{'isClickAndCollect'} !== null) {
             $object->setIsClickAndCollect($data->{'isClickAndCollect'});
         }
+        elseif (property_exists($data, 'isClickAndCollect') && $data->{'isClickAndCollect'} === null) {
+            $object->setIsClickAndCollect(null);
+        }
         if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
             $object->setExternalId($data->{'externalId'});
         }
+        elseif (property_exists($data, 'externalId') && $data->{'externalId'} === null) {
+            $object->setExternalId(null);
+        }
         if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\ShippingMethodLanguageModelCollection', 'json', $context));
+        }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
         }
         return $object;
     }
@@ -81,6 +123,9 @@ class ShippingMethodModelNormalizer implements DenormalizerInterface, Normalizer
         $data = new \stdClass();
         if (null !== $object->getLanguages()) {
             $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

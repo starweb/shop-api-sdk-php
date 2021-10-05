@@ -31,8 +31,14 @@ class ErrorModelNormalizer implements DenormalizerInterface, NormalizerInterface
         if (property_exists($data, 'error') && $data->{'error'} !== null) {
             $object->setError($data->{'error'});
         }
+        elseif (property_exists($data, 'error') && $data->{'error'} === null) {
+            $object->setError(null);
+        }
         if (property_exists($data, 'error_description') && $data->{'error_description'} !== null) {
             $object->setErrorDescription($data->{'error_description'});
+        }
+        elseif (property_exists($data, 'error_description') && $data->{'error_description'} === null) {
+            $object->setErrorDescription(null);
         }
         return $object;
     }

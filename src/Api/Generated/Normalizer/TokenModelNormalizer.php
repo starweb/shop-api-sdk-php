@@ -31,11 +31,20 @@ class TokenModelNormalizer implements DenormalizerInterface, NormalizerInterface
         if (property_exists($data, 'access_token') && $data->{'access_token'} !== null) {
             $object->setAccessToken($data->{'access_token'});
         }
+        elseif (property_exists($data, 'access_token') && $data->{'access_token'} === null) {
+            $object->setAccessToken(null);
+        }
         if (property_exists($data, 'scope') && $data->{'scope'} !== null) {
             $object->setScope($data->{'scope'});
         }
+        elseif (property_exists($data, 'scope') && $data->{'scope'} === null) {
+            $object->setScope(null);
+        }
         if (property_exists($data, 'expires_in') && $data->{'expires_in'} !== null) {
             $object->setExpiresIn($data->{'expires_in'});
+        }
+        elseif (property_exists($data, 'expires_in') && $data->{'expires_in'} === null) {
+            $object->setExpiresIn(null);
         }
         return $object;
     }

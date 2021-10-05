@@ -31,6 +31,9 @@ class ProductTagLinkPostRequestModelNormalizer implements DenormalizerInterface,
         if (property_exists($data, 'tagOptionId') && $data->{'tagOptionId'} !== null) {
             $object->setTagOptionId($data->{'tagOptionId'});
         }
+        elseif (property_exists($data, 'tagOptionId') && $data->{'tagOptionId'} === null) {
+            $object->setTagOptionId(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -38,6 +41,9 @@ class ProductTagLinkPostRequestModelNormalizer implements DenormalizerInterface,
         $data = new \stdClass();
         if (null !== $object->getTagOptionId()) {
             $data->{'tagOptionId'} = $object->getTagOptionId();
+        }
+        else {
+            $data->{'tagOptionId'} = null;
         }
         return $data;
     }

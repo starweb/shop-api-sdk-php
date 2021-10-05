@@ -31,8 +31,14 @@ class ProductTagLanguageModelNormalizer implements DenormalizerInterface, Normal
         if (property_exists($data, 'langCode') && $data->{'langCode'} !== null) {
             $object->setLangCode($data->{'langCode'});
         }
+        elseif (property_exists($data, 'langCode') && $data->{'langCode'} === null) {
+            $object->setLangCode(null);
+        }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
+        }
+        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
         }
         return $object;
     }
@@ -42,8 +48,14 @@ class ProductTagLanguageModelNormalizer implements DenormalizerInterface, Normal
         if (null !== $object->getLangCode()) {
             $data->{'langCode'} = $object->getLangCode();
         }
+        else {
+            $data->{'langCode'} = null;
+        }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
+        }
+        else {
+            $data->{'name'} = null;
         }
         return $data;
     }

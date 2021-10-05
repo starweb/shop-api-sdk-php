@@ -31,6 +31,9 @@ class MediaFileUploadModelNormalizer implements DenormalizerInterface, Normalize
         if (property_exists($data, 'file') && $data->{'file'} !== null) {
             $object->setFile($data->{'file'});
         }
+        elseif (property_exists($data, 'file') && $data->{'file'} === null) {
+            $object->setFile(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -38,6 +41,9 @@ class MediaFileUploadModelNormalizer implements DenormalizerInterface, Normalize
         $data = new \stdClass();
         if (null !== $object->getFile()) {
             $data->{'file'} = $object->getFile();
+        }
+        else {
+            $data->{'file'} = null;
         }
         return $data;
     }

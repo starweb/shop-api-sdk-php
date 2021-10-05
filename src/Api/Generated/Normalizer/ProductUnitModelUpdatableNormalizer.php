@@ -31,11 +31,20 @@ class ProductUnitModelUpdatableNormalizer implements DenormalizerInterface, Norm
         if (property_exists($data, 'unitId') && $data->{'unitId'} !== null) {
             $object->setUnitId($data->{'unitId'});
         }
+        elseif (property_exists($data, 'unitId') && $data->{'unitId'} === null) {
+            $object->setUnitId(null);
+        }
         if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
             $object->setExternalId($data->{'externalId'});
         }
+        elseif (property_exists($data, 'externalId') && $data->{'externalId'} === null) {
+            $object->setExternalId(null);
+        }
         if (property_exists($data, 'externalIdType') && $data->{'externalIdType'} !== null) {
             $object->setExternalIdType($data->{'externalIdType'});
+        }
+        elseif (property_exists($data, 'externalIdType') && $data->{'externalIdType'} === null) {
+            $object->setExternalIdType(null);
         }
         if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $values = array();
@@ -44,19 +53,35 @@ class ProductUnitModelUpdatableNormalizer implements DenormalizerInterface, Norm
             }
             $object->setLanguages($values);
         }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
-        $data->{'externalId'} = $object->getExternalId();
-        $data->{'externalIdType'} = $object->getExternalIdType();
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
+        else {
+            $data->{'externalId'} = null;
+        }
+        if (null !== $object->getExternalIdType()) {
+            $data->{'externalIdType'} = $object->getExternalIdType();
+        }
+        else {
+            $data->{'externalIdType'} = null;
+        }
         if (null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'languages'} = $values;
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

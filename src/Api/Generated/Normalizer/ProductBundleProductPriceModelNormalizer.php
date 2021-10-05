@@ -31,8 +31,14 @@ class ProductBundleProductPriceModelNormalizer implements DenormalizerInterface,
         if (property_exists($data, 'pricelistId') && $data->{'pricelistId'} !== null) {
             $object->setPricelistId($data->{'pricelistId'});
         }
+        elseif (property_exists($data, 'pricelistId') && $data->{'pricelistId'} === null) {
+            $object->setPricelistId(null);
+        }
         if (property_exists($data, 'specialPriceExVat') && $data->{'specialPriceExVat'} !== null) {
             $object->setSpecialPriceExVat($data->{'specialPriceExVat'});
+        }
+        elseif (property_exists($data, 'specialPriceExVat') && $data->{'specialPriceExVat'} === null) {
+            $object->setSpecialPriceExVat(null);
         }
         return $object;
     }
@@ -42,7 +48,15 @@ class ProductBundleProductPriceModelNormalizer implements DenormalizerInterface,
         if (null !== $object->getPricelistId()) {
             $data->{'pricelistId'} = $object->getPricelistId();
         }
-        $data->{'specialPriceExVat'} = $object->getSpecialPriceExVat();
+        else {
+            $data->{'pricelistId'} = null;
+        }
+        if (null !== $object->getSpecialPriceExVat()) {
+            $data->{'specialPriceExVat'} = $object->getSpecialPriceExVat();
+        }
+        else {
+            $data->{'specialPriceExVat'} = null;
+        }
         return $data;
     }
 }

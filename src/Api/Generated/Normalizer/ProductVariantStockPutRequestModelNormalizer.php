@@ -31,8 +31,14 @@ class ProductVariantStockPutRequestModelNormalizer implements DenormalizerInterf
         if (property_exists($data, 'stockStatusId') && $data->{'stockStatusId'} !== null) {
             $object->setStockStatusId($data->{'stockStatusId'});
         }
+        elseif (property_exists($data, 'stockStatusId') && $data->{'stockStatusId'} === null) {
+            $object->setStockStatusId(null);
+        }
         if (property_exists($data, 'stockQuantity') && $data->{'stockQuantity'} !== null) {
             $object->setStockQuantity($data->{'stockQuantity'});
+        }
+        elseif (property_exists($data, 'stockQuantity') && $data->{'stockQuantity'} === null) {
+            $object->setStockQuantity(null);
         }
         return $object;
     }
@@ -42,8 +48,14 @@ class ProductVariantStockPutRequestModelNormalizer implements DenormalizerInterf
         if (null !== $object->getStockStatusId()) {
             $data->{'stockStatusId'} = $object->getStockStatusId();
         }
+        else {
+            $data->{'stockStatusId'} = null;
+        }
         if (null !== $object->getStockQuantity()) {
             $data->{'stockQuantity'} = $object->getStockQuantity();
+        }
+        else {
+            $data->{'stockQuantity'} = null;
         }
         return $data;
     }

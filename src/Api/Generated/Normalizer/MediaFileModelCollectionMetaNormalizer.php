@@ -31,6 +31,9 @@ class MediaFileModelCollectionMetaNormalizer implements DenormalizerInterface, N
         if (property_exists($data, 'pagination') && $data->{'pagination'} !== null) {
             $object->setPagination($this->denormalizer->denormalize($data->{'pagination'}, 'Starweb\\Api\\Generated\\Model\\PaginationModel', 'json', $context));
         }
+        elseif (property_exists($data, 'pagination') && $data->{'pagination'} === null) {
+            $object->setPagination(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -38,6 +41,9 @@ class MediaFileModelCollectionMetaNormalizer implements DenormalizerInterface, N
         $data = new \stdClass();
         if (null !== $object->getPagination()) {
             $data->{'pagination'} = $this->normalizer->normalize($object->getPagination(), 'json', $context);
+        }
+        else {
+            $data->{'pagination'} = null;
         }
         return $data;
     }

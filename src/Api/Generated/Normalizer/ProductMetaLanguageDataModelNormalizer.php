@@ -31,8 +31,14 @@ class ProductMetaLanguageDataModelNormalizer implements DenormalizerInterface, N
         if (property_exists($data, 'langCode') && $data->{'langCode'} !== null) {
             $object->setLangCode($data->{'langCode'});
         }
+        elseif (property_exists($data, 'langCode') && $data->{'langCode'} === null) {
+            $object->setLangCode(null);
+        }
         if (property_exists($data, 'value') && $data->{'value'} !== null) {
             $object->setValue($data->{'value'});
+        }
+        elseif (property_exists($data, 'value') && $data->{'value'} === null) {
+            $object->setValue(null);
         }
         return $object;
     }
@@ -42,8 +48,14 @@ class ProductMetaLanguageDataModelNormalizer implements DenormalizerInterface, N
         if (null !== $object->getLangCode()) {
             $data->{'langCode'} = $object->getLangCode();
         }
+        else {
+            $data->{'langCode'} = null;
+        }
         if (null !== $object->getValue()) {
             $data->{'value'} = $object->getValue();
+        }
+        else {
+            $data->{'value'} = null;
         }
         return $data;
     }

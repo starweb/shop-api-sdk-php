@@ -31,8 +31,14 @@ class ShippingTrackingTypeModelNormalizer implements DenormalizerInterface, Norm
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
         }
+        elseif (property_exists($data, 'type') && $data->{'type'} === null) {
+            $object->setType(null);
+        }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
+        }
+        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
         }
         return $object;
     }

@@ -31,11 +31,20 @@ class ProductMetaDataModelUpdatableNormalizer implements DenormalizerInterface, 
         if (property_exists($data, 'metaDataId') && $data->{'metaDataId'} !== null) {
             $object->setMetaDataId($data->{'metaDataId'});
         }
+        elseif (property_exists($data, 'metaDataId') && $data->{'metaDataId'} === null) {
+            $object->setMetaDataId(null);
+        }
         if (property_exists($data, 'metaDataTypeId') && $data->{'metaDataTypeId'} !== null) {
             $object->setMetaDataTypeId($data->{'metaDataTypeId'});
         }
+        elseif (property_exists($data, 'metaDataTypeId') && $data->{'metaDataTypeId'} === null) {
+            $object->setMetaDataTypeId(null);
+        }
         if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
             $object->setSortIndex($data->{'sortIndex'});
+        }
+        elseif (property_exists($data, 'sortIndex') && $data->{'sortIndex'} === null) {
+            $object->setSortIndex(null);
         }
         if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $values = array();
@@ -43,6 +52,9 @@ class ProductMetaDataModelUpdatableNormalizer implements DenormalizerInterface, 
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductMetaLanguageDataModel', 'json', $context);
             }
             $object->setLanguages($values);
+        }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
         }
         return $object;
     }
@@ -52,8 +64,14 @@ class ProductMetaDataModelUpdatableNormalizer implements DenormalizerInterface, 
         if (null !== $object->getMetaDataTypeId()) {
             $data->{'metaDataTypeId'} = $object->getMetaDataTypeId();
         }
+        else {
+            $data->{'metaDataTypeId'} = null;
+        }
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
+        }
+        else {
+            $data->{'sortIndex'} = null;
         }
         if (null !== $object->getLanguages()) {
             $values = array();
@@ -61,6 +79,9 @@ class ProductMetaDataModelUpdatableNormalizer implements DenormalizerInterface, 
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'languages'} = $values;
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

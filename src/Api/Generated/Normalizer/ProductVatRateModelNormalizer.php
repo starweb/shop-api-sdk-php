@@ -31,8 +31,14 @@ class ProductVatRateModelNormalizer implements DenormalizerInterface, Normalizer
         if (property_exists($data, 'countryCode') && $data->{'countryCode'} !== null) {
             $object->setCountryCode($data->{'countryCode'});
         }
+        elseif (property_exists($data, 'countryCode') && $data->{'countryCode'} === null) {
+            $object->setCountryCode(null);
+        }
         if (property_exists($data, 'vatRate') && $data->{'vatRate'} !== null) {
             $object->setVatRate($data->{'vatRate'});
+        }
+        elseif (property_exists($data, 'vatRate') && $data->{'vatRate'} === null) {
+            $object->setVatRate(null);
         }
         return $object;
     }
@@ -42,8 +48,14 @@ class ProductVatRateModelNormalizer implements DenormalizerInterface, Normalizer
         if (null !== $object->getCountryCode()) {
             $data->{'countryCode'} = $object->getCountryCode();
         }
+        else {
+            $data->{'countryCode'} = null;
+        }
         if (null !== $object->getVatRate()) {
             $data->{'vatRate'} = $object->getVatRate();
+        }
+        else {
+            $data->{'vatRate'} = null;
         }
         return $data;
     }

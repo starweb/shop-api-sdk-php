@@ -31,6 +31,9 @@ class OrderItemBundledModelItemNormalizer implements DenormalizerInterface, Norm
         if (property_exists($data, 'bundledItems') && $data->{'bundledItems'} !== null) {
             $object->setBundledItems($this->denormalizer->denormalize($data->{'bundledItems'}, 'Starweb\\Api\\Generated\\Model\\OrderItemBundledModelItemBundledItems', 'json', $context));
         }
+        elseif (property_exists($data, 'bundledItems') && $data->{'bundledItems'} === null) {
+            $object->setBundledItems(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -38,6 +41,9 @@ class OrderItemBundledModelItemNormalizer implements DenormalizerInterface, Norm
         $data = new \stdClass();
         if (null !== $object->getBundledItems()) {
             $data->{'bundledItems'} = $this->normalizer->normalize($object->getBundledItems(), 'json', $context);
+        }
+        else {
+            $data->{'bundledItems'} = null;
         }
         return $data;
     }

@@ -35,8 +35,14 @@ class ProductCategoryModelCollectionNormalizer implements DenormalizerInterface,
             }
             $object->setData($values);
         }
+        elseif (property_exists($data, 'data') && $data->{'data'} === null) {
+            $object->setData(null);
+        }
         if (property_exists($data, 'meta') && $data->{'meta'} !== null) {
             $object->setMeta($this->denormalizer->denormalize($data->{'meta'}, 'Starweb\\Api\\Generated\\Model\\ProductCategoryModelCollectionMeta', 'json', $context));
+        }
+        elseif (property_exists($data, 'meta') && $data->{'meta'} === null) {
+            $object->setMeta(null);
         }
         return $object;
     }
@@ -50,8 +56,14 @@ class ProductCategoryModelCollectionNormalizer implements DenormalizerInterface,
             }
             $data->{'data'} = $values;
         }
+        else {
+            $data->{'data'} = null;
+        }
         if (null !== $object->getMeta()) {
             $data->{'meta'} = $this->normalizer->normalize($object->getMeta(), 'json', $context);
+        }
+        else {
+            $data->{'meta'} = null;
         }
         return $data;
     }

@@ -31,20 +31,38 @@ class ProductStockStatusRequestModelNormalizer implements DenormalizerInterface,
         if (property_exists($data, 'stockStatusId') && $data->{'stockStatusId'} !== null) {
             $object->setStockStatusId($data->{'stockStatusId'});
         }
+        elseif (property_exists($data, 'stockStatusId') && $data->{'stockStatusId'} === null) {
+            $object->setStockStatusId(null);
+        }
         if (property_exists($data, 'idCode') && $data->{'idCode'} !== null) {
             $object->setIdCode($data->{'idCode'});
+        }
+        elseif (property_exists($data, 'idCode') && $data->{'idCode'} === null) {
+            $object->setIdCode(null);
         }
         if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
             $object->setSortIndex($data->{'sortIndex'});
         }
+        elseif (property_exists($data, 'sortIndex') && $data->{'sortIndex'} === null) {
+            $object->setSortIndex(null);
+        }
         if (property_exists($data, 'stockoutNewStatusId') && $data->{'stockoutNewStatusId'} !== null) {
             $object->setStockoutNewStatusId($data->{'stockoutNewStatusId'});
+        }
+        elseif (property_exists($data, 'stockoutNewStatusId') && $data->{'stockoutNewStatusId'} === null) {
+            $object->setStockoutNewStatusId(null);
         }
         if (property_exists($data, 'productBuyable') && $data->{'productBuyable'} !== null) {
             $object->setProductBuyable($data->{'productBuyable'});
         }
+        elseif (property_exists($data, 'productBuyable') && $data->{'productBuyable'} === null) {
+            $object->setProductBuyable(null);
+        }
         if (property_exists($data, 'inStock') && $data->{'inStock'} !== null) {
             $object->setInStock($data->{'inStock'});
+        }
+        elseif (property_exists($data, 'inStock') && $data->{'inStock'} === null) {
+            $object->setInStock(null);
         }
         if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $values = array();
@@ -52,6 +70,9 @@ class ProductStockStatusRequestModelNormalizer implements DenormalizerInterface,
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductStockStatusLanguageModel', 'json', $context);
             }
             $object->setLanguages($values);
+        }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
         }
         return $object;
     }
@@ -61,12 +82,26 @@ class ProductStockStatusRequestModelNormalizer implements DenormalizerInterface,
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
         }
-        $data->{'stockoutNewStatusId'} = $object->getStockoutNewStatusId();
+        else {
+            $data->{'sortIndex'} = null;
+        }
+        if (null !== $object->getStockoutNewStatusId()) {
+            $data->{'stockoutNewStatusId'} = $object->getStockoutNewStatusId();
+        }
+        else {
+            $data->{'stockoutNewStatusId'} = null;
+        }
         if (null !== $object->getProductBuyable()) {
             $data->{'productBuyable'} = $object->getProductBuyable();
         }
+        else {
+            $data->{'productBuyable'} = null;
+        }
         if (null !== $object->getInStock()) {
             $data->{'inStock'} = $object->getInStock();
+        }
+        else {
+            $data->{'inStock'} = null;
         }
         if (null !== $object->getLanguages()) {
             $values = array();
@@ -74,6 +109,9 @@ class ProductStockStatusRequestModelNormalizer implements DenormalizerInterface,
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'languages'} = $values;
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

@@ -31,44 +31,86 @@ class CustomerCreatedModelNormalizer implements DenormalizerInterface, Normalize
         if (property_exists($data, 'customerId') && $data->{'customerId'} !== null) {
             $object->setCustomerId($data->{'customerId'});
         }
+        elseif (property_exists($data, 'customerId') && $data->{'customerId'} === null) {
+            $object->setCustomerId(null);
+        }
         if (property_exists($data, 'createdAt') && $data->{'createdAt'} !== null) {
             $object->setCreatedAt($data->{'createdAt'});
+        }
+        elseif (property_exists($data, 'createdAt') && $data->{'createdAt'} === null) {
+            $object->setCreatedAt(null);
         }
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
         }
+        elseif (property_exists($data, 'type') && $data->{'type'} === null) {
+            $object->setType(null);
+        }
         if (property_exists($data, 'email') && $data->{'email'} !== null) {
             $object->setEmail($data->{'email'});
+        }
+        elseif (property_exists($data, 'email') && $data->{'email'} === null) {
+            $object->setEmail(null);
         }
         if (property_exists($data, 'nationalIdNo') && $data->{'nationalIdNo'} !== null) {
             $object->setNationalIdNo($data->{'nationalIdNo'});
         }
+        elseif (property_exists($data, 'nationalIdNo') && $data->{'nationalIdNo'} === null) {
+            $object->setNationalIdNo(null);
+        }
         if (property_exists($data, 'vatNo') && $data->{'vatNo'} !== null) {
             $object->setVatNo($data->{'vatNo'});
+        }
+        elseif (property_exists($data, 'vatNo') && $data->{'vatNo'} === null) {
+            $object->setVatNo(null);
         }
         if (property_exists($data, 'customInfo1') && $data->{'customInfo1'} !== null) {
             $object->setCustomInfo1($data->{'customInfo1'});
         }
+        elseif (property_exists($data, 'customInfo1') && $data->{'customInfo1'} === null) {
+            $object->setCustomInfo1(null);
+        }
         if (property_exists($data, 'customInfo2') && $data->{'customInfo2'} !== null) {
             $object->setCustomInfo2($data->{'customInfo2'});
+        }
+        elseif (property_exists($data, 'customInfo2') && $data->{'customInfo2'} === null) {
+            $object->setCustomInfo2(null);
         }
         if (property_exists($data, 'modifiedAt') && $data->{'modifiedAt'} !== null) {
             $object->setModifiedAt($data->{'modifiedAt'});
         }
+        elseif (property_exists($data, 'modifiedAt') && $data->{'modifiedAt'} === null) {
+            $object->setModifiedAt(null);
+        }
         if (property_exists($data, 'approved') && $data->{'approved'} !== null) {
             $object->setApproved($data->{'approved'});
+        }
+        elseif (property_exists($data, 'approved') && $data->{'approved'} === null) {
+            $object->setApproved(null);
         }
         if (property_exists($data, 'approvedAt') && $data->{'approvedAt'} !== null) {
             $object->setApprovedAt($data->{'approvedAt'});
         }
+        elseif (property_exists($data, 'approvedAt') && $data->{'approvedAt'} === null) {
+            $object->setApprovedAt(null);
+        }
         if (property_exists($data, 'pricelistId') && $data->{'pricelistId'} !== null) {
             $object->setPricelistId($data->{'pricelistId'});
+        }
+        elseif (property_exists($data, 'pricelistId') && $data->{'pricelistId'} === null) {
+            $object->setPricelistId(null);
         }
         if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
             $object->setExternalId($data->{'externalId'});
         }
+        elseif (property_exists($data, 'externalId') && $data->{'externalId'} === null) {
+            $object->setExternalId(null);
+        }
         if (property_exists($data, 'externalIdType') && $data->{'externalIdType'} !== null) {
             $object->setExternalIdType($data->{'externalIdType'});
+        }
+        elseif (property_exists($data, 'externalIdType') && $data->{'externalIdType'} === null) {
+            $object->setExternalIdType(null);
         }
         return $object;
     }
@@ -78,26 +120,57 @@ class CustomerCreatedModelNormalizer implements DenormalizerInterface, Normalize
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();
         }
+        else {
+            $data->{'createdAt'} = null;
+        }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
+        }
+        else {
+            $data->{'type'} = null;
         }
         if (null !== $object->getEmail()) {
             $data->{'email'} = $object->getEmail();
         }
+        else {
+            $data->{'email'} = null;
+        }
         if (null !== $object->getNationalIdNo()) {
             $data->{'nationalIdNo'} = $object->getNationalIdNo();
+        }
+        else {
+            $data->{'nationalIdNo'} = null;
         }
         if (null !== $object->getVatNo()) {
             $data->{'vatNo'} = $object->getVatNo();
         }
+        else {
+            $data->{'vatNo'} = null;
+        }
         if (null !== $object->getCustomInfo1()) {
             $data->{'customInfo1'} = $object->getCustomInfo1();
+        }
+        else {
+            $data->{'customInfo1'} = null;
         }
         if (null !== $object->getCustomInfo2()) {
             $data->{'customInfo2'} = $object->getCustomInfo2();
         }
-        $data->{'externalId'} = $object->getExternalId();
-        $data->{'externalIdType'} = $object->getExternalIdType();
+        else {
+            $data->{'customInfo2'} = null;
+        }
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
+        else {
+            $data->{'externalId'} = null;
+        }
+        if (null !== $object->getExternalIdType()) {
+            $data->{'externalIdType'} = $object->getExternalIdType();
+        }
+        else {
+            $data->{'externalIdType'} = null;
+        }
         return $data;
     }
 }

@@ -31,12 +31,18 @@ class ProductTagOptionPostRequestModelNormalizer implements DenormalizerInterfac
         if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
             $object->setSortIndex($data->{'sortIndex'});
         }
+        elseif (property_exists($data, 'sortIndex') && $data->{'sortIndex'} === null) {
+            $object->setSortIndex(null);
+        }
         if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
             $values = array();
             foreach ($data->{'languages'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductTagOptionLanguageModel', 'json', $context);
             }
             $object->setLanguages($values);
+        }
+        elseif (property_exists($data, 'languages') && $data->{'languages'} === null) {
+            $object->setLanguages(null);
         }
         return $object;
     }
@@ -46,12 +52,18 @@ class ProductTagOptionPostRequestModelNormalizer implements DenormalizerInterfac
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
         }
+        else {
+            $data->{'sortIndex'} = null;
+        }
         if (null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'languages'} = $values;
+        }
+        else {
+            $data->{'languages'} = null;
         }
         return $data;
     }

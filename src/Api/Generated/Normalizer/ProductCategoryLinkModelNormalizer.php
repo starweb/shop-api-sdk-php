@@ -31,8 +31,14 @@ class ProductCategoryLinkModelNormalizer implements DenormalizerInterface, Norma
         if (property_exists($data, 'categoryId') && $data->{'categoryId'} !== null) {
             $object->setCategoryId($data->{'categoryId'});
         }
+        elseif (property_exists($data, 'categoryId') && $data->{'categoryId'} === null) {
+            $object->setCategoryId(null);
+        }
         if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
             $object->setSortIndex($data->{'sortIndex'});
+        }
+        elseif (property_exists($data, 'sortIndex') && $data->{'sortIndex'} === null) {
+            $object->setSortIndex(null);
         }
         return $object;
     }
@@ -42,8 +48,14 @@ class ProductCategoryLinkModelNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getCategoryId()) {
             $data->{'categoryId'} = $object->getCategoryId();
         }
+        else {
+            $data->{'categoryId'} = null;
+        }
         if (null !== $object->getSortIndex()) {
             $data->{'sortIndex'} = $object->getSortIndex();
+        }
+        else {
+            $data->{'sortIndex'} = null;
         }
         return $data;
     }

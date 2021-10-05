@@ -31,14 +31,26 @@ class ProductLanguageSlimModelNormalizer implements DenormalizerInterface, Norma
         if (property_exists($data, 'langCode') && $data->{'langCode'} !== null) {
             $object->setLangCode($data->{'langCode'});
         }
+        elseif (property_exists($data, 'langCode') && $data->{'langCode'} === null) {
+            $object->setLangCode(null);
+        }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
+        }
+        elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
         }
         if (property_exists($data, 'shortDescription') && $data->{'shortDescription'} !== null) {
             $object->setShortDescription($data->{'shortDescription'});
         }
+        elseif (property_exists($data, 'shortDescription') && $data->{'shortDescription'} === null) {
+            $object->setShortDescription(null);
+        }
         if (property_exists($data, 'permalink') && $data->{'permalink'} !== null) {
             $object->setPermalink($data->{'permalink'});
+        }
+        elseif (property_exists($data, 'permalink') && $data->{'permalink'} === null) {
+            $object->setPermalink(null);
         }
         return $object;
     }
@@ -48,14 +60,26 @@ class ProductLanguageSlimModelNormalizer implements DenormalizerInterface, Norma
         if (null !== $object->getLangCode()) {
             $data->{'langCode'} = $object->getLangCode();
         }
+        else {
+            $data->{'langCode'} = null;
+        }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
+        }
+        else {
+            $data->{'name'} = null;
         }
         if (null !== $object->getShortDescription()) {
             $data->{'shortDescription'} = $object->getShortDescription();
         }
+        else {
+            $data->{'shortDescription'} = null;
+        }
         if (null !== $object->getPermalink()) {
             $data->{'permalink'} = $object->getPermalink();
+        }
+        else {
+            $data->{'permalink'} = null;
         }
         return $data;
     }
