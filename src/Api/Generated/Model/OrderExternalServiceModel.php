@@ -17,6 +17,12 @@ class OrderExternalServiceModel
      */
     protected $externalIdValue;
     /**
+     * Agent id for nShift agent if applicable
+     *
+     * @var string|null
+     */
+    protected $agent;
+    /**
      * Some external services cannot be updated and they have readOnly set to true
      *
      * @var bool|null
@@ -62,6 +68,27 @@ class OrderExternalServiceModel
     public function setExternalIdValue(?string $externalIdValue) : self
     {
         $this->externalIdValue = $externalIdValue;
+        return $this;
+    }
+    /**
+     * Agent id for nShift agent if applicable
+     *
+     * @return string|null
+     */
+    public function getAgent() : ?string
+    {
+        return $this->agent;
+    }
+    /**
+     * Agent id for nShift agent if applicable
+     *
+     * @param string|null $agent
+     *
+     * @return self
+     */
+    public function setAgent(?string $agent) : self
+    {
+        $this->agent = $agent;
         return $this;
     }
     /**

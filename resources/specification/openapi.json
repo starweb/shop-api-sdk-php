@@ -9750,6 +9750,10 @@
             "description": "The external id",
             "example": "ABC123"
           },
+          "agent": {
+            "type": "string",
+            "description": "Agent id for nShift agent if applicable"
+          },
           "readOnly": {
             "type": "boolean",
             "description": "Some external services cannot be updated and they have readOnly set to true",

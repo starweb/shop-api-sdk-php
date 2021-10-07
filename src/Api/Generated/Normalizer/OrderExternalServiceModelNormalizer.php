@@ -34,6 +34,9 @@ class OrderExternalServiceModelNormalizer implements DenormalizerInterface, Norm
         if (property_exists($data, 'externalIdValue') && $data->{'externalIdValue'} !== null) {
             $object->setExternalIdValue($data->{'externalIdValue'});
         }
+        if (property_exists($data, 'agent') && $data->{'agent'} !== null) {
+            $object->setAgent($data->{'agent'});
+        }
         if (property_exists($data, 'readOnly') && $data->{'readOnly'} !== null) {
             $object->setReadOnly($data->{'readOnly'});
         }
@@ -47,6 +50,9 @@ class OrderExternalServiceModelNormalizer implements DenormalizerInterface, Norm
         }
         if (null !== $object->getExternalIdValue()) {
             $data->{'externalIdValue'} = $object->getExternalIdValue();
+        }
+        if (null !== $object->getAgent()) {
+            $data->{'agent'} = $object->getAgent();
         }
         return $data;
     }
