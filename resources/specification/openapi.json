@@ -12231,37 +12231,29 @@
           "externalId": {
             "type": "string",
             "maxLength": 40,
-            "default": "",
             "example": "101",
-            "description": "The external id of this pricelist",
-            "nullable": true
+            "description": "The external id of this pricelist"
           },
           "externalIdType": {
             "type": "string",
             "description": "The system name the externalId belongs to.",
             "maxLength": 20,
-            "example": "ERP system",
-            "nullable": true
+            "example": "ERP system"
           },
           "isActive": {
             "type": "boolean",
-            "default": true,
-            "description": "Is this variant active? Only active variants are visible to customers",
-            "nullable": true
+            "description": "Is this variant active? Only active variants are visible to customers"
           },
           "sortIndex": {
             "type": "integer",
-            "description": "The sort index of this variant.",
-            "nullable": true
+            "description": "The sort index of this variant."
           },
           "stockStatusId": {
             "type": "integer",
-            "nullable": true,
             "description": "The ID of the variants stock status. Available stock statuses can be fetched using the \/product-stock-statuses endpoint"
           },
           "stockQuantity": {
             "type": "integer",
-            "nullable": true,
             "maximum": 100000000,
             "minimum": -100000000,
             "description": "The current stock quantity for this variant"
@@ -12269,7 +12261,6 @@
           "weightInKg": {
             "type": "number",
             "format": "float",
-            "nullable": true,
             "minimum": 0,
             "description": "The variants weight in KG",
             "example": 0.15
@@ -12277,24 +12268,20 @@
           "costPrice": {
             "type": "string",
             "minimum": 0,
-            "nullable": true,
             "description": "The cost for this variant. Used for statistic and never displayed to customers"
           },
           "ean": {
             "type": "string",
             "maxLength": 20,
-            "description": "European article no",
-            "nullable": true
+            "description": "European article no"
           },
           "mpn": {
             "type": "string",
             "maxLength": 40,
-            "description": "Manufacturer part no",
-            "nullable": true
+            "description": "Manufacturer part no"
           },
           "imageFileId": {
             "type": "integer",
-            "nullable": true,
             "description": "The ID of this variant main image. Available media files can be fetched using the \/media-files endpoint"
           },
           "attributeValueLinks": {
@@ -12304,8 +12291,7 @@
               "type": "integer",
               "minimum": 1,
               "description": "The ID of the attribute value"
-            },
-            "nullable": true
+            }
           },
           "volumePricingInheritancePricelistIds": {
             "type": "array",
@@ -12314,8 +12300,7 @@
               "type": "integer",
               "minimum": 1,
               "description": "The ID of the attribute value"
-            },
-            "nullable": true
+            }
           }
         }
       },

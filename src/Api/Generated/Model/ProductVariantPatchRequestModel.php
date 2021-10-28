@@ -15,7 +15,7 @@ class ProductVariantPatchRequestModel
      *
      * @var string|null
      */
-    protected $externalId = '';
+    protected $externalId;
     /**
      * The system name the externalId belongs to.
      *
@@ -27,7 +27,7 @@ class ProductVariantPatchRequestModel
      *
      * @var bool|null
      */
-    protected $isActive = true;
+    protected $isActive;
     /**
      * The sort index of this variant.
      *

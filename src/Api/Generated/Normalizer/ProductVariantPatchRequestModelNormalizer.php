@@ -86,17 +86,39 @@ class ProductVariantPatchRequestModelNormalizer implements DenormalizerInterface
         if (null !== $object->getSku()) {
             $data->{'sku'} = $object->getSku();
         }
-        $data->{'externalId'} = $object->getExternalId();
-        $data->{'externalIdType'} = $object->getExternalIdType();
-        $data->{'isActive'} = $object->getIsActive();
-        $data->{'sortIndex'} = $object->getSortIndex();
-        $data->{'stockStatusId'} = $object->getStockStatusId();
-        $data->{'stockQuantity'} = $object->getStockQuantity();
-        $data->{'weightInKg'} = $object->getWeightInKg();
-        $data->{'costPrice'} = $object->getCostPrice();
-        $data->{'ean'} = $object->getEan();
-        $data->{'mpn'} = $object->getMpn();
-        $data->{'imageFileId'} = $object->getImageFileId();
+        if (null !== $object->getExternalId()) {
+            $data->{'externalId'} = $object->getExternalId();
+        }
+        if (null !== $object->getExternalIdType()) {
+            $data->{'externalIdType'} = $object->getExternalIdType();
+        }
+        if (null !== $object->getIsActive()) {
+            $data->{'isActive'} = $object->getIsActive();
+        }
+        if (null !== $object->getSortIndex()) {
+            $data->{'sortIndex'} = $object->getSortIndex();
+        }
+        if (null !== $object->getStockStatusId()) {
+            $data->{'stockStatusId'} = $object->getStockStatusId();
+        }
+        if (null !== $object->getStockQuantity()) {
+            $data->{'stockQuantity'} = $object->getStockQuantity();
+        }
+        if (null !== $object->getWeightInKg()) {
+            $data->{'weightInKg'} = $object->getWeightInKg();
+        }
+        if (null !== $object->getCostPrice()) {
+            $data->{'costPrice'} = $object->getCostPrice();
+        }
+        if (null !== $object->getEan()) {
+            $data->{'ean'} = $object->getEan();
+        }
+        if (null !== $object->getMpn()) {
+            $data->{'mpn'} = $object->getMpn();
+        }
+        if (null !== $object->getImageFileId()) {
+            $data->{'imageFileId'} = $object->getImageFileId();
+        }
         if (null !== $object->getAttributeValueLinks()) {
             $values = array();
             foreach ($object->getAttributeValueLinks() as $value) {
@@ -104,18 +126,12 @@ class ProductVariantPatchRequestModelNormalizer implements DenormalizerInterface
             }
             $data->{'attributeValueLinks'} = $values;
         }
-        else {
-            $data->{'attributeValueLinks'} = null;
-        }
         if (null !== $object->getVolumePricingInheritancePricelistIds()) {
             $values_1 = array();
             foreach ($object->getVolumePricingInheritancePricelistIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data->{'volumePricingInheritancePricelistIds'} = $values_1;
-        }
-        else {
-            $data->{'volumePricingInheritancePricelistIds'} = null;
         }
         return $data;
     }
