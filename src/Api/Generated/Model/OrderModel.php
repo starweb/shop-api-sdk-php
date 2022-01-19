@@ -113,6 +113,12 @@ class OrderModel
      */
     protected $sendEmailsOnStatusChange = true;
     /**
+     * Id of stock location this order was made for
+     *
+     * @var int|null
+     */
+    protected $stockLocationId;
+    /**
      * The ID of the orders shipping method
      *
      * @var int|null
@@ -734,6 +740,27 @@ class OrderModel
     public function setSendEmailsOnStatusChange(?bool $sendEmailsOnStatusChange) : self
     {
         $this->sendEmailsOnStatusChange = $sendEmailsOnStatusChange;
+        return $this;
+    }
+    /**
+     * Id of stock location this order was made for
+     *
+     * @return int|null
+     */
+    public function getStockLocationId() : ?int
+    {
+        return $this->stockLocationId;
+    }
+    /**
+     * Id of stock location this order was made for
+     *
+     * @param int|null $stockLocationId
+     *
+     * @return self
+     */
+    public function setStockLocationId(?int $stockLocationId) : self
+    {
+        $this->stockLocationId = $stockLocationId;
         return $this;
     }
     /**

@@ -82,6 +82,9 @@ class OrderModelNormalizer implements DenormalizerInterface, NormalizerInterface
         if (property_exists($data, 'sendEmailsOnStatusChange') && $data->{'sendEmailsOnStatusChange'} !== null) {
             $object->setSendEmailsOnStatusChange($data->{'sendEmailsOnStatusChange'});
         }
+        if (property_exists($data, 'stockLocationId') && $data->{'stockLocationId'} !== null) {
+            $object->setStockLocationId($data->{'stockLocationId'});
+        }
         if (property_exists($data, 'shippingMethodId') && $data->{'shippingMethodId'} !== null) {
             $object->setShippingMethodId($data->{'shippingMethodId'});
         }
@@ -227,6 +230,9 @@ class OrderModelNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getSendEmailsOnStatusChange()) {
             $data->{'sendEmailsOnStatusChange'} = $object->getSendEmailsOnStatusChange();
+        }
+        if (null !== $object->getStockLocationId()) {
+            $data->{'stockLocationId'} = $object->getStockLocationId();
         }
         if (null !== $object->getShippingMethodId()) {
             $data->{'shippingMethodId'} = $object->getShippingMethodId();

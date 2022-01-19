@@ -8606,6 +8606,11 @@
             "example": false,
             "default": true
           },
+          "stockLocationId": {
+            "type": "integer",
+            "description": "Id of stock location this order was made for",
+            "example": 1
+          },
           "shippingMethodId": {
             "type": "integer",
             "description": "The ID of the orders shipping method",
