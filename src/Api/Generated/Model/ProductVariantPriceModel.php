@@ -35,9 +35,9 @@ class ProductVariantPriceModel
      */
     protected $specialPriceExVat;
     /**
-     * A collection of volume prices
+     * 
      *
-     * @var ProductVariantVolumePriceModel[]|null
+     * @var ProductVariantVolumePriceModelCollection|null
      */
     protected $volumePrices;
     /**
@@ -146,22 +146,22 @@ class ProductVariantPriceModel
         return $this;
     }
     /**
-     * A collection of volume prices
+     * 
      *
-     * @return ProductVariantVolumePriceModel[]|null
+     * @return ProductVariantVolumePriceModelCollection|null
      */
-    public function getVolumePrices() : ?array
+    public function getVolumePrices() : ?ProductVariantVolumePriceModelCollection
     {
         return $this->volumePrices;
     }
     /**
-     * A collection of volume prices
+     * 
      *
-     * @param ProductVariantVolumePriceModel[]|null $volumePrices
+     * @param ProductVariantVolumePriceModelCollection|null $volumePrices
      *
      * @return self
      */
-    public function setVolumePrices(?array $volumePrices) : self
+    public function setVolumePrices(?ProductVariantVolumePriceModelCollection $volumePrices) : self
     {
         $this->volumePrices = $volumePrices;
         return $this;

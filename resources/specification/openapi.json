@@ -12909,11 +12909,7 @@
             "description": "The special price excluding vat (a discounted price)"
           },
           "volumePrices": {
-            "type": "array",
-            "description": "A collection of volume prices",
-            "items": {
-              "$ref": "#\/components\/schemas\/ProductVariantVolumePriceModel"
-            }
+            "$ref": "#\/components\/schemas\/ProductVariantVolumePriceModelCollection"
           }
         },
         "required": [
