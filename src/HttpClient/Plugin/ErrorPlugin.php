@@ -75,7 +75,7 @@ final class ErrorPlugin implements Plugin
         if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
             $content = \json_decode($response->getBody()->__toString(), true);
 
-            if ($this->isMaxRequestsLimitResponse($content)) {
+            if (is_array($content) && $this->isMaxRequestsLimitResponse($content)) {
 
                 // Starweb Shop API SDKs limit is 1000 requests per minute, so we sleep in incremental
                 // steps of seconds before we restart the request processing chain
