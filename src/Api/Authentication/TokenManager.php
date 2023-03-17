@@ -93,6 +93,11 @@ class TokenManager
             throw new InvalidCredentialsException($responseData['error_description'], $request, $response);
         }
 
+        if (!isset($responseData['access_token'])) {
+            $errorMessage = 'Malformed response. [responseJson]: ' . $responseJson;
+            throw new ClientErrorException($errorMessage, $request, $response);
+        }
+
         return new AccessToken($responseData['access_token'], $responseData['expires_in']);
     }
 
