@@ -75,10 +75,6 @@ class TokenManager
 
         $responseJson = $response->getBody()->__toString();
         $responseData = json_decode($responseJson, true);
-        if (!is_array($responseData)) {
-            $errorMessage = 'Malformed response. [responseJson]: ' . $responseJson;
-            throw new ClientErrorException($errorMessage, $request, $response);
-        }
 
         if (404 === $response->getStatusCode()) {
             throw new InvalidBaseUriException(sprintf('invalid base uri "%s"', $this->baseUri), $request, $response);
@@ -86,6 +82,11 @@ class TokenManager
 
         if (500 === $response->getStatusCode()) {
             throw new ServerErrorException('server error', $request, $response);
+        }
+
+        if (!is_array($responseData)) {
+            $errorMessage = 'Malformed response. [responseJson]: ' . $responseJson;
+            throw new ClientErrorException($errorMessage, $request, $response);
         }
 
         if (400 === $response->getStatusCode() && $responseData['error'] === 'invalid_client') {
