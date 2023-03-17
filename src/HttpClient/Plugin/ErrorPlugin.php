@@ -82,7 +82,7 @@ final class ErrorPlugin implements Plugin
                 sleep(self::SECONDS_TO_SLEEP_ON_MAX_REQUEST_PER_MINUTE_ERROR);
                 $first($request);
             } else {
-                throw new ClientErrorException($content['error_description'], $request, $response);
+                throw new ClientErrorException($content['error_description'] ?? 'Malformed resposne from server.', $request, $response);
             }
         }
 
