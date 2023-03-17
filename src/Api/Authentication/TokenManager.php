@@ -2,6 +2,7 @@
 
 namespace Starweb\Api\Authentication;
 
+use Http\Client\Common\Exception\ClientErrorException;
 use Http\Client\Common\Exception\ServerErrorException;
 use Http\Client\HttpClient;
 use Http\Message\MessageFactory;
@@ -72,7 +73,12 @@ class TokenManager
 
         $response = $this->client->sendRequest($request);
 
-        $responseData = json_decode($response->getBody()->__toString(), true);
+        $responseJson = $response->getBody()->__toString();
+        $responseData = json_decode($responseJson, true);
+        if (!is_array($responseData)) {
+            $errorMessage = 'Malformed response. [responseJson]: ' . $responseJson;
+            throw new ClientErrorException($errorMessage, $request, $response);
+        }
 
         if (404 === $response->getStatusCode()) {
             throw new InvalidBaseUriException(sprintf('invalid base uri "%s"', $this->baseUri), $request, $response);
