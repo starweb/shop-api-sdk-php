@@ -13,6 +13,8 @@ use Starweb\HttpClient\Plugin\ErrorPlugin;
 
 class TokenManager
 {
+    private const MAX_RETRIES = 25;
+
     /**
      * @var HttpClient
      */
@@ -73,6 +75,8 @@ class TokenManager
         );
 
         $success = false;
+        $tries = 1;
+
         while (!$success) {
             $response = $this->client->sendRequest($request);
 
@@ -98,7 +102,12 @@ class TokenManager
 
             if (!isset($responseData['access_token'])) {
                 if (isset($responseData['error']) && $responseData['error'] === 'Too Many Requests') {
+                    if ($tries > self::MAX_RETRIES) {
+                        $errorMessage = sprintf("'Too many requests' reached %d re-tries", self::MAX_RETRIES);
+                        throw new ClientErrorException($errorMessage, $request, $response);
+                    }
                     sleep(ErrorPlugin::SECONDS_TO_SLEEP_ON_MAX_REQUEST_PER_MINUTE_ERROR);
+                    $tries++;
                     continue;
                 }
 
