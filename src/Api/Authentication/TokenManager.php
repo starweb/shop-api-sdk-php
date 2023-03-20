@@ -9,6 +9,7 @@ use Http\Message\MessageFactory;
 use Http\Message\RequestFactory;
 use Starweb\Exception\InvalidBaseUriException;
 use Starweb\Exception\InvalidCredentialsException;
+use Starweb\HttpClient\Plugin\ErrorPlugin;
 
 class TokenManager
 {
@@ -71,31 +72,41 @@ class TokenManager
             http_build_query($parameters)
         );
 
-        $response = $this->client->sendRequest($request);
+        $success = false;
+        while (!$success) {
+            $response = $this->client->sendRequest($request);
 
-        $responseJson = $response->getBody()->__toString();
-        $responseData = json_decode($responseJson, true);
+            $responseJson = $response->getBody()->__toString();
+            $responseData = json_decode($responseJson, true);
 
-        if (404 === $response->getStatusCode()) {
-            throw new InvalidBaseUriException(sprintf('invalid base uri "%s"', $this->baseUri), $request, $response);
-        }
+            if (404 === $response->getStatusCode()) {
+                throw new InvalidBaseUriException(sprintf('invalid base uri "%s"', $this->baseUri), $request, $response);
+            }
 
-        if (500 === $response->getStatusCode()) {
-            throw new ServerErrorException('server error', $request, $response);
-        }
+            if (500 === $response->getStatusCode()) {
+                throw new ServerErrorException('server error', $request, $response);
+            }
 
-        if (!is_array($responseData)) {
-            $errorMessage = 'Malformed response. [responseJson]: ' . $responseJson;
-            throw new ClientErrorException($errorMessage, $request, $response);
-        }
+            if (!is_array($responseData)) {
+                $errorMessage = 'Malformed response. [responseJson]: ' . $responseJson;
+                throw new ClientErrorException($errorMessage, $request, $response);
+            }
 
-        if (400 === $response->getStatusCode() && $responseData['error'] === 'invalid_client') {
-            throw new InvalidCredentialsException($responseData['error_description'], $request, $response);
-        }
+            if (400 === $response->getStatusCode() && $responseData['error'] === 'invalid_client') {
+                throw new InvalidCredentialsException($responseData['error_description'], $request, $response);
+            }
 
-        if (!isset($responseData['access_token'])) {
-            $errorMessage = 'Malformed response. [responseJson]: ' . $responseJson;
-            throw new ClientErrorException($errorMessage, $request, $response);
+            if (!isset($responseData['access_token'])) {
+                if (isset($responseData['error']) && $responseData['error'] === 'Too Many Requests') {
+                    sleep(ErrorPlugin::SECONDS_TO_SLEEP_ON_MAX_REQUEST_PER_MINUTE_ERROR);
+                    continue;
+                }
+
+                $errorMessage = 'Malformed response. [responseJson]: ' . $responseJson;
+                throw new ClientErrorException($errorMessage, $request, $response);
+            }
+
+            $success = true;
         }
 
         return new AccessToken($responseData['access_token'], $responseData['expires_in']);

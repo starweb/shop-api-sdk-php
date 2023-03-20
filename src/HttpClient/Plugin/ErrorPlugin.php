@@ -42,7 +42,7 @@ use Psr\Http\Message\ResponseInterface;
  */
 final class ErrorPlugin implements Plugin
 {
-    private const SECONDS_TO_SLEEP_ON_MAX_REQUEST_PER_MINUTE_ERROR = 5;
+    public const SECONDS_TO_SLEEP_ON_MAX_REQUEST_PER_MINUTE_ERROR = 5;
 
     /**
      * {@inheritdoc}
