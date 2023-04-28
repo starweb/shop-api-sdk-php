@@ -2933,6 +2933,24 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductVariantStock($productId, $variantId, $stockLocationId), $fetch);
     }
     /**
+    * Update the stock for a product variant at a stock location. 
+                       Retrieves the updated `ProductVariantStock` object
+    *
+    * @param int $productId The product id
+    * @param int $variantId The products variants id
+    * @param int $stockLocationId The stock location id
+    * @param \Starweb\Api\Generated\Model\ProductVariantStockPatchRequestModel $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Starweb\Api\Generated\Exception\PatchProductVariantStockBadRequestException
+    * @throws \Starweb\Api\Generated\Exception\PatchProductVariantStockNotFoundException
+    *
+    * @return null|\Starweb\Api\Generated\Model\ProductVariantStockModelItem|\Psr\Http\Message\ResponseInterface
+    */
+    public function patchProductVariantStock(int $productId, int $variantId, int $stockLocationId, \Starweb\Api\Generated\Model\ProductVariantStockPatchRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductVariantStock($productId, $variantId, $stockLocationId, $requestBody), $fetch);
+    }
+    /**
     * Update or set the stock for a product variant at a stock location. 
                        Retrieves the updated `ProductVariantStock` object
     *

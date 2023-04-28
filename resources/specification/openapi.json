@@ -7841,7 +7841,7 @@
       },
       "put": {
         "operationId": "putProductVariantStock",
-        "summary": "Update a product variant stock",
+        "summary": "Update or create a product variant stock",
         "description": "Update or set the stock for a product variant at a stock location. \n                    Retrieves the updated `ProductVariantStock` object",
         "responses": {
           "200": {
@@ -7868,6 +7868,43 @@
             "application\/json": {
               "schema": {
                 "$ref": "#\/components\/schemas\/ProductVariantStockPutRequestModel"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Product Variant Stocks"
+        ]
+      },
+      "patch": {
+        "operationId": "patchProductVariantStock",
+        "summary": "Update a product variant stock",
+        "description": "Update the stock for a product variant at a stock location. \n                    Retrieves the updated `ProductVariantStock` object",
+        "responses": {
+          "200": {
+            "description": "The updated stock is returned",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ProductVariantStockModelItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#\/components\/responses\/BadRequest"
+          },
+          "404": {
+            "$ref": "#\/components\/responses\/NotFound"
+          }
+        },
+        "requestBody": {
+          "description": "Stock data",
+          "required": true,
+          "content": {
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/ProductVariantStockPatchRequestModel"
               }
             }
           }
@@ -14131,6 +14168,22 @@
           "stockStatusId",
           "stockQuantity"
         ]
+      },
+      "ProductVariantStockPatchRequestModel": {
+        "properties": {
+          "stockStatusId": {
+            "type": "integer",
+            "description": "The stock status id. If you do not provide this value, the stock status will be changed according to the status settings, otherwise the status will be overriden by the new value, no further status actions will be applied. See  [product stock statuses](#tag\/Product-Stock-Statuses)"
+          },
+          "stockQuantity": {
+            "type": "number",
+            "format": "float",
+            "minimum": -100000000,
+            "maximum": 100000000,
+            "description": "stock quantity",
+            "example": 768
+          }
+        }
       },
       "ProductBundleProductPriceModelItem": {
         "properties": {

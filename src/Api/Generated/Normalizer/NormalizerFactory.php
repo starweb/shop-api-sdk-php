@@ -184,6 +184,7 @@ class NormalizerFactory
         $normalizers[] = new ProductVariantStockModelCollectionNormalizer();
         $normalizers[] = new ProductVariantStockResponseModelNormalizer();
         $normalizers[] = new ProductVariantStockPutRequestModelNormalizer();
+        $normalizers[] = new ProductVariantStockPatchRequestModelNormalizer();
         $normalizers[] = new ProductBundleProductPriceModelItemNormalizer();
         $normalizers[] = new ProductBundleProductPriceModelCollectionNormalizer();
         $normalizers[] = new ProductBundleProductPriceModelNormalizer();
