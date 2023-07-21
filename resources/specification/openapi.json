@@ -14146,6 +14146,11 @@
             "maximum": 100000000,
             "description": "stock quantity",
             "example": 768
+          },
+          "shelfSpace": {
+            "type": "string",
+            "maxLength": 255,
+            "description": "(Hyllplats or Shelf Space). The actual physical place at the stock location (warehouse)."
           }
         }
       },
@@ -14162,6 +14167,11 @@
             "maximum": 100000000,
             "description": "stock quantity",
             "example": 768
+          },
+          "shelfSpace": {
+            "type": "string",
+            "maxLength": 255,
+            "description": "(Hyllplats or Shelf Space). The actual physical place at the stock location (warehouse)."
           }
         },
         "required": [
@@ -14182,6 +14192,11 @@
             "maximum": 100000000,
             "description": "stock quantity",
             "example": 768
+          },
+          "shelfSpace": {
+            "type": "string",
+            "maxLength": 255,
+            "description": "(Hyllplats or Shelf Space). The actual physical place at the stock location (warehouse)."
           }
         }
       },

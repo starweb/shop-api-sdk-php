@@ -23,6 +23,12 @@ class ProductVariantStockResponseModel
      */
     protected $stockQuantity;
     /**
+     * (Hyllplats or Shelf Space). The actual physical place at the stock location (warehouse).
+     *
+     * @var string|null
+     */
+    protected $shelfSpace;
+    /**
      * The stock location id status id. See  [stock locations](#tag/Stock-Locations)
      *
      * @return int|null
@@ -83,6 +89,27 @@ class ProductVariantStockResponseModel
     public function setStockQuantity(?float $stockQuantity) : self
     {
         $this->stockQuantity = $stockQuantity;
+        return $this;
+    }
+    /**
+     * (Hyllplats or Shelf Space). The actual physical place at the stock location (warehouse).
+     *
+     * @return string|null
+     */
+    public function getShelfSpace() : ?string
+    {
+        return $this->shelfSpace;
+    }
+    /**
+     * (Hyllplats or Shelf Space). The actual physical place at the stock location (warehouse).
+     *
+     * @param string|null $shelfSpace
+     *
+     * @return self
+     */
+    public function setShelfSpace(?string $shelfSpace) : self
+    {
+        $this->shelfSpace = $shelfSpace;
         return $this;
     }
 }

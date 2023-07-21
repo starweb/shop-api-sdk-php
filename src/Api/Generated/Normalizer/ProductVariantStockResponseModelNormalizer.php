@@ -37,6 +37,9 @@ class ProductVariantStockResponseModelNormalizer implements DenormalizerInterfac
         if (property_exists($data, 'stockQuantity') && $data->{'stockQuantity'} !== null) {
             $object->setStockQuantity($data->{'stockQuantity'});
         }
+        if (property_exists($data, 'shelfSpace') && $data->{'shelfSpace'} !== null) {
+            $object->setShelfSpace($data->{'shelfSpace'});
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -47,6 +50,9 @@ class ProductVariantStockResponseModelNormalizer implements DenormalizerInterfac
         }
         if (null !== $object->getStockQuantity()) {
             $data->{'stockQuantity'} = $object->getStockQuantity();
+        }
+        if (null !== $object->getShelfSpace()) {
+            $data->{'shelfSpace'} = $object->getShelfSpace();
         }
         return $data;
     }
