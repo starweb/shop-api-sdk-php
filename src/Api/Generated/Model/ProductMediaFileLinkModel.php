@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductMediaFileLinkModel
+class ProductMediaFileLinkModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * This links ID
      *
@@ -46,6 +54,7 @@ class ProductMediaFileLinkModel
      */
     public function setProductMediaFileId(int $productMediaFileId) : self
     {
+        $this->initialized['productMediaFileId'] = true;
         $this->productMediaFileId = $productMediaFileId;
         return $this;
     }
@@ -67,6 +76,7 @@ class ProductMediaFileLinkModel
      */
     public function setMediaFileId(int $mediaFileId) : self
     {
+        $this->initialized['mediaFileId'] = true;
         $this->mediaFileId = $mediaFileId;
         return $this;
     }
@@ -88,6 +98,7 @@ class ProductMediaFileLinkModel
      */
     public function setSortIndex(int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -109,6 +120,7 @@ class ProductMediaFileLinkModel
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }

@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class OrderModel
+class OrderModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The orders ID
      *
@@ -352,6 +360,7 @@ class OrderModel
      */
     public function setOrderId(int $orderId) : self
     {
+        $this->initialized['orderId'] = true;
         $this->orderId = $orderId;
         return $this;
     }
@@ -373,6 +382,7 @@ class OrderModel
      */
     public function setModifiedAt(string $modifiedAt) : self
     {
+        $this->initialized['modifiedAt'] = true;
         $this->modifiedAt = $modifiedAt;
         return $this;
     }
@@ -394,6 +404,7 @@ class OrderModel
      */
     public function setBaseCurrencyCode(string $baseCurrencyCode) : self
     {
+        $this->initialized['baseCurrencyCode'] = true;
         $this->baseCurrencyCode = $baseCurrencyCode;
         return $this;
     }
@@ -415,6 +426,7 @@ class OrderModel
      */
     public function setShopCountryCode(string $shopCountryCode) : self
     {
+        $this->initialized['shopCountryCode'] = true;
         $this->shopCountryCode = $shopCountryCode;
         return $this;
     }
@@ -436,6 +448,7 @@ class OrderModel
      */
     public function setTotalAmount(float $totalAmount) : self
     {
+        $this->initialized['totalAmount'] = true;
         $this->totalAmount = $totalAmount;
         return $this;
     }
@@ -457,6 +470,7 @@ class OrderModel
      */
     public function setTotalVat(float $totalVat) : self
     {
+        $this->initialized['totalVat'] = true;
         $this->totalVat = $totalVat;
         return $this;
     }
@@ -478,6 +492,7 @@ class OrderModel
      */
     public function setAmountToPay(float $amountToPay) : self
     {
+        $this->initialized['amountToPay'] = true;
         $this->amountToPay = $amountToPay;
         return $this;
     }
@@ -499,6 +514,7 @@ class OrderModel
      */
     public function setTotalAmountInBaseCurrency(float $totalAmountInBaseCurrency) : self
     {
+        $this->initialized['totalAmountInBaseCurrency'] = true;
         $this->totalAmountInBaseCurrency = $totalAmountInBaseCurrency;
         return $this;
     }
@@ -520,6 +536,7 @@ class OrderModel
      */
     public function setTotalVatInBaseCurrency(float $totalVatInBaseCurrency) : self
     {
+        $this->initialized['totalVatInBaseCurrency'] = true;
         $this->totalVatInBaseCurrency = $totalVatInBaseCurrency;
         return $this;
     }
@@ -541,6 +558,7 @@ class OrderModel
      */
     public function setAmountToPayInBaseCurrency(float $amountToPayInBaseCurrency) : self
     {
+        $this->initialized['amountToPayInBaseCurrency'] = true;
         $this->amountToPayInBaseCurrency = $amountToPayInBaseCurrency;
         return $this;
     }
@@ -562,6 +580,7 @@ class OrderModel
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -583,6 +602,7 @@ class OrderModel
      */
     public function setCustomerId(int $customerId) : self
     {
+        $this->initialized['customerId'] = true;
         $this->customerId = $customerId;
         return $this;
     }
@@ -604,6 +624,7 @@ class OrderModel
      */
     public function setStatusId(int $statusId) : self
     {
+        $this->initialized['statusId'] = true;
         $this->statusId = $statusId;
         return $this;
     }
@@ -625,6 +646,7 @@ class OrderModel
      */
     public function setOnOrderStatusChangeSendEmail(bool $onOrderStatusChangeSendEmail) : self
     {
+        $this->initialized['onOrderStatusChangeSendEmail'] = true;
         $this->onOrderStatusChangeSendEmail = $onOrderStatusChangeSendEmail;
         return $this;
     }
@@ -646,6 +668,7 @@ class OrderModel
      */
     public function setOnOrderStatusChangeProcessPayment(bool $onOrderStatusChangeProcessPayment) : self
     {
+        $this->initialized['onOrderStatusChangeProcessPayment'] = true;
         $this->onOrderStatusChangeProcessPayment = $onOrderStatusChangeProcessPayment;
         return $this;
     }
@@ -667,6 +690,7 @@ class OrderModel
      */
     public function setSendEmailsOnStatusChange(bool $sendEmailsOnStatusChange) : self
     {
+        $this->initialized['sendEmailsOnStatusChange'] = true;
         $this->sendEmailsOnStatusChange = $sendEmailsOnStatusChange;
         return $this;
     }
@@ -688,6 +712,7 @@ class OrderModel
      */
     public function setShippingMethodId(int $shippingMethodId) : self
     {
+        $this->initialized['shippingMethodId'] = true;
         $this->shippingMethodId = $shippingMethodId;
         return $this;
     }
@@ -709,6 +734,7 @@ class OrderModel
      */
     public function setPaymentMethodId(int $paymentMethodId) : self
     {
+        $this->initialized['paymentMethodId'] = true;
         $this->paymentMethodId = $paymentMethodId;
         return $this;
     }
@@ -730,6 +756,7 @@ class OrderModel
      */
     public function setPaymentMethodIdCode(string $paymentMethodIdCode) : self
     {
+        $this->initialized['paymentMethodIdCode'] = true;
         $this->paymentMethodIdCode = $paymentMethodIdCode;
         return $this;
     }
@@ -751,6 +778,7 @@ class OrderModel
      */
     public function setPaymentMethodName(string $paymentMethodName) : self
     {
+        $this->initialized['paymentMethodName'] = true;
         $this->paymentMethodName = $paymentMethodName;
         return $this;
     }
@@ -772,6 +800,7 @@ class OrderModel
      */
     public function setPaymentFee(float $paymentFee) : self
     {
+        $this->initialized['paymentFee'] = true;
         $this->paymentFee = $paymentFee;
         return $this;
     }
@@ -793,6 +822,7 @@ class OrderModel
      */
     public function setPaymentVatRate(float $paymentVatRate) : self
     {
+        $this->initialized['paymentVatRate'] = true;
         $this->paymentVatRate = $paymentVatRate;
         return $this;
     }
@@ -814,6 +844,7 @@ class OrderModel
      */
     public function setShippingMethodName(string $shippingMethodName) : self
     {
+        $this->initialized['shippingMethodName'] = true;
         $this->shippingMethodName = $shippingMethodName;
         return $this;
     }
@@ -835,6 +866,7 @@ class OrderModel
      */
     public function setShippingCost(float $shippingCost) : self
     {
+        $this->initialized['shippingCost'] = true;
         $this->shippingCost = $shippingCost;
         return $this;
     }
@@ -856,6 +888,7 @@ class OrderModel
      */
     public function setShippingVatRate(float $shippingVatRate) : self
     {
+        $this->initialized['shippingVatRate'] = true;
         $this->shippingVatRate = $shippingVatRate;
         return $this;
     }
@@ -877,6 +910,7 @@ class OrderModel
      */
     public function setTotalWeight(float $totalWeight) : self
     {
+        $this->initialized['totalWeight'] = true;
         $this->totalWeight = $totalWeight;
         return $this;
     }
@@ -898,6 +932,7 @@ class OrderModel
      */
     public function setCustomInfo1(string $customInfo1) : self
     {
+        $this->initialized['customInfo1'] = true;
         $this->customInfo1 = $customInfo1;
         return $this;
     }
@@ -919,6 +954,7 @@ class OrderModel
      */
     public function setCustomInfo2(string $customInfo2) : self
     {
+        $this->initialized['customInfo2'] = true;
         $this->customInfo2 = $customInfo2;
         return $this;
     }
@@ -940,6 +976,7 @@ class OrderModel
      */
     public function setCustomInfo3(string $customInfo3) : self
     {
+        $this->initialized['customInfo3'] = true;
         $this->customInfo3 = $customInfo3;
         return $this;
     }
@@ -961,6 +998,7 @@ class OrderModel
      */
     public function setCustomInfo4(string $customInfo4) : self
     {
+        $this->initialized['customInfo4'] = true;
         $this->customInfo4 = $customInfo4;
         return $this;
     }
@@ -982,6 +1020,7 @@ class OrderModel
      */
     public function setDiscountCode(string $discountCode) : self
     {
+        $this->initialized['discountCode'] = true;
         $this->discountCode = $discountCode;
         return $this;
     }
@@ -1003,6 +1042,7 @@ class OrderModel
      */
     public function setAmountPaid(float $amountPaid) : self
     {
+        $this->initialized['amountPaid'] = true;
         $this->amountPaid = $amountPaid;
         return $this;
     }
@@ -1024,6 +1064,7 @@ class OrderModel
      */
     public function setAmountPaidInBaseCurrency(float $amountPaidInBaseCurrency) : self
     {
+        $this->initialized['amountPaidInBaseCurrency'] = true;
         $this->amountPaidInBaseCurrency = $amountPaidInBaseCurrency;
         return $this;
     }
@@ -1045,6 +1086,7 @@ class OrderModel
      */
     public function setIsComplete(bool $isComplete) : self
     {
+        $this->initialized['isComplete'] = true;
         $this->isComplete = $isComplete;
         return $this;
     }
@@ -1066,6 +1108,7 @@ class OrderModel
      */
     public function setCurrencyCode(string $currencyCode) : self
     {
+        $this->initialized['currencyCode'] = true;
         $this->currencyCode = $currencyCode;
         return $this;
     }
@@ -1087,6 +1130,7 @@ class OrderModel
      */
     public function setCurrencyExchangeRate(float $currencyExchangeRate) : self
     {
+        $this->initialized['currencyExchangeRate'] = true;
         $this->currencyExchangeRate = $currencyExchangeRate;
         return $this;
     }
@@ -1108,6 +1152,7 @@ class OrderModel
      */
     public function setCurrencyPrecision(int $currencyPrecision) : self
     {
+        $this->initialized['currencyPrecision'] = true;
         $this->currencyPrecision = $currencyPrecision;
         return $this;
     }
@@ -1129,6 +1174,7 @@ class OrderModel
      */
     public function setLangCode(string $langCode) : self
     {
+        $this->initialized['langCode'] = true;
         $this->langCode = $langCode;
         return $this;
     }
@@ -1150,6 +1196,7 @@ class OrderModel
      */
     public function setPaymentReference(string $paymentReference) : self
     {
+        $this->initialized['paymentReference'] = true;
         $this->paymentReference = $paymentReference;
         return $this;
     }
@@ -1171,6 +1218,7 @@ class OrderModel
      */
     public function setPaymentStatus(string $paymentStatus) : self
     {
+        $this->initialized['paymentStatus'] = true;
         $this->paymentStatus = $paymentStatus;
         return $this;
     }
@@ -1192,6 +1240,7 @@ class OrderModel
      */
     public function setIsRead(bool $isRead) : self
     {
+        $this->initialized['isRead'] = true;
         $this->isRead = $isRead;
         return $this;
     }
@@ -1213,6 +1262,7 @@ class OrderModel
      */
     public function setHasComments(bool $hasComments) : self
     {
+        $this->initialized['hasComments'] = true;
         $this->hasComments = $hasComments;
         return $this;
     }
@@ -1234,6 +1284,7 @@ class OrderModel
      */
     public function setInternalComment(string $internalComment) : self
     {
+        $this->initialized['internalComment'] = true;
         $this->internalComment = $internalComment;
         return $this;
     }
@@ -1255,6 +1306,7 @@ class OrderModel
      */
     public function setShippingTrackerType(int $shippingTrackerType) : self
     {
+        $this->initialized['shippingTrackerType'] = true;
         $this->shippingTrackerType = $shippingTrackerType;
         return $this;
     }
@@ -1276,6 +1328,7 @@ class OrderModel
      */
     public function setShippingTrackingNo(string $shippingTrackingNo) : self
     {
+        $this->initialized['shippingTrackingNo'] = true;
         $this->shippingTrackingNo = $shippingTrackingNo;
         return $this;
     }
@@ -1297,6 +1350,7 @@ class OrderModel
      */
     public function setOriginalCustomerEmail(string $originalCustomerEmail) : self
     {
+        $this->initialized['originalCustomerEmail'] = true;
         $this->originalCustomerEmail = $originalCustomerEmail;
         return $this;
     }
@@ -1318,6 +1372,7 @@ class OrderModel
      */
     public function setOriginalCustomerNationalIdNo(string $originalCustomerNationalIdNo) : self
     {
+        $this->initialized['originalCustomerNationalIdNo'] = true;
         $this->originalCustomerNationalIdNo = $originalCustomerNationalIdNo;
         return $this;
     }
@@ -1339,6 +1394,7 @@ class OrderModel
      */
     public function setOriginalCustomerVatNo(string $originalCustomerVatNo) : self
     {
+        $this->initialized['originalCustomerVatNo'] = true;
         $this->originalCustomerVatNo = $originalCustomerVatNo;
         return $this;
     }
@@ -1360,6 +1416,7 @@ class OrderModel
      */
     public function setOriginalCustomerCustomInfo1(string $originalCustomerCustomInfo1) : self
     {
+        $this->initialized['originalCustomerCustomInfo1'] = true;
         $this->originalCustomerCustomInfo1 = $originalCustomerCustomInfo1;
         return $this;
     }
@@ -1381,6 +1438,7 @@ class OrderModel
      */
     public function setOriginalCustomerCustomInfo2(string $originalCustomerCustomInfo2) : self
     {
+        $this->initialized['originalCustomerCustomInfo2'] = true;
         $this->originalCustomerCustomInfo2 = $originalCustomerCustomInfo2;
         return $this;
     }
@@ -1402,6 +1460,7 @@ class OrderModel
      */
     public function setItems(OrderItemModelCollection $items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }
@@ -1423,6 +1482,7 @@ class OrderModel
      */
     public function setAddresses(OrderAddressCollection $addresses) : self
     {
+        $this->initialized['addresses'] = true;
         $this->addresses = $addresses;
         return $this;
     }
@@ -1444,6 +1504,7 @@ class OrderModel
      */
     public function setExternalServices(OrderExternalServiceModelCollection $externalServices) : self
     {
+        $this->initialized['externalServices'] = true;
         $this->externalServices = $externalServices;
         return $this;
     }
@@ -1465,6 +1526,7 @@ class OrderModel
      */
     public function setCustomer(CustomerModelItem $customer) : self
     {
+        $this->initialized['customer'] = true;
         $this->customer = $customer;
         return $this;
     }
@@ -1486,6 +1548,7 @@ class OrderModel
      */
     public function setStatus(OrderStatusModelItem $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }

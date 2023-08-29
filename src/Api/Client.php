@@ -17,7 +17,7 @@ class Client extends GeneratedClient
     ) {
         $this->checkCustomMediaFileUploadModelInstance($requestBody);
 
-        return $this->executePsr7Endpoint(new CreateMediaFile($requestBody), $fetch);
+        return $this->executeEndpoint(new CreateMediaFile($requestBody), $fetch);
     }
 
     public function putMediaFile(
@@ -27,7 +27,7 @@ class Client extends GeneratedClient
     ) {
         $this->checkCustomMediaFileUploadModelInstance($requestBody);
 
-        return $this->executePsr7Endpoint(new PutMediaFile($mediaFileId, $requestBody), $fetch);
+        return $this->executeEndpoint(new PutMediaFile($mediaFileId, $requestBody), $fetch);
     }
 
     public function patchMediaFile(
@@ -37,7 +37,7 @@ class Client extends GeneratedClient
     ) {
         $this->checkCustomMediaFileUploadModelInstance($requestBody);
 
-        return $this->executePsr7Endpoint(new PatchMediaFile($mediaFileId, $requestBody), $fetch);
+        return $this->executeEndpoint(new PatchMediaFile($mediaFileId, $requestBody), $fetch);
     }
 
     private function checkCustomMediaFileUploadModelInstance(GeneratedMediaFileUploadModel $requestBody): void

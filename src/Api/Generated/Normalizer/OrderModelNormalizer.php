@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,355 +16,438 @@ class OrderModelNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\OrderModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\OrderModel();
-        if (property_exists($data, 'orderId')) {
-            $object->setOrderId($data->{'orderId'});
+        if (\array_key_exists('totalAmount', $data) && \is_int($data['totalAmount'])) {
+            $data['totalAmount'] = (double) $data['totalAmount'];
         }
-        if (property_exists($data, 'modifiedAt')) {
-            $object->setModifiedAt($data->{'modifiedAt'});
+        if (\array_key_exists('totalVat', $data) && \is_int($data['totalVat'])) {
+            $data['totalVat'] = (double) $data['totalVat'];
         }
-        if (property_exists($data, 'baseCurrencyCode')) {
-            $object->setBaseCurrencyCode($data->{'baseCurrencyCode'});
+        if (\array_key_exists('amountToPay', $data) && \is_int($data['amountToPay'])) {
+            $data['amountToPay'] = (double) $data['amountToPay'];
         }
-        if (property_exists($data, 'shopCountryCode')) {
-            $object->setShopCountryCode($data->{'shopCountryCode'});
+        if (\array_key_exists('totalAmountInBaseCurrency', $data) && \is_int($data['totalAmountInBaseCurrency'])) {
+            $data['totalAmountInBaseCurrency'] = (double) $data['totalAmountInBaseCurrency'];
         }
-        if (property_exists($data, 'totalAmount')) {
-            $object->setTotalAmount($data->{'totalAmount'});
+        if (\array_key_exists('totalVatInBaseCurrency', $data) && \is_int($data['totalVatInBaseCurrency'])) {
+            $data['totalVatInBaseCurrency'] = (double) $data['totalVatInBaseCurrency'];
         }
-        if (property_exists($data, 'totalVat')) {
-            $object->setTotalVat($data->{'totalVat'});
+        if (\array_key_exists('amountToPayInBaseCurrency', $data) && \is_int($data['amountToPayInBaseCurrency'])) {
+            $data['amountToPayInBaseCurrency'] = (double) $data['amountToPayInBaseCurrency'];
         }
-        if (property_exists($data, 'amountToPay')) {
-            $object->setAmountToPay($data->{'amountToPay'});
+        if (\array_key_exists('paymentFee', $data) && \is_int($data['paymentFee'])) {
+            $data['paymentFee'] = (double) $data['paymentFee'];
         }
-        if (property_exists($data, 'totalAmountInBaseCurrency')) {
-            $object->setTotalAmountInBaseCurrency($data->{'totalAmountInBaseCurrency'});
+        if (\array_key_exists('paymentVatRate', $data) && \is_int($data['paymentVatRate'])) {
+            $data['paymentVatRate'] = (double) $data['paymentVatRate'];
         }
-        if (property_exists($data, 'totalVatInBaseCurrency')) {
-            $object->setTotalVatInBaseCurrency($data->{'totalVatInBaseCurrency'});
+        if (\array_key_exists('shippingCost', $data) && \is_int($data['shippingCost'])) {
+            $data['shippingCost'] = (double) $data['shippingCost'];
         }
-        if (property_exists($data, 'amountToPayInBaseCurrency')) {
-            $object->setAmountToPayInBaseCurrency($data->{'amountToPayInBaseCurrency'});
+        if (\array_key_exists('shippingVatRate', $data) && \is_int($data['shippingVatRate'])) {
+            $data['shippingVatRate'] = (double) $data['shippingVatRate'];
         }
-        if (property_exists($data, 'createdAt')) {
-            $object->setCreatedAt($data->{'createdAt'});
+        if (\array_key_exists('totalWeight', $data) && \is_int($data['totalWeight'])) {
+            $data['totalWeight'] = (double) $data['totalWeight'];
         }
-        if (property_exists($data, 'customerId')) {
-            $object->setCustomerId($data->{'customerId'});
+        if (\array_key_exists('amountPaid', $data) && \is_int($data['amountPaid'])) {
+            $data['amountPaid'] = (double) $data['amountPaid'];
         }
-        if (property_exists($data, 'statusId')) {
-            $object->setStatusId($data->{'statusId'});
+        if (\array_key_exists('amountPaidInBaseCurrency', $data) && \is_int($data['amountPaidInBaseCurrency'])) {
+            $data['amountPaidInBaseCurrency'] = (double) $data['amountPaidInBaseCurrency'];
         }
-        if (property_exists($data, 'onOrderStatusChangeSendEmail')) {
-            $object->setOnOrderStatusChangeSendEmail($data->{'onOrderStatusChangeSendEmail'});
+        if (\array_key_exists('currencyExchangeRate', $data) && \is_int($data['currencyExchangeRate'])) {
+            $data['currencyExchangeRate'] = (double) $data['currencyExchangeRate'];
         }
-        if (property_exists($data, 'onOrderStatusChangeProcessPayment')) {
-            $object->setOnOrderStatusChangeProcessPayment($data->{'onOrderStatusChangeProcessPayment'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'sendEmailsOnStatusChange')) {
-            $object->setSendEmailsOnStatusChange($data->{'sendEmailsOnStatusChange'});
+        if (\array_key_exists('orderId', $data)) {
+            $object->setOrderId($data['orderId']);
+            unset($data['orderId']);
         }
-        if (property_exists($data, 'shippingMethodId')) {
-            $object->setShippingMethodId($data->{'shippingMethodId'});
+        if (\array_key_exists('modifiedAt', $data)) {
+            $object->setModifiedAt($data['modifiedAt']);
+            unset($data['modifiedAt']);
         }
-        if (property_exists($data, 'paymentMethodId')) {
-            $object->setPaymentMethodId($data->{'paymentMethodId'});
+        if (\array_key_exists('baseCurrencyCode', $data)) {
+            $object->setBaseCurrencyCode($data['baseCurrencyCode']);
+            unset($data['baseCurrencyCode']);
         }
-        if (property_exists($data, 'paymentMethodIdCode')) {
-            $object->setPaymentMethodIdCode($data->{'paymentMethodIdCode'});
+        if (\array_key_exists('shopCountryCode', $data)) {
+            $object->setShopCountryCode($data['shopCountryCode']);
+            unset($data['shopCountryCode']);
         }
-        if (property_exists($data, 'paymentMethodName')) {
-            $object->setPaymentMethodName($data->{'paymentMethodName'});
+        if (\array_key_exists('totalAmount', $data)) {
+            $object->setTotalAmount($data['totalAmount']);
+            unset($data['totalAmount']);
         }
-        if (property_exists($data, 'paymentFee')) {
-            $object->setPaymentFee($data->{'paymentFee'});
+        if (\array_key_exists('totalVat', $data)) {
+            $object->setTotalVat($data['totalVat']);
+            unset($data['totalVat']);
         }
-        if (property_exists($data, 'paymentVatRate')) {
-            $object->setPaymentVatRate($data->{'paymentVatRate'});
+        if (\array_key_exists('amountToPay', $data)) {
+            $object->setAmountToPay($data['amountToPay']);
+            unset($data['amountToPay']);
         }
-        if (property_exists($data, 'shippingMethodName')) {
-            $object->setShippingMethodName($data->{'shippingMethodName'});
+        if (\array_key_exists('totalAmountInBaseCurrency', $data)) {
+            $object->setTotalAmountInBaseCurrency($data['totalAmountInBaseCurrency']);
+            unset($data['totalAmountInBaseCurrency']);
         }
-        if (property_exists($data, 'shippingCost')) {
-            $object->setShippingCost($data->{'shippingCost'});
+        if (\array_key_exists('totalVatInBaseCurrency', $data)) {
+            $object->setTotalVatInBaseCurrency($data['totalVatInBaseCurrency']);
+            unset($data['totalVatInBaseCurrency']);
         }
-        if (property_exists($data, 'shippingVatRate')) {
-            $object->setShippingVatRate($data->{'shippingVatRate'});
+        if (\array_key_exists('amountToPayInBaseCurrency', $data)) {
+            $object->setAmountToPayInBaseCurrency($data['amountToPayInBaseCurrency']);
+            unset($data['amountToPayInBaseCurrency']);
         }
-        if (property_exists($data, 'totalWeight')) {
-            $object->setTotalWeight($data->{'totalWeight'});
+        if (\array_key_exists('createdAt', $data)) {
+            $object->setCreatedAt($data['createdAt']);
+            unset($data['createdAt']);
         }
-        if (property_exists($data, 'customInfo1')) {
-            $object->setCustomInfo1($data->{'customInfo1'});
+        if (\array_key_exists('customerId', $data)) {
+            $object->setCustomerId($data['customerId']);
+            unset($data['customerId']);
         }
-        if (property_exists($data, 'customInfo2')) {
-            $object->setCustomInfo2($data->{'customInfo2'});
+        if (\array_key_exists('statusId', $data)) {
+            $object->setStatusId($data['statusId']);
+            unset($data['statusId']);
         }
-        if (property_exists($data, 'customInfo3')) {
-            $object->setCustomInfo3($data->{'customInfo3'});
+        if (\array_key_exists('onOrderStatusChangeSendEmail', $data)) {
+            $object->setOnOrderStatusChangeSendEmail($data['onOrderStatusChangeSendEmail']);
+            unset($data['onOrderStatusChangeSendEmail']);
         }
-        if (property_exists($data, 'customInfo4')) {
-            $object->setCustomInfo4($data->{'customInfo4'});
+        if (\array_key_exists('onOrderStatusChangeProcessPayment', $data)) {
+            $object->setOnOrderStatusChangeProcessPayment($data['onOrderStatusChangeProcessPayment']);
+            unset($data['onOrderStatusChangeProcessPayment']);
         }
-        if (property_exists($data, 'discountCode')) {
-            $object->setDiscountCode($data->{'discountCode'});
+        if (\array_key_exists('sendEmailsOnStatusChange', $data)) {
+            $object->setSendEmailsOnStatusChange($data['sendEmailsOnStatusChange']);
+            unset($data['sendEmailsOnStatusChange']);
         }
-        if (property_exists($data, 'amountPaid')) {
-            $object->setAmountPaid($data->{'amountPaid'});
+        if (\array_key_exists('shippingMethodId', $data)) {
+            $object->setShippingMethodId($data['shippingMethodId']);
+            unset($data['shippingMethodId']);
         }
-        if (property_exists($data, 'amountPaidInBaseCurrency')) {
-            $object->setAmountPaidInBaseCurrency($data->{'amountPaidInBaseCurrency'});
+        if (\array_key_exists('paymentMethodId', $data)) {
+            $object->setPaymentMethodId($data['paymentMethodId']);
+            unset($data['paymentMethodId']);
         }
-        if (property_exists($data, 'isComplete')) {
-            $object->setIsComplete($data->{'isComplete'});
+        if (\array_key_exists('paymentMethodIdCode', $data)) {
+            $object->setPaymentMethodIdCode($data['paymentMethodIdCode']);
+            unset($data['paymentMethodIdCode']);
         }
-        if (property_exists($data, 'currencyCode')) {
-            $object->setCurrencyCode($data->{'currencyCode'});
+        if (\array_key_exists('paymentMethodName', $data)) {
+            $object->setPaymentMethodName($data['paymentMethodName']);
+            unset($data['paymentMethodName']);
         }
-        if (property_exists($data, 'currencyExchangeRate')) {
-            $object->setCurrencyExchangeRate($data->{'currencyExchangeRate'});
+        if (\array_key_exists('paymentFee', $data)) {
+            $object->setPaymentFee($data['paymentFee']);
+            unset($data['paymentFee']);
         }
-        if (property_exists($data, 'currencyPrecision')) {
-            $object->setCurrencyPrecision($data->{'currencyPrecision'});
+        if (\array_key_exists('paymentVatRate', $data)) {
+            $object->setPaymentVatRate($data['paymentVatRate']);
+            unset($data['paymentVatRate']);
         }
-        if (property_exists($data, 'langCode')) {
-            $object->setLangCode($data->{'langCode'});
+        if (\array_key_exists('shippingMethodName', $data)) {
+            $object->setShippingMethodName($data['shippingMethodName']);
+            unset($data['shippingMethodName']);
         }
-        if (property_exists($data, 'paymentReference')) {
-            $object->setPaymentReference($data->{'paymentReference'});
+        if (\array_key_exists('shippingCost', $data)) {
+            $object->setShippingCost($data['shippingCost']);
+            unset($data['shippingCost']);
         }
-        if (property_exists($data, 'paymentStatus')) {
-            $object->setPaymentStatus($data->{'paymentStatus'});
+        if (\array_key_exists('shippingVatRate', $data)) {
+            $object->setShippingVatRate($data['shippingVatRate']);
+            unset($data['shippingVatRate']);
         }
-        if (property_exists($data, 'isRead')) {
-            $object->setIsRead($data->{'isRead'});
+        if (\array_key_exists('totalWeight', $data)) {
+            $object->setTotalWeight($data['totalWeight']);
+            unset($data['totalWeight']);
         }
-        if (property_exists($data, 'hasComments')) {
-            $object->setHasComments($data->{'hasComments'});
+        if (\array_key_exists('customInfo1', $data)) {
+            $object->setCustomInfo1($data['customInfo1']);
+            unset($data['customInfo1']);
         }
-        if (property_exists($data, 'internalComment')) {
-            $object->setInternalComment($data->{'internalComment'});
+        if (\array_key_exists('customInfo2', $data)) {
+            $object->setCustomInfo2($data['customInfo2']);
+            unset($data['customInfo2']);
         }
-        if (property_exists($data, 'shippingTrackerType')) {
-            $object->setShippingTrackerType($data->{'shippingTrackerType'});
+        if (\array_key_exists('customInfo3', $data)) {
+            $object->setCustomInfo3($data['customInfo3']);
+            unset($data['customInfo3']);
         }
-        if (property_exists($data, 'shippingTrackingNo')) {
-            $object->setShippingTrackingNo($data->{'shippingTrackingNo'});
+        if (\array_key_exists('customInfo4', $data)) {
+            $object->setCustomInfo4($data['customInfo4']);
+            unset($data['customInfo4']);
         }
-        if (property_exists($data, 'originalCustomerEmail')) {
-            $object->setOriginalCustomerEmail($data->{'originalCustomerEmail'});
+        if (\array_key_exists('discountCode', $data)) {
+            $object->setDiscountCode($data['discountCode']);
+            unset($data['discountCode']);
         }
-        if (property_exists($data, 'originalCustomerNationalIdNo')) {
-            $object->setOriginalCustomerNationalIdNo($data->{'originalCustomerNationalIdNo'});
+        if (\array_key_exists('amountPaid', $data)) {
+            $object->setAmountPaid($data['amountPaid']);
+            unset($data['amountPaid']);
         }
-        if (property_exists($data, 'originalCustomerVatNo')) {
-            $object->setOriginalCustomerVatNo($data->{'originalCustomerVatNo'});
+        if (\array_key_exists('amountPaidInBaseCurrency', $data)) {
+            $object->setAmountPaidInBaseCurrency($data['amountPaidInBaseCurrency']);
+            unset($data['amountPaidInBaseCurrency']);
         }
-        if (property_exists($data, 'originalCustomerCustomInfo1')) {
-            $object->setOriginalCustomerCustomInfo1($data->{'originalCustomerCustomInfo1'});
+        if (\array_key_exists('isComplete', $data)) {
+            $object->setIsComplete($data['isComplete']);
+            unset($data['isComplete']);
         }
-        if (property_exists($data, 'originalCustomerCustomInfo2')) {
-            $object->setOriginalCustomerCustomInfo2($data->{'originalCustomerCustomInfo2'});
+        if (\array_key_exists('currencyCode', $data)) {
+            $object->setCurrencyCode($data['currencyCode']);
+            unset($data['currencyCode']);
         }
-        if (property_exists($data, 'items')) {
-            $object->setItems($this->denormalizer->denormalize($data->{'items'}, 'Starweb\\Api\\Generated\\Model\\OrderItemModelCollection', 'json', $context));
+        if (\array_key_exists('currencyExchangeRate', $data)) {
+            $object->setCurrencyExchangeRate($data['currencyExchangeRate']);
+            unset($data['currencyExchangeRate']);
         }
-        if (property_exists($data, 'addresses')) {
-            $object->setAddresses($this->denormalizer->denormalize($data->{'addresses'}, 'Starweb\\Api\\Generated\\Model\\OrderAddressCollection', 'json', $context));
+        if (\array_key_exists('currencyPrecision', $data)) {
+            $object->setCurrencyPrecision($data['currencyPrecision']);
+            unset($data['currencyPrecision']);
         }
-        if (property_exists($data, 'externalServices')) {
-            $object->setExternalServices($this->denormalizer->denormalize($data->{'externalServices'}, 'Starweb\\Api\\Generated\\Model\\OrderExternalServiceModelCollection', 'json', $context));
+        if (\array_key_exists('langCode', $data)) {
+            $object->setLangCode($data['langCode']);
+            unset($data['langCode']);
         }
-        if (property_exists($data, 'customer')) {
-            $object->setCustomer($this->denormalizer->denormalize($data->{'customer'}, 'Starweb\\Api\\Generated\\Model\\CustomerModelItem', 'json', $context));
+        if (\array_key_exists('paymentReference', $data)) {
+            $object->setPaymentReference($data['paymentReference']);
+            unset($data['paymentReference']);
         }
-        if (property_exists($data, 'status')) {
-            $object->setStatus($this->denormalizer->denormalize($data->{'status'}, 'Starweb\\Api\\Generated\\Model\\OrderStatusModelItem', 'json', $context));
+        if (\array_key_exists('paymentStatus', $data)) {
+            $object->setPaymentStatus($data['paymentStatus']);
+            unset($data['paymentStatus']);
+        }
+        if (\array_key_exists('isRead', $data)) {
+            $object->setIsRead($data['isRead']);
+            unset($data['isRead']);
+        }
+        if (\array_key_exists('hasComments', $data)) {
+            $object->setHasComments($data['hasComments']);
+            unset($data['hasComments']);
+        }
+        if (\array_key_exists('internalComment', $data)) {
+            $object->setInternalComment($data['internalComment']);
+            unset($data['internalComment']);
+        }
+        if (\array_key_exists('shippingTrackerType', $data)) {
+            $object->setShippingTrackerType($data['shippingTrackerType']);
+            unset($data['shippingTrackerType']);
+        }
+        if (\array_key_exists('shippingTrackingNo', $data)) {
+            $object->setShippingTrackingNo($data['shippingTrackingNo']);
+            unset($data['shippingTrackingNo']);
+        }
+        if (\array_key_exists('originalCustomerEmail', $data)) {
+            $object->setOriginalCustomerEmail($data['originalCustomerEmail']);
+            unset($data['originalCustomerEmail']);
+        }
+        if (\array_key_exists('originalCustomerNationalIdNo', $data)) {
+            $object->setOriginalCustomerNationalIdNo($data['originalCustomerNationalIdNo']);
+            unset($data['originalCustomerNationalIdNo']);
+        }
+        if (\array_key_exists('originalCustomerVatNo', $data)) {
+            $object->setOriginalCustomerVatNo($data['originalCustomerVatNo']);
+            unset($data['originalCustomerVatNo']);
+        }
+        if (\array_key_exists('originalCustomerCustomInfo1', $data)) {
+            $object->setOriginalCustomerCustomInfo1($data['originalCustomerCustomInfo1']);
+            unset($data['originalCustomerCustomInfo1']);
+        }
+        if (\array_key_exists('originalCustomerCustomInfo2', $data)) {
+            $object->setOriginalCustomerCustomInfo2($data['originalCustomerCustomInfo2']);
+            unset($data['originalCustomerCustomInfo2']);
+        }
+        if (\array_key_exists('items', $data)) {
+            $object->setItems($this->denormalizer->denormalize($data['items'], 'Starweb\\Api\\Generated\\Model\\OrderItemModelCollection', 'json', $context));
+            unset($data['items']);
+        }
+        if (\array_key_exists('addresses', $data)) {
+            $object->setAddresses($this->denormalizer->denormalize($data['addresses'], 'Starweb\\Api\\Generated\\Model\\OrderAddressCollection', 'json', $context));
+            unset($data['addresses']);
+        }
+        if (\array_key_exists('externalServices', $data)) {
+            $object->setExternalServices($this->denormalizer->denormalize($data['externalServices'], 'Starweb\\Api\\Generated\\Model\\OrderExternalServiceModelCollection', 'json', $context));
+            unset($data['externalServices']);
+        }
+        if (\array_key_exists('customer', $data)) {
+            $object->setCustomer($this->denormalizer->denormalize($data['customer'], 'Starweb\\Api\\Generated\\Model\\CustomerModelItem', 'json', $context));
+            unset($data['customer']);
+        }
+        if (\array_key_exists('status', $data)) {
+            $object->setStatus($this->denormalizer->denormalize($data['status'], 'Starweb\\Api\\Generated\\Model\\OrderStatusModelItem', 'json', $context));
+            unset($data['status']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getOrderId()) {
-            $data->{'orderId'} = $object->getOrderId();
+        $data = array();
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
+            $data['createdAt'] = $object->getCreatedAt();
         }
-        if (null !== $object->getModifiedAt()) {
-            $data->{'modifiedAt'} = $object->getModifiedAt();
+        if ($object->isInitialized('customerId') && null !== $object->getCustomerId()) {
+            $data['customerId'] = $object->getCustomerId();
         }
-        if (null !== $object->getBaseCurrencyCode()) {
-            $data->{'baseCurrencyCode'} = $object->getBaseCurrencyCode();
+        if ($object->isInitialized('statusId') && null !== $object->getStatusId()) {
+            $data['statusId'] = $object->getStatusId();
         }
-        if (null !== $object->getShopCountryCode()) {
-            $data->{'shopCountryCode'} = $object->getShopCountryCode();
+        if ($object->isInitialized('onOrderStatusChangeSendEmail') && null !== $object->getOnOrderStatusChangeSendEmail()) {
+            $data['onOrderStatusChangeSendEmail'] = $object->getOnOrderStatusChangeSendEmail();
         }
-        if (null !== $object->getTotalAmount()) {
-            $data->{'totalAmount'} = $object->getTotalAmount();
+        if ($object->isInitialized('onOrderStatusChangeProcessPayment') && null !== $object->getOnOrderStatusChangeProcessPayment()) {
+            $data['onOrderStatusChangeProcessPayment'] = $object->getOnOrderStatusChangeProcessPayment();
         }
-        if (null !== $object->getTotalVat()) {
-            $data->{'totalVat'} = $object->getTotalVat();
+        if ($object->isInitialized('sendEmailsOnStatusChange') && null !== $object->getSendEmailsOnStatusChange()) {
+            $data['sendEmailsOnStatusChange'] = $object->getSendEmailsOnStatusChange();
         }
-        if (null !== $object->getAmountToPay()) {
-            $data->{'amountToPay'} = $object->getAmountToPay();
+        if ($object->isInitialized('shippingMethodId') && null !== $object->getShippingMethodId()) {
+            $data['shippingMethodId'] = $object->getShippingMethodId();
         }
-        if (null !== $object->getTotalAmountInBaseCurrency()) {
-            $data->{'totalAmountInBaseCurrency'} = $object->getTotalAmountInBaseCurrency();
+        if ($object->isInitialized('paymentMethodId') && null !== $object->getPaymentMethodId()) {
+            $data['paymentMethodId'] = $object->getPaymentMethodId();
         }
-        if (null !== $object->getTotalVatInBaseCurrency()) {
-            $data->{'totalVatInBaseCurrency'} = $object->getTotalVatInBaseCurrency();
+        if ($object->isInitialized('paymentMethodName') && null !== $object->getPaymentMethodName()) {
+            $data['paymentMethodName'] = $object->getPaymentMethodName();
         }
-        if (null !== $object->getAmountToPayInBaseCurrency()) {
-            $data->{'amountToPayInBaseCurrency'} = $object->getAmountToPayInBaseCurrency();
+        if ($object->isInitialized('paymentFee') && null !== $object->getPaymentFee()) {
+            $data['paymentFee'] = $object->getPaymentFee();
         }
-        if (null !== $object->getCreatedAt()) {
-            $data->{'createdAt'} = $object->getCreatedAt();
+        if ($object->isInitialized('paymentVatRate') && null !== $object->getPaymentVatRate()) {
+            $data['paymentVatRate'] = $object->getPaymentVatRate();
         }
-        if (null !== $object->getCustomerId()) {
-            $data->{'customerId'} = $object->getCustomerId();
+        if ($object->isInitialized('shippingMethodName') && null !== $object->getShippingMethodName()) {
+            $data['shippingMethodName'] = $object->getShippingMethodName();
         }
-        if (null !== $object->getStatusId()) {
-            $data->{'statusId'} = $object->getStatusId();
+        if ($object->isInitialized('shippingCost') && null !== $object->getShippingCost()) {
+            $data['shippingCost'] = $object->getShippingCost();
         }
-        if (null !== $object->getOnOrderStatusChangeSendEmail()) {
-            $data->{'onOrderStatusChangeSendEmail'} = $object->getOnOrderStatusChangeSendEmail();
+        if ($object->isInitialized('shippingVatRate') && null !== $object->getShippingVatRate()) {
+            $data['shippingVatRate'] = $object->getShippingVatRate();
         }
-        if (null !== $object->getOnOrderStatusChangeProcessPayment()) {
-            $data->{'onOrderStatusChangeProcessPayment'} = $object->getOnOrderStatusChangeProcessPayment();
+        if ($object->isInitialized('customInfo1') && null !== $object->getCustomInfo1()) {
+            $data['customInfo1'] = $object->getCustomInfo1();
         }
-        if (null !== $object->getSendEmailsOnStatusChange()) {
-            $data->{'sendEmailsOnStatusChange'} = $object->getSendEmailsOnStatusChange();
+        if ($object->isInitialized('customInfo2') && null !== $object->getCustomInfo2()) {
+            $data['customInfo2'] = $object->getCustomInfo2();
         }
-        if (null !== $object->getShippingMethodId()) {
-            $data->{'shippingMethodId'} = $object->getShippingMethodId();
+        if ($object->isInitialized('customInfo3') && null !== $object->getCustomInfo3()) {
+            $data['customInfo3'] = $object->getCustomInfo3();
         }
-        if (null !== $object->getPaymentMethodId()) {
-            $data->{'paymentMethodId'} = $object->getPaymentMethodId();
+        if ($object->isInitialized('customInfo4') && null !== $object->getCustomInfo4()) {
+            $data['customInfo4'] = $object->getCustomInfo4();
         }
-        if (null !== $object->getPaymentMethodIdCode()) {
-            $data->{'paymentMethodIdCode'} = $object->getPaymentMethodIdCode();
+        if ($object->isInitialized('discountCode') && null !== $object->getDiscountCode()) {
+            $data['discountCode'] = $object->getDiscountCode();
         }
-        if (null !== $object->getPaymentMethodName()) {
-            $data->{'paymentMethodName'} = $object->getPaymentMethodName();
+        if ($object->isInitialized('amountPaid') && null !== $object->getAmountPaid()) {
+            $data['amountPaid'] = $object->getAmountPaid();
         }
-        if (null !== $object->getPaymentFee()) {
-            $data->{'paymentFee'} = $object->getPaymentFee();
+        if ($object->isInitialized('isComplete') && null !== $object->getIsComplete()) {
+            $data['isComplete'] = $object->getIsComplete();
         }
-        if (null !== $object->getPaymentVatRate()) {
-            $data->{'paymentVatRate'} = $object->getPaymentVatRate();
+        if ($object->isInitialized('currencyCode') && null !== $object->getCurrencyCode()) {
+            $data['currencyCode'] = $object->getCurrencyCode();
         }
-        if (null !== $object->getShippingMethodName()) {
-            $data->{'shippingMethodName'} = $object->getShippingMethodName();
+        if ($object->isInitialized('currencyExchangeRate') && null !== $object->getCurrencyExchangeRate()) {
+            $data['currencyExchangeRate'] = $object->getCurrencyExchangeRate();
         }
-        if (null !== $object->getShippingCost()) {
-            $data->{'shippingCost'} = $object->getShippingCost();
+        if ($object->isInitialized('currencyPrecision') && null !== $object->getCurrencyPrecision()) {
+            $data['currencyPrecision'] = $object->getCurrencyPrecision();
         }
-        if (null !== $object->getShippingVatRate()) {
-            $data->{'shippingVatRate'} = $object->getShippingVatRate();
+        if ($object->isInitialized('langCode') && null !== $object->getLangCode()) {
+            $data['langCode'] = $object->getLangCode();
         }
-        if (null !== $object->getTotalWeight()) {
-            $data->{'totalWeight'} = $object->getTotalWeight();
+        if ($object->isInitialized('paymentReference') && null !== $object->getPaymentReference()) {
+            $data['paymentReference'] = $object->getPaymentReference();
         }
-        if (null !== $object->getCustomInfo1()) {
-            $data->{'customInfo1'} = $object->getCustomInfo1();
+        if ($object->isInitialized('paymentStatus') && null !== $object->getPaymentStatus()) {
+            $data['paymentStatus'] = $object->getPaymentStatus();
         }
-        if (null !== $object->getCustomInfo2()) {
-            $data->{'customInfo2'} = $object->getCustomInfo2();
+        if ($object->isInitialized('isRead') && null !== $object->getIsRead()) {
+            $data['isRead'] = $object->getIsRead();
         }
-        if (null !== $object->getCustomInfo3()) {
-            $data->{'customInfo3'} = $object->getCustomInfo3();
+        if ($object->isInitialized('internalComment') && null !== $object->getInternalComment()) {
+            $data['internalComment'] = $object->getInternalComment();
         }
-        if (null !== $object->getCustomInfo4()) {
-            $data->{'customInfo4'} = $object->getCustomInfo4();
+        if ($object->isInitialized('shippingTrackerType') && null !== $object->getShippingTrackerType()) {
+            $data['shippingTrackerType'] = $object->getShippingTrackerType();
         }
-        if (null !== $object->getDiscountCode()) {
-            $data->{'discountCode'} = $object->getDiscountCode();
+        if ($object->isInitialized('shippingTrackingNo') && null !== $object->getShippingTrackingNo()) {
+            $data['shippingTrackingNo'] = $object->getShippingTrackingNo();
         }
-        if (null !== $object->getAmountPaid()) {
-            $data->{'amountPaid'} = $object->getAmountPaid();
+        if ($object->isInitialized('originalCustomerEmail') && null !== $object->getOriginalCustomerEmail()) {
+            $data['originalCustomerEmail'] = $object->getOriginalCustomerEmail();
         }
-        if (null !== $object->getAmountPaidInBaseCurrency()) {
-            $data->{'amountPaidInBaseCurrency'} = $object->getAmountPaidInBaseCurrency();
+        if ($object->isInitialized('originalCustomerNationalIdNo') && null !== $object->getOriginalCustomerNationalIdNo()) {
+            $data['originalCustomerNationalIdNo'] = $object->getOriginalCustomerNationalIdNo();
         }
-        if (null !== $object->getIsComplete()) {
-            $data->{'isComplete'} = $object->getIsComplete();
+        if ($object->isInitialized('originalCustomerVatNo') && null !== $object->getOriginalCustomerVatNo()) {
+            $data['originalCustomerVatNo'] = $object->getOriginalCustomerVatNo();
         }
-        if (null !== $object->getCurrencyCode()) {
-            $data->{'currencyCode'} = $object->getCurrencyCode();
+        if ($object->isInitialized('originalCustomerCustomInfo1') && null !== $object->getOriginalCustomerCustomInfo1()) {
+            $data['originalCustomerCustomInfo1'] = $object->getOriginalCustomerCustomInfo1();
         }
-        if (null !== $object->getCurrencyExchangeRate()) {
-            $data->{'currencyExchangeRate'} = $object->getCurrencyExchangeRate();
+        if ($object->isInitialized('originalCustomerCustomInfo2') && null !== $object->getOriginalCustomerCustomInfo2()) {
+            $data['originalCustomerCustomInfo2'] = $object->getOriginalCustomerCustomInfo2();
         }
-        if (null !== $object->getCurrencyPrecision()) {
-            $data->{'currencyPrecision'} = $object->getCurrencyPrecision();
+        if ($object->isInitialized('items') && null !== $object->getItems()) {
+            $data['items'] = $this->normalizer->normalize($object->getItems(), 'json', $context);
         }
-        if (null !== $object->getLangCode()) {
-            $data->{'langCode'} = $object->getLangCode();
+        if ($object->isInitialized('addresses') && null !== $object->getAddresses()) {
+            $data['addresses'] = $this->normalizer->normalize($object->getAddresses(), 'json', $context);
         }
-        if (null !== $object->getPaymentReference()) {
-            $data->{'paymentReference'} = $object->getPaymentReference();
+        if ($object->isInitialized('externalServices') && null !== $object->getExternalServices()) {
+            $data['externalServices'] = $this->normalizer->normalize($object->getExternalServices(), 'json', $context);
         }
-        if (null !== $object->getPaymentStatus()) {
-            $data->{'paymentStatus'} = $object->getPaymentStatus();
+        if ($object->isInitialized('customer') && null !== $object->getCustomer()) {
+            $data['customer'] = $this->normalizer->normalize($object->getCustomer(), 'json', $context);
         }
-        if (null !== $object->getIsRead()) {
-            $data->{'isRead'} = $object->getIsRead();
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
+            $data['status'] = $this->normalizer->normalize($object->getStatus(), 'json', $context);
         }
-        if (null !== $object->getHasComments()) {
-            $data->{'hasComments'} = $object->getHasComments();
-        }
-        if (null !== $object->getInternalComment()) {
-            $data->{'internalComment'} = $object->getInternalComment();
-        }
-        if (null !== $object->getShippingTrackerType()) {
-            $data->{'shippingTrackerType'} = $object->getShippingTrackerType();
-        }
-        if (null !== $object->getShippingTrackingNo()) {
-            $data->{'shippingTrackingNo'} = $object->getShippingTrackingNo();
-        }
-        if (null !== $object->getOriginalCustomerEmail()) {
-            $data->{'originalCustomerEmail'} = $object->getOriginalCustomerEmail();
-        }
-        if (null !== $object->getOriginalCustomerNationalIdNo()) {
-            $data->{'originalCustomerNationalIdNo'} = $object->getOriginalCustomerNationalIdNo();
-        }
-        if (null !== $object->getOriginalCustomerVatNo()) {
-            $data->{'originalCustomerVatNo'} = $object->getOriginalCustomerVatNo();
-        }
-        if (null !== $object->getOriginalCustomerCustomInfo1()) {
-            $data->{'originalCustomerCustomInfo1'} = $object->getOriginalCustomerCustomInfo1();
-        }
-        if (null !== $object->getOriginalCustomerCustomInfo2()) {
-            $data->{'originalCustomerCustomInfo2'} = $object->getOriginalCustomerCustomInfo2();
-        }
-        if (null !== $object->getItems()) {
-            $data->{'items'} = $this->normalizer->normalize($object->getItems(), 'json', $context);
-        }
-        if (null !== $object->getAddresses()) {
-            $data->{'addresses'} = $this->normalizer->normalize($object->getAddresses(), 'json', $context);
-        }
-        if (null !== $object->getExternalServices()) {
-            $data->{'externalServices'} = $this->normalizer->normalize($object->getExternalServices(), 'json', $context);
-        }
-        if (null !== $object->getCustomer()) {
-            $data->{'customer'} = $this->normalizer->normalize($object->getCustomer(), 'json', $context);
-        }
-        if (null !== $object->getStatus()) {
-            $data->{'status'} = $this->normalizer->normalize($object->getStatus(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\OrderModel' => false);
     }
 }

@@ -71,7 +71,6 @@ class Builder
     public function addPlugin(Plugin $plugin): Builder
     {
         $this->plugins[] = $plugin;
-        $this->httpClientModified = true;
 
         return $this;
     }
@@ -81,7 +80,6 @@ class Builder
         foreach ($this->plugins as $idx => $plugin) {
             if ($plugin instanceof $fqcn) {
                 unset($this->plugins[$idx]);
-                $this->httpClientModified = true;
             }
         }
 

@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,57 +16,89 @@ class ProductVariantAttributeValueModelNormalizer implements DenormalizerInterfa
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\ProductVariantAttributeValueModel();
-        if (property_exists($data, 'attributeValueId')) {
-            $object->setAttributeValueId($data->{'attributeValueId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'skuSuffix')) {
-            $object->setSkuSuffix($data->{'skuSuffix'});
+        if (\array_key_exists('attributeValueId', $data)) {
+            $object->setAttributeValueId($data['attributeValueId']);
+            unset($data['attributeValueId']);
         }
-        if (property_exists($data, 'sortIndex')) {
-            $object->setSortIndex($data->{'sortIndex'});
+        if (\array_key_exists('skuSuffix', $data)) {
+            $object->setSkuSuffix($data['skuSuffix']);
+            unset($data['skuSuffix']);
         }
-        if (property_exists($data, 'languages')) {
+        if (\array_key_exists('sortIndex', $data)) {
+            $object->setSortIndex($data['sortIndex']);
+            unset($data['sortIndex']);
+        }
+        if (\array_key_exists('languages', $data)) {
             $values = array();
-            foreach ($data->{'languages'} as $value) {
+            foreach ($data['languages'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueLanguageModel', 'json', $context);
             }
             $object->setLanguages($values);
+            unset($data['languages']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getAttributeValueId()) {
-            $data->{'attributeValueId'} = $object->getAttributeValueId();
+        $data = array();
+        if ($object->isInitialized('attributeValueId') && null !== $object->getAttributeValueId()) {
+            $data['attributeValueId'] = $object->getAttributeValueId();
         }
-        if (null !== $object->getSkuSuffix()) {
-            $data->{'skuSuffix'} = $object->getSkuSuffix();
+        if ($object->isInitialized('skuSuffix') && null !== $object->getSkuSuffix()) {
+            $data['skuSuffix'] = $object->getSkuSuffix();
         }
-        if (null !== $object->getSortIndex()) {
-            $data->{'sortIndex'} = $object->getSortIndex();
+        if ($object->isInitialized('sortIndex') && null !== $object->getSortIndex()) {
+            $data['sortIndex'] = $object->getSortIndex();
         }
-        if (null !== $object->getLanguages()) {
+        if ($object->isInitialized('languages') && null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'languages'} = $values;
+            $data['languages'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\ProductVariantAttributeValueModel' => false);
     }
 }

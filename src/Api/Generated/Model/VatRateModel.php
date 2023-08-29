@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class VatRateModel
+class VatRateModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The country code this vat rates should be valid for. The country code should be set using ISO 3166-1 alpha-2
      *
@@ -52,6 +60,7 @@ class VatRateModel
      */
     public function setCountryCode(string $countryCode) : self
     {
+        $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
         return $this;
     }
@@ -73,6 +82,7 @@ class VatRateModel
      */
     public function setDefaultVatRate(float $defaultVatRate) : self
     {
+        $this->initialized['defaultVatRate'] = true;
         $this->defaultVatRate = $defaultVatRate;
         return $this;
     }
@@ -94,6 +104,7 @@ class VatRateModel
      */
     public function setFixedOrderPaymentVatRate(float $fixedOrderPaymentVatRate) : self
     {
+        $this->initialized['fixedOrderPaymentVatRate'] = true;
         $this->fixedOrderPaymentVatRate = $fixedOrderPaymentVatRate;
         return $this;
     }
@@ -115,6 +126,7 @@ class VatRateModel
      */
     public function setFixedOrderShippingVatRate(float $fixedOrderShippingVatRate) : self
     {
+        $this->initialized['fixedOrderShippingVatRate'] = true;
         $this->fixedOrderShippingVatRate = $fixedOrderShippingVatRate;
         return $this;
     }
@@ -136,6 +148,7 @@ class VatRateModel
      */
     public function setFixedOrderDiscountVatRate(float $fixedOrderDiscountVatRate) : self
     {
+        $this->initialized['fixedOrderDiscountVatRate'] = true;
         $this->fixedOrderDiscountVatRate = $fixedOrderDiscountVatRate;
         return $this;
     }

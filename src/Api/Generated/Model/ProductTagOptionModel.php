@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductTagOptionModel
+class ProductTagOptionModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The option Id
      *
@@ -46,6 +54,7 @@ class ProductTagOptionModel
      */
     public function setTagOptionId(int $tagOptionId) : self
     {
+        $this->initialized['tagOptionId'] = true;
         $this->tagOptionId = $tagOptionId;
         return $this;
     }
@@ -67,6 +76,7 @@ class ProductTagOptionModel
      */
     public function setValue(bool $value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }
@@ -88,6 +98,7 @@ class ProductTagOptionModel
      */
     public function setSortIndex(int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -109,6 +120,7 @@ class ProductTagOptionModel
      */
     public function setLanguages(array $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

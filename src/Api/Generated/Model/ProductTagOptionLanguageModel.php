@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductTagOptionLanguageModel
+class ProductTagOptionLanguageModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop has setup. 
      *
@@ -34,6 +42,7 @@ class ProductTagOptionLanguageModel
      */
     public function setLangCode(string $langCode) : self
     {
+        $this->initialized['langCode'] = true;
         $this->langCode = $langCode;
         return $this;
     }
@@ -55,6 +64,7 @@ class ProductTagOptionLanguageModel
      */
     public function setValue(string $value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }

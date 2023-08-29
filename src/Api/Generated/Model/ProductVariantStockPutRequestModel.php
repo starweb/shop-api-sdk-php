@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductVariantStockPutRequestModel
+class ProductVariantStockPutRequestModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The stock status id. See  [product stock statuses](#tag/Product-Stock-Statuses)
      *
@@ -34,6 +42,7 @@ class ProductVariantStockPutRequestModel
      */
     public function setStockStatusId(int $stockStatusId) : self
     {
+        $this->initialized['stockStatusId'] = true;
         $this->stockStatusId = $stockStatusId;
         return $this;
     }
@@ -55,6 +64,7 @@ class ProductVariantStockPutRequestModel
      */
     public function setStockQuantity(float $stockQuantity) : self
     {
+        $this->initialized['stockQuantity'] = true;
         $this->stockQuantity = $stockQuantity;
         return $this;
     }

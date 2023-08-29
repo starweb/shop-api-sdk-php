@@ -1,12 +1,14 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Starweb\Tests\Api;
 
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
+use Http\Factory\Guzzle\RequestFactory;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestInterface;
+use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use Starweb\Api\Client;
 use Starweb\Api\Generated\Model\MediaFileUploadModel as GeneratedMediaFileUploadModel;
 use Starweb\Api\Model\MediaFileUploadModel;
@@ -26,7 +28,7 @@ class ClientTest extends TestCase
         $client = $this->getClient();
         $mediaFileUploadModelMock = $this->createMock(MediaFileUploadModel::class);
 
-        $this->assertSame(null, $client->createMediaFile($mediaFileUploadModelMock));
+        $this->assertNull($client->createMediaFile($mediaFileUploadModelMock));
     }
 
     public function testCreateMediaFileWithGeneratedModelThrowsException(): void
@@ -43,7 +45,7 @@ class ClientTest extends TestCase
         $client = $this->getClient();
         $mediaFileUploadModelMock = $this->createMock(MediaFileUploadModel::class);
 
-        $this->assertSame(null, $client->putMediaFile(1, $mediaFileUploadModelMock));
+        $this->assertNull($client->putMediaFile(1, $mediaFileUploadModelMock));
     }
 
     public function testPutMediaFileWithGeneratedModelThrowsException(): void
@@ -60,7 +62,7 @@ class ClientTest extends TestCase
         $client = $this->getClient();
         $mediaFileUploadModelMock = $this->createMock(MediaFileUploadModel::class);
 
-        $this->assertSame(null, $client->patchMediaFile(1, $mediaFileUploadModelMock));
+        $this->assertNull($client->patchMediaFile(1, $mediaFileUploadModelMock));
     }
 
     public function testPatchMediaFileWithGeneratedModelThrowsException(): void
@@ -79,22 +81,18 @@ class ClientTest extends TestCase
             ->method('getStatusCode')
             ->willReturn(200);
 
-        $httpClientMock = $this->createMock(HttpClient::class);
+        $httpClientMock = $this->createMock(ClientInterface::class);
         $httpClientMock
             ->method('sendRequest')
             ->willReturn($responseMock);
-
-        $requestMock = $this->createMock(RequestInterface::class);
-        $messageFactoryMock = $this->createMock(MessageFactory::class);
-        $messageFactoryMock
-            ->method('createRequest')
-            ->willReturn($requestMock);
 
         $serializerMock = $this->createMock(Serializer::class);
         $serializerMock
             ->method('normalize')
             ->willReturn([]);
 
-        return new Client($httpClientMock, $messageFactoryMock, $serializerMock);
+        $streamFactory = $this->createMock(StreamFactoryInterface::class);
+
+        return new Client($httpClientMock, new RequestFactory(), $serializerMock, $streamFactory);
     }
 }

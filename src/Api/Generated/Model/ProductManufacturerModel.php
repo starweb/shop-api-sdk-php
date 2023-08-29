@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductManufacturerModel
+class ProductManufacturerModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The id of this manufacturer
      *
@@ -40,6 +48,7 @@ class ProductManufacturerModel
      */
     public function setManufacturerId(int $manufacturerId) : self
     {
+        $this->initialized['manufacturerId'] = true;
         $this->manufacturerId = $manufacturerId;
         return $this;
     }
@@ -61,6 +70,7 @@ class ProductManufacturerModel
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -82,6 +92,7 @@ class ProductManufacturerModel
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }

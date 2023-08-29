@@ -9,7 +9,6 @@ use Http\Discovery\MessageFactoryDiscovery;
 use Http\Promise\Promise;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use Starweb\HttpClient\Plugin\ErrorPlugin;
 
 class ErrorPluginTest extends TestCase

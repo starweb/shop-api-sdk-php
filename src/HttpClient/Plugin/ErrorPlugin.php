@@ -45,7 +45,7 @@ final class ErrorPlugin implements Plugin
     /**
      * {@inheritdoc}
      */
-    public function handleRequest(RequestInterface $request, callable $next, callable $first)
+    public function handleRequest(RequestInterface $request, callable $next, callable $first): \Http\Promise\Promise
     {
         $promise = $next($request);
 

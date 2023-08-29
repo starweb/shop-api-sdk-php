@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductVariantAttributeModelUpdatable
+class ProductVariantAttributeModelUpdatable extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
@@ -34,6 +42,7 @@ class ProductVariantAttributeModelUpdatable
      */
     public function setAttributeId(int $attributeId) : self
     {
+        $this->initialized['attributeId'] = true;
         $this->attributeId = $attributeId;
         return $this;
     }
@@ -55,6 +64,7 @@ class ProductVariantAttributeModelUpdatable
      */
     public function setLanguages(array $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,37 +16,67 @@ class CustomerExternalServicesModelNormalizer implements DenormalizerInterface, 
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\CustomerExternalServicesModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerExternalServicesModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerExternalServicesModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\CustomerExternalServicesModel();
-        if (property_exists($data, 'serviceName')) {
-            $object->setServiceName($data->{'serviceName'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'externalIdValue')) {
-            $object->setExternalIdValue($data->{'externalIdValue'});
+        if (\array_key_exists('serviceName', $data)) {
+            $object->setServiceName($data['serviceName']);
+            unset($data['serviceName']);
+        }
+        if (\array_key_exists('externalIdValue', $data)) {
+            $object->setExternalIdValue($data['externalIdValue']);
+            unset($data['externalIdValue']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getServiceName()) {
-            $data->{'serviceName'} = $object->getServiceName();
+        $data = array();
+        if ($object->isInitialized('serviceName') && null !== $object->getServiceName()) {
+            $data['serviceName'] = $object->getServiceName();
         }
-        if (null !== $object->getExternalIdValue()) {
-            $data->{'externalIdValue'} = $object->getExternalIdValue();
+        if ($object->isInitialized('externalIdValue') && null !== $object->getExternalIdValue()) {
+            $data['externalIdValue'] = $object->getExternalIdValue();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\CustomerExternalServicesModel' => false);
     }
 }

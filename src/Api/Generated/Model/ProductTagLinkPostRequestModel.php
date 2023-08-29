@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductTagLinkPostRequestModel
+class ProductTagLinkPostRequestModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The tag option id this product should be listed in
      *
@@ -28,6 +36,7 @@ class ProductTagLinkPostRequestModel
      */
     public function setTagOptionId(int $tagOptionId) : self
     {
+        $this->initialized['tagOptionId'] = true;
         $this->tagOptionId = $tagOptionId;
         return $this;
     }

@@ -2,16 +2,28 @@
 
 namespace Starweb\Api\Generated\Exception;
 
-class CreateProductTagOptionMethodNotAllowedException extends \RuntimeException implements ClientException
+class CreateProductTagOptionMethodNotAllowedException extends MethodNotAllowedException
 {
+    /**
+     * @var \Starweb\Api\Generated\Model\ErrorModel
+     */
     private $errorModel;
-    public function __construct(\Starweb\Api\Generated\Model\ErrorModel $errorModel)
+    /**
+     * @var \Psr\Http\Message\ResponseInterface
+     */
+    private $response;
+    public function __construct(\Starweb\Api\Generated\Model\ErrorModel $errorModel, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Method Not Allowed', 405);
+        parent::__construct('Method Not Allowed');
         $this->errorModel = $errorModel;
+        $this->response = $response;
     }
-    public function getErrorModel()
+    public function getErrorModel() : \Starweb\Api\Generated\Model\ErrorModel
     {
         return $this->errorModel;
+    }
+    public function getResponse() : \Psr\Http\Message\ResponseInterface
+    {
+        return $this->response;
     }
 }

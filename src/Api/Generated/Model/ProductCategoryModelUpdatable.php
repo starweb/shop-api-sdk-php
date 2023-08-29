@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductCategoryModelUpdatable
+class ProductCategoryModelUpdatable extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The product category Id
      *
@@ -82,6 +90,7 @@ class ProductCategoryModelUpdatable
      */
     public function setCategoryId(int $categoryId) : self
     {
+        $this->initialized['categoryId'] = true;
         $this->categoryId = $categoryId;
         return $this;
     }
@@ -103,6 +112,7 @@ class ProductCategoryModelUpdatable
      */
     public function setParentId(int $parentId) : self
     {
+        $this->initialized['parentId'] = true;
         $this->parentId = $parentId;
         return $this;
     }
@@ -124,6 +134,7 @@ class ProductCategoryModelUpdatable
      */
     public function setVisibility(string $visibility) : self
     {
+        $this->initialized['visibility'] = true;
         $this->visibility = $visibility;
         return $this;
     }
@@ -145,6 +156,7 @@ class ProductCategoryModelUpdatable
      */
     public function setSortIndex(int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -166,6 +178,7 @@ class ProductCategoryModelUpdatable
      */
     public function setOpenPage(bool $openPage) : self
     {
+        $this->initialized['openPage'] = true;
         $this->openPage = $openPage;
         return $this;
     }
@@ -187,6 +200,7 @@ class ProductCategoryModelUpdatable
      */
     public function setImageFileId(int $imageFileId) : self
     {
+        $this->initialized['imageFileId'] = true;
         $this->imageFileId = $imageFileId;
         return $this;
     }
@@ -208,6 +222,7 @@ class ProductCategoryModelUpdatable
      */
     public function setExternalType(string $externalType) : self
     {
+        $this->initialized['externalType'] = true;
         $this->externalType = $externalType;
         return $this;
     }
@@ -229,6 +244,7 @@ class ProductCategoryModelUpdatable
      */
     public function setExternalId(string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -250,6 +266,7 @@ class ProductCategoryModelUpdatable
      */
     public function setHasChildren(bool $hasChildren) : self
     {
+        $this->initialized['hasChildren'] = true;
         $this->hasChildren = $hasChildren;
         return $this;
     }
@@ -271,6 +288,7 @@ class ProductCategoryModelUpdatable
      */
     public function setLanguages(array $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class CurrencyModel
+class CurrencyModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The currency code
      *
@@ -40,6 +48,7 @@ class CurrencyModel
      */
     public function setCode(string $code) : self
     {
+        $this->initialized['code'] = true;
         $this->code = $code;
         return $this;
     }
@@ -61,6 +70,7 @@ class CurrencyModel
      */
     public function setExchangeRate(float $exchangeRate) : self
     {
+        $this->initialized['exchangeRate'] = true;
         $this->exchangeRate = $exchangeRate;
         return $this;
     }
@@ -82,6 +92,7 @@ class CurrencyModel
      */
     public function setPrecision(int $precision) : self
     {
+        $this->initialized['precision'] = true;
         $this->precision = $precision;
         return $this;
     }

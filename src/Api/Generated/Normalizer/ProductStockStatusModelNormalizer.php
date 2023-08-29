@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,73 +16,107 @@ class ProductStockStatusModelNormalizer implements DenormalizerInterface, Normal
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\ProductStockStatusModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductStockStatusModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductStockStatusModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\ProductStockStatusModel();
-        if (property_exists($data, 'stockStatusId')) {
-            $object->setStockStatusId($data->{'stockStatusId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'idCode')) {
-            $object->setIdCode($data->{'idCode'});
+        if (\array_key_exists('stockStatusId', $data)) {
+            $object->setStockStatusId($data['stockStatusId']);
+            unset($data['stockStatusId']);
         }
-        if (property_exists($data, 'sortIndex')) {
-            $object->setSortIndex($data->{'sortIndex'});
+        if (\array_key_exists('idCode', $data)) {
+            $object->setIdCode($data['idCode']);
+            unset($data['idCode']);
         }
-        if (property_exists($data, 'stockoutNewStatusId')) {
-            $object->setStockoutNewStatusId($data->{'stockoutNewStatusId'});
+        if (\array_key_exists('sortIndex', $data)) {
+            $object->setSortIndex($data['sortIndex']);
+            unset($data['sortIndex']);
         }
-        if (property_exists($data, 'productBuyable')) {
-            $object->setProductBuyable($data->{'productBuyable'});
+        if (\array_key_exists('stockoutNewStatusId', $data) && $data['stockoutNewStatusId'] !== null) {
+            $object->setStockoutNewStatusId($data['stockoutNewStatusId']);
+            unset($data['stockoutNewStatusId']);
         }
-        if (property_exists($data, 'inStock')) {
-            $object->setInStock($data->{'inStock'});
+        elseif (\array_key_exists('stockoutNewStatusId', $data) && $data['stockoutNewStatusId'] === null) {
+            $object->setStockoutNewStatusId(null);
         }
-        if (property_exists($data, 'languages')) {
+        if (\array_key_exists('productBuyable', $data)) {
+            $object->setProductBuyable($data['productBuyable']);
+            unset($data['productBuyable']);
+        }
+        if (\array_key_exists('inStock', $data)) {
+            $object->setInStock($data['inStock']);
+            unset($data['inStock']);
+        }
+        if (\array_key_exists('languages', $data)) {
             $values = array();
-            foreach ($data->{'languages'} as $value) {
+            foreach ($data['languages'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductStockStatusLanguageModel', 'json', $context);
             }
             $object->setLanguages($values);
+            unset($data['languages']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getStockStatusId()) {
-            $data->{'stockStatusId'} = $object->getStockStatusId();
+        $data = array();
+        if ($object->isInitialized('sortIndex') && null !== $object->getSortIndex()) {
+            $data['sortIndex'] = $object->getSortIndex();
         }
-        if (null !== $object->getIdCode()) {
-            $data->{'idCode'} = $object->getIdCode();
+        if ($object->isInitialized('stockoutNewStatusId') && null !== $object->getStockoutNewStatusId()) {
+            $data['stockoutNewStatusId'] = $object->getStockoutNewStatusId();
         }
-        if (null !== $object->getSortIndex()) {
-            $data->{'sortIndex'} = $object->getSortIndex();
+        if ($object->isInitialized('productBuyable') && null !== $object->getProductBuyable()) {
+            $data['productBuyable'] = $object->getProductBuyable();
         }
-        $data->{'stockoutNewStatusId'} = $object->getStockoutNewStatusId();
-        if (null !== $object->getProductBuyable()) {
-            $data->{'productBuyable'} = $object->getProductBuyable();
+        if ($object->isInitialized('inStock') && null !== $object->getInStock()) {
+            $data['inStock'] = $object->getInStock();
         }
-        if (null !== $object->getInStock()) {
-            $data->{'inStock'} = $object->getInStock();
-        }
-        if (null !== $object->getLanguages()) {
+        if ($object->isInitialized('languages') && null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'languages'} = $values;
+            $data['languages'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\ProductStockStatusModel' => false);
     }
 }

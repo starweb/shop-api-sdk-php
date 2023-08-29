@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class OrderExternalServiceModel
+class OrderExternalServiceModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The service name that this external id is linked to. Please note that this service name has to be unique for the order
      *
@@ -40,6 +48,7 @@ class OrderExternalServiceModel
      */
     public function setServiceName(string $serviceName) : self
     {
+        $this->initialized['serviceName'] = true;
         $this->serviceName = $serviceName;
         return $this;
     }
@@ -61,6 +70,7 @@ class OrderExternalServiceModel
      */
     public function setExternalIdValue(string $externalIdValue) : self
     {
+        $this->initialized['externalIdValue'] = true;
         $this->externalIdValue = $externalIdValue;
         return $this;
     }
@@ -82,6 +92,7 @@ class OrderExternalServiceModel
      */
     public function setReadOnly(bool $readOnly) : self
     {
+        $this->initialized['readOnly'] = true;
         $this->readOnly = $readOnly;
         return $this;
     }

@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,79 +16,89 @@ class MediaFileModelNormalizer implements DenormalizerInterface, NormalizerInter
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\MediaFileModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\MediaFileModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\MediaFileModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\MediaFileModel();
-        if (property_exists($data, 'mediaFileId')) {
-            $object->setMediaFileId($data->{'mediaFileId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'name')) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('mediaFileId', $data)) {
+            $object->setMediaFileId($data['mediaFileId']);
+            unset($data['mediaFileId']);
         }
-        if (property_exists($data, 'createdAt')) {
-            $object->setCreatedAt($data->{'createdAt'});
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
+            unset($data['name']);
         }
-        if (property_exists($data, 'modifiedAt')) {
-            $object->setModifiedAt($data->{'modifiedAt'});
+        if (\array_key_exists('createdAt', $data)) {
+            $object->setCreatedAt($data['createdAt']);
+            unset($data['createdAt']);
         }
-        if (property_exists($data, 'size')) {
-            $object->setSize($data->{'size'});
+        if (\array_key_exists('modifiedAt', $data)) {
+            $object->setModifiedAt($data['modifiedAt']);
+            unset($data['modifiedAt']);
         }
-        if (property_exists($data, 'mime')) {
-            $object->setMime($data->{'mime'});
+        if (\array_key_exists('size', $data)) {
+            $object->setSize($data['size']);
+            unset($data['size']);
         }
-        if (property_exists($data, 'height')) {
-            $object->setHeight($data->{'height'});
+        if (\array_key_exists('mime', $data)) {
+            $object->setMime($data['mime']);
+            unset($data['mime']);
         }
-        if (property_exists($data, 'width')) {
-            $object->setWidth($data->{'width'});
+        if (\array_key_exists('height', $data)) {
+            $object->setHeight($data['height']);
+            unset($data['height']);
         }
-        if (property_exists($data, 'url')) {
-            $object->setUrl($data->{'url'});
+        if (\array_key_exists('width', $data)) {
+            $object->setWidth($data['width']);
+            unset($data['width']);
+        }
+        if (\array_key_exists('url', $data)) {
+            $object->setUrl($data['url']);
+            unset($data['url']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getMediaFileId()) {
-            $data->{'mediaFileId'} = $object->getMediaFileId();
-        }
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
-        if (null !== $object->getCreatedAt()) {
-            $data->{'createdAt'} = $object->getCreatedAt();
-        }
-        if (null !== $object->getModifiedAt()) {
-            $data->{'modifiedAt'} = $object->getModifiedAt();
-        }
-        if (null !== $object->getSize()) {
-            $data->{'size'} = $object->getSize();
-        }
-        if (null !== $object->getMime()) {
-            $data->{'mime'} = $object->getMime();
-        }
-        if (null !== $object->getHeight()) {
-            $data->{'height'} = $object->getHeight();
-        }
-        if (null !== $object->getWidth()) {
-            $data->{'width'} = $object->getWidth();
-        }
-        if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
+        $data = array();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\MediaFileModel' => false);
     }
 }

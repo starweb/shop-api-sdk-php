@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductTagOptionPostRequestModel
+class ProductTagOptionPostRequestModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The sort index of the option
      *
@@ -34,6 +42,7 @@ class ProductTagOptionPostRequestModel
      */
     public function setSortIndex(int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -55,6 +64,7 @@ class ProductTagOptionPostRequestModel
      */
     public function setLanguages(array $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

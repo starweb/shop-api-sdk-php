@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,55 +16,73 @@ class PaginationModelNormalizer implements DenormalizerInterface, NormalizerInte
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\PaginationModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\PaginationModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\PaginationModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\PaginationModel();
-        if (property_exists($data, 'current_page')) {
-            $object->setCurrentPage($data->{'current_page'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'per_page')) {
-            $object->setPerPage($data->{'per_page'});
+        if (\array_key_exists('current_page', $data)) {
+            $object->setCurrentPage($data['current_page']);
+            unset($data['current_page']);
         }
-        if (property_exists($data, 'total')) {
-            $object->setTotal($data->{'total'});
+        if (\array_key_exists('per_page', $data)) {
+            $object->setPerPage($data['per_page']);
+            unset($data['per_page']);
         }
-        if (property_exists($data, 'count')) {
-            $object->setCount($data->{'count'});
+        if (\array_key_exists('total', $data)) {
+            $object->setTotal($data['total']);
+            unset($data['total']);
         }
-        if (property_exists($data, 'total_pages')) {
-            $object->setTotalPages($data->{'total_pages'});
+        if (\array_key_exists('count', $data)) {
+            $object->setCount($data['count']);
+            unset($data['count']);
+        }
+        if (\array_key_exists('total_pages', $data)) {
+            $object->setTotalPages($data['total_pages']);
+            unset($data['total_pages']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getCurrentPage()) {
-            $data->{'current_page'} = $object->getCurrentPage();
-        }
-        if (null !== $object->getPerPage()) {
-            $data->{'per_page'} = $object->getPerPage();
-        }
-        if (null !== $object->getTotal()) {
-            $data->{'total'} = $object->getTotal();
-        }
-        if (null !== $object->getCount()) {
-            $data->{'count'} = $object->getCount();
-        }
-        if (null !== $object->getTotalPages()) {
-            $data->{'total_pages'} = $object->getTotalPages();
+        $data = array();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\PaginationModel' => false);
     }
 }

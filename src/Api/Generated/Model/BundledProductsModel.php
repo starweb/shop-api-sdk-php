@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class BundledProductsModel
+class BundledProductsModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Bundled product only valid for a single variant
      *
@@ -58,6 +66,7 @@ class BundledProductsModel
      */
     public function setSingleVariant(bool $singleVariant) : self
     {
+        $this->initialized['singleVariant'] = true;
         $this->singleVariant = $singleVariant;
         return $this;
     }
@@ -79,6 +88,7 @@ class BundledProductsModel
      */
     public function setBundledProductId(int $bundledProductId) : self
     {
+        $this->initialized['bundledProductId'] = true;
         $this->bundledProductId = $bundledProductId;
         return $this;
     }
@@ -100,6 +110,7 @@ class BundledProductsModel
      */
     public function setVariantSku(string $variantSku) : self
     {
+        $this->initialized['variantSku'] = true;
         $this->variantSku = $variantSku;
         return $this;
     }
@@ -121,6 +132,7 @@ class BundledProductsModel
      */
     public function setQuantity(?int $quantity) : self
     {
+        $this->initialized['quantity'] = true;
         $this->quantity = $quantity;
         return $this;
     }
@@ -142,6 +154,7 @@ class BundledProductsModel
      */
     public function setSortIndex(int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -163,6 +176,7 @@ class BundledProductsModel
      */
     public function setPrices(array $prices) : self
     {
+        $this->initialized['prices'] = true;
         $this->prices = $prices;
         return $this;
     }

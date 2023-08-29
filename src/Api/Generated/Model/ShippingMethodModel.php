@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ShippingMethodModel
+class ShippingMethodModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The shipping methods Id
      *
@@ -100,6 +108,7 @@ class ShippingMethodModel
      */
     public function setShippingMethodId(int $shippingMethodId) : self
     {
+        $this->initialized['shippingMethodId'] = true;
         $this->shippingMethodId = $shippingMethodId;
         return $this;
     }
@@ -121,6 +130,7 @@ class ShippingMethodModel
      */
     public function setActive(bool $active) : self
     {
+        $this->initialized['active'] = true;
         $this->active = $active;
         return $this;
     }
@@ -142,6 +152,7 @@ class ShippingMethodModel
      */
     public function setValidForCountries(string $validForCountries) : self
     {
+        $this->initialized['validForCountries'] = true;
         $this->validForCountries = $validForCountries;
         return $this;
     }
@@ -163,6 +174,7 @@ class ShippingMethodModel
      */
     public function setValidCountriesSelected(array $validCountriesSelected) : self
     {
+        $this->initialized['validCountriesSelected'] = true;
         $this->validCountriesSelected = $validCountriesSelected;
         return $this;
     }
@@ -184,6 +196,7 @@ class ShippingMethodModel
      */
     public function setValidForMinItemsSubtotal(?float $validForMinItemsSubtotal) : self
     {
+        $this->initialized['validForMinItemsSubtotal'] = true;
         $this->validForMinItemsSubtotal = $validForMinItemsSubtotal;
         return $this;
     }
@@ -205,6 +218,7 @@ class ShippingMethodModel
      */
     public function setValidForMaxItemsSubtotal(?float $validForMaxItemsSubtotal) : self
     {
+        $this->initialized['validForMaxItemsSubtotal'] = true;
         $this->validForMaxItemsSubtotal = $validForMaxItemsSubtotal;
         return $this;
     }
@@ -226,6 +240,7 @@ class ShippingMethodModel
      */
     public function setValidForMinWeight(?float $validForMinWeight) : self
     {
+        $this->initialized['validForMinWeight'] = true;
         $this->validForMinWeight = $validForMinWeight;
         return $this;
     }
@@ -247,6 +262,7 @@ class ShippingMethodModel
      */
     public function setValidForMaxWeight(?float $validForMaxWeight) : self
     {
+        $this->initialized['validForMaxWeight'] = true;
         $this->validForMaxWeight = $validForMaxWeight;
         return $this;
     }
@@ -268,6 +284,7 @@ class ShippingMethodModel
      */
     public function setValidForCustomerType(?string $validForCustomerType) : self
     {
+        $this->initialized['validForCustomerType'] = true;
         $this->validForCustomerType = $validForCustomerType;
         return $this;
     }
@@ -289,6 +306,7 @@ class ShippingMethodModel
      */
     public function setFreeShippingMinItemsSubtotal(?float $freeShippingMinItemsSubtotal) : self
     {
+        $this->initialized['freeShippingMinItemsSubtotal'] = true;
         $this->freeShippingMinItemsSubtotal = $freeShippingMinItemsSubtotal;
         return $this;
     }
@@ -310,6 +328,7 @@ class ShippingMethodModel
      */
     public function setFreeShippingMinWeight(?float $freeShippingMinWeight) : self
     {
+        $this->initialized['freeShippingMinWeight'] = true;
         $this->freeShippingMinWeight = $freeShippingMinWeight;
         return $this;
     }
@@ -331,6 +350,7 @@ class ShippingMethodModel
      */
     public function setIsClickAndCollect(bool $isClickAndCollect) : self
     {
+        $this->initialized['isClickAndCollect'] = true;
         $this->isClickAndCollect = $isClickAndCollect;
         return $this;
     }
@@ -352,6 +372,7 @@ class ShippingMethodModel
      */
     public function setLanguages(ShippingMethodLanguageModelCollection $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

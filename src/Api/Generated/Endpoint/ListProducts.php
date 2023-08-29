@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class ListProducts extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class ListProducts extends \Starweb\Api\Generated\Runtime\Client\BaseEndpoint implements \Starweb\Api\Generated\Runtime\Client\Endpoint
 {
     /**
      * Returns a list of products.
@@ -22,7 +22,7 @@ class ListProducts extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Starweb\Api\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -45,14 +45,14 @@ class ListProducts extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         $optionsResolver->setDefined(array('page', 'sortBy', 'sortOrder', 'createdSince', 'updatedSince', 'filterVisible', 'filterSku', 'include'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('sortBy', array('string'));
-        $optionsResolver->setAllowedTypes('sortOrder', array('string'));
-        $optionsResolver->setAllowedTypes('createdSince', array('string'));
-        $optionsResolver->setAllowedTypes('updatedSince', array('string'));
-        $optionsResolver->setAllowedTypes('filterVisible', array('bool'));
-        $optionsResolver->setAllowedTypes('filterSku', array('string'));
-        $optionsResolver->setAllowedTypes('include', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('sortBy', array('string'));
+        $optionsResolver->addAllowedTypes('sortOrder', array('string'));
+        $optionsResolver->addAllowedTypes('createdSince', array('string'));
+        $optionsResolver->addAllowedTypes('updatedSince', array('string'));
+        $optionsResolver->addAllowedTypes('filterVisible', array('bool'));
+        $optionsResolver->addAllowedTypes('filterSku', array('string'));
+        $optionsResolver->addAllowedTypes('include', array('string'));
         return $optionsResolver;
     }
     /**
@@ -62,13 +62,19 @@ class ListProducts extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      *
      * @return null|\Starweb\Api\Generated\Model\ProductModelCollection
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductModelCollection', 'json');
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            throw new \Starweb\Api\Generated\Exception\ListProductsBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Starweb\Api\Generated\Exception\ListProductsBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'), $response);
         }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('oauth2');
     }
 }

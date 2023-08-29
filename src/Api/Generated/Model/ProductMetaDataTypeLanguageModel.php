@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductMetaDataTypeLanguageModel
+class ProductMetaDataTypeLanguageModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The language code for this language
      *
@@ -34,6 +42,7 @@ class ProductMetaDataTypeLanguageModel
      */
     public function setLangCode(string $langCode) : self
     {
+        $this->initialized['langCode'] = true;
         $this->langCode = $langCode;
         return $this;
     }
@@ -55,6 +64,7 @@ class ProductMetaDataTypeLanguageModel
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }

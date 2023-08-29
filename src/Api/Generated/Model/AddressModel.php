@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class AddressModel
+class AddressModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Company name
      *
@@ -100,6 +108,7 @@ class AddressModel
      */
     public function setCompanyName(string $companyName) : self
     {
+        $this->initialized['companyName'] = true;
         $this->companyName = $companyName;
         return $this;
     }
@@ -121,6 +130,7 @@ class AddressModel
      */
     public function setFirstName(string $firstName) : self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
         return $this;
     }
@@ -142,6 +152,7 @@ class AddressModel
      */
     public function setLastName(string $lastName) : self
     {
+        $this->initialized['lastName'] = true;
         $this->lastName = $lastName;
         return $this;
     }
@@ -163,6 +174,7 @@ class AddressModel
      */
     public function setCareOf(string $careOf) : self
     {
+        $this->initialized['careOf'] = true;
         $this->careOf = $careOf;
         return $this;
     }
@@ -184,6 +196,7 @@ class AddressModel
      */
     public function setAttention(string $attention) : self
     {
+        $this->initialized['attention'] = true;
         $this->attention = $attention;
         return $this;
     }
@@ -205,6 +218,7 @@ class AddressModel
      */
     public function setReference(string $reference) : self
     {
+        $this->initialized['reference'] = true;
         $this->reference = $reference;
         return $this;
     }
@@ -226,6 +240,7 @@ class AddressModel
      */
     public function setAddress(string $address) : self
     {
+        $this->initialized['address'] = true;
         $this->address = $address;
         return $this;
     }
@@ -247,6 +262,7 @@ class AddressModel
      */
     public function setPostalCode(string $postalCode) : self
     {
+        $this->initialized['postalCode'] = true;
         $this->postalCode = $postalCode;
         return $this;
     }
@@ -268,6 +284,7 @@ class AddressModel
      */
     public function setCity(string $city) : self
     {
+        $this->initialized['city'] = true;
         $this->city = $city;
         return $this;
     }
@@ -289,6 +306,7 @@ class AddressModel
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -310,6 +328,7 @@ class AddressModel
      */
     public function setCountryCode(string $countryCode) : self
     {
+        $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
         return $this;
     }
@@ -331,6 +350,7 @@ class AddressModel
      */
     public function setPhoneNo(string $phoneNo) : self
     {
+        $this->initialized['phoneNo'] = true;
         $this->phoneNo = $phoneNo;
         return $this;
     }
@@ -352,6 +372,7 @@ class AddressModel
      */
     public function setMobilePhoneNo(string $mobilePhoneNo) : self
     {
+        $this->initialized['mobilePhoneNo'] = true;
         $this->mobilePhoneNo = $mobilePhoneNo;
         return $this;
     }

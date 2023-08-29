@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductLanguageModel
+class ProductLanguageModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The langCode for this language. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
      *
@@ -64,6 +72,7 @@ class ProductLanguageModel
      */
     public function setLangCode(string $langCode) : self
     {
+        $this->initialized['langCode'] = true;
         $this->langCode = $langCode;
         return $this;
     }
@@ -85,6 +94,7 @@ class ProductLanguageModel
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -106,6 +116,7 @@ class ProductLanguageModel
      */
     public function setShortDescription(string $shortDescription) : self
     {
+        $this->initialized['shortDescription'] = true;
         $this->shortDescription = $shortDescription;
         return $this;
     }
@@ -127,6 +138,7 @@ class ProductLanguageModel
      */
     public function setLongDescription(string $longDescription) : self
     {
+        $this->initialized['longDescription'] = true;
         $this->longDescription = $longDescription;
         return $this;
     }
@@ -148,6 +160,7 @@ class ProductLanguageModel
      */
     public function setPermalink(string $permalink) : self
     {
+        $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
         return $this;
     }
@@ -169,6 +182,7 @@ class ProductLanguageModel
      */
     public function setPageTitle(string $pageTitle) : self
     {
+        $this->initialized['pageTitle'] = true;
         $this->pageTitle = $pageTitle;
         return $this;
     }
@@ -190,6 +204,7 @@ class ProductLanguageModel
      */
     public function setPageMetaDescription(string $pageMetaDescription) : self
     {
+        $this->initialized['pageMetaDescription'] = true;
         $this->pageMetaDescription = $pageMetaDescription;
         return $this;
     }

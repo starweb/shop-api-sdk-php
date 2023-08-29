@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,49 +16,78 @@ class OrderCommentModelNormalizer implements DenormalizerInterface, NormalizerIn
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\OrderCommentModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderCommentModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderCommentModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\OrderCommentModel();
-        if (property_exists($data, 'commentId')) {
-            $object->setCommentId($data->{'commentId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'createdAt')) {
-            $object->setCreatedAt($data->{'createdAt'});
+        if (\array_key_exists('commentId', $data)) {
+            $object->setCommentId($data['commentId']);
+            unset($data['commentId']);
         }
-        if (property_exists($data, 'text')) {
-            $object->setText($data->{'text'});
+        if (\array_key_exists('createdAt', $data)) {
+            $object->setCreatedAt($data['createdAt']);
+            unset($data['createdAt']);
         }
-        if (property_exists($data, 'from')) {
-            $object->setFrom($data->{'from'});
+        if (\array_key_exists('text', $data)) {
+            $object->setText($data['text']);
+            unset($data['text']);
+        }
+        if (\array_key_exists('from', $data)) {
+            $object->setFrom($data['from']);
+            unset($data['from']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getCommentId()) {
-            $data->{'commentId'} = $object->getCommentId();
+        $data = array();
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
+            $data['createdAt'] = $object->getCreatedAt();
         }
-        if (null !== $object->getCreatedAt()) {
-            $data->{'createdAt'} = $object->getCreatedAt();
+        if ($object->isInitialized('text') && null !== $object->getText()) {
+            $data['text'] = $object->getText();
         }
-        if (null !== $object->getText()) {
-            $data->{'text'} = $object->getText();
+        if ($object->isInitialized('from') && null !== $object->getFrom()) {
+            $data['from'] = $object->getFrom();
         }
-        if (null !== $object->getFrom()) {
-            $data->{'from'} = $object->getFrom();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\OrderCommentModel' => false);
     }
 }

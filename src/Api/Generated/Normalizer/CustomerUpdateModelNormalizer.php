@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,89 +16,127 @@ class CustomerUpdateModelNormalizer implements DenormalizerInterface, Normalizer
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\CustomerUpdateModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerUpdateModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerUpdateModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\CustomerUpdateModel();
-        if (property_exists($data, 'customerId')) {
-            $object->setCustomerId($data->{'customerId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'createdAt')) {
-            $object->setCreatedAt($data->{'createdAt'});
+        if (\array_key_exists('customerId', $data)) {
+            $object->setCustomerId($data['customerId']);
+            unset($data['customerId']);
         }
-        if (property_exists($data, 'type')) {
-            $object->setType($data->{'type'});
+        if (\array_key_exists('createdAt', $data)) {
+            $object->setCreatedAt($data['createdAt']);
+            unset($data['createdAt']);
         }
-        if (property_exists($data, 'email')) {
-            $object->setEmail($data->{'email'});
+        if (\array_key_exists('type', $data)) {
+            $object->setType($data['type']);
+            unset($data['type']);
         }
-        if (property_exists($data, 'nationalIdNo')) {
-            $object->setNationalIdNo($data->{'nationalIdNo'});
+        if (\array_key_exists('email', $data)) {
+            $object->setEmail($data['email']);
+            unset($data['email']);
         }
-        if (property_exists($data, 'vatNo')) {
-            $object->setVatNo($data->{'vatNo'});
+        if (\array_key_exists('nationalIdNo', $data)) {
+            $object->setNationalIdNo($data['nationalIdNo']);
+            unset($data['nationalIdNo']);
         }
-        if (property_exists($data, 'customInfo1')) {
-            $object->setCustomInfo1($data->{'customInfo1'});
+        if (\array_key_exists('vatNo', $data)) {
+            $object->setVatNo($data['vatNo']);
+            unset($data['vatNo']);
         }
-        if (property_exists($data, 'customInfo2')) {
-            $object->setCustomInfo2($data->{'customInfo2'});
+        if (\array_key_exists('customInfo1', $data)) {
+            $object->setCustomInfo1($data['customInfo1']);
+            unset($data['customInfo1']);
         }
-        if (property_exists($data, 'pricelistId')) {
-            $object->setPricelistId($data->{'pricelistId'});
+        if (\array_key_exists('customInfo2', $data)) {
+            $object->setCustomInfo2($data['customInfo2']);
+            unset($data['customInfo2']);
         }
-        if (property_exists($data, 'langCode')) {
-            $object->setLangCode($data->{'langCode'});
+        if (\array_key_exists('pricelistId', $data) && $data['pricelistId'] !== null) {
+            $object->setPricelistId($data['pricelistId']);
+            unset($data['pricelistId']);
         }
-        if (property_exists($data, 'addresses')) {
-            $object->setAddresses($this->denormalizer->denormalize($data->{'addresses'}, 'Starweb\\Api\\Generated\\Model\\CustomerUpdateModelAddresses', 'json', $context));
+        elseif (\array_key_exists('pricelistId', $data) && $data['pricelistId'] === null) {
+            $object->setPricelistId(null);
+        }
+        if (\array_key_exists('langCode', $data)) {
+            $object->setLangCode($data['langCode']);
+            unset($data['langCode']);
+        }
+        if (\array_key_exists('addresses', $data)) {
+            $object->setAddresses($this->denormalizer->denormalize($data['addresses'], 'Starweb\\Api\\Generated\\Model\\CustomerUpdateModelAddresses', 'json', $context));
+            unset($data['addresses']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getCustomerId()) {
-            $data->{'customerId'} = $object->getCustomerId();
+        $data = array();
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
+            $data['createdAt'] = $object->getCreatedAt();
         }
-        if (null !== $object->getCreatedAt()) {
-            $data->{'createdAt'} = $object->getCreatedAt();
+        if ($object->isInitialized('type') && null !== $object->getType()) {
+            $data['type'] = $object->getType();
         }
-        if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
+            $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getEmail()) {
-            $data->{'email'} = $object->getEmail();
+        if ($object->isInitialized('nationalIdNo') && null !== $object->getNationalIdNo()) {
+            $data['nationalIdNo'] = $object->getNationalIdNo();
         }
-        if (null !== $object->getNationalIdNo()) {
-            $data->{'nationalIdNo'} = $object->getNationalIdNo();
+        if ($object->isInitialized('vatNo') && null !== $object->getVatNo()) {
+            $data['vatNo'] = $object->getVatNo();
         }
-        if (null !== $object->getVatNo()) {
-            $data->{'vatNo'} = $object->getVatNo();
+        if ($object->isInitialized('customInfo1') && null !== $object->getCustomInfo1()) {
+            $data['customInfo1'] = $object->getCustomInfo1();
         }
-        if (null !== $object->getCustomInfo1()) {
-            $data->{'customInfo1'} = $object->getCustomInfo1();
+        if ($object->isInitialized('customInfo2') && null !== $object->getCustomInfo2()) {
+            $data['customInfo2'] = $object->getCustomInfo2();
         }
-        if (null !== $object->getCustomInfo2()) {
-            $data->{'customInfo2'} = $object->getCustomInfo2();
+        if ($object->isInitialized('pricelistId') && null !== $object->getPricelistId()) {
+            $data['pricelistId'] = $object->getPricelistId();
         }
-        $data->{'pricelistId'} = $object->getPricelistId();
-        if (null !== $object->getLangCode()) {
-            $data->{'langCode'} = $object->getLangCode();
+        if ($object->isInitialized('addresses') && null !== $object->getAddresses()) {
+            $data['addresses'] = $this->normalizer->normalize($object->getAddresses(), 'json', $context);
         }
-        if (null !== $object->getAddresses()) {
-            $data->{'addresses'} = $this->normalizer->normalize($object->getAddresses(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\CustomerUpdateModel' => false);
     }
 }

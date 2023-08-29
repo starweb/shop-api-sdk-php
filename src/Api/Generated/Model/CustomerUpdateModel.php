@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class CustomerUpdateModel
+class CustomerUpdateModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The customers ID
      *
@@ -88,6 +96,7 @@ class CustomerUpdateModel
      */
     public function setCustomerId(int $customerId) : self
     {
+        $this->initialized['customerId'] = true;
         $this->customerId = $customerId;
         return $this;
     }
@@ -109,6 +118,7 @@ class CustomerUpdateModel
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -130,6 +140,7 @@ class CustomerUpdateModel
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -151,6 +162,7 @@ class CustomerUpdateModel
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -172,6 +184,7 @@ class CustomerUpdateModel
      */
     public function setNationalIdNo(string $nationalIdNo) : self
     {
+        $this->initialized['nationalIdNo'] = true;
         $this->nationalIdNo = $nationalIdNo;
         return $this;
     }
@@ -193,6 +206,7 @@ class CustomerUpdateModel
      */
     public function setVatNo(string $vatNo) : self
     {
+        $this->initialized['vatNo'] = true;
         $this->vatNo = $vatNo;
         return $this;
     }
@@ -214,6 +228,7 @@ class CustomerUpdateModel
      */
     public function setCustomInfo1(string $customInfo1) : self
     {
+        $this->initialized['customInfo1'] = true;
         $this->customInfo1 = $customInfo1;
         return $this;
     }
@@ -235,6 +250,7 @@ class CustomerUpdateModel
      */
     public function setCustomInfo2(string $customInfo2) : self
     {
+        $this->initialized['customInfo2'] = true;
         $this->customInfo2 = $customInfo2;
         return $this;
     }
@@ -256,6 +272,7 @@ class CustomerUpdateModel
      */
     public function setPricelistId(?int $pricelistId) : self
     {
+        $this->initialized['pricelistId'] = true;
         $this->pricelistId = $pricelistId;
         return $this;
     }
@@ -277,6 +294,7 @@ class CustomerUpdateModel
      */
     public function setLangCode(string $langCode) : self
     {
+        $this->initialized['langCode'] = true;
         $this->langCode = $langCode;
         return $this;
     }
@@ -298,6 +316,7 @@ class CustomerUpdateModel
      */
     public function setAddresses(CustomerUpdateModelAddresses $addresses) : self
     {
+        $this->initialized['addresses'] = true;
         $this->addresses = $addresses;
         return $this;
     }

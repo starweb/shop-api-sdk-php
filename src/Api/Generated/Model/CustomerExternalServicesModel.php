@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class CustomerExternalServicesModel
+class CustomerExternalServicesModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The service name of the external service
      *
@@ -34,6 +42,7 @@ class CustomerExternalServicesModel
      */
     public function setServiceName(string $serviceName) : self
     {
+        $this->initialized['serviceName'] = true;
         $this->serviceName = $serviceName;
         return $this;
     }
@@ -55,6 +64,7 @@ class CustomerExternalServicesModel
      */
     public function setExternalIdValue(string $externalIdValue) : self
     {
+        $this->initialized['externalIdValue'] = true;
         $this->externalIdValue = $externalIdValue;
         return $this;
     }

@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class OrderCommentModel
+class OrderCommentModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The comments id
      *
@@ -46,6 +54,7 @@ class OrderCommentModel
      */
     public function setCommentId(int $commentId) : self
     {
+        $this->initialized['commentId'] = true;
         $this->commentId = $commentId;
         return $this;
     }
@@ -67,6 +76,7 @@ class OrderCommentModel
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -88,6 +98,7 @@ class OrderCommentModel
      */
     public function setText(string $text) : self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
         return $this;
     }
@@ -109,6 +120,7 @@ class OrderCommentModel
      */
     public function setFrom(string $from) : self
     {
+        $this->initialized['from'] = true;
         $this->from = $from;
         return $this;
     }

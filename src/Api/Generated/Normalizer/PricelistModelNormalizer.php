@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,93 +16,106 @@ class PricelistModelNormalizer implements DenormalizerInterface, NormalizerInter
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\PricelistModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\PricelistModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\PricelistModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\PricelistModel();
-        if (property_exists($data, 'pricelistId')) {
-            $object->setPricelistId($data->{'pricelistId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'name')) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('pricelistId', $data)) {
+            $object->setPricelistId($data['pricelistId']);
+            unset($data['pricelistId']);
         }
-        if (property_exists($data, 'isMaster')) {
-            $object->setIsMaster($data->{'isMaster'});
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
+            unset($data['name']);
         }
-        if (property_exists($data, 'isActive')) {
-            $object->setIsActive($data->{'isActive'});
+        if (\array_key_exists('isMaster', $data)) {
+            $object->setIsMaster($data['isMaster']);
+            unset($data['isMaster']);
         }
-        if (property_exists($data, 'region')) {
-            $object->setRegion($data->{'region'});
+        if (\array_key_exists('isActive', $data)) {
+            $object->setIsActive($data['isActive']);
+            unset($data['isActive']);
         }
-        if (property_exists($data, 'countryCodes')) {
+        if (\array_key_exists('region', $data)) {
+            $object->setRegion($data['region']);
+            unset($data['region']);
+        }
+        if (\array_key_exists('countryCodes', $data)) {
             $values = array();
-            foreach ($data->{'countryCodes'} as $value) {
+            foreach ($data['countryCodes'] as $value) {
                 $values[] = $value;
             }
             $object->setCountryCodes($values);
+            unset($data['countryCodes']);
         }
-        if (property_exists($data, 'currencyCode')) {
-            $object->setCurrencyCode($data->{'currencyCode'});
+        if (\array_key_exists('currencyCode', $data)) {
+            $object->setCurrencyCode($data['currencyCode']);
+            unset($data['currencyCode']);
         }
-        if (property_exists($data, 'parentPricelistId')) {
-            $object->setParentPricelistId($data->{'parentPricelistId'});
+        if (\array_key_exists('parentPricelistId', $data)) {
+            $object->setParentPricelistId($data['parentPricelistId']);
+            unset($data['parentPricelistId']);
         }
-        if (property_exists($data, 'isCustomerPricelist')) {
-            $object->setIsCustomerPricelist($data->{'isCustomerPricelist'});
+        if (\array_key_exists('isCustomerPricelist', $data)) {
+            $object->setIsCustomerPricelist($data['isCustomerPricelist']);
+            unset($data['isCustomerPricelist']);
         }
-        if (property_exists($data, 'isCountryPricelist')) {
-            $object->setIsCountryPricelist($data->{'isCountryPricelist'});
+        if (\array_key_exists('isCountryPricelist', $data)) {
+            $object->setIsCountryPricelist($data['isCountryPricelist']);
+            unset($data['isCountryPricelist']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getPricelistId()) {
-            $data->{'pricelistId'} = $object->getPricelistId();
+        $data = array();
+        if ($object->isInitialized('parentPricelistId') && null !== $object->getParentPricelistId()) {
+            $data['parentPricelistId'] = $object->getParentPricelistId();
         }
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+        if ($object->isInitialized('isCustomerPricelist') && null !== $object->getIsCustomerPricelist()) {
+            $data['isCustomerPricelist'] = $object->getIsCustomerPricelist();
         }
-        if (null !== $object->getIsMaster()) {
-            $data->{'isMaster'} = $object->getIsMaster();
+        if ($object->isInitialized('isCountryPricelist') && null !== $object->getIsCountryPricelist()) {
+            $data['isCountryPricelist'] = $object->getIsCountryPricelist();
         }
-        if (null !== $object->getIsActive()) {
-            $data->{'isActive'} = $object->getIsActive();
-        }
-        if (null !== $object->getRegion()) {
-            $data->{'region'} = $object->getRegion();
-        }
-        if (null !== $object->getCountryCodes()) {
-            $values = array();
-            foreach ($object->getCountryCodes() as $value) {
-                $values[] = $value;
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
             }
-            $data->{'countryCodes'} = $values;
-        }
-        if (null !== $object->getCurrencyCode()) {
-            $data->{'currencyCode'} = $object->getCurrencyCode();
-        }
-        if (null !== $object->getParentPricelistId()) {
-            $data->{'parentPricelistId'} = $object->getParentPricelistId();
-        }
-        if (null !== $object->getIsCustomerPricelist()) {
-            $data->{'isCustomerPricelist'} = $object->getIsCustomerPricelist();
-        }
-        if (null !== $object->getIsCountryPricelist()) {
-            $data->{'isCountryPricelist'} = $object->getIsCountryPricelist();
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\PricelistModel' => false);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace Starweb\Exception;
 
-use Http\Client\Common\Exception\ClientErrorException;
+use Http\Client\Exception\HttpException;
 
-class MaximumAuthenticationAttemptsReachedException extends ClientErrorException
+class MaximumAuthenticationAttemptsReachedException extends HttpException
 {
 }
