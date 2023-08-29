@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductMetaDataTypeModel
+class ProductMetaDataTypeModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The meta data type id
      *
@@ -34,6 +42,7 @@ class ProductMetaDataTypeModel
      */
     public function setMetaDataTypeId(?int $metaDataTypeId) : self
     {
+        $this->initialized['metaDataTypeId'] = true;
         $this->metaDataTypeId = $metaDataTypeId;
         return $this;
     }
@@ -55,6 +64,7 @@ class ProductMetaDataTypeModel
      */
     public function setLanguages(?ProductMetaDataTypeLanguageModelCollection $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

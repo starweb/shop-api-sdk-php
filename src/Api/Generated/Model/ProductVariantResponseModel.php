@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductVariantResponseModel
+class ProductVariantResponseModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The product variants SKU (stock keeping unit)
      *
@@ -124,6 +132,7 @@ class ProductVariantResponseModel
      */
     public function setSku(?string $sku) : self
     {
+        $this->initialized['sku'] = true;
         $this->sku = $sku;
         return $this;
     }
@@ -145,6 +154,7 @@ class ProductVariantResponseModel
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -166,6 +176,7 @@ class ProductVariantResponseModel
      */
     public function setExternalIdType(?string $externalIdType) : self
     {
+        $this->initialized['externalIdType'] = true;
         $this->externalIdType = $externalIdType;
         return $this;
     }
@@ -187,6 +198,7 @@ class ProductVariantResponseModel
      */
     public function setIsActive(?bool $isActive) : self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
         return $this;
     }
@@ -208,6 +220,7 @@ class ProductVariantResponseModel
      */
     public function setSortIndex(?int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -229,6 +242,7 @@ class ProductVariantResponseModel
      */
     public function setStockStatusId(?int $stockStatusId) : self
     {
+        $this->initialized['stockStatusId'] = true;
         $this->stockStatusId = $stockStatusId;
         return $this;
     }
@@ -250,6 +264,7 @@ class ProductVariantResponseModel
      */
     public function setStockQuantity(?int $stockQuantity) : self
     {
+        $this->initialized['stockQuantity'] = true;
         $this->stockQuantity = $stockQuantity;
         return $this;
     }
@@ -271,6 +286,7 @@ class ProductVariantResponseModel
      */
     public function setWeightInKg(?float $weightInKg) : self
     {
+        $this->initialized['weightInKg'] = true;
         $this->weightInKg = $weightInKg;
         return $this;
     }
@@ -292,6 +308,7 @@ class ProductVariantResponseModel
      */
     public function setCostPrice(?string $costPrice) : self
     {
+        $this->initialized['costPrice'] = true;
         $this->costPrice = $costPrice;
         return $this;
     }
@@ -313,6 +330,7 @@ class ProductVariantResponseModel
      */
     public function setEan(?string $ean) : self
     {
+        $this->initialized['ean'] = true;
         $this->ean = $ean;
         return $this;
     }
@@ -334,6 +352,7 @@ class ProductVariantResponseModel
      */
     public function setMpn(?string $mpn) : self
     {
+        $this->initialized['mpn'] = true;
         $this->mpn = $mpn;
         return $this;
     }
@@ -355,6 +374,7 @@ class ProductVariantResponseModel
      */
     public function setImageFileId(?int $imageFileId) : self
     {
+        $this->initialized['imageFileId'] = true;
         $this->imageFileId = $imageFileId;
         return $this;
     }
@@ -376,6 +396,7 @@ class ProductVariantResponseModel
      */
     public function setAttributeValueLinks(?array $attributeValueLinks) : self
     {
+        $this->initialized['attributeValueLinks'] = true;
         $this->attributeValueLinks = $attributeValueLinks;
         return $this;
     }
@@ -397,6 +418,7 @@ class ProductVariantResponseModel
      */
     public function setVolumePricingInheritancePricelistIds(?array $volumePricingInheritancePricelistIds) : self
     {
+        $this->initialized['volumePricingInheritancePricelistIds'] = true;
         $this->volumePricingInheritancePricelistIds = $volumePricingInheritancePricelistIds;
         return $this;
     }
@@ -418,6 +440,7 @@ class ProductVariantResponseModel
      */
     public function setVariantId(?int $variantId) : self
     {
+        $this->initialized['variantId'] = true;
         $this->variantId = $variantId;
         return $this;
     }
@@ -439,6 +462,7 @@ class ProductVariantResponseModel
      */
     public function setPrices(?array $prices) : self
     {
+        $this->initialized['prices'] = true;
         $this->prices = $prices;
         return $this;
     }
@@ -460,6 +484,7 @@ class ProductVariantResponseModel
      */
     public function setAttributeValues(?array $attributeValues) : self
     {
+        $this->initialized['attributeValues'] = true;
         $this->attributeValues = $attributeValues;
         return $this;
     }

@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class StockLocationPostRequestModel
+class StockLocationPostRequestModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The external id of this pricelist
      *
@@ -58,6 +66,7 @@ class StockLocationPostRequestModel
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -79,6 +88,7 @@ class StockLocationPostRequestModel
      */
     public function setExternalIdType(?string $externalIdType) : self
     {
+        $this->initialized['externalIdType'] = true;
         $this->externalIdType = $externalIdType;
         return $this;
     }
@@ -100,6 +110,7 @@ class StockLocationPostRequestModel
      */
     public function setVisibility(?string $visibility) : self
     {
+        $this->initialized['visibility'] = true;
         $this->visibility = $visibility;
         return $this;
     }
@@ -121,6 +132,7 @@ class StockLocationPostRequestModel
      */
     public function setSortIndex(?int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -142,6 +154,7 @@ class StockLocationPostRequestModel
      */
     public function setEcommerceStockLocation(?bool $ecommerceStockLocation) : self
     {
+        $this->initialized['ecommerceStockLocation'] = true;
         $this->ecommerceStockLocation = $ecommerceStockLocation;
         return $this;
     }
@@ -163,6 +176,7 @@ class StockLocationPostRequestModel
      */
     public function setLanguages(?array $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

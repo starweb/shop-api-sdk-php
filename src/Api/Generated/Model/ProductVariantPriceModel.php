@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductVariantPriceModel
+class ProductVariantPriceModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The pricelist this price is for
      *
@@ -58,6 +66,7 @@ class ProductVariantPriceModel
      */
     public function setPricelistId(?int $pricelistId) : self
     {
+        $this->initialized['pricelistId'] = true;
         $this->pricelistId = $pricelistId;
         return $this;
     }
@@ -79,6 +88,7 @@ class ProductVariantPriceModel
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -100,6 +110,7 @@ class ProductVariantPriceModel
      */
     public function setExternalIdType(?string $externalIdType) : self
     {
+        $this->initialized['externalIdType'] = true;
         $this->externalIdType = $externalIdType;
         return $this;
     }
@@ -121,6 +132,7 @@ class ProductVariantPriceModel
      */
     public function setPriceExVat(?float $priceExVat) : self
     {
+        $this->initialized['priceExVat'] = true;
         $this->priceExVat = $priceExVat;
         return $this;
     }
@@ -142,6 +154,7 @@ class ProductVariantPriceModel
      */
     public function setSpecialPriceExVat(?float $specialPriceExVat) : self
     {
+        $this->initialized['specialPriceExVat'] = true;
         $this->specialPriceExVat = $specialPriceExVat;
         return $this;
     }
@@ -163,6 +176,7 @@ class ProductVariantPriceModel
      */
     public function setVolumePrices(?ProductVariantVolumePriceModelCollection $volumePrices) : self
     {
+        $this->initialized['volumePrices'] = true;
         $this->volumePrices = $volumePrices;
         return $this;
     }

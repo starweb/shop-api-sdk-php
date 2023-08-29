@@ -12,35 +12,35 @@ use Starweb\Api\Model\MediaFileUploadModel;
 class Client extends GeneratedClient
 {
     public function createMediaFile(
-        GeneratedMediaFileUploadModel $requestBody,
+        ?GeneratedMediaFileUploadModel $requestBody = null,
         string $fetch = GeneratedClient::FETCH_OBJECT
     ) {
         $this->checkCustomMediaFileUploadModelInstance($requestBody);
 
-        return $this->executePsr7Endpoint(new CreateMediaFile($requestBody), $fetch);
+        return $this->executeEndpoint(new CreateMediaFile($requestBody), $fetch);
     }
 
     public function putMediaFile(
         int $mediaFileId,
-        GeneratedMediaFileUploadModel $requestBody,
+        ?GeneratedMediaFileUploadModel $requestBody = null,
         string $fetch = GeneratedClient::FETCH_OBJECT
     ) {
         $this->checkCustomMediaFileUploadModelInstance($requestBody);
 
-        return $this->executePsr7Endpoint(new PutMediaFile($mediaFileId, $requestBody), $fetch);
+        return $this->executeEndpoint(new PutMediaFile($mediaFileId, $requestBody), $fetch);
     }
 
     public function patchMediaFile(
         int $mediaFileId,
-        GeneratedMediaFileUploadModel $requestBody,
+        ?GeneratedMediaFileUploadModel $requestBody = null,
         string $fetch = GeneratedClient::FETCH_OBJECT
     ) {
         $this->checkCustomMediaFileUploadModelInstance($requestBody);
 
-        return $this->executePsr7Endpoint(new PatchMediaFile($mediaFileId, $requestBody), $fetch);
+        return $this->executeEndpoint(new PatchMediaFile($mediaFileId, $requestBody), $fetch);
     }
 
-    private function checkCustomMediaFileUploadModelInstance(GeneratedMediaFileUploadModel $requestBody): void
+    private function checkCustomMediaFileUploadModelInstance(?GeneratedMediaFileUploadModel $requestBody): void
     {
         if (!$requestBody instanceof MediaFileUploadModel) {
             throw new \LogicException(

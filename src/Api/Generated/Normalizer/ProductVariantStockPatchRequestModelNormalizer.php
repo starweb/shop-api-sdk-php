@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,37 +16,76 @@ class ProductVariantStockPatchRequestModelNormalizer implements DenormalizerInte
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\ProductVariantStockPatchRequestModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVariantStockPatchRequestModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\ProductVariantStockPatchRequestModel();
-        if (property_exists($data, 'stockStatusId') && $data->{'stockStatusId'} !== null) {
-            $object->setStockStatusId($data->{'stockStatusId'});
+        if (\array_key_exists('stockQuantity', $data) && \is_int($data['stockQuantity'])) {
+            $data['stockQuantity'] = (double) $data['stockQuantity'];
         }
-        if (property_exists($data, 'stockQuantity') && $data->{'stockQuantity'} !== null) {
-            $object->setStockQuantity($data->{'stockQuantity'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (\array_key_exists('stockStatusId', $data) && $data['stockStatusId'] !== null) {
+            $object->setStockStatusId($data['stockStatusId']);
+            unset($data['stockStatusId']);
+        }
+        elseif (\array_key_exists('stockStatusId', $data) && $data['stockStatusId'] === null) {
+            $object->setStockStatusId(null);
+        }
+        if (\array_key_exists('stockQuantity', $data) && $data['stockQuantity'] !== null) {
+            $object->setStockQuantity($data['stockQuantity']);
+            unset($data['stockQuantity']);
+        }
+        elseif (\array_key_exists('stockQuantity', $data) && $data['stockQuantity'] === null) {
+            $object->setStockQuantity(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getStockStatusId()) {
-            $data->{'stockStatusId'} = $object->getStockStatusId();
+        $data = array();
+        if ($object->isInitialized('stockStatusId') && null !== $object->getStockStatusId()) {
+            $data['stockStatusId'] = $object->getStockStatusId();
         }
-        if (null !== $object->getStockQuantity()) {
-            $data->{'stockQuantity'} = $object->getStockQuantity();
+        if ($object->isInitialized('stockQuantity') && null !== $object->getStockQuantity()) {
+            $data['stockQuantity'] = $object->getStockQuantity();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\ProductVariantStockPatchRequestModel' => false);
     }
 }

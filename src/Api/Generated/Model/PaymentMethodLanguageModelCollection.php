@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class PaymentMethodLanguageModelCollection
+class PaymentMethodLanguageModelCollection extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * A collection of payment method languages
      *
@@ -28,6 +36,7 @@ class PaymentMethodLanguageModelCollection
      */
     public function setData(?array $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }

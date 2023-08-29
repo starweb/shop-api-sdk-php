@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,83 +16,165 @@ class ProductCategoryModelUpdatableNormalizer implements DenormalizerInterface, 
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\ProductCategoryModelUpdatable';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductCategoryModelUpdatable';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable();
-        if (property_exists($data, 'categoryId') && $data->{'categoryId'} !== null) {
-            $object->setCategoryId($data->{'categoryId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'parentId') && $data->{'parentId'} !== null) {
-            $object->setParentId($data->{'parentId'});
+        if (\array_key_exists('categoryId', $data) && $data['categoryId'] !== null) {
+            $object->setCategoryId($data['categoryId']);
+            unset($data['categoryId']);
         }
-        if (property_exists($data, 'visibility') && $data->{'visibility'} !== null) {
-            $object->setVisibility($data->{'visibility'});
+        elseif (\array_key_exists('categoryId', $data) && $data['categoryId'] === null) {
+            $object->setCategoryId(null);
         }
-        if (property_exists($data, 'sortIndex') && $data->{'sortIndex'} !== null) {
-            $object->setSortIndex($data->{'sortIndex'});
+        if (\array_key_exists('parentId', $data) && $data['parentId'] !== null) {
+            $object->setParentId($data['parentId']);
+            unset($data['parentId']);
         }
-        if (property_exists($data, 'openPage') && $data->{'openPage'} !== null) {
-            $object->setOpenPage($data->{'openPage'});
+        elseif (\array_key_exists('parentId', $data) && $data['parentId'] === null) {
+            $object->setParentId(null);
         }
-        if (property_exists($data, 'imageFileId') && $data->{'imageFileId'} !== null) {
-            $object->setImageFileId($data->{'imageFileId'});
+        if (\array_key_exists('visibility', $data) && $data['visibility'] !== null) {
+            $object->setVisibility($data['visibility']);
+            unset($data['visibility']);
         }
-        if (property_exists($data, 'externalId') && $data->{'externalId'} !== null) {
-            $object->setExternalId($data->{'externalId'});
+        elseif (\array_key_exists('visibility', $data) && $data['visibility'] === null) {
+            $object->setVisibility(null);
         }
-        if (property_exists($data, 'externalType') && $data->{'externalType'} !== null) {
-            $object->setExternalType($data->{'externalType'});
+        if (\array_key_exists('sortIndex', $data) && $data['sortIndex'] !== null) {
+            $object->setSortIndex($data['sortIndex']);
+            unset($data['sortIndex']);
         }
-        if (property_exists($data, 'externalIdType') && $data->{'externalIdType'} !== null) {
-            $object->setExternalIdType($data->{'externalIdType'});
+        elseif (\array_key_exists('sortIndex', $data) && $data['sortIndex'] === null) {
+            $object->setSortIndex(null);
         }
-        if (property_exists($data, 'hasChildren') && $data->{'hasChildren'} !== null) {
-            $object->setHasChildren($data->{'hasChildren'});
+        if (\array_key_exists('openPage', $data) && $data['openPage'] !== null) {
+            $object->setOpenPage($data['openPage']);
+            unset($data['openPage']);
         }
-        if (property_exists($data, 'languages') && $data->{'languages'} !== null) {
+        elseif (\array_key_exists('openPage', $data) && $data['openPage'] === null) {
+            $object->setOpenPage(null);
+        }
+        if (\array_key_exists('imageFileId', $data) && $data['imageFileId'] !== null) {
+            $object->setImageFileId($data['imageFileId']);
+            unset($data['imageFileId']);
+        }
+        elseif (\array_key_exists('imageFileId', $data) && $data['imageFileId'] === null) {
+            $object->setImageFileId(null);
+        }
+        if (\array_key_exists('externalId', $data) && $data['externalId'] !== null) {
+            $object->setExternalId($data['externalId']);
+            unset($data['externalId']);
+        }
+        elseif (\array_key_exists('externalId', $data) && $data['externalId'] === null) {
+            $object->setExternalId(null);
+        }
+        if (\array_key_exists('externalType', $data) && $data['externalType'] !== null) {
+            $object->setExternalType($data['externalType']);
+            unset($data['externalType']);
+        }
+        elseif (\array_key_exists('externalType', $data) && $data['externalType'] === null) {
+            $object->setExternalType(null);
+        }
+        if (\array_key_exists('externalIdType', $data) && $data['externalIdType'] !== null) {
+            $object->setExternalIdType($data['externalIdType']);
+            unset($data['externalIdType']);
+        }
+        elseif (\array_key_exists('externalIdType', $data) && $data['externalIdType'] === null) {
+            $object->setExternalIdType(null);
+        }
+        if (\array_key_exists('hasChildren', $data) && $data['hasChildren'] !== null) {
+            $object->setHasChildren($data['hasChildren']);
+            unset($data['hasChildren']);
+        }
+        elseif (\array_key_exists('hasChildren', $data) && $data['hasChildren'] === null) {
+            $object->setHasChildren(null);
+        }
+        if (\array_key_exists('languages', $data) && $data['languages'] !== null) {
             $values = array();
-            foreach ($data->{'languages'} as $value) {
+            foreach ($data['languages'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductCategoryLanguagesModel', 'json', $context);
             }
             $object->setLanguages($values);
+            unset($data['languages']);
+        }
+        elseif (\array_key_exists('languages', $data) && $data['languages'] === null) {
+            $object->setLanguages(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        $data->{'parentId'} = $object->getParentId();
-        if (null !== $object->getVisibility()) {
-            $data->{'visibility'} = $object->getVisibility();
+        $data = array();
+        if ($object->isInitialized('parentId') && null !== $object->getParentId()) {
+            $data['parentId'] = $object->getParentId();
         }
-        if (null !== $object->getSortIndex()) {
-            $data->{'sortIndex'} = $object->getSortIndex();
+        if ($object->isInitialized('visibility') && null !== $object->getVisibility()) {
+            $data['visibility'] = $object->getVisibility();
         }
-        if (null !== $object->getOpenPage()) {
-            $data->{'openPage'} = $object->getOpenPage();
+        if ($object->isInitialized('sortIndex') && null !== $object->getSortIndex()) {
+            $data['sortIndex'] = $object->getSortIndex();
         }
-        $data->{'imageFileId'} = $object->getImageFileId();
-        $data->{'externalId'} = $object->getExternalId();
-        $data->{'externalType'} = $object->getExternalType();
-        $data->{'externalIdType'} = $object->getExternalIdType();
-        if (null !== $object->getLanguages()) {
+        if ($object->isInitialized('openPage') && null !== $object->getOpenPage()) {
+            $data['openPage'] = $object->getOpenPage();
+        }
+        if ($object->isInitialized('imageFileId') && null !== $object->getImageFileId()) {
+            $data['imageFileId'] = $object->getImageFileId();
+        }
+        if ($object->isInitialized('externalId') && null !== $object->getExternalId()) {
+            $data['externalId'] = $object->getExternalId();
+        }
+        if ($object->isInitialized('externalType') && null !== $object->getExternalType()) {
+            $data['externalType'] = $object->getExternalType();
+        }
+        if ($object->isInitialized('externalIdType') && null !== $object->getExternalIdType()) {
+            $data['externalIdType'] = $object->getExternalIdType();
+        }
+        if ($object->isInitialized('languages') && null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'languages'} = $values;
+            $data['languages'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\ProductCategoryModelUpdatable' => false);
     }
 }

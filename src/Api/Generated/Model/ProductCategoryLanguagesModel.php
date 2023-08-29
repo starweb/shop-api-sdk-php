@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductCategoryLanguagesModel
+class ProductCategoryLanguagesModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Language Code (ISO 639-1) for this translation. Has to be a valid lang code that the shop supports. (required)
      *
@@ -64,6 +72,7 @@ class ProductCategoryLanguagesModel
      */
     public function setLangCode(?string $langCode) : self
     {
+        $this->initialized['langCode'] = true;
         $this->langCode = $langCode;
         return $this;
     }
@@ -85,6 +94,7 @@ class ProductCategoryLanguagesModel
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -106,6 +116,7 @@ class ProductCategoryLanguagesModel
      */
     public function setPageTitle(?string $pageTitle) : self
     {
+        $this->initialized['pageTitle'] = true;
         $this->pageTitle = $pageTitle;
         return $this;
     }
@@ -127,6 +138,7 @@ class ProductCategoryLanguagesModel
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -148,6 +160,7 @@ class ProductCategoryLanguagesModel
      */
     public function setBottomDescription(?string $bottomDescription) : self
     {
+        $this->initialized['bottomDescription'] = true;
         $this->bottomDescription = $bottomDescription;
         return $this;
     }
@@ -169,6 +182,7 @@ class ProductCategoryLanguagesModel
      */
     public function setPageMetaDescription(?string $pageMetaDescription) : self
     {
+        $this->initialized['pageMetaDescription'] = true;
         $this->pageMetaDescription = $pageMetaDescription;
         return $this;
     }
@@ -190,6 +204,7 @@ class ProductCategoryLanguagesModel
      */
     public function setPermalink(?string $permalink) : self
     {
+        $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
         return $this;
     }

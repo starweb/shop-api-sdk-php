@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ErrorModel
+class ErrorModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * An error code for this type of error
      *
@@ -34,6 +42,7 @@ class ErrorModel
      */
     public function setError(?string $error) : self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
     }
@@ -55,6 +64,7 @@ class ErrorModel
      */
     public function setErrorDescription(?string $errorDescription) : self
     {
+        $this->initialized['errorDescription'] = true;
         $this->errorDescription = $errorDescription;
         return $this;
     }

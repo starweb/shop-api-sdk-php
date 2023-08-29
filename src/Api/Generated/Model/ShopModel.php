@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ShopModel
+class ShopModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The shop name
      *
@@ -118,6 +126,7 @@ class ShopModel
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -139,6 +148,7 @@ class ShopModel
      */
     public function setIdCode(?string $idCode) : self
     {
+        $this->initialized['idCode'] = true;
         $this->idCode = $idCode;
         return $this;
     }
@@ -160,6 +170,7 @@ class ShopModel
      */
     public function setStatus(?string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -181,6 +192,7 @@ class ShopModel
      */
     public function setDefaultLangCode(?string $defaultLangCode) : self
     {
+        $this->initialized['defaultLangCode'] = true;
         $this->defaultLangCode = $defaultLangCode;
         return $this;
     }
@@ -202,6 +214,7 @@ class ShopModel
      */
     public function setActiveLangCodes(?array $activeLangCodes) : self
     {
+        $this->initialized['activeLangCodes'] = true;
         $this->activeLangCodes = $activeLangCodes;
         return $this;
     }
@@ -223,6 +236,7 @@ class ShopModel
      */
     public function setBaseCurrency(?string $baseCurrency) : self
     {
+        $this->initialized['baseCurrency'] = true;
         $this->baseCurrency = $baseCurrency;
         return $this;
     }
@@ -244,6 +258,7 @@ class ShopModel
      */
     public function setDefaultCustomerCountryCode(?string $defaultCustomerCountryCode) : self
     {
+        $this->initialized['defaultCustomerCountryCode'] = true;
         $this->defaultCustomerCountryCode = $defaultCustomerCountryCode;
         return $this;
     }
@@ -265,6 +280,7 @@ class ShopModel
      */
     public function setGeneralDefaultVatRate(?float $generalDefaultVatRate) : self
     {
+        $this->initialized['generalDefaultVatRate'] = true;
         $this->generalDefaultVatRate = $generalDefaultVatRate;
         return $this;
     }
@@ -286,6 +302,7 @@ class ShopModel
      */
     public function setShopCompanyName(?string $shopCompanyName) : self
     {
+        $this->initialized['shopCompanyName'] = true;
         $this->shopCompanyName = $shopCompanyName;
         return $this;
     }
@@ -307,6 +324,7 @@ class ShopModel
      */
     public function setShopAddress(?string $shopAddress) : self
     {
+        $this->initialized['shopAddress'] = true;
         $this->shopAddress = $shopAddress;
         return $this;
     }
@@ -328,6 +346,7 @@ class ShopModel
      */
     public function setShopPostalCode(?string $shopPostalCode) : self
     {
+        $this->initialized['shopPostalCode'] = true;
         $this->shopPostalCode = $shopPostalCode;
         return $this;
     }
@@ -349,6 +368,7 @@ class ShopModel
      */
     public function setShopCity(?string $shopCity) : self
     {
+        $this->initialized['shopCity'] = true;
         $this->shopCity = $shopCity;
         return $this;
     }
@@ -370,6 +390,7 @@ class ShopModel
      */
     public function setShopOrgNo(?string $shopOrgNo) : self
     {
+        $this->initialized['shopOrgNo'] = true;
         $this->shopOrgNo = $shopOrgNo;
         return $this;
     }
@@ -391,6 +412,7 @@ class ShopModel
      */
     public function setShopPhoneNo(?string $shopPhoneNo) : self
     {
+        $this->initialized['shopPhoneNo'] = true;
         $this->shopPhoneNo = $shopPhoneNo;
         return $this;
     }
@@ -412,6 +434,7 @@ class ShopModel
      */
     public function setShopVatNo(?string $shopVatNo) : self
     {
+        $this->initialized['shopVatNo'] = true;
         $this->shopVatNo = $shopVatNo;
         return $this;
     }
@@ -433,6 +456,7 @@ class ShopModel
      */
     public function setShopCountryCode(?string $shopCountryCode) : self
     {
+        $this->initialized['shopCountryCode'] = true;
         $this->shopCountryCode = $shopCountryCode;
         return $this;
     }

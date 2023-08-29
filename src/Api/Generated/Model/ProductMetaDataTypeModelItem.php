@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductMetaDataTypeModelItem
+class ProductMetaDataTypeModelItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
@@ -28,6 +36,7 @@ class ProductMetaDataTypeModelItem
      */
     public function setData(?ProductMetaDataTypeModel $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }

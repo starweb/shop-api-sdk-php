@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class OrderItemBundledModelItem
+class OrderItemBundledModelItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
@@ -28,6 +36,7 @@ class OrderItemBundledModelItem
      */
     public function setBundledItems(?OrderItemBundledModelItemBundledItems $bundledItems) : self
     {
+        $this->initialized['bundledItems'] = true;
         $this->bundledItems = $bundledItems;
         return $this;
     }

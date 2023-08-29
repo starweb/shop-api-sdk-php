@@ -2,20 +2,20 @@
 
 namespace Starweb\Api\Generated;
 
-class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
+class Client extends \Starweb\Api\Generated\Runtime\Client\Client
 {
     /**
      * Create a token. Retrieves the create `Token` object.
      *
-     * @param \Starweb\Api\Generated\Model\ClientCredentialModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ClientCredentialModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\GenerateFetchAccessTokenBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\TokenModel|\Psr\Http\Message\ResponseInterface
      */
-    public function generateFetchAccessToken(\Starweb\Api\Generated\Model\ClientCredentialModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function generateFetchAccessToken(?\Starweb\Api\Generated\Model\ClientCredentialModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GenerateFetchAccessToken($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GenerateFetchAccessToken($requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -24,7 +24,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getCurrencies(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetCurrencies(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetCurrencies(), $fetch);
     }
     /**
      * Retrieves the details of a currency
@@ -37,7 +37,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getCurrency(string $currencyCode, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetCurrency($currencyCode), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetCurrency($currencyCode), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -46,7 +46,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getCustomersTags(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetCustomersTags(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetCustomersTags(), $fetch);
     }
     /**
      * Retrieves a `Tag` object
@@ -59,7 +59,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getCustomersTag(int $tagId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetCustomersTag($tagId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetCustomersTag($tagId), $fetch);
     }
     /**
      * Returns a list of customers
@@ -80,20 +80,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listCustomers(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListCustomers($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListCustomers($queryParameters), $fetch);
     }
     /**
      * Creates a `Customer` object
      *
-     * @param \Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateCustomerBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\CustomerCreatedModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createCustomer(\Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createCustomer(?\Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateCustomer($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateCustomer($requestBody), $fetch);
     }
     /**
      * Delete a customer permanently!
@@ -106,7 +106,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteCustomer(int $customerId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteCustomer($customerId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteCustomer($customerId), $fetch);
     }
     /**
      * Retrieves a `Customer` object
@@ -122,37 +122,37 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getCustomer(int $customerId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetCustomer($customerId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetCustomer($customerId, $queryParameters), $fetch);
     }
     /**
      * Updates a customer. Retrieves the updated `Customer` object
      *
      * @param int $customerId The customers id
-     * @param \Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchCustomerBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchCustomerNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\CustomerModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchCustomer(int $customerId, \Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchCustomer(int $customerId, ?\Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchCustomer($customerId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchCustomer($customerId, $requestBody), $fetch);
     }
     /**
      * Updates a customer. Retrieves the updated `Customer` object
      *
      * @param int $customerId The customers id
-     * @param \Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutCustomerBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutCustomerNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\CustomerModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putCustomer(int $customerId, \Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putCustomer(int $customerId, ?\Starweb\Api\Generated\Model\CustomerUpdateModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutCustomer($customerId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutCustomer($customerId, $requestBody), $fetch);
     }
     /**
      * Returns a list of external services for a customer
@@ -164,7 +164,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getCustomerExternalServices(int $customerId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetCustomerExternalServices($customerId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetCustomerExternalServices($customerId), $fetch);
     }
     /**
      * Retrieves a `CustomerExternalService` object
@@ -178,7 +178,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getCustomerExternalService(int $customerId, string $serviceName, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetCustomerExternalService($customerId, $serviceName), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetCustomerExternalService($customerId, $serviceName), $fetch);
     }
     /**
      * Returns a list of customer tags
@@ -190,21 +190,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getCustomerTags(int $customerId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetCustomerTags($customerId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetCustomerTags($customerId), $fetch);
     }
     /**
      * Add a tag to a customer. Retrieves the created `CustomerTag` object
      *
      * @param int $customerId The customers id
-     * @param \Starweb\Api\Generated\Model\CustomerAddedTagModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\CustomerAddedTagModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\AddTagToCustomerBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\CustomerAddedTagModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function addTagToCustomer(int $customerId, \Starweb\Api\Generated\Model\CustomerAddedTagModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function addTagToCustomer(int $customerId, ?\Starweb\Api\Generated\Model\CustomerAddedTagModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\AddTagToCustomer($customerId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\AddTagToCustomer($customerId, $requestBody), $fetch);
     }
     /**
      * Deletes a customer tag permanently.
@@ -218,7 +218,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function removeTagFromCustomer(int $customerId, int $tagId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\RemoveTagFromCustomer($customerId, $tagId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\RemoveTagFromCustomer($customerId, $tagId), $fetch);
     }
     /**
      * Retrieves a `CustomerTag` object
@@ -232,7 +232,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getCustomerTag(int $customerId, int $tagId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetCustomerTag($customerId, $tagId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetCustomerTag($customerId, $tagId), $fetch);
     }
     /**
      * Returns a list of addresses for a customer
@@ -244,7 +244,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getCustomerGroups(int $customerId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetCustomerGroups($customerId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetCustomerGroups($customerId), $fetch);
     }
     /**
      * Delete a customer address permanently.
@@ -259,7 +259,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function removeAddressFromCustomer(int $customerId, string $addressType, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\RemoveAddressFromCustomer($customerId, $addressType), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\RemoveAddressFromCustomer($customerId, $addressType), $fetch);
     }
     /**
      * Retrieves a `CustomerAddress` object
@@ -273,39 +273,39 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getCustomerAddress(int $customerId, string $addressType, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetCustomerAddress($customerId, $addressType), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetCustomerAddress($customerId, $addressType), $fetch);
     }
     /**
      * Updates a customer address. Retrieves the updated `CustomerAddress` object
      *
      * @param int $customerId The customers id
      * @param string $addressType The customer address type
-     * @param \Starweb\Api\Generated\Model\AddressModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\AddressModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchCustomerAddressBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchCustomerAddressNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\CustomerAddressesModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchCustomerAddress(int $customerId, string $addressType, \Starweb\Api\Generated\Model\AddressModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchCustomerAddress(int $customerId, string $addressType, ?\Starweb\Api\Generated\Model\AddressModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchCustomerAddress($customerId, $addressType, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchCustomerAddress($customerId, $addressType, $requestBody), $fetch);
     }
     /**
      * Updates a customer address. Retrieves the updated `CustomerAddress` object
      *
      * @param int $customerId The customers id
      * @param string $addressType The customer address type
-     * @param \Starweb\Api\Generated\Model\AddressModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\AddressModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutCustomerAddressBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutCustomerAddressNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\CustomerAddressesModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putCustomerAddress(int $customerId, string $addressType, \Starweb\Api\Generated\Model\AddressModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putCustomerAddress(int $customerId, string $addressType, ?\Starweb\Api\Generated\Model\AddressModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutCustomerAddress($customerId, $addressType, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutCustomerAddress($customerId, $addressType, $requestBody), $fetch);
     }
     /**
      * Returns a list of media file‚
@@ -319,20 +319,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getMediaFiles(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetMediaFiles($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetMediaFiles($queryParameters), $fetch);
     }
     /**
      * Creates a new `Media File` object
      *
-     * @param \Starweb\Api\Generated\Model\MediaFileUploadModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\MediaFileUploadModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateMediaFileBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\MediaFileModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createMediaFile(\Starweb\Api\Generated\Model\MediaFileUploadModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createMediaFile(?\Starweb\Api\Generated\Model\MediaFileUploadModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateMediaFile($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateMediaFile($requestBody), $fetch);
     }
     /**
      * Delete a media file permanently.
@@ -345,7 +345,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteMediaFile(int $mediaFileId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteMediaFile($mediaFileId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteMediaFile($mediaFileId), $fetch);
     }
     /**
      * Retrieve a `MediaFile` object
@@ -358,37 +358,37 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getMediaFile(int $mediaFileId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetMediaFile($mediaFileId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetMediaFile($mediaFileId), $fetch);
     }
     /**
      * Updates a media file. Retrieves the updated `MediaFile` object
      *
      * @param int $mediaFileId The media files id
-     * @param \Starweb\Api\Generated\Model\MediaFileUploadModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\MediaFileUploadModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchMediaFileBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchMediaFileNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\MediaFileModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchMediaFile(int $mediaFileId, \Starweb\Api\Generated\Model\MediaFileUploadModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchMediaFile(int $mediaFileId, ?\Starweb\Api\Generated\Model\MediaFileUploadModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchMediaFile($mediaFileId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchMediaFile($mediaFileId, $requestBody), $fetch);
     }
     /**
      * Updates a media file. Retrieves the updated `MediaFile` object
      *
      * @param int $mediaFileId The media files id
-     * @param \Starweb\Api\Generated\Model\MediaFileUploadModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\MediaFileUploadModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutMediaFileBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutMediaFileNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\MediaFileModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putMediaFile(int $mediaFileId, \Starweb\Api\Generated\Model\MediaFileUploadModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putMediaFile(int $mediaFileId, ?\Starweb\Api\Generated\Model\MediaFileUploadModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutMediaFile($mediaFileId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutMediaFile($mediaFileId, $requestBody), $fetch);
     }
     /**
      * Returns a list of orders.
@@ -413,20 +413,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listOrders(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListOrders($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListOrders($queryParameters), $fetch);
     }
     /**
      * Create an order. Retrieves the create `Order` object
      *
-     * @param \Starweb\Api\Generated\Model\OrderUpdateModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\OrderUpdateModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateOrderBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\OrderModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createOrder(\Starweb\Api\Generated\Model\OrderUpdateModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createOrder(?\Starweb\Api\Generated\Model\OrderUpdateModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateOrder($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateOrder($requestBody), $fetch);
     }
     /**
      * Delete an order permanently
@@ -439,7 +439,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteOrder(int $orderId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteOrder($orderId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteOrder($orderId), $fetch);
     }
     /**
      * Retrieve an `Order` object
@@ -455,37 +455,37 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getOrder(int $orderId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetOrder($orderId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetOrder($orderId, $queryParameters), $fetch);
     }
     /**
      * Updates an order. Retrieves the updated `Order` object
      *
      * @param int $orderId The orders id
-     * @param \Starweb\Api\Generated\Model\OrderUpdateModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\OrderUpdateModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchOrderBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchOrderNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\OrderModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchOrder(int $orderId, \Starweb\Api\Generated\Model\OrderUpdateModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchOrder(int $orderId, ?\Starweb\Api\Generated\Model\OrderUpdateModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchOrder($orderId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchOrder($orderId, $requestBody), $fetch);
     }
     /**
      * Updates an order. Retrieves the updated `Order` object
      *
      * @param int $orderId The orders id
-     * @param \Starweb\Api\Generated\Model\OrderPutModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\OrderPutModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutOrderBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutOrderNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\OrderModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putOrder(int $orderId, \Starweb\Api\Generated\Model\OrderPutModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putOrder(int $orderId, ?\Starweb\Api\Generated\Model\OrderPutModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutOrder($orderId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutOrder($orderId, $requestBody), $fetch);
     }
     /**
      * Returns a list o order addresses
@@ -497,7 +497,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listOrderAddresses(int $orderId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListOrderAddresses($orderId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListOrderAddresses($orderId), $fetch);
     }
     /**
      * Delete an order address permanently.
@@ -511,7 +511,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteOrderAddress(int $orderId, string $addressType, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteOrderAddress($orderId, $addressType), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteOrderAddress($orderId, $addressType), $fetch);
     }
     /**
      * Retrieves the `OrderAddress` object
@@ -525,39 +525,39 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getOrderAddress(int $orderId, string $addressType, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetOrderAddress($orderId, $addressType), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetOrderAddress($orderId, $addressType), $fetch);
     }
     /**
      * Updates an order adress. Retrieves the updated `OrderAddress` object
      *
      * @param int $orderId The orders id
      * @param string $addressType The order address type
-     * @param \Starweb\Api\Generated\Model\AddressModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\AddressModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchOrderAddressBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchOrderAddressNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\AddressModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchOrderAddress(int $orderId, string $addressType, \Starweb\Api\Generated\Model\AddressModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchOrderAddress(int $orderId, string $addressType, ?\Starweb\Api\Generated\Model\AddressModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchOrderAddress($orderId, $addressType, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchOrderAddress($orderId, $addressType, $requestBody), $fetch);
     }
     /**
      * Updates an order adress. Retrieves the updated `OrderAddress` object
      *
      * @param int $orderId The orders id
      * @param string $addressType The order address type
-     * @param \Starweb\Api\Generated\Model\AddressModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\AddressModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutOrderAddressBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutOrderAddressNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\AddressModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putOrderAddress(int $orderId, string $addressType, \Starweb\Api\Generated\Model\AddressModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putOrderAddress(int $orderId, string $addressType, ?\Starweb\Api\Generated\Model\AddressModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutOrderAddress($orderId, $addressType, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutOrderAddress($orderId, $addressType, $requestBody), $fetch);
     }
     /**
      * Returns a list of order comments.
@@ -569,21 +569,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getOrderComments(int $orderId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetOrderComments($orderId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetOrderComments($orderId), $fetch);
     }
     /**
      * Add a comment to an order. Retrieves the created `OrderComment` object
      *
      * @param int $orderId The orders id
-     * @param \Starweb\Api\Generated\Model\OrderCommentModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\OrderCommentModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\AddCommentToOrderBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\OrderCommentModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function addCommentToOrder(int $orderId, \Starweb\Api\Generated\Model\OrderCommentModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function addCommentToOrder(int $orderId, ?\Starweb\Api\Generated\Model\OrderCommentModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\AddCommentToOrder($orderId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\AddCommentToOrder($orderId, $requestBody), $fetch);
     }
     /**
      * Deletes an order comment permanently.
@@ -597,7 +597,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function removeCommentFromOrder(int $orderId, int $commentId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\RemoveCommentFromOrder($orderId, $commentId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\RemoveCommentFromOrder($orderId, $commentId), $fetch);
     }
     /**
      * Retrieves the `OrderComment` object
@@ -611,37 +611,37 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getOrderComment(int $orderId, int $commentId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetOrderComment($orderId, $commentId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetOrderComment($orderId, $commentId), $fetch);
     }
     /**
      * Update a comment for an order. Retrieves the created `OrderComment` object
      *
      * @param int $orderId The orders id
      * @param int $commentId The order comments id
-     * @param \Starweb\Api\Generated\Model\OrderCommentModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\OrderCommentModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchCommentToOrderBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\OrderCommentModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchCommentToOrder(int $orderId, int $commentId, \Starweb\Api\Generated\Model\OrderCommentModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchCommentToOrder(int $orderId, int $commentId, ?\Starweb\Api\Generated\Model\OrderCommentModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchCommentToOrder($orderId, $commentId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchCommentToOrder($orderId, $commentId, $requestBody), $fetch);
     }
     /**
      * Update a comment for an order. Retrieves the created `OrderComment` object
      *
      * @param int $orderId The orders id
      * @param int $commentId The order comments id
-     * @param \Starweb\Api\Generated\Model\OrderCommentModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\OrderCommentModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\UpdateCommentToOrderBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\OrderCommentModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function updateCommentToOrder(int $orderId, int $commentId, \Starweb\Api\Generated\Model\OrderCommentModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function updateCommentToOrder(int $orderId, int $commentId, ?\Starweb\Api\Generated\Model\OrderCommentModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\UpdateCommentToOrder($orderId, $commentId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\UpdateCommentToOrder($orderId, $commentId, $requestBody), $fetch);
     }
     /**
      * Returns a list of order external services.
@@ -653,22 +653,22 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getOrderExternalServices(int $orderId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetOrderExternalServices($orderId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetOrderExternalServices($orderId), $fetch);
     }
     /**
     * Create an order external service. Retrieves the created `OrderExternalService`
                                        object
     *
     * @param int $orderId The orders id
-    * @param \Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\CreateOrderExternalServiceBadRequestException
     *
     * @return null|\Starweb\Api\Generated\Model\OrderExternalServicesModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function createOrderExternalService(int $orderId, \Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createOrderExternalService(int $orderId, ?\Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateOrderExternalService($orderId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateOrderExternalService($orderId, $requestBody), $fetch);
     }
     /**
      * Deletes an order external service permanently
@@ -682,7 +682,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteOrderExternalService(int $orderId, string $serviceName, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteOrderExternalService($orderId, $serviceName), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteOrderExternalService($orderId, $serviceName), $fetch);
     }
     /**
      * Retrieves the `OrderExternalService` object
@@ -696,7 +696,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getOrderExternalService(int $orderId, string $serviceName, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetOrderExternalService($orderId, $serviceName), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetOrderExternalService($orderId, $serviceName), $fetch);
     }
     /**
     * Updates an order external service. 
@@ -704,16 +704,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *
     * @param int $orderId The orders id
     * @param string $serviceName The service name
-    * @param \Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PatchOrderExternalServiceBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PatchOrderExternalServiceNotFoundException
     *
     * @return null|\Starweb\Api\Generated\Model\OrderExternalServicesModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function patchOrderExternalService(int $orderId, string $serviceName, \Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchOrderExternalService(int $orderId, string $serviceName, ?\Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchOrderExternalService($orderId, $serviceName, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchOrderExternalService($orderId, $serviceName, $requestBody), $fetch);
     }
     /**
     * Updates an order external service. 
@@ -721,16 +721,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *
     * @param int $orderId The orders id
     * @param string $serviceName The service name
-    * @param \Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PutOrderExternalServiceBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PutOrderExternalServiceNotFoundException
     *
     * @return null|\Starweb\Api\Generated\Model\OrderExternalServicesModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function putOrderExternalService(int $orderId, string $serviceName, \Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putOrderExternalService(int $orderId, string $serviceName, ?\Starweb\Api\Generated\Model\OrderExternalServiceModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutOrderExternalService($orderId, $serviceName, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutOrderExternalService($orderId, $serviceName, $requestBody), $fetch);
     }
     /**
      * Returns a list of order items
@@ -742,21 +742,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getOrderItems(int $orderId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetOrderItems($orderId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetOrderItems($orderId), $fetch);
     }
     /**
      * Create an order item. Retrieves the create `OrderItem` object
      *
      * @param int $orderId The orders id
-     * @param \Starweb\Api\Generated\Model\OrderItemModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\OrderItemModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateOrderItemBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\OrderItemModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createOrderItem(int $orderId, \Starweb\Api\Generated\Model\OrderItemModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createOrderItem(int $orderId, ?\Starweb\Api\Generated\Model\OrderItemModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateOrderItem($orderId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateOrderItem($orderId, $requestBody), $fetch);
     }
     /**
      * Delete the order item permanently.
@@ -770,7 +770,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteOrderItem(int $orderId, int $orderItemId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteOrderItem($orderId, $orderItemId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteOrderItem($orderId, $orderItemId), $fetch);
     }
     /**
      * Retrieves the `OrderItem` object
@@ -787,39 +787,39 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getOrderItem(int $orderId, int $orderItemId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetOrderItem($orderId, $orderItemId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetOrderItem($orderId, $orderItemId, $queryParameters), $fetch);
     }
     /**
      * Updates an order item. Retrieves the updated `OrderItem` object
      *
      * @param int $orderId The orders id
      * @param int $orderItemId The order item id
-     * @param \Starweb\Api\Generated\Model\OrderItemModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\OrderItemModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchOrderItemBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchOrderItemNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\OrderItemModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchOrderItem(int $orderId, int $orderItemId, \Starweb\Api\Generated\Model\OrderItemModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchOrderItem(int $orderId, int $orderItemId, ?\Starweb\Api\Generated\Model\OrderItemModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchOrderItem($orderId, $orderItemId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchOrderItem($orderId, $orderItemId, $requestBody), $fetch);
     }
     /**
      * Updates an order item. Retrieves the updated `OrderItem` object
      *
      * @param int $orderId The orders id
      * @param int $orderItemId The order item id
-     * @param \Starweb\Api\Generated\Model\OrderItemModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\OrderItemModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutOrderItemBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutOrderItemNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\OrderItemModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putOrderItem(int $orderId, int $orderItemId, \Starweb\Api\Generated\Model\OrderItemModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putOrderItem(int $orderId, int $orderItemId, ?\Starweb\Api\Generated\Model\OrderItemModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutOrderItem($orderId, $orderItemId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutOrderItem($orderId, $orderItemId, $requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -828,20 +828,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getOrderStatuses(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetOrderStatuses(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetOrderStatuses(), $fetch);
     }
     /**
      * Create an order status. Retrieves the created `OrderStatus` object
      *
-     * @param \Starweb\Api\Generated\Model\OrderStatusModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\OrderStatusModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateOrderStatusBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\OrderStatusModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createOrderStatus(\Starweb\Api\Generated\Model\OrderStatusModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createOrderStatus(?\Starweb\Api\Generated\Model\OrderStatusModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateOrderStatus($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateOrderStatus($requestBody), $fetch);
     }
     /**
     * Deletes an order status. Retrieves the updated `OrderItem` object. 
@@ -856,7 +856,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     */
     public function deleteOrderStatus(int $orderStatusId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteOrderStatus($orderStatusId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteOrderStatus($orderStatusId), $fetch);
     }
     /**
      * Retrieves the `OrderStatus` object
@@ -869,14 +869,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getOrderStatus(int $orderStatusId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetOrderStatus($orderStatusId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetOrderStatus($orderStatusId), $fetch);
     }
     /**
     * Updates an order status. Retrieves the updated `Orderstatus` object. 
                        NB! You are not allowed to update standard order statuses (all statuses with an idCode set)
     *
     * @param int $orderStatusId The order status id
-    * @param \Starweb\Api\Generated\Model\OrderStatusModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\OrderStatusModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PatchOrderStatusBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PatchOrderStatusForbiddenException
@@ -884,16 +884,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *
     * @return null|\Starweb\Api\Generated\Model\OrderStatusModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function patchOrderStatus(int $orderStatusId, \Starweb\Api\Generated\Model\OrderStatusModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchOrderStatus(int $orderStatusId, ?\Starweb\Api\Generated\Model\OrderStatusModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchOrderStatus($orderStatusId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchOrderStatus($orderStatusId, $requestBody), $fetch);
     }
     /**
     * Updates an order status. Retrieves the updated `Orderstatus` object. 
                    NB! You are not allowed to update standard order statuses (all statuses with an idCode set)
     *
     * @param int $orderStatusId The order status id
-    * @param \Starweb\Api\Generated\Model\OrderStatusModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\OrderStatusModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PutOrderStatusBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PutOrderStatusForbiddenException
@@ -901,9 +901,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *
     * @return null|\Starweb\Api\Generated\Model\OrderStatusModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function putOrderStatus(int $orderStatusId, \Starweb\Api\Generated\Model\OrderStatusModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putOrderStatus(int $orderStatusId, ?\Starweb\Api\Generated\Model\OrderStatusModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutOrderStatus($orderStatusId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutOrderStatus($orderStatusId, $requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -912,7 +912,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getPaymentMethods(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetPaymentMethods(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetPaymentMethods(), $fetch);
     }
     /**
      * Retrieves a `PaymentMethod` object
@@ -925,7 +925,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getPaymentMethod(int $paymentMethodId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetPaymentMethod($paymentMethodId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetPaymentMethod($paymentMethodId), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -934,20 +934,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getPricelists(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetPricelists(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetPricelists(), $fetch);
     }
     /**
      * Create a pricelist. Retrieves the created `Pricelist` object
      *
-     * @param mixed $requestBody 
+     * @param null|mixed $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreatePricelistBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\PricelistModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createPricelist($requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createPricelist($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreatePricelist($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreatePricelist($requestBody), $fetch);
     }
     /**
      * Delete a pricelist permanently. The master pricelist can not be deleted and will return an error `403`
@@ -961,7 +961,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deletePricelist(int $pricelistId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeletePricelist($pricelistId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeletePricelist($pricelistId), $fetch);
     }
     /**
      * Retrieves a `Pricelist` object
@@ -974,37 +974,37 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getPricelist(int $pricelistId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetPricelist($pricelistId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetPricelist($pricelistId), $fetch);
     }
     /**
      * Update a pricelist. Retrieves the updated `Pricelist` object
      *
      * @param int $pricelistId The pricelist id
-     * @param mixed $requestBody 
+     * @param null|mixed $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchPricelistBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchPricelistNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\PricelistModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchPricelist(int $pricelistId, $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchPricelist(int $pricelistId, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchPricelist($pricelistId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchPricelist($pricelistId, $requestBody), $fetch);
     }
     /**
      * Update a pricelist. Retrieves the updated `Pricelist` object
      *
      * @param int $pricelistId The pricelist id
-     * @param mixed $requestBody 
+     * @param null|mixed $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutPricelistBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutPricelistNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\PricelistModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putPricelist(int $pricelistId, $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putPricelist(int $pricelistId, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutPricelist($pricelistId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutPricelist($pricelistId, $requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1014,7 +1014,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listVatRates(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListVatRates(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListVatRates(), $fetch);
     }
     /**
      * Retrieves the `VatRate` object.
@@ -1027,7 +1027,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getVatRate(string $countryCode, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetVatRate($countryCode), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetVatRate($countryCode), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1037,21 +1037,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductsVariantsAttributes(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariantsAttributes(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariantsAttributes(), $fetch);
     }
     /**
     * Creates a product variant attribute. 
                        Retrieves the created `ProductVariantAttribute` object.
     *
-    * @param \Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\CreateAttributeBadRequestException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function createAttribute(\Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createAttribute(?\Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateAttribute($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateAttribute($requestBody), $fetch);
     }
     /**
      * Deletes the product variant attribute permanently.
@@ -1064,7 +1064,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteAttribute(int $attributeId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteAttribute($attributeId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteAttribute($attributeId), $fetch);
     }
     /**
      * Retrieves the `ProductVariantAttribute` object.
@@ -1077,37 +1077,37 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsVariantsAttribute(int $attributeId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVariantsAttribute($attributeId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVariantsAttribute($attributeId), $fetch);
     }
     /**
     * Updates a product variant attribute.
                        Retrieves the updated `ProductVariantAttribute` object.
     *
     * @param int $attributeId The attribute value id
-    * @param \Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PatchAttributeBadRequestException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function patchAttribute(int $attributeId, \Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchAttribute(int $attributeId, ?\Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchAttribute($attributeId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchAttribute($attributeId, $requestBody), $fetch);
     }
     /**
     * Updates a product variant attribute.
                        Retrieves the updated `ProductVariantAttribute` object.
     *
     * @param int $attributeId The attribute value id
-    * @param \Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PutAttributeBadRequestException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function putAttribute(int $attributeId, \Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putAttribute(int $attributeId, ?\Starweb\Api\Generated\Model\ProductVariantAttributeModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutAttribute($attributeId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutAttribute($attributeId, $requestBody), $fetch);
     }
     /**
      * Returns a list of product variant attribute values.
@@ -1123,22 +1123,22 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductsVariantsAttributeValues(int $attributeId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariantsAttributeValues($attributeId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariantsAttributeValues($attributeId, $queryParameters), $fetch);
     }
     /**
     * Creates a product variant attribute value.
                        Retrieves the created `ProductVariantAttributeValue` object.
     *
     * @param int $attributeId The attribute id
-    * @param \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\CreateProductsVariantsAttributeValuesBadRequestException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function createProductsVariantsAttributeValues(int $attributeId, \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductsVariantsAttributeValues(int $attributeId, ?\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductsVariantsAttributeValues($attributeId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductsVariantsAttributeValues($attributeId, $requestBody), $fetch);
     }
     /**
      * Delete a product variant attribute value permanently.
@@ -1152,7 +1152,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteAttributeValue(int $attributeId, int $attributeValueId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteAttributeValue($attributeId, $attributeValueId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteAttributeValue($attributeId, $attributeValueId), $fetch);
     }
     /**
      * Retrieves the `ProductVariantAttributeValue` object.
@@ -1169,7 +1169,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsVariantsAttributeValue(int $attributeId, int $attributeValueId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVariantsAttributeValue($attributeId, $attributeValueId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVariantsAttributeValue($attributeId, $attributeValueId, $queryParameters), $fetch);
     }
     /**
     * Updates a product variant attribute value.
@@ -1177,15 +1177,15 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *
     * @param int $attributeId The attribute id
     * @param int $attributeValueId The attribe value id
-    * @param \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PatchProductsVariantsAttributeValuesBadRequestException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function patchProductsVariantsAttributeValues(int $attributeId, int $attributeValueId, \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductsVariantsAttributeValues(int $attributeId, int $attributeValueId, ?\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsVariantsAttributeValues($attributeId, $attributeValueId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsVariantsAttributeValues($attributeId, $attributeValueId, $requestBody), $fetch);
     }
     /**
     * Updates a product variant attribute value.
@@ -1193,15 +1193,15 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *
     * @param int $attributeId The attribute id
     * @param int $attributeValueId The attribe value id
-    * @param \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PutProductsVariantsAttributeValuesBadRequestException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function putProductsVariantsAttributeValues(int $attributeId, int $attributeValueId, \Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductsVariantsAttributeValues(int $attributeId, int $attributeValueId, ?\Starweb\Api\Generated\Model\ProductVariantAttributeValueModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductsVariantsAttributeValues($attributeId, $attributeValueId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductsVariantsAttributeValues($attributeId, $attributeValueId, $requestBody), $fetch);
     }
     /**
      * Returns a list of product categories
@@ -1220,20 +1220,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductCategories(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductCategories($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductCategories($queryParameters), $fetch);
     }
     /**
      * Create a product category. Retrieves the created `ProductCategory` object
      *
-     * @param \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductCategoryBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductCategoryModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductCategory(\Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductCategory(?\Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductCategory($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductCategory($requestBody), $fetch);
     }
     /**
      * Delete a product category permanently
@@ -1246,7 +1246,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductCategory(int $categoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductCategory($categoryId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductCategory($categoryId), $fetch);
     }
     /**
      * Retrieves a `ProductCategory` object
@@ -1262,37 +1262,37 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductCategory(int $categoryId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductCategory($categoryId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductCategory($categoryId, $queryParameters), $fetch);
     }
     /**
      * Update a product category. Retrieves the updated `ProductCategory` object
      *
      * @param int $categoryId The product category id
-     * @param \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductCategoryBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductCategoryNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductCategoryModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductCategory(int $categoryId, \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductCategory(int $categoryId, ?\Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductCategory($categoryId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductCategory($categoryId, $requestBody), $fetch);
     }
     /**
      * Update a product category. Retrieves the updated `ProductCategory` object
      *
      * @param int $categoryId The product category id
-     * @param \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductCategoryBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductCategoryNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductCategoryModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductCategory(int $categoryId, \Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductCategory(int $categoryId, ?\Starweb\Api\Generated\Model\ProductCategoryModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductCategory($categoryId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductCategory($categoryId, $requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1302,20 +1302,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductManufacturers(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductManufacturers(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductManufacturers(), $fetch);
     }
     /**
      * Creates a product manufacturer.
      *
-     * @param \Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductManufacturerBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductManufacturerModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductManufacturer(\Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductManufacturer(?\Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductManufacturer($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductManufacturer($requestBody), $fetch);
     }
     /**
      * Deletes the `ProductManufacturer` object.
@@ -1328,7 +1328,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductManufacturer(int $manufacturerId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductManufacturer($manufacturerId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductManufacturer($manufacturerId), $fetch);
     }
     /**
      * Retrieves the `ProductManufacturer` object.
@@ -1341,35 +1341,35 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductManufacturer(int $manufacturerId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductManufacturer($manufacturerId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductManufacturer($manufacturerId), $fetch);
     }
     /**
      * Updates the `ProductManufacturer` object.
      *
      * @param int $manufacturerId The manufacturers id
-     * @param \Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductManufacturerNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductManufacturerModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductManufacturer(int $manufacturerId, \Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductManufacturer(int $manufacturerId, ?\Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductManufacturer($manufacturerId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductManufacturer($manufacturerId, $requestBody), $fetch);
     }
     /**
      * Updates the `ProductManufacturer` object.
      *
      * @param int $manufacturerId The manufacturers id
-     * @param \Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductManufacturerNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductManufacturerModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductManufacturer(int $manufacturerId, \Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductManufacturer(int $manufacturerId, ?\Starweb\Api\Generated\Model\ProductManufacturerModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductManufacturer($manufacturerId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductManufacturer($manufacturerId, $requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1379,20 +1379,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductUnits(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductUnits(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductUnits(), $fetch);
     }
     /**
      * Creates a product unit.
      *
-     * @param \Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductUnitBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductUnitModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductUnit(\Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductUnit(?\Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductUnit($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductUnit($requestBody), $fetch);
     }
     /**
      * Deletes the `ProductUnit` object.
@@ -1405,7 +1405,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductUnit(int $unitId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductUnit($unitId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductUnit($unitId), $fetch);
     }
     /**
      * Retrieves the `ProductUnit` object.
@@ -1418,35 +1418,35 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductUnit(int $unitId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductUnit($unitId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductUnit($unitId), $fetch);
     }
     /**
      * Updates the `ProductUnit` object.
      *
      * @param int $unitId The units id
-     * @param \Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductUnitNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductUnitModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductUnit(int $unitId, \Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductUnit(int $unitId, ?\Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductUnit($unitId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductUnit($unitId, $requestBody), $fetch);
     }
     /**
      * Updates the `ProductUnit` object.
      *
      * @param int $unitId The units id
-     * @param \Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductUnitNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductUnitModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductUnit(int $unitId, \Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductUnit(int $unitId, ?\Starweb\Api\Generated\Model\ProductUnitModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductUnit($unitId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductUnit($unitId, $requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1456,20 +1456,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductMetaDataTypes(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductMetaDataTypes(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductMetaDataTypes(), $fetch);
     }
     /**
      * Create a product meta data type. Retrieves the created `ProductMetaDataType` object
      *
-     * @param \Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductMetaDataTypeBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductMetaDataTypeModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductMetaDataType(\Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductMetaDataType(?\Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductMetaDataType($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductMetaDataType($requestBody), $fetch);
     }
     /**
      * Delete a product meta data type permanently
@@ -1482,7 +1482,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductMetaDataType(int $metaDataTypeId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductMetaDataType($metaDataTypeId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductMetaDataType($metaDataTypeId), $fetch);
     }
     /**
      * Retrieves the `ProductMetaDataType` object.
@@ -1495,37 +1495,37 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductMetaDataType(int $metaDataTypeId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductMetaDataType($metaDataTypeId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductMetaDataType($metaDataTypeId), $fetch);
     }
     /**
      * Update a product meta data type. Retrieves the updated `ProductMetaDataType` object
      *
      * @param int $metaDataTypeId The meta data types id
-     * @param \Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductMetaDataTypeBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductMetaDataTypeNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductMetaDataTypeModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductMetaDataType(int $metaDataTypeId, \Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductMetaDataType(int $metaDataTypeId, ?\Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductMetaDataType($metaDataTypeId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductMetaDataType($metaDataTypeId, $requestBody), $fetch);
     }
     /**
      * Update a product meta data type. Retrieves the updated `ProductMetaDataType` object
      *
      * @param int $metaDataTypeId The meta data types id
-     * @param \Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductMetaDataTypeBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductMetaDataTypeNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductMetaDataTypeModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductMetaDataType(int $metaDataTypeId, \Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductMetaDataType(int $metaDataTypeId, ?\Starweb\Api\Generated\Model\ProductMetaDataTypeModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductMetaDataType($metaDataTypeId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductMetaDataType($metaDataTypeId, $requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1535,20 +1535,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductStockStatses(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductStockStatses(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductStockStatses(), $fetch);
     }
     /**
      * Create a product stock status. Retrieves the created `ProductStockStatus` object.
      *
-     * @param \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductStockStatusBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductStockStatusModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductStockStatus(\Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductStockStatus(?\Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductStockStatus($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductStockStatus($requestBody), $fetch);
     }
     /**
      * Deletes a product stock status permanently.
@@ -1561,7 +1561,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductStockStatus(int $stockStatusId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductStockStatus($stockStatusId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductStockStatus($stockStatusId), $fetch);
     }
     /**
      * Retrieves the `ProductStockStatus` object.
@@ -1574,37 +1574,37 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductStockStatus(int $stockStatusId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductStockStatus($stockStatusId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductStockStatus($stockStatusId), $fetch);
     }
     /**
      * Updates a product stock status. Retrieves the update `ProductStockStatus` object.
      *
      * @param int $stockStatusId The stock status id
-     * @param \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductStockStatusBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductStockStatusNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductStockStatusModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductStockStatus(int $stockStatusId, \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductStockStatus(int $stockStatusId, ?\Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductStockStatus($stockStatusId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductStockStatus($stockStatusId, $requestBody), $fetch);
     }
     /**
      * Updates a product stock status. Retrieves the update `ProductStockStatus` object.
      *
      * @param int $stockStatusId The stock status id
-     * @param \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductStockStatusBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductStockStatusNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductStockStatusModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductStockStatus(int $stockStatusId, \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductStockStatus(int $stockStatusId, ?\Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductStockStatus($stockStatusId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductStockStatus($stockStatusId, $requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1613,20 +1613,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsTags(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsTags(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsTags(), $fetch);
     }
     /**
      * Creates a `ProductTag` object
      *
-     * @param \Starweb\Api\Generated\Model\ProductTagPostRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductTagPostRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductTagBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductTagModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductTag(\Starweb\Api\Generated\Model\ProductTagPostRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductTag(?\Starweb\Api\Generated\Model\ProductTagPostRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductTag($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductTag($requestBody), $fetch);
     }
     /**
      * Delete a product tag permanently
@@ -1639,7 +1639,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductTag(int $productTagId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductTag($productTagId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductTag($productTagId), $fetch);
     }
     /**
      * Retrieves a `Tag` object
@@ -1652,37 +1652,37 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsTag(int $productTagId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsTag($productTagId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsTag($productTagId), $fetch);
     }
     /**
      * Partially updates a product tag. Retrieves the updated `ProductTag` object
      *
      * @param int $productTagId The product tag id
-     * @param \Starweb\Api\Generated\Model\ProductTagPatchRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductTagPatchRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductTagBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductTagNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductTagModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductTag(int $productTagId, \Starweb\Api\Generated\Model\ProductTagPatchRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductTag(int $productTagId, ?\Starweb\Api\Generated\Model\ProductTagPatchRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductTag($productTagId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductTag($productTagId, $requestBody), $fetch);
     }
     /**
      * Update a product tag. Retrieves the updated `ProductTag` object
      *
      * @param int $productTagId The product tag id
-     * @param \Starweb\Api\Generated\Model\ProductTagPutRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductTagPutRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductTagBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductTagNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductTagModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductTag(int $productTagId, \Starweb\Api\Generated\Model\ProductTagPutRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductTag(int $productTagId, ?\Starweb\Api\Generated\Model\ProductTagPutRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductTag($productTagId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductTag($productTagId, $requestBody), $fetch);
     }
     /**
      * Returns a list of options
@@ -1694,22 +1694,22 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsTagOptions(int $productTagId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsTagOptions($productTagId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsTagOptions($productTagId), $fetch);
     }
     /**
      * Create a tag option. Tag options can only be created for tags of type `option`. If you try to create options for a tag of type `boolean` an error `405` will be returned. Returns the created `ProductTagOption` object.
      *
      * @param int $productTagId The product tag id
-     * @param \Starweb\Api\Generated\Model\ProductTagOptionPostRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductTagOptionPostRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductTagOptionBadRequestException
      * @throws \Starweb\Api\Generated\Exception\CreateProductTagOptionMethodNotAllowedException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductTagOptionModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductTagOption(int $productTagId, \Starweb\Api\Generated\Model\ProductTagOptionPostRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductTagOption(int $productTagId, ?\Starweb\Api\Generated\Model\ProductTagOptionPostRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductTagOption($productTagId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductTagOption($productTagId, $requestBody), $fetch);
     }
     /**
      * Delete a tag option permanently. Tag options can only be deleted for tags of type `option`. If you try to delete a tag option for a tag of any other type an error `405` will be returned.
@@ -1724,7 +1724,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductTagOption(int $productTagId, int $productTagOptionId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductTagOption($productTagId, $productTagOptionId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductTagOption($productTagId, $productTagOptionId), $fetch);
     }
     /**
      * Retrieves a `TagOption` object
@@ -1738,14 +1738,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductTagOptions(int $productTagId, int $productTagOptionId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductTagOptions($productTagId, $productTagOptionId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductTagOptions($productTagId, $productTagOptionId), $fetch);
     }
     /**
      * Partially updates a tag option. Tag options can only be updates for tags of type `option`. If you try to update a tag option for a tag of any other type an error `405` will be returned. Returns the updated `ProductTagOption` object.
      *
      * @param int $productTagId The product tag id
      * @param int $productTagOptionId The product tag option id
-     * @param \Starweb\Api\Generated\Model\ProductTagOptionPatchRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductTagOptionPatchRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductTagOptionBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductTagOptionNotFoundException
@@ -1753,16 +1753,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @return null|\Starweb\Api\Generated\Model\ProductTagOptionModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductTagOption(int $productTagId, int $productTagOptionId, \Starweb\Api\Generated\Model\ProductTagOptionPatchRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductTagOption(int $productTagId, int $productTagOptionId, ?\Starweb\Api\Generated\Model\ProductTagOptionPatchRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductTagOption($productTagId, $productTagOptionId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductTagOption($productTagId, $productTagOptionId, $requestBody), $fetch);
     }
     /**
      * Update a tag option. Tag options can only be updated for tags of type `option`. If you try to update a tag option for a tag of any other type an error `405` will be returned. Returns the updated `ProductTagOption` object.
      *
      * @param int $productTagId The product tag id
      * @param int $productTagOptionId The product tag option id
-     * @param \Starweb\Api\Generated\Model\ProductTagOptionPutRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductTagOptionPutRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductTagOptionBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductTagOptionNotFoundException
@@ -1770,9 +1770,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @return null|\Starweb\Api\Generated\Model\ProductTagOptionModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductTagOption(int $productTagId, int $productTagOptionId, \Starweb\Api\Generated\Model\ProductTagOptionPutRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductTagOption(int $productTagId, int $productTagOptionId, ?\Starweb\Api\Generated\Model\ProductTagOptionPutRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductTagOption($productTagId, $productTagOptionId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductTagOption($productTagId, $productTagOptionId, $requestBody), $fetch);
     }
     /**
      * Returns a list of products.
@@ -1794,20 +1794,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProducts(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProducts($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProducts($queryParameters), $fetch);
     }
     /**
      * Creates a product. Retrieves the created `Product` object.
      *
-     * @param \Starweb\Api\Generated\Model\ProductModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProduct(\Starweb\Api\Generated\Model\ProductModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProduct(?\Starweb\Api\Generated\Model\ProductModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProduct($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProduct($requestBody), $fetch);
     }
     /**
      * Deletes a product permanently.
@@ -1820,7 +1820,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProduct(int $productId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProduct($productId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProduct($productId), $fetch);
     }
     /**
      * Retrieves the `Product` object.
@@ -1836,37 +1836,37 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProduct(int $productId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProduct($productId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProduct($productId, $queryParameters), $fetch);
     }
     /**
      * Updates a product. Retrieves the update `Product` object.
      *
      * @param int $productId The product id
-     * @param \Starweb\Api\Generated\Model\ProductModelPatchable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductModelPatchable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProduct(int $productId, \Starweb\Api\Generated\Model\ProductModelPatchable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProduct(int $productId, ?\Starweb\Api\Generated\Model\ProductModelPatchable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProduct($productId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProduct($productId, $requestBody), $fetch);
     }
     /**
      * Updates a product. Retrieves the update `Product` object.
      *
      * @param int $productId The product id
-     * @param \Starweb\Api\Generated\Model\ProductModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProduct(int $productId, \Starweb\Api\Generated\Model\ProductModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProduct(int $productId, ?\Starweb\Api\Generated\Model\ProductModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProduct($productId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProduct($productId, $requestBody), $fetch);
     }
     /**
      * Return a list of bundled products.
@@ -1883,21 +1883,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductsBundledProducts(int $productId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsBundledProducts($productId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductsBundledProducts($productId, $queryParameters), $fetch);
     }
     /**
      * Creates a bundled product. Retrieves the created `BundledProduct` object
      *
      * @param int $productId The products id
-     * @param \Starweb\Api\Generated\Model\BundledProductsModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\BundledProductsModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductBundledProductBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\BundledProductsModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductBundledProduct(int $productId, \Starweb\Api\Generated\Model\BundledProductsModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductBundledProduct(int $productId, ?\Starweb\Api\Generated\Model\BundledProductsModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductBundledProduct($productId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductBundledProduct($productId, $requestBody), $fetch);
     }
     /**
      * Deletes a bundled product permanently.
@@ -1911,7 +1911,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductsBundledProduct(int $productId, int $bundledProductId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsBundledProduct($productId, $bundledProductId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsBundledProduct($productId, $bundledProductId), $fetch);
     }
     /**
      * Retrieves the `BundledProduct` object
@@ -1928,39 +1928,39 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsBundledProducts(int $productId, int $bundledProductId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsBundledProducts($productId, $bundledProductId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsBundledProducts($productId, $bundledProductId, $queryParameters), $fetch);
     }
     /**
      * Updates a bundled product. Retrieves the updated `BundledProduct` object
      *
      * @param int $productId The product id
      * @param int $bundledProductId The bundled products id
-     * @param \Starweb\Api\Generated\Model\BundledProductsModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\BundledProductsModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductsBundledProductBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductsBundledProductNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\BundledProductsModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductsBundledProduct(int $productId, int $bundledProductId, \Starweb\Api\Generated\Model\BundledProductsModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductsBundledProduct(int $productId, int $bundledProductId, ?\Starweb\Api\Generated\Model\BundledProductsModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsBundledProduct($productId, $bundledProductId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsBundledProduct($productId, $bundledProductId, $requestBody), $fetch);
     }
     /**
      * Updates a bundled product. Retrieves the updated `BundledProduct` object
      *
      * @param int $productId The product id
      * @param int $bundledProductId The bundled products id
-     * @param \Starweb\Api\Generated\Model\BundledProductsModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\BundledProductsModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductsBundledProductBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductsBundledProductNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\BundledProductsModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductsBundledProduct(int $productId, int $bundledProductId, \Starweb\Api\Generated\Model\BundledProductsModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductsBundledProduct(int $productId, int $bundledProductId, ?\Starweb\Api\Generated\Model\BundledProductsModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductsBundledProduct($productId, $bundledProductId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductsBundledProduct($productId, $bundledProductId, $requestBody), $fetch);
     }
     /**
      * Return a list of product variants.
@@ -1977,21 +1977,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductsVariants(int $productId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariants($productId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariants($productId, $queryParameters), $fetch);
     }
     /**
      * Creates a product variant. Retrieves the created `ProductVariant` object
      *
      * @param int $productId The products id
-     * @param \Starweb\Api\Generated\Model\ProductVariantRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductVariantRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductVariantBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductVariant(int $productId, \Starweb\Api\Generated\Model\ProductVariantRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductVariant(int $productId, ?\Starweb\Api\Generated\Model\ProductVariantRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductVariant($productId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductVariant($productId, $requestBody), $fetch);
     }
     /**
      * Deletes a product variant permanently.
@@ -2005,7 +2005,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductsVariant(int $productId, int $variantId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsVariant($productId, $variantId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsVariant($productId, $variantId), $fetch);
     }
     /**
      * Retrieves the `ProductVariant` object
@@ -2022,39 +2022,39 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsVariant(int $productId, int $variantId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVariant($productId, $variantId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVariant($productId, $variantId, $queryParameters), $fetch);
     }
     /**
      * Updates a product variant. Retrieves the updated `ProductVariant` object
      *
      * @param int $productId The product id
      * @param int $variantId The products variants id
-     * @param \Starweb\Api\Generated\Model\ProductVariantPatchRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductVariantPatchRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductsVariantBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductsVariantNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductsVariant(int $productId, int $variantId, \Starweb\Api\Generated\Model\ProductVariantPatchRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductsVariant(int $productId, int $variantId, ?\Starweb\Api\Generated\Model\ProductVariantPatchRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsVariant($productId, $variantId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsVariant($productId, $variantId, $requestBody), $fetch);
     }
     /**
      * Updates a product variant. Retrieves the updated `ProductVariant` object
      *
      * @param int $productId The product id
      * @param int $variantId The products variants id
-     * @param \Starweb\Api\Generated\Model\ProductVariantPutRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductVariantPutRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductsVariantBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductsVariantNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductsVariant(int $productId, int $variantId, \Starweb\Api\Generated\Model\ProductVariantPutRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductsVariant(int $productId, int $variantId, ?\Starweb\Api\Generated\Model\ProductVariantPutRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductsVariant($productId, $variantId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductsVariant($productId, $variantId, $requestBody), $fetch);
     }
     /**
      * Returns a list of product vat rates.
@@ -2067,21 +2067,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductsVatRates(int $productId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVatRates($productId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVatRates($productId), $fetch);
     }
     /**
      * Creates a product vat rate. Retrieves the create `ProductVatRate` object.
      *
      * @param int $productId The products id
-     * @param \Starweb\Api\Generated\Model\ProductVatRateModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductVatRateModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductVatRateBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductVatRateModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductVatRate(int $productId, \Starweb\Api\Generated\Model\ProductVatRateModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductVatRate(int $productId, ?\Starweb\Api\Generated\Model\ProductVatRateModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductVatRate($productId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductVatRate($productId, $requestBody), $fetch);
     }
     /**
      * Deletes the product vat rate permanently.
@@ -2095,7 +2095,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductsVatRate(int $productId, string $countryCode, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsVatRate($productId, $countryCode), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsVatRate($productId, $countryCode), $fetch);
     }
     /**
      * Retrieves the `ProductVatRate` object.
@@ -2109,39 +2109,39 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsVatRate(int $productId, string $countryCode, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVatRate($productId, $countryCode), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVatRate($productId, $countryCode), $fetch);
     }
     /**
      * Updates a product vat rate. Retrieves the update `ProductVatRate` object.
      *
      * @param int $productId The product id
      * @param string $countryCode The country code for the vat rate to fetch/manipulate
-     * @param \Starweb\Api\Generated\Model\ProductVatRateModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductVatRateModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductsVatRateBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductsVatRateNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductVatRateModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductsVatRate(int $productId, string $countryCode, \Starweb\Api\Generated\Model\ProductVatRateModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductsVatRate(int $productId, string $countryCode, ?\Starweb\Api\Generated\Model\ProductVatRateModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsVatRate($productId, $countryCode, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsVatRate($productId, $countryCode, $requestBody), $fetch);
     }
     /**
      * Updates a product vat rate. Retrieves the update `ProductVatRate` object.
      *
      * @param int $productId The product id
      * @param string $countryCode The country code for the vat rate to fetch/manipulate
-     * @param \Starweb\Api\Generated\Model\ProductVatRateModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductVatRateModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductsVatRateBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductsVatRateNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductVatRateModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductsVatRate(int $productId, string $countryCode, \Starweb\Api\Generated\Model\ProductVatRateModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductsVatRate(int $productId, string $countryCode, ?\Starweb\Api\Generated\Model\ProductVatRateModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductsVatRate($productId, $countryCode, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductsVatRate($productId, $countryCode, $requestBody), $fetch);
     }
     /**
      * Returns a list of product media file links.
@@ -2154,22 +2154,22 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductsMediaFileLinks(int $productId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsMediaFileLinks($productId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductsMediaFileLinks($productId), $fetch);
     }
     /**
     * Creates a product media file link. 
                        Retrieves the create `ProductMediaFileLink` object.
     *
     * @param int $productId The products id
-    * @param \Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\CreateProductsMediaFileLinkBadRequestException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductMediaFileLinkModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function createProductsMediaFileLink(int $productId, \Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductsMediaFileLink(int $productId, ?\Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductsMediaFileLink($productId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductsMediaFileLink($productId, $requestBody), $fetch);
     }
     /**
      * Deletes the product media file link permanently.
@@ -2183,7 +2183,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductsMediaFileLink(int $productId, int $mediaFileId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsMediaFileLink($productId, $mediaFileId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsMediaFileLink($productId, $mediaFileId), $fetch);
     }
     /**
      * Retrieves the `ProductMediaFileLink` object.
@@ -2197,7 +2197,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsMediaFileLink(int $productId, int $mediaFileId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsMediaFileLink($productId, $mediaFileId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsMediaFileLink($productId, $mediaFileId), $fetch);
     }
     /**
     * Updates a product media file link. 
@@ -2205,16 +2205,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *
     * @param int $productId The product id
     * @param int $mediaFileId The media file id of the link you want to fetch/change
-    * @param \Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PatchProductsMediaFileLinkBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PatchProductsMediaFileLinkNotFoundException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductMediaFileLinkModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function patchProductsMediaFileLink(int $productId, int $mediaFileId, \Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductsMediaFileLink(int $productId, int $mediaFileId, ?\Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsMediaFileLink($productId, $mediaFileId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsMediaFileLink($productId, $mediaFileId, $requestBody), $fetch);
     }
     /**
     * Updates a product media file link. 
@@ -2222,16 +2222,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *
     * @param int $productId The product id
     * @param int $mediaFileId The media file id of the link you want to fetch/change
-    * @param \Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PutProductsMediaFileLinkBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PutProductsMediaFileLinkNotFoundException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductMediaFileLinkModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function putProductsMediaFileLink(int $productId, int $mediaFileId, \Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductsMediaFileLink(int $productId, int $mediaFileId, ?\Starweb\Api\Generated\Model\ProductMediaFileLinkModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductsMediaFileLink($productId, $mediaFileId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductsMediaFileLink($productId, $mediaFileId, $requestBody), $fetch);
     }
     /**
      * Returns a list of product languages.
@@ -2244,21 +2244,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductsLanguages(int $productId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsLanguages($productId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductsLanguages($productId), $fetch);
     }
     /**
      * Create a product language. Retrieves the created `ProductLanguage` object.
      *
      * @param int $productId The products id
-     * @param \Starweb\Api\Generated\Model\ProductLanguageModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductLanguageModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductsLanguageBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductLanguageModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductsLanguage(int $productId, \Starweb\Api\Generated\Model\ProductLanguageModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductsLanguage(int $productId, ?\Starweb\Api\Generated\Model\ProductLanguageModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductsLanguage($productId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductsLanguage($productId, $requestBody), $fetch);
     }
     /**
      * Delete a product language permanently.
@@ -2272,7 +2272,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductsLanguage(int $productId, string $langCode, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsLanguage($productId, $langCode), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsLanguage($productId, $langCode), $fetch);
     }
     /**
      * Retrieves the `ProductLanguage` object.
@@ -2286,39 +2286,39 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsLanguage(int $productId, string $langCode, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsLanguage($productId, $langCode), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsLanguage($productId, $langCode), $fetch);
     }
     /**
      * Update a product language. Retrieves the update `ProductLanguage` object.
      *
      * @param int $productId The product id
      * @param string $langCode The language code you want to fetch/change. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
-     * @param \Starweb\Api\Generated\Model\ProductLanguageModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductLanguageModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductsLanguageBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductsLanguageNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductLanguageModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductsLanguage(int $productId, string $langCode, \Starweb\Api\Generated\Model\ProductLanguageModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductsLanguage(int $productId, string $langCode, ?\Starweb\Api\Generated\Model\ProductLanguageModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsLanguage($productId, $langCode, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsLanguage($productId, $langCode, $requestBody), $fetch);
     }
     /**
      * Update a product language. Retrieves the update `ProductLanguage` object.
      *
      * @param int $productId The product id
      * @param string $langCode The language code you want to fetch/change. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
-     * @param \Starweb\Api\Generated\Model\ProductLanguageModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductLanguageModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductsLanguageBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductsLanguageNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductLanguageModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductsLanguage(int $productId, string $langCode, \Starweb\Api\Generated\Model\ProductLanguageModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductsLanguage(int $productId, string $langCode, ?\Starweb\Api\Generated\Model\ProductLanguageModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductsLanguage($productId, $langCode, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductsLanguage($productId, $langCode, $requestBody), $fetch);
     }
     /**
      * Returns a list of product category links.
@@ -2331,21 +2331,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductsCategoryLinks(int $productId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsCategoryLinks($productId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductsCategoryLinks($productId), $fetch);
     }
     /**
      * Retrieves the created `ProductCategoryLink` object
      *
      * @param int $productId The products id
-     * @param \Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductsCategoryLinkBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductCategoryLinkModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductsCategoryLink(int $productId, \Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductsCategoryLink(int $productId, ?\Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductsCategoryLink($productId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductsCategoryLink($productId, $requestBody), $fetch);
     }
     /**
      * Delete a product category link permanently.
@@ -2359,7 +2359,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductsCategoryLink(int $productId, int $categoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsCategoryLink($productId, $categoryId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsCategoryLink($productId, $categoryId), $fetch);
     }
     /**
      * Retrieves the `ProductCategoryLink` object
@@ -2373,39 +2373,39 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsCategoryLink(int $productId, int $categoryId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsCategoryLink($productId, $categoryId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsCategoryLink($productId, $categoryId), $fetch);
     }
     /**
      * Update a product category link. Retrieves the update `ProductCategoryLink` object.
      *
      * @param int $productId The product id
      * @param int $categoryId The category id
-     * @param \Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductsCategoryLinkBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductsCategoryLinkNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductCategoryLinkModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductsCategoryLink(int $productId, int $categoryId, \Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductsCategoryLink(int $productId, int $categoryId, ?\Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsCategoryLink($productId, $categoryId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsCategoryLink($productId, $categoryId, $requestBody), $fetch);
     }
     /**
      * Update a product category link. Retrieves the update `ProductCategoryLink` object.
      *
      * @param int $productId The product id
      * @param int $categoryId The category id
-     * @param \Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductsCategoryLinkBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductsCategoryLinkNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductCategoryLinkModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductsCategoryLink(int $productId, int $categoryId, \Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductsCategoryLink(int $productId, int $categoryId, ?\Starweb\Api\Generated\Model\ProductCategoryLinkModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductsCategoryLink($productId, $categoryId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductsCategoryLink($productId, $categoryId, $requestBody), $fetch);
     }
     /**
      * Returns a list of product meta data.
@@ -2418,21 +2418,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductsMetaData(int $productId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsMetaData($productId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductsMetaData($productId), $fetch);
     }
     /**
      * Deprecated: use the [putProductsMetaData](#operation/putProductsMetaData) operation to create a new product meta data for the `metaDataTypeId` instead. Creates a product meta data. Retrieves the created `ProductMetaData` object.
      *
      * @param int $productId The products id
-     * @param \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductsMetaDataBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductMetaDataModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductsMetaData(int $productId, \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductsMetaData(int $productId, ?\Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductsMetaData($productId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductsMetaData($productId, $requestBody), $fetch);
     }
     /**
      * Deletes a product meta data permanently.
@@ -2446,7 +2446,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductsMetaData(int $productId, int $metaDataTypeId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsMetaData($productId, $metaDataTypeId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsMetaData($productId, $metaDataTypeId), $fetch);
     }
     /**
      * Retrieves the `ProductMetaData` object.
@@ -2460,39 +2460,39 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsMetaData(int $productId, int $metaDataTypeId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsMetaData($productId, $metaDataTypeId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsMetaData($productId, $metaDataTypeId), $fetch);
     }
     /**
      * Updates a product meta data. Retrieves the update `ProductMetaData` object.
      *
      * @param int $productId The product id
      * @param int $metaDataTypeId The meta data type id
-     * @param \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchProductsMetaDataBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchProductsMetaDataNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductMetaDataModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchProductsMetaData(int $productId, int $metaDataTypeId, \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductsMetaData(int $productId, int $metaDataTypeId, ?\Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsMetaData($productId, $metaDataTypeId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsMetaData($productId, $metaDataTypeId, $requestBody), $fetch);
     }
     /**
      * Updates a product meta data if it exists or creates a new product meta data for the given `metaDataTypeId` if it does not exist. Retrieves the update `ProductMetaData` object.
      *
      * @param int $productId The product id
      * @param int $metaDataTypeId The meta data type id
-     * @param \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutProductsMetaDataBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutProductsMetaDataNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductMetaDataModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putProductsMetaData(int $productId, int $metaDataTypeId, \Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductsMetaData(int $productId, int $metaDataTypeId, ?\Starweb\Api\Generated\Model\ProductMetaDataModelUpdatable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductsMetaData($productId, $metaDataTypeId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductsMetaData($productId, $metaDataTypeId, $requestBody), $fetch);
     }
     /**
      * Returns a list of product attributes.
@@ -2505,7 +2505,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductsAttributes(int $productId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsAttributes($productId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductsAttributes($productId), $fetch);
     }
     /**
      * Retrieves the `ProductAttribute` object.
@@ -2519,7 +2519,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsAttribute(int $productId, int $attributeId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsAttribute($productId, $attributeId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsAttribute($productId, $attributeId), $fetch);
     }
     /**
      * Returns a list of product variant pricelist prices
@@ -2536,7 +2536,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductsVariantsPricelistPrices(int $productId, int $variantId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariantsPricelistPrices($productId, $variantId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariantsPricelistPrices($productId, $variantId, $queryParameters), $fetch);
     }
     /**
     * Creates a product variant pricelist price. 
@@ -2544,7 +2544,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *
     * @param int $productId The products id
     * @param int $variantId The products variants id
-    * @param \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody 
     * @param array $queryParameters {
     *     @var string $include If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices
     * }
@@ -2553,9 +2553,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantPriceModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function createProductVariantPricelistPrice(int $productId, int $variantId, \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function createProductVariantPricelistPrice(int $productId, int $variantId, ?\Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody = null, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductVariantPricelistPrice($productId, $variantId, $requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductVariantPricelistPrice($productId, $variantId, $requestBody, $queryParameters), $fetch);
     }
     /**
      * Deletes a product variant pricelist price permanently.
@@ -2573,7 +2573,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $queryParameters), $fetch);
     }
     /**
      * Retrieves the `ProductVariantPricelistPrice` object
@@ -2591,7 +2591,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $queryParameters), $fetch);
     }
     /**
     * Updates a product variant pricelist price. 
@@ -2600,7 +2600,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param int $productId The product id
     * @param int $variantId The products variants id
     * @param int $pricelistId The pricelist id
-    * @param \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody 
     * @param array $queryParameters {
     *     @var string $include If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices
     * }
@@ -2610,9 +2610,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantPriceModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function patchProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function patchProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, ?\Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody = null, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $requestBody, $queryParameters), $fetch);
     }
     /**
     * Updates a product variant pricelist price. 
@@ -2621,7 +2621,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param int $productId The product id
     * @param int $variantId The products variants id
     * @param int $pricelistId The pricelist id
-    * @param \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody 
     * @param array $queryParameters {
     *     @var string $include If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices
     * }
@@ -2631,9 +2631,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantPriceModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function putProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, \Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function putProductsVariantsPricelistPrice(int $productId, int $variantId, int $pricelistId, ?\Starweb\Api\Generated\Model\ProductVariantPriceModel $requestBody = null, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductsVariantsPricelistPrice($productId, $variantId, $pricelistId, $requestBody, $queryParameters), $fetch);
     }
     /**
      * Returns a list of product variant pricelist prices
@@ -2647,7 +2647,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductBundledProductsPricelistPrices(int $productId, int $bundledProductId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductBundledProductsPricelistPrices($productId, $bundledProductId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductBundledProductsPricelistPrices($productId, $bundledProductId), $fetch);
     }
     /**
     * Creates a bundled product pricelist price. 
@@ -2655,15 +2655,15 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     *
     * @param int $productId The products id
     * @param int $bundledProductId The bundled products id
-    * @param \Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\CreateProductBundleProductPricelistPriceBadRequestException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductBundleProductPriceModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function createProductBundleProductPricelistPrice(int $productId, int $bundledProductId, \Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductBundleProductPricelistPrice(int $productId, int $bundledProductId, ?\Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductBundleProductPricelistPrice($productId, $bundledProductId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductBundleProductPricelistPrice($productId, $bundledProductId, $requestBody), $fetch);
     }
     /**
      * Deletes a bundled product pricelist price permanently.
@@ -2678,7 +2678,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductBundledProductsPricelistPrice(int $productId, int $bundledProductId, int $pricelistId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductBundledProductsPricelistPrice($productId, $bundledProductId, $pricelistId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductBundledProductsPricelistPrice($productId, $bundledProductId, $pricelistId), $fetch);
     }
     /**
      * Retrieves the `ProductBundleProductPricelistPrice` object
@@ -2693,7 +2693,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductBundledProductsPricelistPrice(int $productId, int $bundledProductId, int $pricelistId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductBundledProductsPricelistPrice($productId, $bundledProductId, $pricelistId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductBundledProductsPricelistPrice($productId, $bundledProductId, $pricelistId), $fetch);
     }
     /**
     * Updates a bundled product pricelist price. 
@@ -2702,16 +2702,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param int $productId The product id
     * @param int $bundledProductId The bundled products id
     * @param int $pricelistId The pricelist id
-    * @param \Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PatchProductBundledProductsPricelistPriceBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PatchProductBundledProductsPricelistPriceNotFoundException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductBundleProductPriceModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function patchProductBundledProductsPricelistPrice(int $productId, int $bundledProductId, int $pricelistId, \Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductBundledProductsPricelistPrice(int $productId, int $bundledProductId, int $pricelistId, ?\Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductBundledProductsPricelistPrice($productId, $bundledProductId, $pricelistId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductBundledProductsPricelistPrice($productId, $bundledProductId, $pricelistId, $requestBody), $fetch);
     }
     /**
     * Updates a bundled product pricelist price. 
@@ -2720,16 +2720,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param int $productId The product id
     * @param int $bundledProductId The bundled products id
     * @param int $pricelistId The pricelist id
-    * @param \Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PutProductBundledProductsPricelistPriceBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PutProductBundledProductsPricelistPriceNotFoundException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductBundleProductPriceModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function putProductBundledProductsPricelistPrice(int $productId, int $bundledProductId, int $pricelistId, \Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductBundledProductsPricelistPrice(int $productId, int $bundledProductId, int $pricelistId, ?\Starweb\Api\Generated\Model\ProductBundleProductPriceModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductBundledProductsPricelistPrice($productId, $bundledProductId, $pricelistId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductBundledProductsPricelistPrice($productId, $bundledProductId, $pricelistId, $requestBody), $fetch);
     }
     /**
      * Returns a list of product tag links.
@@ -2742,21 +2742,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductTagLinks(int $productId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductTagLinks($productId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductTagLinks($productId), $fetch);
     }
     /**
      * Create a product tag link by submitting the tagOptionId. Retrieves the created `ProductTagLink` object
      *
      * @param int $productId The product id
-     * @param \Starweb\Api\Generated\Model\ProductTagLinkPostRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductTagLinkPostRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateProductTagLinkBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\ProductTagLinkModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createProductTagLink(int $productId, \Starweb\Api\Generated\Model\ProductTagLinkPostRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductTagLink(int $productId, ?\Starweb\Api\Generated\Model\ProductTagLinkPostRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductTagLink($productId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductTagLink($productId, $requestBody), $fetch);
     }
     /**
      * Delete a product tag link permanently.
@@ -2770,7 +2770,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductTagLink(int $productId, int $tagOptionId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductTagLink($productId, $tagOptionId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductTagLink($productId, $tagOptionId), $fetch);
     }
     /**
      * Retrieves the `ProductTagLink` object
@@ -2784,7 +2784,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductTagLink(int $productId, int $tagOptionId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductTagLink($productId, $tagOptionId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductTagLink($productId, $tagOptionId), $fetch);
     }
     /**
      * Returns a list of the variants pricelist volume prices
@@ -2799,7 +2799,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductsVariantsPricelistVolumePrices(int $productId, int $variantId, int $pricelistId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariantsPricelistVolumePrices($productId, $variantId, $pricelistId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariantsPricelistVolumePrices($productId, $variantId, $pricelistId), $fetch);
     }
     /**
     * Creates a variant volume pricelist price. 
@@ -2808,15 +2808,15 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param int $productId The products id
     * @param int $variantId The products variants id
     * @param int $pricelistId The pricelist id
-    * @param \Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\CreateProductVariantPricelistVolumePriceBadRequestException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantVolumePriceModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function createProductVariantPricelistVolumePrice(int $productId, int $variantId, int $pricelistId, \Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createProductVariantPricelistVolumePrice(int $productId, int $variantId, int $pricelistId, ?\Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateProductVariantPricelistVolumePrice($productId, $variantId, $pricelistId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateProductVariantPricelistVolumePrice($productId, $variantId, $pricelistId, $requestBody), $fetch);
     }
     /**
      * Deletes a product variant pricelist volume price permanently.
@@ -2832,7 +2832,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductsVariantsPricelistVolumePrice(int $productId, int $variantId, int $pricelistId, int $quantity, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsVariantsPricelistVolumePrice($productId, $variantId, $pricelistId, $quantity), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductsVariantsPricelistVolumePrice($productId, $variantId, $pricelistId, $quantity), $fetch);
     }
     /**
      * Retrieves the `ProductVariantPricelistVolumePrice` object
@@ -2848,7 +2848,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductsVariantsPricelistVolumePrice(int $productId, int $variantId, int $pricelistId, int $quantity, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVariantsPricelistVolumePrice($productId, $variantId, $pricelistId, $quantity), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductsVariantsPricelistVolumePrice($productId, $variantId, $pricelistId, $quantity), $fetch);
     }
     /**
     * Updates a product variant pricelist volume price. 
@@ -2858,16 +2858,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param int $variantId The products variants id
     * @param int $pricelistId The pricelist id
     * @param int $quantity The volume quantity
-    * @param \Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PatchProductsVariantsPricelistVolumePriceBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PatchProductsVariantsPricelistVolumePriceNotFoundException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantVolumePriceModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function patchProductsVariantsPricelistVolumePrice(int $productId, int $variantId, int $pricelistId, int $quantity, \Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductsVariantsPricelistVolumePrice(int $productId, int $variantId, int $pricelistId, int $quantity, ?\Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsVariantsPricelistVolumePrice($productId, $variantId, $pricelistId, $quantity, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductsVariantsPricelistVolumePrice($productId, $variantId, $pricelistId, $quantity, $requestBody), $fetch);
     }
     /**
     * Updates a product variant pricelist volume price. 
@@ -2877,16 +2877,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param int $variantId The products variants id
     * @param int $pricelistId The pricelist id
     * @param int $quantity The volume quantity
-    * @param \Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistVolumePriceBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistVolumePriceNotFoundException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantVolumePriceModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function putProductsVariantsPricelistVolumePrice(int $productId, int $variantId, int $pricelistId, int $quantity, \Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductsVariantsPricelistVolumePrice(int $productId, int $variantId, int $pricelistId, int $quantity, ?\Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductsVariantsPricelistVolumePrice($productId, $variantId, $pricelistId, $quantity, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductsVariantsPricelistVolumePrice($productId, $variantId, $pricelistId, $quantity, $requestBody), $fetch);
     }
     /**
      * Returns a list of product variant stocks for stock locations
@@ -2900,7 +2900,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listProductsVariantsStocks(int $productId, int $variantId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariantsStocks($productId, $variantId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListProductsVariantsStocks($productId, $variantId), $fetch);
     }
     /**
      * Deletes a product variant stock permanently.
@@ -2915,7 +2915,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteProductVariantStocks(int $productId, int $variantId, int $stockLocationId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductVariantStocks($productId, $variantId, $stockLocationId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteProductVariantStocks($productId, $variantId, $stockLocationId), $fetch);
     }
     /**
      * Retrieves the `ProductVariantStock` object
@@ -2930,7 +2930,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getProductVariantStock(int $productId, int $variantId, int $stockLocationId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetProductVariantStock($productId, $variantId, $stockLocationId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetProductVariantStock($productId, $variantId, $stockLocationId), $fetch);
     }
     /**
     * Update the stock for a product variant at a stock location. 
@@ -2939,16 +2939,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param int $productId The product id
     * @param int $variantId The products variants id
     * @param int $stockLocationId The stock location id
-    * @param \Starweb\Api\Generated\Model\ProductVariantStockPatchRequestModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantStockPatchRequestModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PatchProductVariantStockBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PatchProductVariantStockNotFoundException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantStockModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function patchProductVariantStock(int $productId, int $variantId, int $stockLocationId, \Starweb\Api\Generated\Model\ProductVariantStockPatchRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchProductVariantStock(int $productId, int $variantId, int $stockLocationId, ?\Starweb\Api\Generated\Model\ProductVariantStockPatchRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchProductVariantStock($productId, $variantId, $stockLocationId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchProductVariantStock($productId, $variantId, $stockLocationId, $requestBody), $fetch);
     }
     /**
     * Update or set the stock for a product variant at a stock location. 
@@ -2957,16 +2957,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     * @param int $productId The product id
     * @param int $variantId The products variants id
     * @param int $stockLocationId The stock location id
-    * @param \Starweb\Api\Generated\Model\ProductVariantStockPutRequestModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantStockPutRequestModel $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Starweb\Api\Generated\Exception\PutProductVariantStockBadRequestException
     * @throws \Starweb\Api\Generated\Exception\PutProductVariantStockNotFoundException
     *
     * @return null|\Starweb\Api\Generated\Model\ProductVariantStockModelItem|\Psr\Http\Message\ResponseInterface
     */
-    public function putProductVariantStock(int $productId, int $variantId, int $stockLocationId, \Starweb\Api\Generated\Model\ProductVariantStockPutRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putProductVariantStock(int $productId, int $variantId, int $stockLocationId, ?\Starweb\Api\Generated\Model\ProductVariantStockPutRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutProductVariantStock($productId, $variantId, $stockLocationId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutProductVariantStock($productId, $variantId, $stockLocationId, $requestBody), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -2975,7 +2975,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getShippingMethods(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetShippingMethods(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetShippingMethods(), $fetch);
     }
     /**
      * Retrieves a `ShippingMethid` object
@@ -2988,7 +2988,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getShippingMethod(int $shippingMethodId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetShippingMethod($shippingMethodId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetShippingMethod($shippingMethodId), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -2997,7 +2997,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getShippingTrackingTypes(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetShippingTrackingTypes(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetShippingTrackingTypes(), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -3007,7 +3007,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getShop(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetShop(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetShop(), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -3017,21 +3017,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function listStockLocations(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\ListStockLocations(), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\ListStockLocations(), $fetch);
     }
     /**
      * Create a stock location. Retrieves the created `StockLocation` object
      *
-     * @param \Starweb\Api\Generated\Model\StockLocationPostRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\StockLocationPostRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateStockLocationBadRequestException
      * @throws \Starweb\Api\Generated\Exception\CreateStockLocationForbiddenException
      *
      * @return null|\Starweb\Api\Generated\Model\StockLocationModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createStockLocation(\Starweb\Api\Generated\Model\StockLocationPostRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createStockLocation(?\Starweb\Api\Generated\Model\StockLocationPostRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateStockLocation($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateStockLocation($requestBody), $fetch);
     }
     /**
      * Delete a stock location permanently
@@ -3045,7 +3045,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteStockLocation(int $stockLocationId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteStockLocation($stockLocationId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteStockLocation($stockLocationId), $fetch);
     }
     /**
      * Retrieves a `StockLocation` object
@@ -3058,13 +3058,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getStockLocation(int $stockLocationId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetStockLocation($stockLocationId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetStockLocation($stockLocationId), $fetch);
     }
     /**
      * Update a stock location partially. Retrieves the updated `StockLocation` object
      *
      * @param int $stockLocationId The stock location id
-     * @param mixed $requestBody 
+     * @param null|mixed $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchStockLocationBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchStockLocationForbiddenException
@@ -3072,15 +3072,15 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @return null|\Starweb\Api\Generated\Model\StockLocationModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchStockLocation(int $stockLocationId, $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchStockLocation(int $stockLocationId, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchStockLocation($stockLocationId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchStockLocation($stockLocationId, $requestBody), $fetch);
     }
     /**
      * Update a stock location. Retrieves the updated `StockLocation` object
      *
      * @param int $stockLocationId The stock location id
-     * @param \Starweb\Api\Generated\Model\StockLocationPutRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\StockLocationPutRequestModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutStockLocationBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutStockLocationForbiddenException
@@ -3088,9 +3088,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @return null|\Starweb\Api\Generated\Model\StockLocationModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putStockLocation(int $stockLocationId, \Starweb\Api\Generated\Model\StockLocationPutRequestModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putStockLocation(int $stockLocationId, ?\Starweb\Api\Generated\Model\StockLocationPutRequestModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutStockLocation($stockLocationId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutStockLocation($stockLocationId, $requestBody), $fetch);
     }
     /**
      * 
@@ -3105,20 +3105,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getWebHooks(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetWebHooks($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetWebHooks($queryParameters), $fetch);
     }
     /**
      * 
      *
-     * @param \Starweb\Api\Generated\Model\WebHookModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\WebHookModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\CreateWebHookBadRequestException
      *
      * @return null|\Starweb\Api\Generated\Model\WebHookModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function createWebHook(\Starweb\Api\Generated\Model\WebHookModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createWebHook(?\Starweb\Api\Generated\Model\WebHookModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\CreateWebHook($requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\CreateWebHook($requestBody), $fetch);
     }
     /**
      * 
@@ -3131,7 +3131,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function deleteWebHook(int $webHookId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\DeleteWebHook($webHookId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\DeleteWebHook($webHookId), $fetch);
     }
     /**
      * 
@@ -3144,51 +3144,58 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      */
     public function getWebHook(int $webHookId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\GetWebHook($webHookId), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\GetWebHook($webHookId), $fetch);
     }
     /**
      * 
      *
      * @param int $webHookId The web hook id
-     * @param \Starweb\Api\Generated\Model\WebHookModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\WebHookModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PatchWebHookBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PatchWebHookNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\WebHookModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function patchWebHook(int $webHookId, \Starweb\Api\Generated\Model\WebHookModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchWebHook(int $webHookId, ?\Starweb\Api\Generated\Model\WebHookModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PatchWebHook($webHookId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PatchWebHook($webHookId, $requestBody), $fetch);
     }
     /**
      * 
      *
      * @param int $webHookId The web hook id
-     * @param \Starweb\Api\Generated\Model\WebHookModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\WebHookModel $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Starweb\Api\Generated\Exception\PutWebHookBadRequestException
      * @throws \Starweb\Api\Generated\Exception\PutWebHookNotFoundException
      *
      * @return null|\Starweb\Api\Generated\Model\WebHookModelItem|\Psr\Http\Message\ResponseInterface
      */
-    public function putWebHook(int $webHookId, \Starweb\Api\Generated\Model\WebHookModel $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function putWebHook(int $webHookId, ?\Starweb\Api\Generated\Model\WebHookModel $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Starweb\Api\Generated\Endpoint\PutWebHook($webHookId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Starweb\Api\Generated\Endpoint\PutWebHook($webHookId, $requestBody), $fetch);
     }
-    public static function create($httpClient = null)
+    public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
     {
         if (null === $httpClient) {
-            $httpClient = \Http\Discovery\HttpClientDiscovery::find();
+            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://{shopId}.sws.local/api/v2');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://{shopId}.sws.local/api/v2');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
+            if (count($additionalPlugins) > 0) {
+                $plugins = array_merge($plugins, $additionalPlugins);
+            }
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
-        $messageFactory = \Http\Discovery\MessageFactoryDiscovery::find();
-        $streamFactory = \Http\Discovery\StreamFactoryDiscovery::find();
-        $serializer = new \Symfony\Component\Serializer\Serializer(\Starweb\Api\Generated\Normalizer\NormalizerFactory::create(), array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode())));
-        return new static($httpClient, $messageFactory, $serializer, $streamFactory);
+        $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
+        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
+        $normalizers = array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Starweb\Api\Generated\Normalizer\JaneObjectNormalizer());
+        if (count($additionalNormalizers) > 0) {
+            $normalizers = array_merge($normalizers, $additionalNormalizers);
+        }
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
+        return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

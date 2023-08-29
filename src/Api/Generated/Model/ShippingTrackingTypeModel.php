@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ShippingTrackingTypeModel
+class ShippingTrackingTypeModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The shipping tracking type ID
      *
@@ -34,6 +42,7 @@ class ShippingTrackingTypeModel
      */
     public function setType(?int $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -55,6 +64,7 @@ class ShippingTrackingTypeModel
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }

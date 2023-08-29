@@ -2,18 +2,18 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class CreatePricelist extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class CreatePricelist extends \Starweb\Api\Generated\Runtime\Client\BaseEndpoint implements \Starweb\Api\Generated\Runtime\Client\Endpoint
 {
     /**
      * Create a pricelist. Retrieves the created `Pricelist` object
      *
-     * @param mixed $requestBody 
+     * @param null|mixed $requestBody 
      */
-    public function __construct($requestBody)
+    public function __construct($requestBody = null)
     {
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Starweb\Api\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -40,13 +40,19 @@ class CreatePricelist extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *
      * @return null|\Starweb\Api\Generated\Model\PricelistModelItem
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\PricelistModelItem', 'json');
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            throw new \Starweb\Api\Generated\Exception\CreatePricelistBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Starweb\Api\Generated\Exception\CreatePricelistBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'), $response);
         }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('oauth2');
     }
 }

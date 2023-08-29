@@ -17,7 +17,7 @@ class AccessTokenTest extends TestCase
     {
         $token = new AccessToken('my-token');
 
-        $this->assertTrue(is_string((string) $token));
+        $this->assertIsString((string)$token);
         $this->assertEquals('my-token', (string) $token);
     }
 
@@ -25,7 +25,7 @@ class AccessTokenTest extends TestCase
     {
         $token = new AccessToken('my-token');
 
-        $this->assertTrue(is_int($token->getTtl()));
+        $this->assertIsInt($token->getTtl());
         $this->assertEquals(3600, $token->getTtl());
     }
 
@@ -33,7 +33,7 @@ class AccessTokenTest extends TestCase
     {
         $token = new AccessToken('my-token', 7200);
 
-        $this->assertTrue(is_int($token->getTtl()));
+        $this->assertIsInt($token->getTtl());
         $this->assertEquals(7200, $token->getTtl());
     }
 

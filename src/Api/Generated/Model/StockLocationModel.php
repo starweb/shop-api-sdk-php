@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class StockLocationModel
+class StockLocationModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The stock location Id
      *
@@ -64,6 +72,7 @@ class StockLocationModel
      */
     public function setStockLocationId(?int $stockLocationId) : self
     {
+        $this->initialized['stockLocationId'] = true;
         $this->stockLocationId = $stockLocationId;
         return $this;
     }
@@ -85,6 +94,7 @@ class StockLocationModel
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -106,6 +116,7 @@ class StockLocationModel
      */
     public function setExternalIdType(?string $externalIdType) : self
     {
+        $this->initialized['externalIdType'] = true;
         $this->externalIdType = $externalIdType;
         return $this;
     }
@@ -127,6 +138,7 @@ class StockLocationModel
      */
     public function setVisibility(?string $visibility) : self
     {
+        $this->initialized['visibility'] = true;
         $this->visibility = $visibility;
         return $this;
     }
@@ -148,6 +160,7 @@ class StockLocationModel
      */
     public function setSortIndex(?int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -169,6 +182,7 @@ class StockLocationModel
      */
     public function setEcommerceStockLocation(?bool $ecommerceStockLocation) : self
     {
+        $this->initialized['ecommerceStockLocation'] = true;
         $this->ecommerceStockLocation = $ecommerceStockLocation;
         return $this;
     }
@@ -190,6 +204,7 @@ class StockLocationModel
      */
     public function setLanguages(?StockLocationLanguagesModelCollection $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

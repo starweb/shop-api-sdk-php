@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,37 +16,76 @@ class ProductVatRateModelNormalizer implements DenormalizerInterface, Normalizer
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\ProductVatRateModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductVatRateModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\ProductVatRateModel();
-        if (property_exists($data, 'countryCode') && $data->{'countryCode'} !== null) {
-            $object->setCountryCode($data->{'countryCode'});
+        if (\array_key_exists('vatRate', $data) && \is_int($data['vatRate'])) {
+            $data['vatRate'] = (double) $data['vatRate'];
         }
-        if (property_exists($data, 'vatRate') && $data->{'vatRate'} !== null) {
-            $object->setVatRate($data->{'vatRate'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (\array_key_exists('countryCode', $data) && $data['countryCode'] !== null) {
+            $object->setCountryCode($data['countryCode']);
+            unset($data['countryCode']);
+        }
+        elseif (\array_key_exists('countryCode', $data) && $data['countryCode'] === null) {
+            $object->setCountryCode(null);
+        }
+        if (\array_key_exists('vatRate', $data) && $data['vatRate'] !== null) {
+            $object->setVatRate($data['vatRate']);
+            unset($data['vatRate']);
+        }
+        elseif (\array_key_exists('vatRate', $data) && $data['vatRate'] === null) {
+            $object->setVatRate(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getCountryCode()) {
-            $data->{'countryCode'} = $object->getCountryCode();
+        $data = array();
+        if ($object->isInitialized('countryCode') && null !== $object->getCountryCode()) {
+            $data['countryCode'] = $object->getCountryCode();
         }
-        if (null !== $object->getVatRate()) {
-            $data->{'vatRate'} = $object->getVatRate();
+        if ($object->isInitialized('vatRate') && null !== $object->getVatRate()) {
+            $data['vatRate'] = $object->getVatRate();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\ProductVatRateModel' => false);
     }
 }

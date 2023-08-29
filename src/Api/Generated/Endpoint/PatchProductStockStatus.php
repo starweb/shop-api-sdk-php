@@ -2,21 +2,21 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class PatchProductStockStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class PatchProductStockStatus extends \Starweb\Api\Generated\Runtime\Client\BaseEndpoint implements \Starweb\Api\Generated\Runtime\Client\Endpoint
 {
     protected $stockStatusId;
     /**
      * Updates a product stock status. Retrieves the update `ProductStockStatus` object.
      *
      * @param int $stockStatusId The stock status id
-     * @param \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
      */
-    public function __construct(int $stockStatusId, \Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody)
+    public function __construct(int $stockStatusId, ?\Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody = null)
     {
         $this->stockStatusId = $stockStatusId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Starweb\Api\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';
@@ -44,16 +44,22 @@ class PatchProductStockStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
      *
      * @return null|\Starweb\Api\Generated\Model\ProductStockStatusModelItem
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductStockStatusModelItem', 'json');
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            throw new \Starweb\Api\Generated\Exception\PatchProductStockStatusBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Starweb\Api\Generated\Exception\PatchProductStockStatusBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'), $response);
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            throw new \Starweb\Api\Generated\Exception\PatchProductStockStatusNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Starweb\Api\Generated\Exception\PatchProductStockStatusNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'), $response);
         }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('oauth2');
     }
 }

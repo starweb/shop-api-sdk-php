@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class MediaFileModel
+class MediaFileModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The media file ID
      *
@@ -76,6 +84,7 @@ class MediaFileModel
      */
     public function setMediaFileId(?int $mediaFileId) : self
     {
+        $this->initialized['mediaFileId'] = true;
         $this->mediaFileId = $mediaFileId;
         return $this;
     }
@@ -97,6 +106,7 @@ class MediaFileModel
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -118,6 +128,7 @@ class MediaFileModel
      */
     public function setCreatedAt(?string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -139,6 +150,7 @@ class MediaFileModel
      */
     public function setModifiedAt(?string $modifiedAt) : self
     {
+        $this->initialized['modifiedAt'] = true;
         $this->modifiedAt = $modifiedAt;
         return $this;
     }
@@ -160,6 +172,7 @@ class MediaFileModel
      */
     public function setSize(?int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }
@@ -181,6 +194,7 @@ class MediaFileModel
      */
     public function setMime(?string $mime) : self
     {
+        $this->initialized['mime'] = true;
         $this->mime = $mime;
         return $this;
     }
@@ -202,6 +216,7 @@ class MediaFileModel
      */
     public function setHeight(?int $height) : self
     {
+        $this->initialized['height'] = true;
         $this->height = $height;
         return $this;
     }
@@ -223,6 +238,7 @@ class MediaFileModel
      */
     public function setWidth(?int $width) : self
     {
+        $this->initialized['width'] = true;
         $this->width = $width;
         return $this;
     }
@@ -244,6 +260,7 @@ class MediaFileModel
      */
     public function setUrl(?string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }

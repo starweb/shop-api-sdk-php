@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,50 +16,100 @@ class WebHookModelNormalizer implements DenormalizerInterface, NormalizerInterfa
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\WebHookModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\WebHookModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\WebHookModel();
-        if (property_exists($data, 'webHookId') && $data->{'webHookId'} !== null) {
-            $object->setWebHookId($data->{'webHookId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'name') && $data->{'name'} !== null) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('webHookId', $data) && $data['webHookId'] !== null) {
+            $object->setWebHookId($data['webHookId']);
+            unset($data['webHookId']);
         }
-        if (property_exists($data, 'event') && $data->{'event'} !== null) {
-            $object->setEvent($data->{'event'});
+        elseif (\array_key_exists('webHookId', $data) && $data['webHookId'] === null) {
+            $object->setWebHookId(null);
         }
-        if (property_exists($data, 'statusId') && $data->{'statusId'} !== null) {
-            $object->setStatusId($data->{'statusId'});
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
+            unset($data['name']);
         }
-        if (property_exists($data, 'url') && $data->{'url'} !== null) {
-            $object->setUrl($data->{'url'});
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('event', $data) && $data['event'] !== null) {
+            $object->setEvent($data['event']);
+            unset($data['event']);
+        }
+        elseif (\array_key_exists('event', $data) && $data['event'] === null) {
+            $object->setEvent(null);
+        }
+        if (\array_key_exists('statusId', $data) && $data['statusId'] !== null) {
+            $object->setStatusId($data['statusId']);
+            unset($data['statusId']);
+        }
+        elseif (\array_key_exists('statusId', $data) && $data['statusId'] === null) {
+            $object->setStatusId(null);
+        }
+        if (\array_key_exists('url', $data) && $data['url'] !== null) {
+            $object->setUrl($data['url']);
+            unset($data['url']);
+        }
+        elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+            $object->setUrl(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+        $data = array();
+        if ($object->isInitialized('name') && null !== $object->getName()) {
+            $data['name'] = $object->getName();
         }
-        if (null !== $object->getEvent()) {
-            $data->{'event'} = $object->getEvent();
+        if ($object->isInitialized('event') && null !== $object->getEvent()) {
+            $data['event'] = $object->getEvent();
         }
-        $data->{'statusId'} = $object->getStatusId();
-        if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
+        if ($object->isInitialized('statusId') && null !== $object->getStatusId()) {
+            $data['statusId'] = $object->getStatusId();
+        }
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
+            $data['url'] = $object->getUrl();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\WebHookModel' => false);
     }
 }

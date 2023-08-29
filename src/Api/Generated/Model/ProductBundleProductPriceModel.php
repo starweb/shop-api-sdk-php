@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductBundleProductPriceModel
+class ProductBundleProductPriceModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The pricelist this price is for
      *
@@ -34,6 +42,7 @@ class ProductBundleProductPriceModel
      */
     public function setPricelistId(?int $pricelistId) : self
     {
+        $this->initialized['pricelistId'] = true;
         $this->pricelistId = $pricelistId;
         return $this;
     }
@@ -55,6 +64,7 @@ class ProductBundleProductPriceModel
      */
     public function setSpecialPriceExVat(?float $specialPriceExVat) : self
     {
+        $this->initialized['specialPriceExVat'] = true;
         $this->specialPriceExVat = $specialPriceExVat;
         return $this;
     }

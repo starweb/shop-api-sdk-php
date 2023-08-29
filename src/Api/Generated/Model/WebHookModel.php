@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class WebHookModel
+class WebHookModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The id of the web hook
      *
@@ -52,6 +60,7 @@ class WebHookModel
      */
     public function setWebHookId(?int $webHookId) : self
     {
+        $this->initialized['webHookId'] = true;
         $this->webHookId = $webHookId;
         return $this;
     }
@@ -73,6 +82,7 @@ class WebHookModel
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -94,6 +104,7 @@ class WebHookModel
      */
     public function setEvent(?string $event) : self
     {
+        $this->initialized['event'] = true;
         $this->event = $event;
         return $this;
     }
@@ -115,6 +126,7 @@ class WebHookModel
      */
     public function setStatusId(?int $statusId) : self
     {
+        $this->initialized['statusId'] = true;
         $this->statusId = $statusId;
         return $this;
     }
@@ -136,6 +148,7 @@ class WebHookModel
      */
     public function setUrl(?string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }

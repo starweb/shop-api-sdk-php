@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class PaymentMethodModel
+class PaymentMethodModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The payment methods Id
      *
@@ -112,6 +120,7 @@ class PaymentMethodModel
      */
     public function setPaymentMethodId(?int $paymentMethodId) : self
     {
+        $this->initialized['paymentMethodId'] = true;
         $this->paymentMethodId = $paymentMethodId;
         return $this;
     }
@@ -133,6 +142,7 @@ class PaymentMethodModel
      */
     public function setIdCode(?string $idCode) : self
     {
+        $this->initialized['idCode'] = true;
         $this->idCode = $idCode;
         return $this;
     }
@@ -154,6 +164,7 @@ class PaymentMethodModel
      */
     public function setActive(?bool $active) : self
     {
+        $this->initialized['active'] = true;
         $this->active = $active;
         return $this;
     }
@@ -175,6 +186,7 @@ class PaymentMethodModel
      */
     public function setFee(?float $fee) : self
     {
+        $this->initialized['fee'] = true;
         $this->fee = $fee;
         return $this;
     }
@@ -196,6 +208,7 @@ class PaymentMethodModel
      */
     public function setValidForCountries(?string $validForCountries) : self
     {
+        $this->initialized['validForCountries'] = true;
         $this->validForCountries = $validForCountries;
         return $this;
     }
@@ -217,6 +230,7 @@ class PaymentMethodModel
      */
     public function setValidCountriesSelected(?array $validCountriesSelected) : self
     {
+        $this->initialized['validCountriesSelected'] = true;
         $this->validCountriesSelected = $validCountriesSelected;
         return $this;
     }
@@ -238,6 +252,7 @@ class PaymentMethodModel
      */
     public function setValidForMinItemsSubtotal(?float $validForMinItemsSubtotal) : self
     {
+        $this->initialized['validForMinItemsSubtotal'] = true;
         $this->validForMinItemsSubtotal = $validForMinItemsSubtotal;
         return $this;
     }
@@ -259,6 +274,7 @@ class PaymentMethodModel
      */
     public function setValidForMaxItemsSubtotal(?float $validForMaxItemsSubtotal) : self
     {
+        $this->initialized['validForMaxItemsSubtotal'] = true;
         $this->validForMaxItemsSubtotal = $validForMaxItemsSubtotal;
         return $this;
     }
@@ -280,6 +296,7 @@ class PaymentMethodModel
      */
     public function setValidForMinWeight(?float $validForMinWeight) : self
     {
+        $this->initialized['validForMinWeight'] = true;
         $this->validForMinWeight = $validForMinWeight;
         return $this;
     }
@@ -301,6 +318,7 @@ class PaymentMethodModel
      */
     public function setValidForMaxWeight(?float $validForMaxWeight) : self
     {
+        $this->initialized['validForMaxWeight'] = true;
         $this->validForMaxWeight = $validForMaxWeight;
         return $this;
     }
@@ -322,6 +340,7 @@ class PaymentMethodModel
      */
     public function setValidForShippingMethods(?string $validForShippingMethods) : self
     {
+        $this->initialized['validForShippingMethods'] = true;
         $this->validForShippingMethods = $validForShippingMethods;
         return $this;
     }
@@ -343,6 +362,7 @@ class PaymentMethodModel
      */
     public function setValidForCustomerType(?string $validForCustomerType) : self
     {
+        $this->initialized['validForCustomerType'] = true;
         $this->validForCustomerType = $validForCustomerType;
         return $this;
     }
@@ -364,6 +384,7 @@ class PaymentMethodModel
      */
     public function setIsClickAndCollect(?bool $isClickAndCollect) : self
     {
+        $this->initialized['isClickAndCollect'] = true;
         $this->isClickAndCollect = $isClickAndCollect;
         return $this;
     }
@@ -385,6 +406,7 @@ class PaymentMethodModel
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -406,6 +428,7 @@ class PaymentMethodModel
      */
     public function setLanguages(?PaymentMethodLanguageModelCollection $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

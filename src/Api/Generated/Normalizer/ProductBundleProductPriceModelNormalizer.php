@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,35 +16,74 @@ class ProductBundleProductPriceModelNormalizer implements DenormalizerInterface,
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\ProductBundleProductPriceModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductBundleProductPriceModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\ProductBundleProductPriceModel();
-        if (property_exists($data, 'pricelistId') && $data->{'pricelistId'} !== null) {
-            $object->setPricelistId($data->{'pricelistId'});
+        if (\array_key_exists('specialPriceExVat', $data) && \is_int($data['specialPriceExVat'])) {
+            $data['specialPriceExVat'] = (double) $data['specialPriceExVat'];
         }
-        if (property_exists($data, 'specialPriceExVat') && $data->{'specialPriceExVat'} !== null) {
-            $object->setSpecialPriceExVat($data->{'specialPriceExVat'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (\array_key_exists('pricelistId', $data) && $data['pricelistId'] !== null) {
+            $object->setPricelistId($data['pricelistId']);
+            unset($data['pricelistId']);
+        }
+        elseif (\array_key_exists('pricelistId', $data) && $data['pricelistId'] === null) {
+            $object->setPricelistId(null);
+        }
+        if (\array_key_exists('specialPriceExVat', $data) && $data['specialPriceExVat'] !== null) {
+            $object->setSpecialPriceExVat($data['specialPriceExVat']);
+            unset($data['specialPriceExVat']);
+        }
+        elseif (\array_key_exists('specialPriceExVat', $data) && $data['specialPriceExVat'] === null) {
+            $object->setSpecialPriceExVat(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getPricelistId()) {
-            $data->{'pricelistId'} = $object->getPricelistId();
+        $data = array();
+        $data['pricelistId'] = $object->getPricelistId();
+        if ($object->isInitialized('specialPriceExVat') && null !== $object->getSpecialPriceExVat()) {
+            $data['specialPriceExVat'] = $object->getSpecialPriceExVat();
         }
-        $data->{'specialPriceExVat'} = $object->getSpecialPriceExVat();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\ProductBundleProductPriceModel' => false);
     }
 }

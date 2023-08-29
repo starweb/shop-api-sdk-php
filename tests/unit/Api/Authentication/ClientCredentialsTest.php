@@ -18,7 +18,7 @@ class ClientCredentialsTest extends TestCase
     {
         $credentials = new ClientCredentials('client_id', 'client_secret');
 
-        $this->assertTrue(is_string($credentials->getId()));
+        $this->assertIsString($credentials->getId());
         $this->assertEquals('client_id', ($credentials->getId()));
     }
 
@@ -26,7 +26,7 @@ class ClientCredentialsTest extends TestCase
     {
         $credentials = new ClientCredentials('client_id', 'client_secret');
 
-        $this->assertTrue(is_string($credentials->getSecret()));
+        $this->assertIsString($credentials->getSecret());
         $this->assertEquals('client_secret', ($credentials->getSecret()));
     }
 }

@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductModel
+class ProductModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
@@ -172,6 +180,7 @@ class ProductModel
      */
     public function setProductId(?int $productId) : self
     {
+        $this->initialized['productId'] = true;
         $this->productId = $productId;
         return $this;
     }
@@ -193,6 +202,7 @@ class ProductModel
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -214,6 +224,7 @@ class ProductModel
      */
     public function setExternalIdType(?string $externalIdType) : self
     {
+        $this->initialized['externalIdType'] = true;
         $this->externalIdType = $externalIdType;
         return $this;
     }
@@ -235,6 +246,7 @@ class ProductModel
      */
     public function setCreatedAt(?string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -256,6 +268,7 @@ class ProductModel
      */
     public function setDefaultVatRate(?string $defaultVatRate) : self
     {
+        $this->initialized['defaultVatRate'] = true;
         $this->defaultVatRate = $defaultVatRate;
         return $this;
     }
@@ -277,6 +290,7 @@ class ProductModel
      */
     public function setVisibility(?string $visibility) : self
     {
+        $this->initialized['visibility'] = true;
         $this->visibility = $visibility;
         return $this;
     }
@@ -298,6 +312,7 @@ class ProductModel
      */
     public function setVisibilityPricelistIds(?array $visibilityPricelistIds) : self
     {
+        $this->initialized['visibilityPricelistIds'] = true;
         $this->visibilityPricelistIds = $visibilityPricelistIds;
         return $this;
     }
@@ -319,6 +334,7 @@ class ProductModel
      */
     public function setMoreInfoUrl(?string $moreInfoUrl) : self
     {
+        $this->initialized['moreInfoUrl'] = true;
         $this->moreInfoUrl = $moreInfoUrl;
         return $this;
     }
@@ -340,6 +356,7 @@ class ProductModel
      */
     public function setManufacturerId(?int $manufacturerId) : self
     {
+        $this->initialized['manufacturerId'] = true;
         $this->manufacturerId = $manufacturerId;
         return $this;
     }
@@ -361,6 +378,7 @@ class ProductModel
      */
     public function setUnitId(?int $unitId) : self
     {
+        $this->initialized['unitId'] = true;
         $this->unitId = $unitId;
         return $this;
     }
@@ -382,6 +400,7 @@ class ProductModel
      */
     public function setSortIndex(?int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -403,6 +422,7 @@ class ProductModel
      */
     public function setType(?string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -424,6 +444,7 @@ class ProductModel
      */
     public function setIsBackInStockWatchable(?bool $isBackInStockWatchable) : self
     {
+        $this->initialized['isBackInStockWatchable'] = true;
         $this->isBackInStockWatchable = $isBackInStockWatchable;
         return $this;
     }
@@ -445,6 +466,7 @@ class ProductModel
      */
     public function setBundleUseManualPrice(?bool $bundleUseManualPrice) : self
     {
+        $this->initialized['bundleUseManualPrice'] = true;
         $this->bundleUseManualPrice = $bundleUseManualPrice;
         return $this;
     }
@@ -466,6 +488,7 @@ class ProductModel
      */
     public function setAccounting(?int $accounting) : self
     {
+        $this->initialized['accounting'] = true;
         $this->accounting = $accounting;
         return $this;
     }
@@ -487,6 +510,7 @@ class ProductModel
      */
     public function setHasSeveralVariants(?bool $hasSeveralVariants) : self
     {
+        $this->initialized['hasSeveralVariants'] = true;
         $this->hasSeveralVariants = $hasSeveralVariants;
         return $this;
     }
@@ -508,6 +532,7 @@ class ProductModel
      */
     public function setModifiedAt(?string $modifiedAt) : self
     {
+        $this->initialized['modifiedAt'] = true;
         $this->modifiedAt = $modifiedAt;
         return $this;
     }
@@ -529,6 +554,7 @@ class ProductModel
      */
     public function setVariants(?ProductVariantModelCollection $variants) : self
     {
+        $this->initialized['variants'] = true;
         $this->variants = $variants;
         return $this;
     }
@@ -550,6 +576,7 @@ class ProductModel
      */
     public function setBundledProducts(?BundledProductsModelCollection $bundledProducts) : self
     {
+        $this->initialized['bundledProducts'] = true;
         $this->bundledProducts = $bundledProducts;
         return $this;
     }
@@ -571,6 +598,7 @@ class ProductModel
      */
     public function setMediaFiles(?ProductMediaFileLinkModelCollection $mediaFiles) : self
     {
+        $this->initialized['mediaFiles'] = true;
         $this->mediaFiles = $mediaFiles;
         return $this;
     }
@@ -592,6 +620,7 @@ class ProductModel
      */
     public function setLanguages(?ProductModelLanguages $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }
@@ -613,6 +642,7 @@ class ProductModel
      */
     public function setVatRates(?ProductVatRateModelCollection $vatRates) : self
     {
+        $this->initialized['vatRates'] = true;
         $this->vatRates = $vatRates;
         return $this;
     }
@@ -634,6 +664,7 @@ class ProductModel
      */
     public function setCategories(?ProductCategoryLinkModelCollection $categories) : self
     {
+        $this->initialized['categories'] = true;
         $this->categories = $categories;
         return $this;
     }
@@ -655,6 +686,7 @@ class ProductModel
      */
     public function setUnit(?ProductUnitModelItem $unit) : self
     {
+        $this->initialized['unit'] = true;
         $this->unit = $unit;
         return $this;
     }
@@ -676,6 +708,7 @@ class ProductModel
      */
     public function setMetaData(?ProductMetaDataModelCollection $metaData) : self
     {
+        $this->initialized['metaData'] = true;
         $this->metaData = $metaData;
         return $this;
     }

@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductCategoryModelCollection
+class ProductCategoryModelCollection extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * A list of product categories
      *
@@ -34,6 +42,7 @@ class ProductCategoryModelCollection
      */
     public function setData(?array $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }
@@ -55,6 +64,7 @@ class ProductCategoryModelCollection
      */
     public function setMeta(?ProductCategoryModelCollectionMeta $meta) : self
     {
+        $this->initialized['meta'] = true;
         $this->meta = $meta;
         return $this;
     }

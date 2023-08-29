@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductVariantStockResponseModel
+class ProductVariantStockResponseModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The stock location id status id. See  [stock locations](#tag/Stock-Locations)
      *
@@ -40,6 +48,7 @@ class ProductVariantStockResponseModel
      */
     public function setStockLocationId(?int $stockLocationId) : self
     {
+        $this->initialized['stockLocationId'] = true;
         $this->stockLocationId = $stockLocationId;
         return $this;
     }
@@ -61,6 +70,7 @@ class ProductVariantStockResponseModel
      */
     public function setStockStatusId(?int $stockStatusId) : self
     {
+        $this->initialized['stockStatusId'] = true;
         $this->stockStatusId = $stockStatusId;
         return $this;
     }
@@ -82,6 +92,7 @@ class ProductVariantStockResponseModel
      */
     public function setStockQuantity(?float $stockQuantity) : self
     {
+        $this->initialized['stockQuantity'] = true;
         $this->stockQuantity = $stockQuantity;
         return $this;
     }

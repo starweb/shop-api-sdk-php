@@ -2,18 +2,18 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class GenerateFetchAccessToken extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class GenerateFetchAccessToken extends \Starweb\Api\Generated\Runtime\Client\BaseEndpoint implements \Starweb\Api\Generated\Runtime\Client\Endpoint
 {
     /**
      * Create a token. Retrieves the create `Token` object.
      *
-     * @param \Starweb\Api\Generated\Model\ClientCredentialModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ClientCredentialModel $requestBody 
      */
-    public function __construct(\Starweb\Api\Generated\Model\ClientCredentialModel $requestBody)
+    public function __construct(?\Starweb\Api\Generated\Model\ClientCredentialModel $requestBody = null)
     {
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Starweb\Api\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -40,13 +40,19 @@ class GenerateFetchAccessToken extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
      *
      * @return null|\Starweb\Api\Generated\Model\TokenModel
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\TokenModel', 'json');
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            throw new \Starweb\Api\Generated\Exception\GenerateFetchAccessTokenBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Starweb\Api\Generated\Exception\GenerateFetchAccessTokenBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'), $response);
         }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('oauth2');
     }
 }

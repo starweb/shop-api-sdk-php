@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class CustomerAddedTagModel
+class CustomerAddedTagModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The id of the tag
      *
@@ -34,6 +42,7 @@ class CustomerAddedTagModel
      */
     public function setTagId(?int $tagId) : self
     {
+        $this->initialized['tagId'] = true;
         $this->tagId = $tagId;
         return $this;
     }
@@ -55,6 +64,7 @@ class CustomerAddedTagModel
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }

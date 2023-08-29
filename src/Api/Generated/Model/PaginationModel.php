@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class PaginationModel
+class PaginationModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The current requested page
      *
@@ -52,6 +60,7 @@ class PaginationModel
      */
     public function setCurrentPage(?int $currentPage) : self
     {
+        $this->initialized['currentPage'] = true;
         $this->currentPage = $currentPage;
         return $this;
     }
@@ -73,6 +82,7 @@ class PaginationModel
      */
     public function setPerPage(?int $perPage) : self
     {
+        $this->initialized['perPage'] = true;
         $this->perPage = $perPage;
         return $this;
     }
@@ -94,6 +104,7 @@ class PaginationModel
      */
     public function setTotal(?int $total) : self
     {
+        $this->initialized['total'] = true;
         $this->total = $total;
         return $this;
     }
@@ -115,6 +126,7 @@ class PaginationModel
      */
     public function setCount(?int $count) : self
     {
+        $this->initialized['count'] = true;
         $this->count = $count;
         return $this;
     }
@@ -136,6 +148,7 @@ class PaginationModel
      */
     public function setTotalPages(?int $totalPages) : self
     {
+        $this->initialized['totalPages'] = true;
         $this->totalPages = $totalPages;
         return $this;
     }

@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class PatchProductTagOption extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class PatchProductTagOption extends \Starweb\Api\Generated\Runtime\Client\BaseEndpoint implements \Starweb\Api\Generated\Runtime\Client\Endpoint
 {
     protected $productTagId;
     protected $productTagOptionId;
@@ -11,15 +11,15 @@ class PatchProductTagOption extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
      *
      * @param int $productTagId The product tag id
      * @param int $productTagOptionId The product tag option id
-     * @param \Starweb\Api\Generated\Model\ProductTagOptionPatchRequestModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductTagOptionPatchRequestModel $requestBody 
      */
-    public function __construct(int $productTagId, int $productTagOptionId, \Starweb\Api\Generated\Model\ProductTagOptionPatchRequestModel $requestBody)
+    public function __construct(int $productTagId, int $productTagOptionId, ?\Starweb\Api\Generated\Model\ProductTagOptionPatchRequestModel $requestBody = null)
     {
         $this->productTagId = $productTagId;
         $this->productTagOptionId = $productTagOptionId;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Starweb\Api\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';
@@ -48,19 +48,25 @@ class PatchProductTagOption extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
      *
      * @return null|\Starweb\Api\Generated\Model\ProductTagOptionModelItem
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductTagOptionModelItem', 'json');
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            throw new \Starweb\Api\Generated\Exception\PatchProductTagOptionBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Starweb\Api\Generated\Exception\PatchProductTagOptionBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'), $response);
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            throw new \Starweb\Api\Generated\Exception\PatchProductTagOptionNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Starweb\Api\Generated\Exception\PatchProductTagOptionNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'), $response);
         }
-        if (405 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            throw new \Starweb\Api\Generated\Exception\PatchProductTagOptionMethodNotAllowedException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        if (is_null($contentType) === false && (405 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Starweb\Api\Generated\Exception\PatchProductTagOptionMethodNotAllowedException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'), $response);
         }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('oauth2');
     }
 }

@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,52 +16,116 @@ class MediaFileModelNormalizer implements DenormalizerInterface, NormalizerInter
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\MediaFileModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\MediaFileModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\MediaFileModel();
-        if (property_exists($data, 'mediaFileId') && $data->{'mediaFileId'} !== null) {
-            $object->setMediaFileId($data->{'mediaFileId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'name') && $data->{'name'} !== null) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('mediaFileId', $data) && $data['mediaFileId'] !== null) {
+            $object->setMediaFileId($data['mediaFileId']);
+            unset($data['mediaFileId']);
         }
-        if (property_exists($data, 'createdAt') && $data->{'createdAt'} !== null) {
-            $object->setCreatedAt($data->{'createdAt'});
+        elseif (\array_key_exists('mediaFileId', $data) && $data['mediaFileId'] === null) {
+            $object->setMediaFileId(null);
         }
-        if (property_exists($data, 'modifiedAt') && $data->{'modifiedAt'} !== null) {
-            $object->setModifiedAt($data->{'modifiedAt'});
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
+            unset($data['name']);
         }
-        if (property_exists($data, 'size') && $data->{'size'} !== null) {
-            $object->setSize($data->{'size'});
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
-        if (property_exists($data, 'mime') && $data->{'mime'} !== null) {
-            $object->setMime($data->{'mime'});
+        if (\array_key_exists('createdAt', $data) && $data['createdAt'] !== null) {
+            $object->setCreatedAt($data['createdAt']);
+            unset($data['createdAt']);
         }
-        if (property_exists($data, 'height') && $data->{'height'} !== null) {
-            $object->setHeight($data->{'height'});
+        elseif (\array_key_exists('createdAt', $data) && $data['createdAt'] === null) {
+            $object->setCreatedAt(null);
         }
-        if (property_exists($data, 'width') && $data->{'width'} !== null) {
-            $object->setWidth($data->{'width'});
+        if (\array_key_exists('modifiedAt', $data) && $data['modifiedAt'] !== null) {
+            $object->setModifiedAt($data['modifiedAt']);
+            unset($data['modifiedAt']);
         }
-        if (property_exists($data, 'url') && $data->{'url'} !== null) {
-            $object->setUrl($data->{'url'});
+        elseif (\array_key_exists('modifiedAt', $data) && $data['modifiedAt'] === null) {
+            $object->setModifiedAt(null);
+        }
+        if (\array_key_exists('size', $data) && $data['size'] !== null) {
+            $object->setSize($data['size']);
+            unset($data['size']);
+        }
+        elseif (\array_key_exists('size', $data) && $data['size'] === null) {
+            $object->setSize(null);
+        }
+        if (\array_key_exists('mime', $data) && $data['mime'] !== null) {
+            $object->setMime($data['mime']);
+            unset($data['mime']);
+        }
+        elseif (\array_key_exists('mime', $data) && $data['mime'] === null) {
+            $object->setMime(null);
+        }
+        if (\array_key_exists('height', $data) && $data['height'] !== null) {
+            $object->setHeight($data['height']);
+            unset($data['height']);
+        }
+        elseif (\array_key_exists('height', $data) && $data['height'] === null) {
+            $object->setHeight(null);
+        }
+        if (\array_key_exists('width', $data) && $data['width'] !== null) {
+            $object->setWidth($data['width']);
+            unset($data['width']);
+        }
+        elseif (\array_key_exists('width', $data) && $data['width'] === null) {
+            $object->setWidth(null);
+        }
+        if (\array_key_exists('url', $data) && $data['url'] !== null) {
+            $object->setUrl($data['url']);
+            unset($data['url']);
+        }
+        elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+            $object->setUrl(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
+        $data = array();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\MediaFileModel' => false);
     }
 }

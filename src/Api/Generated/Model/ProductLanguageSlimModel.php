@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductLanguageSlimModel
+class ProductLanguageSlimModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The langCode for this language. Supported language codes are: sv, en, ar, no, da, fi, de, fr, es
      *
@@ -46,6 +54,7 @@ class ProductLanguageSlimModel
      */
     public function setLangCode(?string $langCode) : self
     {
+        $this->initialized['langCode'] = true;
         $this->langCode = $langCode;
         return $this;
     }
@@ -67,6 +76,7 @@ class ProductLanguageSlimModel
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -88,6 +98,7 @@ class ProductLanguageSlimModel
      */
     public function setShortDescription(?string $shortDescription) : self
     {
+        $this->initialized['shortDescription'] = true;
         $this->shortDescription = $shortDescription;
         return $this;
     }
@@ -109,6 +120,7 @@ class ProductLanguageSlimModel
      */
     public function setPermalink(?string $permalink) : self
     {
+        $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
         return $this;
     }

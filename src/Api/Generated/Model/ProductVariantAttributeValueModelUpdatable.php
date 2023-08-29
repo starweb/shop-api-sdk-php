@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductVariantAttributeValueModelUpdatable
+class ProductVariantAttributeValueModelUpdatable extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The external id of this pricelist
      *
@@ -52,6 +60,7 @@ class ProductVariantAttributeValueModelUpdatable
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -73,6 +82,7 @@ class ProductVariantAttributeValueModelUpdatable
      */
     public function setExternalIdType(?string $externalIdType) : self
     {
+        $this->initialized['externalIdType'] = true;
         $this->externalIdType = $externalIdType;
         return $this;
     }
@@ -94,6 +104,7 @@ class ProductVariantAttributeValueModelUpdatable
      */
     public function setSkuSuffix(?string $skuSuffix) : self
     {
+        $this->initialized['skuSuffix'] = true;
         $this->skuSuffix = $skuSuffix;
         return $this;
     }
@@ -115,6 +126,7 @@ class ProductVariantAttributeValueModelUpdatable
      */
     public function setSortIndex(?int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -136,6 +148,7 @@ class ProductVariantAttributeValueModelUpdatable
      */
     public function setLanguages(?array $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

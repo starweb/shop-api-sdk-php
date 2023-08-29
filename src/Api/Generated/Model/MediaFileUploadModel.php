@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class MediaFileUploadModel
+class MediaFileUploadModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
@@ -28,6 +36,7 @@ class MediaFileUploadModel
      */
     public function setFile(?string $file) : self
     {
+        $this->initialized['file'] = true;
         $this->file = $file;
         return $this;
     }

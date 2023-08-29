@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductVariantAttributeValueModel
+class ProductVariantAttributeValueModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The id for this attribute value
      *
@@ -58,6 +66,7 @@ class ProductVariantAttributeValueModel
      */
     public function setAttributeValueId(?int $attributeValueId) : self
     {
+        $this->initialized['attributeValueId'] = true;
         $this->attributeValueId = $attributeValueId;
         return $this;
     }
@@ -79,6 +88,7 @@ class ProductVariantAttributeValueModel
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -100,6 +110,7 @@ class ProductVariantAttributeValueModel
      */
     public function setExternalIdType(?string $externalIdType) : self
     {
+        $this->initialized['externalIdType'] = true;
         $this->externalIdType = $externalIdType;
         return $this;
     }
@@ -121,6 +132,7 @@ class ProductVariantAttributeValueModel
      */
     public function setSkuSuffix(?string $skuSuffix) : self
     {
+        $this->initialized['skuSuffix'] = true;
         $this->skuSuffix = $skuSuffix;
         return $this;
     }
@@ -142,6 +154,7 @@ class ProductVariantAttributeValueModel
      */
     public function setSortIndex(?int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -163,6 +176,7 @@ class ProductVariantAttributeValueModel
      */
     public function setLanguages(?ProductVariantAttributeValueModelLanguages $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

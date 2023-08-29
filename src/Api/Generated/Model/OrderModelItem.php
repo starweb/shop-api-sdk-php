@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class OrderModelItem
+class OrderModelItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
@@ -28,6 +36,7 @@ class OrderModelItem
      */
     public function setData(?OrderModel $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }

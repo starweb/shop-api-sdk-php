@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ClientCredentialModel
+class ClientCredentialModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The grant type to use for the request. At this time, only client_credentials is allowed
      *
@@ -40,6 +48,7 @@ class ClientCredentialModel
      */
     public function setGrantType(?string $grantType) : self
     {
+        $this->initialized['grantType'] = true;
         $this->grantType = $grantType;
         return $this;
     }
@@ -61,6 +70,7 @@ class ClientCredentialModel
      */
     public function setClientId(?string $clientId) : self
     {
+        $this->initialized['clientId'] = true;
         $this->clientId = $clientId;
         return $this;
     }
@@ -82,6 +92,7 @@ class ClientCredentialModel
      */
     public function setClientSecret(?string $clientSecret) : self
     {
+        $this->initialized['clientSecret'] = true;
         $this->clientSecret = $clientSecret;
         return $this;
     }

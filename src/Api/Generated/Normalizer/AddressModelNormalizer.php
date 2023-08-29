@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,103 +16,183 @@ class AddressModelNormalizer implements DenormalizerInterface, NormalizerInterfa
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\AddressModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\AddressModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\AddressModel();
-        if (property_exists($data, 'companyName') && $data->{'companyName'} !== null) {
-            $object->setCompanyName($data->{'companyName'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'firstName') && $data->{'firstName'} !== null) {
-            $object->setFirstName($data->{'firstName'});
+        if (\array_key_exists('companyName', $data) && $data['companyName'] !== null) {
+            $object->setCompanyName($data['companyName']);
+            unset($data['companyName']);
         }
-        if (property_exists($data, 'lastName') && $data->{'lastName'} !== null) {
-            $object->setLastName($data->{'lastName'});
+        elseif (\array_key_exists('companyName', $data) && $data['companyName'] === null) {
+            $object->setCompanyName(null);
         }
-        if (property_exists($data, 'careOf') && $data->{'careOf'} !== null) {
-            $object->setCareOf($data->{'careOf'});
+        if (\array_key_exists('firstName', $data) && $data['firstName'] !== null) {
+            $object->setFirstName($data['firstName']);
+            unset($data['firstName']);
         }
-        if (property_exists($data, 'attention') && $data->{'attention'} !== null) {
-            $object->setAttention($data->{'attention'});
+        elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
+            $object->setFirstName(null);
         }
-        if (property_exists($data, 'reference') && $data->{'reference'} !== null) {
-            $object->setReference($data->{'reference'});
+        if (\array_key_exists('lastName', $data) && $data['lastName'] !== null) {
+            $object->setLastName($data['lastName']);
+            unset($data['lastName']);
         }
-        if (property_exists($data, 'address') && $data->{'address'} !== null) {
-            $object->setAddress($data->{'address'});
+        elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
+            $object->setLastName(null);
         }
-        if (property_exists($data, 'postalCode') && $data->{'postalCode'} !== null) {
-            $object->setPostalCode($data->{'postalCode'});
+        if (\array_key_exists('careOf', $data) && $data['careOf'] !== null) {
+            $object->setCareOf($data['careOf']);
+            unset($data['careOf']);
         }
-        if (property_exists($data, 'city') && $data->{'city'} !== null) {
-            $object->setCity($data->{'city'});
+        elseif (\array_key_exists('careOf', $data) && $data['careOf'] === null) {
+            $object->setCareOf(null);
         }
-        if (property_exists($data, 'state') && $data->{'state'} !== null) {
-            $object->setState($data->{'state'});
+        if (\array_key_exists('attention', $data) && $data['attention'] !== null) {
+            $object->setAttention($data['attention']);
+            unset($data['attention']);
         }
-        if (property_exists($data, 'countryCode') && $data->{'countryCode'} !== null) {
-            $object->setCountryCode($data->{'countryCode'});
+        elseif (\array_key_exists('attention', $data) && $data['attention'] === null) {
+            $object->setAttention(null);
         }
-        if (property_exists($data, 'phoneNo') && $data->{'phoneNo'} !== null) {
-            $object->setPhoneNo($data->{'phoneNo'});
+        if (\array_key_exists('reference', $data) && $data['reference'] !== null) {
+            $object->setReference($data['reference']);
+            unset($data['reference']);
         }
-        if (property_exists($data, 'mobilePhoneNo') && $data->{'mobilePhoneNo'} !== null) {
-            $object->setMobilePhoneNo($data->{'mobilePhoneNo'});
+        elseif (\array_key_exists('reference', $data) && $data['reference'] === null) {
+            $object->setReference(null);
+        }
+        if (\array_key_exists('address', $data) && $data['address'] !== null) {
+            $object->setAddress($data['address']);
+            unset($data['address']);
+        }
+        elseif (\array_key_exists('address', $data) && $data['address'] === null) {
+            $object->setAddress(null);
+        }
+        if (\array_key_exists('postalCode', $data) && $data['postalCode'] !== null) {
+            $object->setPostalCode($data['postalCode']);
+            unset($data['postalCode']);
+        }
+        elseif (\array_key_exists('postalCode', $data) && $data['postalCode'] === null) {
+            $object->setPostalCode(null);
+        }
+        if (\array_key_exists('city', $data) && $data['city'] !== null) {
+            $object->setCity($data['city']);
+            unset($data['city']);
+        }
+        elseif (\array_key_exists('city', $data) && $data['city'] === null) {
+            $object->setCity(null);
+        }
+        if (\array_key_exists('state', $data) && $data['state'] !== null) {
+            $object->setState($data['state']);
+            unset($data['state']);
+        }
+        elseif (\array_key_exists('state', $data) && $data['state'] === null) {
+            $object->setState(null);
+        }
+        if (\array_key_exists('countryCode', $data) && $data['countryCode'] !== null) {
+            $object->setCountryCode($data['countryCode']);
+            unset($data['countryCode']);
+        }
+        elseif (\array_key_exists('countryCode', $data) && $data['countryCode'] === null) {
+            $object->setCountryCode(null);
+        }
+        if (\array_key_exists('phoneNo', $data) && $data['phoneNo'] !== null) {
+            $object->setPhoneNo($data['phoneNo']);
+            unset($data['phoneNo']);
+        }
+        elseif (\array_key_exists('phoneNo', $data) && $data['phoneNo'] === null) {
+            $object->setPhoneNo(null);
+        }
+        if (\array_key_exists('mobilePhoneNo', $data) && $data['mobilePhoneNo'] !== null) {
+            $object->setMobilePhoneNo($data['mobilePhoneNo']);
+            unset($data['mobilePhoneNo']);
+        }
+        elseif (\array_key_exists('mobilePhoneNo', $data) && $data['mobilePhoneNo'] === null) {
+            $object->setMobilePhoneNo(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getCompanyName()) {
-            $data->{'companyName'} = $object->getCompanyName();
+        $data = array();
+        if ($object->isInitialized('companyName') && null !== $object->getCompanyName()) {
+            $data['companyName'] = $object->getCompanyName();
         }
-        if (null !== $object->getFirstName()) {
-            $data->{'firstName'} = $object->getFirstName();
+        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
+            $data['firstName'] = $object->getFirstName();
         }
-        if (null !== $object->getLastName()) {
-            $data->{'lastName'} = $object->getLastName();
+        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
+            $data['lastName'] = $object->getLastName();
         }
-        if (null !== $object->getCareOf()) {
-            $data->{'careOf'} = $object->getCareOf();
+        if ($object->isInitialized('careOf') && null !== $object->getCareOf()) {
+            $data['careOf'] = $object->getCareOf();
         }
-        if (null !== $object->getAttention()) {
-            $data->{'attention'} = $object->getAttention();
+        if ($object->isInitialized('attention') && null !== $object->getAttention()) {
+            $data['attention'] = $object->getAttention();
         }
-        if (null !== $object->getReference()) {
-            $data->{'reference'} = $object->getReference();
+        if ($object->isInitialized('reference') && null !== $object->getReference()) {
+            $data['reference'] = $object->getReference();
         }
-        if (null !== $object->getAddress()) {
-            $data->{'address'} = $object->getAddress();
+        if ($object->isInitialized('address') && null !== $object->getAddress()) {
+            $data['address'] = $object->getAddress();
         }
-        if (null !== $object->getPostalCode()) {
-            $data->{'postalCode'} = $object->getPostalCode();
+        if ($object->isInitialized('postalCode') && null !== $object->getPostalCode()) {
+            $data['postalCode'] = $object->getPostalCode();
         }
-        if (null !== $object->getCity()) {
-            $data->{'city'} = $object->getCity();
+        if ($object->isInitialized('city') && null !== $object->getCity()) {
+            $data['city'] = $object->getCity();
         }
-        if (null !== $object->getState()) {
-            $data->{'state'} = $object->getState();
+        if ($object->isInitialized('state') && null !== $object->getState()) {
+            $data['state'] = $object->getState();
         }
-        if (null !== $object->getCountryCode()) {
-            $data->{'countryCode'} = $object->getCountryCode();
+        if ($object->isInitialized('countryCode') && null !== $object->getCountryCode()) {
+            $data['countryCode'] = $object->getCountryCode();
         }
-        if (null !== $object->getPhoneNo()) {
-            $data->{'phoneNo'} = $object->getPhoneNo();
+        if ($object->isInitialized('phoneNo') && null !== $object->getPhoneNo()) {
+            $data['phoneNo'] = $object->getPhoneNo();
         }
-        if (null !== $object->getMobilePhoneNo()) {
-            $data->{'mobilePhoneNo'} = $object->getMobilePhoneNo();
+        if ($object->isInitialized('mobilePhoneNo') && null !== $object->getMobilePhoneNo()) {
+            $data['mobilePhoneNo'] = $object->getMobilePhoneNo();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\AddressModel' => false);
     }
 }

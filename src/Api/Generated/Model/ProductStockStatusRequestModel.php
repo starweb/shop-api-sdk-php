@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductStockStatusRequestModel
+class ProductStockStatusRequestModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The stock status id
      *
@@ -64,6 +72,7 @@ class ProductStockStatusRequestModel
      */
     public function setStockStatusId(?int $stockStatusId) : self
     {
+        $this->initialized['stockStatusId'] = true;
         $this->stockStatusId = $stockStatusId;
         return $this;
     }
@@ -85,6 +94,7 @@ class ProductStockStatusRequestModel
      */
     public function setIdCode(?string $idCode) : self
     {
+        $this->initialized['idCode'] = true;
         $this->idCode = $idCode;
         return $this;
     }
@@ -106,6 +116,7 @@ class ProductStockStatusRequestModel
      */
     public function setSortIndex(?int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -127,6 +138,7 @@ class ProductStockStatusRequestModel
      */
     public function setStockoutNewStatusId(?int $stockoutNewStatusId) : self
     {
+        $this->initialized['stockoutNewStatusId'] = true;
         $this->stockoutNewStatusId = $stockoutNewStatusId;
         return $this;
     }
@@ -148,6 +160,7 @@ class ProductStockStatusRequestModel
      */
     public function setProductBuyable(?bool $productBuyable) : self
     {
+        $this->initialized['productBuyable'] = true;
         $this->productBuyable = $productBuyable;
         return $this;
     }
@@ -169,6 +182,7 @@ class ProductStockStatusRequestModel
      */
     public function setInStock(?bool $inStock) : self
     {
+        $this->initialized['inStock'] = true;
         $this->inStock = $inStock;
         return $this;
     }
@@ -190,6 +204,7 @@ class ProductStockStatusRequestModel
      */
     public function setLanguages(?array $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

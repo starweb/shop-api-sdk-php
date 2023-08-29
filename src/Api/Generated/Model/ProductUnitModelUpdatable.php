@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductUnitModelUpdatable
+class ProductUnitModelUpdatable extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The units id
      *
@@ -46,6 +54,7 @@ class ProductUnitModelUpdatable
      */
     public function setUnitId(?int $unitId) : self
     {
+        $this->initialized['unitId'] = true;
         $this->unitId = $unitId;
         return $this;
     }
@@ -67,6 +76,7 @@ class ProductUnitModelUpdatable
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -88,6 +98,7 @@ class ProductUnitModelUpdatable
      */
     public function setExternalIdType(?string $externalIdType) : self
     {
+        $this->initialized['externalIdType'] = true;
         $this->externalIdType = $externalIdType;
         return $this;
     }
@@ -109,6 +120,7 @@ class ProductUnitModelUpdatable
      */
     public function setLanguages(?array $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

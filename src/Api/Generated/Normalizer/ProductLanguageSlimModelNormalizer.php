@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,49 +16,89 @@ class ProductLanguageSlimModelNormalizer implements DenormalizerInterface, Norma
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\ProductLanguageSlimModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductLanguageSlimModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\ProductLanguageSlimModel();
-        if (property_exists($data, 'langCode') && $data->{'langCode'} !== null) {
-            $object->setLangCode($data->{'langCode'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'name') && $data->{'name'} !== null) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('langCode', $data) && $data['langCode'] !== null) {
+            $object->setLangCode($data['langCode']);
+            unset($data['langCode']);
         }
-        if (property_exists($data, 'shortDescription') && $data->{'shortDescription'} !== null) {
-            $object->setShortDescription($data->{'shortDescription'});
+        elseif (\array_key_exists('langCode', $data) && $data['langCode'] === null) {
+            $object->setLangCode(null);
         }
-        if (property_exists($data, 'permalink') && $data->{'permalink'} !== null) {
-            $object->setPermalink($data->{'permalink'});
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
+            unset($data['name']);
+        }
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('shortDescription', $data) && $data['shortDescription'] !== null) {
+            $object->setShortDescription($data['shortDescription']);
+            unset($data['shortDescription']);
+        }
+        elseif (\array_key_exists('shortDescription', $data) && $data['shortDescription'] === null) {
+            $object->setShortDescription(null);
+        }
+        if (\array_key_exists('permalink', $data) && $data['permalink'] !== null) {
+            $object->setPermalink($data['permalink']);
+            unset($data['permalink']);
+        }
+        elseif (\array_key_exists('permalink', $data) && $data['permalink'] === null) {
+            $object->setPermalink(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getLangCode()) {
-            $data->{'langCode'} = $object->getLangCode();
+        $data = array();
+        $data['langCode'] = $object->getLangCode();
+        $data['name'] = $object->getName();
+        if ($object->isInitialized('shortDescription') && null !== $object->getShortDescription()) {
+            $data['shortDescription'] = $object->getShortDescription();
         }
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+        if ($object->isInitialized('permalink') && null !== $object->getPermalink()) {
+            $data['permalink'] = $object->getPermalink();
         }
-        if (null !== $object->getShortDescription()) {
-            $data->{'shortDescription'} = $object->getShortDescription();
-        }
-        if (null !== $object->getPermalink()) {
-            $data->{'permalink'} = $object->getPermalink();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\ProductLanguageSlimModel' => false);
     }
 }

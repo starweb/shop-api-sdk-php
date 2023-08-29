@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class ListOrderAddresses extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class ListOrderAddresses extends \Starweb\Api\Generated\Runtime\Client\BaseEndpoint implements \Starweb\Api\Generated\Runtime\Client\Endpoint
 {
     protected $orderId;
     /**
@@ -14,7 +14,7 @@ class ListOrderAddresses extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     {
         $this->orderId = $orderId;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Starweb\Api\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -37,10 +37,16 @@ class ListOrderAddresses extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      *
      * @return null|\Starweb\Api\Generated\Model\OrderAddressCollection
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\OrderAddressCollection', 'json');
         }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('oauth2');
     }
 }

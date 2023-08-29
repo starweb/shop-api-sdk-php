@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductTagModel
+class ProductTagModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The tag Id
      *
@@ -40,6 +48,7 @@ class ProductTagModel
      */
     public function setTagId(?int $tagId) : self
     {
+        $this->initialized['tagId'] = true;
         $this->tagId = $tagId;
         return $this;
     }
@@ -61,6 +70,7 @@ class ProductTagModel
      */
     public function setType(?string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -82,6 +92,7 @@ class ProductTagModel
      */
     public function setLanguages(?array $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class OrderStatusModel
+class OrderStatusModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The id of the order status
      *
@@ -46,6 +54,7 @@ class OrderStatusModel
      */
     public function setStatusId(?int $statusId) : self
     {
+        $this->initialized['statusId'] = true;
         $this->statusId = $statusId;
         return $this;
     }
@@ -67,6 +76,7 @@ class OrderStatusModel
      */
     public function setShouldSendEmail(?bool $shouldSendEmail) : self
     {
+        $this->initialized['shouldSendEmail'] = true;
         $this->shouldSendEmail = $shouldSendEmail;
         return $this;
     }
@@ -88,6 +98,7 @@ class OrderStatusModel
      */
     public function setIdCode(?string $idCode) : self
     {
+        $this->initialized['idCode'] = true;
         $this->idCode = $idCode;
         return $this;
     }
@@ -109,6 +120,7 @@ class OrderStatusModel
      */
     public function setLanguages(?OrderStatusLanguageModelCollection $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

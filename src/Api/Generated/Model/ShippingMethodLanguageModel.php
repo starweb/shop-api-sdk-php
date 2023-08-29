@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ShippingMethodLanguageModel
+class ShippingMethodLanguageModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Language code
      *
@@ -46,6 +54,7 @@ class ShippingMethodLanguageModel
      */
     public function setLangCode(?string $langCode) : self
     {
+        $this->initialized['langCode'] = true;
         $this->langCode = $langCode;
         return $this;
     }
@@ -67,6 +76,7 @@ class ShippingMethodLanguageModel
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -88,6 +98,7 @@ class ShippingMethodLanguageModel
      */
     public function setTitle(?string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -109,6 +120,7 @@ class ShippingMethodLanguageModel
      */
     public function setShortDescription(?string $shortDescription) : self
     {
+        $this->initialized['shortDescription'] = true;
         $this->shortDescription = $shortDescription;
         return $this;
     }

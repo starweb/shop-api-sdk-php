@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class PutProductsVariantsPricelistVolumePrice extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class PutProductsVariantsPricelistVolumePrice extends \Starweb\Api\Generated\Runtime\Client\BaseEndpoint implements \Starweb\Api\Generated\Runtime\Client\Endpoint
 {
     protected $productId;
     protected $variantId;
@@ -16,9 +16,9 @@ class PutProductsVariantsPricelistVolumePrice extends \Jane\OpenApiRuntime\Clien
     * @param int $variantId The products variants id
     * @param int $pricelistId The pricelist id
     * @param int $quantity The volume quantity
-    * @param \Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody 
+    * @param null|\Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody 
     */
-    public function __construct(int $productId, int $variantId, int $pricelistId, int $quantity, \Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody)
+    public function __construct(int $productId, int $variantId, int $pricelistId, int $quantity, ?\Starweb\Api\Generated\Model\ProductVariantVolumePriceModel $requestBody = null)
     {
         $this->productId = $productId;
         $this->variantId = $variantId;
@@ -26,7 +26,7 @@ class PutProductsVariantsPricelistVolumePrice extends \Jane\OpenApiRuntime\Clien
         $this->quantity = $quantity;
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Starweb\Api\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -54,16 +54,22 @@ class PutProductsVariantsPricelistVolumePrice extends \Jane\OpenApiRuntime\Clien
      *
      * @return null|\Starweb\Api\Generated\Model\ProductVariantVolumePriceModelItem
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductVariantVolumePriceModelItem', 'json');
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            throw new \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistVolumePriceBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistVolumePriceBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'), $response);
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            throw new \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistVolumePriceNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Starweb\Api\Generated\Exception\PutProductsVariantsPricelistVolumePriceNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'), $response);
         }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('oauth2');
     }
 }

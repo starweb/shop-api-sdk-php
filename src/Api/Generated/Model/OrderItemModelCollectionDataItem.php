@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class OrderItemModelCollectionDataItem
+class OrderItemModelCollectionDataItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The id of the order item
      *
@@ -88,6 +96,7 @@ class OrderItemModelCollectionDataItem
      */
     public function setItemId(?int $itemId) : self
     {
+        $this->initialized['itemId'] = true;
         $this->itemId = $itemId;
         return $this;
     }
@@ -109,6 +118,7 @@ class OrderItemModelCollectionDataItem
      */
     public function setSku(?string $sku) : self
     {
+        $this->initialized['sku'] = true;
         $this->sku = $sku;
         return $this;
     }
@@ -130,6 +140,7 @@ class OrderItemModelCollectionDataItem
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -151,6 +162,7 @@ class OrderItemModelCollectionDataItem
      */
     public function setQuantity(?int $quantity) : self
     {
+        $this->initialized['quantity'] = true;
         $this->quantity = $quantity;
         return $this;
     }
@@ -172,6 +184,7 @@ class OrderItemModelCollectionDataItem
      */
     public function setUnitSymbol(?string $unitSymbol) : self
     {
+        $this->initialized['unitSymbol'] = true;
         $this->unitSymbol = $unitSymbol;
         return $this;
     }
@@ -193,6 +206,7 @@ class OrderItemModelCollectionDataItem
      */
     public function setUnitPrice(?float $unitPrice) : self
     {
+        $this->initialized['unitPrice'] = true;
         $this->unitPrice = $unitPrice;
         return $this;
     }
@@ -214,6 +228,7 @@ class OrderItemModelCollectionDataItem
      */
     public function setVatRate(?float $vatRate) : self
     {
+        $this->initialized['vatRate'] = true;
         $this->vatRate = $vatRate;
         return $this;
     }
@@ -235,6 +250,7 @@ class OrderItemModelCollectionDataItem
      */
     public function setDiscount(?float $discount) : self
     {
+        $this->initialized['discount'] = true;
         $this->discount = $discount;
         return $this;
     }
@@ -256,6 +272,7 @@ class OrderItemModelCollectionDataItem
      */
     public function setDiscountType(?string $discountType) : self
     {
+        $this->initialized['discountType'] = true;
         $this->discountType = $discountType;
         return $this;
     }
@@ -277,6 +294,7 @@ class OrderItemModelCollectionDataItem
      */
     public function setSortIndex(?int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -298,6 +316,7 @@ class OrderItemModelCollectionDataItem
      */
     public function setBundledItems(?OrderItemBundledModelItemBundledItems $bundledItems) : self
     {
+        $this->initialized['bundledItems'] = true;
         $this->bundledItems = $bundledItems;
         return $this;
     }

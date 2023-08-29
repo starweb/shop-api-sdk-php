@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class PricelistModel
+class PricelistModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The pricelist id
      *
@@ -94,6 +102,7 @@ class PricelistModel
      */
     public function setPricelistId(?int $pricelistId) : self
     {
+        $this->initialized['pricelistId'] = true;
         $this->pricelistId = $pricelistId;
         return $this;
     }
@@ -115,6 +124,7 @@ class PricelistModel
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -136,6 +146,7 @@ class PricelistModel
      */
     public function setExternalIdType(?string $externalIdType) : self
     {
+        $this->initialized['externalIdType'] = true;
         $this->externalIdType = $externalIdType;
         return $this;
     }
@@ -157,6 +168,7 @@ class PricelistModel
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -178,6 +190,7 @@ class PricelistModel
      */
     public function setIsMaster(?bool $isMaster) : self
     {
+        $this->initialized['isMaster'] = true;
         $this->isMaster = $isMaster;
         return $this;
     }
@@ -199,6 +212,7 @@ class PricelistModel
      */
     public function setIsActive(?bool $isActive) : self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
         return $this;
     }
@@ -220,6 +234,7 @@ class PricelistModel
      */
     public function setRegion(?string $region) : self
     {
+        $this->initialized['region'] = true;
         $this->region = $region;
         return $this;
     }
@@ -241,6 +256,7 @@ class PricelistModel
      */
     public function setCountryCodes(?array $countryCodes) : self
     {
+        $this->initialized['countryCodes'] = true;
         $this->countryCodes = $countryCodes;
         return $this;
     }
@@ -262,6 +278,7 @@ class PricelistModel
      */
     public function setCurrencyCode(?string $currencyCode) : self
     {
+        $this->initialized['currencyCode'] = true;
         $this->currencyCode = $currencyCode;
         return $this;
     }
@@ -283,6 +300,7 @@ class PricelistModel
      */
     public function setParentPricelistId(?int $parentPricelistId) : self
     {
+        $this->initialized['parentPricelistId'] = true;
         $this->parentPricelistId = $parentPricelistId;
         return $this;
     }
@@ -304,6 +322,7 @@ class PricelistModel
      */
     public function setIsCustomerPricelist(?bool $isCustomerPricelist) : self
     {
+        $this->initialized['isCustomerPricelist'] = true;
         $this->isCustomerPricelist = $isCustomerPricelist;
         return $this;
     }
@@ -325,6 +344,7 @@ class PricelistModel
      */
     public function setIsCountryPricelist(?bool $isCountryPricelist) : self
     {
+        $this->initialized['isCountryPricelist'] = true;
         $this->isCountryPricelist = $isCountryPricelist;
         return $this;
     }

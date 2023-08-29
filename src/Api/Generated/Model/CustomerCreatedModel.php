@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class CustomerCreatedModel
+class CustomerCreatedModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The customers ID
      *
@@ -106,6 +114,7 @@ class CustomerCreatedModel
      */
     public function setCustomerId(?int $customerId) : self
     {
+        $this->initialized['customerId'] = true;
         $this->customerId = $customerId;
         return $this;
     }
@@ -127,6 +136,7 @@ class CustomerCreatedModel
      */
     public function setCreatedAt(?string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -148,6 +158,7 @@ class CustomerCreatedModel
      */
     public function setType(?string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -169,6 +180,7 @@ class CustomerCreatedModel
      */
     public function setEmail(?string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -190,6 +202,7 @@ class CustomerCreatedModel
      */
     public function setNationalIdNo(?string $nationalIdNo) : self
     {
+        $this->initialized['nationalIdNo'] = true;
         $this->nationalIdNo = $nationalIdNo;
         return $this;
     }
@@ -211,6 +224,7 @@ class CustomerCreatedModel
      */
     public function setVatNo(?string $vatNo) : self
     {
+        $this->initialized['vatNo'] = true;
         $this->vatNo = $vatNo;
         return $this;
     }
@@ -232,6 +246,7 @@ class CustomerCreatedModel
      */
     public function setCustomInfo1(?string $customInfo1) : self
     {
+        $this->initialized['customInfo1'] = true;
         $this->customInfo1 = $customInfo1;
         return $this;
     }
@@ -253,6 +268,7 @@ class CustomerCreatedModel
      */
     public function setCustomInfo2(?string $customInfo2) : self
     {
+        $this->initialized['customInfo2'] = true;
         $this->customInfo2 = $customInfo2;
         return $this;
     }
@@ -274,6 +290,7 @@ class CustomerCreatedModel
      */
     public function setModifiedAt(?string $modifiedAt) : self
     {
+        $this->initialized['modifiedAt'] = true;
         $this->modifiedAt = $modifiedAt;
         return $this;
     }
@@ -295,6 +312,7 @@ class CustomerCreatedModel
      */
     public function setApproved(?bool $approved) : self
     {
+        $this->initialized['approved'] = true;
         $this->approved = $approved;
         return $this;
     }
@@ -316,6 +334,7 @@ class CustomerCreatedModel
      */
     public function setApprovedAt(?string $approvedAt) : self
     {
+        $this->initialized['approvedAt'] = true;
         $this->approvedAt = $approvedAt;
         return $this;
     }
@@ -337,6 +356,7 @@ class CustomerCreatedModel
      */
     public function setPricelistId(?int $pricelistId) : self
     {
+        $this->initialized['pricelistId'] = true;
         $this->pricelistId = $pricelistId;
         return $this;
     }
@@ -358,6 +378,7 @@ class CustomerCreatedModel
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -379,6 +400,7 @@ class CustomerCreatedModel
      */
     public function setExternalIdType(?string $externalIdType) : self
     {
+        $this->initialized['externalIdType'] = true;
         $this->externalIdType = $externalIdType;
         return $this;
     }

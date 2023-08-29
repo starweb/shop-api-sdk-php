@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class OrderAddressModel
+class OrderAddressModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
@@ -58,6 +66,7 @@ class OrderAddressModel
      */
     public function setOriginalInvoice(?AddressModel $originalInvoice) : self
     {
+        $this->initialized['originalInvoice'] = true;
         $this->originalInvoice = $originalInvoice;
         return $this;
     }
@@ -79,6 +88,7 @@ class OrderAddressModel
      */
     public function setOriginalDelivery(?AddressModel $originalDelivery) : self
     {
+        $this->initialized['originalDelivery'] = true;
         $this->originalDelivery = $originalDelivery;
         return $this;
     }
@@ -100,6 +110,7 @@ class OrderAddressModel
      */
     public function setCustomerInvoice(?AddressModel $customerInvoice) : self
     {
+        $this->initialized['customerInvoice'] = true;
         $this->customerInvoice = $customerInvoice;
         return $this;
     }
@@ -121,6 +132,7 @@ class OrderAddressModel
      */
     public function setCustomerDelivery(?AddressModel $customerDelivery) : self
     {
+        $this->initialized['customerDelivery'] = true;
         $this->customerDelivery = $customerDelivery;
         return $this;
     }
@@ -142,6 +154,7 @@ class OrderAddressModel
      */
     public function setPaymentMethodInvoice(?AddressModel $paymentMethodInvoice) : self
     {
+        $this->initialized['paymentMethodInvoice'] = true;
         $this->paymentMethodInvoice = $paymentMethodInvoice;
         return $this;
     }
@@ -163,6 +176,7 @@ class OrderAddressModel
      */
     public function setPaymentMethodDelivery(?AddressModel $paymentMethodDelivery) : self
     {
+        $this->initialized['paymentMethodDelivery'] = true;
         $this->paymentMethodDelivery = $paymentMethodDelivery;
         return $this;
     }

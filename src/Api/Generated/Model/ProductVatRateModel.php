@@ -2,8 +2,16 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductVatRateModel
+class ProductVatRateModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The country code this vat rate should be valid for. The country code should be set using ISO 3166-1 alpha-2
      *
@@ -34,6 +42,7 @@ class ProductVatRateModel
      */
     public function setCountryCode(?string $countryCode) : self
     {
+        $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
         return $this;
     }
@@ -55,6 +64,7 @@ class ProductVatRateModel
      */
     public function setVatRate(?float $vatRate) : self
     {
+        $this->initialized['vatRate'] = true;
         $this->vatRate = $vatRate;
         return $this;
     }
