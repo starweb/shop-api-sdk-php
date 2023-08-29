@@ -2,113 +2,125 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductTagOptionModel
+class ProductTagOptionModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The option Id
      *
-     * @var int
+     * @var int|null
      */
     protected $tagOptionId;
     /**
      * The option value type. This will be only set if the tag type is set to `boolean`. The values for tag of type `option` are stored in the nested language objects.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $value;
     /**
      * The sort index of the option
      *
-     * @var int
+     * @var int|null
      */
     protected $sortIndex;
     /**
      * 
      *
-     * @var ProductTagOptionLanguageModel[]
+     * @var ProductTagOptionLanguageModel[]|null
      */
     protected $languages;
     /**
      * The option Id
      *
-     * @return int
+     * @return int|null
      */
-    public function getTagOptionId() : int
+    public function getTagOptionId() : ?int
     {
         return $this->tagOptionId;
     }
     /**
      * The option Id
      *
-     * @param int $tagOptionId
+     * @param int|null $tagOptionId
      *
      * @return self
      */
-    public function setTagOptionId(int $tagOptionId) : self
+    public function setTagOptionId(?int $tagOptionId) : self
     {
+        $this->initialized['tagOptionId'] = true;
         $this->tagOptionId = $tagOptionId;
         return $this;
     }
     /**
      * The option value type. This will be only set if the tag type is set to `boolean`. The values for tag of type `option` are stored in the nested language objects.
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getValue() : bool
+    public function getValue() : ?bool
     {
         return $this->value;
     }
     /**
      * The option value type. This will be only set if the tag type is set to `boolean`. The values for tag of type `option` are stored in the nested language objects.
      *
-     * @param bool $value
+     * @param bool|null $value
      *
      * @return self
      */
-    public function setValue(bool $value) : self
+    public function setValue(?bool $value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }
     /**
      * The sort index of the option
      *
-     * @return int
+     * @return int|null
      */
-    public function getSortIndex() : int
+    public function getSortIndex() : ?int
     {
         return $this->sortIndex;
     }
     /**
      * The sort index of the option
      *
-     * @param int $sortIndex
+     * @param int|null $sortIndex
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(?int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
     /**
      * 
      *
-     * @return ProductTagOptionLanguageModel[]
+     * @return ProductTagOptionLanguageModel[]|null
      */
-    public function getLanguages() : array
+    public function getLanguages() : ?array
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductTagOptionLanguageModel[] $languages
+     * @param ProductTagOptionLanguageModel[]|null $languages
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(?array $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

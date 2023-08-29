@@ -2,24 +2,32 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductStockStatusModel
+class ProductStockStatusResponseModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The stock status id
      *
-     * @var int
+     * @var int|null
      */
     protected $stockStatusId;
     /**
      * The idCode of the status. Only standard statuses has idCodes set. It is also not permitted to change names for standard statuses
      *
-     * @var string
+     * @var string|null
      */
     protected $idCode;
     /**
      * Sort index for this status
      *
-     * @var int
+     * @var int|null
      */
     protected $sortIndex;
     /**
@@ -31,81 +39,84 @@ class ProductStockStatusModel
     /**
      * Is the product buyable when this status is set?
      *
-     * @var bool
+     * @var bool|null
      */
     protected $productBuyable = true;
     /**
      * Should the product be displayed as "in stock" when this status is set?
      *
-     * @var bool
+     * @var bool|null
      */
     protected $inStock = false;
     /**
      * 
      *
-     * @var ProductStockStatusLanguageModel[]
+     * @var ProductStockStatusResponseModelLanguages|null
      */
     protected $languages;
     /**
      * The stock status id
      *
-     * @return int
+     * @return int|null
      */
-    public function getStockStatusId() : int
+    public function getStockStatusId() : ?int
     {
         return $this->stockStatusId;
     }
     /**
      * The stock status id
      *
-     * @param int $stockStatusId
+     * @param int|null $stockStatusId
      *
      * @return self
      */
-    public function setStockStatusId(int $stockStatusId) : self
+    public function setStockStatusId(?int $stockStatusId) : self
     {
+        $this->initialized['stockStatusId'] = true;
         $this->stockStatusId = $stockStatusId;
         return $this;
     }
     /**
      * The idCode of the status. Only standard statuses has idCodes set. It is also not permitted to change names for standard statuses
      *
-     * @return string
+     * @return string|null
      */
-    public function getIdCode() : string
+    public function getIdCode() : ?string
     {
         return $this->idCode;
     }
     /**
      * The idCode of the status. Only standard statuses has idCodes set. It is also not permitted to change names for standard statuses
      *
-     * @param string $idCode
+     * @param string|null $idCode
      *
      * @return self
      */
-    public function setIdCode(string $idCode) : self
+    public function setIdCode(?string $idCode) : self
     {
+        $this->initialized['idCode'] = true;
         $this->idCode = $idCode;
         return $this;
     }
     /**
      * Sort index for this status
      *
-     * @return int
+     * @return int|null
      */
-    public function getSortIndex() : int
+    public function getSortIndex() : ?int
     {
         return $this->sortIndex;
     }
     /**
      * Sort index for this status
      *
-     * @param int $sortIndex
+     * @param int|null $sortIndex
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(?int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
@@ -127,69 +138,73 @@ class ProductStockStatusModel
      */
     public function setStockoutNewStatusId(?int $stockoutNewStatusId) : self
     {
+        $this->initialized['stockoutNewStatusId'] = true;
         $this->stockoutNewStatusId = $stockoutNewStatusId;
         return $this;
     }
     /**
      * Is the product buyable when this status is set?
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getProductBuyable() : bool
+    public function getProductBuyable() : ?bool
     {
         return $this->productBuyable;
     }
     /**
      * Is the product buyable when this status is set?
      *
-     * @param bool $productBuyable
+     * @param bool|null $productBuyable
      *
      * @return self
      */
-    public function setProductBuyable(bool $productBuyable) : self
+    public function setProductBuyable(?bool $productBuyable) : self
     {
+        $this->initialized['productBuyable'] = true;
         $this->productBuyable = $productBuyable;
         return $this;
     }
     /**
      * Should the product be displayed as "in stock" when this status is set?
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getInStock() : bool
+    public function getInStock() : ?bool
     {
         return $this->inStock;
     }
     /**
      * Should the product be displayed as "in stock" when this status is set?
      *
-     * @param bool $inStock
+     * @param bool|null $inStock
      *
      * @return self
      */
-    public function setInStock(bool $inStock) : self
+    public function setInStock(?bool $inStock) : self
     {
+        $this->initialized['inStock'] = true;
         $this->inStock = $inStock;
         return $this;
     }
     /**
      * 
      *
-     * @return ProductStockStatusLanguageModel[]
+     * @return ProductStockStatusResponseModelLanguages|null
      */
-    public function getLanguages() : array
+    public function getLanguages() : ?ProductStockStatusResponseModelLanguages
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductStockStatusLanguageModel[] $languages
+     * @param ProductStockStatusResponseModelLanguages|null $languages
      *
      * @return self
      */
-    public function setLanguages(array $languages) : self
+    public function setLanguages(?ProductStockStatusResponseModelLanguages $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

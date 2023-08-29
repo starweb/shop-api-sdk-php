@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,49 +16,93 @@ class ProductMetaDataModelNormalizer implements DenormalizerInterface, Normalize
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\ProductMetaDataModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMetaDataModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMetaDataModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\ProductMetaDataModel();
-        if (property_exists($data, 'metaDataId')) {
-            $object->setMetaDataId($data->{'metaDataId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'metaDataTypeId')) {
-            $object->setMetaDataTypeId($data->{'metaDataTypeId'});
+        if (\array_key_exists('metaDataId', $data) && $data['metaDataId'] !== null) {
+            $object->setMetaDataId($data['metaDataId']);
+            unset($data['metaDataId']);
         }
-        if (property_exists($data, 'sortIndex')) {
-            $object->setSortIndex($data->{'sortIndex'});
+        elseif (\array_key_exists('metaDataId', $data) && $data['metaDataId'] === null) {
+            $object->setMetaDataId(null);
         }
-        if (property_exists($data, 'languages')) {
-            $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\ProductMetaLanguageDataModelCollection', 'json', $context));
+        if (\array_key_exists('metaDataTypeId', $data) && $data['metaDataTypeId'] !== null) {
+            $object->setMetaDataTypeId($data['metaDataTypeId']);
+            unset($data['metaDataTypeId']);
+        }
+        elseif (\array_key_exists('metaDataTypeId', $data) && $data['metaDataTypeId'] === null) {
+            $object->setMetaDataTypeId(null);
+        }
+        if (\array_key_exists('sortIndex', $data) && $data['sortIndex'] !== null) {
+            $object->setSortIndex($data['sortIndex']);
+            unset($data['sortIndex']);
+        }
+        elseif (\array_key_exists('sortIndex', $data) && $data['sortIndex'] === null) {
+            $object->setSortIndex(null);
+        }
+        if (\array_key_exists('languages', $data) && $data['languages'] !== null) {
+            $object->setLanguages($this->denormalizer->denormalize($data['languages'], 'Starweb\\Api\\Generated\\Model\\ProductMetaLanguageDataModelCollection', 'json', $context));
+            unset($data['languages']);
+        }
+        elseif (\array_key_exists('languages', $data) && $data['languages'] === null) {
+            $object->setLanguages(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getMetaDataId()) {
-            $data->{'metaDataId'} = $object->getMetaDataId();
+        $data = array();
+        if ($object->isInitialized('metaDataId') && null !== $object->getMetaDataId()) {
+            $data['metaDataId'] = $object->getMetaDataId();
         }
-        if (null !== $object->getMetaDataTypeId()) {
-            $data->{'metaDataTypeId'} = $object->getMetaDataTypeId();
+        if ($object->isInitialized('metaDataTypeId') && null !== $object->getMetaDataTypeId()) {
+            $data['metaDataTypeId'] = $object->getMetaDataTypeId();
         }
-        if (null !== $object->getSortIndex()) {
-            $data->{'sortIndex'} = $object->getSortIndex();
+        if ($object->isInitialized('sortIndex') && null !== $object->getSortIndex()) {
+            $data['sortIndex'] = $object->getSortIndex();
         }
-        if (null !== $object->getLanguages()) {
-            $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
+        if ($object->isInitialized('languages') && null !== $object->getLanguages()) {
+            $data['languages'] = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\ProductMetaDataModel' => false);
     }
 }

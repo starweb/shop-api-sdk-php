@@ -2,59 +2,69 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ShippingTrackingTypeModel
+class ShippingTrackingTypeModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The shipping tracking type ID
      *
-     * @var int
+     * @var int|null
      */
     protected $type;
     /**
      * The shipping tracking type name
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
      * The shipping tracking type ID
      *
-     * @return int
+     * @return int|null
      */
-    public function getType() : int
+    public function getType() : ?int
     {
         return $this->type;
     }
     /**
      * The shipping tracking type ID
      *
-     * @param int $type
+     * @param int|null $type
      *
      * @return self
      */
-    public function setType(int $type) : self
+    public function setType(?int $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
     /**
      * The shipping tracking type name
      *
-     * @return string
+     * @return string|null
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * The shipping tracking type name
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }

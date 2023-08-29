@@ -2,140 +2,153 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class VatRateModel
+class VatRateModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The country code this vat rates should be valid for. The country code should be set using ISO 3166-1 alpha-2
      *
-     * @var string
+     * @var string|null
      */
     protected $countryCode;
     /**
      * The vat rates to use for this country
      *
-     * @var float
+     * @var float|null
      */
     protected $defaultVatRate = 0;
     /**
      * The vat rates to use for this country for payment methods
      *
-     * @var float
+     * @var float|null
      */
     protected $fixedOrderPaymentVatRate = 0;
     /**
      * The vat rates to use for this country for shipping methods
      *
-     * @var float
+     * @var float|null
      */
     protected $fixedOrderShippingVatRate = 0;
     /**
      * The vat rates to use for this country for discounts
      *
-     * @var float
+     * @var float|null
      */
     protected $fixedOrderDiscountVatRate = 0;
     /**
      * The country code this vat rates should be valid for. The country code should be set using ISO 3166-1 alpha-2
      *
-     * @return string
+     * @return string|null
      */
-    public function getCountryCode() : string
+    public function getCountryCode() : ?string
     {
         return $this->countryCode;
     }
     /**
      * The country code this vat rates should be valid for. The country code should be set using ISO 3166-1 alpha-2
      *
-     * @param string $countryCode
+     * @param string|null $countryCode
      *
      * @return self
      */
-    public function setCountryCode(string $countryCode) : self
+    public function setCountryCode(?string $countryCode) : self
     {
+        $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
         return $this;
     }
     /**
      * The vat rates to use for this country
      *
-     * @return float
+     * @return float|null
      */
-    public function getDefaultVatRate() : float
+    public function getDefaultVatRate() : ?float
     {
         return $this->defaultVatRate;
     }
     /**
      * The vat rates to use for this country
      *
-     * @param float $defaultVatRate
+     * @param float|null $defaultVatRate
      *
      * @return self
      */
-    public function setDefaultVatRate(float $defaultVatRate) : self
+    public function setDefaultVatRate(?float $defaultVatRate) : self
     {
+        $this->initialized['defaultVatRate'] = true;
         $this->defaultVatRate = $defaultVatRate;
         return $this;
     }
     /**
      * The vat rates to use for this country for payment methods
      *
-     * @return float
+     * @return float|null
      */
-    public function getFixedOrderPaymentVatRate() : float
+    public function getFixedOrderPaymentVatRate() : ?float
     {
         return $this->fixedOrderPaymentVatRate;
     }
     /**
      * The vat rates to use for this country for payment methods
      *
-     * @param float $fixedOrderPaymentVatRate
+     * @param float|null $fixedOrderPaymentVatRate
      *
      * @return self
      */
-    public function setFixedOrderPaymentVatRate(float $fixedOrderPaymentVatRate) : self
+    public function setFixedOrderPaymentVatRate(?float $fixedOrderPaymentVatRate) : self
     {
+        $this->initialized['fixedOrderPaymentVatRate'] = true;
         $this->fixedOrderPaymentVatRate = $fixedOrderPaymentVatRate;
         return $this;
     }
     /**
      * The vat rates to use for this country for shipping methods
      *
-     * @return float
+     * @return float|null
      */
-    public function getFixedOrderShippingVatRate() : float
+    public function getFixedOrderShippingVatRate() : ?float
     {
         return $this->fixedOrderShippingVatRate;
     }
     /**
      * The vat rates to use for this country for shipping methods
      *
-     * @param float $fixedOrderShippingVatRate
+     * @param float|null $fixedOrderShippingVatRate
      *
      * @return self
      */
-    public function setFixedOrderShippingVatRate(float $fixedOrderShippingVatRate) : self
+    public function setFixedOrderShippingVatRate(?float $fixedOrderShippingVatRate) : self
     {
+        $this->initialized['fixedOrderShippingVatRate'] = true;
         $this->fixedOrderShippingVatRate = $fixedOrderShippingVatRate;
         return $this;
     }
     /**
      * The vat rates to use for this country for discounts
      *
-     * @return float
+     * @return float|null
      */
-    public function getFixedOrderDiscountVatRate() : float
+    public function getFixedOrderDiscountVatRate() : ?float
     {
         return $this->fixedOrderDiscountVatRate;
     }
     /**
      * The vat rates to use for this country for discounts
      *
-     * @param float $fixedOrderDiscountVatRate
+     * @param float|null $fixedOrderDiscountVatRate
      *
      * @return self
      */
-    public function setFixedOrderDiscountVatRate(float $fixedOrderDiscountVatRate) : self
+    public function setFixedOrderDiscountVatRate(?float $fixedOrderDiscountVatRate) : self
     {
+        $this->initialized['fixedOrderDiscountVatRate'] = true;
         $this->fixedOrderDiscountVatRate = $fixedOrderDiscountVatRate;
         return $this;
     }

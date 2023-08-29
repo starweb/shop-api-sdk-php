@@ -2,18 +2,38 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductModel
+class ProductModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
-     * @var int
+     * @var int|null
      */
     protected $productId;
     /**
+     * The external id of this pricelist
+     *
+     * @var string|null
+     */
+    protected $externalId = '';
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @var string|null
+     */
+    protected $externalIdType;
+    /**
      * A timestamp of when the product was created. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var string|null
      */
     protected $createdAt;
     /**
@@ -25,19 +45,19 @@ class ProductModel
     /**
      * The visibility of this product. Supported values are: hidden, visible, pricelists
      *
-     * @var string
+     * @var string|null
      */
     protected $visibility = 'hidden';
     /**
      * The ID´s of the pricelists that the product should be visible for. Is required for when ”visibility” is set to ”pricelists” but should never be populated otherwise
      *
-     * @var int[]
+     * @var int[]|null
      */
     protected $visibilityPricelistIds;
     /**
      * A valid URL to a web page with more information for this product
      *
-     * @var string
+     * @var string|null
      */
     protected $moreInfoUrl;
     /**
@@ -61,19 +81,19 @@ class ProductModel
     /**
      * The type of product. Either ”basic” or ”bundle”. Default is ”basic”
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * Should this product be watchable for customers when it is back in stock?
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isBackInStockWatchable = true;
     /**
      * Should all bundled products have a manually entered price? Only applies if type is bundle
      *
-     * @var bool
+     * @var bool|null
      */
     protected $bundleUseManualPrice;
     /**
@@ -85,102 +105,148 @@ class ProductModel
     /**
      * Indicates if the products has several variants or not. The remaining variants can be fetched using the /products/{product id}/variants endpoint
      *
-     * @var bool
+     * @var bool|null
      */
     protected $hasSeveralVariants;
     /**
      * A timestamp of when the product was modified. The time should be formatted using ISO-8601
      *
-     * @var string
+     * @var string|null
      */
     protected $modifiedAt;
     /**
      * 
      *
-     * @var ProductVariantModelCollection
+     * @var ProductVariantModelCollection|null
      */
     protected $variants;
     /**
      * 
      *
-     * @var BundledProductsModelCollection
+     * @var BundledProductsModelCollection|null
      */
     protected $bundledProducts;
     /**
      * 
      *
-     * @var ProductMediaFileLinkModelCollection
+     * @var ProductMediaFileLinkModelCollection|null
      */
     protected $mediaFiles;
     /**
      * 
      *
-     * @var ProductModelLanguages
+     * @var ProductModelLanguages|null
      */
     protected $languages;
     /**
      * 
      *
-     * @var ProductVatRateModelCollection
+     * @var ProductVatRateModelCollection|null
      */
     protected $vatRates;
     /**
      * 
      *
-     * @var ProductCategoryLinkModelCollection
+     * @var ProductCategoryLinkModelCollection|null
      */
     protected $categories;
     /**
      * 
      *
-     * @var ProductUnitModelItem
+     * @var ProductUnitModelItem|null
      */
     protected $unit;
     /**
      * 
      *
-     * @var ProductMetaDataModelCollection
+     * @var ProductMetaDataModelCollection|null
      */
     protected $metaData;
     /**
      * 
      *
-     * @return int
+     * @return int|null
      */
-    public function getProductId() : int
+    public function getProductId() : ?int
     {
         return $this->productId;
     }
     /**
      * 
      *
-     * @param int $productId
+     * @param int|null $productId
      *
      * @return self
      */
-    public function setProductId(int $productId) : self
+    public function setProductId(?int $productId) : self
     {
+        $this->initialized['productId'] = true;
         $this->productId = $productId;
+        return $this;
+    }
+    /**
+     * The external id of this pricelist
+     *
+     * @return string|null
+     */
+    public function getExternalId() : ?string
+    {
+        return $this->externalId;
+    }
+    /**
+     * The external id of this pricelist
+     *
+     * @param string|null $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(?string $externalId) : self
+    {
+        $this->initialized['externalId'] = true;
+        $this->externalId = $externalId;
+        return $this;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @return string|null
+     */
+    public function getExternalIdType() : ?string
+    {
+        return $this->externalIdType;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @param string|null $externalIdType
+     *
+     * @return self
+     */
+    public function setExternalIdType(?string $externalIdType) : self
+    {
+        $this->initialized['externalIdType'] = true;
+        $this->externalIdType = $externalIdType;
         return $this;
     }
     /**
      * A timestamp of when the product was created. The time should be formatted using ISO-8601
      *
-     * @return string
+     * @return string|null
      */
-    public function getCreatedAt() : string
+    public function getCreatedAt() : ?string
     {
         return $this->createdAt;
     }
     /**
      * A timestamp of when the product was created. The time should be formatted using ISO-8601
      *
-     * @param string $createdAt
+     * @param string|null $createdAt
      *
      * @return self
      */
-    public function setCreatedAt(string $createdAt) : self
+    public function setCreatedAt(?string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -202,69 +268,73 @@ class ProductModel
      */
     public function setDefaultVatRate(?string $defaultVatRate) : self
     {
+        $this->initialized['defaultVatRate'] = true;
         $this->defaultVatRate = $defaultVatRate;
         return $this;
     }
     /**
      * The visibility of this product. Supported values are: hidden, visible, pricelists
      *
-     * @return string
+     * @return string|null
      */
-    public function getVisibility() : string
+    public function getVisibility() : ?string
     {
         return $this->visibility;
     }
     /**
      * The visibility of this product. Supported values are: hidden, visible, pricelists
      *
-     * @param string $visibility
+     * @param string|null $visibility
      *
      * @return self
      */
-    public function setVisibility(string $visibility) : self
+    public function setVisibility(?string $visibility) : self
     {
+        $this->initialized['visibility'] = true;
         $this->visibility = $visibility;
         return $this;
     }
     /**
      * The ID´s of the pricelists that the product should be visible for. Is required for when ”visibility” is set to ”pricelists” but should never be populated otherwise
      *
-     * @return int[]
+     * @return int[]|null
      */
-    public function getVisibilityPricelistIds() : array
+    public function getVisibilityPricelistIds() : ?array
     {
         return $this->visibilityPricelistIds;
     }
     /**
      * The ID´s of the pricelists that the product should be visible for. Is required for when ”visibility” is set to ”pricelists” but should never be populated otherwise
      *
-     * @param int[] $visibilityPricelistIds
+     * @param int[]|null $visibilityPricelistIds
      *
      * @return self
      */
-    public function setVisibilityPricelistIds(array $visibilityPricelistIds) : self
+    public function setVisibilityPricelistIds(?array $visibilityPricelistIds) : self
     {
+        $this->initialized['visibilityPricelistIds'] = true;
         $this->visibilityPricelistIds = $visibilityPricelistIds;
         return $this;
     }
     /**
      * A valid URL to a web page with more information for this product
      *
-     * @return string
+     * @return string|null
      */
-    public function getMoreInfoUrl() : string
+    public function getMoreInfoUrl() : ?string
     {
         return $this->moreInfoUrl;
     }
     /**
      * A valid URL to a web page with more information for this product
      *
-     * @param string $moreInfoUrl
+     * @param string|null $moreInfoUrl
      *
      * @return self
      */
-    public function setMoreInfoUrl(string $moreInfoUrl) : self
+    public function setMoreInfoUrl(?string $moreInfoUrl) : self
     {
+        $this->initialized['moreInfoUrl'] = true;
         $this->moreInfoUrl = $moreInfoUrl;
         return $this;
     }
@@ -286,6 +356,7 @@ class ProductModel
      */
     public function setManufacturerId(?int $manufacturerId) : self
     {
+        $this->initialized['manufacturerId'] = true;
         $this->manufacturerId = $manufacturerId;
         return $this;
     }
@@ -307,6 +378,7 @@ class ProductModel
      */
     public function setUnitId(?int $unitId) : self
     {
+        $this->initialized['unitId'] = true;
         $this->unitId = $unitId;
         return $this;
     }
@@ -328,69 +400,73 @@ class ProductModel
      */
     public function setSortIndex(?int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
     /**
      * The type of product. Either ”basic” or ”bundle”. Default is ”basic”
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType() : ?string
     {
         return $this->type;
     }
     /**
      * The type of product. Either ”basic” or ”bundle”. Default is ”basic”
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
     /**
      * Should this product be watchable for customers when it is back in stock?
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsBackInStockWatchable() : bool
+    public function getIsBackInStockWatchable() : ?bool
     {
         return $this->isBackInStockWatchable;
     }
     /**
      * Should this product be watchable for customers when it is back in stock?
      *
-     * @param bool $isBackInStockWatchable
+     * @param bool|null $isBackInStockWatchable
      *
      * @return self
      */
-    public function setIsBackInStockWatchable(bool $isBackInStockWatchable) : self
+    public function setIsBackInStockWatchable(?bool $isBackInStockWatchable) : self
     {
+        $this->initialized['isBackInStockWatchable'] = true;
         $this->isBackInStockWatchable = $isBackInStockWatchable;
         return $this;
     }
     /**
      * Should all bundled products have a manually entered price? Only applies if type is bundle
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getBundleUseManualPrice() : bool
+    public function getBundleUseManualPrice() : ?bool
     {
         return $this->bundleUseManualPrice;
     }
     /**
      * Should all bundled products have a manually entered price? Only applies if type is bundle
      *
-     * @param bool $bundleUseManualPrice
+     * @param bool|null $bundleUseManualPrice
      *
      * @return self
      */
-    public function setBundleUseManualPrice(bool $bundleUseManualPrice) : self
+    public function setBundleUseManualPrice(?bool $bundleUseManualPrice) : self
     {
+        $this->initialized['bundleUseManualPrice'] = true;
         $this->bundleUseManualPrice = $bundleUseManualPrice;
         return $this;
     }
@@ -412,216 +488,227 @@ class ProductModel
      */
     public function setAccounting(?int $accounting) : self
     {
+        $this->initialized['accounting'] = true;
         $this->accounting = $accounting;
         return $this;
     }
     /**
      * Indicates if the products has several variants or not. The remaining variants can be fetched using the /products/{product id}/variants endpoint
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getHasSeveralVariants() : bool
+    public function getHasSeveralVariants() : ?bool
     {
         return $this->hasSeveralVariants;
     }
     /**
      * Indicates if the products has several variants or not. The remaining variants can be fetched using the /products/{product id}/variants endpoint
      *
-     * @param bool $hasSeveralVariants
+     * @param bool|null $hasSeveralVariants
      *
      * @return self
      */
-    public function setHasSeveralVariants(bool $hasSeveralVariants) : self
+    public function setHasSeveralVariants(?bool $hasSeveralVariants) : self
     {
+        $this->initialized['hasSeveralVariants'] = true;
         $this->hasSeveralVariants = $hasSeveralVariants;
         return $this;
     }
     /**
      * A timestamp of when the product was modified. The time should be formatted using ISO-8601
      *
-     * @return string
+     * @return string|null
      */
-    public function getModifiedAt() : string
+    public function getModifiedAt() : ?string
     {
         return $this->modifiedAt;
     }
     /**
      * A timestamp of when the product was modified. The time should be formatted using ISO-8601
      *
-     * @param string $modifiedAt
+     * @param string|null $modifiedAt
      *
      * @return self
      */
-    public function setModifiedAt(string $modifiedAt) : self
+    public function setModifiedAt(?string $modifiedAt) : self
     {
+        $this->initialized['modifiedAt'] = true;
         $this->modifiedAt = $modifiedAt;
         return $this;
     }
     /**
      * 
      *
-     * @return ProductVariantModelCollection
+     * @return ProductVariantModelCollection|null
      */
-    public function getVariants() : ProductVariantModelCollection
+    public function getVariants() : ?ProductVariantModelCollection
     {
         return $this->variants;
     }
     /**
      * 
      *
-     * @param ProductVariantModelCollection $variants
+     * @param ProductVariantModelCollection|null $variants
      *
      * @return self
      */
-    public function setVariants(ProductVariantModelCollection $variants) : self
+    public function setVariants(?ProductVariantModelCollection $variants) : self
     {
+        $this->initialized['variants'] = true;
         $this->variants = $variants;
         return $this;
     }
     /**
      * 
      *
-     * @return BundledProductsModelCollection
+     * @return BundledProductsModelCollection|null
      */
-    public function getBundledProducts() : BundledProductsModelCollection
+    public function getBundledProducts() : ?BundledProductsModelCollection
     {
         return $this->bundledProducts;
     }
     /**
      * 
      *
-     * @param BundledProductsModelCollection $bundledProducts
+     * @param BundledProductsModelCollection|null $bundledProducts
      *
      * @return self
      */
-    public function setBundledProducts(BundledProductsModelCollection $bundledProducts) : self
+    public function setBundledProducts(?BundledProductsModelCollection $bundledProducts) : self
     {
+        $this->initialized['bundledProducts'] = true;
         $this->bundledProducts = $bundledProducts;
         return $this;
     }
     /**
      * 
      *
-     * @return ProductMediaFileLinkModelCollection
+     * @return ProductMediaFileLinkModelCollection|null
      */
-    public function getMediaFiles() : ProductMediaFileLinkModelCollection
+    public function getMediaFiles() : ?ProductMediaFileLinkModelCollection
     {
         return $this->mediaFiles;
     }
     /**
      * 
      *
-     * @param ProductMediaFileLinkModelCollection $mediaFiles
+     * @param ProductMediaFileLinkModelCollection|null $mediaFiles
      *
      * @return self
      */
-    public function setMediaFiles(ProductMediaFileLinkModelCollection $mediaFiles) : self
+    public function setMediaFiles(?ProductMediaFileLinkModelCollection $mediaFiles) : self
     {
+        $this->initialized['mediaFiles'] = true;
         $this->mediaFiles = $mediaFiles;
         return $this;
     }
     /**
      * 
      *
-     * @return ProductModelLanguages
+     * @return ProductModelLanguages|null
      */
-    public function getLanguages() : ProductModelLanguages
+    public function getLanguages() : ?ProductModelLanguages
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductModelLanguages $languages
+     * @param ProductModelLanguages|null $languages
      *
      * @return self
      */
-    public function setLanguages(ProductModelLanguages $languages) : self
+    public function setLanguages(?ProductModelLanguages $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }
     /**
      * 
      *
-     * @return ProductVatRateModelCollection
+     * @return ProductVatRateModelCollection|null
      */
-    public function getVatRates() : ProductVatRateModelCollection
+    public function getVatRates() : ?ProductVatRateModelCollection
     {
         return $this->vatRates;
     }
     /**
      * 
      *
-     * @param ProductVatRateModelCollection $vatRates
+     * @param ProductVatRateModelCollection|null $vatRates
      *
      * @return self
      */
-    public function setVatRates(ProductVatRateModelCollection $vatRates) : self
+    public function setVatRates(?ProductVatRateModelCollection $vatRates) : self
     {
+        $this->initialized['vatRates'] = true;
         $this->vatRates = $vatRates;
         return $this;
     }
     /**
      * 
      *
-     * @return ProductCategoryLinkModelCollection
+     * @return ProductCategoryLinkModelCollection|null
      */
-    public function getCategories() : ProductCategoryLinkModelCollection
+    public function getCategories() : ?ProductCategoryLinkModelCollection
     {
         return $this->categories;
     }
     /**
      * 
      *
-     * @param ProductCategoryLinkModelCollection $categories
+     * @param ProductCategoryLinkModelCollection|null $categories
      *
      * @return self
      */
-    public function setCategories(ProductCategoryLinkModelCollection $categories) : self
+    public function setCategories(?ProductCategoryLinkModelCollection $categories) : self
     {
+        $this->initialized['categories'] = true;
         $this->categories = $categories;
         return $this;
     }
     /**
      * 
      *
-     * @return ProductUnitModelItem
+     * @return ProductUnitModelItem|null
      */
-    public function getUnit() : ProductUnitModelItem
+    public function getUnit() : ?ProductUnitModelItem
     {
         return $this->unit;
     }
     /**
      * 
      *
-     * @param ProductUnitModelItem $unit
+     * @param ProductUnitModelItem|null $unit
      *
      * @return self
      */
-    public function setUnit(ProductUnitModelItem $unit) : self
+    public function setUnit(?ProductUnitModelItem $unit) : self
     {
+        $this->initialized['unit'] = true;
         $this->unit = $unit;
         return $this;
     }
     /**
      * 
      *
-     * @return ProductMetaDataModelCollection
+     * @return ProductMetaDataModelCollection|null
      */
-    public function getMetaData() : ProductMetaDataModelCollection
+    public function getMetaData() : ?ProductMetaDataModelCollection
     {
         return $this->metaData;
     }
     /**
      * 
      *
-     * @param ProductMetaDataModelCollection $metaData
+     * @param ProductMetaDataModelCollection|null $metaData
      *
      * @return self
      */
-    public function setMetaData(ProductMetaDataModelCollection $metaData) : self
+    public function setMetaData(?ProductMetaDataModelCollection $metaData) : self
     {
+        $this->initialized['metaData'] = true;
         $this->metaData = $metaData;
         return $this;
     }

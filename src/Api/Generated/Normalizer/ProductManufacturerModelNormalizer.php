@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,43 +16,98 @@ class ProductManufacturerModelNormalizer implements DenormalizerInterface, Norma
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\ProductManufacturerModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductManufacturerModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductManufacturerModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\ProductManufacturerModel();
-        if (property_exists($data, 'manufacturerId')) {
-            $object->setManufacturerId($data->{'manufacturerId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'name')) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('manufacturerId', $data) && $data['manufacturerId'] !== null) {
+            $object->setManufacturerId($data['manufacturerId']);
+            unset($data['manufacturerId']);
         }
-        if (property_exists($data, 'url')) {
-            $object->setUrl($data->{'url'});
+        elseif (\array_key_exists('manufacturerId', $data) && $data['manufacturerId'] === null) {
+            $object->setManufacturerId(null);
+        }
+        if (\array_key_exists('externalId', $data) && $data['externalId'] !== null) {
+            $object->setExternalId($data['externalId']);
+            unset($data['externalId']);
+        }
+        elseif (\array_key_exists('externalId', $data) && $data['externalId'] === null) {
+            $object->setExternalId(null);
+        }
+        if (\array_key_exists('externalIdType', $data) && $data['externalIdType'] !== null) {
+            $object->setExternalIdType($data['externalIdType']);
+            unset($data['externalIdType']);
+        }
+        elseif (\array_key_exists('externalIdType', $data) && $data['externalIdType'] === null) {
+            $object->setExternalIdType(null);
+        }
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
+            unset($data['name']);
+        }
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('url', $data) && $data['url'] !== null) {
+            $object->setUrl($data['url']);
+            unset($data['url']);
+        }
+        elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+            $object->setUrl(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getManufacturerId()) {
-            $data->{'manufacturerId'} = $object->getManufacturerId();
+        $data = array();
+        if ($object->isInitialized('externalId') && null !== $object->getExternalId()) {
+            $data['externalId'] = $object->getExternalId();
         }
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+        if ($object->isInitialized('externalIdType') && null !== $object->getExternalIdType()) {
+            $data['externalIdType'] = $object->getExternalIdType();
         }
-        if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
+        $data['name'] = $object->getName();
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
+            $data['url'] = $object->getUrl();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\ProductManufacturerModel' => false);
     }
 }

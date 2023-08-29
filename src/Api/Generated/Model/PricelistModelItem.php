@@ -2,32 +2,41 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class PricelistModelItem
+class PricelistModelItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
-     * @var PricelistModel
+     * @var PricelistModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return PricelistModel
+     * @return PricelistModel|null
      */
-    public function getData() : PricelistModel
+    public function getData() : ?PricelistModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param PricelistModel $data
+     * @param PricelistModel|null $data
      *
      * @return self
      */
-    public function setData(PricelistModel $data) : self
+    public function setData(?PricelistModel $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }

@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,43 +16,90 @@ class OrderExternalServiceModelNormalizer implements DenormalizerInterface, Norm
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\OrderExternalServiceModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderExternalServiceModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\OrderExternalServiceModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\OrderExternalServiceModel();
-        if (property_exists($data, 'serviceName')) {
-            $object->setServiceName($data->{'serviceName'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'externalIdValue')) {
-            $object->setExternalIdValue($data->{'externalIdValue'});
+        if (\array_key_exists('serviceName', $data) && $data['serviceName'] !== null) {
+            $object->setServiceName($data['serviceName']);
+            unset($data['serviceName']);
         }
-        if (property_exists($data, 'readOnly')) {
-            $object->setReadOnly($data->{'readOnly'});
+        elseif (\array_key_exists('serviceName', $data) && $data['serviceName'] === null) {
+            $object->setServiceName(null);
+        }
+        if (\array_key_exists('externalIdValue', $data) && $data['externalIdValue'] !== null) {
+            $object->setExternalIdValue($data['externalIdValue']);
+            unset($data['externalIdValue']);
+        }
+        elseif (\array_key_exists('externalIdValue', $data) && $data['externalIdValue'] === null) {
+            $object->setExternalIdValue(null);
+        }
+        if (\array_key_exists('agent', $data) && $data['agent'] !== null) {
+            $object->setAgent($data['agent']);
+            unset($data['agent']);
+        }
+        elseif (\array_key_exists('agent', $data) && $data['agent'] === null) {
+            $object->setAgent(null);
+        }
+        if (\array_key_exists('readOnly', $data) && $data['readOnly'] !== null) {
+            $object->setReadOnly($data['readOnly']);
+            unset($data['readOnly']);
+        }
+        elseif (\array_key_exists('readOnly', $data) && $data['readOnly'] === null) {
+            $object->setReadOnly(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getServiceName()) {
-            $data->{'serviceName'} = $object->getServiceName();
+        $data = array();
+        if ($object->isInitialized('serviceName') && null !== $object->getServiceName()) {
+            $data['serviceName'] = $object->getServiceName();
         }
-        if (null !== $object->getExternalIdValue()) {
-            $data->{'externalIdValue'} = $object->getExternalIdValue();
+        if ($object->isInitialized('externalIdValue') && null !== $object->getExternalIdValue()) {
+            $data['externalIdValue'] = $object->getExternalIdValue();
         }
-        if (null !== $object->getReadOnly()) {
-            $data->{'readOnly'} = $object->getReadOnly();
+        if ($object->isInitialized('agent') && null !== $object->getAgent()) {
+            $data['agent'] = $object->getAgent();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\OrderExternalServiceModel' => false);
     }
 }

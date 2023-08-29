@@ -2,13 +2,13 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Starweb Shop API v.2",
-    "description": "This API is only allowed to be used by partners of Starweb AB and further requires explicit permission from both Starweb AB and the shop owner. If you are interested in using it, please contact us at starwebapi@starweb.se . Change log for this API can be found at: https:\/\/starwebserver.se\/API-CHANGELOG.md",
+    "description": "This API is only allowed to be used by partners of Starweb AB and further requires explicit permission from both Starweb AB and the shop owner. If you are interested in using it, please contact us at starwebapi@starweb.se . Change log for this API can be found at: https:\/\/sws.local\/API-CHANGELOG.md",
     "contact": {
       "name": "Starweb API support",
       "url": "https:\/\/www.starweb.se\/starweb-api",
       "email": "starwebapi@starweb.se"
     },
-    "version": "2.11.0",
+    "version": "2.12.0",
     "x-logo": {
       "url": "https:\/\/www.starweb.se\/content\/themes\/starweb\/dist\/images\/starweb-header-logo-2x.png",
       "backgroundColor": "#551F63",
@@ -17,7 +17,7 @@
   },
   "servers": [
     {
-      "url": "https:\/\/{shopId}.starwebserver.se\/api\/v2",
+      "url": "https:\/\/{shopId}.sws.local\/api\/v2",
       "description": "Shop API",
       "variables": {
         "shopId": {
@@ -412,7 +412,7 @@
             "name": "createdSince",
             "in": "query",
             "description": "Use this to only fetch customers that has been created since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "schema": {
               "type": "string"
             }
@@ -421,7 +421,7 @@
             "name": "updatedSince",
             "in": "query",
             "description": "Use this to only fetch customers that has been modified since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "schema": {
               "type": "string"
             }
@@ -1400,7 +1400,7 @@
             "in": "query",
             "style": "form",
             "explode": false,
-            "description": "If you want to include child data in the result. Example: ?include=items (to include order items) or ?include=items,externalServices (to include order items as well as external ids). Available includes: items, externalServices, status, customer, addresses",
+            "description": "If you want to include child data in the result. Example: ?include=items (to include order items) or ?include=items,externalServices (to include order items as well as external ids). or ?include=items.bundledItems (to include items and bundled items)Available includes: items, externalServices, status, customer, addresses",
             "examples": {
               "items": {
                 "value": "items",
@@ -1907,7 +1907,7 @@
         "summary": "Add an order comment",
         "description": "Update a comment for an order. Retrieves the created `OrderComment` object",
         "responses": {
-          "201": {
+          "200": {
             "description": "The created order comment is returned",
             "content": {
               "application\/json": {
@@ -1941,7 +1941,7 @@
         "summary": "Updates an order comment",
         "description": "Update a comment for an order. Retrieves the created `OrderComment` object",
         "responses": {
-          "201": {
+          "200": {
             "description": "The created order comment is returned",
             "content": {
               "application\/json": {
@@ -2301,6 +2301,19 @@
         "operationId": "getOrderItem",
         "summary": "Retrieve an order item",
         "description": "Retrieves the `OrderItem` object",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "description": "If you want to include child data in the result. Example: ?include=bundledItems (to include bundled items). Available includes: bundledItems",
+            "example": "bundledItems",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "An order item is returned",
@@ -2918,7 +2931,7 @@
         "description": "Retrieves the `VatRate` object.",
         "responses": {
           "200": {
-            "description": "A country\u0027s default vat rates are returned",
+            "description": "A country's default vat rates are returned",
             "content": {
               "application\/json": {
                 "schema": {
@@ -3038,7 +3051,7 @@
         "summary": "Update a product variant attribute",
         "description": "Updates a product variant attribute.\n                    Retrieves the updated `ProductVariantAttribute` object.",
         "responses": {
-          "201": {
+          "200": {
             "description": "The updated attribute is returned",
             "content": {
               "application\/json": {
@@ -3072,7 +3085,7 @@
         "summary": "Update a product variant attribute",
         "description": "Updates a product variant attribute.\n                    Retrieves the updated `ProductVariantAttribute` object.",
         "responses": {
-          "201": {
+          "200": {
             "description": "The updated attribute is returned",
             "content": {
               "application\/json": {
@@ -3175,12 +3188,12 @@
         "summary": "Create a product variant attribute value",
         "description": "Creates a product variant attribute value.\n                    Retrieves the created `ProductVariantAttributeValue` object.",
         "responses": {
-          "200": {
+          "201": {
             "description": "The created attribute value",
             "content": {
               "application\/json": {
                 "schema": {
-                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModelCollection"
+                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModelItem"
                 }
               }
             }
@@ -3267,7 +3280,7 @@
             "content": {
               "application\/json": {
                 "schema": {
-                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModelCollection"
+                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModelItem"
                 }
               }
             }
@@ -3301,7 +3314,7 @@
             "content": {
               "application\/json": {
                 "schema": {
-                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModelCollection"
+                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModelItem"
                 }
               }
             }
@@ -3647,16 +3660,16 @@
         ]
       },
       "post": {
-        "operationId": "createProductManufacturers",
+        "operationId": "createProductManufacturer",
         "summary": "Create a product manufacturer",
         "description": "Creates a product manufacturer.",
         "responses": {
-          "200": {
+          "201": {
             "description": "The created product manufacturer",
             "content": {
               "application\/json": {
                 "schema": {
-                  "$ref": "#\/components\/schemas\/ProductManufacturerModelCollection"
+                  "$ref": "#\/components\/schemas\/ProductManufacturerModelItem"
                 }
               }
             }
@@ -3829,6 +3842,40 @@
         "tags": [
           "Product Units"
         ]
+      },
+      "post": {
+        "operationId": "createProductUnit",
+        "summary": "Create a product unit",
+        "description": "Creates a product unit.",
+        "responses": {
+          "201": {
+            "description": "The created product unit",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ProductUnitModelItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#\/components\/responses\/BadRequest"
+          }
+        },
+        "requestBody": {
+          "description": "Product unit data",
+          "required": true,
+          "content": {
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/ProductUnitModelUpdatable"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Product Units"
+        ]
       }
     },
     "\/product-units\/{unitId}": {
@@ -3850,6 +3897,90 @@
           },
           "404": {
             "$ref": "#\/components\/responses\/NotFound"
+          }
+        },
+        "tags": [
+          "Product Units"
+        ]
+      },
+      "delete": {
+        "operationId": "deleteProductUnit",
+        "summary": "Deletes a product unit",
+        "description": "Deletes the `ProductUnit` object.",
+        "responses": {
+          "204": {
+            "$ref": "#\/components\/responses\/ItemDeleted"
+          },
+          "404": {
+            "$ref": "#\/components\/responses\/NotFound"
+          }
+        },
+        "tags": [
+          "Product Units"
+        ]
+      },
+      "put": {
+        "operationId": "putProductUnit",
+        "summary": "Update a product unit",
+        "description": "Updates the `ProductUnit` object.",
+        "responses": {
+          "200": {
+            "description": "The updated product unit",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ProductUnitModelItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#\/components\/responses\/NotFound"
+          }
+        },
+        "requestBody": {
+          "description": "Product unit data",
+          "required": true,
+          "content": {
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/ProductUnitModelUpdatable"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Product Units"
+        ]
+      },
+      "patch": {
+        "operationId": "patchProductUnit",
+        "summary": "Update a product unit",
+        "description": "Updates the `ProductUnit` object.",
+        "responses": {
+          "200": {
+            "description": "The updated product unit",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ProductUnitModelItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#\/components\/responses\/NotFound"
+          }
+        },
+        "requestBody": {
+          "description": "Product unit data",
+          "required": true,
+          "content": {
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/ProductUnitModelUpdatable"
+              }
+            }
           }
         },
         "tags": [
@@ -4111,7 +4242,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductStockStatusModel"
+                "$ref": "#\/components\/schemas\/ProductStockStatusRequestModel"
               }
             }
           }
@@ -4190,7 +4321,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductStockStatusModel"
+                "$ref": "#\/components\/schemas\/ProductStockStatusRequestModel"
               }
             }
           }
@@ -4227,7 +4358,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductStockStatusModel"
+                "$ref": "#\/components\/schemas\/ProductStockStatusRequestModel"
               }
             }
           }
@@ -4707,7 +4838,7 @@
             "name": "createdSince",
             "in": "query",
             "description": "Use this to only fetch products that has been created since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "schema": {
               "type": "string"
             }
@@ -4716,7 +4847,7 @@
             "name": "updatedSince",
             "in": "query",
             "description": "Use this to only fetch products that has been modified since a certain time. The time should be formatted using ISO-8601 (url encoded)",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "schema": {
               "type": "string"
             }
@@ -4744,7 +4875,7 @@
             "in": "query",
             "style": "form",
             "explode": false,
-            "description": "If you want to include child data in the result. Example: ?include=primaryVariant (to include primary product variant);?include=primaryVariant,languages (to include both primary product variant and languages). \u003Cbr \/\u003E\u003Cbr \/\u003EAvailable includes: `primaryVariant`, `primaryVariant.prices`, `primaryVariant.attributeValues`, `attributes`, `mediaFiles`, `languages`, `vatRates`, `categories`, `unit`, `metaData`, `bundledProducts`, `bundledProducts.prices`, `tags`.\u003Cbr \/\u003E\u003Cbr \/\u003ENOTE! Only one variant and language is included in the result for performance reason. To fetch all variants, instead use \/products\/x\/variants(unnecessary if hasSeveralVariants is false) and to fetch all languages for an object, instead use the individual objects language endpoint",
+            "description": "If you want to include child data in the result. Example: ?include=primaryVariant (to include primary product variant);?include=primaryVariant,languages (to include both primary product variant and languages). <br \/><br \/>Available includes: `primaryVariant`, `primaryVariant.prices`, `primaryVariant.attributeValues`, `attributes`, `mediaFiles`, `languages`, `vatRates`, `categories`, `unit`, `metaData`, `bundledProducts`, `bundledProducts.prices`, `tags`.<br \/><br \/>NOTE! Only one variant and language is included in the result for performance reason. To fetch all variants, instead use \/products\/x\/variants(unnecessary if hasSeveralVariants is false) and to fetch all languages for an object, instead use the individual objects language endpoint",
             "examples": {
               "primaryVariant": {
                 "value": "primaryVariant",
@@ -5272,7 +5403,7 @@
             "in": "query",
             "style": "form",
             "explode": false,
-            "description": "If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices, attributeValues",
+            "description": "If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices, attributeValues, attributeValues.attribute",
             "examples": {
               "prices": {
                 "value": "prices",
@@ -5336,7 +5467,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductVariantModel"
+                "$ref": "#\/components\/schemas\/ProductVariantRequestModel"
               }
             }
           }
@@ -5387,7 +5518,7 @@
             "in": "query",
             "style": "form",
             "explode": false,
-            "description": "If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices,  attributeValues",
+            "description": "If you want to include child data in the result. Example: ?include=prices (to include variants prices). Available includes: prices,  attributeValues, attributeValues.attribute",
             "examples": {
               "prices": {
                 "value": "prices",
@@ -5455,7 +5586,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductVariantModel"
+                "$ref": "#\/components\/schemas\/ProductVariantPutRequestModel"
               }
             }
           }
@@ -5492,7 +5623,7 @@
           "content": {
             "application\/json": {
               "schema": {
-                "$ref": "#\/components\/schemas\/ProductVariantModel"
+                "$ref": "#\/components\/schemas\/ProductVariantPatchRequestModel"
               }
             }
           }
@@ -6779,6 +6910,22 @@
             "format": "int32",
             "example": 101
           }
+        },
+        {
+          "name": "include",
+          "in": "query",
+          "style": "form",
+          "explode": false,
+          "description": "If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices",
+          "examples": {
+            "volumePrices": {
+              "value": "volumePrices",
+              "summary": "include volume prices"
+            }
+          },
+          "schema": {
+            "type": "string"
+          }
         }
       ]
     },
@@ -6932,6 +7079,22 @@
             "minimum": 1,
             "format": "int32",
             "example": 1
+          }
+        },
+        {
+          "name": "include",
+          "in": "query",
+          "style": "form",
+          "explode": false,
+          "description": "If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices",
+          "examples": {
+            "volumePrices": {
+              "value": "volumePrices",
+              "summary": "include volume prices"
+            }
+          },
+          "schema": {
+            "type": "string"
           }
         }
       ]
@@ -7678,7 +7841,7 @@
       },
       "put": {
         "operationId": "putProductVariantStock",
-        "summary": "Update a product variant stock",
+        "summary": "Update or create a product variant stock",
         "description": "Update or set the stock for a product variant at a stock location. \n                    Retrieves the updated `ProductVariantStock` object",
         "responses": {
           "200": {
@@ -7705,6 +7868,43 @@
             "application\/json": {
               "schema": {
                 "$ref": "#\/components\/schemas\/ProductVariantStockPutRequestModel"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Product Variant Stocks"
+        ]
+      },
+      "patch": {
+        "operationId": "patchProductVariantStock",
+        "summary": "Update a product variant stock",
+        "description": "Update the stock for a product variant at a stock location. \n                    Retrieves the updated `ProductVariantStock` object",
+        "responses": {
+          "200": {
+            "description": "The updated stock is returned",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/ProductVariantStockModelItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#\/components\/responses\/BadRequest"
+          },
+          "404": {
+            "$ref": "#\/components\/responses\/NotFound"
+          }
+        },
+        "requestBody": {
+          "description": "Stock data",
+          "required": true,
+          "content": {
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/ProductVariantStockPatchRequestModel"
               }
             }
           }
@@ -8132,7 +8332,7 @@
           }
         },
         "requestBody": {
-          "description": "Web hook data\n---\nPlease note that you should always use HTTPS when adding Webhooks in order to ensure security.\n\n\n\n\nAlso, there is no way to validate that the request originate from Starweb, so it is important that you always validate\nthese event with an API call. For example, if you receive a Webhook event regarding an order status update,\nvalidate this and retrieve the actual data of that order using a GET to `\/api\/v2\/orders\/{order-id}`\n\n\n\n\nAll Webhook events will retry up to 10 times or until they get a 20x response. If they don\u0027t get a 20x response they\nwill retry again after 30 min.\n\n---\n\nAll webhooks will POST to the URL and contain a JSON payload with the following fields:\n---\n- uuid (a UUID of this event, will be the same even if the event is resent due to none 20x response)\n- eventId\n- shopIdCode\n- eventTimestamp\n\nAdditional fields depend on the event:\n---\n**product created \/ updated \/ deleted:**\n- productId\n\n**order created \/ updated \/ status-changed:**\n- orderId\n- shippingMethodId\n- paymentMethodId\n- orderStatusId\n- orderStatusIdCode\n- totalAmount\n- currencyCode",
+          "description": "Web hook data\n---\nPlease note that you should always use HTTPS when adding Webhooks in order to ensure security.\n\n\n\n\nAlso, there is no way to validate that the request originate from Starweb, so it is important that you always validate\nthese event with an API call. For example, if you receive a Webhook event regarding an order status update,\nvalidate this and retrieve the actual data of that order using a GET to `\/api\/v2\/orders\/{order-id}`\n\n\n\n\nAll Webhook events will retry up to 10 times or until they get a 20x response. If they don't get a 20x response they\nwill retry again after 30 min.\n\n---\n\nAll webhooks will POST to the URL and contain a JSON payload with the following fields:\n---\n- uuid (a UUID of this event, will be the same even if the event is resent due to none 20x response)\n- eventId\n- shopIdCode\n- eventTimestamp\n\nAdditional fields depend on the event:\n---\n**product created \/ updated \/ deleted:**\n- productId\n\n**order created \/ updated \/ status-changed:**\n- orderId\n- shippingMethodId\n- paymentMethodId\n- orderStatusId\n- orderStatusIdCode\n- totalAmount\n- currencyCode",
           "required": true,
           "content": {
             "application\/json": {
@@ -8208,7 +8408,7 @@
           }
         },
         "requestBody": {
-          "description": "Web hook data\n---\nPlease note that you should always use HTTPS when adding Webhooks in order to ensure security.\n\n\n\n\nAlso, there is no way to validate that the request originate from Starweb, so it is important that you always validate\nthese event with an API call. For example, if you receive a Webhook event regarding an order status update,\nvalidate this and retrieve the actual data of that order using a GET to `\/api\/v2\/orders\/{order-id}`\n\n\n\n\nAll Webhook events will retry up to 10 times or until they get a 20x response. If they don\u0027t get a 20x response they\nwill retry again after 30 min.\n\n---\n\nAll webhooks will POST to the URL and contain a JSON payload with the following fields:\n---\n- uuid (a UUID of this event, will be the same even if the event is resent due to none 20x response)\n- eventId\n- shopIdCode\n- eventTimestamp\n\nAdditional fields depend on the event:\n---\n**product created \/ updated \/ deleted:**\n- productId\n\n**order created \/ updated \/ status-changed:**\n- orderId\n- shippingMethodId\n- paymentMethodId\n- orderStatusId\n- orderStatusIdCode\n- totalAmount\n- currencyCode",
+          "description": "Web hook data\n---\nPlease note that you should always use HTTPS when adding Webhooks in order to ensure security.\n\n\n\n\nAlso, there is no way to validate that the request originate from Starweb, so it is important that you always validate\nthese event with an API call. For example, if you receive a Webhook event regarding an order status update,\nvalidate this and retrieve the actual data of that order using a GET to `\/api\/v2\/orders\/{order-id}`\n\n\n\n\nAll Webhook events will retry up to 10 times or until they get a 20x response. If they don't get a 20x response they\nwill retry again after 30 min.\n\n---\n\nAll webhooks will POST to the URL and contain a JSON payload with the following fields:\n---\n- uuid (a UUID of this event, will be the same even if the event is resent due to none 20x response)\n- eventId\n- shopIdCode\n- eventTimestamp\n\nAdditional fields depend on the event:\n---\n**product created \/ updated \/ deleted:**\n- productId\n\n**order created \/ updated \/ status-changed:**\n- orderId\n- shippingMethodId\n- paymentMethodId\n- orderStatusId\n- orderStatusIdCode\n- totalAmount\n- currencyCode",
           "required": true,
           "content": {
             "application\/json": {
@@ -8244,7 +8444,7 @@
           }
         },
         "requestBody": {
-          "description": "Web hook data\n---\nPlease note that you should always use HTTPS when adding Webhooks in order to ensure security.\n\n\n\n\nAlso, there is no way to validate that the request originate from Starweb, so it is important that you always validate\nthese event with an API call. For example, if you receive a Webhook event regarding an order status update,\nvalidate this and retrieve the actual data of that order using a GET to `\/api\/v2\/orders\/{order-id}`\n\n\n\n\nAll Webhook events will retry up to 10 times or until they get a 20x response. If they don\u0027t get a 20x response they\nwill retry again after 30 min.\n\n---\n\nAll webhooks will POST to the URL and contain a JSON payload with the following fields:\n---\n- uuid (a UUID of this event, will be the same even if the event is resent due to none 20x response)\n- eventId\n- shopIdCode\n- eventTimestamp\n\nAdditional fields depend on the event:\n---\n**product created \/ updated \/ deleted:**\n- productId\n\n**order created \/ updated \/ status-changed:**\n- orderId\n- shippingMethodId\n- paymentMethodId\n- orderStatusId\n- orderStatusIdCode\n- totalAmount\n- currencyCode",
+          "description": "Web hook data\n---\nPlease note that you should always use HTTPS when adding Webhooks in order to ensure security.\n\n\n\n\nAlso, there is no way to validate that the request originate from Starweb, so it is important that you always validate\nthese event with an API call. For example, if you receive a Webhook event regarding an order status update,\nvalidate this and retrieve the actual data of that order using a GET to `\/api\/v2\/orders\/{order-id}`\n\n\n\n\nAll Webhook events will retry up to 10 times or until they get a 20x response. If they don't get a 20x response they\nwill retry again after 30 min.\n\n---\n\nAll webhooks will POST to the URL and contain a JSON payload with the following fields:\n---\n- uuid (a UUID of this event, will be the same even if the event is resent due to none 20x response)\n- eventId\n- shopIdCode\n- eventTimestamp\n\nAdditional fields depend on the event:\n---\n**product created \/ updated \/ deleted:**\n- productId\n\n**order created \/ updated \/ status-changed:**\n- orderId\n- shippingMethodId\n- paymentMethodId\n- orderStatusId\n- orderStatusIdCode\n- totalAmount\n- currencyCode",
           "required": true,
           "content": {
             "application\/json": {
@@ -8345,7 +8545,19 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-11-28T13:38:17+01:00",
+            "readOnly": true
+          },
+          "paymentMethodExternalId": {
+            "type": "string",
+            "description": "An external id of the payment method",
+            "example": "Some-external-id",
+            "readOnly": true
+          },
+          "shippingMethodExternalId": {
+            "type": "string",
+            "description": "An external id of the shipping method",
+            "example": "Some-external-id",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -8399,7 +8611,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "customerId": {
             "type": "integer",
@@ -8430,6 +8642,11 @@
             "description": "Set this to false to prevent sending email to customer on changes to statusId and new orders for this and all future calls",
             "example": false,
             "default": true
+          },
+          "stockLocationId": {
+            "type": "integer",
+            "description": "Id of stock location this order was made for",
+            "example": 1
           },
           "shippingMethodId": {
             "type": "integer",
@@ -8608,6 +8825,16 @@
             "type": "string",
             "description": "Custom customer info at the point of order creation"
           },
+          "externalId": {
+            "type": "string",
+            "description": "An ID for this order at some other external service f.ex. Specter",
+            "example": "ABC-123"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "Name of the external service the externalId belongs to",
+            "example": "Specter"
+          },
           "items": {
             "$ref": "#\/components\/schemas\/OrderItemModelCollection"
           },
@@ -8637,7 +8864,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -8691,7 +8918,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "customerId": {
             "type": "integer",
@@ -8921,7 +9148,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the order was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "baseCurrencyCode": {
@@ -8975,7 +9202,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the order was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "customerId": {
             "type": "integer",
@@ -9177,6 +9404,16 @@
           "originalCustomerCustomInfo2": {
             "type": "string",
             "description": "Custom customer info at the point of order creation"
+          },
+          "externalId": {
+            "type": "string",
+            "description": "An ID for this order at some other external service f.ex. Specter",
+            "example": "ABC-123"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "Name of the external service the externalId belongs to",
+            "example": "Specter"
           },
           "items": {
             "type": "array",
@@ -9381,10 +9618,7 @@
             "example": "created"
           },
           "languages": {
-            "type": "array",
-            "items": {
-              "$ref": "#\/components\/schemas\/OrderStatusLanguageModel"
-            }
+            "$ref": "#\/components\/schemas\/OrderStatusLanguageModelCollection"
           }
         }
       },
@@ -9403,6 +9637,17 @@
             "maxLength": 64,
             "description": "The name of this order status",
             "example": "Order Created"
+          }
+        }
+      },
+      "OrderStatusLanguageModelCollection": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#\/components\/schemas\/OrderStatusLanguageModel"
+            }
           }
         }
       },
@@ -9499,13 +9744,35 @@
           }
         }
       },
+      "OrderItemBundledModelItem": {
+        "properties": {
+          "bundledItems": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#\/components\/schemas\/OrderItemModel"
+                }
+              }
+            }
+          }
+        }
+      },
       "OrderItemModelCollection": {
         "properties": {
           "data": {
             "type": "array",
             "description": "A list of order items",
             "items": {
-              "$ref": "#\/components\/schemas\/OrderItemModel"
+              "allOf": [
+                {
+                  "$ref": "#\/components\/schemas\/OrderItemModel"
+                },
+                {
+                  "$ref": "#\/components\/schemas\/OrderItemBundledModelItem"
+                }
+              ]
             }
           }
         }
@@ -9524,6 +9791,10 @@
             "maxLength": 40,
             "description": "The external id",
             "example": "ABC123"
+          },
+          "agent": {
+            "type": "string",
+            "description": "Agent id for nShift agent if applicable"
           },
           "readOnly": {
             "type": "boolean",
@@ -9602,7 +9873,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "type": {
             "type": "string",
@@ -9640,6 +9911,16 @@
             "nullable": true,
             "description": "The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)"
           },
+          "externalId": {
+            "type": "string",
+            "nullable": true,
+            "description": "Customer's ID in Specter."
+          },
+          "externalIdType": {
+            "type": "string",
+            "nullable": true,
+            "description": "Type of the customer's external ID defined in the 'externalId' value"
+          },
           "langCode": {
             "type": "string",
             "readOnly": true,
@@ -9669,7 +9950,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "type": {
             "type": "string",
@@ -9705,7 +9986,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "approved": {
@@ -9717,14 +9998,25 @@
           "approvedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was was approved\/disapproved. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
-            "readOnly": true
+            "example": "2019-11-28T13:38:17+01:00",
+            "readOnly": true,
+            "nullable": true
           },
           "pricelistId": {
             "type": "integer",
             "nullable": true,
             "description": "The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)",
             "readOnly": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true,
+            "description": "Customer's ID in Specter."
+          },
+          "externalIdType": {
+            "type": "string",
+            "nullable": true,
+            "description": "Type of the customer's external ID defined in the 'externalId' value"
           }
         },
         "type": "object"
@@ -9748,7 +10040,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the customer was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "type": {
             "type": "string",
@@ -9784,7 +10076,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "approved": {
@@ -9796,7 +10088,7 @@
           "approvedAt": {
             "type": "string",
             "description": "A timestamp of when the customer was was approved\/disapproved. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "pricelistId": {
@@ -9804,6 +10096,16 @@
             "nullable": true,
             "description": "The id of the pricelist the customer is linked to (or null if the customer has no specific pricelist linked)",
             "readOnly": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true,
+            "description": "Customer's ID in Specter."
+          },
+          "externalIdType": {
+            "type": "string",
+            "nullable": true,
+            "description": "Type of the customer's external ID defined in the 'externalId' value"
           }
         }
       },
@@ -10149,7 +10451,14 @@
             "readOnly": true,
             "nullable": false,
             "example": false,
-            "description": "Tells whether this method is a \u0022click and collect\u0022 or not"
+            "description": "Tells whether this method is a \"click and collect\" or not"
+          },
+          "externalId": {
+            "type": "string",
+            "readOnly": true,
+            "nullable": true,
+            "example": "ABC123",
+            "description": "External id for systems like Specter, Fortnox etc"
           },
           "languages": {
             "$ref": "#\/components\/schemas\/PaymentMethodLanguageModelCollection"
@@ -10316,7 +10625,14 @@
             "readOnly": true,
             "nullable": false,
             "example": false,
-            "description": "Tells whether this method is a \u0022click and collect\u0022 or not"
+            "description": "Tells whether this method is a \"click and collect\" or not"
+          },
+          "externalId": {
+            "type": "string",
+            "readOnly": true,
+            "nullable": true,
+            "example": "ABC123",
+            "description": "External id for systems like Specter, Fortnox etc"
           },
           "languages": {
             "$ref": "#\/components\/schemas\/ShippingMethodLanguageModelCollection"
@@ -10349,6 +10665,21 @@
             "readOnly": true,
             "example": 1,
             "description": "The pricelist id"
+          },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
           },
           "name": {
             "type": "string",
@@ -10405,7 +10736,8 @@
           "parentPricelistId": {
             "type": "integer",
             "example": null,
-            "description": "Does this pricelist has a parent price list. "
+            "description": "Does this pricelist has a parent price list. ",
+            "nullable": true
           },
           "isCustomerPricelist": {
             "type": "boolean",
@@ -10428,6 +10760,21 @@
                 "maxLength": 30,
                 "example": "My pricelist",
                 "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist",
+                "nullable": true
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system",
+                "nullable": true
               },
               "currencyCode": {
                 "type": "string",
@@ -10481,6 +10828,21 @@
                 "maxLength": 30,
                 "example": "My pricelist",
                 "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist",
+                "nullable": true
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system",
+                "nullable": true
               },
               "parentPricelistId": {
                 "type": "integer",
@@ -10575,6 +10937,21 @@
                 "example": "My pricelist",
                 "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
               },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist",
+                "nullable": true
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system",
+                "nullable": true
+              },
               "currencyCode": {
                 "type": "string",
                 "minLength": 3,
@@ -10627,6 +11004,21 @@
                 "maxLength": 30,
                 "example": "My pricelist",
                 "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist",
+                "nullable": true
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system",
+                "nullable": true
               },
               "parentPricelistId": {
                 "type": "integer",
@@ -10687,6 +11079,20 @@
                 "example": true,
                 "default": false,
                 "description": "Enter product prices in admin incl. VAT, defaults to `false`"
+              },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist",
+                "nullable": true
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system"
               }
             },
             "required": [
@@ -10702,6 +11108,21 @@
                 "maxLength": 30,
                 "example": "My pricelist",
                 "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
+              },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist",
+                "nullable": true
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system",
+                "nullable": true
               },
               "currencyCode": {
                 "type": "string",
@@ -10756,6 +11177,21 @@
                 "example": "My pricelist",
                 "description": "The unique name of this pricelist. Can only be set and updated for non master pricelits."
               },
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist",
+                "nullable": true
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system",
+                "nullable": true
+              },
               "parentPricelistId": {
                 "type": "integer",
                 "example": null,
@@ -10798,7 +11234,7 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the comment was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "text": {
             "type": "string",
@@ -10858,13 +11294,13 @@
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the media file was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the media file was modifies. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "size": {
@@ -10937,7 +11373,8 @@
           "parentId": {
             "type": "integer",
             "description": "The category`s parent`s Id",
-            "example": null
+            "example": null,
+            "nullable": true
           },
           "visibility": {
             "type": "string",
@@ -10957,19 +11394,33 @@
           "imageFileId": {
             "type": "integer",
             "description": "The Id to the category`s image file. Has to be an existing mediaFile",
-            "example": null
-          },
-          "externalType": {
-            "type": "string",
-            "description": "The system name the externalId belongs to.",
-            "maxLength": 20,
-            "example": "Fortnox"
+            "example": null,
+            "nullable": true
           },
           "externalId": {
             "type": "string",
             "description": "The external Id for this category for the system named in externalType",
             "maxLength": 40,
+            "nullable": true,
+            "default": null,
             "example": "123"
+          },
+          "externalType": {
+            "type": "string",
+            "deprecated": true,
+            "nullable": true,
+            "default": null,
+            "description": "Deprecated: use `externalIdType` instead",
+            "maxLength": 20,
+            "example": "Fortnox"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "nullable": true,
+            "default": null,
+            "example": "Fortnox"
           },
           "hasChildren": {
             "type": "boolean",
@@ -10994,7 +11445,8 @@
           "parentId": {
             "type": "integer",
             "description": "The category`s parent`s Id",
-            "example": null
+            "example": null,
+            "nullable": true
           },
           "visibility": {
             "type": "string",
@@ -11014,19 +11466,33 @@
           "imageFileId": {
             "type": "integer",
             "description": "The Id to the category`s image file. Has to be an existing mediaFile",
-            "example": null
-          },
-          "externalType": {
-            "type": "string",
-            "description": "The system name the externalId belongs to.",
-            "maxLength": 20,
-            "example": "Fortnox"
+            "example": null,
+            "nullable": true
           },
           "externalId": {
             "type": "string",
             "description": "The external Id for this category for the system named in externalType",
             "maxLength": 40,
+            "nullable": true,
+            "default": null,
             "example": "123"
+          },
+          "externalType": {
+            "type": "string",
+            "deprecated": true,
+            "description": "Deprecated: use `externalIdType` instead",
+            "maxLength": 20,
+            "nullable": true,
+            "default": null,
+            "example": "Fortnox"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "nullable": true,
+            "default": null,
+            "example": "Fortnox"
           },
           "hasChildren": {
             "type": "boolean",
@@ -11061,30 +11527,35 @@
           "pageTitle": {
             "type": "string",
             "maxLength": 90,
+            "nullable": true,
             "description": "The page title for this product category",
             "example": "My category - find products here!"
           },
           "description": {
             "type": "string",
             "maxLength": 65535,
+            "nullable": true,
             "description": "The main\/top description of this product category",
             "example": "Lorem ipsum..."
           },
           "bottomDescription": {
             "type": "string",
             "maxLength": 65535,
+            "nullable": true,
             "description": "The extra\/bottom description of this product category",
             "example": "Lorem ipsum..."
           },
           "pageMetaDescription": {
             "type": "string",
             "maxLength": 278,
+            "nullable": true,
             "description": "The page meta data description of this product category",
             "example": "Lorem ipsum..."
           },
           "permalink": {
             "type": "string",
             "maxLength": 128,
+            "nullable": true,
             "description": "The permalink to this product category. Will auto generate if left out",
             "example": "my-category"
           }
@@ -11135,10 +11606,25 @@
             "readOnly": true,
             "example": 101
           },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -11177,7 +11663,7 @@
           "sortIndex": {
             "type": "integer",
             "nullable": true,
-            "minimum": 1,
+            "minimum": 0,
             "maximum": 10000,
             "description": "Sort index for this product in a list"
           },
@@ -11216,7 +11702,7 @@
           "modifiedAt": {
             "type": "string",
             "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
+            "example": "2019-11-28T13:38:17+01:00",
             "readOnly": true
           },
           "variants": {
@@ -11256,15 +11742,25 @@
       "ProductModelUpdatable": {
         "type": "object",
         "properties": {
-          "productId": {
-            "type": "integer",
-            "readOnly": true,
-            "example": 101
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
           },
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -11283,7 +11779,8 @@
               "type": "integer",
               "description": "The ID of the pricelist the product should be visible for",
               "example": 1
-            }
+            },
+            "nullable": true
           },
           "moreInfoUrl": {
             "type": "string",
@@ -11324,7 +11821,8 @@
           "bundleUseManualPrice": {
             "type": "boolean",
             "example": false,
-            "description": "Should all bundled products have a manually entered price? Only applies if type is bundle"
+            "description": "Should all bundled products have a manually entered price? Only applies if type is bundle",
+            "nullable": true
           },
           "accounting": {
             "type": "integer",
@@ -11333,23 +11831,11 @@
             "maximum": 9999,
             "description": "Account number for managing accounting on product level"
           },
-          "hasSeveralVariants": {
-            "type": "boolean",
-            "description": "Indicates if the products has several variants or not. The remaining variants can be fetched using the \/products\/{product id}\/variants endpoint",
-            "readOnly": true,
-            "example": false
-          },
-          "modifiedAt": {
-            "type": "string",
-            "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
-            "readOnly": true
-          },
           "variants": {
             "type": "array",
             "description": "A collection of variants",
             "items": {
-              "$ref": "#\/components\/schemas\/ProductVariantModel"
+              "$ref": "#\/components\/schemas\/ProductVariantPutRequestModel"
             }
           },
           "bundledProducts": {
@@ -11357,7 +11843,8 @@
             "description": "A collection of bundled products",
             "items": {
               "$ref": "#\/components\/schemas\/BundledProductsModel"
-            }
+            },
+            "nullable": true
           },
           "mediaFiles": {
             "type": "array",
@@ -11399,15 +11886,25 @@
       "ProductModelPatchable": {
         "type": "object",
         "properties": {
-          "productId": {
-            "type": "integer",
-            "readOnly": true,
-            "example": 101
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
           },
           "createdAt": {
             "type": "string",
             "description": "A timestamp of when the product was created. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00"
+            "example": "2019-11-28T13:38:17+01:00"
           },
           "defaultVatRate": {
             "type": "string",
@@ -11426,11 +11923,13 @@
               "type": "integer",
               "description": "The ID of the pricelist the product should be visible for",
               "example": 1
-            }
+            },
+            "nullable": true
           },
           "moreInfoUrl": {
             "type": "string",
             "maxLength": 255,
+            "nullable": true,
             "description": "A valid URL to a web page with more information for this product"
           },
           "manufacturerId": {
@@ -11467,6 +11966,7 @@
           "bundleUseManualPrice": {
             "type": "boolean",
             "example": false,
+            "nullable": true,
             "description": "Should all bundled products have a manually entered price? Only applies if type is bundle"
           },
           "accounting": {
@@ -11475,18 +11975,6 @@
             "minimum": 100,
             "maximum": 9999,
             "description": "Account number for managing accounting on product level"
-          },
-          "hasSeveralVariants": {
-            "type": "boolean",
-            "description": "Indicates if the products has several variants or not. The remaining variants can be fetched using the \/products\/{product id}\/variants endpoint",
-            "readOnly": true,
-            "example": false
-          },
-          "modifiedAt": {
-            "type": "string",
-            "description": "A timestamp of when the product was modified. The time should be formatted using ISO-8601",
-            "example": "2019-09-11T07:15:21+02:00",
-            "readOnly": true
           },
           "mediaFiles": {
             "type": "array",
@@ -11554,7 +12042,7 @@
       "ProductVariantModelItem": {
         "properties": {
           "data": {
-            "$ref": "#\/components\/schemas\/ProductVariantModel"
+            "$ref": "#\/components\/schemas\/ProductVariantResponseModel"
           }
         }
       },
@@ -11564,12 +12052,12 @@
             "type": "array",
             "description": "A collection of product variants",
             "items": {
-              "$ref": "#\/components\/schemas\/ProductVariantModel"
+              "$ref": "#\/components\/schemas\/ProductVariantResponseModel"
             }
           }
         }
       },
-      "ProductVariantModel": {
+      "ProductVariantRequestModel": {
         "type": "object",
         "properties": {
           "sku": {
@@ -11577,14 +12065,31 @@
             "maxLength": 40,
             "description": "The product variants SKU (stock keeping unit)"
           },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
           "isActive": {
             "type": "boolean",
             "default": true,
-            "description": "Is this variant active? Only active variants are visible to customers"
+            "description": "Is this variant active? Only active variants are visible to customers",
+            "nullable": true
           },
           "sortIndex": {
             "type": "integer",
-            "description": "The sort index of this variant."
+            "description": "The sort index of this variant.",
+            "nullable": true
           },
           "stockStatusId": {
             "type": "integer",
@@ -11615,6 +12120,201 @@
           "ean": {
             "type": "string",
             "maxLength": 20,
+            "description": "European article no",
+            "nullable": true
+          },
+          "mpn": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "Manufacturer part no",
+            "nullable": true
+          },
+          "imageFileId": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The ID of this variant main image. Available media files can be fetched using the \/media-files endpoint"
+          },
+          "attributeValueLinks": {
+            "type": "array",
+            "description": "An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product\u00b4s hasSeveralVariants field is set to true.",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The ID of the attribute value"
+            }
+          },
+          "volumePricingInheritancePricelistIds": {
+            "type": "array",
+            "description": "An array of pricelists IDs that will use inheritance",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The ID of the attribute value"
+            },
+            "nullable": true
+          }
+        },
+        "required": [
+          "sku",
+          "attributeValueLinks"
+        ]
+      },
+      "ProductVariantPutRequestModel": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "The product variants SKU (stock keeping unit)"
+          },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean",
+            "default": true,
+            "description": "Is this variant active? Only active variants are visible to customers",
+            "nullable": true
+          },
+          "sortIndex": {
+            "type": "integer",
+            "description": "The sort index of this variant.",
+            "nullable": true
+          },
+          "stockStatusId": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The ID of the variants stock status. Available stock statuses can be fetched using the \/product-stock-statuses endpoint"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "nullable": true,
+            "maximum": 100000000,
+            "minimum": -100000000,
+            "description": "The current stock quantity for this variant"
+          },
+          "weightInKg": {
+            "type": "number",
+            "format": "float",
+            "nullable": true,
+            "minimum": 0,
+            "description": "The variants weight in KG",
+            "example": 0.15
+          },
+          "costPrice": {
+            "type": "string",
+            "minimum": 0,
+            "nullable": true,
+            "description": "The cost for this variant. Used for statistic and never displayed to customers"
+          },
+          "ean": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "European article no",
+            "nullable": true
+          },
+          "mpn": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "Manufacturer part no",
+            "nullable": true
+          },
+          "imageFileId": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The ID of this variant main image. Available media files can be fetched using the \/media-files endpoint"
+          },
+          "attributeValueLinks": {
+            "type": "array",
+            "description": "An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product\u00b4s hasSeveralVariants field is set to true.",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The ID of the attribute value"
+            },
+            "nullable": true
+          },
+          "volumePricingInheritancePricelistIds": {
+            "type": "array",
+            "description": "An array of pricelists IDs that will use inheritance",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The ID of the attribute value"
+            },
+            "nullable": true
+          }
+        },
+        "required": [
+          "sku",
+          "attributeValueLinks"
+        ]
+      },
+      "ProductVariantPatchRequestModel": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "The product variants SKU (stock keeping unit)"
+          },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "example": "101",
+            "description": "The external id of this pricelist"
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system"
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "Is this variant active? Only active variants are visible to customers"
+          },
+          "sortIndex": {
+            "type": "integer",
+            "description": "The sort index of this variant."
+          },
+          "stockStatusId": {
+            "type": "integer",
+            "description": "The ID of the variants stock status. Available stock statuses can be fetched using the \/product-stock-statuses endpoint"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "maximum": 100000000,
+            "minimum": -100000000,
+            "description": "The current stock quantity for this variant"
+          },
+          "weightInKg": {
+            "type": "number",
+            "format": "float",
+            "minimum": 0,
+            "description": "The variants weight in KG",
+            "example": 0.15
+          },
+          "costPrice": {
+            "type": "string",
+            "minimum": 0,
+            "description": "The cost for this variant. Used for statistic and never displayed to customers"
+          },
+          "ean": {
+            "type": "string",
+            "maxLength": 20,
             "description": "European article no"
           },
           "mpn": {
@@ -11624,12 +12324,11 @@
           },
           "imageFileId": {
             "type": "integer",
-            "nullable": true,
             "description": "The ID of this variant main image. Available media files can be fetched using the \/media-files endpoint"
           },
           "attributeValueLinks": {
             "type": "array",
-            "description": "An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product\u00b4s hasSeveralVariants field is set to true",
+            "description": "An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product\u00b4s hasSeveralVariants field is set to true.",
             "items": {
               "type": "integer",
               "minimum": 1,
@@ -11644,6 +12343,112 @@
               "minimum": 1,
               "description": "The ID of the attribute value"
             }
+          }
+        }
+      },
+      "ProductVariantResponseModel": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "The product variants SKU (stock keeping unit)"
+          },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean",
+            "default": true,
+            "description": "Is this variant active? Only active variants are visible to customers",
+            "nullable": true
+          },
+          "sortIndex": {
+            "type": "integer",
+            "description": "The sort index of this variant.",
+            "nullable": true
+          },
+          "stockStatusId": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The ID of the variants stock status. Available stock statuses can be fetched using the \/product-stock-statuses endpoint"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "nullable": true,
+            "maximum": 100000000,
+            "minimum": -100000000,
+            "description": "The current stock quantity for this variant"
+          },
+          "weightInKg": {
+            "type": "number",
+            "format": "float",
+            "nullable": true,
+            "minimum": 0,
+            "description": "The variants weight in KG",
+            "example": 0.15
+          },
+          "costPrice": {
+            "type": "string",
+            "minimum": 0,
+            "nullable": true,
+            "description": "The cost for this variant. Used for statistic and never displayed to customers"
+          },
+          "ean": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "European article no",
+            "nullable": true
+          },
+          "mpn": {
+            "type": "string",
+            "maxLength": 40,
+            "description": "Manufacturer part no",
+            "nullable": true
+          },
+          "imageFileId": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The ID of this variant main image. Available media files can be fetched using the \/media-files endpoint"
+          },
+          "attributeValueLinks": {
+            "type": "array",
+            "description": "An array of attribute value IDs that this variant belongs to. This field is mandatory for products variants if the product\u00b4s hasSeveralVariants field is set to true.",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The ID of the attribute value"
+            }
+          },
+          "volumePricingInheritancePricelistIds": {
+            "type": "array",
+            "description": "An array of pricelists IDs that will use inheritance",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The ID of the attribute value"
+            },
+            "nullable": true
+          },
+          "variantId": {
+            "type": "integer",
+            "readOnly": true,
+            "description": "The variant id",
+            "minimum": 1,
+            "format": "int32",
+            "example": 1
           },
           "prices": {
             "type": "array",
@@ -11659,7 +12464,11 @@
               "$ref": "#\/components\/schemas\/ProductVariantAttributeValueModel"
             }
           }
-        }
+        },
+        "required": [
+          "sku",
+          "attributeValueLinks"
+        ]
       },
       "ProductMediaFileLinkModelItem": {
         "properties": {
@@ -11993,8 +12802,57 @@
             "format": "int32",
             "example": 1
           },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
           "languages": {
             "$ref": "#\/components\/schemas\/ProductUnitLanguageModelCollection"
+          }
+        }
+      },
+      "ProductUnitModelUpdatable": {
+        "type": "object",
+        "properties": {
+          "unitId": {
+            "type": "integer",
+            "readOnly": true,
+            "description": "The units id",
+            "minimum": 1,
+            "format": "int32",
+            "example": 1
+          },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
+          "languages": {
+            "type": "array",
+            "items": {
+              "$ref": "#\/components\/schemas\/ProductUnitLanguageModel"
+            }
           }
         }
       },
@@ -12056,6 +12914,21 @@
             "type": "integer",
             "description": "The pricelist this price is for"
           },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 255,
+            "example": "ERP system",
+            "nullable": true
+          },
           "priceExVat": {
             "type": "number",
             "format": "float",
@@ -12071,6 +12944,9 @@
             "nullable": true,
             "example": 13.6,
             "description": "The special price excluding vat (a discounted price)"
+          },
+          "volumePrices": {
+            "$ref": "#\/components\/schemas\/ProductVariantVolumePriceModelCollection"
           }
         },
         "required": [
@@ -12101,6 +12977,21 @@
           "pricelistId": {
             "type": "integer",
             "description": "The pricelist this price is for"
+          },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 255,
+            "example": "ERP system",
+            "nullable": true
           },
           "priceExVat": {
             "type": "number",
@@ -12149,6 +13040,21 @@
             "description": "The id of this manufacturer",
             "example": 2
           },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
           "name": {
             "type": "string",
             "maxLength": 30,
@@ -12159,7 +13065,8 @@
             "type": "string",
             "maxLength": 255,
             "description": "The URL to the manufacturers website",
-            "example": "https:\/\/example.net"
+            "example": "https:\/\/example.net",
+            "nullable": true
           }
         },
         "required": [
@@ -12235,7 +13142,7 @@
           }
         }
       },
-      "ProductStockStatusModel": {
+      "ProductStockStatusResponseModel": {
         "type": "object",
         "properties": {
           "stockStatusId": {
@@ -12271,7 +13178,58 @@
             "type": "boolean",
             "default": false,
             "example": true,
-            "description": "Should the product be displayed as \u0022in stock\u0022 when this status is set?"
+            "description": "Should the product be displayed as \"in stock\" when this status is set?"
+          },
+          "languages": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#\/components\/schemas\/ProductStockStatusLanguageModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ProductStockStatusRequestModel": {
+        "type": "object",
+        "properties": {
+          "stockStatusId": {
+            "type": "integer",
+            "readOnly": true,
+            "description": "The stock status id",
+            "example": 101
+          },
+          "idCode": {
+            "type": "string",
+            "maxLength": 20,
+            "readOnly": true,
+            "description": "The idCode of the status. Only standard statuses has idCodes set. It is also not permitted to change names for standard statuses",
+            "example": "inStock"
+          },
+          "sortIndex": {
+            "type": "integer",
+            "description": "Sort index for this status"
+          },
+          "stockoutNewStatusId": {
+            "type": "integer",
+            "nullable": true,
+            "example": null,
+            "description": "This has to be set to another, existing stock status id, or null. If a product has its quantity changed to negative, the product will then change stock status to the one with this id"
+          },
+          "productBuyable": {
+            "type": "boolean",
+            "default": true,
+            "example": false,
+            "description": "Is the product buyable when this status is set?"
+          },
+          "inStock": {
+            "type": "boolean",
+            "default": false,
+            "example": true,
+            "description": "Should the product be displayed as \"in stock\" when this status is set?"
           },
           "languages": {
             "type": "array",
@@ -12302,7 +13260,7 @@
       "ProductStockStatusModelItem": {
         "properties": {
           "data": {
-            "$ref": "#\/components\/schemas\/ProductStockStatusModel"
+            "$ref": "#\/components\/schemas\/ProductStockStatusResponseModel"
           }
         }
       },
@@ -12312,7 +13270,7 @@
             "type": "array",
             "description": "A list of product stock statuses",
             "items": {
-              "$ref": "#\/components\/schemas\/ProductStockStatusModel"
+              "$ref": "#\/components\/schemas\/ProductStockStatusResponseModel"
             }
           }
         }
@@ -12455,6 +13413,33 @@
       "ProductVariantAttributeValueModelUpdatable": {
         "type": "object",
         "properties": {
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
+          "skuSuffix": {
+            "type": "string",
+            "description": "The suggested suffix for new Variants using this attribute value",
+            "example": "W"
+          },
+          "sortIndex": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0,
+            "example": 9,
+            "description": "The sort order for this attribute value"
+          },
           "languages": {
             "type": "array",
             "description": "A collection of attribute value languages",
@@ -12485,6 +13470,21 @@
             "type": "integer",
             "description": "The id for this attribute value"
           },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
           "skuSuffix": {
             "type": "string",
             "description": "The suggested suffix for new Variants using this attribute value",
@@ -12498,10 +13498,15 @@
             "description": "The sort order for this attribute value"
           },
           "languages": {
-            "type": "array",
+            "type": "object",
             "description": "A collection of attribute value languages",
-            "items": {
-              "$ref": "#\/components\/schemas\/ProductVariantAttributeValueLanguageModel"
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#\/components\/schemas\/ProductVariantAttributeValueLanguageModel"
+                }
+              }
             }
           }
         }
@@ -12532,6 +13537,21 @@
             "readOnly": true,
             "example": 1
           },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
           "languages": {
             "type": "array",
             "description": "A collection of attribute languages",
@@ -12561,6 +13581,21 @@
           "attributeId": {
             "type": "integer",
             "description": "The id for this attribute"
+          },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
           },
           "languages": {
             "type": "object",
@@ -12688,6 +13723,7 @@
           },
           "statusId": {
             "type": "integer",
+            "nullable": true,
             "minimum": 1,
             "description": "The id of an order status. Only used with the order-status-changes event.",
             "example": 1
@@ -12787,6 +13823,21 @@
             "readOnly": true,
             "example": 101
           },
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
           "visibility": {
             "type": "string",
             "enum": [
@@ -12816,6 +13867,21 @@
       "StockLocationPostRequestModel": {
         "type": "object",
         "properties": {
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
           "visibility": {
             "type": "string",
             "enum": [
@@ -12838,7 +13904,10 @@
             "default": false
           },
           "languages": {
-            "$ref": "#\/components\/schemas\/StockLocationLanguagesModelCollection"
+            "type": "array",
+            "items": {
+              "$ref": "#\/components\/schemas\/StockLocationLanguagesModel"
+            }
           }
         },
         "required": [
@@ -12850,6 +13919,21 @@
       "StockLocationPutRequestModel": {
         "type": "object",
         "properties": {
+          "externalId": {
+            "type": "string",
+            "maxLength": 40,
+            "default": "",
+            "example": "101",
+            "description": "The external id of this pricelist",
+            "nullable": true
+          },
+          "externalIdType": {
+            "type": "string",
+            "description": "The system name the externalId belongs to.",
+            "maxLength": 20,
+            "example": "ERP system",
+            "nullable": true
+          },
           "visibility": {
             "type": "string",
             "enum": [
@@ -12872,7 +13956,10 @@
             "default": false
           },
           "languages": {
-            "$ref": "#\/components\/schemas\/StockLocationLanguagesModelCollection"
+            "type": "array",
+            "items": {
+              "$ref": "#\/components\/schemas\/StockLocationLanguagesModel"
+            }
           }
         },
         "required": [
@@ -12885,6 +13972,21 @@
         "allOf": [
           {
             "properties": {
+              "externalId": {
+                "type": "string",
+                "maxLength": 40,
+                "default": "",
+                "example": "101",
+                "description": "The external id of this pricelist",
+                "nullable": true
+              },
+              "externalIdType": {
+                "type": "string",
+                "description": "The system name the externalId belongs to.",
+                "maxLength": 20,
+                "example": "ERP system",
+                "nullable": true
+              },
               "visibility": {
                 "type": "string",
                 "enum": [
@@ -12907,13 +14009,28 @@
                 "default": false
               },
               "languages": {
-                "$ref": "#\/components\/schemas\/StockLocationLanguagesModelCollection"
+                "type": "array",
+                "items": {
+                  "$ref": "#\/components\/schemas\/StockLocationLanguagesModel"
+                }
               }
             }
           },
           {
             "title": "Property update",
             "anyOf": [
+              {
+                "title": "externalId update",
+                "required": [
+                  "externalId"
+                ]
+              },
+              {
+                "title": "externalIdType update",
+                "required": [
+                  "externalIdType"
+                ]
+              },
               {
                 "title": "visibility update",
                 "required": [
@@ -13051,6 +14168,22 @@
           "stockStatusId",
           "stockQuantity"
         ]
+      },
+      "ProductVariantStockPatchRequestModel": {
+        "properties": {
+          "stockStatusId": {
+            "type": "integer",
+            "description": "The stock status id. If you do not provide this value, the stock status will be changed according to the status settings, otherwise the status will be overriden by the new value, no further status actions will be applied. See  [product stock statuses](#tag\/Product-Stock-Statuses)"
+          },
+          "stockQuantity": {
+            "type": "number",
+            "format": "float",
+            "minimum": -100000000,
+            "maximum": 100000000,
+            "description": "stock quantity",
+            "example": 768
+          }
+        }
       },
       "ProductBundleProductPriceModelItem": {
         "properties": {
@@ -13424,16 +14557,6 @@
       }
     },
     "securitySchemes": {
-      "oauth2": {
-        "type": "oauth2",
-        "description": "OAuth 2.0 using Client Credentials",
-        "flows": {
-          "clientCredentials": {
-            "tokenUrl": "https:\/\/leksaker.starweb.se\/api\/v2\/token",
-            "scopes": {}
-          }
-        }
-      }
     },
     "responses": {
       "ItemDeleted": {

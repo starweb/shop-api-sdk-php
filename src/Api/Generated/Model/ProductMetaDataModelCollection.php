@@ -2,32 +2,41 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductMetaDataModelCollection
+class ProductMetaDataModelCollection extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * A collection of product meta data
      *
-     * @var ProductMetaDataModel[]
+     * @var ProductMetaDataModel[]|null
      */
     protected $data;
     /**
      * A collection of product meta data
      *
-     * @return ProductMetaDataModel[]
+     * @return ProductMetaDataModel[]|null
      */
-    public function getData() : array
+    public function getData() : ?array
     {
         return $this->data;
     }
     /**
      * A collection of product meta data
      *
-     * @param ProductMetaDataModel[] $data
+     * @param ProductMetaDataModel[]|null $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(?array $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }

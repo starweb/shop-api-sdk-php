@@ -2,32 +2,41 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductVariantStockModelItem
+class ProductVariantStockModelItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
-     * @var ProductVariantStockResponseModel
+     * @var ProductVariantStockResponseModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductVariantStockResponseModel
+     * @return ProductVariantStockResponseModel|null
      */
-    public function getData() : ProductVariantStockResponseModel
+    public function getData() : ?ProductVariantStockResponseModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductVariantStockResponseModel $data
+     * @param ProductVariantStockResponseModel|null $data
      *
      * @return self
      */
-    public function setData(ProductVariantStockResponseModel $data) : self
+    public function setData(?ProductVariantStockResponseModel $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }

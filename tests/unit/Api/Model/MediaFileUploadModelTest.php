@@ -8,7 +8,7 @@ use Starweb\Api\Model\MediaFileUploadModel;
 
 class MediaFileUploadModelTest extends TestCase
 {
-    public function testInheritance()
+    public function testInheritance(): void
     {
         $model = new MediaFileUploadModel();
         $this->assertInstanceOf(GeneratedMediaFileUploadModel::class, $model);

@@ -2,59 +2,69 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ErrorModel
+class ErrorModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * An error code for this type of error
      *
-     * @var string
+     * @var string|null
      */
     protected $error;
     /**
      * A human readable description of the error
      *
-     * @var string
+     * @var string|null
      */
     protected $errorDescription;
     /**
      * An error code for this type of error
      *
-     * @return string
+     * @return string|null
      */
-    public function getError() : string
+    public function getError() : ?string
     {
         return $this->error;
     }
     /**
      * An error code for this type of error
      *
-     * @param string $error
+     * @param string|null $error
      *
      * @return self
      */
-    public function setError(string $error) : self
+    public function setError(?string $error) : self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
     }
     /**
      * A human readable description of the error
      *
-     * @return string
+     * @return string|null
      */
-    public function getErrorDescription() : string
+    public function getErrorDescription() : ?string
     {
         return $this->errorDescription;
     }
     /**
      * A human readable description of the error
      *
-     * @param string $errorDescription
+     * @param string|null $errorDescription
      *
      * @return self
      */
-    public function setErrorDescription(string $errorDescription) : self
+    public function setErrorDescription(?string $errorDescription) : self
     {
+        $this->initialized['errorDescription'] = true;
         $this->errorDescription = $errorDescription;
         return $this;
     }

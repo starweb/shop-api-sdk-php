@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,51 +16,85 @@ class ProductTagModelNormalizer implements DenormalizerInterface, NormalizerInte
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\ProductTagModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductTagModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductTagModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\ProductTagModel();
-        if (property_exists($data, 'tagId')) {
-            $object->setTagId($data->{'tagId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'type')) {
-            $object->setType($data->{'type'});
+        if (\array_key_exists('tagId', $data) && $data['tagId'] !== null) {
+            $object->setTagId($data['tagId']);
+            unset($data['tagId']);
         }
-        if (property_exists($data, 'languages')) {
+        elseif (\array_key_exists('tagId', $data) && $data['tagId'] === null) {
+            $object->setTagId(null);
+        }
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
+            $object->setType($data['type']);
+            unset($data['type']);
+        }
+        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
+        }
+        if (\array_key_exists('languages', $data) && $data['languages'] !== null) {
             $values = array();
-            foreach ($data->{'languages'} as $value) {
+            foreach ($data['languages'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Starweb\\Api\\Generated\\Model\\ProductTagLanguageModel', 'json', $context);
             }
             $object->setLanguages($values);
+            unset($data['languages']);
+        }
+        elseif (\array_key_exists('languages', $data) && $data['languages'] === null) {
+            $object->setLanguages(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getTagId()) {
-            $data->{'tagId'} = $object->getTagId();
-        }
-        if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
-        }
-        if (null !== $object->getLanguages()) {
+        $data = array();
+        if ($object->isInitialized('languages') && null !== $object->getLanguages()) {
             $values = array();
             foreach ($object->getLanguages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'languages'} = $values;
+            $data['languages'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\ProductTagModel' => false);
     }
 }

@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - support for generated client code built on top of the [Jane](https://github.com/janephp/janephp) library 
+- feature branch for shop api fixes which are not all release yet
 
 ## [0.1.0] - 2019-03-20
 ### Added

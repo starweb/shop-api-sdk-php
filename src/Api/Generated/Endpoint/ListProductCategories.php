@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class ListProductCategories extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class ListProductCategories extends \Starweb\Api\Generated\Runtime\Client\BaseEndpoint implements \Starweb\Api\Generated\Runtime\Client\Endpoint
 {
     /**
      * Returns a list of product categories
@@ -19,7 +19,7 @@ class ListProductCategories extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Starweb\Api\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -42,11 +42,11 @@ class ListProductCategories extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
         $optionsResolver->setDefined(array('page', 'externalId', 'parent', 'filterVisible', 'include'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
-        $optionsResolver->setAllowedTypes('page', array('int'));
-        $optionsResolver->setAllowedTypes('externalId', array('string'));
-        $optionsResolver->setAllowedTypes('parent', array('int'));
-        $optionsResolver->setAllowedTypes('filterVisible', array('bool'));
-        $optionsResolver->setAllowedTypes('include', array('string'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('externalId', array('string'));
+        $optionsResolver->addAllowedTypes('parent', array('int'));
+        $optionsResolver->addAllowedTypes('filterVisible', array('bool'));
+        $optionsResolver->addAllowedTypes('include', array('string'));
         return $optionsResolver;
     }
     /**
@@ -56,13 +56,19 @@ class ListProductCategories extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
      *
      * @return null|\Starweb\Api\Generated\Model\ProductCategoryModelCollection
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (200 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductCategoryModelCollection', 'json');
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            throw new \Starweb\Api\Generated\Exception\ListProductCategoriesBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Starweb\Api\Generated\Exception\ListProductCategoriesBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'), $response);
         }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('oauth2');
     }
 }

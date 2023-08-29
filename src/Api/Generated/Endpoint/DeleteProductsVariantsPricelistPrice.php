@@ -2,7 +2,7 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class DeleteProductsVariantsPricelistPrice extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class DeleteProductsVariantsPricelistPrice extends \Starweb\Api\Generated\Runtime\Client\BaseEndpoint implements \Starweb\Api\Generated\Runtime\Client\Endpoint
 {
     protected $productId;
     protected $variantId;
@@ -13,14 +13,18 @@ class DeleteProductsVariantsPricelistPrice extends \Jane\OpenApiRuntime\Client\B
      * @param int $productId The product id
      * @param int $variantId The products variants id
      * @param int $pricelistId The pricelist id
+     * @param array $queryParameters {
+     *     @var string $include If you want to include child data in the result. Example: ?include=volumePrices (to include variants volume prices). Available includes: volumePrices
+     * }
      */
-    public function __construct(int $productId, int $variantId, int $pricelistId)
+    public function __construct(int $productId, int $variantId, int $pricelistId, array $queryParameters = array())
     {
         $this->productId = $productId;
         $this->variantId = $variantId;
         $this->pricelistId = $pricelistId;
+        $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Starweb\Api\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'DELETE';
@@ -37,6 +41,15 @@ class DeleteProductsVariantsPricelistPrice extends \Jane\OpenApiRuntime\Client\B
     {
         return array('Accept' => array('application/json'));
     }
+    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(array('include'));
+        $optionsResolver->setRequired(array());
+        $optionsResolver->setDefaults(array());
+        $optionsResolver->addAllowedTypes('include', array('string'));
+        return $optionsResolver;
+    }
     /**
      * {@inheritdoc}
      *
@@ -44,13 +57,19 @@ class DeleteProductsVariantsPricelistPrice extends \Jane\OpenApiRuntime\Client\B
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (204 === $status) {
             return null;
         }
-        if (404 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            throw new \Starweb\Api\Generated\Exception\DeleteProductsVariantsPricelistPriceNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Starweb\Api\Generated\Exception\DeleteProductsVariantsPricelistPriceNotFoundException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'), $response);
         }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('oauth2');
     }
 }

@@ -2,32 +2,41 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductLanguageModelItem
+class ProductLanguageModelItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
-     * @var ProductLanguageModel
+     * @var ProductLanguageModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ProductLanguageModel
+     * @return ProductLanguageModel|null
      */
-    public function getData() : ProductLanguageModel
+    public function getData() : ?ProductLanguageModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ProductLanguageModel $data
+     * @param ProductLanguageModel|null $data
      *
      * @return self
      */
-    public function setData(ProductLanguageModel $data) : self
+    public function setData(?ProductLanguageModel $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }

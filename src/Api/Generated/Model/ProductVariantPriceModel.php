@@ -2,18 +2,38 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductVariantPriceModel
+class ProductVariantPriceModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The pricelist this price is for
      *
-     * @var int
+     * @var int|null
      */
     protected $pricelistId;
     /**
+     * The external id of this pricelist
+     *
+     * @var string|null
+     */
+    protected $externalId = '';
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @var string|null
+     */
+    protected $externalIdType;
+    /**
      * The price excluding vat
      *
-     * @var float
+     * @var float|null
      */
     protected $priceExVat = 0;
     /**
@@ -23,44 +43,96 @@ class ProductVariantPriceModel
      */
     protected $specialPriceExVat;
     /**
+     * 
+     *
+     * @var ProductVariantVolumePriceModelCollection|null
+     */
+    protected $volumePrices;
+    /**
      * The pricelist this price is for
      *
-     * @return int
+     * @return int|null
      */
-    public function getPricelistId() : int
+    public function getPricelistId() : ?int
     {
         return $this->pricelistId;
     }
     /**
      * The pricelist this price is for
      *
-     * @param int $pricelistId
+     * @param int|null $pricelistId
      *
      * @return self
      */
-    public function setPricelistId(int $pricelistId) : self
+    public function setPricelistId(?int $pricelistId) : self
     {
+        $this->initialized['pricelistId'] = true;
         $this->pricelistId = $pricelistId;
+        return $this;
+    }
+    /**
+     * The external id of this pricelist
+     *
+     * @return string|null
+     */
+    public function getExternalId() : ?string
+    {
+        return $this->externalId;
+    }
+    /**
+     * The external id of this pricelist
+     *
+     * @param string|null $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(?string $externalId) : self
+    {
+        $this->initialized['externalId'] = true;
+        $this->externalId = $externalId;
+        return $this;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @return string|null
+     */
+    public function getExternalIdType() : ?string
+    {
+        return $this->externalIdType;
+    }
+    /**
+     * The system name the externalId belongs to.
+     *
+     * @param string|null $externalIdType
+     *
+     * @return self
+     */
+    public function setExternalIdType(?string $externalIdType) : self
+    {
+        $this->initialized['externalIdType'] = true;
+        $this->externalIdType = $externalIdType;
         return $this;
     }
     /**
      * The price excluding vat
      *
-     * @return float
+     * @return float|null
      */
-    public function getPriceExVat() : float
+    public function getPriceExVat() : ?float
     {
         return $this->priceExVat;
     }
     /**
      * The price excluding vat
      *
-     * @param float $priceExVat
+     * @param float|null $priceExVat
      *
      * @return self
      */
-    public function setPriceExVat(float $priceExVat) : self
+    public function setPriceExVat(?float $priceExVat) : self
     {
+        $this->initialized['priceExVat'] = true;
         $this->priceExVat = $priceExVat;
         return $this;
     }
@@ -82,7 +154,30 @@ class ProductVariantPriceModel
      */
     public function setSpecialPriceExVat(?float $specialPriceExVat) : self
     {
+        $this->initialized['specialPriceExVat'] = true;
         $this->specialPriceExVat = $specialPriceExVat;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return ProductVariantVolumePriceModelCollection|null
+     */
+    public function getVolumePrices() : ?ProductVariantVolumePriceModelCollection
+    {
+        return $this->volumePrices;
+    }
+    /**
+     * 
+     *
+     * @param ProductVariantVolumePriceModelCollection|null $volumePrices
+     *
+     * @return self
+     */
+    public function setVolumePrices(?ProductVariantVolumePriceModelCollection $volumePrices) : self
+    {
+        $this->initialized['volumePrices'] = true;
+        $this->volumePrices = $volumePrices;
         return $this;
     }
 }

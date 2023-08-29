@@ -2,16 +2,28 @@
 
 namespace Starweb\Api\Generated\Exception;
 
-class DeletePricelistForbiddenException extends \RuntimeException implements ClientException
+class DeletePricelistForbiddenException extends ForbiddenException
 {
+    /**
+     * @var \Starweb\Api\Generated\Model\ErrorModel
+     */
     private $errorModel;
-    public function __construct(\Starweb\Api\Generated\Model\ErrorModel $errorModel)
+    /**
+     * @var \Psr\Http\Message\ResponseInterface
+     */
+    private $response;
+    public function __construct(\Starweb\Api\Generated\Model\ErrorModel $errorModel, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Forbidden', 403);
+        parent::__construct('Forbidden');
         $this->errorModel = $errorModel;
+        $this->response = $response;
     }
-    public function getErrorModel()
+    public function getErrorModel() : \Starweb\Api\Generated\Model\ErrorModel
     {
         return $this->errorModel;
+    }
+    public function getResponse() : \Psr\Http\Message\ResponseInterface
+    {
+        return $this->response;
     }
 }

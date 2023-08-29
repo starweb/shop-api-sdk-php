@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,93 +16,178 @@ class CustomerCreatedModelNormalizer implements DenormalizerInterface, Normalize
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\CustomerCreatedModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerCreatedModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\CustomerCreatedModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\CustomerCreatedModel();
-        if (property_exists($data, 'customerId')) {
-            $object->setCustomerId($data->{'customerId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'createdAt')) {
-            $object->setCreatedAt($data->{'createdAt'});
+        if (\array_key_exists('customerId', $data) && $data['customerId'] !== null) {
+            $object->setCustomerId($data['customerId']);
+            unset($data['customerId']);
         }
-        if (property_exists($data, 'type')) {
-            $object->setType($data->{'type'});
+        elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
+            $object->setCustomerId(null);
         }
-        if (property_exists($data, 'email')) {
-            $object->setEmail($data->{'email'});
+        if (\array_key_exists('createdAt', $data) && $data['createdAt'] !== null) {
+            $object->setCreatedAt($data['createdAt']);
+            unset($data['createdAt']);
         }
-        if (property_exists($data, 'nationalIdNo')) {
-            $object->setNationalIdNo($data->{'nationalIdNo'});
+        elseif (\array_key_exists('createdAt', $data) && $data['createdAt'] === null) {
+            $object->setCreatedAt(null);
         }
-        if (property_exists($data, 'vatNo')) {
-            $object->setVatNo($data->{'vatNo'});
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
+            $object->setType($data['type']);
+            unset($data['type']);
         }
-        if (property_exists($data, 'customInfo1')) {
-            $object->setCustomInfo1($data->{'customInfo1'});
+        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
         }
-        if (property_exists($data, 'customInfo2')) {
-            $object->setCustomInfo2($data->{'customInfo2'});
+        if (\array_key_exists('email', $data) && $data['email'] !== null) {
+            $object->setEmail($data['email']);
+            unset($data['email']);
         }
-        if (property_exists($data, 'modifiedAt')) {
-            $object->setModifiedAt($data->{'modifiedAt'});
+        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+            $object->setEmail(null);
         }
-        if (property_exists($data, 'approved')) {
-            $object->setApproved($data->{'approved'});
+        if (\array_key_exists('nationalIdNo', $data) && $data['nationalIdNo'] !== null) {
+            $object->setNationalIdNo($data['nationalIdNo']);
+            unset($data['nationalIdNo']);
         }
-        if (property_exists($data, 'approvedAt')) {
-            $object->setApprovedAt($data->{'approvedAt'});
+        elseif (\array_key_exists('nationalIdNo', $data) && $data['nationalIdNo'] === null) {
+            $object->setNationalIdNo(null);
         }
-        if (property_exists($data, 'pricelistId')) {
-            $object->setPricelistId($data->{'pricelistId'});
+        if (\array_key_exists('vatNo', $data) && $data['vatNo'] !== null) {
+            $object->setVatNo($data['vatNo']);
+            unset($data['vatNo']);
+        }
+        elseif (\array_key_exists('vatNo', $data) && $data['vatNo'] === null) {
+            $object->setVatNo(null);
+        }
+        if (\array_key_exists('customInfo1', $data) && $data['customInfo1'] !== null) {
+            $object->setCustomInfo1($data['customInfo1']);
+            unset($data['customInfo1']);
+        }
+        elseif (\array_key_exists('customInfo1', $data) && $data['customInfo1'] === null) {
+            $object->setCustomInfo1(null);
+        }
+        if (\array_key_exists('customInfo2', $data) && $data['customInfo2'] !== null) {
+            $object->setCustomInfo2($data['customInfo2']);
+            unset($data['customInfo2']);
+        }
+        elseif (\array_key_exists('customInfo2', $data) && $data['customInfo2'] === null) {
+            $object->setCustomInfo2(null);
+        }
+        if (\array_key_exists('modifiedAt', $data) && $data['modifiedAt'] !== null) {
+            $object->setModifiedAt($data['modifiedAt']);
+            unset($data['modifiedAt']);
+        }
+        elseif (\array_key_exists('modifiedAt', $data) && $data['modifiedAt'] === null) {
+            $object->setModifiedAt(null);
+        }
+        if (\array_key_exists('approved', $data) && $data['approved'] !== null) {
+            $object->setApproved($data['approved']);
+            unset($data['approved']);
+        }
+        elseif (\array_key_exists('approved', $data) && $data['approved'] === null) {
+            $object->setApproved(null);
+        }
+        if (\array_key_exists('approvedAt', $data) && $data['approvedAt'] !== null) {
+            $object->setApprovedAt($data['approvedAt']);
+            unset($data['approvedAt']);
+        }
+        elseif (\array_key_exists('approvedAt', $data) && $data['approvedAt'] === null) {
+            $object->setApprovedAt(null);
+        }
+        if (\array_key_exists('pricelistId', $data) && $data['pricelistId'] !== null) {
+            $object->setPricelistId($data['pricelistId']);
+            unset($data['pricelistId']);
+        }
+        elseif (\array_key_exists('pricelistId', $data) && $data['pricelistId'] === null) {
+            $object->setPricelistId(null);
+        }
+        if (\array_key_exists('externalId', $data) && $data['externalId'] !== null) {
+            $object->setExternalId($data['externalId']);
+            unset($data['externalId']);
+        }
+        elseif (\array_key_exists('externalId', $data) && $data['externalId'] === null) {
+            $object->setExternalId(null);
+        }
+        if (\array_key_exists('externalIdType', $data) && $data['externalIdType'] !== null) {
+            $object->setExternalIdType($data['externalIdType']);
+            unset($data['externalIdType']);
+        }
+        elseif (\array_key_exists('externalIdType', $data) && $data['externalIdType'] === null) {
+            $object->setExternalIdType(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getCustomerId()) {
-            $data->{'customerId'} = $object->getCustomerId();
+        $data = array();
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
+            $data['createdAt'] = $object->getCreatedAt();
         }
-        if (null !== $object->getCreatedAt()) {
-            $data->{'createdAt'} = $object->getCreatedAt();
+        if ($object->isInitialized('type') && null !== $object->getType()) {
+            $data['type'] = $object->getType();
         }
-        if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
+            $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getEmail()) {
-            $data->{'email'} = $object->getEmail();
+        if ($object->isInitialized('nationalIdNo') && null !== $object->getNationalIdNo()) {
+            $data['nationalIdNo'] = $object->getNationalIdNo();
         }
-        if (null !== $object->getNationalIdNo()) {
-            $data->{'nationalIdNo'} = $object->getNationalIdNo();
+        if ($object->isInitialized('vatNo') && null !== $object->getVatNo()) {
+            $data['vatNo'] = $object->getVatNo();
         }
-        if (null !== $object->getVatNo()) {
-            $data->{'vatNo'} = $object->getVatNo();
+        if ($object->isInitialized('customInfo1') && null !== $object->getCustomInfo1()) {
+            $data['customInfo1'] = $object->getCustomInfo1();
         }
-        if (null !== $object->getCustomInfo1()) {
-            $data->{'customInfo1'} = $object->getCustomInfo1();
+        if ($object->isInitialized('customInfo2') && null !== $object->getCustomInfo2()) {
+            $data['customInfo2'] = $object->getCustomInfo2();
         }
-        if (null !== $object->getCustomInfo2()) {
-            $data->{'customInfo2'} = $object->getCustomInfo2();
+        if ($object->isInitialized('externalId') && null !== $object->getExternalId()) {
+            $data['externalId'] = $object->getExternalId();
         }
-        if (null !== $object->getModifiedAt()) {
-            $data->{'modifiedAt'} = $object->getModifiedAt();
+        if ($object->isInitialized('externalIdType') && null !== $object->getExternalIdType()) {
+            $data['externalIdType'] = $object->getExternalIdType();
         }
-        $data->{'approved'} = $object->getApproved();
-        if (null !== $object->getApprovedAt()) {
-            $data->{'approvedAt'} = $object->getApprovedAt();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
-        $data->{'pricelistId'} = $object->getPricelistId();
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\CustomerCreatedModel' => false);
     }
 }

@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,49 +16,85 @@ class ProductMediaFileLinkModelNormalizer implements DenormalizerInterface, Norm
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\ProductMediaFileLinkModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMediaFileLinkModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ProductMediaFileLinkModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\ProductMediaFileLinkModel();
-        if (property_exists($data, 'productMediaFileId')) {
-            $object->setProductMediaFileId($data->{'productMediaFileId'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'mediaFileId')) {
-            $object->setMediaFileId($data->{'mediaFileId'});
+        if (\array_key_exists('productMediaFileId', $data) && $data['productMediaFileId'] !== null) {
+            $object->setProductMediaFileId($data['productMediaFileId']);
+            unset($data['productMediaFileId']);
         }
-        if (property_exists($data, 'sortIndex')) {
-            $object->setSortIndex($data->{'sortIndex'});
+        elseif (\array_key_exists('productMediaFileId', $data) && $data['productMediaFileId'] === null) {
+            $object->setProductMediaFileId(null);
         }
-        if (property_exists($data, 'type')) {
-            $object->setType($data->{'type'});
+        if (\array_key_exists('mediaFileId', $data) && $data['mediaFileId'] !== null) {
+            $object->setMediaFileId($data['mediaFileId']);
+            unset($data['mediaFileId']);
+        }
+        elseif (\array_key_exists('mediaFileId', $data) && $data['mediaFileId'] === null) {
+            $object->setMediaFileId(null);
+        }
+        if (\array_key_exists('sortIndex', $data) && $data['sortIndex'] !== null) {
+            $object->setSortIndex($data['sortIndex']);
+            unset($data['sortIndex']);
+        }
+        elseif (\array_key_exists('sortIndex', $data) && $data['sortIndex'] === null) {
+            $object->setSortIndex(null);
+        }
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
+            $object->setType($data['type']);
+            unset($data['type']);
+        }
+        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getProductMediaFileId()) {
-            $data->{'productMediaFileId'} = $object->getProductMediaFileId();
+        $data = array();
+        $data['mediaFileId'] = $object->getMediaFileId();
+        if ($object->isInitialized('sortIndex') && null !== $object->getSortIndex()) {
+            $data['sortIndex'] = $object->getSortIndex();
         }
-        if (null !== $object->getMediaFileId()) {
-            $data->{'mediaFileId'} = $object->getMediaFileId();
-        }
-        if (null !== $object->getSortIndex()) {
-            $data->{'sortIndex'} = $object->getSortIndex();
-        }
-        if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\ProductMediaFileLinkModel' => false);
     }
 }

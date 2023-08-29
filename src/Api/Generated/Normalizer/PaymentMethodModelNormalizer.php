@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,107 +16,180 @@ class PaymentMethodModelNormalizer implements DenormalizerInterface, NormalizerI
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\PaymentMethodModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\PaymentMethodModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\PaymentMethodModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\PaymentMethodModel();
-        if (property_exists($data, 'paymentMethodId')) {
-            $object->setPaymentMethodId($data->{'paymentMethodId'});
+        if (\array_key_exists('fee', $data) && \is_int($data['fee'])) {
+            $data['fee'] = (double) $data['fee'];
         }
-        if (property_exists($data, 'idCode')) {
-            $object->setIdCode($data->{'idCode'});
+        if (\array_key_exists('validForMinItemsSubtotal', $data) && \is_int($data['validForMinItemsSubtotal'])) {
+            $data['validForMinItemsSubtotal'] = (double) $data['validForMinItemsSubtotal'];
         }
-        if (property_exists($data, 'active')) {
-            $object->setActive($data->{'active'});
+        if (\array_key_exists('validForMaxItemsSubtotal', $data) && \is_int($data['validForMaxItemsSubtotal'])) {
+            $data['validForMaxItemsSubtotal'] = (double) $data['validForMaxItemsSubtotal'];
         }
-        if (property_exists($data, 'fee')) {
-            $object->setFee($data->{'fee'});
+        if (\array_key_exists('validForMinWeight', $data) && \is_int($data['validForMinWeight'])) {
+            $data['validForMinWeight'] = (double) $data['validForMinWeight'];
         }
-        if (property_exists($data, 'validForCountries')) {
-            $object->setValidForCountries($data->{'validForCountries'});
+        if (\array_key_exists('validForMaxWeight', $data) && \is_int($data['validForMaxWeight'])) {
+            $data['validForMaxWeight'] = (double) $data['validForMaxWeight'];
         }
-        if (property_exists($data, 'validCountriesSelected')) {
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (\array_key_exists('paymentMethodId', $data) && $data['paymentMethodId'] !== null) {
+            $object->setPaymentMethodId($data['paymentMethodId']);
+            unset($data['paymentMethodId']);
+        }
+        elseif (\array_key_exists('paymentMethodId', $data) && $data['paymentMethodId'] === null) {
+            $object->setPaymentMethodId(null);
+        }
+        if (\array_key_exists('idCode', $data) && $data['idCode'] !== null) {
+            $object->setIdCode($data['idCode']);
+            unset($data['idCode']);
+        }
+        elseif (\array_key_exists('idCode', $data) && $data['idCode'] === null) {
+            $object->setIdCode(null);
+        }
+        if (\array_key_exists('active', $data) && $data['active'] !== null) {
+            $object->setActive($data['active']);
+            unset($data['active']);
+        }
+        elseif (\array_key_exists('active', $data) && $data['active'] === null) {
+            $object->setActive(null);
+        }
+        if (\array_key_exists('fee', $data) && $data['fee'] !== null) {
+            $object->setFee($data['fee']);
+            unset($data['fee']);
+        }
+        elseif (\array_key_exists('fee', $data) && $data['fee'] === null) {
+            $object->setFee(null);
+        }
+        if (\array_key_exists('validForCountries', $data) && $data['validForCountries'] !== null) {
+            $object->setValidForCountries($data['validForCountries']);
+            unset($data['validForCountries']);
+        }
+        elseif (\array_key_exists('validForCountries', $data) && $data['validForCountries'] === null) {
+            $object->setValidForCountries(null);
+        }
+        if (\array_key_exists('validCountriesSelected', $data) && $data['validCountriesSelected'] !== null) {
             $values = array();
-            foreach ($data->{'validCountriesSelected'} as $value) {
+            foreach ($data['validCountriesSelected'] as $value) {
                 $values[] = $value;
             }
             $object->setValidCountriesSelected($values);
+            unset($data['validCountriesSelected']);
         }
-        if (property_exists($data, 'validForMinItemsSubtotal')) {
-            $object->setValidForMinItemsSubtotal($data->{'validForMinItemsSubtotal'});
+        elseif (\array_key_exists('validCountriesSelected', $data) && $data['validCountriesSelected'] === null) {
+            $object->setValidCountriesSelected(null);
         }
-        if (property_exists($data, 'validForMaxItemsSubtotal')) {
-            $object->setValidForMaxItemsSubtotal($data->{'validForMaxItemsSubtotal'});
+        if (\array_key_exists('validForMinItemsSubtotal', $data) && $data['validForMinItemsSubtotal'] !== null) {
+            $object->setValidForMinItemsSubtotal($data['validForMinItemsSubtotal']);
+            unset($data['validForMinItemsSubtotal']);
         }
-        if (property_exists($data, 'validForMinWeight')) {
-            $object->setValidForMinWeight($data->{'validForMinWeight'});
+        elseif (\array_key_exists('validForMinItemsSubtotal', $data) && $data['validForMinItemsSubtotal'] === null) {
+            $object->setValidForMinItemsSubtotal(null);
         }
-        if (property_exists($data, 'validForMaxWeight')) {
-            $object->setValidForMaxWeight($data->{'validForMaxWeight'});
+        if (\array_key_exists('validForMaxItemsSubtotal', $data) && $data['validForMaxItemsSubtotal'] !== null) {
+            $object->setValidForMaxItemsSubtotal($data['validForMaxItemsSubtotal']);
+            unset($data['validForMaxItemsSubtotal']);
         }
-        if (property_exists($data, 'validForShippingMethods')) {
-            $object->setValidForShippingMethods($data->{'validForShippingMethods'});
+        elseif (\array_key_exists('validForMaxItemsSubtotal', $data) && $data['validForMaxItemsSubtotal'] === null) {
+            $object->setValidForMaxItemsSubtotal(null);
         }
-        if (property_exists($data, 'validForCustomerType')) {
-            $object->setValidForCustomerType($data->{'validForCustomerType'});
+        if (\array_key_exists('validForMinWeight', $data) && $data['validForMinWeight'] !== null) {
+            $object->setValidForMinWeight($data['validForMinWeight']);
+            unset($data['validForMinWeight']);
         }
-        if (property_exists($data, 'isClickAndCollect')) {
-            $object->setIsClickAndCollect($data->{'isClickAndCollect'});
+        elseif (\array_key_exists('validForMinWeight', $data) && $data['validForMinWeight'] === null) {
+            $object->setValidForMinWeight(null);
         }
-        if (property_exists($data, 'languages')) {
-            $object->setLanguages($this->denormalizer->denormalize($data->{'languages'}, 'Starweb\\Api\\Generated\\Model\\PaymentMethodLanguageModelCollection', 'json', $context));
+        if (\array_key_exists('validForMaxWeight', $data) && $data['validForMaxWeight'] !== null) {
+            $object->setValidForMaxWeight($data['validForMaxWeight']);
+            unset($data['validForMaxWeight']);
+        }
+        elseif (\array_key_exists('validForMaxWeight', $data) && $data['validForMaxWeight'] === null) {
+            $object->setValidForMaxWeight(null);
+        }
+        if (\array_key_exists('validForShippingMethods', $data) && $data['validForShippingMethods'] !== null) {
+            $object->setValidForShippingMethods($data['validForShippingMethods']);
+            unset($data['validForShippingMethods']);
+        }
+        elseif (\array_key_exists('validForShippingMethods', $data) && $data['validForShippingMethods'] === null) {
+            $object->setValidForShippingMethods(null);
+        }
+        if (\array_key_exists('validForCustomerType', $data) && $data['validForCustomerType'] !== null) {
+            $object->setValidForCustomerType($data['validForCustomerType']);
+            unset($data['validForCustomerType']);
+        }
+        elseif (\array_key_exists('validForCustomerType', $data) && $data['validForCustomerType'] === null) {
+            $object->setValidForCustomerType(null);
+        }
+        if (\array_key_exists('isClickAndCollect', $data) && $data['isClickAndCollect'] !== null) {
+            $object->setIsClickAndCollect($data['isClickAndCollect']);
+            unset($data['isClickAndCollect']);
+        }
+        elseif (\array_key_exists('isClickAndCollect', $data) && $data['isClickAndCollect'] === null) {
+            $object->setIsClickAndCollect(null);
+        }
+        if (\array_key_exists('externalId', $data) && $data['externalId'] !== null) {
+            $object->setExternalId($data['externalId']);
+            unset($data['externalId']);
+        }
+        elseif (\array_key_exists('externalId', $data) && $data['externalId'] === null) {
+            $object->setExternalId(null);
+        }
+        if (\array_key_exists('languages', $data) && $data['languages'] !== null) {
+            $object->setLanguages($this->denormalizer->denormalize($data['languages'], 'Starweb\\Api\\Generated\\Model\\PaymentMethodLanguageModelCollection', 'json', $context));
+            unset($data['languages']);
+        }
+        elseif (\array_key_exists('languages', $data) && $data['languages'] === null) {
+            $object->setLanguages(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getPaymentMethodId()) {
-            $data->{'paymentMethodId'} = $object->getPaymentMethodId();
+        $data = array();
+        if ($object->isInitialized('languages') && null !== $object->getLanguages()) {
+            $data['languages'] = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
         }
-        if (null !== $object->getIdCode()) {
-            $data->{'idCode'} = $object->getIdCode();
-        }
-        if (null !== $object->getActive()) {
-            $data->{'active'} = $object->getActive();
-        }
-        if (null !== $object->getFee()) {
-            $data->{'fee'} = $object->getFee();
-        }
-        if (null !== $object->getValidForCountries()) {
-            $data->{'validForCountries'} = $object->getValidForCountries();
-        }
-        if (null !== $object->getValidCountriesSelected()) {
-            $values = array();
-            foreach ($object->getValidCountriesSelected() as $value) {
-                $values[] = $value;
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
             }
-            $data->{'validCountriesSelected'} = $values;
-        }
-        $data->{'validForMinItemsSubtotal'} = $object->getValidForMinItemsSubtotal();
-        $data->{'validForMaxItemsSubtotal'} = $object->getValidForMaxItemsSubtotal();
-        $data->{'validForMinWeight'} = $object->getValidForMinWeight();
-        $data->{'validForMaxWeight'} = $object->getValidForMaxWeight();
-        if (null !== $object->getValidForShippingMethods()) {
-            $data->{'validForShippingMethods'} = $object->getValidForShippingMethods();
-        }
-        $data->{'validForCustomerType'} = $object->getValidForCustomerType();
-        if (null !== $object->getIsClickAndCollect()) {
-            $data->{'isClickAndCollect'} = $object->getIsClickAndCollect();
-        }
-        if (null !== $object->getLanguages()) {
-            $data->{'languages'} = $this->normalizer->normalize($object->getLanguages(), 'json', $context);
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\PaymentMethodModel' => false);
     }
 }

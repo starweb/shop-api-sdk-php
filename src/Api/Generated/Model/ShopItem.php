@@ -2,32 +2,41 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ShopItem
+class ShopItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
-     * @var ShopModel
+     * @var ShopModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return ShopModel
+     * @return ShopModel|null
      */
-    public function getData() : ShopModel
+    public function getData() : ?ShopModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param ShopModel $data
+     * @param ShopModel|null $data
      *
      * @return self
      */
-    public function setData(ShopModel $data) : self
+    public function setData(?ShopModel $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }

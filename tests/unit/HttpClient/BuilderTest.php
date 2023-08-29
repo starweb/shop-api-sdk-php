@@ -6,7 +6,6 @@ use Http\Client\Common\Plugin\ErrorPlugin;
 use Http\Discovery\MessageFactoryDiscovery;
 use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
-use Starweb\Api\Authentication\AccessToken;
 use Starweb\Api\Authentication\TokenManager;
 use Starweb\HttpClient\Builder;
 use Starweb\Api\Generated\Client as JaneOpenApiClient;

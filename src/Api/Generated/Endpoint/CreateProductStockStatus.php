@@ -2,18 +2,18 @@
 
 namespace Starweb\Api\Generated\Endpoint;
 
-class CreateProductStockStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
+class CreateProductStockStatus extends \Starweb\Api\Generated\Runtime\Client\BaseEndpoint implements \Starweb\Api\Generated\Runtime\Client\Endpoint
 {
     /**
      * Create a product stock status. Retrieves the created `ProductStockStatus` object.
      *
-     * @param \Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody 
+     * @param null|\Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody 
      */
-    public function __construct(\Starweb\Api\Generated\Model\ProductStockStatusModel $requestBody)
+    public function __construct(?\Starweb\Api\Generated\Model\ProductStockStatusRequestModel $requestBody = null)
     {
         $this->body = $requestBody;
     }
-    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    use \Starweb\Api\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -24,7 +24,7 @@ class CreateProductStockStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductStockStatusModel) {
+        if ($this->body instanceof \Starweb\Api\Generated\Model\ProductStockStatusRequestModel) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
@@ -40,13 +40,19 @@ class CreateProductStockStatus extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
      *
      * @return null|\Starweb\Api\Generated\Model\ProductStockStatusModelItem
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (201 === $status && mb_strpos($contentType, 'application/json') !== false) {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ProductStockStatusModelItem', 'json');
         }
-        if (400 === $status && mb_strpos($contentType, 'application/json') !== false) {
-            throw new \Starweb\Api\Generated\Exception\CreateProductStockStatusBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'));
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Starweb\Api\Generated\Exception\CreateProductStockStatusBadRequestException($serializer->deserialize($body, 'Starweb\\Api\\Generated\\Model\\ErrorModel', 'json'), $response);
         }
+    }
+    public function getAuthenticationScopes() : array
+    {
+        return array('oauth2');
     }
 }

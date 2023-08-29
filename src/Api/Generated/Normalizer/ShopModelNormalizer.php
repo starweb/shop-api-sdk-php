@@ -2,7 +2,9 @@
 
 namespace Starweb\Api\Generated\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Starweb\Api\Generated\Runtime\Normalizer\CheckArray;
+use Starweb\Api\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -14,129 +16,172 @@ class ShopModelNormalizer implements DenormalizerInterface, NormalizerInterface,
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    public function supportsDenormalization($data, $type, $format = null)
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Starweb\\Api\\Generated\\Model\\ShopModel';
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return get_class($data) === 'Starweb\\Api\\Generated\\Model\\ShopModel';
+        return is_object($data) && get_class($data) === 'Starweb\\Api\\Generated\\Model\\ShopModel';
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        if (!is_object($data)) {
-            throw new InvalidArgumentException();
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Starweb\Api\Generated\Model\ShopModel();
-        if (property_exists($data, 'name')) {
-            $object->setName($data->{'name'});
+        if (\array_key_exists('generalDefaultVatRate', $data) && \is_int($data['generalDefaultVatRate'])) {
+            $data['generalDefaultVatRate'] = (double) $data['generalDefaultVatRate'];
         }
-        if (property_exists($data, 'idCode')) {
-            $object->setIdCode($data->{'idCode'});
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
-        if (property_exists($data, 'status')) {
-            $object->setStatus($data->{'status'});
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
+            $object->setName($data['name']);
+            unset($data['name']);
         }
-        if (property_exists($data, 'defaultLangCode')) {
-            $object->setDefaultLangCode($data->{'defaultLangCode'});
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
         }
-        if (property_exists($data, 'activeLangCodes')) {
+        if (\array_key_exists('idCode', $data) && $data['idCode'] !== null) {
+            $object->setIdCode($data['idCode']);
+            unset($data['idCode']);
+        }
+        elseif (\array_key_exists('idCode', $data) && $data['idCode'] === null) {
+            $object->setIdCode(null);
+        }
+        if (\array_key_exists('status', $data) && $data['status'] !== null) {
+            $object->setStatus($data['status']);
+            unset($data['status']);
+        }
+        elseif (\array_key_exists('status', $data) && $data['status'] === null) {
+            $object->setStatus(null);
+        }
+        if (\array_key_exists('defaultLangCode', $data) && $data['defaultLangCode'] !== null) {
+            $object->setDefaultLangCode($data['defaultLangCode']);
+            unset($data['defaultLangCode']);
+        }
+        elseif (\array_key_exists('defaultLangCode', $data) && $data['defaultLangCode'] === null) {
+            $object->setDefaultLangCode(null);
+        }
+        if (\array_key_exists('activeLangCodes', $data) && $data['activeLangCodes'] !== null) {
             $values = array();
-            foreach ($data->{'activeLangCodes'} as $value) {
+            foreach ($data['activeLangCodes'] as $value) {
                 $values[] = $value;
             }
             $object->setActiveLangCodes($values);
+            unset($data['activeLangCodes']);
         }
-        if (property_exists($data, 'baseCurrency')) {
-            $object->setBaseCurrency($data->{'baseCurrency'});
+        elseif (\array_key_exists('activeLangCodes', $data) && $data['activeLangCodes'] === null) {
+            $object->setActiveLangCodes(null);
         }
-        if (property_exists($data, 'defaultCustomerCountryCode')) {
-            $object->setDefaultCustomerCountryCode($data->{'defaultCustomerCountryCode'});
+        if (\array_key_exists('baseCurrency', $data) && $data['baseCurrency'] !== null) {
+            $object->setBaseCurrency($data['baseCurrency']);
+            unset($data['baseCurrency']);
         }
-        if (property_exists($data, 'generalDefaultVatRate')) {
-            $object->setGeneralDefaultVatRate($data->{'generalDefaultVatRate'});
+        elseif (\array_key_exists('baseCurrency', $data) && $data['baseCurrency'] === null) {
+            $object->setBaseCurrency(null);
         }
-        if (property_exists($data, 'shopCompanyName')) {
-            $object->setShopCompanyName($data->{'shopCompanyName'});
+        if (\array_key_exists('defaultCustomerCountryCode', $data) && $data['defaultCustomerCountryCode'] !== null) {
+            $object->setDefaultCustomerCountryCode($data['defaultCustomerCountryCode']);
+            unset($data['defaultCustomerCountryCode']);
         }
-        if (property_exists($data, 'shopAddress')) {
-            $object->setShopAddress($data->{'shopAddress'});
+        elseif (\array_key_exists('defaultCustomerCountryCode', $data) && $data['defaultCustomerCountryCode'] === null) {
+            $object->setDefaultCustomerCountryCode(null);
         }
-        if (property_exists($data, 'shopPostalCode')) {
-            $object->setShopPostalCode($data->{'shopPostalCode'});
+        if (\array_key_exists('generalDefaultVatRate', $data) && $data['generalDefaultVatRate'] !== null) {
+            $object->setGeneralDefaultVatRate($data['generalDefaultVatRate']);
+            unset($data['generalDefaultVatRate']);
         }
-        if (property_exists($data, 'shopCity')) {
-            $object->setShopCity($data->{'shopCity'});
+        elseif (\array_key_exists('generalDefaultVatRate', $data) && $data['generalDefaultVatRate'] === null) {
+            $object->setGeneralDefaultVatRate(null);
         }
-        if (property_exists($data, 'shopOrgNo')) {
-            $object->setShopOrgNo($data->{'shopOrgNo'});
+        if (\array_key_exists('shopCompanyName', $data) && $data['shopCompanyName'] !== null) {
+            $object->setShopCompanyName($data['shopCompanyName']);
+            unset($data['shopCompanyName']);
         }
-        if (property_exists($data, 'shopPhoneNo')) {
-            $object->setShopPhoneNo($data->{'shopPhoneNo'});
+        elseif (\array_key_exists('shopCompanyName', $data) && $data['shopCompanyName'] === null) {
+            $object->setShopCompanyName(null);
         }
-        if (property_exists($data, 'shopVatNo')) {
-            $object->setShopVatNo($data->{'shopVatNo'});
+        if (\array_key_exists('shopAddress', $data) && $data['shopAddress'] !== null) {
+            $object->setShopAddress($data['shopAddress']);
+            unset($data['shopAddress']);
         }
-        if (property_exists($data, 'shopCountryCode')) {
-            $object->setShopCountryCode($data->{'shopCountryCode'});
+        elseif (\array_key_exists('shopAddress', $data) && $data['shopAddress'] === null) {
+            $object->setShopAddress(null);
+        }
+        if (\array_key_exists('shopPostalCode', $data) && $data['shopPostalCode'] !== null) {
+            $object->setShopPostalCode($data['shopPostalCode']);
+            unset($data['shopPostalCode']);
+        }
+        elseif (\array_key_exists('shopPostalCode', $data) && $data['shopPostalCode'] === null) {
+            $object->setShopPostalCode(null);
+        }
+        if (\array_key_exists('shopCity', $data) && $data['shopCity'] !== null) {
+            $object->setShopCity($data['shopCity']);
+            unset($data['shopCity']);
+        }
+        elseif (\array_key_exists('shopCity', $data) && $data['shopCity'] === null) {
+            $object->setShopCity(null);
+        }
+        if (\array_key_exists('shopOrgNo', $data) && $data['shopOrgNo'] !== null) {
+            $object->setShopOrgNo($data['shopOrgNo']);
+            unset($data['shopOrgNo']);
+        }
+        elseif (\array_key_exists('shopOrgNo', $data) && $data['shopOrgNo'] === null) {
+            $object->setShopOrgNo(null);
+        }
+        if (\array_key_exists('shopPhoneNo', $data) && $data['shopPhoneNo'] !== null) {
+            $object->setShopPhoneNo($data['shopPhoneNo']);
+            unset($data['shopPhoneNo']);
+        }
+        elseif (\array_key_exists('shopPhoneNo', $data) && $data['shopPhoneNo'] === null) {
+            $object->setShopPhoneNo(null);
+        }
+        if (\array_key_exists('shopVatNo', $data) && $data['shopVatNo'] !== null) {
+            $object->setShopVatNo($data['shopVatNo']);
+            unset($data['shopVatNo']);
+        }
+        elseif (\array_key_exists('shopVatNo', $data) && $data['shopVatNo'] === null) {
+            $object->setShopVatNo(null);
+        }
+        if (\array_key_exists('shopCountryCode', $data) && $data['shopCountryCode'] !== null) {
+            $object->setShopCountryCode($data['shopCountryCode']);
+            unset($data['shopCountryCode']);
+        }
+        elseif (\array_key_exists('shopCountryCode', $data) && $data['shopCountryCode'] === null) {
+            $object->setShopCountryCode(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
-        $data = new \stdClass();
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
-        if (null !== $object->getIdCode()) {
-            $data->{'idCode'} = $object->getIdCode();
-        }
-        if (null !== $object->getStatus()) {
-            $data->{'status'} = $object->getStatus();
-        }
-        if (null !== $object->getDefaultLangCode()) {
-            $data->{'defaultLangCode'} = $object->getDefaultLangCode();
-        }
-        if (null !== $object->getActiveLangCodes()) {
-            $values = array();
-            foreach ($object->getActiveLangCodes() as $value) {
-                $values[] = $value;
+        $data = array();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
             }
-            $data->{'activeLangCodes'} = $values;
-        }
-        if (null !== $object->getBaseCurrency()) {
-            $data->{'baseCurrency'} = $object->getBaseCurrency();
-        }
-        if (null !== $object->getDefaultCustomerCountryCode()) {
-            $data->{'defaultCustomerCountryCode'} = $object->getDefaultCustomerCountryCode();
-        }
-        if (null !== $object->getGeneralDefaultVatRate()) {
-            $data->{'generalDefaultVatRate'} = $object->getGeneralDefaultVatRate();
-        }
-        if (null !== $object->getShopCompanyName()) {
-            $data->{'shopCompanyName'} = $object->getShopCompanyName();
-        }
-        if (null !== $object->getShopAddress()) {
-            $data->{'shopAddress'} = $object->getShopAddress();
-        }
-        if (null !== $object->getShopPostalCode()) {
-            $data->{'shopPostalCode'} = $object->getShopPostalCode();
-        }
-        if (null !== $object->getShopCity()) {
-            $data->{'shopCity'} = $object->getShopCity();
-        }
-        if (null !== $object->getShopOrgNo()) {
-            $data->{'shopOrgNo'} = $object->getShopOrgNo();
-        }
-        if (null !== $object->getShopPhoneNo()) {
-            $data->{'shopPhoneNo'} = $object->getShopPhoneNo();
-        }
-        if (null !== $object->getShopVatNo()) {
-            $data->{'shopVatNo'} = $object->getShopVatNo();
-        }
-        if (null !== $object->getShopCountryCode()) {
-            $data->{'shopCountryCode'} = $object->getShopCountryCode();
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Starweb\\Api\\Generated\\Model\\ShopModel' => false);
     }
 }

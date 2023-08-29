@@ -2,32 +2,41 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class CustomerAddressesModelCollection
+class CustomerAddressesModelCollection extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
-     * @var CustomerAddressesModelCollectionData
+     * @var CustomerAddressesModelCollectionData|null
      */
     protected $data;
     /**
      * 
      *
-     * @return CustomerAddressesModelCollectionData
+     * @return CustomerAddressesModelCollectionData|null
      */
-    public function getData() : CustomerAddressesModelCollectionData
+    public function getData() : ?CustomerAddressesModelCollectionData
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param CustomerAddressesModelCollectionData $data
+     * @param CustomerAddressesModelCollectionData|null $data
      *
      * @return self
      */
-    public function setData(CustomerAddressesModelCollectionData $data) : self
+    public function setData(?CustomerAddressesModelCollectionData $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }

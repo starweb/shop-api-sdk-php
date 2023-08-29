@@ -39,7 +39,6 @@ class TokenFileSystemCacheTest extends TestCase
         $this->cache->setToken(new AccessToken('my-token'));
         $hasToken = $this->cache->hasToken();
 
-        $this->assertTrue(is_bool($hasToken));
         $this->assertTrue($hasToken);
     }
 
@@ -63,7 +62,6 @@ class TokenFileSystemCacheTest extends TestCase
     {
         $this->cache->setToken(new AccessToken('my-token'));
 
-        $this->assertTrue(is_bool($this->cache->isExpired()));
         $this->assertFalse($this->cache->isExpired());
     }
 
@@ -72,7 +70,6 @@ class TokenFileSystemCacheTest extends TestCase
         $token = new AccessToken('my-token', 0);
         $this->cache->setToken($token);
 
-        $this->assertTrue(is_bool($this->cache->isExpired()));
         $this->assertTrue($this->cache->isExpired());
     }
 

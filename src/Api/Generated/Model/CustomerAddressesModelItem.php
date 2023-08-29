@@ -2,32 +2,41 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class CustomerAddressesModelItem
+class CustomerAddressesModelItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
-     * @var AddressModel
+     * @var AddressModel|null
      */
     protected $data;
     /**
      * 
      *
-     * @return AddressModel
+     * @return AddressModel|null
      */
-    public function getData() : AddressModel
+    public function getData() : ?AddressModel
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param AddressModel $data
+     * @param AddressModel|null $data
      *
      * @return self
      */
-    public function setData(AddressModel $data) : self
+    public function setData(?AddressModel $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }

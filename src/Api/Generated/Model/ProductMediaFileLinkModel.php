@@ -2,113 +2,125 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductMediaFileLinkModel
+class ProductMediaFileLinkModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * This links ID
      *
-     * @var int
+     * @var int|null
      */
     protected $productMediaFileId;
     /**
      * The media file this link points to. You can fetch available media files from the /media-files endpoint
      *
-     * @var int
+     * @var int|null
      */
     protected $mediaFileId;
     /**
      * The sort index of these media file links. Note that after the item is saved the sort index will be rearranged so that the item with the lowest sort index always get sort index 0, the next one 1, and so on.
      *
-     * @var int
+     * @var int|null
      */
     protected $sortIndex;
     /**
      * The type of file this link points to. Can be either ”image” or ”document”
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
      * This links ID
      *
-     * @return int
+     * @return int|null
      */
-    public function getProductMediaFileId() : int
+    public function getProductMediaFileId() : ?int
     {
         return $this->productMediaFileId;
     }
     /**
      * This links ID
      *
-     * @param int $productMediaFileId
+     * @param int|null $productMediaFileId
      *
      * @return self
      */
-    public function setProductMediaFileId(int $productMediaFileId) : self
+    public function setProductMediaFileId(?int $productMediaFileId) : self
     {
+        $this->initialized['productMediaFileId'] = true;
         $this->productMediaFileId = $productMediaFileId;
         return $this;
     }
     /**
      * The media file this link points to. You can fetch available media files from the /media-files endpoint
      *
-     * @return int
+     * @return int|null
      */
-    public function getMediaFileId() : int
+    public function getMediaFileId() : ?int
     {
         return $this->mediaFileId;
     }
     /**
      * The media file this link points to. You can fetch available media files from the /media-files endpoint
      *
-     * @param int $mediaFileId
+     * @param int|null $mediaFileId
      *
      * @return self
      */
-    public function setMediaFileId(int $mediaFileId) : self
+    public function setMediaFileId(?int $mediaFileId) : self
     {
+        $this->initialized['mediaFileId'] = true;
         $this->mediaFileId = $mediaFileId;
         return $this;
     }
     /**
      * The sort index of these media file links. Note that after the item is saved the sort index will be rearranged so that the item with the lowest sort index always get sort index 0, the next one 1, and so on.
      *
-     * @return int
+     * @return int|null
      */
-    public function getSortIndex() : int
+    public function getSortIndex() : ?int
     {
         return $this->sortIndex;
     }
     /**
      * The sort index of these media file links. Note that after the item is saved the sort index will be rearranged so that the item with the lowest sort index always get sort index 0, the next one 1, and so on.
      *
-     * @param int $sortIndex
+     * @param int|null $sortIndex
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(?int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
     /**
      * The type of file this link points to. Can be either ”image” or ”document”
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType() : ?string
     {
         return $this->type;
     }
     /**
      * The type of file this link points to. Can be either ”image” or ”document”
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }

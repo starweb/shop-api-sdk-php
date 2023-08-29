@@ -51,7 +51,7 @@ class MediaFileEndpointTraitTest extends TestCase
 
     private function getEndpoint($body)
     {
-        $endpoint = new class ($body)
+        return new class ($body)
         {
             private $body;
 
@@ -62,7 +62,5 @@ class MediaFileEndpointTraitTest extends TestCase
 
             use MediaFileEndpointTrait;
         };
-
-        return $endpoint;
     }
 }

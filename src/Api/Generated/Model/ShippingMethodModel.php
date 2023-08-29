@@ -2,30 +2,38 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ShippingMethodModel
+class ShippingMethodModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The shipping methods Id
      *
-     * @var int
+     * @var int|null
      */
     protected $shippingMethodId;
     /**
      * If the shipping method is actively available on checkout or not
      *
-     * @var bool
+     * @var bool|null
      */
     protected $active;
     /**
      * The restrictions to countries this shipping method is valid for. Valid values are: all, EU, non-EU, selected, none
      *
-     * @var string
+     * @var string|null
      */
     protected $validForCountries;
     /**
      * The countries this method is valid for (if validForCountries is set to ”selected”)
      *
-     * @var string[]
+     * @var string[]|null
      */
     protected $validCountriesSelected;
     /**
@@ -73,96 +81,106 @@ class ShippingMethodModel
     /**
      * Tells whether this method is a "click and collect" or not
      *
-     * @var bool
+     * @var bool|null
      */
     protected $isClickAndCollect;
     /**
+     * External id for systems like Specter, Fortnox etc
+     *
+     * @var string|null
+     */
+    protected $externalId;
+    /**
      * 
      *
-     * @var ShippingMethodLanguageModelCollection
+     * @var ShippingMethodLanguageModelCollection|null
      */
     protected $languages;
     /**
      * The shipping methods Id
      *
-     * @return int
+     * @return int|null
      */
-    public function getShippingMethodId() : int
+    public function getShippingMethodId() : ?int
     {
         return $this->shippingMethodId;
     }
     /**
      * The shipping methods Id
      *
-     * @param int $shippingMethodId
+     * @param int|null $shippingMethodId
      *
      * @return self
      */
-    public function setShippingMethodId(int $shippingMethodId) : self
+    public function setShippingMethodId(?int $shippingMethodId) : self
     {
+        $this->initialized['shippingMethodId'] = true;
         $this->shippingMethodId = $shippingMethodId;
         return $this;
     }
     /**
      * If the shipping method is actively available on checkout or not
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getActive() : bool
+    public function getActive() : ?bool
     {
         return $this->active;
     }
     /**
      * If the shipping method is actively available on checkout or not
      *
-     * @param bool $active
+     * @param bool|null $active
      *
      * @return self
      */
-    public function setActive(bool $active) : self
+    public function setActive(?bool $active) : self
     {
+        $this->initialized['active'] = true;
         $this->active = $active;
         return $this;
     }
     /**
      * The restrictions to countries this shipping method is valid for. Valid values are: all, EU, non-EU, selected, none
      *
-     * @return string
+     * @return string|null
      */
-    public function getValidForCountries() : string
+    public function getValidForCountries() : ?string
     {
         return $this->validForCountries;
     }
     /**
      * The restrictions to countries this shipping method is valid for. Valid values are: all, EU, non-EU, selected, none
      *
-     * @param string $validForCountries
+     * @param string|null $validForCountries
      *
      * @return self
      */
-    public function setValidForCountries(string $validForCountries) : self
+    public function setValidForCountries(?string $validForCountries) : self
     {
+        $this->initialized['validForCountries'] = true;
         $this->validForCountries = $validForCountries;
         return $this;
     }
     /**
      * The countries this method is valid for (if validForCountries is set to ”selected”)
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getValidCountriesSelected() : array
+    public function getValidCountriesSelected() : ?array
     {
         return $this->validCountriesSelected;
     }
     /**
      * The countries this method is valid for (if validForCountries is set to ”selected”)
      *
-     * @param string[] $validCountriesSelected
+     * @param string[]|null $validCountriesSelected
      *
      * @return self
      */
-    public function setValidCountriesSelected(array $validCountriesSelected) : self
+    public function setValidCountriesSelected(?array $validCountriesSelected) : self
     {
+        $this->initialized['validCountriesSelected'] = true;
         $this->validCountriesSelected = $validCountriesSelected;
         return $this;
     }
@@ -184,6 +202,7 @@ class ShippingMethodModel
      */
     public function setValidForMinItemsSubtotal(?float $validForMinItemsSubtotal) : self
     {
+        $this->initialized['validForMinItemsSubtotal'] = true;
         $this->validForMinItemsSubtotal = $validForMinItemsSubtotal;
         return $this;
     }
@@ -205,6 +224,7 @@ class ShippingMethodModel
      */
     public function setValidForMaxItemsSubtotal(?float $validForMaxItemsSubtotal) : self
     {
+        $this->initialized['validForMaxItemsSubtotal'] = true;
         $this->validForMaxItemsSubtotal = $validForMaxItemsSubtotal;
         return $this;
     }
@@ -226,6 +246,7 @@ class ShippingMethodModel
      */
     public function setValidForMinWeight(?float $validForMinWeight) : self
     {
+        $this->initialized['validForMinWeight'] = true;
         $this->validForMinWeight = $validForMinWeight;
         return $this;
     }
@@ -247,6 +268,7 @@ class ShippingMethodModel
      */
     public function setValidForMaxWeight(?float $validForMaxWeight) : self
     {
+        $this->initialized['validForMaxWeight'] = true;
         $this->validForMaxWeight = $validForMaxWeight;
         return $this;
     }
@@ -268,6 +290,7 @@ class ShippingMethodModel
      */
     public function setValidForCustomerType(?string $validForCustomerType) : self
     {
+        $this->initialized['validForCustomerType'] = true;
         $this->validForCustomerType = $validForCustomerType;
         return $this;
     }
@@ -289,6 +312,7 @@ class ShippingMethodModel
      */
     public function setFreeShippingMinItemsSubtotal(?float $freeShippingMinItemsSubtotal) : self
     {
+        $this->initialized['freeShippingMinItemsSubtotal'] = true;
         $this->freeShippingMinItemsSubtotal = $freeShippingMinItemsSubtotal;
         return $this;
     }
@@ -310,48 +334,73 @@ class ShippingMethodModel
      */
     public function setFreeShippingMinWeight(?float $freeShippingMinWeight) : self
     {
+        $this->initialized['freeShippingMinWeight'] = true;
         $this->freeShippingMinWeight = $freeShippingMinWeight;
         return $this;
     }
     /**
      * Tells whether this method is a "click and collect" or not
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getIsClickAndCollect() : bool
+    public function getIsClickAndCollect() : ?bool
     {
         return $this->isClickAndCollect;
     }
     /**
      * Tells whether this method is a "click and collect" or not
      *
-     * @param bool $isClickAndCollect
+     * @param bool|null $isClickAndCollect
      *
      * @return self
      */
-    public function setIsClickAndCollect(bool $isClickAndCollect) : self
+    public function setIsClickAndCollect(?bool $isClickAndCollect) : self
     {
+        $this->initialized['isClickAndCollect'] = true;
         $this->isClickAndCollect = $isClickAndCollect;
+        return $this;
+    }
+    /**
+     * External id for systems like Specter, Fortnox etc
+     *
+     * @return string|null
+     */
+    public function getExternalId() : ?string
+    {
+        return $this->externalId;
+    }
+    /**
+     * External id for systems like Specter, Fortnox etc
+     *
+     * @param string|null $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(?string $externalId) : self
+    {
+        $this->initialized['externalId'] = true;
+        $this->externalId = $externalId;
         return $this;
     }
     /**
      * 
      *
-     * @return ShippingMethodLanguageModelCollection
+     * @return ShippingMethodLanguageModelCollection|null
      */
-    public function getLanguages() : ShippingMethodLanguageModelCollection
+    public function getLanguages() : ?ShippingMethodLanguageModelCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ShippingMethodLanguageModelCollection $languages
+     * @param ShippingMethodLanguageModelCollection|null $languages
      *
      * @return self
      */
-    public function setLanguages(ShippingMethodLanguageModelCollection $languages) : self
+    public function setLanguages(?ShippingMethodLanguageModelCollection $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }

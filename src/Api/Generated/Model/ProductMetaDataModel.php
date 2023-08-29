@@ -2,113 +2,125 @@
 
 namespace Starweb\Api\Generated\Model;
 
-class ProductMetaDataModel
+class ProductMetaDataModel extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The ID of the meta data.
      *
-     * @var int
+     * @var int|null
      */
     protected $metaDataId;
     /**
      * The ID of the meta data type. Available meta data types can be fetched using the /product-meta-data-types endpoint
      *
-     * @var int
+     * @var int|null
      */
     protected $metaDataTypeId;
     /**
      * The sort index of this meta data for this product
      *
-     * @var int
+     * @var int|null
      */
     protected $sortIndex;
     /**
      * 
      *
-     * @var ProductMetaLanguageDataModelCollection
+     * @var ProductMetaLanguageDataModelCollection|null
      */
     protected $languages;
     /**
      * The ID of the meta data.
      *
-     * @return int
+     * @return int|null
      */
-    public function getMetaDataId() : int
+    public function getMetaDataId() : ?int
     {
         return $this->metaDataId;
     }
     /**
      * The ID of the meta data.
      *
-     * @param int $metaDataId
+     * @param int|null $metaDataId
      *
      * @return self
      */
-    public function setMetaDataId(int $metaDataId) : self
+    public function setMetaDataId(?int $metaDataId) : self
     {
+        $this->initialized['metaDataId'] = true;
         $this->metaDataId = $metaDataId;
         return $this;
     }
     /**
      * The ID of the meta data type. Available meta data types can be fetched using the /product-meta-data-types endpoint
      *
-     * @return int
+     * @return int|null
      */
-    public function getMetaDataTypeId() : int
+    public function getMetaDataTypeId() : ?int
     {
         return $this->metaDataTypeId;
     }
     /**
      * The ID of the meta data type. Available meta data types can be fetched using the /product-meta-data-types endpoint
      *
-     * @param int $metaDataTypeId
+     * @param int|null $metaDataTypeId
      *
      * @return self
      */
-    public function setMetaDataTypeId(int $metaDataTypeId) : self
+    public function setMetaDataTypeId(?int $metaDataTypeId) : self
     {
+        $this->initialized['metaDataTypeId'] = true;
         $this->metaDataTypeId = $metaDataTypeId;
         return $this;
     }
     /**
      * The sort index of this meta data for this product
      *
-     * @return int
+     * @return int|null
      */
-    public function getSortIndex() : int
+    public function getSortIndex() : ?int
     {
         return $this->sortIndex;
     }
     /**
      * The sort index of this meta data for this product
      *
-     * @param int $sortIndex
+     * @param int|null $sortIndex
      *
      * @return self
      */
-    public function setSortIndex(int $sortIndex) : self
+    public function setSortIndex(?int $sortIndex) : self
     {
+        $this->initialized['sortIndex'] = true;
         $this->sortIndex = $sortIndex;
         return $this;
     }
     /**
      * 
      *
-     * @return ProductMetaLanguageDataModelCollection
+     * @return ProductMetaLanguageDataModelCollection|null
      */
-    public function getLanguages() : ProductMetaLanguageDataModelCollection
+    public function getLanguages() : ?ProductMetaLanguageDataModelCollection
     {
         return $this->languages;
     }
     /**
      * 
      *
-     * @param ProductMetaLanguageDataModelCollection $languages
+     * @param ProductMetaLanguageDataModelCollection|null $languages
      *
      * @return self
      */
-    public function setLanguages(ProductMetaLanguageDataModelCollection $languages) : self
+    public function setLanguages(?ProductMetaLanguageDataModelCollection $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }
