@@ -74,6 +74,9 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (property_exists($data, 'bundleUseManualPrice') && $data->{'bundleUseManualPrice'} !== null) {
             $object->setBundleUseManualPrice($data->{'bundleUseManualPrice'});
         }
+        if (property_exists($data, 'priceMode') && $data->{'priceMode'} !== null) {
+            $object->setPriceMode($data->{'priceMode'});
+        }
         if (property_exists($data, 'accounting') && $data->{'accounting'} !== null) {
             $object->setAccounting($data->{'accounting'});
         }
@@ -142,6 +145,9 @@ class ProductModelNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (null !== $object->getBundleUseManualPrice()) {
             $data->{'bundleUseManualPrice'} = $object->getBundleUseManualPrice();
+        }
+        if (null !== $object->getPriceMode()) {
+            $data->{'priceMode'} = $object->getPriceMode();
         }
         $data->{'accounting'} = $object->getAccounting();
         if (null !== $object->getVariants()) {

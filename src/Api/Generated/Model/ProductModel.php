@@ -83,11 +83,19 @@ class ProductModel
      */
     protected $isBackInStockWatchable = true;
     /**
-     * Should all bundled products have a manually entered price? Only applies if type is bundle
+     * *Deprecated and will be removed in the future version, use ”priceMode” instead. Should all bundled products have a manually entered price? Only applies if type is bundle
+     *
+     * @deprecated
      *
      * @var bool|null
      */
     protected $bundleUseManualPrice;
+    /**
+     * The price mode for the bundle product. Use ”normal” to set one price for the whole bundle, use ”manual” to set each bundled product's price individually, or use ”calculated” to skip price setting and calculate the total price. Only applies if type is bundle. Default is ”normal”
+     *
+     * @var string|null
+     */
+    protected $priceMode;
     /**
      * Account number for managing accounting on product level
      *
@@ -428,7 +436,9 @@ class ProductModel
         return $this;
     }
     /**
-     * Should all bundled products have a manually entered price? Only applies if type is bundle
+     * *Deprecated and will be removed in the future version, use ”priceMode” instead. Should all bundled products have a manually entered price? Only applies if type is bundle
+     *
+     * @deprecated
      *
      * @return bool|null
      */
@@ -437,15 +447,38 @@ class ProductModel
         return $this->bundleUseManualPrice;
     }
     /**
-     * Should all bundled products have a manually entered price? Only applies if type is bundle
+     * *Deprecated and will be removed in the future version, use ”priceMode” instead. Should all bundled products have a manually entered price? Only applies if type is bundle
      *
      * @param bool|null $bundleUseManualPrice
+     *
+     * @deprecated
      *
      * @return self
      */
     public function setBundleUseManualPrice(?bool $bundleUseManualPrice) : self
     {
         $this->bundleUseManualPrice = $bundleUseManualPrice;
+        return $this;
+    }
+    /**
+     * The price mode for the bundle product. Use ”normal” to set one price for the whole bundle, use ”manual” to set each bundled product's price individually, or use ”calculated” to skip price setting and calculate the total price. Only applies if type is bundle. Default is ”normal”
+     *
+     * @return string|null
+     */
+    public function getPriceMode() : ?string
+    {
+        return $this->priceMode;
+    }
+    /**
+     * The price mode for the bundle product. Use ”normal” to set one price for the whole bundle, use ”manual” to set each bundled product's price individually, or use ”calculated” to skip price setting and calculate the total price. Only applies if type is bundle. Default is ”normal”
+     *
+     * @param string|null $priceMode
+     *
+     * @return self
+     */
+    public function setPriceMode(?string $priceMode) : self
+    {
+        $this->priceMode = $priceMode;
         return $this;
     }
     /**
